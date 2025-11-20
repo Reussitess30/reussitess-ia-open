@@ -6,7 +6,7 @@ export default function Guadeloupe() {
 
     return (<>
         <Head>
-            <title>🇬🇵 Guadeloupe - Bibliothèque Mondiale Reussitess®</title>
+            <title>🇬🇵 Guadeloupe - Bibliothèque Mondiale REUSSITESS®</title>
             <meta name="description" content="Fiche complète Guadeloupe : population, marché e-commerce, TVA, Amazon, histoire et ressources" />
         </Head>
 

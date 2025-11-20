@@ -6,7 +6,7 @@ export default function Guyane() {
 
     return (<>
         <Head>
-            <title>🇬🇫 Guyane - Bibliothèque Mondiale Reussitess®</title>
+            <title>🇬🇫 Guyane - Bibliothèque Mondiale REUSSITESS®</title>
             <meta name="description" content="Fiche complète Guyane française : population, marché e-commerce, TVA, Amazon, histoire et ressources" />
         </Head>
 

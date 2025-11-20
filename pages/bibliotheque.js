@@ -47,7 +47,7 @@ export default function Bibliotheque() {
 
   return (<>
     <Head>
-      <title>📚 Bibliothèque Internationale - Reussitess Global Nexus</title>
+      <title>📚 Bibliothèque Internationale - REUSSITESS® Global Nexus</title>
       <meta name="description" content="Portail documentaire international : outils, histoire africaine et outre-mers, actualités, ressources pédagogiques et réglementations" />
     </Head>
 

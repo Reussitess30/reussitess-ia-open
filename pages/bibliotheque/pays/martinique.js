@@ -6,7 +6,7 @@ export default function Martinique() {
 
     return (<>
         <Head>
-            <title>🇲🇶 Martinique - Bibliothèque Mondiale Reussitess®</title>
+            <title>🇲🇶 Martinique - Bibliothèque Mondiale REUSSITESS®</title>
             <meta name="description" content="Fiche complète Martinique : population, marché e-commerce, TVA, Amazon, histoire et ressources" />
         </Head>
 
