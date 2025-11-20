@@ -195,7 +195,7 @@ export default function Actualites() {
                             <li>Retours terrain de nos partenaires dans les différents territoires</li>
                         </ul>
                         <p style={{ marginTop: '20px', fontSize: '0.95em', fontStyle: 'italic' }}>
-                            💡 Cette section est mise à jour régulièrement. N'hésitez pas à consulter notre assistant 
+                            💡 Cette section est mise à jour régulièrement. N&apos;hésitez pas à consulter notre assistant 
                             pour des questions sur des actualités spécifiques.
                         </p>
                     </div>

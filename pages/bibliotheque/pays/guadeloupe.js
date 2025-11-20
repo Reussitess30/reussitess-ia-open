@@ -26,7 +26,7 @@ export default function Guadeloupe() {
                     
                     <h1 style={{ fontSize: '3em', marginBottom: '10px' }}>🇬🇵 Guadeloupe</h1>
                     <p style={{ fontSize: '1.2em', color: '#666', marginBottom: '30px' }}>
-                        Archipel - Département et région d'outre-mer français - Caraïbes
+                        Archipel - Département et région d&apos;outre-mer français - Caraïbes
                     </p>
 
                     {/* Statistiques clés */}
@@ -55,8 +55,8 @@ export default function Guadeloupe() {
                             <li><strong>Grande-Terre :</strong> Île calcaire, Pointe-à-Pitre (ville principale)</li>
                             <li><strong>Marie-Galante :</strong> Île ronde, traditions sucrières</li>
                             <li><strong>Les Saintes :</strong> Archipel touristique (Terre-de-Haut, Terre-de-Bas)</li>
-                            <li><strong>La Désirade :</strong> Petite île à l'est</li>
-                            <li><strong>Saint-Barthélemy & Saint-Martin :</strong> Collectivités d'outre-mer distinctes depuis 2007</li>
+                            <li><strong>La Désirade :</strong> Petite île à l&apos;est</li>
+                            <li><strong>Saint-Barthélemy & Saint-Martin :</strong> Collectivités d&apos;outre-mer distinctes depuis 2007</li>
                         </ul>
                     </div>
 
@@ -139,7 +139,7 @@ export default function Guadeloupe() {
                     <div style={{ background: '#f9fafb', padding: '20px', borderRadius: '10px', marginBottom: '30px' }}>
                         <p style={{ marginBottom: '10px' }}><strong>Langues :</strong> Français (officiel), Créole guadeloupéen</p>
                         <p style={{ marginBottom: '10px' }}><strong>Carnaval :</strong> Janvier-Mars, l'un des plus réputés des Caraïbes</p>
-                        <p style={{ marginBottom: '15px' }}><strong>Points d'intérêt :</strong></p>
+                        <p style={{ marginBottom: '15px' }}><strong>Points d&apos;intérêt :</strong></p>
                         <ul style={{ lineHeight: '1.8', paddingLeft: '20px' }}>
                             <li>Parc National de la Guadeloupe (Basse-Terre) - volcan de la Soufrière</li>
                             <li>Plages : Sainte-Anne, Le Gosier, Grande-Anse (Basse-Terre)</li>

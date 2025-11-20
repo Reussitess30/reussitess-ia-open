@@ -64,7 +64,7 @@ export default function Bibliotheque() {
             borderRadius: '8px',
             cursor: 'pointer',
             marginBottom: '20px'
-          }}>← Retour à l'accueil</button>
+          }}>← Retour à l&apos;accueil</button>
 
           <h1 style={{ fontSize: '3em', marginBottom: '10px', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
             📚 Bibliothèque Internationale
@@ -73,7 +73,7 @@ export default function Bibliotheque() {
             Portail central de ressources documentaires pour élèves, professeurs, chercheurs et curieux
           </p>
           <p style={{ fontSize: '1.1em', color: '#888', lineHeight: '1.6' }}>
-            Explorez nos sections thématiques dédiées aux outils pratiques, à l'histoire africaine et des outre-mers, 
+            Explorez nos sections thématiques dédiées aux outils pratiques, à l&apos;histoire africaine et des outre-mers, 
             aux actualités internationales, aux ressources pédagogiques et aux réglementations. 
             Chaque section est enrichie de contenus vérifiés et constamment mis à jour.
           </p>
@@ -168,7 +168,7 @@ export default function Bibliotheque() {
               💬 Notre assistant conversationnel est disponible pour vous aider !
             </p>
             <p style={{ fontSize: '1em', opacity: '0.9' }}>
-              Cliquez sur l'icône 🤖 en bas à droite pour démarrer une conversation
+              Cliquez sur l&apos;icône 🤖 en bas à droite pour démarrer une conversation
             </p>
           </div>
         </div>

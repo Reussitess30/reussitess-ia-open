@@ -26,7 +26,7 @@ export default function Guyane() {
                     
                     <h1 style={{ fontSize: '3em', marginBottom: '10px' }}>🇬🇫 Guyane</h1>
                     <p style={{ fontSize: '1.2em', color: '#666', marginBottom: '30px' }}>
-                        Département et région d'outre-mer français - Amérique du Sud
+                        Département et région d&apos;outre-mer français - Amérique du Sud
                     </p>
 
                     {/* Statistiques clés */}
@@ -127,8 +127,8 @@ export default function Guyane() {
                             <li><strong>1604 :</strong> Premières tentatives françaises de colonisation</li>
                             <li><strong>1676 :</strong> Installation définitive française</li>
                             <li><strong>XVIIe-XIXe :</strong> Agriculture (canne, café, cacao), orpaillage</li>
-                            <li><strong>1848 :</strong> Abolition de l'esclavage</li>
-                            <li><strong>1852-1953 :</strong> Terre de bagne (Îles du Salut dont l'île du Diable, Saint-Laurent-du-Maroni)</li>
+                            <li><strong>1848 :</strong> Abolition de l&apos;esclavage</li>
+                            <li><strong>1852-1953 :</strong> Terre de bagne (Îles du Salut dont l&apos;île du Diable, Saint-Laurent-du-Maroni)</li>
                             <li><strong>1946 :</strong> Départementalisation</li>
                             <li><strong>1964 :</strong> Installation du Centre Spatial Guyanais à Kourou</li>
                             <li><strong>Aujourd'hui :</strong> DROM, région ultrapériphérique UE, porte spatiale européenne</li>
@@ -147,7 +147,7 @@ export default function Guyane() {
                             <li>Hmongs (réfugiés du Laos, années 1970)</li>
                             <li>Brésiliens, Surinamais, Haïtiens</li>
                         </ul>
-                        <p style={{ marginTop: '15px', marginBottom: '10px' }}><strong>Points d'intérêt :</strong></p>
+                        <p style={{ marginTop: '15px', marginBottom: '10px' }}><strong>Points d&apos;intérêt :</strong></p>
                         <ul style={{ lineHeight: '1.8', paddingLeft: '20px' }}>
                             <li>Centre Spatial Guyanais (Kourou) - visites publiques</li>
                             <li>Îles du Salut (ancien bagne, patrimoine historique)</li>

@@ -119,7 +119,7 @@ export default function Martinique() {
                     <div style={{ background: '#f9fafb', padding: '20px', borderRadius: '10px', marginBottom: '30px' }}>
                         <p style={{ marginBottom: '10px' }}><strong>Langues :</strong> Français (officiel), Créole martiniquais</p>
                         <p style={{ marginBottom: '10px' }}><strong>Patrimoine UNESCO :</strong> Aucun site actuellement</p>
-                        <p style={{ marginBottom: '15px' }}><strong>Points d'intérêt :</strong></p>
+                        <p style={{ marginBottom: '15px' }}><strong>Points d&apos;intérêt :</strong></p>
                         <ul style={{ lineHeight: '1.8', paddingLeft: '20px' }}>
                             <li>Montagne Pelée et ruines de Saint-Pierre</li>
                             <li>Plages des Salines et presqu'île de la Caravelle</li>
@@ -136,7 +136,7 @@ export default function Martinique() {
                         <p style={{ marginBottom: '10px' }}>📄 Préfecture de Martinique</p>
                         <p style={{ marginBottom: '10px' }}>📄 CCI Martinique (Chambre de Commerce et d'Industrie)</p>
                         <p style={{ marginBottom: '10px' }}>📄 Comité Martiniquais du Tourisme</p>
-                        <p>📄 AMPI (Agence Martiniquaise de Promotion de l'Investissement)</p>
+                        <p>📄 AMPI (Agence Martiniquaise de Promotion de l&apos;Investissement)</p>
                     </div>
 
                 </div>
