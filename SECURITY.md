@@ -142,6 +142,6 @@ Pour signaler une faille de sécurité, veuillez nous contacter via notre page d
 
 ---
 
-**Date de dernière mise à jour :** ${new Date().toLocaleDateString('fr-FR')}
+**Date de dernière mise à jour :** 21/11/2025
 **Version :** 1.0.0
 **Statut :** ✅ Production-ready
