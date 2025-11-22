@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import AffiliateDisclaimer from './AffiliateDisclaimer'
 import FeedbackWidget from './FeedbackWidget'
 import VisitorCounter from './VisitorCounter'
+import BotAssistant from './BotAssistant'
 
 export default function Layout({ children }) {
   useEffect(() => {
@@ -36,6 +37,7 @@ export default function Layout({ children }) {
       <AffiliateDisclaimer />
       <FeedbackWidget />
       <VisitorCounter />
+      <BotAssistant />
       
       <footer className="footer">
         <div className="container">
