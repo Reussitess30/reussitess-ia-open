@@ -51,7 +51,7 @@ export default function Home() {
     { flag: "🇩🇪", nom: "Allemagne", type: "Influenceur", lien: "https://www.amazon.de/shop/influencer-fb942837" },
     { flag: "🇨🇦", nom: "Canada", type: "Influenceur", lien: "https://www.amazon.ca/shop/influencer-fb942837" },
     { flag: "🇳🇱", nom: "Pays-Bas", type: "Influenceur", lien: "https://www.amazon.nl/shop/influencer-fb942837" },
-    { flag: "🇫🇷", nom: "France", type: "Influenceur", lien: "https://www.amazon.fr/shop/influencer-fb942837" }
+    { flag: "🇮🇹", nom: "Italie", type: "Influenceur", lien: "https://www.amazon.it/shop/influencer-fb942837" }
   ]
 
   return (
