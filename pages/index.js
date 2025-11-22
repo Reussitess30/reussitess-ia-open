@@ -90,34 +90,13 @@ export default function Home() {
             </span>
             <button 
               onClick={handleInstallPWA}
-              style={{
-                background: 'white',
-                color: '#667eea',
-                border: 'none',
-                padding: '0.75rem 2rem',
-                borderRadius: '25px',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-                fontSize: '1rem',
-                boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
-                transition: 'transform 0.2s'
-              }}
-              onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
-              onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
+              className="pwa-install-btn"
             >
               Installer maintenant
             </button>
             <button 
               onClick={() => setShowPWAPrompt(false)}
-              style={{
-                background: 'transparent',
-                color: 'white',
-                border: '2px solid white',
-                padding: '0.75rem 1.5rem',
-                borderRadius: '25px',
-                cursor: 'pointer',
-                fontSize: '0.9rem'
-              }}
+              className="pwa-later-btn"
             >
               Plus tard
             </button>
@@ -148,101 +127,25 @@ export default function Home() {
             maxWidth: '1200px',
             margin: '0 auto'
           }}>
-            <Link href="/analytics" style={{
-              background: 'rgba(255, 255, 255, 0.15)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.3)',
-              borderRadius: '16px',
-              padding: '1.5rem',
-              textAlign: 'center',
-              textDecoration: 'none',
-              color: 'white',
-              transition: 'all 0.3s ease',
-              cursor: 'pointer'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-5px)';
-              e.currentTarget.style.boxShadow = '0 10px 30px rgba(255,255,255,0.3)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}>
+            <Link href="/analytics" className="hub-card">
               <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>📊</div>
               <h3 style={{ fontSize: '1.2rem', fontWeight: '600', margin: '0' }}>Dashboard</h3>
               <p style={{ fontSize: '0.9rem', margin: '0.5rem 0 0 0', opacity: 0.9 }}>Analytics & Stats</p>
             </Link>
 
-            <Link href="/pwa-app" style={{
-              background: 'rgba(255, 255, 255, 0.15)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.3)',
-              borderRadius: '16px',
-              padding: '1.5rem',
-              textAlign: 'center',
-              textDecoration: 'none',
-              color: 'white',
-              transition: 'all 0.3s ease',
-              cursor: 'pointer'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-5px)';
-              e.currentTarget.style.boxShadow = '0 10px 30px rgba(255,255,255,0.3)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}>
+            <Link href="/pwa-app" className="hub-card">
               <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>📱</div>
               <h3 style={{ fontSize: '1.2rem', fontWeight: '600', margin: '0' }}>Application</h3>
               <p style={{ fontSize: '0.9rem', margin: '0.5rem 0 0 0', opacity: 0.9 }}>Installer l'app PWA</p>
             </Link>
 
-            <Link href="/bibliotheque" style={{
-              background: 'rgba(255, 255, 255, 0.15)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.3)',
-              borderRadius: '16px',
-              padding: '1.5rem',
-              textAlign: 'center',
-              textDecoration: 'none',
-              color: 'white',
-              transition: 'all 0.3s ease',
-              cursor: 'pointer'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-5px)';
-              e.currentTarget.style.boxShadow = '0 10px 30px rgba(255,255,255,0.3)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}>
+            <Link href="/bibliotheque" className="hub-card">
               <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>📚</div>
               <h3 style={{ fontSize: '1.2rem', fontWeight: '600', margin: '0' }}>Bibliothèque</h3>
               <p style={{ fontSize: '0.9rem', margin: '0.5rem 0 0 0', opacity: 0.9 }}>Guides & Ressources</p>
             </Link>
 
-            <Link href="/affiliation" style={{
-              background: 'rgba(255, 255, 255, 0.15)',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(255, 255, 255, 0.3)',
-              borderRadius: '16px',
-              padding: '1.5rem',
-              textAlign: 'center',
-              textDecoration: 'none',
-              color: 'white',
-              transition: 'all 0.3s ease',
-              cursor: 'pointer'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-5px)';
-              e.currentTarget.style.boxShadow = '0 10px 30px rgba(255,255,255,0.3)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = 'none';
-            }}>
+            <Link href="/affiliation" className="hub-card">
               <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🤝</div>
               <h3 style={{ fontSize: '1.2rem', fontWeight: '600', margin: '0' }}>Affiliation</h3>
               <p style={{ fontSize: '0.9rem', margin: '0.5rem 0 0 0', opacity: 0.9 }}>Programme partenaire</p>
@@ -343,19 +246,7 @@ export default function Home() {
                   href={boutique.lien} 
                   target="_blank" 
                   rel="noopener noreferrer nofollow sponsored"
-                  style={{
-                    display: 'inline-block',
-                    background: 'linear-gradient(135deg, #10b981, #3b82f6)',
-                    color: 'white',
-                    padding: '1rem 2rem',
-                    borderRadius: '12px',
-                    textDecoration: 'none',
-                    fontWeight: '600',
-                    transition: 'all 0.3s ease',
-                    width: '100%'
-                  }}
-                  onMouseOver="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 20px rgba(16, 185, 129, 0.4)'"
-                  onMouseOut="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
+                  className="boutique-btn"
                 >
                   🛍️ Visiter la Boutique
                 </a>
@@ -420,6 +311,74 @@ export default function Home() {
         .btn-principal:hover {
           transform: translateY(-3px);
           box-shadow: 0 20px 40px rgba(225, 29, 72, 0.6);
+        }
+
+        .pwa-install-btn {
+          background: white;
+          color: #667eea;
+          border: none;
+          padding: 0.75rem 2rem;
+          border-radius: 25px;
+          font-weight: bold;
+          cursor: pointer;
+          font-size: 1rem;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+          transition: transform 0.2s;
+        }
+
+        .pwa-install-btn:hover {
+          transform: scale(1.05);
+        }
+
+        .pwa-later-btn {
+          background: transparent;
+          color: white;
+          border: 2px solid white;
+          padding: 0.75rem 1.5rem;
+          border-radius: 25px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.2s;
+        }
+
+        .pwa-later-btn:hover {
+          background: rgba(255, 255, 255, 0.1);
+        }
+
+        .hub-card {
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          border-radius: 16px;
+          padding: 1.5rem;
+          text-align: center;
+          text-decoration: none;
+          color: white;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          display: block;
+        }
+
+        .hub-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .boutique-btn {
+          display: inline-block;
+          background: linear-gradient(135deg, #10b981, #3b82f6);
+          color: white;
+          padding: 1rem 2rem;
+          border-radius: 12px;
+          text-decoration: none;
+          font-weight: 600;
+          transition: all 0.3s ease;
+          width: 100%;
+        }
+
+        .boutique-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 20px rgba(16, 185, 129, 0.4);
         }
       `}</style>
     </Layout>
