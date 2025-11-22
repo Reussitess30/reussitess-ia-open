@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+const PWA_BANNER_DISMISSED_KEY = 'pwa-banner-dismissed';
+
 export default function PWAInstallBanner() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [showPrompt, setShowPrompt] = useState(false);
@@ -7,17 +9,23 @@ export default function PWAInstallBanner() {
 
   useEffect(() => {
     // Vérifier si déjà installé
-    if (window.matchMedia('(display-mode: standalone)').matches) {
+    if (typeof window !== 'undefined' && window.matchMedia('(display-mode: standalone)').matches) {
       setIsInstalled(true);
       setShowPrompt(false);
       return;
     }
 
     // Vérifier si l'utilisateur a déjà fermé la bannière
-    const dismissed = localStorage.getItem('pwa-banner-dismissed');
-    if (dismissed === 'true') {
-      setShowPrompt(false);
-      return;
+    try {
+      if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+        const dismissed = localStorage.getItem(PWA_BANNER_DISMISSED_KEY);
+        if (dismissed === 'true') {
+          setShowPrompt(false);
+          return;
+        }
+      }
+    } catch (error) {
+      console.error('localStorage access failed:', error);
     }
 
     // Sinon, afficher la bannière
@@ -29,10 +37,14 @@ export default function PWAInstallBanner() {
       setDeferredPrompt(e);
     };
 
-    window.addEventListener('beforeinstallprompt', handler);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('beforeinstallprompt', handler);
+    }
 
     return () => {
-      window.removeEventListener('beforeinstallprompt', handler);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('beforeinstallprompt', handler);
+      }
     };
   }, []);
 
@@ -49,14 +61,26 @@ export default function PWAInstallBanner() {
     if (outcome === 'accepted') {
       setIsInstalled(true);
       setShowPrompt(false);
-      localStorage.setItem('pwa-banner-dismissed', 'true');
+      try {
+        if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+          localStorage.setItem(PWA_BANNER_DISMISSED_KEY, 'true');
+        }
+      } catch (error) {
+        console.error('localStorage write failed:', error);
+      }
     }
     setDeferredPrompt(null);
   };
 
   const handleDismiss = () => {
     setShowPrompt(false);
-    localStorage.setItem('pwa-banner-dismissed', 'true');
+    try {
+      if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+        localStorage.setItem(PWA_BANNER_DISMISSED_KEY, 'true');
+      }
+    } catch (error) {
+      console.error('localStorage write failed:', error);
+    }
   };
 
   // Ne rien afficher si déjà installé ou si fermé
