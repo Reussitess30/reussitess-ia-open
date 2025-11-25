@@ -32,6 +32,50 @@ module.exports = withPWA({
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
           },
+          {
+            key: 'Content-Security-Policy',
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://va.vercel-scripts.com",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: https: blob:",
+              "font-src 'self' data:",
+              "connect-src 'self' https://vercel.live https://va.vercel-insights.com https://*.amazon.com https://*.amazon.co.uk https://*.amazon.de https://*.amazon.fr https://*.amazon.it https://*.amazon.es https://*.amazon.ca https://*.amazon.com.br https://*.amazon.in https://*.amazon.com.au https://*.amazon.nl https://*.amazon.se https://*.amazon.sg https://*.amazon.com.be",
+              "frame-src 'self'",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "frame-ancestors 'none'",
+              "upgrade-insecure-requests"
+            ].join('; ')
+          },
+          {
+            key: 'Permissions-Policy',
+            value: [
+              'camera=()',
+              'microphone=()',
+              'geolocation=()',
+              'interest-cohort=()',
+              'payment=()',
+              'usb=()',
+              'magnetometer=()',
+              'gyroscope=()',
+              'accelerometer=()',
+              'ambient-light-sensor=()',
+              'autoplay=()',
+              'encrypted-media=()',
+              'fullscreen=(self)',
+              'picture-in-picture=()'
+            ].join(', ')
+          },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload'
+          },
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on'
+          }
         ],
       },
     ];
