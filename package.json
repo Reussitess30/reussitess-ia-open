@@ -1,53 +1,25 @@
 {
   "name": "reussitess-global-nexus",
   "version": "1.0.0",
-  "description": "🌍 Global E-commerce Nexus - 26 Amazon boutiques across 14 countries",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export",
-    "deploy": "npm run build && npm run export",
-    "deploy:vercel": "vercel --prod",
-    "deploy:github": "npm run build && npm run export && touch out/.nojekyll && gh-pages -d out",
-    "update:all": "git pull && npm install && npm run build"
+    "export": "next export"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "next": "^16.0.4",
+    "next": "13.5.11",
     "next-pwa": "^5.6.0",
-    "next-seo": "^5.15.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.16",
-    "eslint": "^9.39.1",
-=======
-    "next": "^16.0.3",
-    "next-pwa": "^5.6.0",
-    "next-seo": "^5.15.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.16",
+    "autoprefixer": "10.4.16",
     "eslint": "8.48.0",
->>>>>>> 4a23db6697e23986cbd9511b979b709023a803d6
-    "eslint-config-next": "13.5.6",
-    "gh-pages": "^5.0.0",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.5"
-  },
-  "keywords": [
-    "ecommerce",
-    "amazon",
-    "affiliation",
-    "global",
-    "multilingual",
-    "pwa"
-  ],
-  "author": "REUSSITESS® Global",
-  "license": "MIT"
+    "eslint-config-next": "13.5.11",
+    "postcss": "8.4.31",
+    "tailwindcss": "3.3.5"
+  }
 }
