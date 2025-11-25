@@ -14,6 +14,7 @@
     "update:all": "git pull && npm install && npm run build"
   },
   "dependencies": {
+<<<<<<< HEAD
     "next": "^16.0.4",
     "next-pwa": "^5.6.0",
     "next-seo": "^5.15.0",
@@ -23,6 +24,17 @@
   "devDependencies": {
     "autoprefixer": "^10.4.16",
     "eslint": "^9.39.1",
+=======
+    "next": "^16.0.3",
+    "next-pwa": "^5.6.0",
+    "next-seo": "^5.15.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "eslint": "8.48.0",
+>>>>>>> 4a23db6697e23986cbd9511b979b709023a803d6
     "eslint-config-next": "13.5.6",
     "gh-pages": "^5.0.0",
     "postcss": "^8.4.31",
