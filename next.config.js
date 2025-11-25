@@ -36,16 +36,18 @@ module.exports = withPWA({
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://va.vercel-scripts.com",
-              "style-src 'self' 'unsafe-inline'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://va.vercel-scripts.com https://static.cloudflareinsights.com",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "img-src 'self' data: https: blob:",
-              "font-src 'self' data:",
-              "connect-src 'self' https://vercel.live https://va.vercel-insights.com https://*.amazon.com https://*.amazon.co.uk https://*.amazon.de https://*.amazon.fr https://*.amazon.it https://*.amazon.es https://*.amazon.ca https://*.amazon.com.br https://*.amazon.in https://*.amazon.com.au https://*.amazon.nl https://*.amazon.se https://*.amazon.sg https://*.amazon.com.be",
-              "frame-src 'self'",
+              "font-src 'self' data: https://fonts.gstatic.com",
+              "connect-src 'self' https://vercel.live https://va.vercel-insights.com https://cloudflareinsights.com https://*.amazon.com https://*.amazon.co.uk https://*.amazon.de https://*.amazon.fr https://*.amazon.it https://*.amazon.es https://*.amazon.ca https://*.amazon.com.br https://*.amazon.in https://*.amazon.com.au https://*.amazon.nl https://*.amazon.se https://*.amazon.sg https://*.amazon.com.be",
+              "frame-src 'self' https://vercel.live",
+              "worker-src 'self' blob:",
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self'",
               "frame-ancestors 'none'",
+              "block-all-mixed-content",
               "upgrade-insecure-requests"
             ].join('; ')
           },
@@ -65,7 +67,9 @@ module.exports = withPWA({
               'autoplay=()',
               'encrypted-media=()',
               'fullscreen=(self)',
-              'picture-in-picture=()'
+              'picture-in-picture=()',
+              'display-capture=()',
+              'document-domain=()'
             ].join(', ')
           },
           {
@@ -75,6 +79,14 @@ module.exports = withPWA({
           {
             key: 'X-DNS-Prefetch-Control',
             value: 'on'
+          },
+          {
+            key: 'X-Download-Options',
+            value: 'noopen'
+          },
+          {
+            key: 'X-Permitted-Cross-Domain-Policies',
+            value: 'none'
           }
         ],
       },
