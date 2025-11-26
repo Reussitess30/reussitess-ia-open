@@ -1,4 +1,19 @@
 {
+  "version": 2,
+  "github": {
+    "enabled": true,
+    "autoAlias": true,
+    "autoJobCancelation": true,
+    "silent": false
+  },
+  "git": {
+    "deploymentEnabled": {
+      "main": true
+    }
+  },
   "buildCommand": "npm run build",
-  "cleanUrls": true
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "outputDirectory": ".next"
 }
