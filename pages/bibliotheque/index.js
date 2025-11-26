@@ -9,6 +9,7 @@ const BibliothequeIndex = () => {
     'DOM-TOM': {
       icon: '🇫🇷',
       color: 'from-blue-600 to-blue-800',
+      folder: 'dom-tom',
       pays: [
         { name: 'Guyane', flag: '🇬🇫', slug: 'guyane' },
         { name: 'Réunion', flag: '🇷🇪', slug: 'reunion' },
@@ -26,6 +27,7 @@ const BibliothequeIndex = () => {
     'Afrique': {
       icon: '🌍',
       color: 'from-green-600 to-green-800',
+      folder: 'afrique',
       pays: [
         { name: 'Sénégal', flag: '🇸🇳', slug: 'senegal' },
         { name: 'Côte d\'Ivoire', flag: '🇨🇮', slug: 'cote-ivoire' },
@@ -39,6 +41,7 @@ const BibliothequeIndex = () => {
     'Maghreb': {
       icon: '🏜️',
       color: 'from-orange-600 to-orange-800',
+      folder: 'maghreb',
       pays: [
         { name: 'Maroc', flag: '🇲🇦', slug: 'maroc' },
         { name: 'Algérie', flag: '🇩🇿', slug: 'algerie' },
@@ -49,6 +52,7 @@ const BibliothequeIndex = () => {
     'Asie-Pacifique': {
       icon: '🌏',
       color: 'from-red-600 to-red-800',
+      folder: 'asie-pacifique',
       pays: [
         { name: 'Vietnam', flag: '🇻🇳', slug: 'vietnam' },
         { name: 'Cambodge', flag: '🇰🇭', slug: 'cambodge' },
@@ -59,6 +63,7 @@ const BibliothequeIndex = () => {
     'Amériques': {
       icon: '🌎',
       color: 'from-purple-600 to-purple-800',
+      folder: 'ameriques',
       pays: [
         { name: 'Québec', flag: '🇨🇦', slug: 'quebec' },
         { name: 'Haïti', flag: '🇭🇹', slug: 'haiti' },
@@ -68,6 +73,7 @@ const BibliothequeIndex = () => {
     'Europe': {
       icon: '🇪🇺',
       color: 'from-indigo-600 to-indigo-800',
+      folder: 'europe',
       pays: [
         { name: 'Belgique', flag: '🇧🇪', slug: 'belgique' },
         { name: 'Suisse', flag: '🇨🇭', slug: 'suisse' },
@@ -85,18 +91,24 @@ const BibliothequeIndex = () => {
 
       <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
         <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-20 px-4">
-          <div className="max-w-6xl mx-auto text-center">
-            <h1 className="text-6xl font-bold mb-6">📚 Bibliothèque Culturelle Mondiale</h1>
-            <p className="text-3xl font-semibold mb-4">Excellence • Innovation • Succès</p>
-            <p className="text-xl mb-8">Valoriser le savoir, la connaissance et la culture mondiale</p>
+          <div className="max-w-6xl mx-auto">
+            <Link href="/" className="inline-block mb-6 bg-white/20 hover:bg-white/30 px-6 py-3 rounded-full font-semibold transition-all">
+              🏠 Retour à l'accueil
+            </Link>
             
-            <input
-              type="text"
-              placeholder="🔍 Rechercher un pays..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full max-w-2xl px-6 py-4 rounded-full text-gray-800 text-lg"
-            />
+            <div className="text-center">
+              <h1 className="text-6xl font-bold mb-6">📚 Bibliothèque Culturelle Mondiale</h1>
+              <p className="text-3xl font-semibold mb-4">Excellence • Innovation • Succès</p>
+              <p className="text-xl mb-8">Valoriser le savoir, la connaissance et la culture mondiale</p>
+              
+              <input
+                type="text"
+                placeholder="🔍 Rechercher un pays..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full max-w-2xl px-6 py-4 rounded-full text-gray-800 text-lg"
+              />
+            </div>
           </div>
         </div>
 
@@ -118,7 +130,7 @@ const BibliothequeIndex = () => {
                   .map((pays) => (
                   <Link 
                     key={pays.slug} 
-                    href={`/bibliotheque/${regionName.toLowerCase().replace(/[^a-z]/g, '-')}/${pays.slug}`}
+                    href={`/bibliotheque/${regionData.folder}/${pays.slug}`}
                   >
                     <div className={`bg-gradient-to-br ${regionData.color} rounded-2xl p-6 text-white hover:scale-105 transition-all cursor-pointer shadow-xl`}>
                       <div className="text-6xl mb-4 text-center">{pays.flag}</div>
