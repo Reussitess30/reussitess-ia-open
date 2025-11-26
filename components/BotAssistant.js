@@ -1,447 +1,675 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-const BotAssistant = () => {
+export default function BotAssistant() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
-  const [inputMessage, setInputMessage] = useState('');
-  const [currentLang, setCurrentLang] = useState('fr');
-  const [isTyping, setIsTyping] = useState(false);
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [currentLang, setCurrentLang] = useState('fr-FR');
   const messagesEndRef = useRef(null);
 
-  // Langues disponibles avec drapeaux
-  const languages = {
-    fr: { flag: '🇫🇷', name: 'Français', voice: 'fr-FR' },
-    en: { flag: '🇬🇧', name: 'English', voice: 'en-US' },
-    es: { flag: '🇪🇸', name: 'Español', voice: 'es-ES' },
-    de: { flag: '🇩🇪', name: 'Deutsch', voice: 'de-DE' },
-    it: { flag: '🇮🇹', name: 'Italiano', voice: 'it-IT' },
-    pt: { flag: '🇵🇹', name: 'Português', voice: 'pt-PT' },
-    ar: { flag: '🇸🇦', name: 'العربية', voice: 'ar-SA' },
-    zh: { flag: '🇨🇳', name: '中文', voice: 'zh-CN' }
-  };
+  const languages = [
+    { code: 'fr-FR', flag: '🇫🇷', name: 'Français' },
+    { code: 'en-US', flag: '🇺🇸', name: 'English' },
+    { code: 'es-ES', flag: '🇪🇸', name: 'Español' },
+    { code: 'de-DE', flag: '🇩🇪', name: 'Deutsch' },
+    { code: 'it-IT', flag: '🇮🇹', name: 'Italiano' },
+    { code: 'pt-BR', flag: '🇧🇷', name: 'Português' },
+    { code: 'zh-CN', flag: '🇨🇳', name: '中文' },
+    { code: 'ar-SA', flag: '🇸🇦', name: 'العربية' }
+  ];
 
-  // Base de connaissances COMPLÈTE
-  const knowledgeBase = {
-    boutiques: {
-      total: 26,
-      pays: ['France', 'USA', 'Allemagne', 'Italie', 'Espagne', 'Canada', 'UK', 'Australie', 'Brésil', 'Belgique', 'Pays-Bas', 'Suède', 'Singapour', 'Inde'],
-      types: ['14 boutiques personnelles', '12 boutiques influenceurs'],
-      url: 'https://reussitess.fr'
-    },
-    bibliotheque: {
-      total: 37,
-      regions: {
-        'DOM-TOM': {
-          count: 10,
-          pays: [
-            { nom: 'La Réunion', capitale: 'Saint-Denis', pop: '860,000', patrimoine: ['Piton Fournaise', 'Cirques UNESCO', 'Maloya UNESCO'] },
-            { nom: 'Mayotte', capitale: 'Mamoudzou', pop: '280,000', patrimoine: ['Lagon plus grand monde', 'Mont Choungui', 'Ylang-ylang'] },
-            { nom: 'Guadeloupe', capitale: 'Basse-Terre', pop: '390,000', patrimoine: ['Soufrière', 'Gwoka UNESCO', 'Parc National'] },
-            { nom: 'Martinique', capitale: 'Fort-de-France', pop: '370,000', patrimoine: ['Montagne Pelée', 'Aimé Césaire', 'Rhum AOC'] },
-            { nom: 'Guyane', capitale: 'Cayenne', pop: '290,000', patrimoine: ['Forêt amazonienne', 'Centre Spatial Kourou', 'Biodiversité'] },
-            { nom: 'Polynésie Française', capitale: 'Papeete', pop: '280,000', patrimoine: ['Marae', 'Perles Tahiti', 'Culture ma\'ohi'] },
-            { nom: 'Nouvelle-Calédonie', capitale: 'Nouméa', pop: '270,000', patrimoine: ['Culture kanak', 'Lagon UNESCO', 'Nickel 25%'] },
-            { nom: 'Saint-Pierre-et-Miquelon', capitale: 'Saint-Pierre', pop: '6,000', patrimoine: ['Grande pêche morue', 'Architecture colorée'] },
-            { nom: 'Wallis-et-Futuna', capitale: 'Mata-Utu', pop: '11,000', patrimoine: ['3 royaumes', 'Sites tongiens', 'Artisanat tapa'] },
-            { nom: 'Saint-Martin', capitale: 'Marigot', pop: '36,000', patrimoine: ['Île partagée France-Pays-Bas', 'Fort Louis'] }
-          ]
-        },
-        'Afrique': {
-          count: 7,
-          pays: [
-            { nom: 'Sénégal', capitale: 'Dakar', pop: '17 millions', patrimoine: ['Gorée UNESCO', 'Lac Rose', 'Négritude Senghor'] },
-            { nom: 'Côte d\'Ivoire', capitale: 'Yamoussoukro', pop: '27 millions', patrimoine: ['Basilique plus grande monde', 'Cacao 40%', 'Zouglou'] },
-            { nom: 'Cameroun', capitale: 'Yaoundé', pop: '27 millions', patrimoine: ['Afrique miniature', '250 ethnies', 'Makossa Manu Dibango'] },
-            { nom: 'Madagascar', capitale: 'Antananarivo', pop: '28 millions', patrimoine: ['Baobabs', 'Lémuriens 90%', 'Vanille Bourbon'] },
-            { nom: 'Mali', capitale: 'Bamako', pop: '21 millions', patrimoine: ['Tombouctou UNESCO', 'Mosquée Djenné', 'Manuscrits 300,000'] },
-            { nom: 'RD Congo', capitale: 'Kinshasa', pop: '95 millions', patrimoine: ['Rumba UNESCO', 'Parc Virunga gorilles', 'Coltan cobalt'] },
-            { nom: 'Rwanda', capitale: 'Kigali', pop: '13 millions', patrimoine: ['Gorilles montagne', 'Hub tech africain', 'Café excellence'] }
-          ]
-        },
-        'Maghreb': {
-          count: 4,
-          pays: [
-            { nom: 'Maroc', capitale: 'Rabat', pop: '37 millions', patrimoine: ['Médinas Fès Marrakech UNESCO', 'Aït-Ben-Haddou', 'Phosphates 1er'] },
-            { nom: 'Algérie', capitale: 'Alger', pop: '44 millions', patrimoine: ['Casbah UNESCO', 'Timgad romain', 'Raï Cheb Khaled'] },
-            { nom: 'Tunisie', capitale: 'Tunis', pop: '12 millions', patrimoine: ['Carthage UNESCO', 'El Jem amphithéâtre', 'Huile olive 4e'] },
-            { nom: 'Liban', capitale: 'Beyrouth', pop: '6 millions', patrimoine: ['Baalbek UNESCO', 'Cèdres Liban', 'Cuisine mezze'] }
-          ]
-        },
-        'Asie-Pacifique': {
-          count: 8,
-          pays: [
-            { nom: 'Vietnam', capitale: 'Hanoï', pop: '98 millions', patrimoine: ['Baie Hạ Long UNESCO', 'Hội An', 'Phở bánh mì café'] },
-            { nom: 'Cambodge', capitale: 'Phnom Penh', pop: '17 millions', patrimoine: ['Angkor Wat UNESCO', 'Apsaras danses', 'Poivre Kampot'] },
-            { nom: 'Laos', capitale: 'Vientiane', pop: '7 millions', patrimoine: ['Luang Prabang UNESCO', 'Plaine Jarres', 'Bouddhisme theravada'] },
-            { nom: 'Vanuatu', capitale: 'Port-Vila', pop: '310,000', patrimoine: ['Volcans Yasur Ambrym', '113 langues record', 'Nagol saut'] },
-            { nom: 'Australie', capitale: 'Canberra', pop: '26 millions', patrimoine: ['Grande Barrière UNESCO', 'Opéra Sydney', 'Aborigènes 65,000 ans'] },
-            { nom: 'Nouvelle-Zélande', capitale: 'Wellington', pop: '5 millions', patrimoine: ['Tongariro UNESCO', 'Haka All Blacks', 'Seigneur Anneaux'] },
-            { nom: 'Singapour', capitale: 'Singapour', pop: '5.9 millions', patrimoine: ['Gardens by Bay', 'Hub financier 3e', 'Hawker UNESCO'] },
-            { nom: 'Inde', capitale: 'New Delhi', pop: '1.4 milliards', patrimoine: ['Taj Mahal UNESCO', 'Yoga méditation', 'Bollywood'] }
-          ]
-        },
-        'Amériques': {
-          count: 3,
-          pays: [
-            { nom: 'Québec', capitale: 'Québec', pop: '8.6 millions', patrimoine: ['Vieux-Québec UNESCO', 'Sirop érable 70%', 'Cirque Soleil'] },
-            { nom: 'Haïti', capitale: 'Port-au-Prince', pop: '11.5 millions', patrimoine: ['Citadelle Laferrière UNESCO', 'Indépendance 1804', 'Art naïf'] },
-            { nom: 'Louisiane', capitale: 'Baton Rouge', pop: '4.6 millions', patrimoine: ['Jazz Nouvelle-Orléans', 'Mardi Gras', 'Cajun créole'] }
-          ]
-        },
-        'Europe': {
-          count: 4,
-          pays: [
-            { nom: 'Belgique', capitale: 'Bruxelles', pop: '11.5 millions', patrimoine: ['Grand-Place UNESCO', 'Chocolat bières', 'BD Tintin'] },
-            { nom: 'Suisse', capitale: 'Berne', pop: '8.7 millions', patrimoine: ['Vignobles Lavaux UNESCO', 'Horlogerie Rolex', '4 langues'] },
-            { nom: 'Luxembourg', capitale: 'Luxembourg', pop: '640,000', patrimoine: ['Vieille ville UNESCO', 'Finance fonds', 'Trilingue'] },
-            { nom: 'Monaco', capitale: 'Monaco', pop: '39,000', patrimoine: ['Casino Monte-Carlo', 'F1 Grand Prix', 'Océanographie Cousteau'] }
-          ]
-        }
-      }
-    },
-    astuces: {
-      sections: [
-        {
-          nom: 'Amazon Pro',
-          tips: ['Ventes Flash Lightning 6h-22h', 'Warehouse Deals -20 à -50%', 'Subscribe & Save -15%', 'Black Friday -70%']
-        },
-        {
-          nom: 'Business 2025',
-          rentables: ['Services IA Automation 5-20k€/mois', 'Contenu TikTok/IG 3-15k€/mois', 'Formations ligne 2-50k€/mois', 'Dropshipping 1-10k€/mois']
-        },
-        {
-          nom: 'Top Influenceurs',
-          top: ['MrBeast YouTube $82M', 'Charli D\'Amelio TikTok $17.5M', 'Cristiano Ronaldo $3.2M/post', 'Kylie Jenner $2.4M/post']
-        },
-        {
-          nom: 'Gagner avec IA',
-          methodes: ['Rédaction ChatGPT 50-200€/article', 'Visuels Midjourney 30-150€', 'Vidéos faceless 500-5k€/mois', 'No-code apps 500-5k€/projet']
-        },
-        {
-          nom: 'Remèdes Grand-Mère',
-          remedes: ['Miel+Citron mal gorge', 'Ail cru immunité', 'Pomme terre brûlures', 'Eau salée infection dentaire']
-        },
-        {
-          nom: 'Plantes Médicinales',
-          plantes: ['Aloe vera cicatrisant', 'Lavande anxiété', 'Échinacée immunité', 'Camomille stress', 'Curcuma anti-inflammatoire']
-        }
-      ]
-    }
-  };
-
-  // Messages de salutation multilingues
   const greetings = {
-    fr: {
-      morning: 'Bonjour ! ☀️',
-      afternoon: 'Bon après-midi ! 🌤️',
-      evening: 'Bonsoir ! 🌙',
-      night: 'Bonne nuit ! 🌃',
-      welcome: "Je suis l'assistant intelligent REUSSITESS®. Je connais parfaitement nos 26 boutiques Amazon, les 37 pages de notre bibliothèque mondiale, et toutes nos astuces. Comment puis-je vous aider ?",
-      goodbye: 'Au revoir ! À bientôt ! 👋'
+    'fr-FR': 'Bonjour ! Je suis votre assistant REUSSITESS®. Comment puis-je vous aider ?',
+    'en-US': 'Hello! I am your REUSSITESS® assistant. How can I help you?',
+    'es-ES': '¡Hola! Soy tu asistente REUSSITESS®. ¿Cómo puedo ayudarte?',
+    'de-DE': 'Hallo! Ich bin Ihr REUSSITESS®-Assistent. Wie kann ich Ihnen helfen?',
+    'it-IT': 'Ciao! Sono il tuo assistente REUSSITESS®. Come posso aiutarti?',
+    'pt-BR': 'Olá! Sou seu assistente REUSSITESS®. Como posso ajudá-lo?',
+    'zh-CN': '你好！我是您的 REUSSITESS® 助手。我能帮您什么？',
+    'ar-SA': 'مرحبا! أنا مساعد REUSSITESS® الخاص بك. كيف يمكنني مساعدتك؟'
+  };
+
+  // BASE DE CONNAISSANCES COMPLÈTE - 55 PAGES
+  const knowledgeBase = {
+    
+    // EUROPE (15 pays)
+    'france': {
+      pays: 'France',
+      capitale: 'Paris',
+      population: '68 millions',
+      unesco: '49 sites UNESCO - Record Europe',
+      patrimoine: 'Tour Eiffel, Versailles, Mont-Saint-Michel, Châteaux Loire, Lascaux',
+      culture: 'Gastronomie UNESCO, Louvre, Impressionnisme, Mode mondiale',
+      economie: '7e économie mondiale, TGV, Airbus, Nucléaire 70%, Tourisme N°1 mondial',
+      url: '/bibliotheque/europe/france'
     },
-    en: {
-      morning: 'Good morning! ☀️',
-      afternoon: 'Good afternoon! 🌤️',
-      evening: 'Good evening! 🌙',
-      night: 'Good night! 🌃',
-      welcome: "I'm the REUSSITESS® intelligent assistant. I perfectly know our 26 Amazon stores, the 37 pages of our world library, and all our tips. How can I help you?",
-      goodbye: 'Goodbye! See you soon! 👋'
+    'italie': {
+      pays: 'Italie',
+      capitale: 'Rome',
+      population: '59 millions',
+      unesco: '58 sites UNESCO - RECORD MONDIAL',
+      patrimoine: 'Colisée, Tour Pise, Pompéi, Florence Renaissance, Venise, Vatican',
+      culture: 'Renaissance, Léonard Vinci, Michel-Ange, Pizza pasta mondiale',
+      economie: '8e économie mondiale, Mode luxe, Ferrari',
+      url: '/bibliotheque/europe/italie'
     },
-    es: {
-      morning: '¡Buenos días! ☀️',
-      afternoon: '¡Buenas tardes! 🌤️',
-      evening: '¡Buenas noches! 🌙',
-      night: '¡Buenas noches! 🌃',
-      welcome: "Soy el asistente inteligente REUSSITESS®. Conozco perfectamente nuestras 26 tiendas Amazon, las 37 páginas de nuestra biblioteca mundial y todos nuestros consejos. ¿Cómo puedo ayudarte?",
-      goodbye: '¡Adiós! ¡Hasta pronto! 👋'
+    'allemagne': {
+      pays: 'Allemagne',
+      capitale: 'Berlin',
+      population: '84 millions',
+      unesco: '51 sites UNESCO',
+      patrimoine: 'Neuschwanstein, Mur Berlin, Cologne, Bach Beethoven',
+      culture: 'Philosophie, Musique classique, Oktoberfest',
+      economie: '4e économie mondiale, Mercedes BMW VW Audi, Ingénierie Siemens Bosch',
+      url: '/bibliotheque/europe/allemagne'
     },
-    de: {
-      morning: 'Guten Morgen! ☀️',
-      afternoon: 'Guten Tag! 🌤️',
-      evening: 'Guten Abend! 🌙',
-      night: 'Gute Nacht! 🌃',
-      welcome: "Ich bin der intelligente REUSSITESS®-Assistent. Ich kenne perfekt unsere 26 Amazon-Shops, die 37 Seiten unserer Weltbibliothek und alle unsere Tipps. Wie kann ich Ihnen helfen?",
-      goodbye: 'Auf Wiedersehen! Bis bald! 👋'
+    'royaume-uni': {
+      pays: 'Royaume-Uni',
+      capitale: 'Londres',
+      population: '67 millions',
+      unesco: '33 sites UNESCO',
+      patrimoine: 'Tour Londres, Stonehenge, Big Ben, Shakespeare',
+      culture: 'Beatles Rolling Stones, Anglais 1.5 milliard locuteurs',
+      economie: '6e économie mondiale, Finance Londres, Premier League',
+      url: '/bibliotheque/europe/royaume-uni'
     },
-    it: {
-      morning: 'Buongiorno! ☀️',
-      afternoon: 'Buon pomeriggio! 🌤️',
-      evening: 'Buonasera! 🌙',
-      night: 'Buonanotte! 🌃',
-      welcome: "Sono l'assistente intelligente REUSSITESS®. Conosco perfettamente i nostri 26 negozi Amazon, le 37 pagine della nostra biblioteca mondiale e tutti i nostri consigli. Come posso aiutarti?",
-      goodbye: 'Arrivederci! A presto! 👋'
+    'espagne': {
+      pays: 'Espagne',
+      capitale: 'Madrid',
+      population: '47 millions',
+      unesco: '50 sites UNESCO',
+      patrimoine: 'Alhambra, Sagrada Familia Gaudí, Flamenco UNESCO',
+      culture: 'Picasso Dalí Goya, Tapas paella mondiale',
+      economie: '14e économie mondiale, Tourisme 80M, Zara Inditex',
+      url: '/bibliotheque/europe/espagne'
     },
-    pt: {
-      morning: 'Bom dia! ☀️',
-      afternoon: 'Boa tarde! 🌤️',
-      evening: 'Boa noite! 🌙',
-      night: 'Boa noite! 🌃',
-      welcome: "Sou o assistente inteligente REUSSITESS®. Conheço perfeitamente as nossas 26 lojas Amazon, as 37 páginas da nossa biblioteca mundial e todas as nossas dicas. Como posso ajudar?",
-      goodbye: 'Adeus! Até breve! 👋'
+    'suede': {
+      pays: 'Suède',
+      capitale: 'Stockholm',
+      population: '10.5 millions',
+      unesco: '15 sites UNESCO',
+      patrimoine: 'Stockholm Venise Nord, Palais Royal 1430 pièces, Laponie Sámi, Vasa 1628',
+      culture: 'Prix Nobel, IKEA design mondial, ABBA Spotify',
+      economie: 'Innovation, Qualité vie top, Volvo Ericsson',
+      url: '/bibliotheque/europe/suede'
     },
-    ar: {
-      morning: 'صباح الخير! ☀️',
-      afternoon: 'مساء الخير! 🌤️',
-      evening: 'مساء الخير! 🌙',
-      night: 'تصبح على خير! 🌃',
-      welcome: "أنا المساعد الذكي REUSSITESS®. أعرف تمامًا متاجرنا الـ 26 على أمازون، والصفحات الـ 37 لمكتبتنا العالمية، وجميع نصائحنا. كيف يمكنني مساعدتك؟",
-      goodbye: 'وداعا! أراك قريبا! 👋'
+    'belgique': {
+      pays: 'Belgique',
+      capitale: 'Bruxelles',
+      population: '11.5 millions',
+      unesco: '15 sites UNESCO',
+      patrimoine: 'Grand-Place Bruxelles, Beffrois, Bruges médiévale',
+      culture: 'Capitale UE, Chocolat gaufres bière, BD Tintin',
+      url: '/bibliotheque/europe/belgique'
     },
-    zh: {
-      morning: '早上好！☀️',
-      afternoon: '下午好！🌤️',
-      evening: '晚上好！🌙',
-      night: '晚安！🌃',
-      welcome: "我是REUSSITESS®智能助手。我完美了解我们的26家亚马逊商店、世界图书馆的37页以及所有技巧。我能帮您什么？",
-      goodbye: '再见！很快见！👋'
+    'suisse': {
+      pays: 'Suisse',
+      capitale: 'Berne',
+      population: '8.7 millions',
+      unesco: '13 sites UNESCO',
+      patrimoine: 'Alpes, Genève ONU, Bâle musées',
+      culture: 'Neutralité, Horlogerie luxe, 4 langues',
+      url: '/bibliotheque/europe/suisse'
+    },
+    'luxembourg': {
+      pays: 'Luxembourg',
+      capitale: 'Luxembourg',
+      population: '640,000',
+      unesco: '1 site UNESCO',
+      patrimoine: 'Vieille ville fortifications',
+      culture: '3 langues, Finance européenne',
+      url: '/bibliotheque/europe/luxembourg'
+    },
+    'monaco': {
+      pays: 'Monaco',
+      capitale: 'Monaco',
+      population: '39,000',
+      patrimoine: 'Casino Monte-Carlo, GP F1, Océanographique',
+      culture: 'Principauté millionnaire, Luxe mondial',
+      url: '/bibliotheque/europe/monaco'
+    },
+
+    // AMÉRIQUES (4 régions)
+    'quebec': {
+      pays: 'Québec',
+      capitale: 'Québec City',
+      population: '8.6 millions',
+      unesco: '2 sites UNESCO',
+      patrimoine: 'Vieux-Québec fortifié, Francophonie Amérique',
+      culture: 'Je me souviens, Sirop érable, Céline Dion',
+      url: '/bibliotheque/ameriques/quebec'
+    },
+    'haiti': {
+      pays: 'Haïti',
+      capitale: 'Port-au-Prince',
+      population: '11.4 millions',
+      unesco: '1 site UNESCO',
+      patrimoine: 'Citadelle Laferrière, 1ère république noire',
+      culture: 'Créole, Vodou, Art naïf coloré',
+      url: '/bibliotheque/ameriques/haiti'
+    },
+    'louisiane': {
+      pays: 'Louisiane',
+      capitale: 'Baton Rouge',
+      population: '4.6 millions',
+      patrimoine: 'Nouvelle-Orléans jazz, Mardi Gras, Bayous',
+      culture: 'Cajun créole, Jazz blues patrimoine',
+      url: '/bibliotheque/ameriques/louisiane'
+    },
+    'bresil': {
+      pays: 'Brésil',
+      capitale: 'Brasília',
+      population: '215 millions',
+      unesco: '23 sites UNESCO',
+      patrimoine: 'Christ Rédempteur Rio, Amazonie poumon planète, Chutes Iguaçu 275 cascades, Brasília Niemeyer',
+      culture: 'Carnaval plus grande fête monde, Football 5 Coupes Monde, Samba Bossa Nova',
+      economie: '9e économie mondiale, Agriculture géante 1er café sucre, Embraer 3e avions',
+      url: '/bibliotheque/amerique-sud/bresil'
+    },
+
+    // DOM-TOM (10 territoires)
+    'reunion': {
+      pays: 'La Réunion',
+      capitale: 'Saint-Denis',
+      population: '860,000',
+      unesco: '2 sites UNESCO',
+      patrimoine: 'Piton Neiges 3,070m, Cirques Mafate Cilaos, Volcan Fournaise actif',
+      culture: 'Maloya créole, Vanille bourbon, Métissage cultures',
+      url: '/bibliotheque/dom-tom/reunion'
+    },
+    'guadeloupe': {
+      pays: 'Guadeloupe',
+      capitale: 'Basse-Terre',
+      population: '390,000',
+      unesco: '1 site UNESCO',
+      patrimoine: 'Volcan Soufrière, Plages paradis, Chutes Carbet',
+      culture: 'Gwoka tambour, Zouk créole, Punch planteur',
+      url: '/bibliotheque/dom-tom/guadeloupe'
+    },
+    'martinique': {
+      pays: 'Martinique',
+      capitale: 'Fort-de-France',
+      population: '370,000',
+      patrimoine: 'Montagne Pelée 1902, Plages Caraïbes, Aimé Césaire',
+      culture: 'Béguine créole, Rhum agricole, Madras traditionnel',
+      url: '/bibliotheque/dom-tom/martinique'
+    },
+    'guyane': {
+      pays: 'Guyane',
+      capitale: 'Cayenne',
+      population: '290,000',
+      patrimoine: 'Forêt amazonienne 96%, Centre Spatial Kourou Ariane',
+      culture: 'Carnaval mois, Bagne îles Salut, Biodiversité unique',
+      url: '/bibliotheque/dom-tom/guyane'
+    },
+    'mayotte': {
+      pays: 'Mayotte',
+      capitale: 'Mamoudzou',
+      population: '280,000',
+      patrimoine: 'Lagon double barrière, Plongée tortues, Culture comorienne',
+      culture: 'Islam mahorais, Maoré shimaoré, Ylang-ylang vanille',
+      url: '/bibliotheque/dom-tom/mayotte'
+    },
+    'polynesie': {
+      pays: 'Polynésie française',
+      capitale: 'Papeete',
+      population: '280,000',
+      patrimoine: 'Tahiti Bora-Bora, Atolls 118 îles, Perles noires',
+      culture: 'Ori tahiti danse, Tatouage polynésien, Monoï tiare',
+      url: '/bibliotheque/dom-tom/polynesie'
+    },
+    'nouvelle-caledonie': {
+      pays: 'Nouvelle-Calédonie',
+      capitale: 'Nouméa',
+      population: '270,000',
+      unesco: '6 lagons UNESCO',
+      patrimoine: 'Lagon plus grand monde, Récif corallien, Nickel 25% réserves',
+      culture: 'Kanak mélanésien, Pilou danses, Case ronde',
+      url: '/bibliotheque/dom-tom/nouvelle-caledonie'
+    },
+    'saint-pierre': {
+      pays: 'Saint-Pierre-et-Miquelon',
+      capitale: 'Saint-Pierre',
+      population: '6,000',
+      patrimoine: 'Dernière France Amérique Nord, Phare île aux Marins, Architecture colorée',
+      culture: 'Pêche morue, Langues basque bretonne, Cuisine marine',
+      url: '/bibliotheque/dom-tom/saint-pierre'
+    },
+    'wallis-futuna': {
+      pays: 'Wallis-et-Futuna',
+      capitale: 'Mata-Utu',
+      population: '11,000',
+      patrimoine: 'Royaume coutumier, Lagon Wallis, Sites archéo polynésiens',
+      culture: 'Chefferies traditionnelles, Kava cérémonie, Tapa artisanat',
+      url: '/bibliotheque/dom-tom/wallis-futuna'
+    },
+    'saint-martin': {
+      pays: 'Saint-Martin',
+      capitale: 'Marigot',
+      population: '36,000',
+      patrimoine: 'Île binationale France Pays-Bas, Plages célèbres, Fort Louis',
+      culture: 'Créole antillais, Gastronomie fusion, Carnaval festif',
+      url: '/bibliotheque/dom-tom/saint-martin'
+    },
+
+    // AFRIQUE (7 pays)
+    'senegal': {
+      pays: 'Sénégal',
+      capitale: 'Dakar',
+      population: '17 millions',
+      unesco: '7 sites UNESCO',
+      patrimoine: 'Île Gorée traite, Lac Rose, Saint-Louis',
+      culture: 'Teranga hospitalité, Mbalax Youssou NDour, Thiéboudienne',
+      url: '/bibliotheque/afrique/senegal'
+    },
+    'cote-ivoire': {
+      pays: 'Côte d\'Ivoire',
+      capitale: 'Yamoussoukro',
+      population: '27 millions',
+      unesco: '4 sites UNESCO',
+      patrimoine: 'Basilique Yamoussoukro, Abidjan perle lagunes, Parc Taï',
+      culture: 'Coupé-décalé zouglou, Cacao 1er mondial, Masques Dan',
+      url: '/bibliotheque/afrique/cote-ivoire'
+    },
+    'cameroun': {
+      pays: 'Cameroun',
+      capitale: 'Yaoundé',
+      population: '27 millions',
+      unesco: '2 sites UNESCO',
+      patrimoine: 'Mont Cameroun 4,040m, Réserve Dja, 250 ethnies',
+      culture: 'Afrique miniature, Makossa bikutsi, Football Lions',
+      url: '/bibliotheque/afrique/cameroun'
+    },
+    'madagascar': {
+      pays: 'Madagascar',
+      capitale: 'Antananarivo',
+      population: '29 millions',
+      unesco: '3 sites UNESCO',
+      patrimoine: 'Lémuriens endémiques, Baobabs allée, Tsingy Bemaraha',
+      culture: 'Malgache austronésien, Famadihana retournement morts, Vanille',
+      url: '/bibliotheque/afrique/madagascar'
+    },
+    'mali': {
+      pays: 'Mali',
+      capitale: 'Bamako',
+      population: '21 millions',
+      unesco: '4 sites UNESCO',
+      patrimoine: 'Tombouctou cité savante, Falaises Dogon, Djenné mosquée',
+      culture: 'Mandingue empire, Kora Ali Farka, Bogolan textile',
+      url: '/bibliotheque/afrique/mali'
+    },
+    'rdc': {
+      pays: 'RD Congo',
+      capitale: 'Kinshasa',
+      population: '95 millions',
+      unesco: '5 sites UNESCO',
+      patrimoine: 'Fleuve Congo 2e débit, Virunga gorilles, Forêt Ituri',
+      culture: 'Rumba congolaise UNESCO, 450 langues, Sapeurs élégance',
+      url: '/bibliotheque/afrique/rdc'
+    },
+    'rwanda': {
+      pays: 'Rwanda',
+      capitale: 'Kigali',
+      population: '13 millions',
+      unesco: '1 site UNESCO',
+      patrimoine: 'Gorilles montagne Virunga, Pays 1000 collines, Lac Kivu',
+      culture: 'Kinyarwanda, Intore danse guerrier, Café thé qualité',
+      url: '/bibliotheque/afrique/rwanda'
+    },
+
+    // MAGHREB (4 pays)
+    'maroc': {
+      pays: 'Maroc',
+      capitale: 'Rabat',
+      population: '37 millions',
+      unesco: '9 sites UNESCO',
+      patrimoine: 'Médinas Fès Marrakech, Sahara dunes Merzouga, Hassan II Casablanca',
+      culture: 'Arabe berbère, Tagine couscous, Artisanat zellige',
+      url: '/bibliotheque/maghreb/maroc'
+    },
+    'algerie': {
+      pays: 'Algérie',
+      capitale: 'Alger',
+      population: '45 millions',
+      unesco: '7 sites UNESCO',
+      patrimoine: 'Casbah Alger, Tassili Ajjer art rupestre, Timgad romaine',
+      culture: 'Raï Cheb Khaled, Couscous UNESCO, Berbère kabyle',
+      url: '/bibliotheque/maghreb/algerie'
+    },
+    'tunisie': {
+      pays: 'Tunisie',
+      capitale: 'Tunis',
+      population: '12 millions',
+      unesco: '8 sites UNESCO',
+      patrimoine: 'Carthage punique, Médina Tunis, Amphithéâtre El Jem',
+      culture: 'Printemps arabe 2011, Couscous brik, Mosaïques Bardo',
+      url: '/bibliotheque/maghreb/tunisie'
+    },
+    'liban': {
+      pays: 'Liban',
+      capitale: 'Beyrouth',
+      population: '6.8 millions',
+      unesco: '5 sites UNESCO',
+      patrimoine: 'Baalbek temples romains, Byblos plus vieille ville, Cèdres millénaires',
+      culture: 'Paris Orient, Mezze tabbouleh, Phéniciens alphabet',
+      url: '/bibliotheque/maghreb/liban'
+    },
+
+    // ASIE-PACIFIQUE (11 pays)
+    'vietnam': {
+      pays: 'Vietnam',
+      capitale: 'Hanoï',
+      population: '98 millions',
+      unesco: '8 sites UNESCO',
+      patrimoine: 'Baie Halong 2000 îles, Hôi An lanternes, Hué cité impériale',
+      culture: 'Pho soupe, Áo dài traditionnel, Cinéma mondial',
+      url: '/bibliotheque/asie-pacifique/vietnam'
+    },
+    'cambodge': {
+      pays: 'Cambodge',
+      capitale: 'Phnom Penh',
+      population: '17 millions',
+      unesco: '4 sites UNESCO',
+      patrimoine: 'Angkor Wat 12e siècle, Temples khmers 1000+, Tonlé Sap',
+      culture: 'Apsara danse, Amok curry, Khmère temples',
+      url: '/bibliotheque/asie-pacifique/cambodge'
+    },
+    'laos': {
+      pays: 'Laos',
+      capitale: 'Vientiane',
+      population: '7.4 millions',
+      unesco: '3 sites UNESCO',
+      patrimoine: 'Luang Prabang monastères, Mékong cascade Kuang Si, That Luang',
+      culture: 'Bouddhisme theravada, Laap salade, Tissage soie',
+      url: '/bibliotheque/asie-pacifique/laos'
+    },
+    'inde': {
+      pays: 'Inde',
+      capitale: 'New Delhi',
+      population: '1.4 milliard',
+      unesco: '40 sites UNESCO',
+      patrimoine: 'Taj Mahal merveille, Varanasi sacré, Temples Khajuraho',
+      culture: 'Bollywood cinéma, Yoga ayurveda, Cricket religion',
+      url: '/bibliotheque/asie-pacifique/inde'
+    },
+    'singapour': {
+      pays: 'Singapour',
+      capitale: 'Singapour',
+      population: '5.9 millions',
+      patrimoine: 'Gardens by Bay Supertrees, Marina Bay Sands piscine toit, Changi meilleur aéroport',
+      culture: '3e hub financier mondial, Port 1er mondial, Éducation 1er PISA',
+      economie: 'Hub Asie, Tech innovation, Cleanest city',
+      url: '/bibliotheque/asie-pacifique/singapour-complet'
+    },
+    'australie': {
+      pays: 'Australie',
+      capitale: 'Canberra',
+      population: '26 millions',
+      unesco: '20 sites UNESCO',
+      patrimoine: 'Grande Barrière Corail 2300km, Uluru rocher sacré 348m, Opéra Sydney voiles',
+      culture: 'Kangourous koalas 80% endémiques, Surf plages, Aborigènes 65,000 ans',
+      economie: '13e économie mondiale, Mines fer charbon 1er exportateur, Universités Top 100',
+      url: '/bibliotheque/oceanie/australie-complet'
+    },
+    'nouvelle-zelande': {
+      pays: 'Nouvelle-Zélande',
+      capitale: 'Wellington',
+      population: '5.1 millions',
+      unesco: '3 sites UNESCO',
+      patrimoine: 'Milford Sound fjords, Tongariro volcans Seigneur Anneaux, Kiwi oiseau emblème',
+      culture: 'Maori haka traditionnel, 1er vote femmes 1893, All Blacks rugby légende',
+      economie: 'Agriculture kiwi agneau, Weta effets spéciaux, Tourisme nature',
+      url: '/bibliotheque/oceanie/nouvelle-zelande-complet'
+    },
+    'vanuatu': {
+      pays: 'Vanuatu',
+      capitale: 'Port-Vila',
+      population: '310,000',
+      patrimoine: '83 îles volcaniques, Plongée SS President Coolidge, Volcan Yasur accessible',
+      culture: '113 langues record densité, Bislama pidgin, Coutumes kastom',
+      url: '/bibliotheque/asie-pacifique/vanuatu'
+    },
+
+    // OCÉANIE (3 îles)
+    'fidji': {
+      pays: 'Fidji',
+      capitale: 'Suva',
+      population: '900,000',
+      patrimoine: '333 îles paradis Pacifique Sud, Grande barrière corail 4e monde, Plongée eaux turquoise',
+      culture: 'Rugby Fiji Sevens champions, Mélanésienne cérémonies kava, Danses meke artisanat tapa',
+      url: '/bibliotheque/oceanie/fidji'
+    },
+    'papouasie': {
+      pays: 'Papouasie-Nouvelle-Guinée',
+      capitale: 'Port Moresby',
+      population: '9 millions',
+      patrimoine: '840 langues RECORD MONDIAL diversité, 3e forêt tropicale après Amazonie Congo, Montagnes 4500m Puncak Jaya',
+      culture: 'Tribus isolées traditions millénaires, Tok Pisin langue nationale, Glaciers tropicaux uniques',
+      url: '/bibliotheque/oceanie/papouasie'
+    },
+    'samoa': {
+      pays: 'Samoa',
+      capitale: 'Apia',
+      population: '200,000',
+      patrimoine: 'Cascades Papaseea plages paradisiaques, Lagons cœur Polynésie',
+      culture: 'Fa\'a Samoa mode vie ancestral, Tatouage pe\'a tatau sacré, Rugby Manu Samoa légende',
+      url: '/bibliotheque/oceanie/samoa'
+    },
+
+    // BOUTIQUES AMAZON (26 pays)
+    'amazon': {
+      info: 'REUSSITESS® Global Nexus - 26 boutiques Amazon affiliées dans 14 pays sur 5 continents',
+      pays: {
+        'usa': 'États-Unis - amazon.com',
+        'canada': 'Canada - amazon.ca',
+        'france-shop': 'France - amazon.fr',
+        'allemagne-shop': 'Allemagne - amazon.de',
+        'uk-shop': 'Royaume-Uni - amazon.co.uk',
+        'italie-shop': 'Italie - amazon.it',
+        'espagne-shop': 'Espagne - amazon.es',
+        'pays-bas': 'Pays-Bas - amazon.nl',
+        'belgique-shop': 'Belgique - amazon.com.be',
+        'suede-shop': 'Suède - amazon.se',
+        'australie-shop': 'Australie - amazon.com.au',
+        'singapour-shop': 'Singapour - amazon.sg',
+        'inde-shop': 'Inde - amazon.in',
+        'bresil-shop': 'Brésil - amazon.com.br'
+      },
+      url: '/hub-central'
     }
   };
 
-  // Fonction Text-to-Speech
-  const speakText = (text) => {
-    // Arrêter la lecture en cours
-    window.speechSynthesis.cancel();
-    
-    setIsSpeaking(true);
-    
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = languages[currentLang].voice;
-    utterance.rate = 1.0;
-    utterance.pitch = 1.0;
-    utterance.volume = 1.0;
-    
-    utterance.onend = () => {
-      setIsSpeaking(false);
-    };
-    
-    utterance.onerror = () => {
-      setIsSpeaking(false);
-    };
-    
-    window.speechSynthesis.speak(utterance);
-  };
-
-  // Arrêter la lecture
-  const stopSpeaking = () => {
-    window.speechSynthesis.cancel();
-    setIsSpeaking(false);
-  };
-
-  // Obtenir salutation selon heure
-  const getGreeting = () => {
-    const hour = new Date().getHours();
-    const lang = greetings[currentLang];
-    if (hour < 12) return lang.morning;
-    if (hour < 18) return lang.afternoon;
-    if (hour < 22) return lang.evening;
-    return lang.night;
-  };
-
-  // Intelligence artificielle réponses
-  const generateResponse = (input) => {
-    const lowerInput = input.toLowerCase();
-
-    if (/^(bonjour|salut|hello|hi|hola|ciao|ola|مرحبا|你好)$/i.test(lowerInput)) {
-      return `${getGreeting()} ${greetings[currentLang].welcome}`;
-    }
-
-    if (/^(au revoir|bye|adios|ciao|tchau|وداعا|再见)$/i.test(lowerInput)) {
-      return greetings[currentLang].goodbye;
-    }
-
-    if (lowerInput.includes('boutique') || lowerInput.includes('shop') || lowerInput.includes('store')) {
-      return `🛍️ REUSSITESS® Global Nexus compte ${knowledgeBase.boutiques.total} boutiques Amazon dans ${knowledgeBase.boutiques.pays.length} pays :\n\n${knowledgeBase.boutiques.pays.join(', ')}\n\nDont ${knowledgeBase.boutiques.types.join(' et ')}.\n\n🔗 Accès : ${knowledgeBase.boutiques.url}`;
-    }
-
-    if (lowerInput.includes('bibliothèque') || lowerInput.includes('library') || lowerInput.includes('cultura')) {
-      let response = `📚 Notre bibliothèque mondiale contient ${knowledgeBase.bibliotheque.total} pages détaillées :\n\n`;
-      Object.entries(knowledgeBase.bibliotheque.regions).forEach(([region, data]) => {
-        response += `🗺️ ${region} : ${data.count} pays/territoires\n`;
-      });
-      return response + '\n💡 Posez-moi des questions sur un pays spécifique !';
-    }
-
-    // Recherche pays spécifique
-    for (const [region, data] of Object.entries(knowledgeBase.bibliotheque.regions)) {
-      for (const pays of data.pays) {
-        if (lowerInput.includes(pays.nom.toLowerCase())) {
-          return `🌍 ${pays.nom}\n\n📍 Capitale : ${pays.capitale}\n👥 Population : ${pays.pop}\n\n🏛️ Patrimoine :\n${pays.patrimoine.map(p => `• ${p}`).join('\n')}\n\n🔗 Plus d'infos : /bibliotheque`;
-        }
-      }
-    }
-
-    if (lowerInput.includes('astuce') || lowerInput.includes('tip') || lowerInput.includes('conseil')) {
-      let response = '💡 Nos sections d\'astuces :\n\n';
-      knowledgeBase.astuces.sections.forEach(section => {
-        response += `🎯 ${section.nom}\n`;
-      });
-      return response + '\n🔗 Détails : /astuces';
-    }
-
-    if (lowerInput.includes('amazon') || lowerInput.includes('deal') || lowerInput.includes('promo')) {
-      return `🛒 Astuces Amazon Pro :\n\n${knowledgeBase.astuces.sections[0].tips.map(t => `✅ ${t}`).join('\n')}\n\n🔗 Plus : /astuces`;
-    }
-
-    if (lowerInput.includes('business') || lowerInput.includes('gagner') || lowerInput.includes('money') || lowerInput.includes('revenu')) {
-      return `💼 Business rentables 2025 :\n\n${knowledgeBase.astuces.sections[1].rentables.map(b => `💰 ${b}`).join('\n')}\n\n🔗 Détails : /astuces`;
-    }
-
-    if (lowerInput.includes('influenceur') || lowerInput.includes('influencer') || lowerInput.includes('youtube') || lowerInput.includes('tiktok')) {
-      return `⭐ Top Influenceurs 2025 :\n\n${knowledgeBase.astuces.sections[2].top.map(i => `🏆 ${i}`).join('\n')}\n\n🔗 Plus : /astuces`;
-    }
-
-    if (lowerInput.includes('ia') || lowerInput.includes('ai') || lowerInput.includes('intelligence') || lowerInput.includes('chatgpt')) {
-      return `🤖 Gagner avec IA :\n\n${knowledgeBase.astuces.sections[3].methodes.map(m => `💡 ${m}`).join('\n')}\n\n🔗 Guide complet : /astuces`;
-    }
-
-    if (lowerInput.includes('santé') || lowerInput.includes('remède') || lowerInput.includes('plante') || lowerInput.includes('health')) {
-      return `🌿 Remèdes & Plantes :\n\n${knowledgeBase.astuces.sections[4].remedes.slice(0,3).map(r => `✅ ${r}`).join('\n')}\n\n${knowledgeBase.astuces.sections[5].plantes.slice(0,3).map(p => `🍃 ${p}`).join('\n')}\n\n🔗 Complet : /astuces`;
-    }
-
-    if (lowerInput.includes('aide') || lowerInput.includes('help') || lowerInput.includes('?')) {
-      return `❓ Je peux vous aider sur :\n\n🛍️ Nos 26 boutiques Amazon\n📚 Bibliothèque 37 pages culturelles\n💡 Astuces Amazon, business, IA\n⭐ Influenceurs et revenus\n🌿 Remèdes naturels et plantes\n🗺️ Informations pays spécifiques\n\nPosez-moi n'importe quelle question !`;
-    }
-
-    return `🤔 Je n'ai pas bien compris. Essayez :\n\n• "boutiques" pour nos 26 shops Amazon\n• "bibliothèque" pour les 37 pages culturelles\n• "astuces" pour nos conseils\n• Nom d'un pays (ex: "Sénégal", "Vietnam")\n• "aide" pour plus d'options`;
-  };
-
-  // Initialisation
-  useEffect(() => {
-    if (isOpen && messages.length === 0) {
-      setTimeout(() => {
-        const welcomeMsg = `${getGreeting()}\n\n${greetings[currentLang].welcome}`;
-        setMessages([{ type: 'bot', text: welcomeMsg }]);
-      }, 300);
-    }
-  }, [isOpen]);
-
-  // Scroll automatique
-  useEffect(() => {
+  const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
   }, [messages]);
 
-  // Envoyer message
-  const sendMessage = () => {
-    if (!inputMessage.trim()) return;
+  useEffect(() => {
+    if (isOpen && messages.length === 0) {
+      const greeting = greetings[currentLang];
+      setMessages([{ role: 'assistant', content: greeting }]);
+    }
+  }, [isOpen, currentLang]);
 
-    const userMsg = { type: 'user', text: inputMessage };
-    setMessages(prev => [...prev, userMsg]);
-    setInputMessage('');
-    setIsTyping(true);
+  const speak = (text) => {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = currentLang;
+      utterance.rate = 0.9;
+      utterance.pitch = 1;
+      
+      utterance.onstart = () => setIsSpeaking(true);
+      utterance.onend = () => setIsSpeaking(false);
+      utterance.onerror = () => setIsSpeaking(false);
+      
+      window.speechSynthesis.speak(utterance);
+    }
+  };
 
-    setTimeout(() => {
-      const botResponse = generateResponse(inputMessage);
-      const botMsg = { type: 'bot', text: botResponse };
-      setMessages(prev => [...prev, botMsg]);
-      setIsTyping(false);
-    }, 800);
+  const stopSpeaking = () => {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+    }
+  };
+
+  const getResponse = async (userMessage) => {
+    const msgLower = userMessage.toLowerCase();
+    
+    // Recherche dans la base de connaissances
+    for (const [key, data] of Object.entries(knowledgeBase)) {
+      if (msgLower.includes(key) || msgLower.includes(data.pays?.toLowerCase())) {
+        if (data.pays) {
+          let response = `📍 **${data.pays}**\n\n`;
+          if (data.capitale) response += `🏛️ Capitale: ${data.capitale}\n`;
+          if (data.population) response += `👥 Population: ${data.population}\n`;
+          if (data.unesco) response += `🏛️ ${data.unesco}\n`;
+          if (data.patrimoine) response += `\n🎭 Patrimoine:\n${data.patrimoine}\n`;
+          if (data.culture) response += `\n🎨 Culture:\n${data.culture}\n`;
+          if (data.economie) response += `\n💼 Économie:\n${data.economie}\n`;
+          if (data.url) response += `\n➡️ [Voir la page complète](${data.url})`;
+          return response;
+        } else if (data.info) {
+          // Info Amazon
+          let response = `🛍️ ${data.info}\n\n`;
+          response += Object.values(data.pays).join('\n');
+          response += `\n\n➡️ [Voir toutes les boutiques](${data.url})`;
+          return response;
+        }
+      }
+    }
+
+    // Réponses génériques
+    if (msgLower.includes('bonjour') || msgLower.includes('salut') || msgLower.includes('hello')) {
+      return greetings[currentLang];
+    }
+
+    if (msgLower.includes('bibliothèque') || msgLower.includes('library')) {
+      return 'Notre bibliothèque mondiale contient 55 pages couvrant:\n\n🇪🇺 Europe (15 pays)\n🌍 Afrique (7 pays)\n🌏 Asie-Pacifique (11 pays)\n🏝️ DOM-TOM (10 territoires)\n🌎 Amériques (4 régions)\n\n[Voir la bibliothèque](/bibliotheque)';
+    }
+
+    if (msgLower.includes('amazon') || msgLower.includes('boutique')) {
+      return '🛍️ Nous avons 26 boutiques Amazon dans 14 pays:\n\nAmérique du Nord, Europe (8 pays), Asie-Pacifique, Amérique du Sud\n\n[Voir toutes les boutiques](/hub-central)';
+    }
+
+    return 'Je peux vous renseigner sur les 55 pages de notre bibliothèque mondiale ou nos 26 boutiques Amazon. Posez-moi une question sur un pays !';
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+
+    const userMessage = input.trim();
+    setInput('');
+    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    setIsLoading(true);
+
+    try {
+      const response = await getResponse(userMessage);
+      setMessages(prev => [...prev, { role: 'assistant', content: response }]);
+      speak(response);
+    } catch (error) {
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: 'Désolé, une erreur est survenue.' 
+      }]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <>
-      {/* Bouton flottant GRAND */}
-      {!isOpen && (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white rounded-full shadow-2xl hover:scale-110 transition-all p-6 animate-bounce"
-          style={{ width: '80px', height: '80px' }}
-        >
-          <div className="text-4xl">🤖</div>
-        </button>
-      )}
+      {/* Bouton flottant */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="fixed bottom-6 right-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform z-50"
+        aria-label="Assistant virtuel"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+        </svg>
+      </button>
 
-      {/* Fenêtre chat GRANDE avec TTS */}
+      {/* Fenêtre chat */}
       {isOpen && (
-        <div className="fixed bottom-8 right-8 z-50 bg-white rounded-3xl shadow-2xl flex flex-col" style={{ width: '450px', height: '700px' }}>
-          
+        <div className="fixed bottom-24 right-6 w-[450px] h-[700px] bg-white rounded-2xl shadow-2xl flex flex-col z-50 border border-gray-200">
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white p-6 rounded-t-3xl">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-3">
-                <div className="text-4xl">🤖</div>
-                <div>
-                  <h3 className="text-2xl font-bold">Assistant REUSSITESS®</h3>
-                  <p className="text-sm opacity-90">Intelligent • Vocal • Multilingue</p>
-                </div>
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-2xl">
+                🤖
               </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-3xl hover:scale-110 transition"
-              >
+              <div>
+                <h3 className="font-bold">Assistant REUSSITESS®</h3>
+                <p className="text-xs opacity-90">55 pays • 26 boutiques</p>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              {isSpeaking && (
+                <button onClick={stopSpeaking} className="hover:bg-white/20 p-2 rounded">
+                  🔇
+                </button>
+              )}
+              <button onClick={() => setIsOpen(false)} className="hover:bg-white/20 p-2 rounded">
                 ✕
               </button>
             </div>
+          </div>
 
-            {/* Sélecteur langues avec drapeaux */}
-            <div className="flex gap-2 flex-wrap">
-              {Object.entries(languages).map(([code, lang]) => (
-                <button
-                  key={code}
-                  onClick={() => setCurrentLang(code)}
-                  className={`px-3 py-2 rounded-lg text-xl transition ${
-                    currentLang === code ? 'bg-white/30 scale-110' : 'bg-white/10 hover:bg-white/20'
-                  }`}
-                  title={lang.name}
-                >
-                  {lang.flag}
-                </button>
-              ))}
-            </div>
+          {/* Sélecteur langue */}
+          <div className="p-2 border-b flex gap-1 overflow-x-auto">
+            {languages.map(lang => (
+              <button
+                key={lang.code}
+                onClick={() => setCurrentLang(lang.code)}
+                className={`px-3 py-1 rounded-lg text-sm whitespace-nowrap ${
+                  currentLang === lang.code 
+                    ? 'bg-blue-100 text-blue-700 font-semibold' 
+                    : 'hover:bg-gray-100'
+                }`}
+              >
+                {lang.flag} {lang.name}
+              </button>
+            ))}
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gray-50">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {messages.map((msg, idx) => (
               <div
                 key={idx}
-                className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
-                <div className="flex flex-col gap-2 max-w-[80%]">
-                  <div
-                    className={`p-4 rounded-2xl text-base whitespace-pre-wrap ${
-                      msg.type === 'user'
-                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
-                        : 'bg-white text-gray-800 shadow-md'
-                    }`}
-                  >
-                    {msg.text}
-                  </div>
-                  
-                  {/* Bouton vocal pour messages bot */}
-                  {msg.type === 'bot' && (
-                    <div className="flex gap-2">
-                      <button
-                        onClick={() => speakText(msg.text)}
-                        disabled={isSpeaking}
-                        className={`px-3 py-1 rounded-lg text-sm font-bold transition ${
-                          isSpeaking
-                            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                            : 'bg-green-500 text-white hover:bg-green-600'
-                        }`}
-                      >
-                        {isSpeaking ? '⏸️ En cours...' : '🔊 Écouter'}
-                      </button>
-                      {isSpeaking && (
-                        <button
-                          onClick={stopSpeaking}
-                          className="px-3 py-1 rounded-lg text-sm font-bold bg-red-500 text-white hover:bg-red-600 transition"
-                        >
-                          ⏹️ Stop
-                        </button>
-                      )}
-                    </div>
-                  )}
-                </div>
+                <div
+                  className={`max-w-[80%] p-3 rounded-2xl ${
+                    msg.role === 'user'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-100 text-gray-800'
+                  }`}
+                  dangerouslySetInnerHTML={{ 
+                    __html: msg.content
+                      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                      .replace(/\n/g, '<br/>')
+                      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="underline">$1</a>')
+                  }}
+                />
               </div>
             ))}
-            {isTyping && (
+            {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-white p-4 rounded-2xl shadow-md">
+                <div className="bg-gray-100 p-3 rounded-2xl">
                   <div className="flex gap-2">
-                    <div className="w-3 h-3 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
-                    <div className="w-3 h-3 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                    <div className="w-3 h-3 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
                   </div>
                 </div>
               </div>
@@ -450,28 +678,26 @@ const BotAssistant = () => {
           </div>
 
           {/* Input */}
-          <div className="p-4 border-t bg-white rounded-b-3xl">
-            <div className="flex gap-3">
+          <form onSubmit={handleSubmit} className="p-4 border-t">
+            <div className="flex gap-2">
               <input
                 type="text"
-                value={inputMessage}
-                onChange={(e) => setInputMessage(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
                 placeholder="Posez votre question..."
-                className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-blue-500 focus:outline-none text-base"
+                className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <button
-                onClick={sendMessage}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-xl font-bold hover:scale-105 transition text-xl"
+                type="submit"
+                disabled={isLoading}
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:scale-105 transition-transform disabled:opacity-50"
               >
                 ➤
               </button>
             </div>
-          </div>
+          </form>
         </div>
       )}
     </>
   );
-};
-
-export default BotAssistant;
+}

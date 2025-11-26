@@ -1,10 +1,15 @@
 {
   "version": 2,
-  "redirects": [
+  "regions": ["cdg1"],
+  "headers": [
     {
-      "source": "/www.reussitess.fr/:path*",
-      "destination": "/:path*",
-      "permanent": true
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "index, follow"
+        }
+      ]
     }
   ]
 }
