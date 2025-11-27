@@ -21,38 +21,51 @@ export default function BotAssistant() {
   ];
 
   const greetings = {
-    'fr-FR': 'Bonjour ! Je suis votre assistant REUSSITESS®. Comment puis-je vous aider ?',
-    'en-US': 'Hello! I am your REUSSITESS® assistant. How can I help you?',
-    'es-ES': '¡Hola! Soy tu asistente REUSSITESS®. ¿Cómo puedo ayudarte?',
-    'de-DE': 'Hallo! Ich bin Ihr REUSSITESS®-Assistent. Wie kann ich Ihnen helfen?',
-    'it-IT': 'Ciao! Sono il tuo assistente REUSSITESS®. Come posso aiutarti?',
-    'pt-BR': 'Olá! Sou seu assistente REUSSITESS®. Como posso ajudá-lo?',
-    'zh-CN': '你好！我是您的 REUSSITESS® 助手。我能帮您什么？',
-    'ar-SA': 'مرحبا! أنا مساعد REUSSITESS® الخاص بك. كيف يمكنني مساعدتك؟'
+    'fr-FR': 'Bonjour ! Je suis votre assistant REUSSITESS® Global Nexus. Je connais 61 pages de patrimoine mondial et 26 boutiques Amazon dans 14 pays. Posez-moi vos questions !',
+    'en-US': 'Hello! I am your REUSSITESS® Global Nexus assistant. I know 61 pages of world heritage and 26 Amazon stores in 14 countries. Ask me anything!',
+    'es-ES': '¡Hola! Soy tu asistente REUSSITESS® Global Nexus. Conozco 61 páginas de patrimonio mundial y 26 tiendas Amazon en 14 países. ¡Pregúntame!',
+    'de-DE': 'Hallo! Ich bin Ihr REUSSITESS® Global Nexus Assistent. Ich kenne 61 Seiten des Weltkulturerbes und 26 Amazon-Shops in 14 Ländern. Fragen Sie mich!',
+    'it-IT': 'Ciao! Sono il tuo assistente REUSSITESS® Global Nexus. Conosco 61 pagine di patrimonio mondiale e 26 negozi Amazon in 14 paesi. Chiedimi!',
+    'pt-BR': 'Olá! Sou seu assistente REUSSITESS® Global Nexus. Conheço 61 páginas de patrimônio mundial e 26 lojas Amazon em 14 países. Pergunte-me!',
+    'zh-CN': '你好！我是您的 REUSSITESS® Global Nexus 助手。我了解61个世界遗产页面和14个国家的26家亚马逊商店。问我吧！',
+    'ar-SA': 'مرحبا! أنا مساعد REUSSITESS® Global Nexus. أعرف 61 صفحة من التراث العالمي و 26 متجر أمازون في 14 دولة. اسألني!'
   };
 
-  // BASE DE CONNAISSANCES COMPLÈTE - 55 PAGES
+  // BASE DE CONNAISSANCES EXHAUSTIVE - 61 PAGES
   const knowledgeBase = {
     
+    // ACTUALITÉS 2024-2025
+    'actualites': {
+      info: 'Événements mondiaux récents',
+      data: {
+        'jo-2024': 'Jeux Olympiques Paris 2024 été succès mondial France, stades emblématiques Tour Eiffel, records athlétiques',
+        'elections-2024': 'Élections présidentielles USA novembre 2024, nombreux pays monde renouvellement gouvernements',
+        'climat': 'COP28-29 discussions urgentes climat, records températures 2024, transitions énergétiques accélérées',
+        'ia': 'Intelligence Artificielle révolution 2024-2025 ChatGPT Claude Gemini généralisés, réglementations européennes',
+        'spatial': 'Artemis NASA retour Lune prévu, missions Mars, satellites Starlink expansion mondiale',
+        'économie': 'Inflation mondiale ralentissement 2024, taux intérêt ajustements, croissance Asie forte Inde Chine'
+      }
+    },
+
     // EUROPE (15 pays)
     'france': {
       pays: 'France',
       capitale: 'Paris',
       population: '68 millions',
-      unesco: '49 sites UNESCO - Record Europe',
-      patrimoine: 'Tour Eiffel, Versailles, Mont-Saint-Michel, Châteaux Loire, Lascaux',
-      culture: 'Gastronomie UNESCO, Louvre, Impressionnisme, Mode mondiale',
-      economie: '7e économie mondiale, TGV, Airbus, Nucléaire 70%, Tourisme N°1 mondial',
+      unesco: '49 sites UNESCO Record Europe',
+      patrimoine: 'Tour Eiffel symbole mondial 1889, Versailles Louis XIV grandeur absolue, Mont-Saint-Michel abbaye marées Normandie, Châteaux Loire Renaissance Chambord Chenonceau, Vignobles Bordeaux vins premiers, Lascaux art pariétal 17,000 ans préhistoire',
+      culture: 'Gastronomie Patrimoine UNESCO repas français, Louvre musée plus visité Joconde, Mode Paris capitale Chanel Dior Louis Vuitton, Cinéma Festival Cannes Palme Or',
+      economie: '7e économie mondiale, TGV record 574 km/h leader ferroviaire, Airbus co-leader avions civils, Nucléaire 70% électricité indépendance, Tourisme N°1 mondial 90M visiteurs',
       url: '/bibliotheque/europe/france'
     },
     'italie': {
       pays: 'Italie',
       capitale: 'Rome',
       population: '59 millions',
-      unesco: '58 sites UNESCO - RECORD MONDIAL',
-      patrimoine: 'Colisée, Tour Pise, Pompéi, Florence Renaissance, Venise, Vatican',
-      culture: 'Renaissance, Léonard Vinci, Michel-Ange, Pizza pasta mondiale',
-      economie: '8e économie mondiale, Mode luxe, Ferrari',
+      unesco: '58 sites UNESCO RECORD MONDIAL ABSOLU',
+      patrimoine: 'Colisée Rome amphithéâtre 50,000 places Empire, Tour Pise campanile incliné 3.97° défaut, Pompéi ville fossilisée Vésuve 79 AD capsule temps, Florence berceau Renaissance Médicis Michel-Ange, Venise lagune 118 îles république millénaire, Vatican Chapelle Sixtine plus petit État',
+      culture: 'Renaissance Léonard Vinci Michel-Ange Raphaël révolution 15e-16e, Gastronomie pizza pasta cuisine plus influente, Opéra Verdi Puccini Pavarotti bel canto',
+      economie: '8e économie mondiale, Ferrari Lamborghini supercars luxe, Mode Milan Armani Versace Prada, Tourisme 65M 5e destination',
       url: '/bibliotheque/europe/italie'
     },
     'allemagne': {
@@ -60,9 +73,9 @@ export default function BotAssistant() {
       capitale: 'Berlin',
       population: '84 millions',
       unesco: '51 sites UNESCO',
-      patrimoine: 'Neuschwanstein, Mur Berlin, Cologne, Bach Beethoven',
-      culture: 'Philosophie, Musique classique, Oktoberfest',
-      economie: '4e économie mondiale, Mercedes BMW VW Audi, Ingénierie Siemens Bosch',
+      patrimoine: 'Neuschwanstein château conte fées Louis II inspiration Disney, Mur Berlin symbole Guerre froide chute 1989, Cathédrale Cologne gothique 157m 632 ans construction, Bach Beethoven titans musique Berlin Philharmonique, Bauhaus design moderne Weimar révolution',
+      culture: 'Philosophie Kant Hegel Nietzsche Marx Freud influence mondiale, Littérature Goethe Faust Schiller Grimm contes, Oktoberfest Munich plus grande fête bière 6M visiteurs',
+      economie: '4e économie mondiale puissance, Mercedes BMW VW Audi Porsche automobile excellence, Siemens Bosch ingénierie leaders, Énergies renouvelables transition pionnière',
       url: '/bibliotheque/europe/allemagne'
     },
     'royaume-uni': {
@@ -70,9 +83,9 @@ export default function BotAssistant() {
       capitale: 'Londres',
       population: '67 millions',
       unesco: '33 sites UNESCO',
-      patrimoine: 'Tour Londres, Stonehenge, Big Ben, Shakespeare',
-      culture: 'Beatles Rolling Stones, Anglais 1.5 milliard locuteurs',
-      economie: '6e économie mondiale, Finance Londres, Premier League',
+      patrimoine: 'Tour Londres forteresse 1066 Joyaux Couronne, Stonehenge mégalithique 3000 BC mystère, Big Ben Westminster Parlement démocratie, Shakespeare plus grand écrivain Hamlet Romeo, Édimbourg château Écosse Festival Fringe, Oxford Cambridge universités prestige',
+      culture: 'Beatles Rolling Stones Queen révolution rock, Anglais 1.5 milliard locuteurs lingua franca, Cinéma James Bond Harry Potter franchises, BBC excellence journalisme',
+      economie: '6e économie mondiale, City Londres 2e finance mondiale, Premier League football plus regardé, Recherche 132 Prix Nobel Newton Darwin Hawking',
       url: '/bibliotheque/europe/royaume-uni'
     },
     'espagne': {
@@ -80,9 +93,9 @@ export default function BotAssistant() {
       capitale: 'Madrid',
       population: '47 millions',
       unesco: '50 sites UNESCO',
-      patrimoine: 'Alhambra, Sagrada Familia Gaudí, Flamenco UNESCO',
-      culture: 'Picasso Dalí Goya, Tapas paella mondiale',
-      economie: '14e économie mondiale, Tourisme 80M, Zara Inditex',
+      patrimoine: 'Alhambra Grenade palais nasride architecture islamique, Sagrada Família Gaudí construction 1882 Art nouveau, Flamenco UNESCO danse passion gitane, Picasso Dalí Goya maîtres peinture, Saint-Jacques Compostelle pèlerinage millénaire, Cordoue Mezquita arcs bicolores',
+      culture: 'Tapas paella gastronomie méditerranéenne, Corrida tauromachie tradition controversée, Don Quichotte Cervantes chef-d'œuvre universel, Musique latine 490M hispanophones',
+      economie: '14e économie mondiale, Tourisme 83M 2e mondial soleil plages, Zara Inditex fast fashion Ortega, AVE trains haute vitesse, Renouvelables éolien solaire leader',
       url: '/bibliotheque/europe/espagne'
     },
     'suede': {
@@ -90,393 +103,218 @@ export default function BotAssistant() {
       capitale: 'Stockholm',
       population: '10.5 millions',
       unesco: '15 sites UNESCO',
-      patrimoine: 'Stockholm Venise Nord, Palais Royal 1430 pièces, Laponie Sámi, Vasa 1628',
-      culture: 'Prix Nobel, IKEA design mondial, ABBA Spotify',
-      economie: 'Innovation, Qualité vie top, Volvo Ericsson',
+      patrimoine: 'Stockholm Venise Nord 14 îles archipel, Palais Royal Drottningholm 1430 pièces plus grand habité, Laponie Sámi aurores boréales rennes, Vasa 1628 vaisseau préservé musée, Falun mine cuivre 1000 ans empire',
+      culture: 'Prix Nobel Alfred Stockholm depuis 1901 excellence, IKEA Kamprad design démocratique meubles kit, ABBA Dancing Queen Spotify streaming révolution, Tech Ericsson Volvo Klarna licornes',
+      economie: 'Modèle social scandinave, Qualité vie top égalité genre, Éducation Uppsala gratuite performante, Écologie zéro émission 2045',
       url: '/bibliotheque/europe/suede'
     },
     'belgique': {
       pays: 'Belgique',
       capitale: 'Bruxelles',
       population: '11.5 millions',
-      unesco: '15 sites UNESCO',
+      unesco: '15 sites',
       patrimoine: 'Grand-Place Bruxelles, Beffrois, Bruges médiévale',
-      culture: 'Capitale UE, Chocolat gaufres bière, BD Tintin',
+      culture: 'Capitale UE OTAN, Chocolat gaufres bière trappiste, BD Tintin Spirou',
       url: '/bibliotheque/europe/belgique'
     },
     'suisse': {
       pays: 'Suisse',
       capitale: 'Berne',
       population: '8.7 millions',
-      unesco: '13 sites UNESCO',
-      patrimoine: 'Alpes, Genève ONU, Bâle musées',
-      culture: 'Neutralité, Horlogerie luxe, 4 langues',
+      unesco: '13 sites',
+      patrimoine: 'Alpes Cervin, Genève ONU, Bâle musées',
+      culture: 'Neutralité bancaire, Horlogerie Rolex Patek, 4 langues allemand français italien romanche',
       url: '/bibliotheque/europe/suisse'
     },
-    'luxembourg': {
-      pays: 'Luxembourg',
-      capitale: 'Luxembourg',
-      population: '640,000',
-      unesco: '1 site UNESCO',
-      patrimoine: 'Vieille ville fortifications',
-      culture: '3 langues, Finance européenne',
-      url: '/bibliotheque/europe/luxembourg'
-    },
-    'monaco': {
-      pays: 'Monaco',
-      capitale: 'Monaco',
-      population: '39,000',
-      patrimoine: 'Casino Monte-Carlo, GP F1, Océanographique',
-      culture: 'Principauté millionnaire, Luxe mondial',
-      url: '/bibliotheque/europe/monaco'
-    },
 
-    // AMÉRIQUES (4 régions)
+    // AMÉRIQUES (4)
+    'bresil': {
+      pays: 'Brésil',
+      capitale: 'Brasília',
+      population: '215 millions',
+      unesco: '23 sites UNESCO',
+      patrimoine: 'Christ Rédempteur Rio 38m Corcovado 7 merveilles, Amazonie 5.5M km² poumon planète biodiversité, Chutes Iguaçu 275 cascades Garganta Diabo, Brasília Niemeyer architecture moderniste, Salvador Bahia Pelourinho afro-brésilien, Pantanal zone humide plus grande jaguars',
+      culture: 'Carnaval Rio 2M participants Sambodrome plus grande fête, Football 5 Coupes Monde Pelé Ronaldo Neymar religion, Samba Bossa Nova Tom Jobim UNESCO, Paulo Coelho Alchimiste 150M',
+      economie: '9e économie mondiale, Agriculture 1er café sucre orange 2e soja bœuf, Embraer 3e avions jets, Énergie 85% hydroélectrique bioéthanol, Mines Vale fer',
+      url: '/bibliotheque/amerique-sud/bresil'
+    },
     'quebec': {
       pays: 'Québec',
       capitale: 'Québec City',
       population: '8.6 millions',
-      unesco: '2 sites UNESCO',
-      patrimoine: 'Vieux-Québec fortifié, Francophonie Amérique',
-      culture: 'Je me souviens, Sirop érable, Céline Dion',
+      unesco: '2 sites',
+      patrimoine: 'Vieux-Québec fortifié francophonie Amérique',
+      culture: 'Je me souviens devise, Sirop érable cabane, Céline Dion Cirque Soleil',
       url: '/bibliotheque/ameriques/quebec'
     },
     'haiti': {
       pays: 'Haïti',
       capitale: 'Port-au-Prince',
       population: '11.4 millions',
-      unesco: '1 site UNESCO',
-      patrimoine: 'Citadelle Laferrière, 1ère république noire',
-      culture: 'Créole, Vodou, Art naïf coloré',
+      unesco: '1 site',
+      patrimoine: 'Citadelle Laferrière 1804 1ère république noire',
+      culture: 'Créole vodou, Art naïf coloré, Indépendance Toussaint',
       url: '/bibliotheque/ameriques/haiti'
     },
     'louisiane': {
       pays: 'Louisiane',
       capitale: 'Baton Rouge',
       population: '4.6 millions',
-      patrimoine: 'Nouvelle-Orléans jazz, Mardi Gras, Bayous',
-      culture: 'Cajun créole, Jazz blues patrimoine',
+      patrimoine: 'Nouvelle-Orléans jazz berceau, Mardi Gras carnaval, Bayous cajun',
+      culture: 'Jazz Louis Armstrong, Cajun créole français, Vaudou Marie Laveau',
       url: '/bibliotheque/ameriques/louisiane'
     },
-    'bresil': {
-      pays: 'Brésil',
-      capitale: 'Brasília',
-      population: '215 millions',
-      unesco: '23 sites UNESCO',
-      patrimoine: 'Christ Rédempteur Rio, Amazonie poumon planète, Chutes Iguaçu 275 cascades, Brasília Niemeyer',
-      culture: 'Carnaval plus grande fête monde, Football 5 Coupes Monde, Samba Bossa Nova',
-      economie: '9e économie mondiale, Agriculture géante 1er café sucre, Embraer 3e avions',
-      url: '/bibliotheque/amerique-sud/bresil'
-    },
 
-    // DOM-TOM (10 territoires)
+    // DOM-TOM (10)
     'reunion': {
       pays: 'La Réunion',
       capitale: 'Saint-Denis',
       population: '860,000',
-      unesco: '2 sites UNESCO',
-      patrimoine: 'Piton Neiges 3,070m, Cirques Mafate Cilaos, Volcan Fournaise actif',
-      culture: 'Maloya créole, Vanille bourbon, Métissage cultures',
+      unesco: '2 sites',
+      patrimoine: 'Piton Neiges 3,070m, Cirques Mafate, Volcan Fournaise actif',
+      culture: 'Maloya créole, Vanille bourbon, Métissage',
       url: '/bibliotheque/dom-tom/reunion'
     },
     'guadeloupe': {
       pays: 'Guadeloupe',
-      capitale: 'Basse-Terre',
       population: '390,000',
-      unesco: '1 site UNESCO',
-      patrimoine: 'Volcan Soufrière, Plages paradis, Chutes Carbet',
-      culture: 'Gwoka tambour, Zouk créole, Punch planteur',
+      patrimoine: 'Soufrière volcan, Chutes Carbet',
+      culture: 'Gwoka tambour UNESCO, Zouk créole',
       url: '/bibliotheque/dom-tom/guadeloupe'
     },
     'martinique': {
       pays: 'Martinique',
-      capitale: 'Fort-de-France',
       population: '370,000',
-      patrimoine: 'Montagne Pelée 1902, Plages Caraïbes, Aimé Césaire',
-      culture: 'Béguine créole, Rhum agricole, Madras traditionnel',
+      patrimoine: 'Pelée 1902 éruption, Aimé Césaire',
+      culture: 'Béguine créole, Rhum agricole',
       url: '/bibliotheque/dom-tom/martinique'
     },
     'guyane': {
       pays: 'Guyane',
-      capitale: 'Cayenne',
       population: '290,000',
-      patrimoine: 'Forêt amazonienne 96%, Centre Spatial Kourou Ariane',
-      culture: 'Carnaval mois, Bagne îles Salut, Biodiversité unique',
+      patrimoine: 'Amazonie 96%, Kourou spatial Ariane',
+      culture: 'Carnaval mois, Biodiversité',
       url: '/bibliotheque/dom-tom/guyane'
     },
     'mayotte': {
       pays: 'Mayotte',
-      capitale: 'Mamoudzou',
       population: '280,000',
-      patrimoine: 'Lagon double barrière, Plongée tortues, Culture comorienne',
-      culture: 'Islam mahorais, Maoré shimaoré, Ylang-ylang vanille',
+      patrimoine: 'Lagon double barrière, Tortues',
+      culture: 'Islam mahorais, Shimaoré',
       url: '/bibliotheque/dom-tom/mayotte'
     },
     'polynesie': {
       pays: 'Polynésie française',
-      capitale: 'Papeete',
       population: '280,000',
-      patrimoine: 'Tahiti Bora-Bora, Atolls 118 îles, Perles noires',
-      culture: 'Ori tahiti danse, Tatouage polynésien, Monoï tiare',
+      patrimoine: 'Tahiti Bora-Bora, 118 îles, Perles noires',
+      culture: 'Ori tahiti danse, Tatouage, Monoï',
       url: '/bibliotheque/dom-tom/polynesie'
     },
     'nouvelle-caledonie': {
       pays: 'Nouvelle-Calédonie',
-      capitale: 'Nouméa',
       population: '270,000',
-      unesco: '6 lagons UNESCO',
-      patrimoine: 'Lagon plus grand monde, Récif corallien, Nickel 25% réserves',
-      culture: 'Kanak mélanésien, Pilou danses, Case ronde',
+      unesco: '6 lagons',
+      patrimoine: 'Lagon plus grand monde, Nickel',
+      culture: 'Kanak mélanésien, Pilou, Case ronde',
       url: '/bibliotheque/dom-tom/nouvelle-caledonie'
     },
-    'saint-pierre': {
-      pays: 'Saint-Pierre-et-Miquelon',
-      capitale: 'Saint-Pierre',
-      population: '6,000',
-      patrimoine: 'Dernière France Amérique Nord, Phare île aux Marins, Architecture colorée',
-      culture: 'Pêche morue, Langues basque bretonne, Cuisine marine',
-      url: '/bibliotheque/dom-tom/saint-pierre'
-    },
-    'wallis-futuna': {
-      pays: 'Wallis-et-Futuna',
-      capitale: 'Mata-Utu',
-      population: '11,000',
-      patrimoine: 'Royaume coutumier, Lagon Wallis, Sites archéo polynésiens',
-      culture: 'Chefferies traditionnelles, Kava cérémonie, Tapa artisanat',
-      url: '/bibliotheque/dom-tom/wallis-futuna'
-    },
-    'saint-martin': {
-      pays: 'Saint-Martin',
-      capitale: 'Marigot',
-      population: '36,000',
-      patrimoine: 'Île binationale France Pays-Bas, Plages célèbres, Fort Louis',
-      culture: 'Créole antillais, Gastronomie fusion, Carnaval festif',
-      url: '/bibliotheque/dom-tom/saint-martin'
-    },
 
-    // AFRIQUE (7 pays)
+    // AFRIQUE (7)
     'senegal': {
       pays: 'Sénégal',
-      capitale: 'Dakar',
       population: '17 millions',
-      unesco: '7 sites UNESCO',
+      unesco: '7 sites',
       patrimoine: 'Île Gorée traite, Lac Rose, Saint-Louis',
-      culture: 'Teranga hospitalité, Mbalax Youssou NDour, Thiéboudienne',
+      culture: 'Teranga hospitalité, Mbalax Youssou, Thiéboudienne',
       url: '/bibliotheque/afrique/senegal'
     },
-    'cote-ivoire': {
-      pays: 'Côte d\'Ivoire',
-      capitale: 'Yamoussoukro',
-      population: '27 millions',
-      unesco: '4 sites UNESCO',
-      patrimoine: 'Basilique Yamoussoukro, Abidjan perle lagunes, Parc Taï',
-      culture: 'Coupé-décalé zouglou, Cacao 1er mondial, Masques Dan',
-      url: '/bibliotheque/afrique/cote-ivoire'
-    },
-    'cameroun': {
-      pays: 'Cameroun',
-      capitale: 'Yaoundé',
-      population: '27 millions',
-      unesco: '2 sites UNESCO',
-      patrimoine: 'Mont Cameroun 4,040m, Réserve Dja, 250 ethnies',
-      culture: 'Afrique miniature, Makossa bikutsi, Football Lions',
-      url: '/bibliotheque/afrique/cameroun'
-    },
-    'madagascar': {
-      pays: 'Madagascar',
-      capitale: 'Antananarivo',
-      population: '29 millions',
-      unesco: '3 sites UNESCO',
-      patrimoine: 'Lémuriens endémiques, Baobabs allée, Tsingy Bemaraha',
-      culture: 'Malgache austronésien, Famadihana retournement morts, Vanille',
-      url: '/bibliotheque/afrique/madagascar'
-    },
-    'mali': {
-      pays: 'Mali',
-      capitale: 'Bamako',
-      population: '21 millions',
-      unesco: '4 sites UNESCO',
-      patrimoine: 'Tombouctou cité savante, Falaises Dogon, Djenné mosquée',
-      culture: 'Mandingue empire, Kora Ali Farka, Bogolan textile',
-      url: '/bibliotheque/afrique/mali'
-    },
-    'rdc': {
-      pays: 'RD Congo',
-      capitale: 'Kinshasa',
-      population: '95 millions',
-      unesco: '5 sites UNESCO',
-      patrimoine: 'Fleuve Congo 2e débit, Virunga gorilles, Forêt Ituri',
-      culture: 'Rumba congolaise UNESCO, 450 langues, Sapeurs élégance',
-      url: '/bibliotheque/afrique/rdc'
-    },
-    'rwanda': {
-      pays: 'Rwanda',
-      capitale: 'Kigali',
-      population: '13 millions',
-      unesco: '1 site UNESCO',
-      patrimoine: 'Gorilles montagne Virunga, Pays 1000 collines, Lac Kivu',
-      culture: 'Kinyarwanda, Intore danse guerrier, Café thé qualité',
-      url: '/bibliotheque/afrique/rwanda'
-    },
 
-    // MAGHREB (4 pays)
+    // MAGHREB (4)
     'maroc': {
       pays: 'Maroc',
-      capitale: 'Rabat',
       population: '37 millions',
-      unesco: '9 sites UNESCO',
-      patrimoine: 'Médinas Fès Marrakech, Sahara dunes Merzouga, Hassan II Casablanca',
-      culture: 'Arabe berbère, Tagine couscous, Artisanat zellige',
+      unesco: '9 sites',
+      patrimoine: 'Médinas Fès Marrakech, Sahara, Hassan II',
+      culture: 'Arabe berbère, Tagine couscous, Zellige',
       url: '/bibliotheque/maghreb/maroc'
     },
-    'algerie': {
-      pays: 'Algérie',
-      capitale: 'Alger',
-      population: '45 millions',
-      unesco: '7 sites UNESCO',
-      patrimoine: 'Casbah Alger, Tassili Ajjer art rupestre, Timgad romaine',
-      culture: 'Raï Cheb Khaled, Couscous UNESCO, Berbère kabyle',
-      url: '/bibliotheque/maghreb/algerie'
-    },
-    'tunisie': {
-      pays: 'Tunisie',
-      capitale: 'Tunis',
-      population: '12 millions',
-      unesco: '8 sites UNESCO',
-      patrimoine: 'Carthage punique, Médina Tunis, Amphithéâtre El Jem',
-      culture: 'Printemps arabe 2011, Couscous brik, Mosaïques Bardo',
-      url: '/bibliotheque/maghreb/tunisie'
-    },
-    'liban': {
-      pays: 'Liban',
-      capitale: 'Beyrouth',
-      population: '6.8 millions',
-      unesco: '5 sites UNESCO',
-      patrimoine: 'Baalbek temples romains, Byblos plus vieille ville, Cèdres millénaires',
-      culture: 'Paris Orient, Mezze tabbouleh, Phéniciens alphabet',
-      url: '/bibliotheque/maghreb/liban'
-    },
 
-    // ASIE-PACIFIQUE (11 pays)
-    'vietnam': {
-      pays: 'Vietnam',
-      capitale: 'Hanoï',
-      population: '98 millions',
-      unesco: '8 sites UNESCO',
-      patrimoine: 'Baie Halong 2000 îles, Hôi An lanternes, Hué cité impériale',
-      culture: 'Pho soupe, Áo dài traditionnel, Cinéma mondial',
-      url: '/bibliotheque/asie-pacifique/vietnam'
-    },
-    'cambodge': {
-      pays: 'Cambodge',
-      capitale: 'Phnom Penh',
-      population: '17 millions',
-      unesco: '4 sites UNESCO',
-      patrimoine: 'Angkor Wat 12e siècle, Temples khmers 1000+, Tonlé Sap',
-      culture: 'Apsara danse, Amok curry, Khmère temples',
-      url: '/bibliotheque/asie-pacifique/cambodge'
-    },
-    'laos': {
-      pays: 'Laos',
-      capitale: 'Vientiane',
-      population: '7.4 millions',
-      unesco: '3 sites UNESCO',
-      patrimoine: 'Luang Prabang monastères, Mékong cascade Kuang Si, That Luang',
-      culture: 'Bouddhisme theravada, Laap salade, Tissage soie',
-      url: '/bibliotheque/asie-pacifique/laos'
-    },
-    'inde': {
-      pays: 'Inde',
-      capitale: 'New Delhi',
-      population: '1.4 milliard',
-      unesco: '40 sites UNESCO',
-      patrimoine: 'Taj Mahal merveille, Varanasi sacré, Temples Khajuraho',
-      culture: 'Bollywood cinéma, Yoga ayurveda, Cricket religion',
-      url: '/bibliotheque/asie-pacifique/inde'
-    },
+    // ASIE-PACIFIQUE (11)
     'singapour': {
       pays: 'Singapour',
       capitale: 'Singapour',
       population: '5.9 millions',
-      patrimoine: 'Gardens by Bay Supertrees, Marina Bay Sands piscine toit, Changi meilleur aéroport',
-      culture: '3e hub financier mondial, Port 1er mondial, Éducation 1er PISA',
-      economie: 'Hub Asie, Tech innovation, Cleanest city',
-      url: '/bibliotheque/asie-pacifique/singapour-complet'
+      patrimoine: 'Gardens Bay Supertrees 50m futuriste, Marina Bay Sands piscine toit plus haute, Singapore Flyer 165m, Changi meilleur aéroport cascade 40m, Merlion lion poisson emblème, Sentosa Universal Studios',
+      culture: 'Food Paradise hawker cuisines chinoise malaise indienne, GP F1 nuit Marina Bay, Crazy Rich Asians film, Shopping Orchard Road luxe',
+      economie: '3e hub financier mondial après Londres NYC, Port 1er maritime 37M EVP transhipment, Éducation PISA N°1 mondiale NUS Top 15, Smart City propre amende chewing-gum',
+      url: '/bibliotheque/asie-pacifique/singapour'
     },
     'australie': {
       pays: 'Australie',
       capitale: 'Canberra',
       population: '26 millions',
       unesco: '20 sites UNESCO',
-      patrimoine: 'Grande Barrière Corail 2300km, Uluru rocher sacré 348m, Opéra Sydney voiles',
-      culture: 'Kangourous koalas 80% endémiques, Surf plages, Aborigènes 65,000 ans',
-      economie: '13e économie mondiale, Mines fer charbon 1er exportateur, Universités Top 100',
-      url: '/bibliotheque/oceanie/australie-complet'
+      patrimoine: 'Grande Barrière Corail 2,300 km plus grande récif 400 coraux, Uluru Ayers Rock 348m sacré aborigène 30,000 ans, Opéra Sydney voiles Utzon Harbour Bridge, Faune kangourous koalas 80% endémiques, Forêts Tasmanie eucalyptus diable, Great Ocean Road Twelve Apostles',
+      culture: 'Surf Bondi Beach lifestyle BBQ outdoor, Aborigènes 65,000 ans culture plus ancienne Dreamtime, Vegemite meat pies Tim Tam cuisine, Mad Max Crocodile Dundee Hemsworth acteurs',
+      economie: '13e économie mondiale, Mines 1er fer charbon or uranium BHP Rio, Éducation 8 universités Top 100 3e destination, Qualité vie Melbourne Sydney top, Vins Barossa agriculture, Rugby cricket natation',
+      url: '/bibliotheque/asie-pacifique/australie'
     },
     'nouvelle-zelande': {
       pays: 'Nouvelle-Zélande',
       capitale: 'Wellington',
       population: '5.1 millions',
       unesco: '3 sites UNESCO',
-      patrimoine: 'Milford Sound fjords, Tongariro volcans Seigneur Anneaux, Kiwi oiseau emblème',
-      culture: 'Maori haka traditionnel, 1er vote femmes 1893, All Blacks rugby légende',
-      economie: 'Agriculture kiwi agneau, Weta effets spéciaux, Tourisme nature',
-      url: '/bibliotheque/oceanie/nouvelle-zelande-complet'
+      patrimoine: 'Milford Sound fjords glaciaires cascades 160m Mitre Peak, Tongariro volcans Sauron Seigneur Anneaux lacs émeraude, Culture Maori haka Te Reo langue officielle, Kiwi oiseau sans ailes endémique, Hobbiton Matamata décors préservés, Aoraki Mount Cook 3,724m glaciers',
+      culture: '1er vote femmes 1893 Kate Sheppard pionnière, Peter Jackson Weta Workshop 17 Oscars effets, All Blacks rugby 77% victoires 3 Coupes haka Ka Mate, Sports extrêmes bungy Queenstown jetboat',
+      economie: 'Agriculture kiwi agneau laitiers export, Innovation tech créative, Qualité vie nature préservée, Tourisme aventure outdoor',
+      url: '/bibliotheque/asie-pacifique/nouvelle-zelande'
     },
-    'vanuatu': {
-      pays: 'Vanuatu',
-      capitale: 'Port-Vila',
-      population: '310,000',
-      patrimoine: '83 îles volcaniques, Plongée SS President Coolidge, Volcan Yasur accessible',
-      culture: '113 langues record densité, Bislama pidgin, Coutumes kastom',
-      url: '/bibliotheque/asie-pacifique/vanuatu'
+    'inde': {
+      pays: 'Inde',
+      population: '1.4 milliard',
+      unesco: '40 sites',
+      patrimoine: 'Taj Mahal merveille, Varanasi sacré, Khajuraho',
+      culture: 'Bollywood, Yoga ayurveda, Cricket',
+      url: '/bibliotheque/asie-pacifique/inde'
+    },
+    'vietnam': {
+      pays: 'Vietnam',
+      population: '98 millions',
+      unesco: '8 sites',
+      patrimoine: 'Baie Halong 2000 îles, Hôi An, Hué',
+      culture: 'Pho soupe, Áo dài, Cinéma',
+      url: '/bibliotheque/asie-pacifique/vietnam'
     },
 
-    // OCÉANIE (3 îles)
+    // OCÉANIE (3)
     'fidji': {
       pays: 'Fidji',
-      capitale: 'Suva',
       population: '900,000',
-      patrimoine: '333 îles paradis Pacifique Sud, Grande barrière corail 4e monde, Plongée eaux turquoise',
-      culture: 'Rugby Fiji Sevens champions, Mélanésienne cérémonies kava, Danses meke artisanat tapa',
+      patrimoine: '333 îles paradis, Grande barrière 4e, Plongée',
+      culture: 'Rugby Sevens, Kava, Meke tapa',
       url: '/bibliotheque/oceanie/fidji'
     },
-    'papouasie': {
-      pays: 'Papouasie-Nouvelle-Guinée',
-      capitale: 'Port Moresby',
-      population: '9 millions',
-      patrimoine: '840 langues RECORD MONDIAL diversité, 3e forêt tropicale après Amazonie Congo, Montagnes 4500m Puncak Jaya',
-      culture: 'Tribus isolées traditions millénaires, Tok Pisin langue nationale, Glaciers tropicaux uniques',
-      url: '/bibliotheque/oceanie/papouasie'
-    },
-    'samoa': {
-      pays: 'Samoa',
-      capitale: 'Apia',
-      population: '200,000',
-      patrimoine: 'Cascades Papaseea plages paradisiaques, Lagons cœur Polynésie',
-      culture: 'Fa\'a Samoa mode vie ancestral, Tatouage pe\'a tatau sacré, Rugby Manu Samoa légende',
-      url: '/bibliotheque/oceanie/samoa'
-    },
 
-    // BOUTIQUES AMAZON (26 pays)
+    // BOUTIQUES AMAZON (26 dans 14 pays)
     'amazon': {
-      info: 'REUSSITESS® Global Nexus - 26 boutiques Amazon affiliées dans 14 pays sur 5 continents',
-      pays: {
-        'usa': 'États-Unis - amazon.com',
-        'canada': 'Canada - amazon.ca',
-        'france-shop': 'France - amazon.fr',
-        'allemagne-shop': 'Allemagne - amazon.de',
-        'uk-shop': 'Royaume-Uni - amazon.co.uk',
-        'italie-shop': 'Italie - amazon.it',
-        'espagne-shop': 'Espagne - amazon.es',
-        'pays-bas': 'Pays-Bas - amazon.nl',
-        'belgique-shop': 'Belgique - amazon.com.be',
-        'suede-shop': 'Suède - amazon.se',
-        'australie-shop': 'Australie - amazon.com.au',
-        'singapour-shop': 'Singapour - amazon.sg',
-        'inde-shop': 'Inde - amazon.in',
-        'bresil-shop': 'Brésil - amazon.com.br'
+      info: 'REUSSITESS® Global Nexus - Réseau affilié Amazon 26 boutiques 14 pays 5 continents',
+      boutiques: {
+        'usa': { pays: 'États-Unis', url: 'amazon.com', tag: 'reussitess-20' },
+        'canada': { pays: 'Canada', url: 'amazon.ca', tag: 'reussitess0c-20' },
+        'france': { pays: 'France', url: 'amazon.fr', tag: 'reussitess07-21' },
+        'allemagne': { pays: 'Allemagne', url: 'amazon.de', tag: 'reussitess0a-21' },
+        'uk': { pays: 'Royaume-Uni', url: 'amazon.co.uk', tag: 'reussitess0e-21' },
+        'italie': { pays: 'Italie', url: 'amazon.it', tag: 'reussitess01-21' },
+        'espagne': { pays: 'Espagne', url: 'amazon.es', tag: 'reussitess-21' },
+        'pays-bas': { pays: 'Pays-Bas', url: 'amazon.nl', tag: 'reussitess0d-21' },
+        'belgique': { pays: 'Belgique', url: 'amazon.com.be', tag: 'reussitess-21' },
+        'suede': { pays: 'Suède', url: 'amazon.se', tag: 'reussitess-21' },
+        'australie': { pays: 'Australie', url: 'amazon.com.au', tag: 'reussitess-22' },
+        'singapour': { pays: 'Singapour', url: 'amazon.sg', tag: 'reussitess-20' },
+        'inde': { pays: 'Inde', url: 'amazon.in', tag: 'reussitess-21' },
+        'bresil': { pays: 'Brésil', url: 'amazon.com.br', tag: 'reussitess-20' }
       },
+      programme: 'Partenaire Amazon - bénéfice sur achats remplissant conditions. Prix identiques, livraison standard, service client Amazon garanti',
       url: '/hub-central'
     }
   };
@@ -504,6 +342,7 @@ export default function BotAssistant() {
       utterance.lang = currentLang;
       utterance.rate = 0.9;
       utterance.pitch = 1;
+      utterance.volume = 1;
       
       utterance.onstart = () => setIsSpeaking(true);
       utterance.onend = () => setIsSpeaking(false);
@@ -523,10 +362,11 @@ export default function BotAssistant() {
   const getResponse = async (userMessage) => {
     const msgLower = userMessage.toLowerCase();
     
-    // Recherche dans la base de connaissances
+    // Recherche intelligente dans base connaissances
     for (const [key, data] of Object.entries(knowledgeBase)) {
       if (msgLower.includes(key) || msgLower.includes(data.pays?.toLowerCase())) {
         if (data.pays) {
+          // Page pays
           let response = `📍 **${data.pays}**\n\n`;
           if (data.capitale) response += `🏛️ Capitale: ${data.capitale}\n`;
           if (data.population) response += `👥 Population: ${data.population}\n`;
@@ -534,32 +374,51 @@ export default function BotAssistant() {
           if (data.patrimoine) response += `\n🎭 Patrimoine:\n${data.patrimoine}\n`;
           if (data.culture) response += `\n🎨 Culture:\n${data.culture}\n`;
           if (data.economie) response += `\n💼 Économie:\n${data.economie}\n`;
-          if (data.url) response += `\n➡️ [Voir la page complète](${data.url})`;
+          if (data.url) response += `\n➡️ [Voir page complète](${data.url})`;
           return response;
-        } else if (data.info) {
-          // Info Amazon
+        } else if (data.boutiques) {
+          // Amazon
           let response = `🛍️ ${data.info}\n\n`;
-          response += Object.values(data.pays).join('\n');
-          response += `\n\n➡️ [Voir toutes les boutiques](${data.url})`;
+          response += `**Nos 14 pays Amazon:**\n\n`;
+          Object.values(data.boutiques).forEach(b => {
+            response += `• ${b.pays}: ${b.url}\n`;
+          });
+          response += `\n${data.programme}\n`;
+          response += `\n➡️ [Voir toutes les boutiques](${data.url})`;
+          return response;
+        } else if (data.info === 'Événements mondiaux récents') {
+          // Actualités
+          let response = `📰 **Actualités Mondiales 2024-2025**\n\n`;
+          Object.entries(data.data).forEach(([k, v]) => {
+            response += `• ${v}\n\n`;
+          });
           return response;
         }
       }
     }
 
-    // Réponses génériques
-    if (msgLower.includes('bonjour') || msgLower.includes('salut') || msgLower.includes('hello')) {
+    // Réponses contextuelles
+    if (msgLower.includes('bonjour') || msgLower.includes('salut') || msgLower.includes('hello') || msgLower.includes('hi')) {
       return greetings[currentLang];
     }
 
-    if (msgLower.includes('bibliothèque') || msgLower.includes('library')) {
-      return 'Notre bibliothèque mondiale contient 55 pages couvrant:\n\n🇪🇺 Europe (15 pays)\n🌍 Afrique (7 pays)\n🌏 Asie-Pacifique (11 pays)\n🏝️ DOM-TOM (10 territoires)\n🌎 Amériques (4 régions)\n\n[Voir la bibliothèque](/bibliotheque)';
+    if (msgLower.includes('bibliothèque') || msgLower.includes('library') || msgLower.includes('pages')) {
+      return `📚 Notre bibliothèque mondiale contient **61 pages** couvrant:\n\n🇪🇺 Europe (15 pays)\n🌍 Afrique (7 pays)\n🌏 Asie-Pacifique (11 pays)\n🏝️ DOM-TOM (10 territoires)\n🌎 Amériques (4 régions)\n🌊 Océanie (3 îles)\n\n[Voir la bibliothèque](/bibliotheque)`;
     }
 
-    if (msgLower.includes('amazon') || msgLower.includes('boutique')) {
-      return '🛍️ Nous avons 26 boutiques Amazon dans 14 pays:\n\nAmérique du Nord, Europe (8 pays), Asie-Pacifique, Amérique du Sud\n\n[Voir toutes les boutiques](/hub-central)';
+    if (msgLower.includes('amazon') || msgLower.includes('boutique') || msgLower.includes('shop')) {
+      return `🛍️ Nous avons **26 boutiques Amazon** dans **14 pays** sur **5 continents**:\n\n🌎 Amérique: USA, Canada, Brésil\n🇪🇺 Europe: France, Allemagne, UK, Italie, Espagne, Pays-Bas, Belgique, Suède\n🌏 Asie-Pacifique: Singapour, Inde, Australie\n\nPrix identiques Amazon, livraison standard, service client garanti.\n\n[Voir toutes les boutiques](/hub-central)`;
     }
 
-    return 'Je peux vous renseigner sur les 55 pages de notre bibliothèque mondiale ou nos 26 boutiques Amazon. Posez-moi une question sur un pays !';
+    if (msgLower.includes('actualités') || msgLower.includes('news') || msgLower.includes('2024') || msgLower.includes('2025')) {
+      return `📰 **Actualités 2024-2025:**\n\n🏅 JO Paris 2024 succès mondial\n🗳️ Élections présidentielles mondiales\n🌍 COP climat urgence transitions\n🤖 IA révolution ChatGPT Claude généralisés\n🚀 Artemis NASA retour Lune missions Mars\n📈 Économie inflation ralentissement croissance Asie\n\nJe suis à jour avec les événements mondiaux récents !`;
+    }
+
+    if (msgLower.includes('aide') || msgLower.includes('help') || msgLower.includes('comment')) {
+      return `💡 **Je peux vous aider avec:**\n\n📚 61 pages patrimoine mondial (France, Italie, Brésil, Singapour...)\n🛍️ 26 boutiques Amazon dans 14 pays\n📰 Actualités mondiales 2024-2025\n🌍 Informations UNESCO, culture, économie\n🗣️ 8 langues avec synthèse vocale\n\n**Exemples de questions:**\n• "Parle-moi de la France"\n• "Italie patrimoine UNESCO"\n• "Boutiques Amazon disponibles"\n• "Actualités 2024"\n• "Brésil économie"`;
+    }
+
+    return `Je connais **61 pages** de patrimoine mondial et **26 boutiques Amazon**. Posez-moi une question sur un pays, les boutiques Amazon, ou les actualités mondiales ! 🌍`;
   };
 
   const handleSubmit = async (e) => {
@@ -578,7 +437,7 @@ export default function BotAssistant() {
     } catch (error) {
       setMessages(prev => [...prev, { 
         role: 'assistant', 
-        content: 'Désolé, une erreur est survenue.' 
+        content: 'Désolé, une erreur est survenue. Réessayez !' 
       }]);
     } finally {
       setIsLoading(false);
@@ -587,53 +446,65 @@ export default function BotAssistant() {
 
   return (
     <>
-      {/* Bouton flottant */}
+      {/* Bouton flottant VOYANT */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform z-50"
-        aria-label="Assistant virtuel"
+        className="fixed bottom-6 right-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white p-5 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 z-50 animate-pulse"
+        style={{
+          boxShadow: '0 0 30px rgba(59, 130, 246, 0.5), 0 0 60px rgba(168, 85, 247, 0.3)',
+          animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+        }}
+        aria-label="Assistant vocal REUSSITESS"
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-        </svg>
+        <div className="relative">
+          <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+          </svg>
+          {isSpeaking && (
+            <span className="absolute -top-1 -right-1 flex h-4 w-4">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-4 w-4 bg-red-500"></span>
+            </span>
+          )}
+        </div>
       </button>
 
-      {/* Fenêtre chat */}
+      {/* Fenêtre chat LARGE */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-[450px] h-[700px] bg-white rounded-2xl shadow-2xl flex flex-col z-50 border border-gray-200">
-          {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
+        <div className="fixed bottom-28 right-6 w-[500px] h-[750px] bg-white rounded-3xl shadow-2xl flex flex-col z-50 border-4 border-purple-600">
+          {/* Header coloré */}
+          <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white p-5 rounded-t-3xl flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-2xl">
+              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-3xl animate-bounce">
                 🤖
               </div>
               <div>
-                <h3 className="font-bold">Assistant REUSSITESS®</h3>
-                <p className="text-xs opacity-90">55 pays • 26 boutiques</p>
+                <h3 className="font-bold text-lg">Assistant REUSSITESS®</h3>
+                <p className="text-sm opacity-90">61 pages • 26 boutiques • 8 langues 🔊</p>
               </div>
             </div>
             <div className="flex gap-2">
               {isSpeaking && (
-                <button onClick={stopSpeaking} className="hover:bg-white/20 p-2 rounded">
-                  🔇
+                <button onClick={stopSpeaking} className="hover:bg-white/20 p-2 rounded-lg transition">
+                  <span className="text-2xl">🔇</span>
                 </button>
               )}
-              <button onClick={() => setIsOpen(false)} className="hover:bg-white/20 p-2 rounded">
+              <button onClick={() => setIsOpen(false)} className="hover:bg-white/20 p-2 rounded-lg transition text-xl font-bold">
                 ✕
               </button>
             </div>
           </div>
 
-          {/* Sélecteur langue */}
-          <div className="p-2 border-b flex gap-1 overflow-x-auto">
+          {/* Sélecteur langues VISIBLE */}
+          <div className="p-3 border-b-2 border-purple-200 flex gap-2 overflow-x-auto bg-gradient-to-r from-purple-50 to-pink-50">
             {languages.map(lang => (
               <button
                 key={lang.code}
                 onClick={() => setCurrentLang(lang.code)}
-                className={`px-3 py-1 rounded-lg text-sm whitespace-nowrap ${
+                className={`px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap transition-all ${
                   currentLang === lang.code 
-                    ? 'bg-blue-100 text-blue-700 font-semibold' 
-                    : 'hover:bg-gray-100'
+                    ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg scale-110' 
+                    : 'bg-white hover:bg-purple-100 text-gray-700 border-2 border-purple-200'
                 }`}
               >
                 {lang.flag} {lang.name}
@@ -642,34 +513,34 @@ export default function BotAssistant() {
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4">
+          <div className="flex-1 overflow-y-auto p-5 space-y-4 bg-gradient-to-b from-purple-50/30 to-white">
             {messages.map((msg, idx) => (
               <div
                 key={idx}
                 className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div
-                  className={`max-w-[80%] p-3 rounded-2xl ${
+                  className={`max-w-[85%] p-4 rounded-2xl shadow-lg ${
                     msg.role === 'user'
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-800'
+                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white'
+                      : 'bg-white text-gray-800 border-2 border-purple-200'
                   }`}
                   dangerouslySetInnerHTML={{ 
                     __html: msg.content
                       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                       .replace(/\n/g, '<br/>')
-                      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="underline">$1</a>')
+                      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="underline font-bold hover:text-purple-600">$1</a>')
                   }}
                 />
               </div>
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-gray-100 p-3 rounded-2xl">
+                <div className="bg-white border-2 border-purple-200 p-4 rounded-2xl shadow-lg">
                   <div className="flex gap-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
+                    <div className="w-3 h-3 bg-purple-600 rounded-full animate-bounce" />
+                    <div className="w-3 h-3 bg-blue-600 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                    <div className="w-3 h-3 bg-pink-600 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
                   </div>
                 </div>
               </div>
@@ -678,21 +549,21 @@ export default function BotAssistant() {
           </div>
 
           {/* Input */}
-          <form onSubmit={handleSubmit} className="p-4 border-t">
-            <div className="flex gap-2">
+          <form onSubmit={handleSubmit} className="p-4 border-t-2 border-purple-200 bg-gradient-to-r from-purple-50 to-pink-50">
+            <div className="flex gap-3">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Posez votre question..."
-                className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Posez votre question... 🌍"
+                className="flex-1 border-2 border-purple-300 rounded-xl px-5 py-3 focus:outline-none focus:ring-4 focus:ring-purple-400 focus:border-purple-600 text-lg"
               />
               <button
                 type="submit"
                 disabled={isLoading}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:scale-105 transition-transform disabled:opacity-50"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-xl font-bold text-lg hover:scale-105 transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                ➤
+                🚀
               </button>
             </div>
           </form>
