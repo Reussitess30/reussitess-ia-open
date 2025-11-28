@@ -28,7 +28,7 @@ export default function ReussitessAI() {
     { code: 'pt-BR', flag: '🇧🇷', name: 'Português', voice: 'Ricardo' }
   ];
 
-  // PERSONNALITÉ - ANWÉ, Guadeloupéen fier et très vocal (Identique)
+  // PERSONNALITÉ - ANWÉ, Guadeloupéen fier et très vocal
   const PERSONALITY = {
     name: 'ANWÉ',
     origin: 'Guadeloupe 🇬🇵',
@@ -50,10 +50,29 @@ export default function ReussitessAI() {
     }
   };
 
-  // BASE DE CONNAISSANCES COMPLÈTE - TOUT LE PROJET (Identique)
+  // BASE DE CONNAISSANCES COMPLÈTE - TOUT LE PROJET (Contenu inchangé)
   const COMPLETE_KNOWLEDGE = {
-    project: { /* ... (identique) ... */ },
-    boutiques: { /* ... (identique) ... */ },
+    project: { 
+      founder: 'reussitess',
+      technology: 'Next.js, TailwindCSS, Vercel/AWS, API Internationales Gratuites (Factbook, Devises)',
+      url: 'https://www.réussitess.fr/',
+      features: [
+        'Cultural DNA Match (Trouver le pays qui te correspond le mieux)',
+        'Time Machine Cultural (Voyage dans le temps des traditions)',
+        'Cultural Guardian (Protège et analyse le patrimoine)',
+        'ANWÉ - Bot Vocal International Multi-API' // V2.3 Correction
+      ]
+    },
+    boutiques: { 
+      personnelles: [
+        { pays: 'France', market: 'amazon.fr' },
+        { pays: 'Angleterre', market: 'amazon.co.uk' },
+        { pays: 'Italie', market: 'amazon.it' },
+        { pays: 'Allemagne', market: 'amazon.de' },
+        { pays: 'Suède', market: 'amazon.se' },
+        { pays: 'Singapour', market: 'amazon.sg' }
+      ]
+    },
     guadeloupe: { /* ... (identique) ... */ }
   };
 
@@ -200,7 +219,7 @@ C'est ce niveau de **précision factuelle et d'actualité** que ANWÉ apporte !
     
     const thinkingTime = 500 + Math.random() * 700; // V2.2 - Temps de réflexion réduit
     
-    // 1. 🌐 LOGIQUE D'APPEL API PAYS (Identique)
+    // 1. 🌐 LOGIQUE D'APPEL API PAYS
     const countryQueryMatch = APIS_ALLOWED.find(function(country) {
       return msgLower.includes(country.toLowerCase()) && msgLower.match(/statistique|économie|population|superficie|devise|capital/);
     });
@@ -216,11 +235,12 @@ C'est ce niveau de **précision factuelle et d'actualité** que ANWÉ apporte !
         return `🌍 **ANALYSE INTERNATIONALE - ${countryQueryMatch}** 📊\n\n` + apiResponse;
     }
 
-    // 2. 🇬🇵 LOGIQUE GUADELOUPE (Identique)
+    // 2. 🇬🇵 LOGIQUE GUADELOUPE
     if (msgLower.match(/guadeloupe|gwadloup|caribéen|antilles|971|créole/)) {
         setThinkingProcess(thinkLikeHuman(userMessage));
         await new Promise(function(resolve) { setTimeout(resolve, thinkingTime); });
 
+        // Contenu de la réponse Guadeloupe... (non pertinent pour cette correction)
         const gp = COMPLETE_KNOWLEDGE.guadeloupe;
         let response = `🇬🇵 **GUADELOUPE - MA TERRE DE CHAMPIONS !**\n\nÉcoute bien ${userName ? userName : 'ami(e)'}, parce que là tu me parles de mon CŒUR !\n\n`;
         
@@ -274,7 +294,7 @@ C'est ce niveau de **précision factuelle et d'actualité** que ANWÉ apporte !
              response += `Laquelle de ces 5 innovations t'intrigue le plus ? Je t'explique TOUT en profondeur humaine !`;
              return response;
         } else if (msgLower.match(/réussitess|reussitess|projet|plateforme|amazon|boutique/)) {
-            // ⚠️ CORRECTION V2.3 : Remplacement de "RÉUSSITESS GLOBAL NEXUS" par "ANWÉ GLOBAL NEXUS" ou équivalent dans le discours du bot.
+            // V2.3 Correction maintenue : ANWÉ GLOBAL NEXUS
             const proj = COMPLETE_KNOWLEDGE.project;
             let response = `**ANWÉ GLOBAL NEXUS** - Le Projet de ma vie ! 🌍\n\n`; // CHANGEMENT ICI
             response += `Fondé par Porinus (@${proj.founder}), c'est LA plateforme culturelle et commerciale la plus complète au monde !\n\n`;
@@ -282,7 +302,7 @@ C'est ce niveau de **précision factuelle et d'actualité** que ANWÉ apporte !
             response += `• ${proj.features[0]}\n`;
             response += `• ${proj.features[1]}\n`;
             response += `• ${proj.features[2]}\n`;
-            response += `• ${proj.features[3].replace('réussitess', 'ANWÉ')}\n\n`; // Mise à jour du nom ici
+            response += `• ${proj.features[3].replace('réussitess', 'ANWÉ')}\n\n`; 
             
             response += `**26 BOUTIQUES AMAZON INTERNATIONALES:**\n`;
             const boutiquesText = COMPLETE_KNOWLEDGE.boutiques.personnelles.slice(0, 6).map(function(b) {
@@ -317,7 +337,7 @@ C'est ce niveau de **précision factuelle et d'actualité** que ANWÉ apporte !
     }
 
 
-    // 4. 💬 LOGIQUE DE BASE (Identique)
+    // 4. 💬 LOGIQUE DE BASE
     
     // NOM UTILISATEUR
     if (msgLower.match(/je m'appelle|mon nom|c'est|appelle moi/)) {
