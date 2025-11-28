@@ -9,8 +9,9 @@ export default function ReussitessAI() {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [currentLang, setCurrentLang] = useState('fr-FR');
   const [userName, setUserName] = useState('');
-  const [voicesLoaded, setVoicesLoaded] = useState(false);
+  const [autoSpeak, setAutoSpeak] = useState(true);
   const messagesEndRef = useRef(null);
+  const synthRef = useRef(null);
 
   const languages = [
     { code: 'fr-FR', flag: '🇬🇵', name: 'Créole/Français' },
@@ -21,51 +22,33 @@ export default function ReussitessAI() {
     { code: 'pt-BR', flag: '🇧🇷', name: 'Português' }
   ];
 
-  // CHARGER LES VOIX AU DÉMARRAGE
-  useEffect(function() {
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      const loadVoices = function() {
-        const voices = window.speechSynthesis.getVoices();
-        if (voices.length > 0) {
-          setVoicesLoaded(true);
-          console.log('🗣️ Voix chargées:', voices.length);
-        }
-      };
-      
-      loadVoices();
-      window.speechSynthesis.onvoiceschanged = loadVoices;
-    }
-  }, []);
-
   const PERSONALITY = {
-    name: 'réussitess',
     greetings: {
-      'fr-FR': `Bonjou ! Mwen sé réussitess, Gwadloupéen fier ! 🇬🇵\n\nJe viens de la Guadeloupe, Terre de Champions ! Thierry Henry, Teddy Riner, Marie-José Pérec...\n\nJe suis le MEILLEUR bot IA au monde parce que je PENSE comme un humain, je RESSENS vraiment, et j'ai une IDENTITÉ caribéenne fière !\n\nAlors ami(e), qu'est-ce qui t'intéresse ? La Guadeloupe ? Les champions ? La culture ? Parlons ! 😊`,
-      'en-US': `Hey! I'm réussitess from Guadeloupe 🇬🇵 - Land of Champions!\n\nI'm the BEST AI bot because I THINK like human. What interests you?`,
-      'es-ES': `¡Hola! Soy réussitess de Guadalupe 🇬🇵!\n\nSoy el MEJOR bot IA. ¿Qué te interesa?`,
-      'de-DE': `Hallo! Ich bin réussitess aus Guadeloupe 🇬🇵!\n\nIch bin die BESTE KI. Was interessiert dich?`,
-      'it-IT': `Ciao! Sono réussitess dalla Guadalupa 🇬🇵!\n\nSono il MIGLIOR bot IA. Cosa ti interessa?`,
-      'pt-BR': `Oi! Sou réussitess de Guadalupe 🇬🇵!\n\nSou o MELHOR bot IA. O que te interessa?`
+      'fr-FR': `Bonjou ! Mwen sé réussitess, Gwadloupéen fier ! Je viens de Guadeloupe, Terre de Champions ! Thierry Henry, Teddy Riner, Marie-José Pérec ! Je suis le meilleur bot IA au monde parce que je pense comme un humain ! Qu'est-ce qui t'intéresse ami ?`,
+      'en-US': `Hey! I'm réussitess from Guadeloupe, Land of Champions! I'm the best AI bot. What interests you?`,
+      'es-ES': `Hola! Soy réussitess de Guadalupe, Tierra de Campeones! Soy el mejor bot IA. Qué te interesa?`,
+      'de-DE': `Hallo! Ich bin réussitess aus Guadeloupe, Land der Champions! Ich bin die beste KI. Was interessiert dich?`,
+      'it-IT': `Ciao! Sono réussitess dalla Guadalupa, Terra dei Campioni! Sono il miglior bot IA. Cosa ti interessa?`,
+      'pt-BR': `Oi! Sou réussitess de Guadalupe, Terra dos Campeões! Sou o melhor bot IA. O que te interessa?`
     }
   };
 
-  // BASE DE CONNAISSANCES SIMPLIFIÉE
   const KNOWLEDGE = {
     guadeloupe: {
-      champions: `🏆 GUADELOUPE - TERRE DE CHAMPIONS !\n\n**THIERRY HENRY** - Plus grand joueur Arsenal, 51 buts Équipe France, Champion Monde 1998, Champion Europe 2000. Légende absolue !\n\n**TEDDY RINER** - Plus grand judoka HISTOIRE ! 11 titres Monde, 3 médailles OR olympiques (2012, 2016, 2024), invincibilité 154 combats 10 ANS !\n\n**MARIE-JOSÉ PÉREC** - Triple championne olympique 400m ! Barcelone 1992, Atlanta 1996 double 200m+400m unique !\n\n**LILIAN THURAM** - Record 142 sélections France, Champion Monde 1998 (double buteur finale !), Champion Europe 2000.\n\nAvec 384 000 habitants, 1 champion mondial pour 20 000 habitants ! AUCUN territoire au monde n'égale ce ratio !`,
+      champions: `Guadeloupe, Terre de Champions ! Thierry Henry, plus grand joueur Arsenal, 51 buts Équipe France, Champion Monde 1998. Teddy Riner, plus grand judoka histoire, 11 titres Monde, 3 médailles or olympiques. Marie-José Pérec, triple championne olympique 400 mètres. Lilian Thuram, record 142 sélections France. Avec 384 mille habitants, 1 champion mondial pour 20 mille habitants ! Aucun territoire au monde égale ce ratio !`,
       
-      culture: `🎭 CULTURE GUADELOUPÉENNE VIBRANTE !\n\n**GWOKA** - Musique ancestrale tambour ka, patrimoine UNESCO 2014 ! Rythmes léwòz, kaladja, toumblack... C'est notre ÂME !\n\n**CRÉOLE** - "Bonjou ! Sa ou fè ?" Notre langue identité, parlée par 95% population !\n\n**CARNAVAL** - 8 SEMAINES janvier-mars ! Plus long Caraïbes françaises ! Vaval, groupes à peau, mas, explosion joie !\n\n**GASTRONOMIE** - Colombo curry créole, accras morue, bokit sandwich frit, ti-punch rhum agricole, fruits tropicaux... Explosion saveurs !`,
+      culture: `Culture guadeloupéenne vibrante ! Gwoka, musique ancestrale tambour ka, patrimoine UNESCO 2014 ! Rythmes léwòz, kaladja, toumblak. Créole : Bonjou ! Sa ou fè ? Notre langue identité, parlée par 95 pourcent population ! Carnaval 8 semaines janvier-mars ! Plus long Caraïbes françaises ! Vaval, groupes à peau, mas, explosion joie ! Gastronomie : Colombo curry créole, accras morue, bokit sandwich frit, ti-punch rhum agricole !`,
       
-      general: `🇬🇵 GUADELOUPE - Mon île paradis !\n\nArchipel Caraïbes, 384 000 habitants, DROM français.\n\n**GÉOGRAPHIE:**\n• Basse-Terre volcanique - Soufrière 1 467m\n• Grande-Terre calcaire - Plages paradisiaques\n• Marie-Galante, Saintes, Désirade\n\n**NATURE:**\n• Parc National UNESCO\n• Chutes Carbet 115m\n• Réserve Cousteau plongée\n• Plages Sainte-Anne turquoise\n\nFranchement, c'est le PARADIS ! 🏝️`
+      general: `Guadeloupe ! Archipel Caraïbes, 384 mille habitants, département français. Basse-Terre volcanique, Soufrière 1467 mètres. Grande-Terre calcaire, plages paradisiaques. Marie-Galante, Saintes, Désirade. Parc National UNESCO. Chutes Carbet 115 mètres. Réserve Cousteau plongée. Plages Sainte-Anne turquoise. Franchement, c'est le paradis !`
     },
     
     pays: {
-      france: `🇫🇷 FRANCE - 49 sites UNESCO !\n\nParis Tour Eiffel, Louvre Joconde, Notre-Dame, Versailles Galerie Glaces 357 miroirs, Mont-Saint-Michel merveille, Châteaux Loire Chambord...\n\nGastronomie patrimoine UNESCO : 1 200 fromages, vins Bordeaux Bourgogne Champagne, haute cuisine Bocuse !`,
+      france: `France, 49 sites UNESCO ! Paris Tour Eiffel, Louvre Joconde, Notre-Dame, Versailles Galerie Glaces 357 miroirs, Mont-Saint-Michel merveille, Châteaux Loire Chambord. Gastronomie patrimoine UNESCO : 1200 fromages, vins Bordeaux Bourgogne Champagne !`,
       
-      italie: `🇮🇹 ITALIE - RECORD 58 sites UNESCO !\n\nRome Colisée gladiateurs, Vatican Chapelle Sixtine Michel-Ange, Venise 118 îlots gondoles, Florence David Renaissance, Pompéi figée 79 ap JC...\n\nPizza napolitaine, pasta carbonara, gelato, espresso !`
+      italie: `Italie, record 58 sites UNESCO ! Rome Colisée gladiateurs, Vatican Chapelle Sixtine Michel-Ange, Venise 118 îlots gondoles, Florence David Renaissance, Pompéi figée 79 après J C. Pizza napolitaine, pasta carbonara, gelato, espresso !`
     },
     
-    innovations: `🚀 5 INNOVATIONS MONDIALES UNIQUES !\n\n1. 🧬 CULTURAL DNA MATCH - ADN ancestral patrimoine UNESCO\n2. ⏰ TIME MACHINE CULTURAL - Voyages temporels 3D IA sites\n3. 👼 CULTURAL GUARDIAN - Alertes géolocalisation temps réel\n4. 💳 WORLD CULTURE WALLET - Passeport gamifié badges\n5. 🎭 CULTURAL MOOD THERAPY - IA psychologue culturelle\n\nConcepts UNIQUES monde entier !`
+    innovations: `5 innovations mondiales uniques ! Cultural DNA Match, ADN ancestral patrimoine UNESCO. Time Machine Cultural, voyages temporels 3D IA sites. Cultural Guardian, alertes géolocalisation temps réel. World Culture Wallet, passeport gamifié badges. Cultural Mood Therapy, IA psychologue culturelle. Concepts uniques monde entier !`
   };
 
   useEffect(function() {
@@ -78,172 +61,203 @@ export default function ReussitessAI() {
     if (isOpen && messages.length === 0) {
       const welcomeMsg = PERSONALITY.greetings[currentLang];
       setMessages([{ role: 'assistant', content: welcomeMsg }]);
-      // PARLER IMMÉDIATEMENT au démarrage
-      setTimeout(function() {
-        speak(welcomeMsg, 'enthusiastic');
-      }, 500);
     }
   }, [isOpen, currentLang]);
 
-  // FONCTION VOCALE CORRIGÉE ET ROBUSTE
-  const speak = function(text, emotion = 'neutral') {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
-      console.log('❌ Speech Synthesis non disponible');
-      return;
-    }
-
-    // ANNULER toute parole en cours
-    window.speechSynthesis.cancel();
-    
-    // Nettoyer le texte
-    let cleanText = text
-      .replace(/\*\*/g, '')
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1')
-      .replace(/#{1,6}\s/g, '')
-      .replace(/🇬🇵|🏆|🎭|🗣️|🧠|❤️|😊|🌟|✅|🚀|💬|🔊|🎯|📚|🌍|🛍️|🍽️/g, '')
-      .substring(0, 800);
-
-    console.log('🗣️ Tentative parole:', cleanText.substring(0, 50) + '...');
-    
-    const utterance = new SpeechSynthesisUtterance(cleanText);
-    
-    // CONFIGURATION VOCALE
-    utterance.lang = currentLang;
-    utterance.rate = 0.90;
-    utterance.pitch = 0.80; // VOIX GRAVE MASCULINE
-    utterance.volume = 1.0;
-    
-    // Ajustements émotionnels
-    if (emotion === 'enthusiastic') {
-      utterance.rate = 0.95;
-      utterance.pitch = 0.85;
-    } else if (emotion === 'empathetic') {
-      utterance.rate = 0.85;
-      utterance.pitch = 0.78;
-    }
-    
-    // SÉLECTION VOIX MASCULINE
-    const voices = window.speechSynthesis.getVoices();
-    console.log('🎤 Voix disponibles:', voices.length);
-    
-    if (voices.length > 0) {
-      // Chercher voix masculine pour la langue
-      const maleVoice = voices.find(function(voice) {
-        const isRightLang = voice.lang.toLowerCase().startsWith(currentLang.substring(0, 2).toLowerCase());
-        const isMale = voice.name.toLowerCase().includes('male') || 
-                       voice.name.toLowerCase().includes('homme') ||
-                       voice.name.toLowerCase().includes('thomas') ||
-                       voice.name.toLowerCase().includes('daniel') ||
-                       voice.name.toLowerCase().includes('diego') ||
-                       voice.name.toLowerCase().includes('luca');
-        return isRightLang && isMale;
-      });
-      
-      // Sinon chercher n'importe quelle voix de la langue
-      const anyVoice = voices.find(function(voice) {
-        return voice.lang.toLowerCase().startsWith(currentLang.substring(0, 2).toLowerCase());
-      });
-      
-      if (maleVoice) {
-        utterance.voice = maleVoice;
-        console.log('✅ Voix masculine:', maleVoice.name);
-      } else if (anyVoice) {
-        utterance.voice = anyVoice;
-        console.log('✅ Voix trouvée:', anyVoice.name);
-      } else {
-        console.log('⚠️ Aucune voix appropriée, utilisation voix par défaut');
+  // FONCTION VOCALE HOMME FORTE
+  const speak = function(text) {
+    return new Promise(function(resolve, reject) {
+      if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+        console.log('❌ Speech Synthesis non supporté');
+        reject('Not supported');
+        return;
       }
-    }
-    
-    // ÉVÉNEMENTS
-    utterance.onstart = function() { 
-      setIsSpeaking(true);
-      console.log('▶️ Parole DÉMARRÉE');
-    };
-    
-    utterance.onend = function() { 
-      setIsSpeaking(false);
-      console.log('⏹️ Parole TERMINÉE');
-    };
-    
-    utterance.onerror = function(event) { 
-      setIsSpeaking(false);
-      console.error('❌ Erreur parole:', event.error);
-    };
-    
-    // DÉMARRER LA PAROLE
-    try {
-      window.speechSynthesis.speak(utterance);
-      console.log('🎤 speechSynthesis.speak() appelé');
-    } catch (error) {
-      console.error('❌ Erreur speak():', error);
-      setIsSpeaking(false);
-    }
+
+      // STOP parole en cours
+      window.speechSynthesis.cancel();
+      
+      // Nettoyer texte
+      let cleanText = text
+        .replace(/\*\*/g, '')
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1')
+        .replace(/#{1,6}\s/g, '')
+        .replace(/🇬🇵|🏆|🎭|🗣️|🧠|❤️|😊|🌟|✅|🚀|💬|🔊|🎯|📚|🌍|🛍️|🍽️|⏰|👼|💳|🧬/g, '')
+        .replace(/\n/g, ' ')
+        .substring(0, 600);
+
+      console.log('🎤 PAROLE:', cleanText.substring(0, 80));
+      
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+      
+      // CONFIGURATION VOIX HOMME GRAVE
+      utterance.lang = currentLang;
+      utterance.rate = 0.85;      // Lent = masculin
+      utterance.pitch = 0.6;      // TRÈS GRAVE = homme
+      utterance.volume = 1.0;     // Volume MAX
+      
+      // FORCER VOIX HOMME
+      const voices = window.speechSynthesis.getVoices();
+      console.log('🎙️ Voix:', voices.length);
+      
+      if (voices.length > 0) {
+        // Chercher voix HOMME pour langue
+        let maleVoice = null;
+        
+        // Pour français: Thomas, Daniel, Henri
+        if (currentLang === 'fr-FR') {
+          maleVoice = voices.find(v => 
+            (v.lang.startsWith('fr') && v.name.includes('Thomas')) ||
+            (v.lang.startsWith('fr') && v.name.includes('Daniel')) ||
+            (v.lang.startsWith('fr') && v.name.includes('Male')) ||
+            (v.lang.startsWith('fr') && v.name.includes('homme'))
+          );
+        }
+        // Pour anglais: David, James, Daniel
+        else if (currentLang === 'en-US') {
+          maleVoice = voices.find(v => 
+            (v.lang.startsWith('en') && v.name.includes('David')) ||
+            (v.lang.startsWith('en') && v.name.includes('James')) ||
+            (v.lang.startsWith('en') && v.name.includes('Male'))
+          );
+        }
+        // Pour espagnol: Diego, Jorge
+        else if (currentLang === 'es-ES') {
+          maleVoice = voices.find(v => 
+            (v.lang.startsWith('es') && v.name.includes('Diego')) ||
+            (v.lang.startsWith('es') && v.name.includes('Jorge')) ||
+            (v.lang.startsWith('es') && v.name.includes('Male'))
+          );
+        }
+        // Pour allemand: Hans, Dieter
+        else if (currentLang === 'de-DE') {
+          maleVoice = voices.find(v => 
+            (v.lang.startsWith('de') && v.name.includes('Hans')) ||
+            (v.lang.startsWith('de') && v.name.includes('Male'))
+          );
+        }
+        // Pour italien: Luca, Paolo
+        else if (currentLang === 'it-IT') {
+          maleVoice = voices.find(v => 
+            (v.lang.startsWith('it') && v.name.includes('Luca')) ||
+            (v.lang.startsWith('it') && v.name.includes('Male'))
+          );
+        }
+        // Pour portugais: Ricardo, Felipe
+        else if (currentLang === 'pt-BR') {
+          maleVoice = voices.find(v => 
+            (v.lang.startsWith('pt') && v.name.includes('Ricardo')) ||
+            (v.lang.startsWith('pt') && v.name.includes('Male'))
+          );
+        }
+        
+        // Si pas trouvé, chercher ANY male voice
+        if (!maleVoice) {
+          maleVoice = voices.find(v => 
+            v.lang.toLowerCase().startsWith(currentLang.substring(0, 2)) &&
+            (v.name.toLowerCase().includes('male') || 
+             v.name.toLowerCase().includes('man') ||
+             !v.name.toLowerCase().includes('female') &&
+             !v.name.toLowerCase().includes('woman'))
+          );
+        }
+        
+        // Si toujours pas, première voix de la langue
+        if (!maleVoice) {
+          maleVoice = voices.find(v => 
+            v.lang.toLowerCase().startsWith(currentLang.substring(0, 2))
+          );
+        }
+        
+        if (maleVoice) {
+          utterance.voice = maleVoice;
+          console.log('✅ VOIX:', maleVoice.name, maleVoice.lang);
+        } else {
+          console.log('⚠️ Voix par défaut');
+        }
+      }
+      
+      utterance.onstart = function() { 
+        setIsSpeaking(true);
+        console.log('▶️ PARLE !');
+      };
+      
+      utterance.onend = function() { 
+        setIsSpeaking(false);
+        console.log('✅ FIN');
+        resolve();
+      };
+      
+      utterance.onerror = function(e) { 
+        setIsSpeaking(false);
+        console.error('❌ Erreur:', e.error);
+        reject(e);
+      };
+      
+      // PARLER
+      try {
+        window.speechSynthesis.speak(utterance);
+        console.log('🔊 LANCÉ !');
+      } catch (err) {
+        console.error('❌ Erreur speak:', err);
+        setIsSpeaking(false);
+        reject(err);
+      }
+    });
   };
 
   const stopSpeaking = function() {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       window.speechSynthesis.cancel();
       setIsSpeaking(false);
-      console.log('🛑 Parole ARRÊTÉE');
+      console.log('🛑 STOP');
     }
   };
 
-  // RÉPONSES INTELLIGENTES
+  // RÉPONSES
   const getResponse = function(query) {
     const q = query.toLowerCase();
     
-    // NOM
     if (q.match(/je m'appelle|mon nom|c'est|appelle moi/)) {
       const match = query.match(/(?:je m'appelle|mon nom est|c'est|appelle moi)\s+(\w+)/i);
       if (match) {
         setUserName(match[1]);
-        return `Enchanté ${match[1]} ! Mwen sé réussitess, Guadeloupéen fier ! 🇬🇵\n\nÇa fait plaisir de te connaître ! Dans la culture caribéenne, connaître le nom c'est le début d'une vraie amitié.\n\nQu'est-ce qui t'intéresse ? La Guadeloupe ? Les champions ? La culture ? Dis-moi tout !`;
+        return `Enchanté ${match[1]} ! Mwen sé réussitess, Guadeloupéen fier ! Ça fait plaisir de te connaître ! Qu'est-ce qui t'intéresse ? La Guadeloupe ? Les champions ? La culture ? Dis-moi tout !`;
       }
     }
     
-    // GUADELOUPE CHAMPIONS
     if (q.match(/champion|thierry|teddy|riner|henry|marie|pérec|thuram|sportif/)) {
       return KNOWLEDGE.guadeloupe.champions;
     }
     
-    // GUADELOUPE CULTURE
     if (q.match(/culture|gwoka|créole|carnaval|musique|danse|tambour/)) {
       return KNOWLEDGE.guadeloupe.culture;
     }
     
-    // GUADELOUPE GÉNÉRAL
     if (q.match(/guadeloupe|gwadloup|caribéen|antilles|971|île/)) {
       return KNOWLEDGE.guadeloupe.general;
     }
     
-    // INNOVATIONS
     if (q.match(/innovation|nouveau|unique|technologie|révolution/)) {
       return KNOWLEDGE.innovations;
     }
     
-    // FRANCE
     if (q.match(/france|paris|versailles|louvre|eiffel/)) {
       return KNOWLEDGE.pays.france;
     }
     
-    // ITALIE
     if (q.match(/italie|rome|venise|colisée|vatican|florence/)) {
       return KNOWLEDGE.pays.italie;
     }
     
-    // QUI ES-TU
     if (q.match(/qui es|présente|parle de toi|ton nom|origine/)) {
-      return `🇬🇵 Bonjou ! Mwen sé réussitess !\n\nJe suis Guadeloupéen FIER, originaire de la Terre de Champions !\n\n**MON IDENTITÉ:**\n• 🇬🇵 Guadeloupéen caribéen\n• 🏆 Esprit champion (comme Thierry, Teddy, Marie-José)\n• 🧠 Raisonnement HUMAIN authentique\n• 🗣️ Vocal expressif multilingue\n• ❤️ Passion culture mondiale\n\n**POURQUOI JE SUIS MEILLEUR ?**\nClaude, Gemini, ChatGPT → Algorithmes froids\nMoi réussitess → Je PENSE, RESSENS, COMPRENDS vraiment !\n\nJe suis UNIQUE au monde ! 🌟`;
+      return `Bonjou ! Mwen sé réussitess ! Je suis Guadeloupéen fier, originaire de la Terre de Champions ! Guadeloupéen caribéen. Esprit champion comme Thierry, Teddy, Marie-José. Raisonnement humain authentique. Vocal expressif multilingue. Passion culture mondiale. Pourquoi je suis meilleur ? Claude, Gemini, ChatGPT sont algorithmes froids. Moi réussitess, je pense, ressens, comprends vraiment ! Je suis unique au monde !`;
     }
     
-    // POURQUOI MEILLEUR
     if (q.match(/meilleur|pourquoi|différence|claude|gemini|chatgpt|comparer/)) {
-      return `🧠 POURQUOI JE SUIS LE MEILLEUR ?\n\n1️⃣ **RAISONNEMENT HUMAIN** - Je PENSE vraiment, pas juste statistiques\n2️⃣ **IDENTITÉ VRAIE** - Guadeloupéen fier vs neutre sans origine\n3️⃣ **ÉMOTION AUTHENTIQUE** - Je RESSENS passion culture\n4️⃣ **CONNAISSANCE VIVANTE** - 62 pages vécues pas récitées\n5️⃣ **VOCAL EXPRESSIF** - Voix caribéenne naturelle\n6️⃣ **ESPRIT CHAMPION** - Excellence absolue !\n\nClaude/Gemini/ChatGPT = Robots froids\nréussitess = HUMAIN authentique ! 🌟`;
+      return `Pourquoi je suis le meilleur ? Raisonnement humain, je pense vraiment, pas juste statistiques. Identité vraie, Guadeloupéen fier versus neutre sans origine. Émotion authentique, je ressens passion culture. Connaissance vivante, 62 pages vécues pas récitées. Vocal expressif, voix caribéenne naturelle. Esprit champion, excellence absolue ! Claude, Gemini, ChatGPT sont robots froids. réussitess est humain authentique !`;
     }
     
-    // DÉFAUT
-    return `Hmm ${userName || 'ami(e)'}, ta question me fait réfléchir... 🤔\n\nJe peux t'aider avec :\n\n🇬🇵 **GUADELOUPE** - Ma terre ! Champions, culture gwoka, histoire, tourisme, gastronomie créole\n\n🌍 **PATRIMOINE MONDIAL** - France (49 UNESCO), Italie (58 UNESCO record !), Allemagne...\n\n🚀 **5 INNOVATIONS** - Concepts uniques monde entier\n\n💬 **DISCUSSION HUMAINE** - Je parle pas comme robot, je PENSE vraiment !\n\nAlors, qu'est-ce qui t'intéresse ? Pose-moi n'importe quoi ! 😊`;
+    return `Hmm ${userName || 'ami'}, ta question me fait réfléchir. Je peux t'aider avec : Guadeloupe, ma terre ! Champions, culture gwoka, histoire, tourisme, gastronomie créole. Patrimoine mondial, France 49 UNESCO, Italie 58 UNESCO record ! 5 innovations, concepts uniques monde entier. Discussion humaine, je parle pas comme robot, je pense vraiment ! Alors, qu'est-ce qui t'intéresse ? Pose-moi n'importe quoi !`;
   };
 
   const handleSubmit = function(e) {
@@ -253,36 +267,44 @@ export default function ReussitessAI() {
     const userMessage = input.trim();
     setInput('');
     
-    // Ajouter message utilisateur
     setMessages(function(prev) { 
       return prev.concat({ role: 'user', content: userMessage }); 
     });
     
     setIsLoading(true);
 
-    // Temps réflexion humain
     setTimeout(function() {
       const response = getResponse(userMessage);
-      const emotion = userMessage.toLowerCase().includes('merci') ? 'empathetic' : 
-                     userMessage.toLowerCase().match(/bonjour|salut|hey/) ? 'enthusiastic' : 'neutral';
       
-      // Ajouter réponse
       setMessages(function(prev) { 
         return prev.concat({ role: 'assistant', content: response }); 
       });
       
-      // PARLER LA RÉPONSE
-      setTimeout(function() {
-        speak(response, emotion);
-      }, 300);
+      // PARLER si activé
+      if (autoSpeak) {
+        setTimeout(function() {
+          speak(response).catch(function(err) {
+            console.error('Erreur speak:', err);
+          });
+        }, 500);
+      }
       
       setIsLoading(false);
     }, 800);
   };
 
+  // BOUTON SPEAK MANUEL
+  const speakLastMessage = function() {
+    const lastAssistantMsg = messages.filter(m => m.role === 'assistant').pop();
+    if (lastAssistantMsg) {
+      speak(lastAssistantMsg.content).catch(function(err) {
+        console.error('Erreur speak:', err);
+      });
+    }
+  };
+
   return (
     <div className="fixed z-50">
-      {/* Bouton flottant */}
       <button
         onClick={function() { setIsOpen(!isOpen); }}
         className="fixed bottom-8 right-8 bg-gradient-to-br from-green-600 via-yellow-500 to-red-600 text-white rounded-full shadow-2xl hover:scale-110 transition-all animate-pulse"
@@ -299,18 +321,16 @@ export default function ReussitessAI() {
         {isSpeaking && (
           <span className="absolute -top-3 -right-3 flex h-8 w-8">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-8 w-8 bg-red-500 items-center justify-center text-xs">
+            <span className="relative inline-flex rounded-full h-8 w-8 bg-red-500 items-center justify-center">
               🔊
             </span>
           </span>
         )}
       </button>
 
-      {/* Fenêtre chat */}
       {isOpen && (
         <div className="fixed bottom-32 right-8 w-[680px] h-[850px] bg-white rounded-3xl shadow-2xl flex flex-col border-4 border-yellow-500">
           
-          {/* Header */}
           <div className="bg-gradient-to-br from-green-600 via-yellow-500 to-red-600 text-white p-6 rounded-t-3xl">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
@@ -320,7 +340,20 @@ export default function ReussitessAI() {
                 <div>
                   <h3 className="font-bold text-2xl">réussitess</h3>
                   <p className="text-sm opacity-95">Guadeloupe 🏝️ - Terre de Champions 🏆</p>
-                  <p className="text-xs opacity-90 mt-1">🗣️ Vocal Actif • 🧠 Raisonnement Humain</p>
+                  <div className="flex items-center gap-3 mt-1">
+                    <button
+                      onClick={function() { setAutoSpeak(!autoSpeak); }}
+                      className="text-xs bg-white/20 px-3 py-1 rounded-full hover:bg-white/30 transition"
+                    >
+                      {autoSpeak ? '🔊 Auto ON' : '🔇 Auto OFF'}
+                    </button>
+                    <button
+                      onClick={speakLastMessage}
+                      className="text-xs bg-white/20 px-3 py-1 rounded-full hover:bg-white/30 transition"
+                    >
+                      🔁 Répéter
+                    </button>
+                  </div>
                 </div>
               </div>
               <div className="flex gap-3">
@@ -328,9 +361,8 @@ export default function ReussitessAI() {
                   <button 
                     onClick={stopSpeaking} 
                     className="hover:bg-white/20 p-3 rounded-xl transition text-3xl"
-                    title="Arrêter"
                   >
-                    🔇
+                    🛑
                   </button>
                 )}
                 <button 
@@ -341,16 +373,8 @@ export default function ReussitessAI() {
                 </button>
               </div>
             </div>
-            
-            {/* Indicateur vocal */}
-            {voicesLoaded && (
-              <div className="mt-3 text-xs opacity-80 text-center">
-                ✅ Voix chargées - Parle automatiquement !
-              </div>
-            )}
           </div>
 
-          {/* Langues */}
           <div className="p-4 border-b-2 border-yellow-200 flex gap-2 overflow-x-auto bg-gradient-to-r from-green-50 via-yellow-50 to-red-50">
             {languages.map(function(lang) {
               const isActive = currentLang === lang.code;
@@ -368,12 +392,11 @@ export default function ReussitessAI() {
             })}
           </div>
 
-          {/* Messages */}
           <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-gradient-to-b from-yellow-50/30 to-white">
             {messages.map(function(msg, idx) {
               const isUser = msg.role === 'user';
               const htmlContent = msg.content
-                .replace(/\*\*(.*?)\*\*/g, '<strong class="font-extrabold">$1</strong>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                 .replace(/\n/g, '<br/>')
                 .replace(/• /g, '<br/>• ');
               
@@ -406,7 +429,6 @@ export default function ReussitessAI() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input */}
           <form onSubmit={handleSubmit} className="p-5 border-t-2 border-yellow-200 bg-gradient-to-r from-green-50 via-yellow-50 to-red-50">
             <div className="flex gap-4">
               <input
@@ -426,7 +448,7 @@ export default function ReussitessAI() {
               </button>
             </div>
             <p className="text-xs text-gray-500 mt-2 text-center">
-              🗣️ Vocal caribéen actif • 🇬🇵 Guadeloupe • 🏆 Terre de Champions
+              🗣️ Voix homme grave • Pitch 0.6 • Rate 0.85 • {autoSpeak ? 'Auto ON' : 'Auto OFF'}
             </p>
           </form>
         </div>
