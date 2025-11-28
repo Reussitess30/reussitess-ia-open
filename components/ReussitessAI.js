@@ -2,7 +2,8 @@
 import { useState, useEffect, useRef } from 'react';
 
 // ====================================================================
-// ANWÉ V3.0 - BOT IA EXPERT CULTUREL ET GÉOPOLITIQUE
+// ANWÉ V3.1 - BOT IA EXPERT CULTUREL ET GÉOPOLITIQUE
+// Ajout du Responsive Design (Pleine page sur mobile)
 // ====================================================================
 
 export default function ReussitessAI() {
@@ -39,11 +40,11 @@ export default function ReussitessAI() {
     motto: 'Terre de Champions',
     greetings: {
       'fr-FR': `ANWÉ ! Mwen sé **ANWÉ**, ton guide culturel et géopolitique ! 🇬🇵\n\nJe suis l'IA de **réussitess.fr**. Mon travail est d'utiliser mon **Raisonnement Humain** et mes **APIs Internationales Gratuites** pour t'éclairer sur le **rapprochement culturel mondial** et les réalités factuelles de nos **14 pays**.\n\nDemande-moi : "Quelle est la vision de réussitess ?", les statistiques du Canada, ou pourquoi l'Italie est un champion du patrimoine ! 😊`,
-      'en-US': `ANWÉ! I'm ANWÉ, your cultural and geopolitical guide! 🇬🇵 I use **Human Reasoning** and **Free International APIs** for facts on our **14 countries**. Ask me anything about the **réussitess** concept!`,
-      'es-ES': `¡ANWÉ! Soy ANWÉ, tu guía cultural y geopolítico! 🇬🇵 Utilizo **APIs Internacionales Gratuitas** para hechos sobre nuestros **14 países**. Pregúntame sobre el concepto réussitess!`,
-      'de-DE': `ANWÉ! Ich bin ANWÉ, Ihr kultureller und geopolitischer Experte! 🇬🇵 Ich nutze **kostenlose internationale APIs** für Fakten zu unseren **14 Ländern**. Fragen Sie mich nach dem réussitess-Konzept!`,
-      'it-IT': `ANWÉ! Sono ANWÉ, la tua guida culturale e geopolitica! 🇬🇵 Utilizzo **API Internazionali Gratuite** per dati sui nostri **14 paesi**. Chiedimi del concetto réussitess!`,
-      'pt-BR': `ANWÉ! Eu sou ANWÉ, seu guia cultural e geopolítico! 🇬🇵 Eu uso **APIs Internacionais Gratuitas** para fatos sobre nossos **14 países**. Pergunte-me sobre o conceito réussitess!`
+      'en-US': `Hello! I'm ANWÉ, your cultural and geopolitical guide! 🇬🇵 I use **Human Reasoning** and **Free International APIs** for facts on our **14 countries**. Ask me anything about the **réussitess** concept!`,
+      'es-ES': `¡Hola! Soy ANWÉ, tu experto cultural mundial RÉUSSITESS! Conozco 62 países, 26 tiendas Amazon. ¿Qué quieres descubrir?`,
+      'de-DE': `Hallo! Ich bin ANWÉ, Ihr RÉUSSITESS Weltkulturexperte! Ich kenne 62 Länder, 26 Amazon-Läden. Was möchten Sie entdecken?`,
+      'it-IT': `Ciao! Sono ANWÉ, il tuo esperto culturale mondiale RÉUSSITESS! Conosco 62 paesi, 26 negozi Amazon. Cosa vuoi scoprire?`,
+      'pt-BR': `Olá! Sou ANWÉ, seu especialista cultural mundial RÉUSSITESS! Conheço 62 países, 26 lojas Amazon. O que você quer descobrir?`
     }
   };
 
@@ -83,7 +84,7 @@ export default function ReussitessAI() {
     }
   }, [isOpen, currentLang]);
 
-  // 🗣️ FONCTION VOCALE (CORRIGÉE : Pitch 0.82 pour voix Guadeloupéenne)
+  // 🗣️ FONCTION VOCALE (Pitch 0.82 pour voix Guadeloupéenne)
   const speak = function(text, emotion = 'neutral') {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       window.speechSynthesis.cancel();
@@ -135,7 +136,7 @@ export default function ReussitessAI() {
     }
   };
 
-  // 🧠 RAISONNEMENT HUMAIN PROFOND (Amélioré)
+  // 🧠 RAISONNEMENT HUMAIN PROFOND
   const thinkLikeHuman = function(query) {
     const thinking = [];
     const queryLower = query.toLowerCase();
@@ -144,7 +145,7 @@ export default function ReussitessAI() {
       thinking.push("💡 Détection: Question sur l'ADN du projet réussitess ! Activation de l'Expertise Culturelle.");
     }
     if (queryLower.match(/api|international|statistique|économie|pays/)) {
-      thinking.push("🌐 Détection: Données factuelles requises. Préparation de l'appel aux API Internationales Gratuites.");
+      thinking.push("🌐 Détection: Données factuelles requises. Préparation de l'appel aux APIs Internationales Gratuites.");
     }
     if (queryLower.match(/guadeloupe|antilles|champion|gwoka/)) {
       thinking.push("🇬🇵 Détection: Ma fierté ! Injection de la passion caribéenne et des données locales.");
@@ -363,7 +364,7 @@ C'est ce niveau de **précision factuelle ET culturelle** que ANWÉ apporte pour
 
   return (
     <div className="fixed z-50">
-      {/* Bouton flottant ANWÉ */}
+      {/* Bouton flottant ANWÉ (positionnement inchangé) */}
       <button
         onClick={function() { setIsOpen(!isOpen); }}
         className="fixed bottom-8 right-8 bg-gradient-to-br from-green-600 via-yellow-500 to-red-600 text-white rounded-full shadow-2xl hover:scale-110 transition-all animate-pulse"
@@ -387,12 +388,18 @@ C'est ce niveau de **précision factuelle ET culturelle** que ANWÉ apporte pour
         )}
       </button>
 
-      {/* Fenêtre chat */}
+      {/* Fenêtre chat (CORRECTION: Responsive Design) */}
       {isOpen && (
-        <div className="fixed bottom-32 right-8 w-[680px] h-[900px] bg-white rounded-3xl shadow-2xl flex flex-col border-4 border-yellow-500">
+        <div 
+            // CORRECTION: Pleine page sur mobile (inset-0 w-full h-full)
+            // et dimension fixe sur les grands écrans (lg:bottom-32 lg:right-8 lg:w-[680px] lg:h-[900px])
+            className="fixed inset-0 w-full h-full 
+                       lg:bottom-32 lg:right-8 lg:w-[680px] lg:h-[900px] 
+                       bg-white rounded-none lg:rounded-3xl shadow-2xl flex flex-col border-4 border-yellow-500"
+        >
           
           {/* Header Guadeloupéen */}
-          <div className="bg-gradient-to-br from-green-600 via-yellow-500 to-red-600 text-white p-6 rounded-t-3xl">
+          <div className="bg-gradient-to-br from-green-600 via-yellow-500 to-red-600 text-white p-6 rounded-t-none lg:rounded-t-3xl">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center text-5xl shadow-lg border-4 border-yellow-400">
