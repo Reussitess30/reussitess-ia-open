@@ -710,3 +710,4 @@ export default function BotAssistant() {
 
 
 
+// [DEBUG] Dernière tentative de modification par commande
