@@ -33,6 +33,22 @@ export default function BotAssistant() {
 
   // BASE DE CONNAISSANCES COMPLÈTE - 55 PAGES
   const knowledgeBase = {
+    // NOUVEAU : BASE DE CONNAISSANCES RÉGIONALES
+    'region-europe': {
+      titre: 'Pays de la région Europe',
+      contenu: 'La bibliothèque mondiale REUSSITESS® couvre la **France, l’Angleterre, l’Italie, l’Allemagne, l’Espagne, et la Suède**. Pour en savoir plus, tapez le nom d’un de ces pays.',
+      motsCles: 'europe, e-u, ue, union européenne, est, ouest, pays européens'
+    },
+    'region-asie-pacifique': {
+      titre: 'Pays de la région Asie-Pacifique',
+      contenu: 'Nous avons des fiches complètes pour **Singapour, l’Australie, la Nouvelle-Zélande, et l’Inde**. Ces pays sont essentiels à notre stratégie logistique.',
+      motsCles: 'asie, pacifique, asie-pacifique, sud-est, orient, pays asiatiques'
+    },
+    'region-amerique': {
+      titre: 'Pays de la région Amériques',
+      contenu: 'Nous couvrons les **États-Unis, le Canada et le Brésil**. Ces pays représentent des marchés majeurs pour nos boutiques Amazon.',
+      motsCles: 'amérique, nord, sud, latine, pays américains, usa, canada'
+    },
     
     // EUROPE (15 pays)
     'france': {
