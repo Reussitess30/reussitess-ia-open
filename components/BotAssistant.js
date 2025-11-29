@@ -730,3 +730,4 @@ export default function BotAssistant() {
 // [DEBLOCAGE] Forcer le commit pour deploiement influenceur
 // [DEBUG_FORCE] Finalisation de la base de données thématique
 // [DEBUG_FORCE] Finalisation de l'injection interactive et de contenu
+// [DEBUG_FORCE] Tentative d'injection de la logique de lecture générique
