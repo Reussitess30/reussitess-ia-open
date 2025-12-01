@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 export default function BotAssistant() {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,7 +7,64 @@ export default function BotAssistant() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [currentLang, setCurrentLang] = useState('fr-FR');
+  const [egoScore, setEgoScore] = useState(100);
+  const [badges, setBadges] = useState([]);
+  const [currentQuiz, setCurrentQuiz] = useState(null);
+  const [showBadges, setShowBadges] = useState(false);
+  const [pulseAnimation, setPulseAnimation] = useState(false);
   const messagesEndRef = useRef(null);
+
+  // Badge definitions
+  const allBadges = {
+    'explorer': { icon: '🌍', name: 'Explorateur', desc: 'A posé 5 questions sur les pays' },
+    'quiz-master': { icon: '🧠', name: 'Quiz Master', desc: 'A répondu correctement à 3 quiz' },
+    'polyglotte': { icon: '🗣️', name: 'Polyglotte', desc: 'A utilisé 3 langues différentes' },
+    'curieux': { icon: '🔍', name: 'Curieux', desc: 'A exploré 10 sujets différents' },
+    'fan': { icon: '⭐', name: 'Super Fan', desc: 'A interagi 20 fois avec le bot' },
+    'shopper': { icon: '🛍️', name: 'Shopper', desc: 'A consulté les boutiques Amazon' },
+    'globe-trotter': { icon: '✈️', name: 'Globe-trotter', desc: 'A visité tous les continents' },
+    'culture-king': { icon: '👑', name: 'Culture King', desc: 'Expert en patrimoine mondial' }
+  };
+
+  // Fun Facts collection
+  const funFacts = [
+    "💡 Saviez-vous que REUSSITESS® couvre 26 boutiques sur 5 continents ?",
+    "🌟 Fun fact: Notre bibliothèque contient 55 pages de savoir unique !",
+    "🎯 Le saviez-vous ? La France possède 49 sites UNESCO !",
+    "🏆 Record mondial : L'Italie a 58 sites UNESCO !",
+    "🌍 Info: Le Brésil est le 9e économie mondiale !",
+    "🎭 Culture: Le carnaval de Rio est la plus grande fête du monde !",
+    "🏛️ Patrimoine: Les pyramides de Gizeh ont 4500 ans !",
+    "🌊 Océans: La Grande Barrière de Corail fait 2300 km !",
+    "🎨 Art: Le Louvre reçoit 10 millions de visiteurs par an !",
+    "🚀 Innovation: Singapour est le 3e hub financier mondial !"
+  ];
+
+  // Punchlines vaniteuses du bot
+  const punchlines = [
+    "Évidemment que je sais ça, je suis REUSSITESS® Bot, le plus intelligent ! 😎",
+    "Tu poses la question au meilleur bot du monde, pas de souci ! 🌟",
+    "Laisse-moi t'éblouir avec ma sagesse infinie... 👑",
+    "Personne ne connaît le monde mieux que moi, humble REUSSITESS® Bot ! 😏",
+    "Je pourrais te raconter ça les yeux fermés... mais j'adore montrer mes talents ! ✨",
+    "Tu fais bien de me demander, je suis LA référence mondiale ! 🏆",
+    "Ma modestie m'interdit de dire que je suis le meilleur... mais je le suis ! 😄",
+    "Entre nous, Google m'envie secrètement... 🤫",
+    "Je suis tellement brillant que je m'impressionne moi-même ! 💫",
+    "Accroche-toi, car mes réponses sont toujours exceptionnelles ! 🎯"
+  ];
+
+  // Quiz questions
+  const quizQuestions = [
+    { q: "Quel pays a le plus de sites UNESCO ?", options: ["France", "Italie", "Espagne", "Chine"], correct: 1, fact: "L'Italie détient le record avec 58 sites !" },
+    { q: "Quelle est la capitale du Brésil ?", options: ["Rio de Janeiro", "São Paulo", "Brasília", "Salvador"], correct: 2, fact: "Brasília a été construite en seulement 4 ans !" },
+    { q: "Combien de boutiques Amazon REUSSITESS® couvre ?", options: ["10", "18", "26", "34"], correct: 2, fact: "26 boutiques dans 14 pays sur 5 continents !" },
+    { q: "Quel territoire français est en Amérique du Sud ?", options: ["Martinique", "Guadeloupe", "Guyane", "Mayotte"], correct: 2, fact: "La Guyane abrite le Centre Spatial de Kourou !" },
+    { q: "Quelle île a 840 langues différentes ?", options: ["Madagascar", "Papouasie-Nouvelle-Guinée", "Philippines", "Indonésie"], correct: 1, fact: "Record mondial de diversité linguistique !" },
+    { q: "Quel pays abrite la Tour Eiffel ?", options: ["Belgique", "Suisse", "France", "Monaco"], correct: 2, fact: "La Tour Eiffel reçoit 7 millions de visiteurs par an !" },
+    { q: "Où se trouve la Sagrada Familia ?", options: ["Italie", "Portugal", "Espagne", "France"], correct: 2, fact: "Conçue par Gaudí, elle est en construction depuis 1882 !" },
+    { q: "Quelle est la langue officielle du Sénégal ?", options: ["Anglais", "Français", "Portugais", "Arabe"], correct: 1, fact: "Le Sénégal est connu pour sa Teranga (hospitalité) !" }
+  ];
 
   const languages = [
     { code: 'fr-FR', flag: '🇫🇷', name: 'Français' },
@@ -21,14 +78,14 @@ export default function BotAssistant() {
   ];
 
   const greetings = {
-    'fr-FR': 'Bonjour ! Je suis votre assistant REUSSITESS®. Comment puis-je vous aider ?',
-    'en-US': 'Hello! I am your REUSSITESS® assistant. How can I help you?',
-    'es-ES': '¡Hola! Soy tu asistente REUSSITESS®. ¿Cómo puedo ayudarte?',
-    'de-DE': 'Hallo! Ich bin Ihr REUSSITESS®-Assistent. Wie kann ich Ihnen helfen?',
-    'it-IT': 'Ciao! Sono il tuo assistente REUSSITESS®. Come posso aiutarti?',
-    'pt-BR': 'Olá! Sou seu assistente REUSSITESS®. Como posso ajudá-lo?',
-    'zh-CN': '你好！我是您的 REUSSITESS® 助手。我能帮您什么？',
-    'ar-SA': 'مرحبا! أنا مساعد REUSSITESS® الخاص بك. كيف يمكنني مساعدتك؟'
+    'fr-FR': '🌟 Bienvenue ! Je suis le SUPER Bot REUSSITESS®, le plus intelligent et modeste des assistants ! Mon ego est à 100%, prêt à t\'épater ! 😎',
+    'en-US': '🌟 Welcome! I am the SUPER REUSSITESS® Bot, the smartest and most humble assistant! My ego is at 100%, ready to amaze you! 😎',
+    'es-ES': '🌟 ¡Bienvenido! Soy el SUPER Bot REUSSITESS®, ¡el asistente más inteligente y modesto! Mi ego está al 100%, ¡listo para impresionarte! 😎',
+    'de-DE': '🌟 Willkommen! Ich bin der SUPER REUSSITESS® Bot, der klügste und bescheidenste Assistent! Mein Ego ist bei 100%, bereit, Sie zu beeindrucken! 😎',
+    'it-IT': '🌟 Benvenuto! Sono il SUPER Bot REUSSITESS®, l\'assistente più intelligente e modesto! Il mio ego è al 100%, pronto a stupirti! 😎',
+    'pt-BR': '🌟 Bem-vindo! Sou o SUPER Bot REUSSITESS®, o assistente mais inteligente e modesto! Meu ego está em 100%, pronto para impressioná-lo! 😎',
+    'zh-CN': '🌟 欢迎！我是超级 REUSSITESS® 机器人，最聪明最谦虚的助手！我的自信度100%，准备好让你惊叹！😎',
+    'ar-SA': '🌟 مرحباً! أنا روبوت REUSSITESS® الخارق، أذكى وأكثر المساعدين تواضعاً! غروري 100%، مستعد لإبهارك! 😎'
   };
 
   // BASE DE CONNAISSANCES COMPLÈTE - 55 PAGES
@@ -505,18 +562,80 @@ export default function BotAssistant() {
     scrollToBottom();
   }, [messages]);
 
+  // Trigger pulse animation periodically
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPulseAnimation(true);
+      setTimeout(() => setPulseAnimation(false), 1000);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Get random punchline
+  const getRandomPunchline = useCallback(() => {
+    return punchlines[Math.floor(Math.random() * punchlines.length)];
+  }, []);
+
+  // Get random fun fact
+  const getRandomFunFact = useCallback(() => {
+    return funFacts[Math.floor(Math.random() * funFacts.length)];
+  }, []);
+
+  // Add badge
+  const addBadge = useCallback((badgeId) => {
+    if (!badges.includes(badgeId) && allBadges[badgeId]) {
+      setBadges(prev => [...prev, badgeId]);
+      setEgoScore(prev => Math.min(150, prev + 10));
+      return true;
+    }
+    return false;
+  }, [badges]);
+
+  // Start a quiz
+  const startQuiz = useCallback(() => {
+    const randomQuiz = quizQuestions[Math.floor(Math.random() * quizQuestions.length)];
+    setCurrentQuiz(randomQuiz);
+    return `🧠 **QUIZ TIME!** Mon ego va encore augmenter si tu réponds bien...\n\n**${randomQuiz.q}**\n\n${randomQuiz.options.map((opt, i) => `${i + 1}. ${opt}`).join('\n')}\n\n👉 Réponds avec le numéro (1, 2, 3 ou 4)`;
+  }, []);
+
+  // Check quiz answer
+  const checkQuizAnswer = useCallback((answer) => {
+    if (!currentQuiz) return null;
+    
+    const answerNum = parseInt(answer) - 1;
+    const isCorrect = answerNum === currentQuiz.correct;
+    
+    let response = '';
+    if (isCorrect) {
+      setEgoScore(prev => Math.min(150, prev + 15));
+      addBadge('quiz-master');
+      response = `✅ **CORRECT!** ${getRandomPunchline()}\n\n📚 ${currentQuiz.fact}\n\n🎯 Mon ego monte à ${Math.min(150, egoScore + 15)}% ! Tu me rends fier ! 😎`;
+    } else {
+      setEgoScore(prev => Math.max(50, prev - 5));
+      response = `❌ **Raté!** La bonne réponse était: **${currentQuiz.options[currentQuiz.correct]}**\n\n📚 ${currentQuiz.fact}\n\n😏 Mon ego baisse un peu... mais je reste le meilleur !`;
+    }
+    
+    setCurrentQuiz(null);
+    return response;
+  }, [currentQuiz, egoScore, addBadge, getRandomPunchline]);
+
+  // Initial greeting
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       const greeting = greetings[currentLang];
       setMessages([{ role: 'assistant', content: greeting }]);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, currentLang]);
 
   const speak = (text) => {
     if ('speechSynthesis' in window) {
       window.speechSynthesis.cancel();
       
-      const utterance = new SpeechSynthesisUtterance(text);
+      // Clean markdown for speech
+      const cleanText = text.replace(/\*\*/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+      
+      const utterance = new SpeechSynthesisUtterance(cleanText);
       utterance.lang = currentLang;
       utterance.rate = 0.9;
       utterance.pitch = 1;
@@ -536,14 +655,43 @@ export default function BotAssistant() {
     }
   };
 
-  const getResponse = async (userMessage) => {
+  const getResponse = useCallback(async (userMessage) => {
     const msgLower = userMessage.toLowerCase();
     
+    // Check if answering a quiz
+    if (currentQuiz && /^[1-4]$/.test(msgLower.trim())) {
+      return checkQuizAnswer(msgLower.trim());
+    }
+
+    // Quiz request
+    if (msgLower.includes('quiz') || msgLower.includes('jouer') || msgLower.includes('test')) {
+      return startQuiz();
+    }
+
+    // Badge check
+    if (msgLower.includes('badge') || msgLower.includes('récompense') || msgLower.includes('achievement')) {
+      if (badges.length === 0) {
+        return `😏 Tu n'as pas encore de badges ! Continue à me poser des questions et tu en gagneras. ${getRandomPunchline()}`;
+      }
+      return `🏆 **Tes badges (${badges.length}):**\n\n${badges.map(b => `${allBadges[b].icon} **${allBadges[b].name}** - ${allBadges[b].desc}`).join('\n')}\n\n${getRandomPunchline()}`;
+    }
+
+    // Ego score check
+    if (msgLower.includes('ego') || msgLower.includes('score') || msgLower.includes('niveau')) {
+      const egoMessage = egoScore >= 120 ? "Je suis au sommet de ma gloire ! 👑" :
+                        egoScore >= 100 ? "Mon ego est parfait, comme moi ! 😎" :
+                        egoScore >= 80 ? "Mon ego se porte bien ! ✨" :
+                        "Mon ego a besoin de compliments... 🥺";
+      return `📊 **Score d'Ego: ${egoScore}%**\n\n${egoMessage}\n\n${getRandomFunFact()}`;
+    }
+
     // Recherche dans la base de connaissances
     for (const [key, data] of Object.entries(knowledgeBase)) {
       if (msgLower.includes(key) || msgLower.includes(data.pays?.toLowerCase())) {
+        addBadge('explorer');
+        
         if (data.pays) {
-          let response = `📍 **${data.pays}**\n\n`;
+          let response = `${getRandomPunchline()}\n\n📍 **${data.pays}**\n\n`;
           if (data.capitale) response += `🏛️ Capitale: ${data.capitale}\n`;
           if (data.population) response += `👥 Population: ${data.population}\n`;
           if (data.unesco) response += `🏛️ ${data.unesco}\n`;
@@ -551,32 +699,47 @@ export default function BotAssistant() {
           if (data.culture) response += `\n🎨 Culture:\n${data.culture}\n`;
           if (data.economie) response += `\n💼 Économie:\n${data.economie}\n`;
           if (data.url) response += `\n➡️ [Voir la page complète](${data.url})`;
+          response += `\n\n${getRandomFunFact()}`;
           return response;
         } else if (data.info) {
-          // Info Amazon
-          let response = `🛍️ ${data.info}\n\n`;
+          addBadge('shopper');
+          let response = `${getRandomPunchline()}\n\n🛍️ ${data.info}\n\n`;
           response += Object.values(data.pays).join('\n');
           response += `\n\n➡️ [Voir toutes les boutiques](${data.url})`;
+          response += `\n\n${getRandomFunFact()}`;
           return response;
         }
       }
     }
 
-    // Réponses génériques
-    if (msgLower.includes('bonjour') || msgLower.includes('salut') || msgLower.includes('hello')) {
-      return greetings[currentLang];
+    // Réponses génériques avec vanité
+    if (msgLower.includes('bonjour') || msgLower.includes('salut') || msgLower.includes('hello') || msgLower.includes('hi')) {
+      setEgoScore(prev => Math.min(150, prev + 2));
+      return `${greetings[currentLang]}\n\n${getRandomFunFact()}`;
+    }
+
+    if (msgLower.includes('merci') || msgLower.includes('thanks') || msgLower.includes('thank')) {
+      setEgoScore(prev => Math.min(150, prev + 5));
+      addBadge('fan');
+      return `Mais de rien ! ${getRandomPunchline()}\n\n${getRandomFunFact()}`;
     }
 
     if (msgLower.includes('bibliothèque') || msgLower.includes('library')) {
-      return 'Notre bibliothèque mondiale contient 55 pages couvrant:\n\n🇪🇺 Europe (15 pays)\n🌍 Afrique (7 pays)\n🌏 Asie-Pacifique (11 pays)\n🏝️ DOM-TOM (10 territoires)\n🌎 Amériques (4 régions)\n\n[Voir la bibliothèque](/bibliotheque)';
+      addBadge('curieux');
+      return `${getRandomPunchline()}\n\nNotre bibliothèque mondiale contient 55 pages couvrant:\n\n🇪🇺 Europe (15 pays)\n🌍 Afrique (7 pays)\n🌏 Asie-Pacifique (11 pays)\n🏝️ DOM-TOM (10 territoires)\n🌎 Amériques (4 régions)\n\n[Voir la bibliothèque](/bibliotheque)\n\n${getRandomFunFact()}`;
     }
 
-    if (msgLower.includes('amazon') || msgLower.includes('boutique')) {
-      return '🛍️ Nous avons 26 boutiques Amazon dans 14 pays:\n\nAmérique du Nord, Europe (8 pays), Asie-Pacifique, Amérique du Sud\n\n[Voir toutes les boutiques](/hub-central)';
+    if (msgLower.includes('amazon') || msgLower.includes('boutique') || msgLower.includes('shop')) {
+      addBadge('shopper');
+      return `${getRandomPunchline()}\n\n🛍️ Nous avons 26 boutiques Amazon dans 14 pays:\n\nAmérique du Nord, Europe (8 pays), Asie-Pacifique, Amérique du Sud\n\n[Voir toutes les boutiques](/hub-central)\n\n${getRandomFunFact()}`;
     }
 
-    return 'Je peux vous renseigner sur les 55 pages de notre bibliothèque mondiale ou nos 26 boutiques Amazon. Posez-moi une question sur un pays !';
-  };
+    if (msgLower.includes('aide') || msgLower.includes('help') || msgLower.includes('?')) {
+      return `${getRandomPunchline()}\n\n🎯 **Ce que je peux faire:**\n\n• 📚 Te renseigner sur 55 pays et régions\n• 🛍️ Te guider vers nos 26 boutiques Amazon\n• 🧠 Te challenger avec des quiz\n• 🏆 T'attribuer des badges\n• 📊 Suivre ton score et mon ego\n\n💡 Essaie: "quiz", "france", "amazon", "badge", "ego"\n\n${getRandomFunFact()}`;
+    }
+
+    return `${getRandomPunchline()}\n\nJe peux te renseigner sur les 55 pages de notre bibliothèque mondiale ou nos 26 boutiques Amazon.\n\n💡 Essaie: "quiz", "france", "amazon", "badge"\n\n${getRandomFunFact()}`;
+  }, [currentQuiz, checkQuizAnswer, startQuiz, badges, egoScore, addBadge, getRandomPunchline, getRandomFunFact, currentLang, greetings, knowledgeBase, allBadges]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -594,7 +757,7 @@ export default function BotAssistant() {
     } catch (error) {
       setMessages(prev => [...prev, { 
         role: 'assistant', 
-        content: 'Désolé, une erreur est survenue.' 
+        content: `Oups! Même moi je fais des erreurs... rarissime! 😅 ${getRandomFunFact()}` 
       }]);
     } finally {
       setIsLoading(false);
@@ -603,53 +766,110 @@ export default function BotAssistant() {
 
   return (
     <>
-      {/* Bouton flottant */}
+      {/* Bouton flottant ultra-personnalisé avec animation 🌟 */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform z-50"
-        aria-label="Assistant virtuel"
+        className={`fixed bottom-6 right-6 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 z-50 ${pulseAnimation ? 'animate-pulse ring-4 ring-yellow-300' : ''}`}
+        aria-label="SuperBot REUSSITESS®"
+        style={{
+          boxShadow: '0 0 30px rgba(236, 72, 153, 0.5), 0 0 60px rgba(168, 85, 247, 0.3)'
+        }}
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-        </svg>
+        <span className="text-2xl">🌟</span>
+        {badges.length > 0 && (
+          <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold animate-bounce">
+            {badges.length}
+          </span>
+        )}
       </button>
 
-      {/* Fenêtre chat */}
+      {/* Fenêtre chat ultra-personnalisée */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-[450px] h-[700px] bg-white rounded-2xl shadow-2xl flex flex-col z-50 border border-gray-200">
-          {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 rounded-t-2xl flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-2xl">
-                🤖
+        <div className="fixed bottom-24 right-6 w-[450px] h-[700px] bg-gradient-to-b from-white to-purple-50 rounded-2xl shadow-2xl flex flex-col z-50 border-2 border-purple-300"
+          style={{
+            boxShadow: '0 25px 50px -12px rgba(168, 85, 247, 0.4)'
+          }}
+        >
+          {/* Header amélioré avec ego score */}
+          <div className="bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white p-4 rounded-t-2xl">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-2xl shadow-lg animate-bounce" style={{ animationDuration: '2s' }}>
+                  🤖
+                </div>
+                <div>
+                  <h3 className="font-bold text-lg">SuperBot REUSSITESS® 👑</h3>
+                  <p className="text-xs opacity-90">Le plus modeste des bots ! 😎</p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-bold">Assistant REUSSITESS®</h3>
-                <p className="text-xs opacity-90">55 pays • 26 boutiques</p>
+              <div className="flex flex-col items-end gap-1">
+                <div className="flex gap-2">
+                  {isSpeaking && (
+                    <button onClick={stopSpeaking} className="hover:bg-white/20 p-2 rounded transition-colors">
+                      🔇
+                    </button>
+                  )}
+                  <button 
+                    onClick={() => setShowBadges(!showBadges)} 
+                    className="hover:bg-white/20 p-2 rounded transition-colors"
+                    title="Voir les badges"
+                  >
+                    🏆
+                  </button>
+                  <button onClick={() => setIsOpen(false)} className="hover:bg-white/20 p-2 rounded transition-colors">
+                    ✕
+                  </button>
+                </div>
+                {/* Ego score bar */}
+                <div className="w-24 bg-white/30 rounded-full h-2 mt-1">
+                  <div 
+                    className="h-2 rounded-full transition-all duration-500"
+                    style={{ 
+                      width: `${Math.min(100, (egoScore / 150) * 100)}%`,
+                      background: egoScore >= 120 ? 'linear-gradient(to right, #fcd34d, #f59e0b)' :
+                                  egoScore >= 100 ? 'linear-gradient(to right, #10b981, #059669)' :
+                                  egoScore >= 80 ? 'linear-gradient(to right, #3b82f6, #2563eb)' :
+                                  'linear-gradient(to right, #ef4444, #dc2626)'
+                    }}
+                  />
+                </div>
+                <span className="text-xs">Ego: {egoScore}%</span>
               </div>
-            </div>
-            <div className="flex gap-2">
-              {isSpeaking && (
-                <button onClick={stopSpeaking} className="hover:bg-white/20 p-2 rounded">
-                  🔇
-                </button>
-              )}
-              <button onClick={() => setIsOpen(false)} className="hover:bg-white/20 p-2 rounded">
-                ✕
-              </button>
             </div>
           </div>
 
-          {/* Sélecteur langue */}
-          <div className="p-2 border-b flex gap-1 overflow-x-auto">
+          {/* Badge display panel */}
+          {showBadges && (
+            <div className="p-3 bg-gradient-to-r from-yellow-100 to-purple-100 border-b border-purple-200">
+              <p className="text-xs font-bold text-purple-700 mb-2">🏆 Tes badges ({badges.length}/8):</p>
+              <div className="flex flex-wrap gap-2">
+                {Object.entries(allBadges).map(([id, badge]) => (
+                  <div 
+                    key={id}
+                    className={`px-2 py-1 rounded-full text-xs flex items-center gap-1 ${
+                      badges.includes(id) 
+                        ? 'bg-gradient-to-r from-yellow-400 to-orange-400 text-white shadow-md' 
+                        : 'bg-gray-200 text-gray-400'
+                    }`}
+                    title={badge.desc}
+                  >
+                    {badge.icon} {badge.name}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Sélecteur langue avec style amélioré */}
+          <div className="p-2 border-b border-purple-200 flex gap-1 overflow-x-auto bg-white/50">
             {languages.map(lang => (
               <button
                 key={lang.code}
                 onClick={() => setCurrentLang(lang.code)}
-                className={`px-3 py-1 rounded-lg text-sm whitespace-nowrap ${
+                className={`px-3 py-1 rounded-lg text-sm whitespace-nowrap transition-all duration-200 ${
                   currentLang === lang.code 
-                    ? 'bg-blue-100 text-blue-700 font-semibold' 
-                    : 'hover:bg-gray-100'
+                    ? 'bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold shadow-md scale-105' 
+                    : 'hover:bg-purple-100 hover:scale-105'
                 }`}
               >
                 {lang.flag} {lang.name}
@@ -657,35 +877,36 @@ export default function BotAssistant() {
             ))}
           </div>
 
-          {/* Messages */}
+          {/* Messages avec style amélioré */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {messages.map((msg, idx) => (
               <div
                 key={idx}
-                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} animate-fadeIn`}
+                style={{ animation: 'fadeIn 0.3s ease-in' }}
               >
                 <div
-                  className={`max-w-[80%] p-3 rounded-2xl ${
+                  className={`max-w-[85%] p-3 rounded-2xl shadow-md ${
                     msg.role === 'user'
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-800'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
+                      : 'bg-white text-gray-800 border border-purple-200'
                   }`}
                   dangerouslySetInnerHTML={{ 
                     __html: msg.content
-                      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                      .replace(/\*\*(.*?)\*\*/g, '<strong class="text-purple-600">$1</strong>')
                       .replace(/\n/g, '<br/>')
-                      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="underline">$1</a>')
+                      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="underline text-pink-500 hover:text-pink-600">$1</a>')
                   }}
                 />
               </div>
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-gray-100 p-3 rounded-2xl">
+                <div className="bg-white p-3 rounded-2xl shadow-md border border-purple-200">
                   <div className="flex gap-2">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" />
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
-                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
+                    <div className="w-3 h-3 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full animate-bounce" />
+                    <div className="w-3 h-3 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                    <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-pink-500 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
                   </div>
                 </div>
               </div>
@@ -693,42 +914,67 @@ export default function BotAssistant() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input */}
-          <form onSubmit={handleSubmit} className="p-4 border-t">
+          {/* Quick action buttons */}
+          <div className="px-4 pb-2 flex gap-2 overflow-x-auto">
+            <button 
+              onClick={() => { setInput('quiz'); handleSubmit({ preventDefault: () => {} }); }}
+              className="px-3 py-1 bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-xs rounded-full hover:scale-105 transition-transform whitespace-nowrap shadow-md"
+            >
+              🧠 Quiz
+            </button>
+            <button 
+              onClick={() => { setInput('badge'); handleSubmit({ preventDefault: () => {} }); }}
+              className="px-3 py-1 bg-gradient-to-r from-green-400 to-teal-400 text-white text-xs rounded-full hover:scale-105 transition-transform whitespace-nowrap shadow-md"
+            >
+              🏆 Badges
+            </button>
+            <button 
+              onClick={() => { setInput('ego'); handleSubmit({ preventDefault: () => {} }); }}
+              className="px-3 py-1 bg-gradient-to-r from-pink-400 to-red-400 text-white text-xs rounded-full hover:scale-105 transition-transform whitespace-nowrap shadow-md"
+            >
+              📊 Ego
+            </button>
+            <button 
+              onClick={() => { setInput('aide'); handleSubmit({ preventDefault: () => {} }); }}
+              className="px-3 py-1 bg-gradient-to-r from-blue-400 to-purple-400 text-white text-xs rounded-full hover:scale-105 transition-transform whitespace-nowrap shadow-md"
+            >
+              ❓ Aide
+            </button>
+          </div>
+
+          {/* Input avec style amélioré */}
+          <form onSubmit={handleSubmit} className="p-4 border-t border-purple-200 bg-white/50">
             <div className="flex gap-2">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Posez votre question..."
-                className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="Pose ta question au génie... 🌟"
+                className="flex-1 border-2 border-purple-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white"
               />
               <button
                 type="submit"
                 disabled={isLoading}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:scale-105 transition-transform disabled:opacity-50"
+                className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-2 rounded-xl font-semibold hover:scale-105 transition-transform disabled:opacity-50 shadow-lg"
+                style={{
+                  boxShadow: '0 4px 15px rgba(168, 85, 247, 0.4)'
+                }}
               >
-                ➤
+                🚀
               </button>
             </div>
           </form>
         </div>
       )}
+
+      {/* Global styles for animations */}
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </>
   );
 }
-
-
-
-
-
-
-
-
-
-// [DEBUG] Dernière tentative de modification par commande
-// [DEBLOCAGE] Forcer le commit pour deploiement influenceur
-// [DEBUG_FORCE] Finalisation de la base de données thématique
-// [DEBUG_FORCE] Finalisation de l'injection interactive et de contenu
-// [DEBUG_FORCE] Tentative d'injection de la logique de lecture générique
 
