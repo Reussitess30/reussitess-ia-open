@@ -607,9 +607,10 @@ export default function BotAssistant() {
     
     let response = '';
     if (isCorrect) {
-      setEgoScore(prev => Math.min(150, prev + 15));
+      const newEgoScore = Math.min(150, egoScore + 15);
+      setEgoScore(newEgoScore);
       addBadge('quiz-master');
-      response = `✅ **CORRECT!** ${getRandomPunchline()}\n\n📚 ${currentQuiz.fact}\n\n🎯 Mon ego monte à ${Math.min(150, egoScore + 15)}% ! Tu me rends fier ! 😎`;
+      response = `✅ **CORRECT!** ${getRandomPunchline()}\n\n📚 ${currentQuiz.fact}\n\n🎯 Mon ego monte à ${newEgoScore}% ! Tu me rends fier ! 😎`;
     } else {
       setEgoScore(prev => Math.max(50, prev - 5));
       response = `❌ **Raté!** La bonne réponse était: **${currentQuiz.options[currentQuiz.correct]}**\n\n📚 ${currentQuiz.fact}\n\n😏 Mon ego baisse un peu... mais je reste le meilleur !`;
@@ -764,6 +765,25 @@ export default function BotAssistant() {
     }
   };
 
+  // Handler for quick action buttons
+  const handleQuickAction = async (actionText) => {
+    setMessages(prev => [...prev, { role: 'user', content: actionText }]);
+    setIsLoading(true);
+
+    try {
+      const response = await getResponse(actionText);
+      setMessages(prev => [...prev, { role: 'assistant', content: response }]);
+      speak(response);
+    } catch (error) {
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: `Oups! Même moi je fais des erreurs... rarissime! 😅 ${getRandomFunFact()}` 
+      }]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <>
       {/* Bouton flottant ultra-personnalisé avec animation 🌟 */}
@@ -882,7 +902,7 @@ export default function BotAssistant() {
             {messages.map((msg, idx) => (
               <div
                 key={idx}
-                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} animate-fadeIn`}
+                className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 style={{ animation: 'fadeIn 0.3s ease-in' }}
               >
                 <div
@@ -917,25 +937,25 @@ export default function BotAssistant() {
           {/* Quick action buttons */}
           <div className="px-4 pb-2 flex gap-2 overflow-x-auto">
             <button 
-              onClick={() => { setInput('quiz'); handleSubmit({ preventDefault: () => {} }); }}
+              onClick={() => handleQuickAction('quiz')}
               className="px-3 py-1 bg-gradient-to-r from-yellow-400 to-orange-400 text-white text-xs rounded-full hover:scale-105 transition-transform whitespace-nowrap shadow-md"
             >
               🧠 Quiz
             </button>
             <button 
-              onClick={() => { setInput('badge'); handleSubmit({ preventDefault: () => {} }); }}
+              onClick={() => handleQuickAction('badge')}
               className="px-3 py-1 bg-gradient-to-r from-green-400 to-teal-400 text-white text-xs rounded-full hover:scale-105 transition-transform whitespace-nowrap shadow-md"
             >
               🏆 Badges
             </button>
             <button 
-              onClick={() => { setInput('ego'); handleSubmit({ preventDefault: () => {} }); }}
+              onClick={() => handleQuickAction('ego')}
               className="px-3 py-1 bg-gradient-to-r from-pink-400 to-red-400 text-white text-xs rounded-full hover:scale-105 transition-transform whitespace-nowrap shadow-md"
             >
               📊 Ego
             </button>
             <button 
-              onClick={() => { setInput('aide'); handleSubmit({ preventDefault: () => {} }); }}
+              onClick={() => handleQuickAction('aide')}
               className="px-3 py-1 bg-gradient-to-r from-blue-400 to-purple-400 text-white text-xs rounded-full hover:scale-105 transition-transform whitespace-nowrap shadow-md"
             >
               ❓ Aide
