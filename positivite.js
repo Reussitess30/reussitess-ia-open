@@ -1,15 +1,13 @@
 module.exports = {
   messages: [
-    "Positivité à l’infini boudoume !",
-    "Chaque instant peut changer ta vie.",
-    "La réussite se construit avec chaque sourire.",
-    "Plus tu diffuses la positivité, plus elle revient.",
-    "Innovation et excellence réunies pour les 14 pays.",
-    "réussitess971 — le bot du succès universel !"
+    "Positivité à l’infini boudoume !",
+    "Ta réussite fait progresser le monde.",
+    "Construis l’innovation, partage l’excellence.",
+    "réussitess971, le bot du succès universel !"
   ],
   funFacts: [
-    "Savais-tu que le cerveau humain est optimisé pour apprendre toute la vie ?",
-    "Les grands leaders du monde lisent en moyenne plus de 50 livres par an.",
-    "Une attitude positive améliore la santé et les résultats, prouvé scientifiquement."
+    "Savais-tu ? Les leaders lisent plus de 50 livres par an.",
+    "Le sourire augmente la réussite et réduit le stress.",
+    "Apprendre chaque jour, c’est grandir chaque jour."
   ]
 };
