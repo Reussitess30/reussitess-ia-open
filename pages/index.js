@@ -56,7 +56,7 @@ export default function Home() {
 
   return (
     <Layout>
-      {/* Hero Section Compact */}
+      {/* Hero Section Compact - Première chose visible */}
       <div style={{
         minHeight: '60vh',
         background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
@@ -67,6 +67,7 @@ export default function Home() {
         overflow: 'hidden',
         padding: '3rem 1rem'
       }}>
+        {/* Formes décoratives */}
         <div style={{
           position: 'absolute',
           top: '5%',
@@ -95,6 +96,7 @@ export default function Home() {
           maxWidth: '1200px',
           margin: '0 auto'
         }}>
+          {/* Globe animé */}
           <div style={{
             fontSize: '4rem',
             marginBottom: '1.5rem',
@@ -103,6 +105,7 @@ export default function Home() {
             🌍
           </div>
 
+          {/* Titre */}
           <h1 style={{
             fontSize: 'clamp(2rem, 6vw, 4rem)',
             fontWeight: '800',
@@ -120,7 +123,7 @@ export default function Home() {
             🏝️ Guadeloupe - Terre de Champions 🏆
           </p>
 
-          {/* Statistiques */}
+          {/* Statistiques en ligne */}
           <div style={{
             display: 'flex',
             gap: '2rem',
@@ -189,26 +192,6 @@ export default function Home() {
               display: 'inline-block'
             }}
             className="btn-secondary">
-
-            <a 
-              href="https://shop.reussitess.fr/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                background: 'linear-gradient(135deg, #f5576c 0%, #f093fb 100%)',
-                color: 'white',
-                padding: '1rem 2.5rem',
-                borderRadius: '50px',
-                textDecoration: 'none',
-                fontSize: '1.1rem',
-                fontWeight: 'bold',
-                boxShadow: '0 8px 25px rgba(245, 87, 108, 0.4)',
-                transition: 'all 0.3s ease',
-                display: 'inline-block'
-              }}
-              className="btn-alternative">
-              🎮 Version 2 - Shop PWA
-            </a>
               🤝 Programme Affiliation
             </Link>
 
@@ -235,13 +218,262 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Reste du contenu inchangé... */}
+      {/* Section Boutiques Amazon */}
+      <div id="boutiques" style={{
+        background: 'linear-gradient(180deg, #0f172a 0%, #1e293b 100%)',
+        padding: '5rem 0'
+      }}>
+        <div className="container" style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2rem' }}>
+          <h2 style={{
+            textAlign: 'center',
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
+            fontWeight: '800',
+            marginBottom: '1rem',
+            background: 'linear-gradient(135deg, #f59e0b 0%, #e11d48 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}>
+            🛍️ NOS 26 BOUTIQUES AMAZON
+          </h2>
+
+          <p style={{
+            textAlign: 'center',
+            color: '#94a3b8',
+            fontSize: '1.2rem',
+            marginBottom: '3rem',
+            maxWidth: '800px',
+            margin: '0 auto 3rem'
+          }}>
+            Choisissez votre pays et découvrez nos sélections exclusives
+          </p>
+
+          {/* Grille de boutiques */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+            gap: '2rem'
+          }}>
+            {boutiques.map((boutique, index) => (
+              <div key={index} style={{
+                background: 'rgba(255, 255, 255, 0.03)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                borderRadius: '20px',
+                padding: '2rem',
+                transition: 'all 0.3s ease'
+              }}
+              className="boutique-card">
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '1rem',
+                  marginBottom: '1.5rem'
+                }}>
+                  <div style={{
+                    fontSize: '3rem',
+                    lineHeight: '1'
+                  }}>
+                    {boutique.flag}
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <h3 style={{
+                      fontSize: '1.4rem',
+                      fontWeight: '700',
+                      color: 'white',
+                      marginBottom: '0.3rem'
+                    }}>
+                      {boutique.nom}
+                    </h3>
+                    <span style={{
+                      display: 'inline-block',
+                      padding: '0.3rem 0.8rem',
+                      borderRadius: '20px',
+                      fontSize: '0.8rem',
+                      fontWeight: '600',
+                      background: boutique.type === 'Personnel' 
+                        ? 'linear-gradient(135deg, #3b82f6, #8b5cf6)' 
+                        : 'linear-gradient(135deg, #10b981, #059669)',
+                      color: 'white'
+                    }}>
+                      {boutique.type === 'Personnel' ? '👤 Personnel' : '⭐ Influenceur'}
+                    </span>
+                  </div>
+                </div>
+
+                <a
+                  href={boutique.lien}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    padding: '1rem',
+                    background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                    color: 'white',
+                    textAlign: 'center',
+                    borderRadius: '12px',
+                    textDecoration: 'none',
+                    fontWeight: '600',
+                    fontSize: '1rem',
+                    transition: 'all 0.3s ease',
+                    marginBottom: '1rem'
+                  }}
+                  className="boutique-btn">
+                  {translations[boutique.flag]?.btn || 'Visiter la Boutique'} →
+                </a>
+
+                <div style={{
+                  fontSize: '0.85rem',
+                  color: '#94a3b8',
+                  textAlign: 'center',
+                  lineHeight: '1.4'
+                }}>
+                  🔒 {translations[boutique.flag]?.disclaimer || 'En tant qu\'affiliée, je gagne des commissions sur certains produits'}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Section Comment ça fonctionne */}
+      <div style={{
+        background: 'linear-gradient(180deg, #0f172a 0%, #1e293b 100%)',
+        padding: '5rem 0'
+      }}>
+        <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+          <h2 style={{
+            textAlign: 'center',
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
+            fontWeight: '800',
+            marginBottom: '3rem',
+            background: 'linear-gradient(135deg, #f59e0b 0%, #e11d48 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}>
+            ❓ COMMENT ÇA FONCTIONNE ?
+          </h2>
+          
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '3rem'
+          }}>
+            {[
+              { num: '1️⃣', title: 'Cliquez', desc: 'Choisissez une boutique Amazon parmi les 26', color: '#f59e0b' },
+              { num: '2️⃣', title: 'Achetez', desc: 'Faites vos achats normalement sur Amazon', color: '#3b82f6' },
+              { num: '3️⃣', title: 'Gagnez', desc: 'Je reçois une commission sans frais pour vous', color: '#10b981' }
+            ].map((step, i) => (
+              <div key={i} style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                borderRadius: '20px',
+                padding: '2.5rem',
+                textAlign: 'center',
+                transition: 'all 0.3s ease'
+              }}
+              className="step-card">
+                <div style={{ fontSize: '4rem', marginBottom: '1.5rem' }}>{step.num}</div>
+                <h3 style={{
+                  fontSize: '1.8rem',
+                  fontWeight: '700',
+                  marginBottom: '1rem',
+                  color: step.color
+                }}>
+                  {step.title}
+                </h3>
+                <p style={{
+                  fontSize: '1.1rem',
+                  lineHeight: '1.6',
+                  color: '#cbd5e1',
+                  margin: 0
+                }}>
+                  {step.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Section Services Rapides */}
+      <div style={{
+        background: 'linear-gradient(180deg, #1e293b 0%, #0f172a 100%)',
+        padding: '5rem 0'
+      }}>
+        <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+          <h2 style={{
+            textAlign: 'center',
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
+            fontWeight: '800',
+            marginBottom: '3rem',
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}>
+            📱 Nos Services
+          </h2>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '2rem'
+          }}>
+            {[
+              { icon: '📊', title: 'Dashboard', desc: 'Analytics en temps réel', link: '/analytics', color: '#3b82f6' },
+              { icon: '📚', title: 'Ressources', desc: 'Culture & Patrimoine', link: '/bibliotheque', color: '#8b5cf6' },
+              { icon: '🛠️', title: 'Outils', desc: 'Calculateurs TVA', link: '/bibliotheque/outils', color: '#ec4899' },
+              { icon: '📱', title: 'App PWA', desc: 'Installer l\'app', link: '/pwa-app', color: '#10b981' }
+            ].map((service, i) => (
+              <Link key={i} href={service.link} style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                borderRadius: '16px',
+                padding: '2rem',
+                textAlign: 'center',
+                textDecoration: 'none',
+                transition: 'all 0.3s ease'
+              }}
+              className="service-card-mini">
+                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{service.icon}</div>
+                <h3 style={{
+                  fontSize: '1.3rem',
+                  fontWeight: '700',
+                  marginBottom: '0.5rem',
+                  color: service.color
+                }}>
+                  {service.title}
+                </h3>
+                <p style={{
+                  fontSize: '0.95rem',
+                  color: '#94a3b8',
+                  margin: 0
+                }}>
+                  {service.desc}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Bot Assistant */}
       <BotAssistant />
 
-      <style jsx>{\`
+      <style jsx>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-20px); }
+        }
+
+        @keyframes bounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
         }
 
         .btn-primary:hover {
@@ -258,7 +490,34 @@ export default function Home() {
           transform: translateY(-3px);
           box-shadow: 0 12px 35px rgba(245, 87, 108, 0.5);
         }
-      \`}</style>
+
+        .boutique-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+
+        .boutique-btn:hover {
+          transform: scale(1.02);
+          box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+        }
+
+        .step-card:hover {
+          transform: translateY(-5px);
+          background: rgba(255, 255, 255, 0.08);
+        }
+
+        .service-card-mini:hover {
+          transform: translateY(-5px);
+          background: rgba(255, 255, 255, 0.08);
+          box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+          .boutique-card, .step-card, .service-card-mini {
+            margin-bottom: 0;
+          }
+        }
+      `}</style>
     </Layout>
   )
 }
