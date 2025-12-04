@@ -1,41 +1,11 @@
 {
-  "version": 2,
-  "alias": ["www.reussitess.fr", "reussitess.fr"],
-  "regions": ["iad1"],
-  "framework": "nextjs",
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "reussitess.fr"
-        }
-      ],
-      "destination": "https://www.reussitess.fr/$1",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
         {
-          "key": "Cache-Control",
-          "value": "public, max-age=0, s-maxage=0, must-revalidate"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        }
-      ]
-    },
-    {
-      "source": "/_next/static/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://reussitess.fr"
         }
       ]
     }

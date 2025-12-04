@@ -1,0 +1,30 @@
+
+> reussitess-global-nexus@1.0.0 build
+> next build
+
+   Linting and checking validity of types ...
+
+Failed to compile.
+
+./pages/index.js
+Error: Parsing error: Unexpected token (94:0)
+
+./components/BotAssistant.js
+18:9  Warning: The 'allBadges' object makes the dependencies of useCallback Hook (at line 743) change on every render. To fix this, wrap the initialization of 'allBadges' in its own useMemo() Hook.  react-hooks/exhaustive-deps
+80:9  Warning: The 'greetings' object makes the dependencies of useCallback Hook (at line 743) change on every render. To fix this, wrap the initialization of 'greetings' in its own useMemo() Hook.  react-hooks/exhaustive-deps
+92:9  Warning: The 'knowledgeBase' object makes the dependencies of useCallback Hook (at line 743) change on every render. Move it inside the useCallback callback. Alternatively, wrap the initialization of 'knowledgeBase' in its own useMemo() Hook.  react-hooks/exhaustive-deps
+577:6  Warning: React Hook useCallback has a missing dependency: 'punchlines'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+582:6  Warning: React Hook useCallback has a missing dependency: 'funFacts'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+592:6  Warning: React Hook useCallback has a missing dependency: 'allBadges'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+599:6  Warning: React Hook useCallback has a missing dependency: 'quizQuestions'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./components/BotAssistant.old.js
+810:6  Warning: React Hook useEffect has missing dependencies: 'greetings' and 'messages.length'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+
+./components/ReussitessAI.js
+85:6  Warning: React Hook useEffect has missing dependencies: 'PERSONALITY.greetings' and 'messages.length'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+
+./components/ReussitessBot.js
+375:6  Warning: React Hook useEffect has missing dependencies: 'greetings' and 'messages.length'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules

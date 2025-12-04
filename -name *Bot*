@@ -1,0 +1,21 @@
+* [33me505ae8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m cleanup: final changes
+* [33m1e6dff4[m fix: Bouton VOIR LES 26 BOUTIQUES réactivé - version complète corrigée
+* [33mfaceb32[m fix: Bouton VOIR LES 26 BOUTIQUES réactivé
+* [33m6de0274[m[33m ([m[1;31morigin/restore/remove-assistant-button-20251203031600[m[33m, [m[1;32mrestore/remove-assistant-button-20251203031600[m[33m)[m fix: wrap large static initializers in useMemo to address react-hooks/exhaustive-deps warnings
+* [33me1b9c95[m Restore homepage and remove assistant-injected button/patches
+* [33m9bab7ac[m[33m ([m[1;32mrestore/version2-from-d36979a5[m[33m)[m Restore original add-version2-button and remove injected ui-fixes
+* [33ma67806d[m[33m ([m[1;31morigin/restore/version2-from-d36979a5[m[33m)[m Fix: réactive bouton 'Voir les 26 boutiques' (ui-fixes.js) and inject script tag in V2 page
+* [33m719f90e[m Ajout bouton 'Version 2' (public/add-version2-button.js) et injection script
+* [33m0675ae3[m Use interactive V2 page with homepage-style header and include all quiz assets
+* [33m45141bf[m Ignore local editor backup files
+* [33m08dc7ad[m Make Version 2 self-contained: copy reussitess971 assets into public/reussitess971_v2 and update Version 2 link
+* [33m5ffaf39[m Make Version 2 self-contained: copy reussitess971 assets into public/reussitess971_v2 and update paths; update Version 2 link
+* [33m296d2f0[m Restore real Version 2 page from reussitess971/index.html and point Version 2 link to /reussitess971_v2/
+* [33mc997ffb[m Restore Version 2 snapshot content
+* [33maa29647[m Remove duplicate pages/bibliotheque.js to fix Next.js duplicate route warning
+* [33ma4e6a60[m Add non-destructive Version 2 static page at /reussitess971_v2 and point Version 2 link to it
+* [33m99b293f[m[33m ([m[1;32mbackup-before-restore-20251202172446[m[33m)[m WIP: sauvegarde avant restauration
+[31m|[m * [33me68764f[m[33m ([m[1;31morigin/backup-before-restore-20251202172008[m[33m, [m[1;32mbackup-before-restore-20251202172008[m[33m)[m WIP: sauvegarde avant restauration
+[31m|[m * [33m556d8db[m[33m ([m[1;31morigin/restore/to-556d8dbb[m[33m, [m[1;31morigin/fix/version2-integrate-mini[m[33m, [m[1;32mwork-on-556d8dbb[m[33m, [m[1;32mrestore/to-556d8dbb[m[33m, [m[1;32mfix/version2-integrate-mini[m[33m)[m Restore reussitess971 static site from backup and point Version 2 to /reussitess971/
+[31m|[m[31m/[m  
+* [33md36979a[m[33m ([m[1;31morigin/restore/to-d36979a5[m[33m, [m[1;32mrestore/to-d36979a5[m[33m)[m Fix: point 'Version 2' links to '/' to avoid 404 (leave '🎨 OUVRIR Reussitess971' unchanged)
