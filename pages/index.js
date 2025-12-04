@@ -195,6 +195,26 @@ export default function Home() {
               🤝 Programme Affiliation
             </Link>
 
+            <a
+              href="https://shop.reussitess.fr/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                color: 'white',
+                padding: '1rem 2.5rem',
+                borderRadius: '50px',
+                textDecoration: 'none',
+                fontSize: '1.1rem',
+                fontWeight: 'bold',
+                boxShadow: '0 8px 25px rgba(16, 185, 129, 0.4)',
+                transition: 'all 0.3s ease',
+                display: 'inline-block'
+              }}
+              className="btn-version2">
+              🎮 Version 2 - Shop PWA
+            </a>
+
             <a 
               href="https://reussitess-global-nexus-jfgk-git-copilo-3f98a8-porinus-projects.vercel.app/"
               target="_blank"
