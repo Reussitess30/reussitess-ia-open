@@ -1,24 +1,15 @@
 module.exports = {
-  domain: "Amazon_Affiliation",
+  domain: "Amazon Affiliation",
   questions: [
-    // Ajoute ici 10 à 20 questions de quiz (à enrichir après ou auto-générer avec GPT !)
-    {
-      question: "Question exemplaire #1 sur Amazon_Affiliation ?",
-      answers: ["choix 1", "choix 2", "choix 3"],
-      correct: 0,
-      explanation: "Explication positive #1."
-    },
-    {
-      question: "Question exemplaire #2 sur Amazon_Affiliation ?",
-      answers: ["choix 1", "choix 2", "choix 3"],
-      correct: 2,
-      explanation: "Explication positive #2."
-    }
-    // ... plus de questions !
+    { question: "Combien de boutiques Amazon REUSSITESS possède-t-elle ?", answers: ["14", "20", "26"], correct: 2, explanation: "REUSSITESS® Global Nexus possède 26 boutiques Amazon à travers le monde." },
+    { question: "Combien de pays sont couverts ?", answers: ["10", "14", "18"], correct: 1, explanation: "REUSSITESS® opère dans 14 pays sur 5 continents." },
+    { question: "Quel est l'ID influenceur Amazon ?", answers: ["fb942837", "reussitess", "amourguadeloupe"], correct: 0, explanation: "L'ID influenceur Amazon REUSSITESS est fb942837." },
+    { question: "Combien de boutiques personnelles ?", answers: ["12", "14", "16"], correct: 1, explanation: "REUSSITESS possède 14 boutiques personnelles (@amourguadeloupe)." },
+    { question: "Combien de boutiques influenceur ?", answers: ["10", "12", "14"], correct: 1, explanation: "REUSSITESS possède 12 boutiques influenceur (ID fb942837)." }
   ],
   tips: [
-    "N'oublie pas, la connaissance est la clé du progrès.",
-    "réussitess971 : positivité à l'infini boudoume.",
-    "Dans Amazon_Affiliation, chaque jour est une occasion de s’enrichir."
+    "L'affiliation Amazon crée des opportunités mondiales.",
+    "REUSSITESS®971 : réseau global d'excellence boudoume!",
+    "26 boutiques pour servir le monde entier."
   ]
 };

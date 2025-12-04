@@ -1,24 +1,15 @@
 module.exports = {
-  domain: "Boutique_Motivation",
+  domain: "Boutique Motivation",
   questions: [
-    // Ajoute ici 10 à 20 questions de quiz (à enrichir après ou auto-générer avec GPT !)
-    {
-      question: "Question exemplaire #1 sur Boutique_Motivation ?",
-      answers: ["choix 1", "choix 2", "choix 3"],
-      correct: 0,
-      explanation: "Explication positive #1."
-    },
-    {
-      question: "Question exemplaire #2 sur Boutique_Motivation ?",
-      answers: ["choix 1", "choix 2", "choix 3"],
-      correct: 2,
-      explanation: "Explication positive #2."
-    }
-    // ... plus de questions !
+    { question: "Que signifie REUSSITESS ?", answers: ["Réussite en affaires", "Excellence et Succès", "Réseau d'entrepreneurs"], correct: 1, explanation: "REUSSITESS® symbolise l'Excellence, l'Innovation et le Succès." },
+    { question: "Quelle est la devise de REUSSITESS ?", answers: ["Excellence Innovation Succès", "Travail Passion Réussite", "Effort Détermination Victoire"], correct: 0, explanation: "La devise est : Excellence • Innovation • Succès." },
+    { question: "D'où vient REUSSITESS ?", answers: ["Martinique", "Guadeloupe", "Guyane"], correct: 1, explanation: "REUSSITESS® est née en Guadeloupe, Terre de Champions." },
+    { question: "Combien de quiz thématiques sur REUSSITESS®971 ?", answers: ["20", "25", "30"], correct: 1, explanation: "REUSSITESS®971 propose 25 quiz thématiques complets." },
+    { question: "Quelle est la signature REUSSITESS ?", answers: ["À l'infini", "boudoume!", "Les deux"], correct: 2, explanation: "REUSSITESS® signe avec 'à l'infini boudoume!' exprimant l'excellence sans limite." }
   ],
   tips: [
-    "N'oublie pas, la connaissance est la clé du progrès.",
-    "réussitess971 : positivité à l'infini boudoume.",
-    "Dans Boutique_Motivation, chaque jour est une occasion de s’enrichir."
+    "La motivation mène à la réalisation de vos rêves.",
+    "REUSSITESS®971 : inspiration quotidienne boudoume!",
+    "Chaque jour est une opportunité de réussir."
   ]
 };
