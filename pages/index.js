@@ -189,6 +189,26 @@ export default function Home() {
               display: 'inline-block'
             }}
             className="btn-secondary">
+
+            <a 
+              href="https://shop.reussitess.fr/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: 'linear-gradient(135deg, #f5576c 0%, #f093fb 100%)',
+                color: 'white',
+                padding: '1rem 2.5rem',
+                borderRadius: '50px',
+                textDecoration: 'none',
+                fontSize: '1.1rem',
+                fontWeight: 'bold',
+                boxShadow: '0 8px 25px rgba(245, 87, 108, 0.4)',
+                transition: 'all 0.3s ease',
+                display: 'inline-block'
+              }}
+              className="btn-alternative">
+              🎮 Version 2 - Shop PWA
+            </a>
               🤝 Programme Affiliation
             </Link>
 
