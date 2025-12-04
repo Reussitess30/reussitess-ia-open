@@ -3,7 +3,6 @@ import BotAssistant from '../components/BotAssistant'
 import Link from 'next/link'
 
 export default function Home() {
-  // Traductions par pays
   const translations = {
     "🇺🇸": { btn: "Visit the Store", disclaimer: "As an affiliate, I earn commissions on certain products" },
     "🇬🇧": { btn: "Visit the Store", disclaimer: "As an affiliate, I earn commissions on certain products" },
@@ -21,9 +20,7 @@ export default function Home() {
     "🇧🇷": { btn: "Visite a Loja", disclaimer: "Como afiliada, ganho comissões em certos produtos" }
   }
 
-  // VRAIS LIENS AMAZON D'AFFILIATION
   const boutiques = [
-    // Boutiques Personnelles (14)
     { flag: "🇺🇸", nom: "États-Unis", type: "Personnel", lien: "https://www.amazon.com/shop/amourguadeloupe" },
     { flag: "🇮🇹", nom: "Italie", type: "Personnel", lien: "https://www.amazon.it/shop/amourguadeloupe" },
     { flag: "🇫🇷", nom: "France", type: "Personnel", lien: "https://www.amazon.fr/shop/amourguadeloupe" },
@@ -38,8 +35,6 @@ export default function Home() {
     { flag: "🇦🇺", nom: "Australie", type: "Personnel", lien: "https://www.amazon.com.au/shop/amourguadeloupe" },
     { flag: "🇧🇪", nom: "Belgique", type: "Personnel", lien: "https://www.amazon.com.be/shop/amourguadeloupe" },
     { flag: "🇧🇷", nom: "Brésil", type: "Personnel", lien: "https://www.amazon.com.br/shop/amourguadeloupe" },
-
-    // Boutiques Influenceurs (12)
     { flag: "🇦🇺", nom: "Australie", type: "Influenceur", lien: "https://www.amazon.com.au/shop/influencer-fb942837" },
     { flag: "🇺🇸", nom: "États-Unis", type: "Influenceur", lien: "https://www.amazon.com/shop/influencer-fb942837" },
     { flag: "🇬🇧", nom: "Royaume-Uni", type: "Influenceur", lien: "https://www.amazon.co.uk/shop/influencer-fb942837" },
@@ -56,7 +51,6 @@ export default function Home() {
 
   return (
     <Layout>
-      {/* Hero Section Compact - Première chose visible */}
       <div style={{
         minHeight: '60vh',
         background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
@@ -67,7 +61,6 @@ export default function Home() {
         overflow: 'hidden',
         padding: '3rem 1rem'
       }}>
-        {/* Formes décoratives */}
         <div style={{
           position: 'absolute',
           top: '5%',
@@ -96,7 +89,6 @@ export default function Home() {
           maxWidth: '1200px',
           margin: '0 auto'
         }}>
-          {/* Globe animé */}
           <div style={{
             fontSize: '4rem',
             marginBottom: '1.5rem',
@@ -105,7 +97,6 @@ export default function Home() {
             🌍
           </div>
 
-          {/* Titre */}
           <h1 style={{
             fontSize: 'clamp(2rem, 6vw, 4rem)',
             fontWeight: '800',
@@ -123,7 +114,6 @@ export default function Home() {
             🏝️ Guadeloupe - Terre de Champions 🏆
           </p>
 
-          {/* Statistiques en ligne */}
           <div style={{
             display: 'flex',
             gap: '2rem',
@@ -150,7 +140,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Boutons d'action */}
           <div style={{
             display: 'flex',
             gap: '1rem',
@@ -196,46 +185,36 @@ export default function Home() {
             </Link>
 
             <a 
-              href="https://reussitess-global-nexus-jfgk-git-copilo-3f98a8-porinus-projects.vercel.app/"
+              href="https://shop.reussitess.fr/"
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                background: 'linear-gradient(135deg, #f5576c, #f093fb)',
+                background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
                 color: 'white',
                 padding: '1rem 2.5rem',
                 borderRadius: '50px',
                 textDecoration: 'none',
                 fontSize: '1.1rem',
                 fontWeight: 'bold',
-                boxShadow: '0 8px 25px rgba(245, 87, 108, 0.4)',
+                boxShadow: '0 8px 25px rgba(16, 185, 129, 0.4)',
                 transition: 'all 0.3s ease',
                 display: 'inline-block'
               }}
-              className="btn-alternative">
-              🎯 Version Alternative
+              className="btn-version2">
+              🎮 Version 2 - Shop PWA
             </a>
-          </div>
-
-          {/* Flèche animée vers le bas */}
-          <div style={{
-            marginTop: '2rem',
-            animation: 'bounce 2s ease-in-out infinite'
-          }}>
-            <div style={{ fontSize: '1.5rem', opacity: 0.7 }}>⬇️</div>
           </div>
         </div>
       </div>
 
-      {/* Section 26 Boutiques - DIRECTEMENT VISIBLE */}
       <div id="boutiques" style={{
-        background: 'linear-gradient(180deg, #1e293b 0%, #0f172a 100%)',
-        padding: '5rem 0',
-        minHeight: '100vh'
+        background: 'linear-gradient(180deg, #0f172a 0%, #1e293b 100%)',
+        padding: '5rem 0'
       }}>
         <div className="container" style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2rem' }}>
           <h2 style={{
             textAlign: 'center',
-            fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
             fontWeight: '800',
             marginBottom: '1rem',
             background: 'linear-gradient(135deg, #f59e0b 0%, #e11d48 100%)',
@@ -243,103 +222,98 @@ export default function Home() {
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text'
           }}>
-            🛍️ MES 26 BOUTIQUES AMAZON
+            🛍️ NOS 26 BOUTIQUES AMAZON
           </h2>
-          
+
           <p style={{
             textAlign: 'center',
-            fontSize: '1.2rem',
             color: '#94a3b8',
-            marginBottom: '4rem',
+            fontSize: '1.2rem',
+            marginBottom: '3rem',
             maxWidth: '800px',
-            margin: '0 auto 4rem'
+            margin: '0 auto 3rem'
           }}>
-            Choisissez votre pays et découvrez ma sélection exclusive de produits
+            Choisissez votre pays et découvrez nos sélections exclusives
           </p>
 
-          {/* Grille des boutiques */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-            gap: '2rem',
-            marginTop: '3rem'
+            gap: '2rem'
           }}>
             {boutiques.map((boutique, index) => (
               <div key={index} style={{
-                background: 'rgba(255, 255, 255, 0.05)',
+                background: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(10px)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
                 borderRadius: '20px',
                 padding: '2rem',
-                transition: 'all 0.3s ease',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '1.5rem'
+                transition: 'all 0.3s ease'
               }}
               className="boutique-card">
-                {/* En-tête */}
-                <div style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
                   gap: '1rem',
-                  paddingBottom: '1rem',
-                  borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
+                  marginBottom: '1.5rem'
                 }}>
-                  <span style={{ fontSize: '3rem' }}>{boutique.flag}</span>
+                  <div style={{
+                    fontSize: '3rem',
+                    lineHeight: '1'
+                  }}>
+                    {boutique.flag}
+                  </div>
                   <div style={{ flex: 1 }}>
                     <h3 style={{
-                      fontSize: '1.5rem',
+                      fontSize: '1.4rem',
                       fontWeight: '700',
                       color: 'white',
-                      margin: 0
+                      marginBottom: '0.3rem'
                     }}>
                       {boutique.nom}
                     </h3>
                     <span style={{
                       display: 'inline-block',
-                      marginTop: '0.5rem',
                       padding: '0.3rem 0.8rem',
                       borderRadius: '20px',
                       fontSize: '0.8rem',
                       fontWeight: '600',
-                      background: boutique.type === 'Personnel' ? 
-                        'linear-gradient(135deg, #667eea, #764ba2)' : 
-                        'linear-gradient(135deg, #f093fb, #f5576c)',
+                      background: boutique.type === 'Personnel' 
+                        ? 'linear-gradient(135deg, #3b82f6, #8b5cf6)' 
+                        : 'linear-gradient(135deg, #10b981, #059669)',
                       color: 'white'
                     }}>
-                      {boutique.type}
+                      {boutique.type === 'Personnel' ? '👤 Personnel' : '⭐ Influenceur'}
                     </span>
                   </div>
                 </div>
 
-                {/* Bouton */}
-                <a 
+                <a
                   href={boutique.lien}
                   target="_blank"
-                  rel="noopener noreferrer nofollow sponsored"
+                  rel="noopener noreferrer"
                   style={{
                     display: 'block',
-                    background: 'linear-gradient(135deg, #10b981, #059669)',
-                    color: 'white',
+                    width: '100%',
                     padding: '1rem',
-                    borderRadius: '12px',
+                    background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                    color: 'white',
                     textAlign: 'center',
+                    borderRadius: '12px',
                     textDecoration: 'none',
-                    fontSize: '1.1rem',
-                    fontWeight: 'bold',
+                    fontWeight: '600',
+                    fontSize: '1rem',
                     transition: 'all 0.3s ease',
-                    boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)'
+                    marginBottom: '1rem'
                   }}
                   className="boutique-btn">
                   {translations[boutique.flag]?.btn || 'Visiter la Boutique'} →
                 </a>
 
-                {/* Disclaimer */}
                 <div style={{
-                  fontSize: '0.75rem',
+                  fontSize: '0.85rem',
                   color: '#94a3b8',
                   textAlign: 'center',
-                  fontStyle: 'italic',
                   lineHeight: '1.4'
                 }}>
                   🔒 {translations[boutique.flag]?.disclaimer || 'En tant qu\'affiliée, je gagne des commissions sur certains produits'}
@@ -350,7 +324,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Section Comment ça fonctionne */}
       <div style={{
         background: 'linear-gradient(180deg, #0f172a 0%, #1e293b 100%)',
         padding: '5rem 0'
@@ -412,7 +385,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Section Services Rapides */}
       <div style={{
         background: 'linear-gradient(180deg, #1e293b 0%, #0f172a 100%)',
         padding: '5rem 0'
@@ -475,18 +447,12 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Bot Assistant */}
       <BotAssistant />
 
       <style jsx>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-20px); }
-        }
-
-        @keyframes bounce {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
         }
 
         .btn-primary:hover {
@@ -499,9 +465,9 @@ export default function Home() {
           background: rgba(255, 255, 255, 0.25);
         }
 
-        .btn-alternative:hover {
+        .btn-version2:hover {
           transform: translateY(-3px);
-          box-shadow: 0 12px 35px rgba(245, 87, 108, 0.5);
+          box-shadow: 0 12px 35px rgba(16, 185, 129, 0.5);
         }
 
         .boutique-card:hover {
@@ -523,12 +489,6 @@ export default function Home() {
           transform: translateY(-5px);
           background: rgba(255, 255, 255, 0.08);
           box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-        }
-
-        @media (max-width: 768px) {
-          .boutique-card, .step-card, .service-card-mini {
-            margin-bottom: 0;
-          }
         }
       `}</style>
     </Layout>
