@@ -157,7 +157,7 @@ export default function Home() {
             </a>
 
             <a 
-              href="https://shop.reussitess.fr/"
+              href="https://www.amazon.fr/shop/amourguadeloupe"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -173,7 +173,7 @@ export default function Home() {
                 display: 'inline-block'
               }}
               className="btn-version2">
-              🎮 Version 2 - Shop PWA
+              🎮 🇫🇷 France Amazon Officiel
             </a>
           </div>
         </div>
