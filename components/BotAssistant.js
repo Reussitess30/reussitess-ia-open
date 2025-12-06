@@ -1000,3 +1000,13 @@ export default function BotAssistant() {
 
 function botFunctions() { return "Amazon: amazon.fr/shop/amourguadeloupe | Stats: 55p 26A 25Q | REUSSITESS971"; }
 function newAmazon() { return "amazon.fr/shop/amourguadeloupe amazon.com/shop/influencer-fb942837"; }
+function prevention() { return "Prévention: Dormir 8h | Eau 2L/jour | Marche 30min | Stress: respiration 4s inspire 4s expire"; }
+function conseil() { return "Conseil: Gratitude journal | Méditation 5min | Objectifs 3/jour | Pause écran 20min"; }
+function positivite() { return "Positivité: Tu es capable | Aujourd’hui parfait | Succès imminent | Gratitude ∞"; }
+function entrepreneur() { return "Entrepreneur: 1 idée/jour | Réseau 1 contact | Test rapide | Pivot rapide"; }
+function astuces() { return "Astuces: Pomodoro 25min | Eisenhower matrice | 80/20 Pareto | Non = priorité"; }
+function recette() { return "Recette 5min: Œufs brouillés + avocat | Ti-punch: citron+sucre+rhum50°"; }
+function affaires() { return "Affaires: /boutiques (26 Amazon) | /signature (REUSSITESS971) | Commissions OK"; }
+function motivation() { return "Aujourd’hui: Action immédiate | Résultats suivent | Excellence REUSSITESS®"; }
+function temps() { return "Temps: Priorité #1 | Deep work 90min | Réunion <15min | Email 2x/jour"; }
+function reseau() { return "Réseau: 1 message/jour | Valeur d’abord | Suivi 7 jours | Win-win toujours"; }
