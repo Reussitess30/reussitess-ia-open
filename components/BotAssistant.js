@@ -1112,3 +1112,21 @@ inscription: "Newsletter Reussitess971: Astuces argent légal + Guide 26 Boutiqu
 guide: "Guide 26 Boutiques: €9.99 → Toutes commissions + Astuces → WhatsApp 590690822482 'GUIDE' → Paiement sécurisé",
 revenus: "Revenus passifs: Amazon 3-12% + Newsletter 500 abonnés + TikTok Shop + Adsense = €2000/mois légal Guadeloupe !",
 legalaide: "Aide légale: Amazon partenaires.amazon.fr TikTok business upwork fiverr adsense.google.com → 100% légal déclaré commissions"
+,
+argentine: "Argentine 🇦🇷 Buenos Aires 46M tango Messi Malvinas 12 UNESCO agriculture soja boeuf Amazon via USA commissions 4-8%",
+maroc: "Maroc 🇲🇦 Rabat 37M tajine Marrakech médina 9 UNESCO tourisme phosphate pêche Amazon via FR commissions 3-7%",
+senegal: "Sénégal 🇸🇳 Dakar 18M thiéboudienne Youssou N'Dour 2 UNESCO croissance stable franc CFA Amazon via FR",
+afrique_sud: "Afrique du Sud 🇿🇦 Pretoria 61M Table Mountain Mandela rugby 10 UNESCO mines or platine Amazon via UK/USA",
+vietnam: "Vietnam 🇻🇳 Hanoï 100M pho Hô Chi Minh Halong Bay 8 UNESCO croissance +7%/an Samsung Foxconn Amazon via SG",
+indonesie: "Indonésie 🇮🇩 Jakarta 275M plus grand musulman Borobudur Bali 9 UNESCO huile palme Amazon via SG",
+turquie: "Turquie 🇹🇷 Ankara 85M Cappadoce Istanbul Sainte-Sophie 19 UNESCO tourisme pont Europe/Asie Amazon via DE",
+egypte: "Égypte 🇪🇬 Le Caire 110M Pyramides Sphinx Nil 7 UNESCO tourisme Suez Canal Amazon via UK",
+pologne: "Pologne 🇵🇱 Varsovie 38M Chopin Auschwitz Auschwitz 17 UNESCO industrie lourde Amazon.pl commissions 3-8%",
+grece: "Grèce 🇬🇷 Athènes 10M Acropole Parthenon 18 UNESCO tourisme îles Cyclades Amazon via DE/IT"
+,
+quiz_reussitess: "Quiz Reussitess: Combien boutiques? 26 WhatsApp? 590690822482 TikTok? amourguadeloupe Pays? 75",
+quiz_deploy: "Quiz Deploy: Commande production? npm run build + vercel --prod Checkpoint sécurité? 0ee50b24",
+quiz_commerce: "Quiz Commerce: Commissions Amazon? 3-12% Newsletter? WhatsApp 590690822482 Affiliation? partenaires.amazon.fr"
+,
+newsletter: "Newsletter Reussitess971 GRATUITE ! 📧 Astuces argent + Guide 26 Boutiques + 75 pays hebdo → WhatsApp 590690822482 'INSCRIS-MOI'",
+guide26: "Guide 26 Boutiques €9.99 ! 📖 Tous liens commissions + Astuces → WhatsApp 590690822482 'GUIDE' paiement sécurisé"
