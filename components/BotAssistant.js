@@ -1010,42 +1010,7 @@ function affaires() { return "Affaires: /boutiques (26 Amazon) | /signature (REU
 function motivation() { return "Aujourd’hui: Action immédiate | Résultats suivent | Excellence REUSSITESS®"; }
 function temps() { return "Temps: Priorité #1 | Deep work 90min | Réunion <15min | Email 2x/jour"; }
 function reseau() { return "Réseau: 1 message/jour | Valeur d’abord | Suivi 7 jours | Win-win toujours"; }
-inde: "Inde 🇮🇳 New Delhi 1.4M Taj Mahal Bollywood cricket 42 UNESCO Tata Reliance tech Amazon.in commissions 4-10%",
-australie: "Australie 🇦🇺 Canberra 26M Sydney Opera kangourous Great Barrier Reef 19 UNESCO BHP Rio Tinto Amazon.com.au commissions 3-7%",
-coree_sud: "Corée du Sud 🇰🇷 Séoul 52M K-pop Samsung Hyundai BTS 15 UNESCO tech #4 mondiale Amazon via JP commissions 3-7%",
-thaïlande: "Thaïlande 🇹🇭 Bangkok 70M pad thaï temples bouddhistes 7 UNESCO tourisme #1 Asie Amazon via SG commissions 3-6%"
-quiz_amazon: "Quiz Amazon: Combien boutiques actives? 26 Commissions France? 3-10% USA? 4-12%",
-quiz_boutiques: "Quiz Boutiques: Combien liens personnels? 26 Pays couverts? 14 TikTok officiel? @amourguadeloupe",
-quiz_commission: "Quiz Commissions: % moyenne Amazon? 3-12% Revenus passifs? Oui Base Guadeloupe? Oui",
-quiz_guadeloupe: "Quiz Guadeloupe: Boutiques Amazon? 26 WhatsApp commandes? 590690822482 TikTok? @amourguadeloupe",
-quiz_usa: "Quiz USA: Amazon #1 mondiale? Oui Commissions? 3-12% Capitale? Washington D.C.",
-quiz_france: "Quiz France: Amazon.fr commissions? 3-10% UNESCO? 49 Capitale? Paris Boutiques? Personnel/influenceur"
-aide_boutiques: "Tes 26 Boutiques Amazon génèrent commissions 3-12%. Tape 'boutiques' pour liste complète ! 😊",
-aide_amazon: "Amazon: Liens personnels France/USA/UK commissions automatiques. Tape 'commission' pour % exacts.",
-aide_guadeloupe: "Guadeloupe base opérations 26 Boutiques → 14 pays. TikTok @amourguadeloupe WhatsApp 590690822482.",
-aide_pays: "75 pays disponibles! Tape 'usa' 'france' 'bresil' pour biographies complètes UNESCO économie.",
-aide_commission: "Commissions Amazon 3-12% par vente via tes 26 liens. Revenus passifs Guadeloupe → monde ! 💰"
-// === MOTS-CLÉS PROJET COMPLET (lit tout site)
-boutiques: "26 Boutiques Amazon personnelles France personnel/influenceur USA UK Allemagne Italie Brésil Canada commissions 3-12% liens actifs",
-amazon: "Amazon 26 boutiques commissions automatiques France/USA/UK/Allemagne/Italie/Brésil/Canada 14 pays Guadeloupe base opérations",
-quiz: "5 Quiz interactifs Amazon Art Motivation Business Cinéma Culture Découvertes Environnement Gastronomie Internet Positivité",
-bibliotheque: "Bibliothèque 75 pays Afrique Ameriques Asie-Pacifique DOM-TOM Europe Maghreb bibliotheque/afrique/cameroun cote-ivoire bibliotheque/dom-tom/guadeloupe",
-pages: "pages/index.js 26 Boutiques pages/bibliotheque/* 75 pays pages/quiz/* 5 quiz pages/a-propos pages/contact pages/legal",
-reussitess: "REUSSITESS Global Nexus 26 Boutiques 75 Pays 5 Quiz Guadeloupe TikTok @amourguadeloupe WhatsApp 590690822482 commissions",
-guadeloupe: "Guadeloupe 🇬🇵 Basse-Terre 26 Boutiques Amazon base pages/bibliotheque/dom-tom/guadeloupe TikTok amourguadeloupe WhatsApp 590690822482",
-tiktok: "TikTok @amourguadeloupe Reussitess Global Nexus 26 Boutiques commissions stories lives Guadeloupe → 14 pays",
-whatsapp: "WhatsApp 590690822482 commandes Guide 26 Boutiques questions Amazon commissions Reussitess Global Nexus",
-vercel: "Vercel https://reussitess-global-nexus-jfgk.vercel.app/ production 26 Boutiques live Sécurité A Google Cloud checkpoint 0ee50b24"
-github: "GitHub Reussitess30/reussitess-global-nexus commit 0ee50b24 checkpoint sécurité Dockerfile next.config.js standalone React 19.2.1",
-nextjs: "Next.js 16 Turbopack pages/_app.js components/BotAssistant.js importé sécurité A output standalone Vercel production",
-termux: "Termux npm run build git push origin main vercel --prod deploy 60s checkpoint 0ee50b24 sécurité A",
-deploy: "Deploy: npm run build → git add . → git commit → git push origin main → vercel --prod → https://reussitess-global-nexus-jfgk.vercel.app/ live"
-structure: "Structure: pages/index.js (26 Boutiques) pages/bibliotheque/* (75 pays) pages/quiz/[id].js (5 Quiz) components/BotAssistant.js (bot 🌟)",
-domtom: "DOM-TOM: Guadeloupe Martinique Guyane Réunion Mayotte Nouvelle-Calédonie Polynésie Saint-Barth Saint-Martin Wallis Futuna pages/bibliotheque/dom-tom/*",
-afrique: "Afrique: Côte d'Ivoire Cameroun Madagascar Mali RDC Rwanda Sénégal pages/bibliotheque/afrique/* cacao zouglou croissance",
-pwa: "PWA installable manifest.json service worker mobile TikTok ready offline 26 Boutiques commissions Amazon"
 // === SALUTATIONS HUMAINES (émotions)
-bonjour: "Bonjour ! 🌞 superBot REUSSITESS® vous souhaite une excellente journée ! Je parie vous trouverez un achat dans mes 26 boutiques qui vous plaira !",
 bonsoir: "Bonsoir ! 🌙 Merci d'être là. Guadeloupe terres de champions → Excellence Innovation succès à l'infini !",
 merci: "Merci infiniment ! 🙏 Votre confiance = ma motivation. Réussitess971 Excellence Innovation boudoume Guadeloupe !",
 au_revoir: "Au revoir ! 🚀 À bientôt pour plus de succès. Commissions Amazon actives 24h panier → Réussitess971 gagne !",
@@ -1127,3 +1092,76 @@ if (typeof knowledgeBase !== 'undefined') {
   knowledgeBase.cotedivoire = "Côte d'Ivoire 🇨🇮 Abidjan 29M cacao #1 mondial 3 UNESCO Cathédrale Saint-Paul Bassam colonial Zouglou TikTok 7M users Amazon FR/US commissions croissance +6%/an";
   knowledgeBase.canada = "Canada 🇨🇦 Ottawa 39M Toronto Niagara 20 UNESCO sirop érable hockey multiculturalisme Amazon.ca commissions 5-12% boutiques personnelles";
 }
+
+// BIOGRAPHIES PAYS (bloc propre pour Vercel)
+if (typeof knowledgeBase !== 'undefined') {
+  knowledgeBase.usa = "USA 🇺🇸 Washington D.C. 340M 50 États 24 UNESCO Statue Liberté Grand Canyon Golden Gate Hollywood NBA Silicon Valley Apple Google Amazon #1 mondiale commissions 3-12% 26 boutiques personnelles";
+  knowledgeBase.france = "France 🇫🇷 Paris 68M 13 régions 49 UNESCO Tour Eiffel Louvre Versailles Airbus LVMH Amazon.fr commissions 3-10% 26 boutiques personnelles personnel/influenceur";
+  knowledgeBase.royaumeuni = "Royaume-Uni 🇬🇧 Londres 67M 4 nations 33 UNESCO Big Ben Stonehenge Shakespeare Premier League City finance BP Shell Amazon UK commissions 4-8% 26 boutiques";
+  knowledgeBase.cotedivoire = "Côte d'Ivoire 🇨🇮 Abidjan 29M cacao #1 mondial 3 UNESCO Cathédrale Saint-Paul Bassam colonial Zouglou TikTok 7M users Amazon FR/US commissions croissance +6%/an";
+  knowledgeBase.canada = "Canada 🇨🇦 Ottawa 39M Toronto Niagara 20 UNESCO sirop érable hockey multiculturalisme Amazon.ca commissions 5-12% boutiques personnelles";
+}
+
+// QUIZZ & AIDE (bloc propre pour build)
+if (typeof knowledgeBase !== 'undefined') {
+  knowledgeBase.quiz_commission = "Quiz Commissions: % moyenne Amazon? 3-12% Revenus passifs? Oui Base Guadeloupe? Oui";
+  knowledgeBase.quiz_guadeloupe = "Quiz Guadeloupe: Boutiques Amazon? 26 WhatsApp commandes? 590690822482 TikTok? @amourguadeloupe";
+  knowledgeBase.quiz_usa = "Quiz USA: Amazon #1 mondiale? Oui Commissions? 3-12% Capitale? Washington D.C.";
+  knowledgeBase.quiz_france = "Quiz France: Amazon.fr commissions? 3-10% UNESCO? 49 Capitale? Paris Boutiques? Personnel/influenceur";
+  knowledgeBase.aide_boutiques = "Tes 26 Boutiques Amazon génèrent commissions 3-12%. Tape 'boutiques' pour liste complète ! 😊";
+}
+
+// AIDE AMAZON / GUADELOUPE / PAYS / COMMISSIONS (bloc propre)
+if (typeof knowledgeBase !== 'undefined') {
+  knowledgeBase.aide_amazon = "Amazon: Liens personnels France/USA/UK commissions automatiques. Tape 'commission' pour % exacts.";
+  knowledgeBase.aide_guadeloupe = "Guadeloupe base opérations 26 Boutiques → 14 pays. TikTok @amourguadeloupe WhatsApp 590690822482.";
+  knowledgeBase.aide_pays = "75 pays disponibles! Tape 'usa' 'france' 'bresil' pour biographies complètes UNESCO économie.";
+  knowledgeBase.aide_commission = "Commissions Amazon 3-12% par vente via tes 26 liens. Revenus passifs Guadeloupe → monde ! 💰";
+}
+
+// MOTS-CLÉS PROJET COMPLET (bloc propre)
+if (typeof knowledgeBase !== 'undefined') {
+  knowledgeBase.boutiques = "26 Boutiques Amazon personnelles France personnel/influenceur USA UK Allemagne Italie Brésil Canada commissions 3-12% liens actifs";
+  knowledgeBase.amazon = "Amazon 26 boutiques commissions automatiques France/USA/UK/Allemagne/Italie/Brésil/Canada 14 pays Guadeloupe base opérations";
+  knowledgeBase.quiz = "5 Quiz interactifs Amazon Art Motivation Business Cinéma Culture Découvertes Environnement Gastronomie Internet Positivité";
+  knowledgeBase.bibliotheque = "Bibliothèque 75 pays Afrique Ameriques Asie-Pacifique DOM-TOM Europe Maghreb bibliotheque/afrique/cameroun cote-ivoire bibliotheque/dom-tom/guadeloupe";
+  knowledgeBase.pages = "pages/index.js 26 Boutiques pages/bibliotheque/* 75 pays pages/quiz/* 5 quiz pages/a-propos pages/contact pages/legal";
+}
+
+// MOTS-CLÉS PROJET (bloc propre)
+if (typeof knowledgeBase !== 'undefined') {
+  knowledgeBase.reussitess = "REUSSITESS Global Nexus 26 Boutiques 75 Pays 5 Quiz Guadeloupe TikTok @amourguadeloupe WhatsApp 590690822482 commissions";
+  knowledgeBase.guadeloupe = "Guadeloupe 🇬🇵 Basse-Terre 26 Boutiques Amazon base pages/bibliotheque/dom-tom/guadeloupe TikTok amourguadeloupe WhatsApp 590690822482";
+  knowledgeBase.tiktok = "TikTok @amourguadeloupe Reussitess Global Nexus 26 Boutiques commissions stories lives Guadeloupe → 14 pays";
+  knowledgeBase.whatsapp = "WhatsApp 590690822482 commandes Guide 26 Boutiques questions Amazon commissions Reussitess Global Nexus";
+  knowledgeBase.vercel = "Vercel https://reussitess-global-nexus-jfgk.vercel.app/ production 26 Boutiques live Sécurité A Google Cloud checkpoint 0ee50b24";
+}
+
+// MOTS-CLÉS TECH & STRUCTURE (bloc propre)
+if (typeof knowledgeBase !== 'undefined') {
+  knowledgeBase.github = "GitHub Reussitess30/reussitess-global-nexus commit 0ee50b24 checkpoint sécurité Dockerfile next.config.js standalone React 19.2.1";
+  knowledgeBase.nextjs = "Next.js 16 Turbopack pages/_app.js components/BotAssistant.js importé sécurité A output standalone Vercel production";
+  knowledgeBase.termux = "Termux npm run build git push origin main vercel --prod deploy 60s checkpoint 0ee50b24 sécurité A";
+  knowledgeBase.deploy = "Deploy: npm run build → git add . → git commit → git push origin main → vercel --prod → https://reussitess-global-nexus-jfgk.vercel.app/ live";
+  knowledgeBase.structure = "Structure: pages/index.js (26 Boutiques) pages/bibliotheque/* (75 pays) pages/quiz/[id].js (5 Quiz) components/BotAssistant.js (bot 🌟)";
+}
+
+// --- BLOC MÉTADATA TECH & STRUCTURE (ajout sécurisé) ---
+;(function(){
+  const __buildMeta = {
+  };
+
+  // Si une knowledgeBase globale existe et est un objet, on merge dedans
+  try {
+    if (typeof globalThis.knowledgeBase === 'object' && globalThis.knowledgeBase !== null) {
+      Object.assign(globalThis.knowledgeBase, __buildMeta);
+    } else {
+      // autrement, expose dans un nom propre pour debug sans casser le build
+      globalThis.__buildMeta = Object.assign({}, globalThis.__buildMeta || {}, __buildMeta);
+    }
+  } catch (e) {
+    // Ne pas casser l'exécution si l'environnement est restreint
+    try { globalThis.__buildMeta = Object.assign({}, globalThis.__buildMeta || {}, __buildMeta); } catch(e2) {}
+  }
+})();
+# (colle ici exactement le contenu du bloc IIFE ci‑dessus entre EOF)
