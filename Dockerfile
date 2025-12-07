@@ -1,7 +1,8 @@
-FROM vercel/next:latest
+FROM node:20-alpine
 WORKDIR /app
-COPY . .
-RUN npm install
-RUN npm run build
+COPY package*.json ./
+RUN npm ci --only=production
+COPY .next/standalone ./
+COPY .next/static ./.next/static
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
