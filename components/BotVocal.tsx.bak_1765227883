@@ -105,20 +105,20 @@ export default function BotVocal() {
     }
     // Liste des pays
     else if (lowerInput.match(/quels pays|pays disponibles|countries|où/i)) {
-      const pays = [...new Set(boutiques.map(b => (b as any).pays))].join(', ')
+      const pays = [...new Set(boutiques.map(b => b.pays))].join(', ')
       reply = `Nos boutiques sont disponibles dans ces 14 pays : ${pays}.`
     }
     // Recherche par pays spécifique
     else if (lowerInput.match(/france|français/i)) {
-      const boutiquesFr = boutiques.filter(b => (b as any).pays === 'France')
+      const boutiquesFr = boutiques.filter(b => b.pays === 'France')
       reply = `Nous avons ${boutiquesFr.length} boutique en France : une boutique personnelle. Voulez-vous le lien ?`
     }
     else if (lowerInput.match(/états-unis|usa|america/i)) {
-      const boutiquesUS = boutiques.filter(b => (b as any).pays === 'États-Unis')
+      const boutiquesUS = boutiques.filter(b => b.pays === 'États-Unis')
       reply = `Nous avons ${boutiquesUS.length} boutiques aux États-Unis : une personnelle et une influenceur.`
     }
     else if (lowerInput.match(/allemagne|germany|deutsch/i)) {
-      const boutiquesDE = boutiques.filter(b => (b as any).pays === 'Allemagne')
+      const boutiquesDE = boutiques.filter(b => b.pays === 'Allemagne')
       reply = `Nous avons ${boutiquesDE.length} boutiques en Allemagne : une personnelle et une influenceur.`
     }
     // Différence Personnel vs Influenceur
