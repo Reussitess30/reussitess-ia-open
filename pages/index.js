@@ -109,7 +109,7 @@ export default function Home() {
             gap: '3rem',
             justifyContent: 'center',
             flexWrap: 'wrap',
-            marginTop: '3rem'
+            marginTop: '1rem'
           }}>
             {[
               { num: '25', label: 'Quiz', icon: '📝' },
@@ -131,13 +131,45 @@ export default function Home() {
             ))}
           </div>
 
+
+          {/* Bouton Passeport de Réussite */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: '1rem',
+            marginBottom: '2rem'
+          }}>
+            <Link
+              href="/champions"
+              style={{
+                background: 'linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%)',
+                color: '#1e293b',
+                padding: '1.5rem 3rem',
+                borderRadius: '50px',
+                textDecoration: 'none',
+                fontSize: '1.3rem',
+                fontWeight: '900',
+                boxShadow: '0 10px 40px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3)',
+                transition: 'all 0.3s ease',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                border: '3px solid rgba(255, 255, 255, 0.3)',
+                textTransform: 'uppercase',
+                letterSpacing: '1px'
+              }}
+              className="btn-passeport">
+              🏆 Passeport de Réussite REUSSITESS®971
+            </Link>
+          </div>
+
           {/* Boutons Version Alternative et Version 2 */}
           <div style={{
             display: 'flex',
             gap: '1rem',
             justifyContent: 'center',
             flexWrap: 'wrap',
-            marginTop: '3rem'
+            marginTop: '1rem'
           }}>
             <a 
               href="https://reussitess-global-nexus-jfgk-git-copilo-3f98a8-porinus-projects.vercel.app/"
@@ -345,6 +377,12 @@ export default function Home() {
         }
 
         .btn-version2:hover {
+
+        .btn-passeport:hover {
+          transform: translateY(-5px) scale(1.05);
+          box-shadow: 0 15px 50px rgba(255, 215, 0, 0.7), 0 0 30px rgba(255, 215, 0, 0.5);
+          background: linear-gradient(135deg, #ffed4e 0%, #ffd700 50%, #ffed4e 100%);
+        }
           transform: translateY(-3px);
           box-shadow: 0 12px 35px rgba(16, 185, 129, 0.5);
         }
