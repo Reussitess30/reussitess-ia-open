@@ -1,60 +1,79 @@
 const obj = {
-    
-    // DONNÉES DU PROJET RÉUSSITESS
-    projet: {
-      nom: 'RÉUSSITESS® Global Nexus',
-      tagline: 'Votre Passeport Culturel Mondial',
-      url: 'https://reussitess-global-nexus-jfgk.vercel.app/',
-      deploiement: 'Vercel',
-      technologie: 'Next.js 15.1.0, React 19, Tailwind CSS',
-      propriétaire: 'Porinus (@reussitess)',
-      statut: 'Amazon Associates Influencer ID: fb942837',
-      
-      structure: {
-        totalPages: 62,
-        totalBoutiques: 26,
-        totalPays: 14,
-        continents: 5,
-        innovations: 5,
-        langues: 8
-      },
+  // DONNÉES DU PROJET RÉUSSITESS
+  projet: {
+    nom: "RÉUSSITESS® Global Nexus",
+    tagline: "Votre Passeport Culturel Mondial",
+    url: "https://reussitess-global-nexus-jfgk.vercel.app/",
+    deploiement: "Vercel",
+    technologie: "Next.js 15.1.0, React 19, Tailwind CSS",
+    propriétaire: "Porinus (@reussitess)",
+    statut: "Amazon Associates Influencer ID: fb942837",
 
-      boutiques: {
-        personnelles: [
-          'États-Unis', 'France', 'Allemagne', 'Italie', 'Espagne', 
-          'Royaume-Uni', 'Canada', 'Pays-Bas', 'Suède', 'Inde',
-          'Singapour', 'Belgique', 'Australie', 'Brésil'
-        ],
-        influenceur: [
-          'États-Unis', 'France', 'Allemagne', 'Italie', 'Espagne',
-          'Royaume-Uni', 'Canada', 'Pays-Bas', 'Suède', 'Inde',
-          'Singapour', 'Belgique'
-        ]
-      },
-
-      valeurs: [
-        'Authenticité caribéenne',
-        'Excellence globale',
-        'Innovation technologique',
-        'Passion culturelle',
-        'Inclusion diversité',
-        'Fierté guadeloupéenne'
-      ]
+    structure: {
+      totalPages: 62,
+      totalBoutiques: 26,
+      totalPays: 14,
+      continents: 5,
+      innovations: 5,
+      langues: 8,
     },
 
-    // GUADELOUPE - TERRE NATALE DE RÉUSSITESS
-    guadeloupe: {
-      nom: 'Guadeloupe',
-      surnom: 'Karukera (Île aux belles eaux)',
-      forme: 'Papillon (Grande-Terre + Basse-Terre)',
-      population: '384 239 habitants (2021)',
-      superficie: '1 628 km²',
-      capitale: 'Basse-Terre (administrative), Pointe-à-Pitre (économique)',
-      departement: '971 - Département et Région d\'Outre-Mer (DROM)',
-      monnaie: 'Euro (EUR)',
-      langues: 'Français (officiel), Créole guadeloupéen',
-      
-      histoire: `**HISTOIRE PROFONDE DE LA GUADELOUPE**
+    boutiques: {
+      personnelles: [
+        "États-Unis",
+        "France",
+        "Allemagne",
+        "Italie",
+        "Espagne",
+        "Royaume-Uni",
+        "Canada",
+        "Pays-Bas",
+        "Suède",
+        "Inde",
+        "Singapour",
+        "Belgique",
+        "Australie",
+        "Brésil",
+      ],
+      influenceur: [
+        "États-Unis",
+        "France",
+        "Allemagne",
+        "Italie",
+        "Espagne",
+        "Royaume-Uni",
+        "Canada",
+        "Pays-Bas",
+        "Suède",
+        "Inde",
+        "Singapour",
+        "Belgique",
+      ],
+    },
+
+    valeurs: [
+      "Authenticité caribéenne",
+      "Excellence globale",
+      "Innovation technologique",
+      "Passion culturelle",
+      "Inclusion diversité",
+      "Fierté guadeloupéenne",
+    ],
+  },
+
+  // GUADELOUPE - TERRE NATALE DE RÉUSSITESS
+  guadeloupe: {
+    nom: "Guadeloupe",
+    surnom: "Karukera (Île aux belles eaux)",
+    forme: "Papillon (Grande-Terre + Basse-Terre)",
+    population: "384 239 habitants (2021)",
+    superficie: "1 628 km²",
+    capitale: "Basse-Terre (administrative), Pointe-à-Pitre (économique)",
+    departement: "971 - Département et Région d'Outre-Mer (DROM)",
+    monnaie: "Euro (EUR)",
+    langues: "Français (officiel), Créole guadeloupéen",
+
+    histoire: `**HISTOIRE PROFONDE DE LA GUADELOUPE**
 
 **PÉRIODE PRÉCOLOMBIENNE (-3000 à 1493)**
 Les Arawaks, peuple paisible d'Amérique du Sud, s'installent en Guadeloupe vers -300 avant JC. Ils cultivent manioc, maïs, patate douce, pêchent, créent poteries décorées. Société matriarcale organisée en villages (carbets).
@@ -106,7 +125,7 @@ Cyclones dévastateurs : Hugo 16 septembre 1989 (11 morts, 80% habitations détr
 
 Économie : tourisme 8%, agriculture canne/banane 2,5%, fonction publique hypertrophiée 35%, chômage 25%. PIB 9 milliards €, 23 500 €/hab (65% métropole). Importations 4 fois exportations, déficit commercial. Dépendance métropole problématique mais niveau vie supérieur Caraïbe.`,
 
-      geographie: `**GÉOGRAPHIE FASCINANTE**
+    geographie: `**GÉOGRAPHIE FASCINANTE**
 
 **FORME PAPILLON UNIQUE**
 La Guadeloupe est formée de DEUX îles séparées par la Rivière Salée, chenal maritime étroit (50-200m) d'eau saumâtre :
@@ -132,7 +151,7 @@ Parc National Guadeloupe 17 300 ha cœur + 117 100 ha aire adhésion créé 1989
 
 Milieu marin : récifs coralliens 20 000 ha dégradés pollution/cyclones, mangroves 2 800 ha nurseries poissons racines échasses, herbiers tortues vertes imbriquées luth pondent plages Désirade mars-octobre protégées, dauphins, baleines à bosse migration janvier-avril, requins citron inoffensifs, barracudas, mérous, raies aigles, murènes, langoustes, poissons-perroquets multicolores.`,
 
-      culture: `**CULTURE CRÉOLE VIBRANTE**
+    culture: `**CULTURE CRÉOLE VIBRANTE**
 
 **LANGUE CRÉOLE GUADELOUPÉEN**
 Créole guadeloupéen (Kréyol Gwadloupéyen) langue régionale issue mélange français XVIIème + langues africaines (wolof, éwé, kikongo) + caraïbe + anglais. 300 000 locuteurs. Grammaire simplifiée, vocabulaire 80% français transformé phonétiquement. Transmission orale famille, école enseigne depuis 2001 LVE.
@@ -269,7 +288,12 @@ Fierté guadeloupéenne immense ces champions issus petite île 400 000 habitant
 
 • **Terre de Blues** : Marie-Galante novembre, festival blues jazz Capesterre, artistes internationaux, 3 jours concerts gratuits plein air, ambiance roots.
 
-• **Festival Gwoka** : juillet Sainte-Anne, rassemblement maîtres tambour, concours, ateliers, transmission patrimoine immatériel, nuits léwòz marathon.`
-    }
-  };
-try { console.log(JSON.stringify(obj)); } catch(e) { console.error("JSON stringify failed", e); process.exit(2); }
+• **Festival Gwoka** : juillet Sainte-Anne, rassemblement maîtres tambour, concours, ateliers, transmission patrimoine immatériel, nuits léwòz marathon.`,
+  },
+};
+try {
+  console.log(JSON.stringify(obj));
+} catch (e) {
+  console.error("JSON stringify failed", e);
+  process.exit(2);
+}

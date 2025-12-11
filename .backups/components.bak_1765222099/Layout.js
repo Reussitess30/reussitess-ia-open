@@ -1,29 +1,27 @@
-import Link from 'next/link'
-import { useEffect } from 'react'
-import AffiliateDisclaimer from './AffiliateDisclaimer'
-import FeedbackWidget from './FeedbackWidget'
-import VisitorCounter from './VisitorCounter'
-import BotAssistant from './BotAssistant'
+import Link from "next/link";
+import { useEffect } from "react";
+import AffiliateDisclaimer from "./AffiliateDisclaimer";
+import FeedbackWidget from "./FeedbackWidget";
+import VisitorCounter from "./VisitorCounter";
+import BotAssistant from "./BotAssistant";
 
 export default function Layout({ children }) {
   useEffect(() => {
     const protectContent = () => {
-      document.addEventListener('copy', (e) => e.preventDefault())
-      document.addEventListener('contextmenu', (e) => e.preventDefault())
-    }
-    protectContent()
-  }, [])
+      document.addEventListener("copy", (e) => e.preventDefault());
+      document.addEventListener("contextmenu", (e) => e.preventDefault());
+    };
+    protectContent();
+  }, []);
 
   return (
     <>
       {/* Fixed Top Disclaimer Banner - First Element */}
       <AffiliateDisclaimer />
-      
+
       <header className="header">
         <nav>
-          <div className="logo">
-            🌍 REUSSITESS® Global Nexus
-          </div>
+          <div className="logo">🌍 REUSSITESS® Global Nexus</div>
           <div className="nav-links">
             <Link href="/">🏠 Accueil</Link>
             <Link href="/a-propos">ℹ️ À Propos</Link>
@@ -34,14 +32,14 @@ export default function Layout({ children }) {
           </div>
         </nav>
       </header>
-      
+
       <main>{children}</main>
 
       <AffiliateDisclaimer />
       <FeedbackWidget />
       <VisitorCounter />
       <BotAssistant />
-      
+
       <footer className="footer">
         <div className="container">
           <div className="footer-content">
@@ -59,8 +57,11 @@ export default function Layout({ children }) {
             </div>
             <div className="footer-section">
               <h4>⚖️ Légal</h4>
-              <Link href="/mentions-legales">Mentions Légales</Link><br/>
-              <Link href="/politique-confidentialite">Politique de Confidentialité</Link>
+              <Link href="/mentions-legales">Mentions Légales</Link>
+              <br />
+              <Link href="/politique-confidentialite">
+                Politique de Confidentialité
+              </Link>
             </div>
           </div>
           <div className="footer-bottom">
@@ -70,8 +71,5 @@ export default function Layout({ children }) {
         </div>
       </footer>
     </>
-  )
+  );
 }
-
-
-

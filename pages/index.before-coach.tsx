@@ -1,18 +1,18 @@
-import { useRef } from 'react'
-import type { NextPage } from 'next'
+import { useRef } from "react";
+import type { NextPage } from "next";
 
 const HomePage: NextPage = () => {
-  const superBotRef = useRef<HTMLDivElement | null>(null)
+  const superBotRef = useRef<HTMLDivElement | null>(null);
 
   const handleOpenCoach = () => {
     if (superBotRef.current) {
-      superBotRef.current.scrollIntoView({ behavior: 'smooth' })
+      superBotRef.current.scrollIntoView({ behavior: "smooth" });
     }
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       // Point d'accroche pour ton widget SuperBot si tu en as un en global
       // ;(window as any).SuperBot?.openCoach?.()
     }
-  }
+  };
 
   return (
     <>
@@ -42,7 +42,7 @@ const HomePage: NextPage = () => {
         </section>
       </main>
     </>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
