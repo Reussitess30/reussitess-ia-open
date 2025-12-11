@@ -32,4 +32,4 @@ User-agent: WhatsApp
 Allow: /
 
 # Sitemap
-Sitemap: https://reussitess-global-nexus-jfgk.vercel.app/api/sitemap.xml
+Sitemap: https://reussitess.fr/api/sitemap.xml
