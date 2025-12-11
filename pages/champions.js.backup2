@@ -1,8 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { generateCertificatPDF } from '../lib/generatePDF'
-import { genererPlanAction, genererRessources } from '../lib/planAction'
 import Layout from '../components/Layout'
 
 export default function Champions() {
@@ -161,13 +159,8 @@ export default function Champions() {
     })
   }
 
-  const telechargerCertificat = async () => {
-    const success = await generateCertificatPDF(certificatData)
-    if (success) {
-      alert('✅ Certificat téléchargé avec succès !')
-    } else {
-      alert('❌ Erreur lors de la génération du PDF. Veuillez réessayer.')
-    }
+  const telechargerCertificat = () => {
+    alert('Fonction de téléchargement PDF en cours de développement')
   }
 
   const partagerCertificat = (platform) => {
@@ -588,34 +581,20 @@ export default function Champions() {
                 basé sur votre objectif : <strong>{certificatData?.objectif?.label}</strong>
               </p>
               <button
-              onClick={() => {
-                const plan = genererPlanAction(formData.objectif, 7)
-                const ressources = genererRessources(formData.objectif)
-                
-                let message = `🚀 VOTRE PLAN D'ACTION 7 JOURS\nObjectif: ${certificatData?.objectif?.label}\n\n`
-                plan.forEach(etape => {
-                  message += `Jour ${etape.jour}: ${etape.titre}\n${etape.description}\n\n`
-                })
-                message += `\n📚 RESSOURCES RECOMMANDÉES:\n`
-                ressources.forEach(r => {
-                  if (r.lien) message += `- ${r.titre} (${r.type})\n`
-                })
-                
-                alert(message)
-              }}
-              style={{
-                padding: '1rem 2rem',
-                fontSize: '1.2rem',
-                fontWeight: '700',
-                background: 'white',
-                color: '#f5576c',
-                border: 'none',
-                borderRadius: '50px',
-                cursor: 'pointer',
-                boxShadow: '0 5px 15px rgba(0,0,0,0.2)'
-              }}
-            >
-              🚀 Lancer mon Plan d'Action
+                onClick={() => alert('Intégration BotAssistant en cours...')}
+                style={{
+                  padding: '1rem 2rem',
+                  fontSize: '1.2rem',
+                  fontWeight: '700',
+                  background: 'white',
+                  color: '#f5576c',
+                  border: 'none',
+                  borderRadius: '50px',
+                  cursor: 'pointer',
+                  boxShadow: '0 5px 15px rgba(0,0,0,0.2)'
+                }}
+              >
+                🚀 Lancer mon Plan d'Action
               </button>
             </div>
           )}
