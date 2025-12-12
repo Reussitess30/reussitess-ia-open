@@ -17,43 +17,67 @@ export default function IAPassport() {
       icon: '🤖', 
       title: '100+ IA Connectées', 
       desc: 'Accès unifié aux meilleures IA mondiales',
-      content: 'TypingMind, Magai, ChatGPT, Claude, Gemini, Perplexity. Économie 75% vs abonnements séparés.',
-      stats: ['100+ Modèles', '1 Interface', '75% Économie']
+      stats: ['100+ Modèles', '50K Users', '75% Économie'],
+      links: [
+        { text: 'TypingMind', url: 'https://typingmind.com' },
+        { text: 'Magai', url: 'https://magai.co' },
+        { text: 'OpenAI', url: 'https://platform.openai.com' }
+      ]
     },
     { 
       icon: '🌐', 
       title: '195 Langues', 
       desc: 'Communication sans frontières',
-      content: 'Wordly (4M users), Interprefy (6000+ pairs), Google Cloud Translation. Temps réel.',
-      stats: ['195 Langues', '3000+ Paires', 'Temps Réel']
+      stats: ['195 Langues', '4M Users', 'Temps Réel'],
+      links: [
+        { text: 'Wordly AI', url: 'https://wordly.ai' },
+        { text: 'Interprefy', url: 'https://interprefy.com' },
+        { text: 'Google Translate', url: 'https://translate.google.com' }
+      ]
     },
     { 
       icon: '🔐', 
       title: 'Blockchain NFT', 
       desc: 'Identité digitale certifiée',
-      content: 'Polygon ID, Worldcoin, ENS. AES-256, NFT unique, biométrie, anti-deepfake, RGPD.',
-      stats: ['NFT Unique', 'AES-256', 'RGPD']
+      stats: ['NFT Unique', 'AES-256', 'RGPD'],
+      links: [
+        { text: 'Polygon ID', url: 'https://polygon.technology/polygon-id' },
+        { text: 'Worldcoin', url: 'https://worldcoin.org' },
+        { text: 'ENS', url: 'https://ens.domains' }
+      ]
     },
     { 
       icon: '💎', 
       title: 'REUSSITESS Tokens', 
       desc: 'Monnaie universelle IA',
-      content: '1 token = 1h IA. ChatGPT $20 + Claude $20 + Gemini $20 = $60 → Économie 75%.',
-      stats: ['75% Économie', '1 Token = 1h', 'Revendable']
+      stats: ['75% Économie', '1 Token = 1h', 'Revendable'],
+      links: [
+        { text: 'Etherscan', url: 'https://etherscan.io' },
+        { text: 'Polygon Scan', url: 'https://polygonscan.com' },
+        { text: 'CoinGecko', url: 'https://coingecko.com' }
+      ]
     },
     { 
       icon: '🎯', 
       title: 'Assistant Personnel', 
       desc: 'IA qui apprend de vous',
-      content: 'Magai (80K users). Se souvient de tout. Gain 15h/semaine.',
-      stats: ['24/7 Actif', '∞ Projets', '15h/sem']
+      stats: ['24/7 Actif', '∞ Projets', '15h/sem'],
+      links: [
+        { text: 'Notion AI', url: 'https://notion.so/product/ai' },
+        { text: 'Personal AI', url: 'https://personal.ai' },
+        { text: 'Rewind AI', url: 'https://rewind.ai' }
+      ]
     },
     { 
       icon: '⚡', 
       title: 'Hub Universel', 
       desc: 'Toute l\'IA en 1 clic',
-      content: 'Workflows automatisés, API complète, extensions, mode hors-ligne.',
-      stats: ['1 Interface', '10x Vitesse', 'API Ouverte']
+      stats: ['1 Interface', '10x Vitesse', 'API Ouverte'],
+      links: [
+        { text: 'Zapier', url: 'https://zapier.com' },
+        { text: 'Make', url: 'https://make.com' },
+        { text: 'n8n', url: 'https://n8n.io' }
+      ]
     }
   ]
 
@@ -122,12 +146,13 @@ export default function IAPassport() {
             Le Premier Passeport Universel IA
           </p>
 
+          {/* Features Grid */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '2rem',
             marginBottom: '4rem',
-            maxWidth: '1000px',
+            maxWidth: '1100px',
             margin: '0 auto 4rem'
           }}>
             {features.map((feature, i) => (
@@ -146,44 +171,96 @@ export default function IAPassport() {
                   padding: '2rem',
                   cursor: 'pointer',
                   transition: 'all 0.3s ease'
-                }}>
+                }}
+                className="feature-card">
                 <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{feature.icon}</div>
                 <h3 style={{ 
-                  fontSize: '1.2rem', 
+                  fontSize: '1.3rem', 
                   fontWeight: '700', 
                   color: 'white',
                   marginBottom: '0.5rem' 
                 }}>
                   {feature.title}
                 </h3>
-                <p style={{ fontSize: '0.9rem', color: '#94a3b8', marginBottom: '1rem' }}>
+                <p style={{ fontSize: '0.95rem', color: '#94a3b8', marginBottom: '1rem' }}>
                   {feature.desc}
                 </p>
+
+                {/* Stats */}
+                <div style={{
+                  display: 'flex',
+                  gap: '0.5rem',
+                  justifyContent: 'center',
+                  flexWrap: 'wrap',
+                  marginBottom: '1rem'
+                }}>
+                  {feature.stats.map((stat, idx) => (
+                    <span key={idx} style={{
+                      background: 'rgba(16, 185, 129, 0.2)',
+                      color: '#10b981',
+                      padding: '0.25rem 0.75rem',
+                      borderRadius: '10px',
+                      fontSize: '0.75rem',
+                      fontWeight: 'bold'
+                    }}>
+                      {stat}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Links */}
                 {selectedFeature === i && (
                   <div style={{
-                    marginTop: '1rem',
-                    padding: '1rem',
-                    background: 'rgba(16, 185, 129, 0.1)',
-                    borderRadius: '10px',
-                    fontSize: '0.9rem',
-                    color: '#cbd5e1',
-                    textAlign: 'left'
+                    marginTop: '1.5rem',
+                    paddingTop: '1.5rem',
+                    borderTop: '1px solid rgba(255,255,255,0.1)'
                   }}>
-                    {feature.content}
+                    <p style={{ color: '#94a3b8', fontSize: '0.9rem', marginBottom: '1rem' }}>
+                      🔗 Liens utiles:
+                    </p>
+                    <div style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.5rem'
+                    }}>
+                      {feature.links.map((link, idx) => (
+                        <a
+                          key={idx}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            color: '#10b981',
+                            textDecoration: 'none',
+                            fontSize: '0.9rem',
+                            fontWeight: '600',
+                            padding: '0.5rem',
+                            background: 'rgba(16, 185, 129, 0.1)',
+                            borderRadius: '8px',
+                            transition: 'all 0.3s ease'
+                          }}
+                          className="feature-link"
+                        >
+                          → {link.text}
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 )}
+
                 <div style={{
                   color: '#10b981',
                   fontSize: '0.85rem',
                   fontWeight: 'bold',
-                  marginTop: '0.5rem'
+                  marginTop: '1rem'
                 }}>
-                  {selectedFeature === i ? '📖 Fermer' : '👆 En savoir plus'}
+                  {selectedFeature === i ? '✕ Fermer' : '👆 Voir détails'}
                 </div>
               </div>
             ))}
           </div>
 
+          {/* Beta Form */}
           <div style={{
             background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%)',
             backdropFilter: 'blur(20px)',
@@ -267,6 +344,7 @@ export default function IAPassport() {
             )}
           </div>
 
+          {/* Footer */}
           <div style={{
             marginTop: '5rem',
             paddingTop: '3rem',
@@ -282,6 +360,17 @@ export default function IAPassport() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .feature-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        .feature-link:hover {
+          background: rgba(16, 185, 129, 0.2);
+          transform: translateX(5px);
+        }
+      `}</style>
     </div>
   )
 }
