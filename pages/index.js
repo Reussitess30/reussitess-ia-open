@@ -310,6 +310,25 @@ export default function Home() {
             >
               🎮 🇫🇷 France Amazon Officiel
             </a>
+
+            <Link 
+              href="/ia-passport"
+              style={{
+                background: 'linear-gradient(135deg, #10b981 0%, #3b82f6 100%)',
+                color: 'white',
+                padding: '1rem 2.5rem',
+                borderRadius: '50px',
+                textDecoration: 'none',
+                fontSize: '1.1rem',
+                fontWeight: 'bold',
+                boxShadow: '0 8px 25px rgba(16, 185, 129, 0.4)',
+                transition: 'all 0.3s ease',
+                display: 'inline-block'
+              }}
+              className="btn-ia-passport">
+              🌍 IA PASSPORT MONDIAL - Révolution 2025
+            </Link>
+
           </div>
         </div>
       </div>
@@ -506,6 +525,12 @@ export default function Home() {
         .btn-alternative:hover {
           transform: translateY(-3px);
           box-shadow: 0 12px 35px rgba(245, 87, 108, 0.5);
+        }
+
+        
+        .btn-ia-passport:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 12px 35px rgba(16, 185, 129, 0.5);
         }
 
         .btn-version2:hover {
