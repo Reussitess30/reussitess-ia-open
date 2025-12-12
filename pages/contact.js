@@ -1,329 +1,291 @@
-import Layout from "../components/Layout";
-import Link from "next/link";
+import Layout from '../components/Layout'
+import { useState } from 'react'
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  })
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    // Ici tu peux ajouter l'envoi du formulaire plus tard
+    setSubmitted(true)
+  }
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
   return (
     <Layout>
-      <div
-        style={{
-          background: "linear-gradient(135deg, #10b981 0%, #3b82f6 100%)",
-          minHeight: "100vh",
-          padding: "4rem 1rem",
-        }}
-      >
-        <div
-          className="container"
-          style={{ maxWidth: "1000px", margin: "0 auto" }}
-        >
-          <Link
-            href="/"
-            style={{
-              color: "white",
-              textDecoration: "none",
-              fontSize: "1.1rem",
-              display: "inline-block",
-              marginBottom: "2rem",
-              opacity: 0.9,
-            }}
-          >
-            ← Retour à l'accueil
-          </Link>
-
-          <div
-            style={{
-              background: "rgba(255, 255, 255, 0.95)",
-              borderRadius: "20px",
-              padding: "3rem",
-              boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
-            }}
-          >
-            <h1
-              style={{
-                textAlign: "center",
-                fontSize: "clamp(2rem, 5vw, 3.5rem)",
-                fontWeight: "800",
-                marginBottom: "1rem",
-                background: "linear-gradient(135deg, #10b981 0%, #3b82f6 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              📧 Contactez-Nous
+      <div style={{
+        minHeight: '100vh',
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        padding: '4rem 2rem'
+      }}>
+        <div style={{
+          maxWidth: '1000px',
+          margin: '0 auto'
+        }}>
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.95)',
+            borderRadius: '30px',
+            padding: '3rem',
+            boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
+            marginBottom: '2rem'
+          }}>
+            <h1 style={{
+              fontSize: '3rem',
+              fontWeight: '900',
+              marginBottom: '1rem',
+              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              textAlign: 'center'
+            }}>
+              Contactez-nous
             </h1>
-            <p
-              style={{
-                textAlign: "center",
-                fontSize: "1.2rem",
-                color: "#64748b",
-                marginBottom: "3rem",
-              }}
-            >
-              Notre équipe est disponible 24/7 pour vous assister
+
+            <p style={{
+              textAlign: 'center',
+              color: '#64748b',
+              fontSize: '1.1rem',
+              marginBottom: '3rem'
+            }}>
+              Une question ? Un projet ? Nous sommes à votre écoute !
             </p>
 
-            {/* Moyens de contact */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-                gap: "2rem",
-                marginBottom: "3rem",
-              }}
-            >
-              {/* Chat en Direct */}
-              <div
-                style={{
-                  background: "#f0f9ff",
-                  padding: "2rem",
-                  borderRadius: "15px",
-                  textAlign: "center",
-                  border: "2px solid #3b82f6",
-                  transition: "all 0.3s ease",
-                  cursor: "pointer",
-                }}
-                onClick={() => window.dispatchEvent(new Event("openBot"))}
-              >
-                <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>💬</div>
-                <h3
-                  style={{
-                    fontSize: "1.3rem",
-                    color: "#3b82f6",
-                    marginBottom: "0.5rem",
-                    fontWeight: "700",
-                  }}
-                >
-                  Chat en Direct
-                </h3>
-                <p style={{ color: "#64748b", marginBottom: "1rem" }}>
-                  Parlez avec BiblioBot
+            {/* INFORMATIONS DE CONTACT */}
+            <div style={{
+              background: 'linear-gradient(135deg, #10b981 0%, #3b82f6 100%)',
+              color: 'white',
+              padding: '2rem',
+              borderRadius: '20px',
+              marginBottom: '3rem',
+              textAlign: 'center'
+            }}>
+              <h2 style={{ fontSize: '1.8rem', fontWeight: '800', marginBottom: '1.5rem' }}>
+                📧 Informations de Contact
+              </h2>
+              
+              <div style={{ fontSize: '1.1rem', lineHeight: '2' }}>
+                <p style={{ marginBottom: '0.5rem' }}>
+                  <strong>👨‍💼 Dirigeant :</strong> Porinus Rony Roger
                 </p>
-                <div
-                  style={{
-                    background: "#3b82f6",
-                    color: "white",
-                    padding: "0.6rem 1.2rem",
-                    borderRadius: "50px",
-                    fontWeight: "600",
-                    fontSize: "0.9rem",
-                    display: "inline-block",
-                  }}
-                >
-                  Ouvrir le Chat
-                </div>
-              </div>
-
-              {/* Formulaire Email */}
-              <a
-                href="mailto:contact@reussitess-global-nexus.com"
-                style={{
-                  background: "#f0fdf4",
-                  padding: "2rem",
-                  borderRadius: "15px",
-                  textAlign: "center",
-                  border: "2px solid #10b981",
-                  textDecoration: "none",
-                  color: "inherit",
-                  transition: "all 0.3s ease",
-                  display: "block",
-                }}
-              >
-                <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>📝</div>
-                <h3
-                  style={{
-                    fontSize: "1.3rem",
-                    color: "#10b981",
-                    marginBottom: "0.5rem",
-                    fontWeight: "700",
-                  }}
-                >
-                  Email
-                </h3>
-                <p style={{ color: "#64748b", marginBottom: "1rem" }}>
-                  Envoyez-nous un message
+                <p style={{ marginBottom: '0.5rem' }}>
+                  <strong>📋 SIRET :</strong> 444699979700031
                 </p>
-                <div
-                  style={{
-                    background: "#10b981",
-                    color: "white",
-                    padding: "0.6rem 1.2rem",
-                    borderRadius: "50px",
-                    fontWeight: "600",
-                    fontSize: "0.9rem",
-                    display: "inline-block",
-                  }}
-                >
-                  Envoyer un Email
-                </div>
-              </a>
-
-              {/* Réseaux Sociaux */}
-              <div
-                style={{
-                  background: "#fdf4ff",
-                  padding: "2rem",
-                  borderRadius: "15px",
-                  textAlign: "center",
-                  border: "2px solid #8b5cf6",
-                }}
-              >
-                <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🌐</div>
-                <h3
-                  style={{
-                    fontSize: "1.3rem",
-                    color: "#8b5cf6",
-                    marginBottom: "0.5rem",
-                    fontWeight: "700",
-                  }}
-                >
-                  Réseaux Sociaux
-                </h3>
-                <p style={{ color: "#64748b", marginBottom: "1rem" }}>
-                  Suivez-nous
+                <p style={{ marginBottom: '0.5rem' }}>
+                  <strong>💼 Statut :</strong> Auto-entrepreneur EI
                 </p>
-                <div
-                  style={{
-                    background: "#8b5cf6",
-                    color: "white",
-                    padding: "0.6rem 1.2rem",
-                    borderRadius: "50px",
-                    fontWeight: "600",
-                    fontSize: "0.9rem",
-                    display: "inline-block",
-                  }}
-                >
-                  Bientôt Disponible
-                </div>
-              </div>
-            </div>
-
-            {/* Informations Support */}
-            <div
-              style={{
-                background: "linear-gradient(135deg, #10b981 0%, #3b82f6 100%)",
-                padding: "2rem",
-                borderRadius: "15px",
-                color: "white",
-                marginBottom: "2rem",
-              }}
-            >
-              <h3
-                style={{
-                  fontSize: "1.5rem",
-                  marginBottom: "1.5rem",
-                  textAlign: "center",
-                }}
-              >
-                💬 Support 24/7 Multilingue
-              </h3>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-                  gap: "1.5rem",
-                  textAlign: "center",
-                }}
-              >
-                <div>
-                  <div style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>
-                    🕐
-                  </div>
-                  <div style={{ fontWeight: "600" }}>Horaires</div>
-                  <div style={{ opacity: 0.9 }}>24/7</div>
-                </div>
-                <div>
-                  <div style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>
-                    ⚡
-                  </div>
-                  <div style={{ fontWeight: "600" }}>Réponse</div>
-                  <div style={{ opacity: 0.9 }}>{"< 24h"}</div>
-                </div>
-                <div>
-                  <div style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>
-                    🗣️
-                  </div>
-                  <div style={{ fontWeight: "600" }}>Langues</div>
-                  <div style={{ opacity: 0.9 }}>FR/EN/ES/DE</div>
-                </div>
-              </div>
-            </div>
-
-            {/* FAQ Rapide */}
-            <div>
-              <h3
-                style={{
-                  fontSize: "1.8rem",
-                  fontWeight: "700",
-                  color: "#1e293b",
-                  marginBottom: "1.5rem",
-                  textAlign: "center",
-                }}
-              >
-                ❓ Questions Fréquentes
-              </h3>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "1rem",
-                }}
-              >
-                {[
-                  {
-                    q: "Comment accéder aux 26 boutiques Amazon ?",
-                    a: 'Cliquez sur le bouton "Accéder au Hub Central" sur la page d\'accueil',
-                  },
-                  {
-                    q: "Le programme d'affiliation est-il gratuit ?",
-                    a: "Oui, l'inscription et l'utilisation sont 100% gratuites",
-                  },
-                  {
-                    q: "Dans combien de pays les boutiques sont-elles disponibles ?",
-                    a: "14 pays sur 5 continents",
-                  },
-                  {
-                    q: "Comment installer l'application PWA ?",
-                    a: "Visitez /pwa-app pour les instructions complètes",
-                  },
-                  {
-                    q: "BiblioBot parle quelles langues ?",
-                    a: "Français, English, Español et Deutsch",
-                  },
-                ].map((item, index) => (
-                  <details
-                    key={index}
-                    style={{
-                      background: "#f8fafc",
-                      padding: "1rem",
-                      borderRadius: "10px",
-                      border: "1px solid #e2e8f0",
+                <p style={{ marginBottom: '0.5rem' }}>
+                  <strong>✉️ Email :</strong>{' '}
+                  <a 
+                    href="mailto:influenceur@reussitess.fr"
+                    style={{ 
+                      color: 'white', 
+                      textDecoration: 'underline',
+                      fontWeight: 'bold'
                     }}
                   >
-                    <summary
-                      style={{
-                        fontWeight: "600",
-                        color: "#1e293b",
-                        cursor: "pointer",
-                        fontSize: "1rem",
-                      }}
-                    >
-                      {item.q}
-                    </summary>
-                    <p
-                      style={{
-                        marginTop: "0.5rem",
-                        color: "#64748b",
-                        paddingLeft: "1rem",
-                      }}
-                    >
-                      {item.a}
-                    </p>
-                  </details>
-                ))}
+                    influenceur@reussitess.fr
+                  </a>
+                </p>
+                <p style={{ marginTop: '1rem' }}>
+                  <strong>🇬🇵 Localisation :</strong> Guadeloupe - Terres de Champions
+                </p>
               </div>
             </div>
+
+            {/* FORMULAIRE DE CONTACT */}
+            {!submitted ? (
+              <form onSubmit={handleSubmit} style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1.5rem'
+              }}>
+                <div>
+                  <label style={{
+                    display: 'block',
+                    marginBottom: '0.5rem',
+                    fontWeight: '600',
+                    color: '#1e293b'
+                  }}>
+                    Nom complet *
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    style={{
+                      width: '100%',
+                      padding: '1rem',
+                      borderRadius: '10px',
+                      border: '2px solid #e2e8f0',
+                      fontSize: '1rem',
+                      outline: 'none'
+                    }}
+                    placeholder="Votre nom"
+                  />
+                </div>
+
+                <div>
+                  <label style={{
+                    display: 'block',
+                    marginBottom: '0.5rem',
+                    fontWeight: '600',
+                    color: '#1e293b'
+                  }}>
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    style={{
+                      width: '100%',
+                      padding: '1rem',
+                      borderRadius: '10px',
+                      border: '2px solid #e2e8f0',
+                      fontSize: '1rem',
+                      outline: 'none'
+                    }}
+                    placeholder="votre@email.com"
+                  />
+                </div>
+
+                <div>
+                  <label style={{
+                    display: 'block',
+                    marginBottom: '0.5rem',
+                    fontWeight: '600',
+                    color: '#1e293b'
+                  }}>
+                    Sujet *
+                  </label>
+                  <input
+                    type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    style={{
+                      width: '100%',
+                      padding: '1rem',
+                      borderRadius: '10px',
+                      border: '2px solid #e2e8f0',
+                      fontSize: '1rem',
+                      outline: 'none'
+                    }}
+                    placeholder="Objet de votre message"
+                  />
+                </div>
+
+                <div>
+                  <label style={{
+                    display: 'block',
+                    marginBottom: '0.5rem',
+                    fontWeight: '600',
+                    color: '#1e293b'
+                  }}>
+                    Message *
+                  </label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows="6"
+                    style={{
+                      width: '100%',
+                      padding: '1rem',
+                      borderRadius: '10px',
+                      border: '2px solid #e2e8f0',
+                      fontSize: '1rem',
+                      outline: 'none',
+                      resize: 'vertical'
+                    }}
+                    placeholder="Votre message..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  style={{
+                    padding: '1.2rem 3rem',
+                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '50px',
+                    fontSize: '1.1rem',
+                    fontWeight: 'bold',
+                    cursor: 'pointer',
+                    boxShadow: '0 10px 30px rgba(102, 126, 234, 0.4)',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  📨 Envoyer le message
+                </button>
+              </form>
+            ) : (
+              <div style={{
+                textAlign: 'center',
+                padding: '3rem',
+                background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%)',
+                borderRadius: '20px',
+                border: '2px solid rgba(16, 185, 129, 0.3)'
+              }}>
+                <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>✅</div>
+                <h3 style={{
+                  fontSize: '2rem',
+                  color: '#10b981',
+                  fontWeight: 'bold',
+                  marginBottom: '1rem'
+                }}>
+                  Message envoyé !
+                </h3>
+                <p style={{ color: '#64748b', fontSize: '1.1rem' }}>
+                  Merci de nous avoir contactés. Nous vous répondrons dans les plus brefs délais à l'adresse : <strong>{formData.email}</strong>
+                </p>
+                <p style={{ color: '#10b981', fontWeight: 'bold', marginTop: '1rem' }}>
+                  BOUDOUM 🎯
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Bouton retour */}
+          <div style={{ textAlign: 'center' }}>
+            <a
+              href="/"
+              style={{
+                display: 'inline-block',
+                padding: '1rem 2rem',
+                background: 'rgba(255, 255, 255, 0.9)',
+                color: '#667eea',
+                borderRadius: '50px',
+                textDecoration: 'none',
+                fontWeight: 'bold',
+                fontSize: '1.1rem',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
+              }}
+            >
+              ← Retour à l'accueil
+            </a>
           </div>
         </div>
       </div>
     </Layout>
-  );
+  )
 }
