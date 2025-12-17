@@ -45,11 +45,25 @@ export default function HubInternational() {
           pensées pour l’excellence.
         </p>
 
-        {/* Bouton central — lien interne (remplacez "/hub-reussitess" si nécessaire) */}
+        {/* Bouton central — lien externe d'explication (ouvre dans un nouvel onglet) */}
         <div style={{ textAlign: "center", margin: "3rem 0" }}>
-          
-    <Link href="/vamazon"><a style={{display: "inline-block", padding: "0.9rem 1.8rem", background: "linear-gradient(90deg,#06b6d4,#3b82f6)", color: "white", borderRadius: 999, textDecoration: "none", fontWeight: 800, boxShadow: "0 6px 18px rgba(59,130,246,0.25)"}}>🚀 Booster REUSSITESS & Amazon</a></Link>
-  
+          <a
+            href="https://www.datafeedwatch.com/blog/product-content-optimization-amazon-listings"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-block",
+              padding: "0.9rem 1.8rem",
+              background: "linear-gradient(90deg,#06b6d4,#3b82f6)",
+              color: "white",
+              borderRadius: 999,
+              textDecoration: "none",
+              fontWeight: 800,
+              boxShadow: "0 6px 18px rgba(59,130,246,0.25)",
+            }}
+          >
+            🚀 Booster REUSSITESS & Amazon
+          </a>
         </div>
       </div>
 
@@ -157,18 +171,26 @@ export default function HubInternational() {
           Choisissez votre langue préférée grâce à nos outils de traduction :
         </p>
         <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
-          <a rel="noopener noreferrer" href="#" style={{ textDecoration: "none" }}>
-            <img src="/flags/france.png" alt="Français" style={{ width: "40px", borderRadius: "50%" }} />
-          </a>
-          <a rel="noopener noreferrer" href="#" style={{ textDecoration: "none" }}>
-            <img src="/flags/usa.png" alt="English" style={{ width: "40px", borderRadius: "50%" }} />
-          </a>
-          <a rel="noopener noreferrer" href="#" style={{ textDecoration: "none" }}>
-            <img src="/flags/spain.png" alt="Español" style={{ width: "40px", borderRadius: "50%" }} />
-          </a>
-          <a rel="noopener noreferrer" href="#" style={{ textDecoration: "none" }}>
-            <img src="/flags/germany.png" alt="Deutsch" style={{ width: "40px", borderRadius: "50%" }} />
-          </a>
+          <Link href="/fr">
+            <a rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+              <img src="/flags/france.png" alt="Français" style={{ width: "40px", borderRadius: "50%" }} />
+            </a>
+          </Link>
+          <Link href="/en">
+            <a rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+              <img src="/flags/usa.png" alt="English" style={{ width: "40px", borderRadius: "50%" }} />
+            </a>
+          </Link>
+          <Link href="/es">
+            <a rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+              <img src="/flags/spain.png" alt="Español" style={{ width: "40px", borderRadius: "50%" }} />
+            </a>
+          </Link>
+          <Link href="/de">
+            <a rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+              <img src="/flags/germany.png" alt="Deutsch" style={{ width: "40px", borderRadius: "50%" }} />
+            </a>
+          </Link>
         </div>
       </section>
 
