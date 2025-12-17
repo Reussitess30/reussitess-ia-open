@@ -302,20 +302,7 @@ gtag('config', '${GA_ID}', { page_path: window.location.pathname });`}
                 </a>
 
                 {/* Lien interne corrigé — pointe vers la page locale existante */}
-                <a
-                    style={{
-                      background: "rgba(255, 255, 255, 0.2)",
-                      color: "white",
-                      padding: "0.8rem 1.5rem",
-                      borderRadius: "50px",
-                      textDecoration: "none",
-                      fontWeight: "600",
-                      display: "inline-block",
-                      border: "2px solid white",
-                    }}
-                   href="/hub-regional">
-                    🌟 Explorer Richesses
-                  </a>
+                <a href="https://DIRECT_URL_Ici" target="_blank" rel="noopener noreferrer">🌟 Explorer Richesses</a>
               </div>
             </div>
           </div>
