@@ -1,0 +1,63 @@
+import Head from "next/head";
+import Link from "next/link";
+import Layout from "../../components/Layout";
+
+export default function Douanes() {
+  return (
+    <Layout>
+      <Head>
+        <title>Douanes & Logistique — REUSSITESS</title>
+      </Head>
+
+      <div style={{ padding: "2rem", maxWidth: 960, margin: "0 auto" }}>
+        <h1>Douanes & Logistique — Checklist complète</h1>
+
+        <p>Guide pratique pour expédier vers et depuis les DOM‑TOM (Martinique, Guadeloupe, Guyane, Réunion, Mayotte).</p>
+
+        <h2>Documents essentiels</h2>
+        <ul>
+          <li><strong>Facture commerciale</strong> : valeur, description claire des marchandises, conditions de vente (Incoterm).</li>
+          <li><strong>Déclaration d'export / déclaration d'origine</strong> : code pays, preuve d'origine si nécessaire.</li>
+          <li><strong>Certificats</strong> : sanitaire, phytosanitaire, conformité produit (selon catégorie).</li>
+          <li><strong>Documents transport</strong> : lettre de transport aérien / connaissement, manifeste logistique.</li>
+        </ul>
+
+        <h2>Étapes pré‑expédition</h2>
+        <ol>
+          <li>Vérifier la classification tarifaire (HS code) et restrictions pour le territoire cible.</li>
+          <li>Calculer droits & taxes estimés et prévoir marge pour le dédouanement.</li>
+          <li>Vérifier exigences d'étiquetage (langue, mentions légales locales, composition).</li>
+          <li>Choisir emballage adapté à l'acheminement (protéger des climats tropicaux / humidité).</li>
+          <li>Préparer documentation électronique (EDI) si nécessaire pour transporteurs / douanes.</li>
+        </ol>
+
+        <h2>Transporteurs & options</h2>
+        <p>Comparer offres : coûts, délais, couvertures assurance, et expérience DOM‑TOM. Options :</p>
+        <ul>
+          <li><strong>Fret groupé</strong> : intéressant pour petits volumes réguliers.</li>
+          <li><strong>Full container / pallet</strong> : meilleur coût unitaire pour volumes élevés.</li>
+          <li><strong>FBA vs Cross‑border</strong> : analyser volumes et règles Amazon (ASIN restrictions, documents).</li>
+        </ul>
+
+        <h2>Checklist rapide avant envoi</h2>
+        <ul>
+          <li>✅ HS code vérifié</li>
+          <li>✅ Facture commerciale complète</li>
+          <li>✅ Certificats requis identifiés</li>
+          <li>✅ Étiquetage & notices en langue requise</li>
+          <li>✅ Transporteur contacté & créneaux validés</li>
+          <li>✅ Assurance marchandise (si applicable)</li>
+        </ul>
+
+        <h2>Scénarios pratiques</h2>
+        <p><strong>Petit e‑shop</strong> : privilégier solutions groupées / partenaires locaux pour stockage et préparation des commandes.</p>
+        <p><strong>Marque avec volume</strong> : négocier palettes / conteneurs et externaliser le fulfilment (FBA local ou prestataire 3PL).</p>
+
+        <h2>Ressources utiles</h2>
+        <ul>
+          <li><Link href="/hub-regional"><a>← Retour Hub Régional</a></Link></li>
+        </ul>
+      </div>
+    </Layout>
+  );
+}

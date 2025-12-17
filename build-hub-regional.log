@@ -7,7 +7,7 @@
    - Environments: .env.local
 
    Creating an optimized production build ...
- ✓ Compiled successfully in 52s
+ ✓ Compiled successfully in 47s
    Running TypeScript ...
    Collecting page data using 1 worker ...
    Generating static pages using 1 worker (0/98) ...
@@ -15,7 +15,7 @@
    Generating static pages using 1 worker (48/98) 
    Generating static pages using 1 worker (73/98) 
  ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
- ✓ Generating static pages using 1 worker (98/98) in 4.1s
+ ✓ Generating static pages using 1 worker (98/98) in 4.4s
    Finalizing page optimization ...
    Collecting build traces ...
 
@@ -27,9 +27,9 @@ Route (app)
 Route (pages)
 ┌ ○ /
 ├   /_app
-├ ○ /a-propos (490 ms)
-├ ○ /affiliation (477 ms)
-├ ○ /analytics (477 ms)
+├ ○ /a-propos (531 ms)
+├ ○ /affiliation (519 ms)
+├ ○ /analytics (517 ms)
 ├ ƒ /api/bot
 ├ ƒ /api/chat
 ├ ƒ /api/full-knowledge
@@ -38,12 +38,12 @@ Route (pages)
 ├ ƒ /api/sitemap.xml
 ├ ƒ /api/superbot/chat
 ├ ƒ /api/visa/register
-├ ○ /astuces (476 ms)
+├ ○ /astuces (517 ms)
 ├ ○ /bibliotheque
-├ ○ /bibliotheque/afrique/cameroun (478 ms)
-├ ○ /bibliotheque/afrique/cote-ivoire (477 ms)
-├ ○ /bibliotheque/afrique/madagascar (477 ms)
-├ ○ /bibliotheque/afrique/mali (476 ms)
+├ ○ /bibliotheque/afrique/cameroun (519 ms)
+├ ○ /bibliotheque/afrique/cote-ivoire (518 ms)
+├ ○ /bibliotheque/afrique/madagascar (518 ms)
+├ ○ /bibliotheque/afrique/mali (517 ms)
 ├ ○ /bibliotheque/afrique/rdc
 ├ ○ /bibliotheque/afrique/rwanda
 ├ ○ /bibliotheque/afrique/senegal
@@ -91,14 +91,14 @@ Route (pages)
 ├ ○ /bibliotheque/pays/guyane
 ├ ○ /bibliotheque/pays/martinique
 ├ ○ /bibliotheque/prof
-├ ○ /bibliotheque/reglementation (387 ms)
-├ ○ /booster-reussitess-amazon (387 ms)
-├ ○ /boutiques (386 ms)
-├ ○ /champions (386 ms)
-├ ○ /contact (385 ms)
-├ ○ /creole (385 ms)
-├ ○ /guadeloupe (385 ms)
-├ ○ /guide-complet (384 ms)
+├ ○ /bibliotheque/reglementation (403 ms)
+├ ○ /booster-reussitess-amazon (402 ms)
+├ ○ /boutiques (402 ms)
+├ ○ /champions (401 ms)
+├ ○ /contact (401 ms)
+├ ○ /creole (400 ms)
+├ ○ /guadeloupe (400 ms)
+├ ○ /guide-complet (400 ms)
 ├ ○ /guyane
 ├ ○ /hub-central
 ├ ○ /hub-international
@@ -122,11 +122,11 @@ Route (pages)
 ├ ○ /ressources/histoire-afrique
 ├ ○ /ressources/patrimoine-martinique
 ├ ○ /reunion
-├ ○ /savoir-culture (700 ms)
-├ ○ /test-connexion (706 ms)
-├ ○ /test-hub (706 ms)
-├ ○ /vamazon (706 ms)
-└ ○ /visa-universel (705 ms)
+├ ○ /savoir-culture (756 ms)
+├ ○ /test-connexion (756 ms)
+├ ○ /test-hub (763 ms)
+├ ○ /vamazon (763 ms)
+└ ○ /visa-universel (763 ms)
 
 ○  (Static)   prerendered as static content
 ƒ  (Dynamic)  server-rendered on demand

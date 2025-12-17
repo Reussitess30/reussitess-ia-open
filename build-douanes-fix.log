@@ -1,0 +1,37 @@
+
+> reussitess-global-nexus@1.0.1 build
+> next build --webpack
+
+   Skipping creating a lockfile at /data/data/com.termux/files/home/reussitess-global-nexus/.next/lock because we're using WASM bindings
+   ▲ Next.js 16.0.7 (webpack)
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./pages/hub-regional.js
+Error:   x Expression expected
+   ,-[/data/data/com.termux/files/home/reussitess-global-nexus/pages/hub-regional.js:1:1]
+ 1 | ... (colle ici exactement le contenu du bloc pages/hub-regional.js fourni ci‑dessus) ...
+   : ^^^
+   `----
+
+Caused by:
+    0: failed to process js file
+    1: Syntax Error
+    at module.exports.__wbindgen_error_new (/data/data/com.termux/files/home/reussitess-global-nexus/node_modules/next/wasm/@next/swc-wasm-nodejs/wasm.js:647:17)
+    at wasm.wasm.__wbindgen_error_new externref shim (wasm://wasm/wasm.wasm-0698437e:wasm-function[22322]:0x1420296)
+    at wasm.wasm.wasm::transform_sync::h529ddc4954edadd0 (wasm://wasm/wasm.wasm-0698437e:wasm-function[2063]:0xadbaf7)
+    at wasm.wasm.wasm_bindgen_futures::future_to_promise::{{closure}}::{{closure}}::h2e5f71fd2a270a1f (wasm://wasm/wasm.wasm-0698437e:wasm-function[10267]:0x1230f7b)
+    at wasm.wasm.wasm_bindgen_futures::queue::Queue::new::{{closure}}::h599d038da4d3846a (wasm://wasm/wasm.wasm-0698437e:wasm-function[8443]:0x1166b1b)
+    at wasm.wasm.<dyn core::ops::function::FnMut<(A,)>+Output = R as wasm_bindgen::closure::WasmClosure>::describe::invoke::hed48f120abbf9c99 (wasm://wasm/wasm.wasm-0698437e:wasm-function[21877]:0x141cf84)
+    at wasm.wasm.closure1163 externref shim (wasm://wasm/wasm.wasm-0698437e:wasm-function[22832]:0x14234a9)
+    at __wbg_adapter_50 (/data/data/com.termux/files/home/reussitess-global-nexus/node_modules/next/wasm/@next/swc-wasm-nodejs/wasm.js:349:10)
+    at real (/data/data/com.termux/files/home/reussitess-global-nexus/node_modules/next/wasm/@next/swc-wasm-nodejs/wasm.js:140:20)
+    at node:internal/process/task_queues:149:7
+
+Import trace for requested module:
+./pages/hub-regional.js
+
+
+> Build failed because of webpack errors

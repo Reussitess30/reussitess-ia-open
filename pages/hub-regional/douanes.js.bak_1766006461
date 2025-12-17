@@ -1,0 +1,40 @@
+import Head from "next/head";
+import Link from "next/link";
+import Layout from "../../components/Layout";
+
+export default function Douanes() {
+  return (
+    <Layout>
+      <Head>
+        <title>Douanes & Logistique — REUSSITESS</title>
+      </Head>
+
+      <div style={{ padding: "2rem", maxWidth: 900, margin: "0 auto" }}>
+        <h1>Douanes & Logistique — Checklist</h1>
+
+        <h2>Documents essentiels</h2>
+        <ul>
+          <li>Facture commerciale (valeur, description claire des marchandises).</li>
+          <li>Déclaration d'export / déclaration d'origine.</li>
+          <li>Certificats éventuels (sanitaire, phytosanitaire, conformité).</li>
+        </ul>
+
+        <h2>Étapes pratiques</h2>
+        <ol>
+          <li>Vérifier classification tarifaire (HS code) et règles spécifiques du territoire.</li>
+          <li>Estimer droits & taxes — prévoir délai de dédouanement.</li>
+          <li>Choisir transporteur avec expérience DOM‑TOM (offres groupées / palettes).</li>
+          <li>Préparer colisage & étiquetage conforme (langue, mentions légales).</li>
+        </ol>
+
+        <h2>Optimisation FBA / Fulfillment</h2>
+        <p>Utiliser FBA local ou cross‑border selon volumes ; > vérifier restrictions d'ASIN et documents requis par Amazon.</p>
+
+        <p style={{ marginTop: 16 }}>
+          <Link href="/hub-regional"><a>← Retour Hub Régional</a></Link>
+        </p>
+      </div>
+    </Layout>
+  );
+}
+
