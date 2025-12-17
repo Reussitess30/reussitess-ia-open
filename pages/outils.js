@@ -301,8 +301,23 @@ gtag('config', '${GA_ID}', { page_path: window.location.pathname });`}
                   🛍️ Amazon Seller
                 </a>
 
-                {/* Lien interne corrigé — pointe vers la page locale existante */}
-                <a href="https://DIRECT_URL_Ici" target="_blank" rel="noopener noreferrer">🌟 Explorer Richesses</a>
+                {/* Lien interne corrigé — pointe vers la page locale hub-international */}
+                <Link href="/hub-international" legacyBehavior>
+                  <a
+                    style={{
+                      background: "rgba(255, 255, 255, 0.2)",
+                      color: "white",
+                      padding: "0.8rem 1.5rem",
+                      borderRadius: "50px",
+                      textDecoration: "none",
+                      fontWeight: "600",
+                      display: "inline-block",
+                      border: "2px solid white",
+                    }}
+                  >
+                    🌟 Explorer Richesses
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
