@@ -73,9 +73,42 @@ export default function HubRegional() {
           </ul>
         </section>
 
-        <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
+        <div style={{ background: "#081226", padding: "1rem", borderRadius: 8 }}>
+          <h3 style={{ color: "#ffd28a", marginBottom: "0.5rem" }}>Pages régionales</h3>
+          <ul style={{ color: "#cbd5e1", listStyle: "none", paddingLeft: 0 }}>
+            <li style={{ marginBottom: "0.5rem" }}>
+              <a href="https://www.reussitess.fr/creole" target="_blank" rel="noopener noreferrer" style={{ color: "#a78bfa", textDecoration: "underline" }}>
+                Langue & Culture Créole — contenu dédié
+              </a>
+            </li>
+            <li style={{ marginBottom: "0.5rem" }}>
+              <a href="https://www.reussitess.fr/martinique" target="_blank" rel="noopener noreferrer" style={{ color: "#60a5fa", textDecoration: "underline" }}>
+                Martinique — ressources locales
+              </a>
+            </li>
+            <li style={{ marginBottom: "0.5rem" }}>
+              <a href="https://www.reussitess.fr/guadeloupe" target="_blank" rel="noopener noreferrer" style={{ color: "#60a5fa", textDecoration: "underline" }}>
+                Guadeloupe — ressources locales
+              </a>
+            </li>
+            <li style={{ marginBottom: "0.5rem" }}>
+              <a href="https://www.reussitess.fr/guyane" target="_blank" rel="noopener noreferrer" style={{ color: "#60a5fa", textDecoration: "underline" }}>
+                Guyane — ressources locales
+              </a>
+            </li>
+            <li style={{ marginBottom: "0.5rem" }}>
+              <a href="https://www.reussitess.fr/reunion" target="_blank" rel="noopener noreferrer" style={{ color: "#60a5fa", textDecoration: "underline" }}>
+                La Réunion — ressources locales
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div style={{ textAlign: "center", marginTop: "2rem" }}>
           <a
-            href="/hub-international"
+            href="https://www.reussitess.fr/hub-international"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               display: "inline-block",
               padding: "0.8rem 1.6rem",
