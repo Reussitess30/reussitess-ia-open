@@ -1,9 +1,24 @@
 import Layout from "../components/Layout";
 import Link from "next/link";
+import Script from "next/script";
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-XXXXXXXXXX";
 
 export default function Outils() {
   return (
     <Layout>
+      {/* Google Analytics (GA4) - charge le script après l'interaction */}
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+        strategy="afterInteractive"
+      />
+      <Script id="gtag-init" strategy="afterInteractive">
+        {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_ID}', { page_path: window.location.pathname });`}
+      </Script>
+
       <div
         style={{
           background: "linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)",
@@ -238,7 +253,7 @@ export default function Outils() {
                 }}
               >
                 <a
-                  href="https://analytics.google.com/"
+                  href="https://analytics.google.com/analytics/web/"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -285,20 +300,23 @@ export default function Outils() {
                 >
                   🛍️ Amazon Seller
                 </a>
-                <Link
-                  href="/hub-international"
-                  style={{
-                    background: "rgba(255, 255, 255, 0.2)",
-                    color: "white",
-                    padding: "0.8rem 1.5rem",
-                    borderRadius: "50px",
-                    textDecoration: "none",
-                    fontWeight: "600",
-                    display: "inline-block",
-                    border: "2px solid white",
-                  }}
-                >
-                  🌟 Explorer Richesses
+
+                {/* Lien interne corrigé — pointe vers la page locale existante */}
+                <Link href="/hub-international" legacyBehavior>
+                  <a
+                    style={{
+                      background: "rgba(255, 255, 255, 0.2)",
+                      color: "white",
+                      padding: "0.8rem 1.5rem",
+                      borderRadius: "50px",
+                      textDecoration: "none",
+                      fontWeight: "600",
+                      display: "inline-block",
+                      border: "2px solid white",
+                    }}
+                  >
+                    🌟 Explorer Richesses
+                  </a>
                 </Link>
               </div>
             </div>
