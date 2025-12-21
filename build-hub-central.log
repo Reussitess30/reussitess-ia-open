@@ -1,0 +1,135 @@
+
+> reussitess-global-nexus@1.0.1 build
+> next build --webpack
+
+   Skipping creating a lockfile at /data/data/com.termux/files/home/reussitess-global-nexus/.next/lock because we're using WASM bindings
+   ▲ Next.js 16.0.7 (webpack)
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 49s
+   Running TypeScript ...
+   Collecting page data using 1 worker ...
+   Generating static pages using 1 worker (0/99) ...
+   Generating static pages using 1 worker (24/99) 
+   Generating static pages using 1 worker (49/99) 
+   Generating static pages using 1 worker (74/99) 
+ ✓ Generating static pages using 1 worker (99/99) in 4.3s
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)
+┌ ○ /_not-found
+├ ƒ /api/superbot/data
+└ ○ /ia-passport
+
+Route (pages)
+┌ ○ /
+├   /_app
+├ ○ /a-propos (530 ms)
+├ ○ /affiliation (516 ms)
+├ ○ /amazon (514 ms)
+├ ○ /analytics (514 ms)
+├ ƒ /api/bot
+├ ƒ /api/chat
+├ ƒ /api/full-knowledge
+├ ƒ /api/passeport/register
+├ ƒ /api/passeport/stats
+├ ƒ /api/sitemap.xml
+├ ƒ /api/superbot/chat
+├ ƒ /api/visa/register
+├ ○ /astuces (513 ms)
+├ ○ /bibliotheque
+├ ○ /bibliotheque/afrique/cameroun (515 ms)
+├ ○ /bibliotheque/afrique/cote-ivoire (515 ms)
+├ ○ /bibliotheque/afrique/madagascar (514 ms)
+├ ○ /bibliotheque/afrique/mali
+├ ○ /bibliotheque/afrique/rdc
+├ ○ /bibliotheque/afrique/rwanda
+├ ○ /bibliotheque/afrique/senegal
+├ ○ /bibliotheque/amerique-sud/bresil
+├ ○ /bibliotheque/ameriques/haiti
+├ ○ /bibliotheque/ameriques/louisiane
+├ ○ /bibliotheque/ameriques/quebec
+├ ○ /bibliotheque/asie-pacifique/australie
+├ ○ /bibliotheque/asie-pacifique/cambodge
+├ ○ /bibliotheque/asie-pacifique/inde
+├ ○ /bibliotheque/asie-pacifique/laos
+├ ○ /bibliotheque/asie-pacifique/nouvelle-zelande
+├ ○ /bibliotheque/asie-pacifique/singapour
+├ ○ /bibliotheque/asie-pacifique/vanuatu
+├ ○ /bibliotheque/asie-pacifique/vietnam
+├ ○ /bibliotheque/dom-tom/guadeloupe
+├ ○ /bibliotheque/dom-tom/guyane
+├ ○ /bibliotheque/dom-tom/martinique
+├ ○ /bibliotheque/dom-tom/mayotte
+├ ○ /bibliotheque/dom-tom/nouvelle-caledonie
+├ ○ /bibliotheque/dom-tom/polynesie
+├ ○ /bibliotheque/dom-tom/reunion
+├ ○ /bibliotheque/dom-tom/saint-barthelemy
+├ ○ /bibliotheque/dom-tom/saint-martin
+├ ○ /bibliotheque/dom-tom/saint-pierre
+├ ○ /bibliotheque/dom-tom/wallis-futuna
+├ ○ /bibliotheque/europe/allemagne
+├ ○ /bibliotheque/europe/belgique
+├ ○ /bibliotheque/europe/espagne
+├ ○ /bibliotheque/europe/france
+├ ○ /bibliotheque/europe/italie
+├ ○ /bibliotheque/europe/luxembourg
+├ ○ /bibliotheque/europe/monaco
+├ ○ /bibliotheque/europe/royaume-uni
+├ ○ /bibliotheque/europe/suede
+├ ○ /bibliotheque/europe/suisse
+├ ○ /bibliotheque/histoire
+├ ○ /bibliotheque/maghreb/algerie
+├ ○ /bibliotheque/maghreb/liban
+├ ○ /bibliotheque/maghreb/maroc
+├ ○ /bibliotheque/maghreb/tunisie
+├ ○ /bibliotheque/outils
+├ ○ /bibliotheque/pays/fr
+├ ○ /bibliotheque/pays/guadeloupe
+├ ○ /bibliotheque/pays/guyane
+├ ○ /bibliotheque/pays/martinique
+├ ○ /bibliotheque/prof (458 ms)
+├ ○ /bibliotheque/reglementation (459 ms)
+├ ○ /booster-reussitess-amazon (458 ms)
+├ ○ /boutiques (457 ms)
+├ ○ /champions (457 ms)
+├ ○ /contact (458 ms)
+├ ○ /creole (456 ms)
+├ ○ /guadeloupe (457 ms)
+├ ○ /guide-complet
+├ ○ /guyane
+├ ○ /hub-central
+├ ○ /hub-international
+├ ○ /hub-regional
+├ ○ /hub-regional/creole
+├ ○ /hub-regional/douanes
+├ ○ /hub-regional/marketing-seo
+├ ○ /hub-regional/opportunites
+├ ○ /index.before-coach
+├ ○ /legal
+├ ○ /martinique
+├ ○ /mentions-legales
+├ ○ /outils
+├ ○ /outils-calculateurs
+├ ○ /politique-confidentialite
+├ ○ /presse
+├ ○ /pwa-app
+├ ○ /quiz
+├ ○ /quiz/[id]
+├ ○ /ressources/culture-guadeloupe
+├ ○ /ressources/histoire-afrique
+├ ○ /ressources/patrimoine-martinique
+├ ○ /reunion
+├ ○ /savoir-culture
+├ ○ /test-connexion
+├ ○ /test-hub
+├ ƒ /vamazon
+├ ○ /vamazon.bak_1766009299
+└ ○ /visa-universel
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

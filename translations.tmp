@@ -1,0 +1,14 @@
+const translations = {
+  fr: {
+    title: "REUSSITESS®971",
+    sub: "25 Quiz Thématiques - Testez vos connaissances !",
+    start: "Commencer →",
+    shop: "🛍️ Voir les 26 Boutiques Amazon"
+  },
+  en: {
+    title: "SUCCESS®QUEST",
+    sub: "25 Thematic Quizzes - Test your knowledge!",
+    start: "Start →",
+    shop: "🛍️ View the 26 Amazon Shops"
+  }
+};

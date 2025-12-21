@@ -1,188 +1,93 @@
-import Head from 'next/head'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
-import SuperBotAssistant from './SuperBotAssistant'
-import Image from 'next/image'
+import Head from 'next/head'
+import { useEffect } from 'react'
+import AffiliateDisclaimer from './AffiliateDisclaimer'
+import FeedbackWidget from './FeedbackWidget'
+import VisitorCounter from './VisitorCounter'
+import BotAssistant from './BotAssistant'
 
-export default function Layout({ children, title = 'REUSSITESS®971' }) {
-  const router = useRouter()
+export default function Layout({ children }) {
+  useEffect(() => {
+    const protectContent = () => {
+      document.addEventListener('copy', (e) => e.preventDefault())
+      document.addEventListener('contextmenu', (e) => e.preventDefault())
+    }
+    protectContent()
+  }, [])
 
   return (
     <>
       <Head>
-        <title>{title} - Excellence Innovation Succès</title>
-        <meta name="description" content="REUSSITESS®971 - Guadeloupe au cœur du monde francophone" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/images/logo-guadeloupe-monde.svg" />
+        {/* Configuration de la portée internationale pour les 14 pays */}
+        <link rel="alternate" href="https://www.reussitess.fr/" hrefLang="fr-FR" />
+        <link rel="alternate" href="https://www.reussitess.fr/" hrefLang="en-US" />
+        <link rel="alternate" href="https://www.reussitess.fr/" hrefLang="en-GB" />
+        <link rel="alternate" href="https://www.reussitess.fr/" hrefLang="en-CA" />
+        <link rel="alternate" href="https://www.reussitess.fr/" hrefLang="en-AU" />
+        <link rel="alternate" href="https://www.reussitess.fr/" hrefLang="en-NZ" />
+        <link rel="alternate" href="https://www.reussitess.fr/" hrefLang="en-IN" />
+        <link rel="alternate" href="https://www.reussitess.fr/" hrefLang="en-SG" />
+        <link rel="alternate" href="https://www.reussitess.fr/" hrefLang="it-IT" />
+        <link rel="alternate" href="https://www.reussitess.fr/" hrefLang="de-DE" />
+        <link rel="alternate" href="https://www.reussitess.fr/" hrefLang="es-ES" />
+        <link rel="alternate" href="https://www.reussitess.fr/" hrefLang="pt-BR" />
+        <link rel="alternate" href="https://www.reussitess.fr/" hrefLang="sv-SE" />
+        <link rel="alternate" href="https://www.reussitess.fr/" hrefLang="x-default" />
       </Head>
 
-      {/* BANNIÈRE AMAZON */}
-      <div style={{
-        background: 'linear-gradient(135deg, #ff9f43 0%, #ff6b6b 100%)',
-        color: 'white',
-        padding: '0.75rem 1rem',
-        textAlign: 'center',
-        fontSize: '0.9rem',
-        fontWeight: '600',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.2)'
-      }}>
-        🛍️ <strong>Programme Partenaires Amazon</strong> - En tant qu'Affilié Amazon, nous réalisons un bénéfice sur les achats qualifiés. Merci ! 🙏
-      </div>
+      {/* Fixed Top Disclaimer Banner - First Element */}
+      <AffiliateDisclaimer />
+      
+      <header className="header">
+        <nav>
+          <div className="logo">
+            🌍 REUSSITESS® Global Nexus
+          </div>
+          <div className="nav-links">
+            <Link href="/">🏠 Accueil</Link>
+            <Link href="/a-propos">ℹ️ À Propos</Link>
+            <Link href="/analytics">📊 Analytics</Link>
+            <Link href="/affiliation">🤝 Affiliation</Link>
+            <Link href="/bibliotheque/outils">🛠️ Outils</Link>
+            <Link href="/mentions-legales">⚖️ Juridique</Link>
+          </div>
+        </nav>
+      </header>
+      
+      <main>{children}</main>
 
-      {/* NAVBAR */}
-      <nav style={{
-        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-        padding: '1rem 2rem',
-        boxShadow: '0 2px 20px rgba(0,0,0,0.3)',
-        position: 'sticky',
-        top: 0,
-        zIndex: 1000
-      }}>
-        <div style={{
-          maxWidth: '1400px',
-          margin: '0 auto',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '1rem'
-        }}>
-          {/* LOGO avec image */}
-          <Link href="/" style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.75rem',
-            textDecoration: 'none'
-          }}>
-            <Image 
-              src="/images/logo-guadeloupe-monde.svg" 
-              alt="Guadeloupe au centre du monde" 
-              width={50} 
-              height={50}
-              style={{ filter: 'drop-shadow(0 0 10px rgba(16, 185, 129, 0.5))' }}
-            />
-            <span style={{
-              fontSize: '1.5rem',
-              fontWeight: '900',
-              background: 'linear-gradient(135deg, #10b981 0%, #3b82f6 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent'
-            }}>
-              REUSSITESS®971
-            </span>
-          </Link>
-
-          {/* MENU LINKS */}
-          <div style={{
-            display: 'flex',
-            gap: '1.5rem',
-            flexWrap: 'wrap',
-            alignItems: 'center'
-          }}>
-            <Link href="/" style={{
-              color: router.pathname === '/' ? '#10b981' : '#94a3b8',
-              textDecoration: 'none',
-              fontWeight: '600',
-              fontSize: '0.95rem'
-            }}>
-              Accueil
-            </Link>
-
-            <Link href="/a-propos" style={{
-              color: router.pathname === '/a-propos' ? '#10b981' : '#94a3b8',
-              textDecoration: 'none',
-              fontWeight: '600',
-              fontSize: '0.95rem'
-            }}>
-              À propos
-            </Link>
-
-            <Link href="/analytics" style={{
-              color: router.pathname === '/analytics' ? '#10b981' : '#94a3b8',
-              textDecoration: 'none',
-              fontWeight: '600',
-              fontSize: '0.95rem'
-            }}>
-              Analytics
-            </Link>
-
-            <Link href="/affiliation" style={{
-              color: router.pathname === '/affiliation' ? '#10b981' : '#94a3b8',
-              textDecoration: 'none',
-              fontWeight: '600',
-              fontSize: '0.95rem'
-            }}>
-              Affiliation
-            </Link>
-
-            <Link href="/outils" style={{
-              color: router.pathname === '/outils' ? '#10b981' : '#94a3b8',
-              textDecoration: 'none',
-              fontWeight: '600',
-              fontSize: '0.95rem'
-            }}>
-              Outils
-            </Link>
-
-            <Link href="/legal" style={{
-              color: router.pathname === '/legal' ? '#10b981' : '#94a3b8',
-              textDecoration: 'none',
-              fontWeight: '600',
-              fontSize: '0.95rem'
-            }}>
-              Juridique
-            </Link>
-
-            <Link href="/boutiques" style={{
-              background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-              color: 'white',
-              padding: '0.5rem 1.25rem',
-              borderRadius: '50px',
-              textDecoration: 'none',
-              fontWeight: 'bold',
-              fontSize: '0.9rem',
-              boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)'
-            }}
-            className="btn-boutiques">
-              🛍️ Boutiques
-            </Link>
-
-            <a 
-              href="https://shop.reussitess.fr/" 
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-                color: 'white',
-                padding: '0.5rem 1.25rem',
-                borderRadius: '50px',
-                textDecoration: 'none',
-                fontWeight: 'bold',
-                fontSize: '0.9rem',
-                boxShadow: '0 4px 15px rgba(245, 87, 108, 0.3)'
-              }}
-              className="btn-shop">
-              🏪 Shop
-            </a>
+      <AffiliateDisclaimer />
+      <FeedbackWidget />
+      <VisitorCounter />
+      <BotAssistant />
+      
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-content">
+            <div className="footer-section">
+              <h4>🌐 Réseau Global</h4>
+              <p>26 boutiques • 14 pays • 5 continents</p>
+            </div>
+            <div className="footer-section">
+              <h4>📞 Support</h4>
+              <p>24/7 • Multilingue • Global</p>
+            </div>
+            <div className="footer-section">
+              <h4>🔒 Sécurité</h4>
+              <p>Données cryptées • Transactions sécurisées</p>
+            </div>
+            <div className="footer-section">
+              <h4>⚖️ Légal</h4>
+              <Link href="/mentions-legales">Mentions Légales</Link><br/>
+              <Link href="/politique-confidentialite">Politique de Confidentialité</Link>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <p>&copy; 2024 REUSSITESS® Global Nexus. Tous droits réservés.</p>
+            <p>🚀 Développé avec Next.js • PWA • SEO Optimisé</p>
           </div>
         </div>
-      </nav>
-
-      <main style={{ minHeight: '100vh' }}>
-        {children}
-      </main>
-
-      <SuperBotAssistant />
-
-      <style jsx>{`
-        .btn-boutiques:hover, .btn-shop:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
-        }
-        a:hover {
-          color: #10b981 !important;
-        }
-      `}</style>
+      </footer>
     </>
   )
 }
