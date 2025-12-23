@@ -8,58 +8,69 @@ export default function Certificat() {
   const [date, setDate] = useState('');
 
   useEffect(() => {
-    setDate(new Date().toLocaleString('fr-FR', { timeZone: 'UTC' }));
+    setDate(new Date().toLocaleString('fr-FR', { dateStyle: 'long', timeStyle: 'short' }));
   }, []);
 
   return (
-    <div style={{ backgroundColor: '#f9f9f9', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '40px', fontFamily: '"Times New Roman", Times, serif' }}>
+    <div style={{ backgroundColor: '#e0e0e0', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '40px', fontFamily: '"Times New Roman", Times, serif' }}>
       
-      <div style={{ width: '100%', maxWidth: '850px', background: '#fff', border: '2px solid #000', padding: '50px', position: 'relative', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', borderRadius: '2px' }}>
+      <div style={{ width: '100%', maxWidth: '850px', background: '#fff', border: '1px solid #ccc', padding: '60px', position: 'relative', boxShadow: '0 30px 60px rgba(0,0,0,0.2)', backgroundImage: 'linear-gradient(to bottom, #ffffff 0%, #fcfcfc 100%)' }}>
         
-        {/* SCEAU OFFICIEL NEXUS */}
-        <div style={{ position: 'absolute', top: '20px', right: '20px', width: '100px', height: '100px', border: '2px solid #00ff41', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#00ff41', fontWeight: 'bold', fontSize: '10px', textAlign: 'center', transform: 'rotate(15deg)' }}>
-          VALIDÉ PAR<br/>100 IA<br/>NEXUS
+        {/* FILIGRANE DE SÉCURITÉ */}
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%) rotate(-30deg)', fontSize: '120px', color: 'rgba(0,255,65,0.03)', whiteSpace: 'nowrap', pointerEvents: 'none', fontWeight: 'bold', zIndex: 0 }}>
+          REUSSITESS
         </div>
 
-        <div style={{ textAlign: 'center', borderBottom: '3px double #000', paddingBottom: '20px', marginBottom: '30px' }}>
-          <h1 style={{ margin: 0, fontSize: '32px', textTransform: 'uppercase', letterSpacing: '4px' }}>CERTIFICAT DE CONFORMITÉ</h1>
-          <p style={{ margin: '10px 0', fontSize: '16px', fontWeight: 'bold' }}>Protocole d'Éligibilité Numérique Global Nexus</p>
+        <div style={{ textAlign: 'center', borderBottom: '2px solid #000', paddingBottom: '20px', marginBottom: '40px', position: 'relative', zIndex: 1 }}>
+          <h1 style={{ margin: 0, fontSize: '28px', textTransform: 'uppercase', letterSpacing: '6px' }}>Attestation de Conformité Blockchain</h1>
+          <p style={{ margin: '10px 0', fontSize: '14px', color: '#555' }}>Délivré sous le protocole de sécurité décentralisé Global Nexus</p>
         </div>
 
-        <div style={{ fontSize: '19px', lineHeight: '1.8', color: '#333' }}>
-          <p>Par la présente, le système <strong>Air-Bot v2.5</strong> certifie que l'entité identifiée par le protocole sécurisé :</p>
-          <div style={{ textAlign: 'center', margin: '30px 0' }}>
-            <span style={{ fontSize: '24px', background: '#000', color: '#00ff41', padding: '10px 30px', borderRadius: '5px', fontFamily: 'monospace' }}>{id || 'NXS-PENDING-00'}</span>
+        <div style={{ fontSize: '20px', lineHeight: '1.8', color: '#222', position: 'relative', zIndex: 1 }}>
+          <p>Il est certifié par la présente que l'identifiant unique :</p>
+          <div style={{ textAlign: 'center', margin: '25px 0' }}>
+            <span style={{ fontSize: '26px', background: '#f0f0f0', border: '1px solid #000', color: '#000', padding: '10px 40px', fontFamily: 'monospace', fontWeight: 'bold' }}>
+              {id || 'NXS-777-ALPHA'}
+            </span>
           </div>
-          <p>A été validée avec succès pour la zone de conformité internationale suivante :</p>
-          <h2 style={{ textAlign: 'center', borderBottom: '1px solid #eee', paddingBottom: '10px' }}>{zone || 'ZONE INTERNATIONALE'}</h2>
+          <p>A complété avec succès l'audit des <strong>100 Intelligences Artificielles</strong> et bénéficie d'une autorisation de circulation numérique pour la juridiction :</p>
+          <h2 style={{ textAlign: 'center', color: '#000', textDecoration: 'underline' }}>{zone || 'ZONE INTERNATIONALE'}</h2>
         </div>
 
-        <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
-          <div>
-            <strong>Date d'Horodatage :</strong> {date}<br />
-            <strong>Registre :</strong> Blockchain Nexus-Mainnet
+        <div style={{ marginTop: '50px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', position: 'relative', zIndex: 1 }}>
+          <div style={{ fontSize: '14px' }}>
+            <strong>Émission :</strong> {date}<br />
+            <strong>Authentification :</strong> 2FA-Quantum-Safe<br />
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://reussitess.fr" alt="QR Verify" style={{ marginTop: '15px', border: '1px solid #eee' }} />
           </div>
-          <div style={{ textAlign: 'right' }}>
-            <strong>Hash de Validation :</strong><br />
-            <span style={{ fontSize: '11px', color: '#666', fontFamily: 'monospace' }}>0x{id ? id.split('-')[1] : '7a2b9c'}...f8e2d1</span>
+
+          {/* ZONE DE SIGNATURE */}
+          <div style={{ textAlign: 'center', minWidth: '200px' }}>
+            <div style={{ fontFamily: '"Brush Script MT", cursive', fontSize: '32px', color: '#1a237e', marginBottom: '-10px', transform: 'rotate(-2deg)' }}>
+              Global Nexus Authority
+            </div>
+            <div style={{ width: '250px', height: '1px', background: '#000', margin: '0 auto' }}></div>
+            <div style={{ fontSize: '12px', marginTop: '5px', textTransform: 'uppercase', fontWeight: 'bold' }}>Signature du Commissaire Numérique</div>
           </div>
         </div>
 
-        {/* --- CLAUSE DE NON-RESPONSABILITÉ LÉGALE (DISCLAIMER) --- */}
-        <div style={{ marginTop: '60px', borderTop: '1px solid #000', paddingTop: '15px', fontSize: '10px', color: '#444', textAlign: 'justify', lineHeight: '1.4' }}>
-          <strong>DISCLAIMER JURIDIQUE :</strong> Ce document est un certificat numérique de conformité émis exclusivement dans le cadre de l'écosystème REUSSITESS Global Nexus. 
-          Il ne constitue pas un document d'identité étatique, un titre de transport officiel ou un instrument financier régulé. 
-          L'obtention de ce certificat atteste de la réussite d'un processus de validation par intelligence artificielle (100 IA) et garantit le respect de l'anonymat selon les directives du RGPD. 
-          Toute utilisation frauduleuse de ce certificat en dehors du réseau Global Nexus n'engage pas la responsabilité de l'émetteur. 
-          Le hash associé fait foi de preuve de transaction numérique au sein de notre registre décentralisé.
+        {/* DISCLAIMER JURIDIQUE */}
+        <div style={{ marginTop: '50px', borderTop: '1px solid #eee', paddingTop: '20px', fontSize: '9px', color: '#777', textAlign: 'justify', fontStyle: 'italic', lineHeight: '1.4' }}>
+          CLAUSE LÉGALE : Ce document constitue une preuve de participation au protocole "Passeport Mondial" au sein de l'architecture logicielle Reussitess. Il ne peut être utilisé comme pièce d'identité officielle auprès des autorités gouvernementales. Les 14 pays (France, Angleterre, Italie, Allemagne, Suède, Singapour, Australie, Espagne, Brésil, Royaume-Uni, Inde, Nouvelle-Zélande, États-Unis, Canada) sont régis par les conditions d'utilisation Global Nexus en vigueur.
         </div>
       </div>
 
-      <div style={{ marginTop: '30px', display: 'flex', gap: '15px' }}>
-        <button onClick={() => window.print()} style={{ padding: '12px 25px', cursor: 'pointer', background: '#000', color: '#fff', border: 'none', borderRadius: '5px', fontWeight: 'bold' }}>🖨️ IMPRIMER / PDF</button>
-        <Link href="/" style={{ padding: '12px 25px', background: '#00ff41', color: '#000', textDecoration: 'none', fontWeight: 'bold', borderRadius: '5px' }}>🏠 QUITTER</Link>
+      <div style={{ marginTop: '40px', display: 'flex', gap: '20px', noPrint: { display: 'none' } }}>
+        <button onClick={() => window.print()} style={{ padding: '15px 30px', cursor: 'pointer', background: '#111', color: '#fff', border: 'none', borderRadius: '5px', fontWeight: 'bold', fontSize: '16px', boxShadow: '0 4px 15px rgba(0,0,0,0.2)' }}>🖨️ IMPRIMER LE CERTIFICAT</button>
+        <Link href="/" style={{ padding: '15px 30px', background: '#00ff41', color: '#000', textDecoration: 'none', fontWeight: 'bold', borderRadius: '5px', fontSize: '16px' }}>🏠 RETOUR</Link>
       </div>
+
+      <style jsx global>{`
+        @media print {
+          button, a { display: none !important; }
+          body { background: white !important; }
+        }
+      `}</style>
     </div>
   );
 }
