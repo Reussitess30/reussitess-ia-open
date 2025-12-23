@@ -41,16 +41,19 @@ export default function Home() {
           <div style={{ fontSize: "5rem", marginBottom: "1rem" }}>🎯</div>
           <h1 style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)", fontWeight: "900", marginBottom: "1.5rem", textShadow: "0 4px 30px rgba(0,0,0,0.3)" }}>REUSSITESS®971</h1>
           
-          {/* BOUTON AIRPODS (Le petit, unique et bien placé) */}
-          <div style={{ marginBottom: "2rem" }}>
-            <Link href="/passe-port-mondial" style={{ background: "linear-gradient(135deg, #00ff41 0%, #008f11 100%)", color: "black", padding: "0.8rem 2rem", borderRadius: "50px", textDecoration: "none", fontSize: "1rem", fontWeight: "900", boxShadow: "0 8px 25px rgba(0, 255, 65, 0.4)", display: "inline-flex", alignItems: "center", gap: "10px", border: "2px solid #000" }}>
+          <p style={{ fontSize: "clamp(1.2rem, 3vw, 2rem)", marginBottom: "2rem", fontWeight: "600" }}>25 Quiz Thématiques</p>
+
+          <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap", alignItems: "center" }}>
+            {/* LE PETIT BOUTON AIRPODS UNIQUE */}
+            <Link href="/passe-port-mondial" style={{ background: "#00ff41", color: "black", padding: "0.6rem 1.5rem", borderRadius: "50px", textDecoration: "none", fontSize: "0.9rem", fontWeight: "900", border: "2px solid #000" }}>
               🎧 ACCÈS AIRPODS PRO
             </Link>
-          </div>
 
-          <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/ia-passport" style={{ background: 'linear-gradient(135deg, #10b981 0%, #3b82f6 100%)', color: 'white', padding: '1rem 2.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold' }}>🌍 IA PASSPORT</Link>
-            <Link href="/visa-universel" style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)', color: 'white', padding: '1rem 2.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold' }}>🌍 VISA UNIVERSEL</Link>
+            {/* TES BOUTONS D'ORIGINE RESTAURÉS SANS DOUBLONS */}
+            <Link href="/champions" style={{ background: "gold", color: "black", padding: "0.8rem 1.5rem", borderRadius: "50px", textDecoration: "none", fontWeight: "bold" }}>🏆 Passeport de Réussite</Link>
+            <Link href="/visa-universel" style={{ background: "white", color: "black", padding: "0.8rem 1.5rem", borderRadius: "50px", textDecoration: "none", fontWeight: "bold" }}>🌍 VISA UNIVERSEL</Link>
+            <Link href="/ia-passport" style={{ background: "#10b981", color: "white", padding: "0.8rem 1.5rem", borderRadius: "50px", textDecoration: "none", fontWeight: "bold" }}>🌍 IA PASSPORT</Link>
+            <a href="https://www.amazon.fr/shop/amourguadeloupe" target="_blank" style={{ background: "#27ae60", color: "white", padding: "0.8rem 1.5rem", borderRadius: "50px", textDecoration: "none", fontWeight: "bold" }}>🎮 Amazon Officiel</a>
           </div>
         </div>
       </div>
