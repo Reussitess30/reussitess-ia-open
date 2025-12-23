@@ -1,16 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 export default function PasseportMondial() {
-  const router = useRouter();
-  const [terminal, setTerminal] = useState(['[SYSTEM] Initialisation du protocole Nexus...']);
+  const [terminal, setTerminal] = useState(['[SYSTEM] Initialisation du Global Nexus...']);
   const [step, setStep] = useState(0);
   const [isVerified, setIsVerified] = useState(false);
+  const [activeIAs, setActiveIAs] = useState(0);
   const [protocolId, setProtocolId] = useState('');
   const [userZone, setUserZone] = useState('');
 
   const pays = ["France", "Angleterre", "Italie", "Allemagne", "Suède", "Singapour", "Australie", "Espagne", "Brésil", "Royaume-Uni", "Inde", "Nouvelle-Zélande", "États-Unis", "Canada"];
+
+  useEffect(() => {
+    if (step === 1 && activeIAs < 100) {
+      const interval = setInterval(() => {
+        setActiveIAs(prev => {
+          if (prev >= 100) {
+            clearInterval(interval);
+            return 100;
+          }
+          return prev + 1;
+        });
+      }, 50);
+      return () => clearInterval(interval);
+    }
+  }, [step, activeIAs]);
 
   const startValidation = (country) => {
     setUserZone(country);
@@ -18,54 +32,74 @@ export default function PasseportMondial() {
     const pId = 'NXS-' + Math.random().toString(36).toUpperCase().substring(2, 12);
     setProtocolId(pId);
 
-    const sequence = [
-      `[IA-CORE] Analyse de zone : ${country}`,
-      "[LEGAL] Vérification des traités internationaux...",
-      "[BLOCKCHAIN] Minage du certificat de possession...",
-      `[ID-GEN] Protocole ${pId} généré.`,
-      "[SUCCESS] Validation terminée."
+    const messages = [
+      `[IA-LOG] Déploiement des 100 unités sur la zone ${country}...`,
+      "[IA-LOG] Analyse des protocoles de conformité internationaux...",
+      "[IA-LOG] Sécurisation du tunnel de données RSA-4096...",
+      "[IA-LOG] Minage du certificat de possession Blockchain...",
+      "[IA-LOG] Validation finale par le noyau Nexus."
     ];
-    
-    sequence.forEach((msg, i) => {
+
+    messages.forEach((msg, i) => {
       setTimeout(() => {
         setTerminal(prev => [...prev, msg]);
-        if (i === sequence.length - 1) setIsVerified(true);
-      }, (i + 1) * 1000);
+        if (i === messages.length - 1) setIsVerified(true);
+      }, (i + 1) * 1200);
     });
   };
 
   return (
-    <div style={{ backgroundColor: '#000', color: '#00ff41', minHeight: '100vh', fontFamily: 'monospace', padding: '20px', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ backgroundColor: '#000', color: '#00ff41', minHeight: '100vh', fontFamily: 'monospace', padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       
-      <Link href="/" style={{ position: 'fixed', top: '20px', left: '20px', background: '#00ff41', color: '#000', padding: '10px', textDecoration: 'none', fontWeight: 'bold', borderRadius: '5px', fontSize: '12px' }}>🏠 RETOUR</Link>
+      <Link href="/" style={{ alignSelf: 'flex-start', background: '#00ff41', color: '#000', padding: '8px 15px', textDecoration: 'none', fontWeight: 'bold', borderRadius: '4px', fontSize: '12px', marginBottom: '20px' }}>🏠 RETOUR</Link>
 
-      <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <div style={{ width: '100%', maxWidth: '500px', border: '1px solid #00ff41', padding: '30px', borderRadius: '15px', background: '#050505' }}>
-          <h1 style={{ textAlign: 'center', fontSize: '1.2rem', color: '#fff' }}>🛡️ NEXUS GLOBAL AIR-BOT</h1>
+      <div style={{ width: '100%', maxWidth: '650px', background: '#050505', border: '1px solid #00ff41', padding: '30px', borderRadius: '15px', boxShadow: '0 0 40px rgba(0,255,65,0.1)' }}>
+        <h1 style={{ textAlign: 'center', fontSize: '1.4rem', color: '#fff', marginBottom: '10px' }}>🛡️ AIR-BOT : MONITORING IA</h1>
 
-          {step === 0 ? (
-            <select onChange={(e) => startValidation(e.target.value)} style={{ width: '100%', padding: '15px', background: '#000', color: '#00ff41', border: '1px solid #00ff41', marginTop: '20px' }}>
-              <option>-- SÉLECTIONNEZ VOTRE PAYS --</option>
+        {step === 0 ? (
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ color: '#888', marginBottom: '20px' }}>Sélectionnez votre zone pour activer les 100 IA :</p>
+            <select onChange={(e) => startValidation(e.target.value)} style={{ width: '100%', padding: '15px', background: '#000', color: '#00ff41', border: '1px solid #00ff41', cursor: 'pointer' }}>
+              <option>-- CHOISIR PAYS --</option>
               {pays.map(p => <option key={p} value={p}>{p}</option>)}
             </select>
-          ) : (
-            <div>
-              <div style={{ background: '#000', padding: '15px', fontSize: '12px', margin: '20px 0', border: '1px solid #111' }}>
-                {terminal.map((line, i) => <div key={i} style={{ marginBottom: '5px' }}>{`> ${line}`}</div>)}
+          </div>
+        ) : (
+          <div>
+            {/* TABLEAU DE BORD DES IA */}
+            <div style={{ background: '#111', padding: '15px', borderRadius: '8px', marginBottom: '20px', border: '1px solid #222' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                <span>UNITÉS IA ACTIVES : {activeIAs}/100</span>
+                <span style={{ color: activeIAs === 100 ? '#00ff41' : '#ffcc00' }}>
+                  {activeIAs === 100 ? '● SYNCHRONISÉ' : '○ CALCUL EN COURS...'}
+                </span>
               </div>
-              
-              {isVerified && (
-                <div style={{ textAlign: 'center' }}>
-                  <p style={{ color: '#fff', fontSize: '14px', marginBottom: '15px' }}>✅ CERTIFICATION RÉUSSIE</p>
-                  <Link href={`/certificat?id=${protocolId}&zone=${userZone}`} style={{ display: 'block', background: '#00ff41', color: '#000', padding: '15px', borderRadius: '5px', fontWeight: 'bold', textDecoration: 'none' }}>
-                    📜 VOIR MON CERTIFICAT
-                  </Link>
-                </div>
-              )}
+              <div style={{ height: '4px', background: '#333', width: '100%', borderRadius: '2px', overflow: 'hidden' }}>
+                <div style={{ height: '100%', background: '#00ff41', width: `${activeIAs}%`, transition: 'width 0.1s' }}></div>
+              </div>
+              {/* Grille de 100 petits points IA */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(20, 1fr)', gap: '4px', marginTop: '15px' }}>
+                {Array.from({ length: 100 }).map((_, i) => (
+                  <div key={i} style={{ width: '6px', height: '6px', borderRadius: '50%', background: i < activeIAs ? '#00ff41' : '#222', boxShadow: i < activeIAs ? '0 0 5px #00ff41' : 'none' }}></div>
+                ))}
+              </div>
             </div>
-          )}
-        </div>
+
+            <div style={{ background: '#000', padding: '15px', fontSize: '11px', border: '1px solid #111', minHeight: '120px' }}>
+              {terminal.map((line, i) => <div key={i} style={{ marginBottom: '5px' }}>{`> ${line}`}</div>)}
+            </div>
+            
+            {isVerified && (
+              <div style={{ textAlign: 'center', marginTop: '25px', animation: 'fadeIn 1s' }}>
+                <Link href={`/certificat?id=${protocolId}&zone=${userZone}`} style={{ display: 'inline-block', background: '#00ff41', color: '#000', padding: '15px 30px', borderRadius: '5px', fontWeight: 'bold', textDecoration: 'none', fontSize: '1.1rem', boxShadow: '0 0 20px rgba(0,255,65,0.4)' }}>
+                  📜 OBTENIR MON CERTIFICAT
+                </Link>
+              </div>
+            )}
+          </div>
+        )}
       </div>
+      <style jsx>{` @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } } `}</style>
     </div>
   );
 }
