@@ -326,8 +326,11 @@ export default function Home() {
                 display: 'inline-block'
               }}
               className="btn-ia-passport">
+<Link href="/passe-port-mondial" style={{ background: "linear-gradient(135deg, #00ff41 0%, #008f11 100%)", color: "black", padding: "1rem 2.5rem", borderRadius: "50px", textDecoration: "none", fontSize: "1.1rem", fontWeight: "900", boxShadow: "0 8px 25px rgba(0, 255, 65, 0.4)", transition: "all 0.3s ease", display: "inline-block", border: "2px solid #000" }} className="btn-airpods">🎧 ACCÈS AIRPODS PRO</Link>
               🌍 IA PASSPORT MONDIAL - Révolution 2025
+<Link href="/passe-port-mondial" style={{ background: "linear-gradient(135deg, #00ff41 0%, #008f11 100%)", color: "black", padding: "1rem 2.5rem", borderRadius: "50px", textDecoration: "none", fontSize: "1.1rem", fontWeight: "900", boxShadow: "0 8px 25px rgba(0, 255, 65, 0.4)", transition: "all 0.3s ease", display: "inline-block", border: "2px solid #000" }} className="btn-airpods">🎧 ACCÈS AIRPODS PRO</Link>
             </Link>
+<Link href="/passe-port-mondial" style={{ background: "linear-gradient(135deg, #00ff41 0%, #008f11 100%)", color: "black", padding: "1rem 2.5rem", borderRadius: "50px", textDecoration: "none", fontSize: "1.1rem", fontWeight: "900", boxShadow: "0 8px 25px rgba(0, 255, 65, 0.4)", transition: "all 0.3s ease", display: "inline-block", border: "2px solid #000" }} className="btn-airpods">🎧 ACCÈS AIRPODS PRO</Link>
             <Link
               href="https://shop.reussitess.fr/"
               target="_blank"
