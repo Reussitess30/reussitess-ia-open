@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function PasseportMondial() {
   const [terminal, setTerminal] = useState(['[SYSTEM] Initialisation du protocole de sécurité...', '[INFO] Vérification des 14 zones internationales...']);
@@ -24,7 +25,15 @@ export default function PasseportMondial() {
 
   return (
     <div style={{ backgroundColor: '#000', color: '#00ff41', padding: '40px', minHeight: '100vh', fontFamily: 'monospace', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <h1 style={{ borderBottom: '2px solid #00ff41', paddingBottom: '10px' }}>🛂 AIR-BOT CRYPTO-SÉCURITÉ</h1>
+      
+      {/* BOUTON RETOUR ACCUEIL */}
+      <div style={{ alignSelf: 'flex-start', marginBottom: '20px' }}>
+        <Link href="/" style={{ color: '#00ff41', textDecoration: 'none', border: '1px solid #00ff41', padding: '8px 15px', borderRadius: '5px', fontSize: '12px' }}>
+          &lt; REUSSITESS_ACCUEIL
+        </Link>
+      </div>
+
+      <h1 style={{ borderBottom: '2px solid #00ff41', paddingBottom: '10px', textAlign: 'center' }}>🛂 AIR-BOT CRYPTO-SÉCURITÉ</h1>
       
       <div style={{ width: '100%', maxWidth: '700px', background: '#050505', border: '1px solid #333', padding: '20px', borderRadius: '10px', boxShadow: '0 0 20px rgba(0,255,65,0.1)', margin: '20px 0' }}>
         {terminal.map((line, i) => (
