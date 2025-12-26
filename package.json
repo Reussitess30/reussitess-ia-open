@@ -2,6 +2,7 @@
   "name": "reussitess-global-nexus",
   "version": "1.0.1",
   "private": true,
+  "author": "Reussitess©",
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
