@@ -9,5 +9,3 @@ export default function QuizPage() {
     </main>
   );
 }
- 
-/* Partenaire MLC: https://mlc.health/fr/byg727 */

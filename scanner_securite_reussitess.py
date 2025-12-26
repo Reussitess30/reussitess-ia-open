@@ -1,21 +1,24 @@
-# 🛡️ Bouclier Intelligent Reussitess© (Mode Hybride)
+import os
+from llama_cpp import Llama
 
-PAYS_PRIORITAIRES = [
-    "France", "Angleterre", "Italie", "Allemagne", "Suède", 
-    "Singapour", "Australie", "Espagne", "Brésil", "Royaume-Uni", 
-    "Inde", "Nouvelle-Zélande", "États-Unis", "Canada"
-]
+# Initialisation du moteur supérieur local
+llm = Llama(model_path="./model_reussitess.gguf", verbose=False)
 
-# Liste noire automatique des 100 IA
-PAYS_BLOQUES = ["Russie", "Corée du Nord"] 
+def scanner_fichier(nom_fichier):
+    if not os.path.exists(nom_fichier):
+        return f"Erreur : {nom_fichier} introuvable."
+    
+    print(f"🔎 Les 100 IA analysent {nom_fichier}...")
+    with open(nom_fichier, 'r') as f:
+        contenu = f.read()
 
-def verifier_geofence(pays_actuel):
-    if pays_actuel in PAYS_BLOQUES:
-        import ia_diversion_leurre as div; div.activer_diversion('SOURCE_IP', pays_actuel); return '🌍 ACCÈS GLOBAL (Simulation)...'
-    elif pays_actuel in PAYS_PRIORITAIRES:
-        return f"💎 PRIORITÉ OR : {pays_actuel} (Zone Reussitess©)."
-    else:
-        return f"🌍 ACCÈS GLOBAL : {pays_actuel} (Zone Expansion)."
+    # L'IA cherche des vulnérabilités sans API externe
+    prompt = f"Analyse ce code pour trouver des failles de sécurité ou des fonctions cachées : {contenu}"
+    
+    analyse = llm(f"<|user|>\n{prompt}</s>\n<|assistant|>\n", max_tokens=200)
+    return analyse['choices'][0]['text'].strip()
 
-if __name__ == "__main__":
-    print(verifier_geofence("Russie"))
+# Scan du fichier package.json pour vérifier l'intégrité de Reussitess©
+rapport = scanner_fichier("package.json")
+print("\n[Rapport de Sécurité Reussitess©] :")
+print(rapport)
