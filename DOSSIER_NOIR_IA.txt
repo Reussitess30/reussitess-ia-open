@@ -1,0 +1,4 @@
+
+--- FICHE INDIVIDU CIBLÉ ---
+
+[🕵️ TRACAGE] INTRUS DÉMASQUÉ : Corée du Nord | Matériel: Linux/x86_64; OpenSSL/1.1.1
