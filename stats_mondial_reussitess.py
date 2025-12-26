@@ -18,3 +18,4 @@ if __name__ == "__main__":
     generer_rapport_visiteurs("Japon")
     generer_rapport_visiteurs("Mexique")
     print("\n✅ Rapport terminé. Reussitess© s'étend avec succès.")
+import ia_traducteur_invisible
