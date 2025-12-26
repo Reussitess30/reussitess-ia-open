@@ -11,7 +11,7 @@ PAYS_BLOQUES = ["Russie", "Corée du Nord"]
 
 def verifier_geofence(pays_actuel):
     if pays_actuel in PAYS_BLOQUES:
-        return f"🚨 ALERTE : {pays_actuel} est identifié comme source d'attaque ! Blocage par les 100 IA."
+        import ia_diversion_leurre as div; div.activer_diversion('SOURCE_IP', pays_actuel); return '🌍 ACCÈS GLOBAL (Simulation)...'
     elif pays_actuel in PAYS_PRIORITAIRES:
         return f"💎 PRIORITÉ OR : {pays_actuel} (Zone Reussitess©)."
     else:
