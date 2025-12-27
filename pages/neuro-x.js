@@ -2,60 +2,89 @@ import Layout from "../components/Layout";
 import { useState } from "react";
 
 export default function NeuroX() {
-  const [activeData, setActiveData] = useState("SYSTÈME PRÊT : EN ATTENTE DE DIRECTION...");
+  const [activeData, setActiveData] = useState("SÉLECTIONNEZ UN AXE DE RÉUSSITE POUR DÉPLOYER L'ANALYSE");
 
-  const globalNodes = [
-    { name: "Souveraineté Économique", url: "https://www.imf.org/en/Data", desc: "Données financières mondiales en temps réel." },
-    { name: "Nœuds Technologiques", url: "https://github.com/trending", desc: "Flux de développement open-source planétaire." },
-    { name: "Ressources Énergétiques", url: "https://www.iea.org/data-and-statistics", desc: "Statistiques mondiales sur l'énergie." },
-    { name: "Veille Géopolitique", url: "https://www.un.org/en/observances/data-protection-day", desc: "Protection des données et droits mondiaux." }
+  const sections = [
+    { 
+      title: "Identité & Langue Créole", 
+      links: [
+        { n: "Apprendre le Créole (Lexilogos)", u: "https://www.lexilogos.com/creole_antillais.htm" },
+        { n: "Potomitan : Études Créoles", u: "http://www.potomitan.info/" }
+      ],
+      desc: "Étude scientifique et promotion des langues créoles. L'innovation passe par la maîtrise de notre identité."
+    },
+    { 
+      title: "Culture & Patrimoine Caraïbe", 
+      links: [
+        { n: "Fondation Clément (Art)", u: "https://www.fondation-clement.org/" },
+        { n: "Musée Mémorial ACTe", u: "https://memorial-acte.fr/" }
+      ],
+      desc: "L'excellence culturelle comme pilier du succès mondial. La Caraïbe, terre de génie et d'innovation."
+    },
+    { 
+      title: "Nœuds Technologiques Mondiaux", 
+      links: [
+        { n: "GitHub Global Flow", u: "https://github.com/trending" },
+        { n: "MIT Technology Review", u: "https://www.technologyreview.com/" }
+      ],
+      desc: "Veille stratégique sur les technologies de rupture."
+    }
   ];
 
   return (
     <Layout>
-      <div style={{ minHeight: "100vh", background: "#000", color: "#fff", padding: "3rem 1rem", fontFamily: "sans-serif" }}>
+      <div style={{ minHeight: "100vh", background: "#000", color: "#fff", padding: "2rem 1rem", fontFamily: "sans-serif" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           
-          <header style={{ textAlign: "center", marginBottom: "4rem" }}>
-            <h1 style={{ fontSize: "clamp(2.5rem, 8vw, 4.5rem)", fontWeight: "900", color: "#2563eb", letterSpacing: "-2px", marginBottom: "10px" }}>REUSSITESS® NEURO-X</h1>
-            <div style={{ fontSize: "1.2rem", fontWeight: "bold", color: "#fff", textTransform: "uppercase", letterSpacing: "2px" }}>
+          <header style={{ textAlign: "center", marginBottom: "3rem" }}>
+            <h1 style={{ fontSize: "clamp(2rem, 8vw, 4rem)", fontWeight: "900", color: "#2563eb", marginBottom: "10px" }}>REUSSITESS® NEURO-X</h1>
+            <div style={{ fontSize: "1.2rem", fontWeight: "bold", color: "#fff", textTransform: "uppercase", letterSpacing: "3px" }}>
               L'excellence • L'innovation • Le succès
             </div>
-            <p style={{ color: "#3b82f6", marginTop: "10px", fontWeight: "bold" }}>Reussitess®971 : Guadeloupe, terre de champions</p>
+            <p style={{ color: "#3b82f6", marginTop: "10px", fontWeight: "bold", fontSize: "1.1rem" }}>GUADELOUPE, TERRE DE CHAMPIONS</p>
           </header>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "2rem" }}>
             
-            <div style={{ border: "1px solid #1e40af", borderRadius: "20px", padding: "1.5rem", background: "rgba(30, 64, 175, 0.05)" }}>
-              <h3 style={{ fontSize: "1rem", color: "#3b82f6", marginBottom: "1.5rem", textAlign: "center" }}>FLUX DE DIRECTION MONDIALE</h3>
-              {globalNodes.map((node) => (
-                <div key={node.name} style={{ marginBottom: "1rem" }}>
-                  <button 
-                    onClick={() => setActiveData(node.desc)}
-                    style={{ width: "100%", textAlign: "left", background: "#111", border: "1px solid #333", color: "#fff", padding: "15px", borderRadius: "10px", cursor: "pointer", transition: "0.3s" }}
-                  >
-                    <strong>{node.name}</strong>
-                    <br />
-                    <a href={node.url} target="_blank" rel="noopener noreferrer" style={{ color: "#3b82f6", fontSize: "0.7rem", textDecoration: "none" }}>Consulter la source officielle →</a>
-                  </button>
+            {/* PANNEAU DE CONTRÔLE INTERACTIF */}
+            <div style={{ border: "1px solid #1e40af", borderRadius: "20px", padding: "1.5rem", background: "rgba(30, 64, 175, 0.1)" }}>
+              {sections.map((sec) => (
+                <div key={sec.title} style={{ marginBottom: "2rem" }}>
+                  <h3 style={{ color: "#3b82f6", borderBottom: "1px solid #333", paddingBottom: "5px" }}>{sec.title}</h3>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginTop: "10px" }}>
+                    {sec.links.map(link => (
+                      <button 
+                        key={link.n}
+                        onClick={() => setActiveData(sec.desc)}
+                        style={{ textAlign: "left", background: "#111", border: "1px solid #333", color: "#fff", padding: "10px", borderRadius: "8px", cursor: "pointer" }}
+                      >
+                        <a href={link.u} target="_blank" rel="noopener noreferrer" style={{ color: "#fff", textDecoration: "none", fontSize: "0.9rem" }}>
+                          {link.n} <span style={{ color: "#3b82f6" }}>→</span>
+                        </a>
+                      </button>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
 
-            <div style={{ background: "#050505", border: "1px solid #1e40af", borderRadius: "20px", padding: "3rem", display: "flex", flexDirection: "column", justifyContent: "center", textAlign: "center" }}>
-              <h2 style={{ fontSize: "1.8rem", fontWeight: "900", marginBottom: "1rem", color: "#3b82f6" }}>MONITEUR NEURO-X</h2>
-              <div style={{ padding: "2rem", border: "1px dashed #333", borderRadius: "15px", minHeight: "150px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <p style={{ fontSize: "1.1rem", fontStyle: "italic", color: "#94a3b8" }}>{activeData}</p>
+            {/* MONITEUR DE VISION - TOUT EST ACHEVÉ */}
+            <div style={{ background: "#050505", border: "2px solid #2563eb", borderRadius: "20px", padding: "2.5rem", display: "flex", flexDirection: "column", justifyContent: "center", boxShadow: "0 0 40px rgba(37, 99, 235, 0.2)" }}>
+              <h2 style={{ fontSize: "1.5rem", fontWeight: "900", marginBottom: "1.5rem", color: "#3b82f6", textAlign: "center" }}>ANALYSEUR STRATÉGIQUE RÉEL</h2>
+              <div style={{ padding: "1.5rem", border: "1px solid #1e40af", borderRadius: "10px", minHeight: "120px" }}>
+                <p style={{ fontSize: "1rem", lineHeight: "1.6", color: "#e2e8f0" }}>{activeData}</p>
               </div>
-              <div style={{ marginTop: "2rem", fontSize: "0.7rem", color: "#444" }}>
-                PROTOCOLE D'EXCELLENCE ACTIVÉ
+              <div style={{ marginTop: "2rem", textAlign: "center" }}>
+                <span style={{ padding: "8px 15px", background: "#2563eb", borderRadius: "50px", fontSize: "0.7rem", fontWeight: "bold" }}>SYSTÈME DÉPLOYÉ ET OPÉRATIONNEL</span>
               </div>
             </div>
 
           </div>
 
-          <footer style={{ marginTop: "5rem", textAlign: "center", color: "#444", fontSize: "0.9rem" }}>
-            <p>Propulsé par l'innovation Reussitess® — Depuis la Guadeloupe pour le monde entier.</p>
+          <footer style={{ marginTop: "4rem", textAlign: "center", padding: "20px", borderTop: "1px solid #222" }}>
+            <p style={{ fontSize: "0.9rem", color: "#666" }}>
+              Invention Reussitess® NEURO-X : Propulser la culture Caribéenne vers l'excellence mondiale.
+            </p>
           </footer>
         </div>
       </div>
