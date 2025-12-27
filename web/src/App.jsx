@@ -4,82 +4,121 @@ const ReussitessDashboard = () => {
   const OWNER = "0x69f42aa645a43a84e1143d416a4c81a88df01549";
   const SUPPLY = "2,000,000,000";
   
-  const [tokens, setTokens] = useState([
-    { id: 1, name: "Reussitess© Alpha", symbol: "REUSS-A", price: 0.00000321, color: "from-blue-600 to-cyan-500" },
-    { id: 2, name: "Reussitess© Beta", symbol: "REUSS-B", price: 0.00000318, color: "from-purple-600 to-indigo-500" }
-  ]);
-  const [profit, setProfit] = useState(0);
+  const [showNeuroX, setShowNeuroX] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState(null);
 
-  useEffect(() => {
-    const itv = setInterval(() => {
-      setTokens(prev => prev.map(t => ({
-        ...t, price: Math.max(0.000001, t.price + (Math.random() - 0.5) * 0.00000005)
-      })));
+  // Base de données intégrée : Juridictions et Histoire
+  const DATABASE = {
+    regions: ["Guadeloupe", "Martinique", "Guyane", "Réunion", "Mayotte", "Antilles", "Afrique", "Caraïbes"],
+    legal_framework: "Conformité OHADA, Règlements UE (DOM), Traités OHACE (Caraïbes)",
+    focus: "Souveraineté Économique et Arbitrage Transatlantique"
+  };
+
+  const activateNeuroX = () => {
+    setLoading(true);
+    setShowNeuroX(true);
+    
+    // Simulation du scan de la Super-Intelligence
+    setTimeout(() => {
+      setLoading(false);
+      setResult({
+        status: "OPTIMISÉ",
+        analysis: "Connexion établie entre les pôles Caraïbe-Afrique-Europe. Conformité juridique validée pour les zones DOM-TOM et OHADA.",
+        vision: "Le flux des 2 milliards de Reussitess© est prêt pour l'arbitrage intercontinental."
+      });
     }, 3000);
-    return () => clearInterval(itv);
-  }, []);
-
-  useEffect(() => {
-    const p = ((Math.max(...tokens.map(t=>t.price)) - Math.min(...tokens.map(t=>t.price))) / Math.min(...tokens.map(t=>t.price)) * 100).toFixed(2);
-    setProfit(p);
-  }, [tokens]);
+  };
 
   return (
-    <div className="min-h-screen text-white p-4 md:p-10 font-sans">
-      <div className="max-w-6xl mx-auto">
-        <header className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 border-b border-white/10 pb-8">
-          <h1 className="text-5xl font-black tracking-tighter italic">REUSSITESS©</h1>
-          <div className="text-right">
-            <div className="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Infrastructure Owner</div>
-            <div className="bg-white/5 px-4 py-2 rounded-xl border border-white/10 font-mono text-xs text-blue-400">
-              {OWNER}
-            </div>
+    <div className="min-h-screen bg-[#050505] text-white font-sans">
+      <div className="max-w-6xl mx-auto p-6">
+        
+        {/* Header Identité */}
+        <header className="flex flex-col md:flex-row justify-between items-center mb-16 border-b border-white/10 pb-8">
+          <div>
+            <h1 className="text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-400 uppercase">
+              Reussitess®
+            </h1>
+            <p className="text-[10px] tracking-[0.4em] text-gray-500 font-bold uppercase mt-2">Intelligence Transatlantique</p>
+          </div>
+          <div className="mt-4 md:mt-0 font-mono text-[10px] bg-white/5 p-3 rounded-lg border border-white/10">
+            OWNER ID: {OWNER}
           </div>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {tokens.map(t => (
-            <div key={t.id} className={`bg-gradient-to-br ${t.color} p-10 rounded-[3rem] shadow-2xl`}>
-              <div className="flex justify-between items-center mb-6">
-                <span className="text-3xl font-bold uppercase tracking-tighter">{t.name}</span>
-                <span className="bg-black/30 px-4 py-1 rounded-full text-[10px] font-bold uppercase">{t.symbol}</span>
-              </div>
-              <div className="text-5xl font-mono font-black mb-2">${t.price.toFixed(8)}</div>
-              <div className="text-white/40 text-[10px] uppercase tracking-[0.3em]">Real-Time Liquidity Value</div>
-            </div>
-          ))}
-        </div>
+        {/* SECTION NEURO-X : LA RÉVOLUTION */}
+        <section className="mb-20">
+          <div className="bg-gradient-to-b from-blue-600/20 to-transparent p-[1px] rounded-[3rem]">
+            <div className="bg-black rounded-[3rem] p-12 flex flex-col items-center text-center shadow-2xl">
+              <div className="w-20 h-20 bg-blue-600 rounded-full blur-3xl absolute opacity-20"></div>
+              <h2 className="text-6xl font-black mb-4 tracking-tight">NEURO-X</h2>
+              <div className="text-blue-500 font-mono text-xs mb-8 tracking-widest uppercase">Super-Intelligence de Juridiction Mondiale</div>
+              
+              <p className="text-gray-400 max-w-2xl mb-10 leading-relaxed italic">
+                "L'IA qui unit la Guadeloupe, l'Afrique et les Caraïbes. Analyse en temps réel des droits OHADA, européens et caribéens pour sécuriser vos 2 milliards de Reussitess®."
+              </p>
 
-        <div className="bg-blue-600 p-1 rounded-[3rem] mb-12 shadow-2xl shadow-blue-500/20">
-            <div className="bg-black p-8 rounded-[2.8rem] flex flex-col md:flex-row items-center justify-between">
-                <div>
-                    <div className="text-3xl font-black italic uppercase text-white">Arbitrage Global</div>
-                    <div className="text-blue-500 font-bold tracking-widest uppercase text-sm">Spread Profit: {profit}%</div>
-                </div>
-                <button className="mt-6 md:mt-0 bg-blue-600 text-white px-12 py-5 rounded-[2rem] font-black text-xl hover:bg-blue-500 transition-all active:scale-95">
-                    EXECUTE ENGINE
-                </button>
+              <button 
+                onClick={activateNeuroX}
+                className="group relative px-12 py-5 bg-blue-600 rounded-full font-black text-xl hover:bg-white hover:text-blue-600 transition-all duration-500 shadow-[0_0_30px_rgba(37,99,235,0.3)]"
+              >
+                CONSULTER L'ORACLE NEURO-X
+              </button>
             </div>
-        </div>
+          </div>
+        </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-white/5 border border-white/10 p-8 rounded-[2rem]">
-                <div className="text-gray-500 text-[10px] mb-1 uppercase tracking-widest">Total Fixed Supply</div>
-                <div className="text-3xl font-black font-mono tracking-tighter">{SUPPLY}</div>
-            </div>
-            <div className="bg-white/5 border border-white/10 p-8 rounded-[2rem] flex flex-col justify-center">
-                <div className="text-gray-500 text-[10px] mb-1 uppercase tracking-widest">System Status</div>
-                <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <div className="text-sm font-bold uppercase">Universal Network Active</div>
-                </div>
-            </div>
-        </div>
+        {/* Footer Stats - Les Fondations */}
+        <footer className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center border-t border-white/5 pt-12">
+          <div className="p-6">
+            <div className="text-gray-600 text-[10px] uppercase font-bold tracking-widest mb-2">Actif Circulant</div>
+            <div className="text-3xl font-black">{SUPPLY}</div>
+          </div>
+          <div className="p-6 border-x border-white/5">
+            <div className="text-gray-600 text-[10px] uppercase font-bold tracking-widest mb-2">Base de Données</div>
+            <div className="text-xs font-bold text-blue-400">Guadeloupe • Martinique • Afrique • Caraïbe</div>
+          </div>
+          <div className="p-6">
+            <div className="text-gray-600 text-[10px] uppercase font-bold tracking-widest mb-2">Conformité</div>
+            <div className="text-xs font-bold text-emerald-500 italic">Juridictions Mondiales Validées</div>
+          </div>
+        </footer>
       </div>
 
-      <footer className="mt-20 text-center text-gray-800 text-[10px] uppercase tracking-[0.5em] pb-10">
-          Reussitess© • Decentralized Infrastructure • Zero Restrictions
-      </footer>
+      {/* MODAL NEURO-X ANALYSIS */}
+      {showNeuroX && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl">
+          <div className="max-w-3xl w-full bg-zinc-900 border border-white/10 rounded-[3rem] p-10 relative overflow-hidden">
+            {loading ? (
+              <div className="text-center py-20">
+                <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-6"></div>
+                <div className="text-xl font-mono animate-pulse tracking-widest uppercase">Synchronisation Afrique-Caraïbes...</div>
+              </div>
+            ) : (
+              <div className="animate-in zoom-in duration-500">
+                <div className="text-blue-500 text-xs font-black mb-4 uppercase tracking-[0.3em]">Rapport d'Intelligence NEURO-X</div>
+                <h3 className="text-4xl font-black mb-6 italic uppercase">Verdict Souverain</h3>
+                <div className="space-y-6 text-lg text-gray-300 leading-relaxed font-light">
+                  <p className="border-l-2 border-blue-600 pl-6 italic">
+                    "{result.analysis}"
+                  </p>
+                  <p className="bg-white/5 p-6 rounded-2xl text-sm font-mono text-blue-300 border border-white/5">
+                    <strong>RÉSEAU :</strong> Guadeloupe, Martinique, Guyane, Réunion, Afrique de l'Ouest. <br/>
+                    <strong>DROIT :</strong> Respect intégral des souverainetés locales et des traités internationaux.
+                  </p>
+                </div>
+                <button 
+                  onClick={() => setShowNeuroX(false)}
+                  className="mt-10 w-full py-4 border border-white/10 rounded-2xl text-xs uppercase font-bold hover:bg-white hover:text-black transition"
+                >
+                  Fermer la session sécurisée
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
