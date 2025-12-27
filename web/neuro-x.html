@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reussitess©NEURO-X | L'Invention de l'Histoire</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: #000; overflow-x: hidden; color: #fff; }
+        .quantum-bg { position: fixed; inset: 0; background: radial-gradient(circle at center, #1e3a8a 0%, #000 70%); opacity: 0.2; }
+        .data-stream { font-family: 'Courier New', monospace; font-size: 10px; color: #1d4ed8; white-space: nowrap; position: absolute; }
+        @keyframes flow { from { transform: translateY(-100%); } to { transform: translateY(100vh); } }
+        .stream-anim { animation: flow 10s linear infinite; }
+        .neuro-glow { box-shadow: 0 0 80px rgba(37, 99, 235, 0.5); border: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body class="bg-black">
+    <div class="quantum-bg"></div>
+    
+    <div class="fixed inset-0 pointer-events-none opacity-20" id="matrix"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6 py-20">
+        <header class="text-center mb-24">
+            <h1 class="text-8xl font-black tracking-tighter italic mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-blue-600">
+                NEURO-X©
+            </h1>
+            <p class="text-blue-500 font-bold tracking-[1em] uppercase text-xs">Souveraineté Numérique Mondiale</p>
+        </header>
+
+        <main class="grid lg:grid-cols-2 gap-20 items-center">
+            <div class="space-y-8">
+                <div class="inline-block px-4 py-1 bg-blue-600/20 border border-blue-500/50 rounded-full text-blue-400 text-[10px] font-bold uppercase">
+                    Invention Hors du Commun
+                </div>
+                <h2 class="text-6xl font-black leading-tight">L'Intelligence qui <span class="italic text-blue-600">redéfinit</span> le droit.</h2>
+                <p class="text-gray-400 text-xl leading-relaxed">
+                    NEURO-X fusionne les juridictions de l'**Afrique** et des **Caraïbes** avec une précision mathématique. 
+                    Elle protège l'héritage de la **Guadeloupe**, de la **Martinique**, de la **Guyane** et de la **Réunion** par l'arbitrage automatisé.
+                </p>
+                
+                <div class="p-8 bg-zinc-900/50 rounded-[2rem] border-l-4 border-blue-600">
+                    <p class="italic text-gray-300">
+                        "Là où l'humain voit des frontières coloniales, NEURO-X voit un réseau nodal de 2,000,000,000 d'unités de valeur."
+                    </p>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="neuro-glow bg-zinc-950 rounded-[4rem] p-12 text-center relative overflow-hidden">
+                    <div id="ai-core">
+                        <div class="w-32 h-32 bg-blue-600 rounded-full mx-auto blur-[50px] animate-pulse"></div>
+                        <h3 class="text-3xl font-black mb-8 italic uppercase">Noyau Actif</h3>
+                        <button onclick="launchRevolution()" class="w-full py-6 bg-blue-600 hover:bg-white hover:text-blue-600 text-white rounded-3xl font-black text-2xl transition-all duration-700 shadow-2xl">
+                            INITIALISER L'HISTOIRE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Création de l'effet de fond
+        const matrix = document.getElementById('matrix');
+        for(let i=0; i<30; i++) {
+            const div = document.createElement('div');
+            div.className = 'data-stream stream-anim';
+            div.style.left = Math.random() * 100 + '%';
+            div.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            div.innerText = "0x69f42aa645a43a84e1143d416a4c81a88df01549_SUPPLY_2B_GUADELOUPE_AFRIQUE_REUSSITESS";
+            matrix.appendChild(div);
+        }
+
+        function launchRevolution() {
+            const core = document.getElementById('ai-core');
+            core.innerHTML = `
+                <div class="animate-in fade-in duration-1000 text-left space-y-4">
+                    <p class="text-blue-400 font-mono text-sm uppercase tracking-tighter">> Accès aux archives mondiales des juridictions...</p>
+                    <p class="text-white font-mono text-sm uppercase tracking-tighter">> Cartographie du bloc Afrique-Antilles terminée.</p>
+                    <p class="text-white font-mono text-sm uppercase tracking-tighter">> Sécurisation des 2,000,000,000 Reussitess©...</p>
+                    <div class="h-1 w-full bg-zinc-800 rounded-full mt-8 overflow-hidden">
+                        <div class="h-full bg-blue-600 animate-[progress_3s_ease-in-out]"></div>
+                    </div>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                core.innerHTML = `
+                    <div class="animate-in zoom-in duration-700 text-center">
+                        <div class="text-xs text-blue-500 font-bold mb-2 uppercase">Système Souverain Confirmé</div>
+                        <h2 class="text-5xl font-black italic mb-6">REUSSITESS©NEURO-X</h2>
+                        <div class="p-6 bg-white/5 rounded-2xl border border-white/10 text-lg italic leading-relaxed">
+                            "L'invention est déployée. L'infrastructure appartient à l'InitialOwner : 0x69f4...1549. 
+                            Le cours de l'histoire est marqué. La réussite n'est plus une probabilité, c'est un algorithme."
+                        </div>
+                        <button onclick="location.reload()" class="mt-8 text-gray-500 uppercase text-[10px] tracking-widest font-bold">Réinitialiser la Vision</button>
+                    </div>
+                `;
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
