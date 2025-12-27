@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function NeuroX() {
   const [activeStep, setActiveStep] = useState(null);
-  const [chatResponse, setChatResponse] = useState("Système NEURO-X prêt. Langue configurée. Sélectionnez un pilier ou parlez-moi.");
+  const [chatResponse, setChatResponse] = useState("Système NEURO-X prêt. 'Piti a piti, zwazo ka fè nich a'y'. Je suis prêt pour l'analyse.");
   const [chatInput, setChatInput] = useState("");
   const [lang, setLang] = useState("fr-FR");
 
@@ -47,11 +47,11 @@ export default function NeuroX() {
     { 
       n: "5", t: "Langue Créole", 
       links: [
-        { n: "Potomitan (Référence)", u: "https://www.potomitan.info" },
-        { n: "Culture Caraïbe", u: "https://www.caraibe-culture.fr" },
-        { n: "Dictionnaire Créole", u: "https://www.cnrtl.fr" }
+        { n: "Potomitan (Études Académiques)", u: "https://www.potomitan.info" },
+        { n: "Linguistique Créole (CNRS)", u: "https://www.cnrs.fr/fr/actualite/les-langues-creoles-un-laboratoire-pour-la-linguistique" },
+        { n: "Patrimoine (Ministère Culture)", u: "https://www.culture.gouv.fr/Thematiques/Langues-de-France/Agir-pour-les-langues/Les-langues-creoles" }
       ],
-      d: "Souveraineté linguistique et promotion de l'identité comme levier de croissance." 
+      d: "Le Créole comme socle de souveraineté. Analyse linguistique du CNRS et valorisation du patrimoine identitaire via Potomitan." 
     },
     { 
       n: "6", t: "UNESCO", 
@@ -113,6 +113,20 @@ export default function NeuroX() {
     window.speechSynthesis.speak(u);
   };
 
+  const processInput = (text) => {
+    const input = text.toLowerCase();
+    const proverbs = [
+      "Sa ki ta-w, dlo pa ka chayé-y (Ce qui est à toi, l'eau ne l'emporte pas).",
+      "Dèyè mòn ni mòn (Derrière chaque montagne, il y a une autre montagne).",
+      "Pasans sé rimèd a tout maladi (La patience est le remède à tout mal)."
+    ];
+    let r = "Analyse en cours via la Giga-Base Reussitess©.";
+    if (input.includes("guadeloupe") || input.includes("proverbe") || input.includes("champion")) {
+      r = `Respect Champion ! Comme on dit : ${proverbs[Math.floor(Math.random() * proverbs.length)]}`;
+    }
+    setChatResponse(r); speak(r);
+  };
+
   return (
     <Layout>
       <div style={{ minHeight: "100vh", background: "#050505", color: "#fff", padding: "40px 20px" }}>
@@ -120,7 +134,6 @@ export default function NeuroX() {
         
         <div style={{ maxWidth: "1300px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))", gap: "40px" }}>
           
-          {/* PILIERS GAUCHE */}
           <div style={{ background: "#0f0f0f", border: "1px solid #1e40af", borderRadius: "24px", padding: "30px" }}>
             <h3 style={{ color: "#3b82f6", marginBottom: "25px" }}>PROGRAMME D'EXCELLENCE</h3>
             {steps.map(s => (
@@ -130,10 +143,7 @@ export default function NeuroX() {
             ))}
           </div>
 
-          {/* BOT & SOURCES DROITE */}
           <div style={{ display: "flex", flexDirection: "column", gap: "30px" }}>
-            
-            {/* BOT MULTILINGUE */}
             <div style={{ background: "#0a0a0a", border: "2px solid #2563eb", borderRadius: "24px", padding: "30px" }}>
               <div style={{ display: "flex", gap: "15px", justifyContent: "center", marginBottom: "25px" }}>
                 <span onClick={() => changeLang("fr-FR", "Bonjour Champion. Je parle Français.")} style={{ fontSize: "2rem", cursor: "pointer" }}>🇫🇷</span>
@@ -145,9 +155,12 @@ export default function NeuroX() {
               <div style={{ background: "#000", padding: "20px", borderRadius: "15px", border: "1px solid #222", minHeight: "120px" }}>
                 <p style={{ fontSize: "1.1rem", color: "#ddd" }}>{chatResponse}</p>
               </div>
+              <form onSubmit={(e) => { e.preventDefault(); processInput(chatInput); setChatInput(""); }} style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
+                <input value={chatInput} onChange={(e) => setChatInput(e.target.value)} placeholder="Posez une question à NEURO-X..." style={{ flexGrow: 1, background: "#111", border: "1px solid #333", color: "#fff", padding: "12px", borderRadius: "12px" }} />
+                <button type="submit" style={{ background: "#2563eb", color: "#fff", border: "none", padding: "12px 20px", borderRadius: "12px", cursor: "pointer" }}>ENVOYER</button>
+              </form>
             </div>
 
-            {/* LIENS MULTIPLES */}
             {activeStep && (
               <div style={{ background: "#111", border: "1px solid #3b82f6", borderRadius: "24px", padding: "30px", animation: "fadeIn 0.5s" }}>
                 <h3 style={{ color: "#3b82f6", marginBottom: "15px" }}>{activeStep.t} : SOURCES OFFICIELLES</h3>
@@ -161,11 +174,9 @@ export default function NeuroX() {
                 </div>
               </div>
             )}
-
           </div>
         </div>
       </div>
-      <style jsx>{` @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } } `}</style>
     </Layout>
   );
 }
