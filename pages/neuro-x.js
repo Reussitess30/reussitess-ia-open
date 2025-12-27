@@ -2,32 +2,35 @@ import Layout from "../components/Layout";
 import { useState } from "react";
 
 export default function NeuroX() {
-  const [activeData, setActiveData] = useState("SÉLECTIONNEZ UN AXE DE RÉUSSITE POUR DÉPLOYER L'ANALYSE");
+  const [activeData, setActiveData] = useState("VOTRE PARCOURS VERS L'EXCELLENCE COMMENCE ICI. SÉLECTIONNEZ UN AXE DE RÉUSSITE.");
 
   const sections = [
     { 
-      title: "Identité & Langue Créole", 
+      title: "🌍 Afrique & Aide Internationale", 
       links: [
-        { n: "Apprendre le Créole (Lexilogos)", u: "https://www.lexilogos.com/creole_antillais.htm" },
-        { n: "Potomitan : Études Créoles", u: "http://www.potomitan.info/" }
+        { n: "Banque Africaine de Développement", u: "https://www.afdb.org/fr/topics-and-sectors/sectors/private-sector-development" },
+        { n: "Boutique en Ligne : Shopify Guide", u: "https://www.shopify.com/fr/blog/creer-boutique-en-ligne" },
+        { n: "AFD - Entreprendre au Sud", u: "https://www.afd.fr/fr/page-thematique-axe/entrepreneuriat" }
       ],
-      desc: "Étude scientifique et promotion des langues créoles. L'innovation passe par la maîtrise de notre identité."
+      desc: "Accédez aux financements et guides pour bâtir votre empire numérique entre la Caraïbe et l'Afrique."
     },
     { 
-      title: "Culture & Patrimoine Caraïbe", 
+      title: "🚀 Entrepreneuriat & Créativité", 
       links: [
-        { n: "Fondation Clément (Art)", u: "https://www.fondation-clement.org/" },
-        { n: "Musée Mémorial ACTe", u: "https://memorial-acte.fr/" }
+        { n: "Success Stories (Forbes)", u: "https://www.forbes.com/leadership/" },
+        { n: "Conseils de Leaders (Harvard)", u: "https://hbr.org/topic/entrepreneurship" },
+        { n: "Apprendre à Entreprendre (Coursera)", u: "https://www.coursera.org/browse/business/entrepreneurship" }
       ],
-      desc: "L'excellence culturelle comme pilier du succès mondial. La Caraïbe, terre de génie et d'innovation."
+      desc: "Témoignages de ceux qui ont transformé une idée en succès mondial. Étudiez les stratégies des champions."
     },
     { 
-      title: "Nœuds Technologiques Mondiaux", 
+      title: "🧠 Dépassement de Soi & Culture", 
       links: [
-        { n: "GitHub Global Flow", u: "https://github.com/trending" },
-        { n: "MIT Technology Review", u: "https://www.technologyreview.com/" }
+        { n: "Études Créoles & Identité", u: "http://www.potomitan.info/" },
+        { n: "Psychologie du Succès (TedTalks)", u: "https://www.ted.com/playlists/171/the_psychology_of_self_improv" },
+        { n: "Épanouissement Humain", u: "https://www.un.org/sustainabledevelopment/fr/objectifs-de-developpement-durable/" }
       ],
-      desc: "Veille stratégique sur les technologies de rupture."
+      desc: "L'homme au centre du projet. Maîtrisez votre mental et honorez votre culture pour briser tous les plafonds."
     }
   ];
 
@@ -41,12 +44,11 @@ export default function NeuroX() {
             <div style={{ fontSize: "1.2rem", fontWeight: "bold", color: "#fff", textTransform: "uppercase", letterSpacing: "3px" }}>
               L'excellence • L'innovation • Le succès
             </div>
-            <p style={{ color: "#3b82f6", marginTop: "10px", fontWeight: "bold", fontSize: "1.1rem" }}>GUADELOUPE, TERRE DE CHAMPIONS</p>
+            <p style={{ color: "#3b82f6", marginTop: "10px", fontWeight: "bold", fontSize: "1.1rem" }}>GUADELOUPE, TERRE DE CHAMPIONS & HUB MONDIAL</p>
           </header>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "2rem" }}>
             
-            {/* PANNEAU DE CONTRÔLE INTERACTIF */}
             <div style={{ border: "1px solid #1e40af", borderRadius: "20px", padding: "1.5rem", background: "rgba(30, 64, 175, 0.1)" }}>
               {sections.map((sec) => (
                 <div key={sec.title} style={{ marginBottom: "2rem" }}>
@@ -56,10 +58,12 @@ export default function NeuroX() {
                       <button 
                         key={link.n}
                         onClick={() => setActiveData(sec.desc)}
-                        style={{ textAlign: "left", background: "#111", border: "1px solid #333", color: "#fff", padding: "10px", borderRadius: "8px", cursor: "pointer" }}
+                        style={{ textAlign: "left", background: "#111", border: "1px solid #333", color: "#fff", padding: "12px", borderRadius: "8px", cursor: "pointer", transition: "0.2s" }}
+                        onMouseOver={(e) => e.target.style.background = "#1e3a8a"}
+                        onMouseOut={(e) => e.target.style.background = "#111"}
                       >
-                        <a href={link.u} target="_blank" rel="noopener noreferrer" style={{ color: "#fff", textDecoration: "none", fontSize: "0.9rem" }}>
-                          {link.n} <span style={{ color: "#3b82f6" }}>→</span>
+                        <a href={link.u} target="_blank" rel="noopener noreferrer" style={{ color: "#fff", textDecoration: "none", fontSize: "0.9rem", display: "block" }}>
+                          {link.n} <span style={{ float: "right", color: "#3b82f6" }}>➜</span>
                         </a>
                       </button>
                     ))}
@@ -68,22 +72,23 @@ export default function NeuroX() {
               ))}
             </div>
 
-            {/* MONITEUR DE VISION - TOUT EST ACHEVÉ */}
             <div style={{ background: "#050505", border: "2px solid #2563eb", borderRadius: "20px", padding: "2.5rem", display: "flex", flexDirection: "column", justifyContent: "center", boxShadow: "0 0 40px rgba(37, 99, 235, 0.2)" }}>
-              <h2 style={{ fontSize: "1.5rem", fontWeight: "900", marginBottom: "1.5rem", color: "#3b82f6", textAlign: "center" }}>ANALYSEUR STRATÉGIQUE RÉEL</h2>
-              <div style={{ padding: "1.5rem", border: "1px solid #1e40af", borderRadius: "10px", minHeight: "120px" }}>
-                <p style={{ fontSize: "1rem", lineHeight: "1.6", color: "#e2e8f0" }}>{activeData}</p>
+              <h2 style={{ fontSize: "1.5rem", fontWeight: "900", marginBottom: "1.5rem", color: "#3b82f6", textAlign: "center" }}>RADAR DE RÉUSSITE</h2>
+              <div style={{ padding: "1.5rem", border: "1px solid #1e40af", borderRadius: "10px", minHeight: "150px", background: "rgba(37, 99, 235, 0.05)" }}>
+                <p style={{ fontSize: "1.1rem", lineHeight: "1.6", color: "#e2e8f0", textAlign: "center" }}>{activeData}</p>
               </div>
               <div style={{ marginTop: "2rem", textAlign: "center" }}>
-                <span style={{ padding: "8px 15px", background: "#2563eb", borderRadius: "50px", fontSize: "0.7rem", fontWeight: "bold" }}>SYSTÈME DÉPLOYÉ ET OPÉRATIONNEL</span>
+                <p style={{ color: "#666", fontSize: "0.8rem", fontStyle: "italic" }}>
+                  "Le succès n'est pas la clé du bonheur. Le bonheur est la clé du succès."
+                </p>
               </div>
             </div>
 
           </div>
 
           <footer style={{ marginTop: "4rem", textAlign: "center", padding: "20px", borderTop: "1px solid #222" }}>
-            <p style={{ fontSize: "0.9rem", color: "#666" }}>
-              Invention Reussitess® NEURO-X : Propulser la culture Caribéenne vers l'excellence mondiale.
+            <p style={{ fontSize: "0.9rem", color: "#444" }}>
+              Reussitess® NEURO-X : L'outil ultime pour le dépassement de soi et l'entrepreneuriat planétaire.
             </p>
           </footer>
         </div>
