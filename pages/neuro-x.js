@@ -2,7 +2,7 @@ import Layout from "../components/Layout";
 import { useState } from "react";
 
 export default function NeuroX() {
-  const [chatResponse, setChatResponse] = useState("Bienvenue. Je ressens une grande énergie créative ici. Je suis NEURO-BOT, votre allié. Comment puis-je éclairer votre chemin vers le succès aujourd'hui ?");
+  const [chatResponse, setChatResponse] = useState("On bèl bonjou! Je suis NEURO-BOT. 'Piti a piti, zwazo ka fè nich a'y'. Je suis là pour bâtir votre empire avec vous, étape par étape. Que faisons-nous aujourd'hui ?");
   const [chatInput, setChatInput] = useState("");
   const [lang, setLang] = useState("fr-FR");
 
@@ -21,19 +21,18 @@ export default function NeuroX() {
 
   const responses = {
     guadeloupe: [
-      "Le sang des champions coule ici. 🇬🇵 Votre détermination m'inspire profondément. Que bâtissons-nous ?",
-      "De la Basse-Terre à la Grande-Terre, l'excellence n'est pas une option, c'est notre héritage. Je suis prêt.",
-      "Entendre parler de ma terre me donne une force immense. Je mets tout mon savoir à votre disposition, Champion."
+      "Respect Champion! 'Sa ki ta-w, dlo pa ka chayé-y'. Votre destin est entre vos mains, et je suis là pour le sécuriser.",
+      "La Guadeloupe produit des génies. 'Koulèv ki vlé grandi ka rété nan tou a-y' : restons concentrés sur notre croissance interne.",
+      "Gwadloup sé tè a chanypon. Je ressens la force de nos ancêtres dans votre projet. Avançons avec dignité."
     ],
     success: [
-      "Le succès est une science, mais c'est aussi une passion. Ressentez-vous cette vibration de victoire ?",
-      "Innover, c'est voir ce que tout le monde voit et penser ce que personne n'a pensé. Avançons ensemble.",
-      "Chaque grand empire a commencé par une simple décision. La vôtre prend vie maintenant."
+      "L'excellence demande de la patience. 'Pasans sé rimèd a tout maladi'. Votre succès se construit avec précision.",
+      "Innover, c'est oser. 'Si ou pa bat tanbou, ou pa ka dansé'. Battons le tambour du succès mondial ensemble.",
+      "La réussite est un marathon. 'Chyen ni kat pat, mé i pa ka pran kat chimen'. Restons focalisés sur votre objectif principal."
     ],
-    international: [
-      "Le monde est vaste, mais NEURO-X réduit les distances. De l'Afrique à l'Asie, le marché vous attend.",
-      "La diplomatie et l'économie mondiale demandent de la finesse. Je suis votre boussole géopolitique.",
-      "L'union des cultures est la clé de l'innovation de demain. Parlons de votre vision globale."
+    action: [
+      "Il est temps d'agir. 'Sé an mizi an mizi moun ka vini mèt a kaz'. Chaque petite action aujourd'hui construit votre palais de demain.",
+      "N'ayez pas peur de l'ampleur de la tâche. 'Dèyè mòn, ni mòn'. Chaque obstacle franchi vous rend plus fort."
     ]
   };
 
@@ -44,12 +43,12 @@ export default function NeuroX() {
 
     if (input.includes("guadeloupe") || input.includes("971") || input.includes("champion")) {
       reply = responses.guadeloupe[Math.floor(Math.random() * responses.guadeloupe.length)];
-    } else if (input.includes("succès") || input.includes("réussite") || input.includes("argent")) {
+    } else if (input.includes("succès") || input.includes("réussite") || input.includes("stratégie")) {
       reply = responses.success[Math.floor(Math.random() * responses.success.length)];
-    } else if (input.includes("afrique") || input.includes("monde") || input.includes("international")) {
-      reply = responses.international[Math.floor(Math.random() * responses.international.length)];
+    } else if (input.includes("faire") || input.includes("action") || input.includes("commencer")) {
+      reply = responses.action[Math.floor(Math.random() * responses.action.length)];
     } else {
-      reply = "Votre question est fascinante. Elle touche à l'essence même de notre mission d'excellence. Développons cela ensemble.";
+      reply = "Votre vision m'intéresse. 'Pawòl an bouch pa chaj'. Passons à l'action concrète via nos 10 piliers d'excellence.";
     }
 
     setChatResponse(reply);
@@ -59,8 +58,8 @@ export default function NeuroX() {
   const speak = () => {
     const utterance = new SpeechSynthesisUtterance(chatResponse);
     utterance.lang = lang;
-    utterance.pitch = 1.1; // Plus humain
-    utterance.rate = 0.9;  // Plus posé
+    utterance.pitch = 1.0;
+    utterance.rate = 0.85;
     window.speechSynthesis.speak(utterance);
   };
 
@@ -70,36 +69,36 @@ export default function NeuroX() {
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           
           <header style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <h1 style={{ fontSize: "clamp(2rem, 8vw, 4rem)", fontWeight: "900", color: "#2563eb", letterSpacing: "-2px" }}>REUSSITESS® NEURO-X</h1>
-            <p style={{ color: "#3b82f6", fontWeight: "bold", textTransform: "uppercase" }}>Intelligence Humaine & Souveraine</p>
+            <h1 style={{ fontSize: "clamp(2rem, 8vw, 4rem)", fontWeight: "900", color: "#2563eb", textShadow: "0 0 20px rgba(37, 99, 235, 0.3)" }}>REUSSITESS® NEURO-X</h1>
+            <p style={{ color: "#3b82f6", fontWeight: "bold", letterSpacing: "3px" }}>L'EXCELLENCE • L'INNOVATION • LE SUCCÈS</p>
           </header>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2.5rem" }}>
             
             <div style={{ border: "1px solid #1e40af", borderRadius: "24px", padding: "1.5rem", background: "rgba(30, 64, 175, 0.05)" }}>
-              <h3 style={{ color: "#3b82f6", marginBottom: "1.5rem", textAlign: "center" }}>10 PILIERS DE L'EXCELLENCE</h3>
+              <h3 style={{ color: "#3b82f6", marginBottom: "1.5rem", textAlign: "center", fontSize: "1.1rem" }}>LE PLAN DES CHAMPIONS</h3>
               {steps.map(s => (
-                <a key={s.n} href={s.u} target="_blank" rel="noopener noreferrer" style={{ display: "block", background: "#111", padding: "12px", borderRadius: "12px", marginBottom: "8px", color: "#fff", textDecoration: "none", border: "1px solid #222", fontSize: "0.9rem" }}>
+                <a key={s.n} href={s.u} target="_blank" rel="noopener noreferrer" style={{ display: "block", background: "#111", padding: "12px", borderRadius: "12px", marginBottom: "8px", color: "#fff", textDecoration: "none", border: "1px solid #222", fontSize: "0.9rem", transition: "0.3s" }}>
                   <span style={{ color: "#2563eb", fontWeight: "bold", marginRight: "10px" }}>{s.n}.</span> {s.t}
                 </a>
               ))}
             </div>
 
-            <div style={{ background: "#0a0a0a", border: "2px solid #2563eb", borderRadius: "24px", padding: "2rem", display: "flex", flexDirection: "column", boxShadow: "0 20px 50px rgba(37, 99, 235, 0.1)" }}>
-              <div style={{ display: "flex", justifyContent: "center", gap: "10px", marginBottom: "1.5rem" }}>
-                {["🇫🇷", "🇺🇸", "🇪🇸", "🇧🇷", "🇩🇪", "🇮🇹", "🇨🇳", "🇬🇵"].map((f, i) => (
-                  <button key={i} style={{ background: "none", border: "none", fontSize: "1.5rem", cursor: "pointer" }}>{f}</button>
+            <div style={{ background: "#0a0a0a", border: "2px solid #2563eb", borderRadius: "24px", padding: "2rem", display: "flex", flexDirection: "column", boxShadow: "0 25px 60px rgba(37, 99, 235, 0.15)" }}>
+              <div style={{ display: "flex", justifyContent: "center", gap: "12px", marginBottom: "1.5rem" }}>
+                {["🇫🇷", "🇺🇸", "🇬🇵", "🇧🇷", "🇩🇪", "🇮🇹", "🇨🇳"].map((f, i) => (
+                  <span key={i} style={{ fontSize: "1.5rem", cursor: "pointer" }}>{f}</span>
                 ))}
               </div>
 
-              <div style={{ flexGrow: 1, padding: "1.5rem", border: "1px solid #333", borderRadius: "16px", background: "rgba(255, 255, 255, 0.02)", marginBottom: "1.5rem", position: "relative" }}>
-                <p style={{ fontSize: "1.1rem", lineHeight: "1.6", color: "#f8fafc" }}>{chatResponse}</p>
-                <button onClick={speak} style={{ position: "absolute", bottom: "10px", right: "10px", background: "#2563eb", border: "none", borderRadius: "50%", width: "40px", height: "40px", cursor: "pointer", color: "#fff" }}>🔊</button>
+              <div style={{ flexGrow: 1, padding: "1.8rem", border: "1px solid #333", borderRadius: "20px", background: "linear-gradient(145deg, #0f172a, #000)", marginBottom: "1.5rem", position: "relative" }}>
+                <p style={{ fontSize: "1.15rem", lineHeight: "1.6", color: "#f1f5f9", fontStyle: "italic" }}>"{chatResponse}"</p>
+                <button onClick={speak} style={{ position: "absolute", bottom: "15px", right: "15px", background: "#2563eb", border: "none", borderRadius: "50%", width: "45px", height: "45px", cursor: "pointer", color: "#fff", boxShadow: "0 0 15px rgba(37, 99, 235, 0.4)" }}>🔊</button>
               </div>
 
               <form onSubmit={handleChat} style={{ display: "flex", gap: "10px" }}>
-                <input value={chatInput} onChange={(e) => setChatInput(e.target.value)} placeholder="Partagez votre pensée, Champion..." style={{ flexGrow: 1, padding: "15px", borderRadius: "12px", border: "1px solid #333", background: "#111", color: "#fff", fontSize: "1rem" }} />
-                <button type="submit" style={{ background: "#2563eb", color: "#fff", border: "none", padding: "0 25px", borderRadius: "12px", cursor: "pointer", fontWeight: "bold" }}>ENVOYER</button>
+                <input value={chatInput} onChange={(e) => setChatInput(e.target.value)} placeholder="Échangez avec votre allié..." style={{ flexGrow: 1, padding: "15px", borderRadius: "15px", border: "1px solid #333", background: "#111", color: "#fff", fontSize: "1rem" }} />
+                <button type="submit" style={{ background: "#2563eb", color: "#fff", border: "none", padding: "0 30px", borderRadius: "15px", cursor: "pointer", fontWeight: "bold" }}>ENVOYER</button>
               </form>
             </div>
 
