@@ -2,49 +2,19 @@ import Layout from "../components/Layout";
 import { useState } from "react";
 
 export default function NeuroX() {
-  const [activeData, setActiveData] = useState("DÉPLOYER LE PLAN D'EXCELLENCE EN 10 ÉTAPES...");
+  const [activeData, setActiveData] = useState("SÉLECTIONNEZ UNE ÉTAPE POUR DÉPLOYER LE PLAN D'ACTION.");
 
-  const sections = [
-    { 
-      title: "🌍 1. Opportunités Afrique & International", 
-      links: [
-        { n: "Financements BAD", u: "https://www.afdb.org/fr/topics-and-sectors/sectors/private-sector-development" },
-        { n: "ZLECAF - Exportation Afrique", u: "https://au-afcfta.org/fr/" }
-      ],
-      desc: "Étape 1 & 2 : Identifier les marchés porteurs et sécuriser les aides internationales pour l'entrepreneuriat Sud-Sud."
-    },
-    { 
-      title: "🚀 2. Business & Boutique en Ligne", 
-      links: [
-        { n: "Logistique Mondiale (DHL/FedEx)", u: "https://www.dhl.com/fr-fr/home/solutions-logistiques.html" },
-        { n: "Créer sa Boutique (Shopify)", u: "https://www.shopify.com/fr/blog/creer-boutique-en-ligne" }
-      ],
-      desc: "Étape 3 & 4 : Maîtriser les flux numériques et la logistique pour vendre vos produits de la Guadeloupe au monde entier."
-    },
-    { 
-      title: "🧠 3. Culture & Force du Mental", 
-      links: [
-        { n: "Études Créoles (Potomitan)", u: "http://www.potomitan.info/" },
-        { n: "Dépassement de soi (TED)", u: "https://www.ted.com/topics/self-improvement" }
-      ],
-      desc: "Étape 5 & 6 : L'identité comme levier de puissance. Un champion qui connaît son histoire est invincible."
-    },
-    { 
-      title: "⚖️ 4. Propriété & Succès Durable", 
-      links: [
-        { n: "INPI - Protéger son Invention", u: "https://www.inpi.fr/" },
-        { n: "Success Stories Forbes", u: "https://www.forbes.com/leadership/" }
-      ],
-      desc: "Étape 7 & 8 : Sécuriser vos innovations et s'inspirer des plus grands bâtisseurs mondiaux."
-    },
-    { 
-      title: "🏅 5. Réseau & Épanouissement Humain", 
-      links: [
-        { n: "CCI Guadeloupe - Réseau", u: "https://www.guadeloupe.cci.fr/" },
-        { n: "Objectifs de Développement (ONU)", u: "https://www.un.org/sustainabledevelopment/fr/" }
-      ],
-      desc: "Étape 9 & 10 : Collaborer avec les champions locaux et viser l'épanouissement total de l'homme."
-    }
+  const steps = [
+    { n: "1", t: "Opportunités Afrique", u: "https://www.afdb.org/fr", d: "Analyser les marchés émergents et les secteurs en forte croissance." },
+    { n: "2", t: "Aide Internationale", u: "https://au-afcfta.org/fr/", d: "Capter les aides régionales et les accords de libre-échange." },
+    { n: "3", t: "Boutique en Ligne", u: "https://www.shopify.com/fr", d: "Digitaliser votre offre pour toucher une clientèle planétaire." },
+    { n: "4", t: "Logistique & Flux", u: "https://www.dhl.com/fr-fr/", d: "Maîtriser l'envoi de marchandises de la Guadeloupe vers le monde." },
+    { n: "5", t: "Identité & Créole", u: "http://www.potomitan.info/", d: "Utiliser la langue et la culture comme socle de différenciation." },
+    { n: "6", t: "Patrimoine Caraïbe", u: "https://memorial-acte.fr/", d: "S'ancrer dans l'histoire pour bâtir un futur de champion." },
+    { n: "7", t: "Propriété Intellectuelle", u: "https://www.inpi.fr/", d: "Sécuriser vos marques, brevets et concepts Reussitess®." },
+    { n: "8", t: "Innovation Tech", u: "https://github.com/trending", d: "Intégrer l'IA et les nouvelles technologies dans votre projet." },
+    { n: "9", t: "Dépassement de Soi", u: "https://www.ted.com/topics/self-improvement", d: "Forger un mental d'acier pour surmonter tous les obstacles." },
+    { n: "10", t: "Épanouissement Humain", u: "https://www.un.org/sustainabledevelopment/fr/", d: "Réussir pour soi, pour sa terre et pour l'humanité." }
   ];
 
   return (
@@ -53,56 +23,39 @@ export default function NeuroX() {
         <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
           
           <header style={{ textAlign: "center", marginBottom: "3rem" }}>
-            <h1 style={{ fontSize: "clamp(2rem, 8vw, 4rem)", fontWeight: "900", color: "#2563eb", marginBottom: "10px" }}>REUSSITESS® NEURO-X</h1>
-            <div style={{ fontSize: "1.2rem", fontWeight: "bold", color: "#fff", textTransform: "uppercase", letterSpacing: "3px" }}>
-              L'excellence • L'innovation • Le succès
-            </div>
-            <p style={{ color: "#3b82f6", marginTop: "10px", fontWeight: "bold" }}>GUADELOUPE, TERRE DE CHAMPIONS</p>
+            <h1 style={{ fontSize: "clamp(2rem, 8vw, 4rem)", fontWeight: "900", color: "#2563eb" }}>REUSSITESS® NEURO-X</h1>
+            <div style={{ fontSize: "1rem", fontWeight: "bold", color: "#fff", textTransform: "uppercase", letterSpacing: "3px" }}>L'excellence • L'innovation • Le succès</div>
+            <p style={{ color: "#3b82f6", fontWeight: "bold", marginTop: "10px" }}>GUADELOUPE, TERRE DE CHAMPIONS</p>
           </header>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "2rem" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem" }}>
             
+            {/* LISTE DES 10 ÉTAPES */}
             <div style={{ border: "1px solid #1e40af", borderRadius: "20px", padding: "1.5rem", background: "rgba(30, 64, 175, 0.1)" }}>
-              {sections.map((sec) => (
-                <div key={sec.title} style={{ marginBottom: "1.5rem" }}>
-                  <h3 style={{ color: "#3b82f6", borderBottom: "1px solid #333", paddingBottom: "5px", fontSize: "1rem" }}>{sec.title}</h3>
-                  <div style={{ display: "flex", flexDirection: "column", gap: "5px", marginTop: "10px" }}>
-                    {sec.links.map(link => (
-                      <button key={link.n} onClick={() => setActiveData(sec.desc)} style={{ textAlign: "left", background: "#111", border: "1px solid #333", color: "#fff", padding: "10px", borderRadius: "8px", cursor: "pointer" }}>
-                        <a href={link.u} target="_blank" rel="noopener noreferrer" style={{ color: "#fff", textDecoration: "none", fontSize: "0.85rem" }}>{link.n} ➜</a>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              ))}
+              <h3 style={{ color: "#3b82f6", marginBottom: "1.5rem", textAlign: "center" }}>LE CHEMIN DU CHAMPION (1-10)</h3>
+              <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                {steps.map((step) => (
+                  <button 
+                    key={step.n} 
+                    onClick={() => setActiveData(step.d)} 
+                    style={{ textAlign: "left", background: "#111", border: "1px solid #333", color: "#fff", padding: "12px", borderRadius: "8px", cursor: "pointer", transition: "0.2s" }}
+                  >
+                    <span style={{ color: "#2563eb", fontWeight: "900", marginRight: "10px" }}>{step.n}.</span>
+                    <a href={step.u} target="_blank" rel="noopener noreferrer" style={{ color: "#fff", textDecoration: "none" }}>{step.t} ➜</a>
+                  </button>
+                ))}
+              </div>
             </div>
 
-            <div style={{ background: "#050505", border: "2px solid #2563eb", borderRadius: "20px", padding: "2rem" }}>
-              <h2 style={{ fontSize: "1.3rem", fontWeight: "900", marginBottom: "1rem", color: "#3b82f6", textAlign: "center" }}>PLAN D'ACTION NEURO-X</h2>
-              <div style={{ padding: "1rem", border: "1px solid #1e40af", borderRadius: "10px", background: "rgba(37, 99, 235, 0.05)", marginBottom: "1.5rem" }}>
-                <p style={{ fontSize: "0.95rem", lineHeight: "1.6", color: "#e2e8f0" }}>{activeData}</p>
-              </div>
-              
-              <div style={{ fontSize: "0.85rem", color: "#94a3b8" }}>
-                <p style={{ color: "#fff", fontWeight: "bold" }}>LES 10 COMMANDEMENTS DU SUCCÈS :</p>
-                <ol style={{ paddingLeft: "20px" }}>
-                  <li>Analyser les opportunités mondiales</li>
-                  <li>Capter les aides internationales</li>
-                  <li>Structurer son offre numérique</li>
-                  <li>Maîtriser la logistique export</li>
-                  <li>Fortifier son mental de champion</li>
-                  <li>Honorer ses racines culturelles</li>
-                  <li>Protéger juridiquement ses idées</li>
-                  <li>Apprendre des succès d'autrui</li>
-                  <li>Bâtir un réseau d'excellence</li>
-                  <li>Viser l'épanouissement humain global</li>
-                </ol>
+            {/* ANALYSEUR EN TEMPS RÉEL */}
+            <div style={{ background: "#050505", border: "2px solid #2563eb", borderRadius: "20px", padding: "2.5rem", position: "sticky", top: "20px", height: "fit-content" }}>
+              <h2 style={{ fontSize: "1.5rem", fontWeight: "900", marginBottom: "1.5rem", color: "#3b82f6", textAlign: "center" }}>MONITEUR DE STRATÉGIE</h2>
+              <div style={{ padding: "1.5rem", border: "1px solid #1e40af", borderRadius: "10px", minHeight: "200px", background: "rgba(37, 99, 235, 0.05)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <p style={{ fontSize: "1.2rem", lineHeight: "1.6", color: "#e2e8f0", textAlign: "center", fontStyle: "italic" }}>{activeData}</p>
               </div>
             </div>
+
           </div>
-          <footer style={{ marginTop: "3rem", textAlign: "center", color: "#444" }}>
-             Reussitess®971 - L'innovation au service de la réussite mondiale.
-          </footer>
         </div>
       </div>
     </Layout>
