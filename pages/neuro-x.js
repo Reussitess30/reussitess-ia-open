@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function NeuroX() {
   const [activeData, setActiveData] = useState("SÉLECTIONNEZ UNE ÉTAPE OU PARLEZ À NEURO-BOT.");
   const [chatInput, setChatInput] = useState("");
-  const [chatResponse, setChatResponse] = useState("Bonjour ! Je suis NEURO-BOT. Je peux vous guider à travers les 10 piliers de l'excellence en 8 langues. Comment puis-je vous aider ?");
+  const [chatResponse, setChatResponse] = useState("Honoré de vous accueillir sur REUSSITESS® NEURO-X. Je suis NEURO-BOT, votre guide vers l'excellence. Comment puis-je servir votre succès aujourd'hui ?");
 
   const steps = [
     { n: "1", t: "Opportunités Afrique (BAD)", u: "https://www.afdb.org/fr", d: "Exploration des marchés émergents africains." },
@@ -22,14 +22,15 @@ export default function NeuroX() {
   const handleChat = (e) => {
     e.preventDefault();
     const input = chatInput.toLowerCase();
-    if (input.includes("créole") || input.includes("kréyòl")) {
-      setChatResponse("Kréyòl sé nanm nou! Étape 5 explore notre langue, et l'Étape 6 notre patrimoine UNESCO.");
-    } else if (input.includes("afrique") || input.includes("africa")) {
-      setChatResponse("L'Afrique est une terre d'opportunités. Consultez l'Étape 1 pour la BAD et l'Étape 2 pour l'aide internationale.");
-    } else if (input.includes("boutique") || input.includes("vendre")) {
-      setChatResponse("Pour l'e-commerce, l'Étape 3 vous guide sur la création et l'Étape 4 sur la logistique internationale.");
+    
+    if (input.includes("guadeloupe") || input.includes("971") || input.includes("champion")) {
+      setChatResponse("Respect au Champion de Guadeloupe ! 🇬🇵 Ici, nous transformons l'innovation en succès mondial. Explorez l'axe 5 et 6 pour nos racines, ou l'axe 3 pour lancer votre empire.");
+    } else if (input.includes("créole") || input.includes("kréyòl")) {
+      setChatResponse("On bèl bonjou! Kréyòl sé nanm nou, sé fòs nou. L'étape 5 détaille l'importance de notre langue dans l'excellence mondiale.");
+    } else if (input.includes("merci") || input.includes("thanks")) {
+      setChatResponse("C'est un honneur de vous accompagner. Votre réussite est la nôtre. Excellence, Innovation, Succès !");
     } else {
-      setChatResponse("Je comprends. Pour l'excellence et le succès, je vous suggère d'explorer les 10 piliers. Quel domaine vous intéresse ?");
+      setChatResponse("Je suis à votre entière disposition. Que ce soit pour l'Afrique, l'e-commerce ou votre développement personnel, quel pilier souhaitez-vous activer ?");
     }
     setChatInput("");
   };
@@ -41,14 +42,14 @@ export default function NeuroX() {
           
           <header style={{ textAlign: "center", marginBottom: "3rem" }}>
             <h1 style={{ fontSize: "clamp(2rem, 8vw, 4rem)", fontWeight: "900", color: "#2563eb" }}>REUSSITESS® NEURO-X</h1>
-            <p style={{ fontWeight: "bold", color: "#3b82f6" }}>L'EXCELLENCE • L'INNOVATION • LE SUCCÈS | GUADELOUPE 971</p>
+            <p style={{ fontWeight: "bold", color: "#3b82f6", letterSpacing: "2px" }}>L'EXCELLENCE • L'INNOVATION • LE SUCCÈS</p>
+            <p style={{ color: "#fff", fontSize: "1.1rem" }}>GUADELOUPE, TERRE DE CHAMPIONS 🇬🇵</p>
           </header>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2rem" }}>
             
-            {/* LES 10 PILIERS */}
             <div style={{ border: "1px solid #1e40af", borderRadius: "20px", padding: "1.5rem", background: "rgba(30, 64, 175, 0.1)" }}>
-              <h3 style={{ color: "#3b82f6", marginBottom: "1.5rem", textAlign: "center" }}>AXES DE DIRECTION</h3>
+              <h3 style={{ color: "#3b82f6", marginBottom: "1.5rem", textAlign: "center" }}>AXES DE DIRECTION MONDIALE</h3>
               <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                 {steps.map((step) => (
                   <button key={step.n} onClick={() => setActiveData(step.d)} style={{ textAlign: "left", background: "#111", border: "1px solid #333", color: "#fff", padding: "10px", borderRadius: "8px", cursor: "pointer" }}>
@@ -59,23 +60,22 @@ export default function NeuroX() {
               </div>
             </div>
 
-            {/* NEURO-BOT ASSISTANT */}
-            <div style={{ background: "#050505", border: "2px solid #2563eb", borderRadius: "20px", padding: "2rem", display: "flex", flexDirection: "column" }}>
-              <h2 style={{ fontSize: "1.5rem", fontWeight: "900", marginBottom: "1rem", color: "#3b82f6", textAlign: "center" }}>🤖 NEURO-BOT MULTILINGUE</h2>
+            <div style={{ background: "#050505", border: "2px solid #2563eb", borderRadius: "20px", padding: "2rem", display: "flex", flexDirection: "column", boxShadow: "0 0 30px rgba(37, 99, 235, 0.2)" }}>
+              <h2 style={{ fontSize: "1.3rem", fontWeight: "900", marginBottom: "1rem", color: "#3b82f6", textAlign: "center" }}>🤖 NEURO-BOT ASSISTANT</h2>
               <div style={{ flexGrow: 1, padding: "1rem", border: "1px solid #1e40af", borderRadius: "10px", background: "rgba(37, 99, 235, 0.05)", marginBottom: "1rem", minHeight: "150px" }}>
-                <p style={{ fontSize: "0.95rem", color: "#e2e8f0" }}>{chatResponse}</p>
+                <p style={{ fontSize: "1rem", color: "#e2e8f0", lineHeight: "1.5" }}>{chatResponse}</p>
               </div>
               <form onSubmit={handleChat} style={{ display: "flex", gap: "10px" }}>
                 <input 
                   value={chatInput}
                   onChange={(e) => setChatInput(e.target.value)}
-                  placeholder="Posez une question à NEURO-BOT..."
-                  style={{ flexGrow: 1, padding: "10px", borderRadius: "5px", border: "1px solid #333", background: "#111", color: "#fff" }}
+                  placeholder="Bonjour Champion, posez votre question..."
+                  style={{ flexGrow: 1, padding: "12px", borderRadius: "8px", border: "1px solid #333", background: "#111", color: "#fff" }}
                 />
-                <button type="submit" style={{ background: "#2563eb", color: "#fff", border: "none", padding: "10px 20px", borderRadius: "5px", cursor: "pointer", fontWeight: "bold" }}>ENVOYER</button>
+                <button type="submit" style={{ background: "#2563eb", color: "#fff", border: "none", padding: "10px 20px", borderRadius: "8px", cursor: "pointer", fontWeight: "bold" }}>PARLER</button>
               </form>
               <div style={{ marginTop: "1rem", fontSize: "0.7rem", color: "#444", textAlign: "center" }}>
-                8 LANGUES ACTIVÉES : FR | EN | ES | PT | DE | IT | ZH | KREYÒL
+                FR | EN | ES | PT | DE | IT | ZH | KREYÒL ACTIVE
               </div>
             </div>
 
