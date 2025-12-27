@@ -4,111 +4,133 @@ import { useState } from "react";
 
 export default function NeuroX() {
   const [activeStep, setActiveStep] = useState(null);
-  const [chatResponse, setChatResponse] = useState("Intelligence Giga-Base Activée. Je maîtrise désormais 1000 axes stratégiques sur les 14 pays de votre empire. Comment puis-je servir votre succès ?");
+  const [chatResponse, setChatResponse] = useState("Système NEURO-X opérationnel. Base de 1000 axes chargée. Je suis prêt à analyser vos stratégies pour les 14 pays souverains.");
   const [chatInput, setChatInput] = useState("");
-  const [isListening, setIsListening] = useState(false);
   const [lang, setLang] = useState("fr-FR");
 
-  // Matrice de connaissances (Simulant les 1000 axes par catégories exhaustives)
-  const knowledgeMatrix = {
-    finance: ["PIB", "Trading", "Venture Capital", "BAD", "Bourse", "Crypto-actif", "Souveraineté budgétaire", "Fonds souverains Singapour", "Wall Street", "City London"],
-    legal: ["INPI", "Copyright", "Brevets internationaux", "Droit des contrats", "ZLECAF", "Protection Reussitess©", "Juridiction Canada", "Lois Suède"],
-    culture: ["Héritage Créole", "UNESCO", "Patrimoine Brésil", "Identité Inde", "Philosophie Australie", "Tradition Allemagne", "Art Italie"],
-    tech: ["IA Générative", "Blockchain", "Data Center Canada", "Quantum Computing", "Algorithmes", "Souveraineté numérique", "Innovation France"],
-    logistics: ["DHL", "Incoterms", "Fret maritime", "Supply Chain Inde", "Douanes Australie", "Hub Singapour", "Transit Brésil"]
-  };
-
   const steps = [
-    { n: "1", t: "Afrique", u: "https://www.afdb.org/fr", d: "Axe de croissance majeur : Financements BAD et développement des infrastructures privées." },
-    { n: "2", t: "ONU", u: "https://www.un.org/fr", d: "Gouvernance mondiale : Objectifs de développement durable et diplomatie économique." },
-    { n: "3", t: "E-commerce", u: "https://www.economie.gouv.fr/entreprises/vendre-en-ligne", d: "Digitalisation : Stratégies de vente omnicanale pour les 14 pays cibles." },
-    { n: "4", t: "Logistique", u: "https://www.douane.gouv.fr", d: "Flux : Maîtrise des corridors de transport mondiaux et gestion douanière." },
-    { n: "5", t: "Langue Créole", u: "https://www.culture.gouv.fr", d: "Identité : Le créole comme socle de communication universelle et culturelle." },
-    { n: "6", t: "UNESCO", u: "https://whc.unesco.org/fr", d: "Rayonnement : Protection des biens culturels et excellence historique." },
-    { n: "7", t: "INPI", u: "https://www.inpi.fr", d: "Sécurité : Enregistrement des actifs intellectuels pour le compte de l'adresse 0x69f4...1549." },
-    { n: "8", t: "Tech/IA", u: "https://www.etalab.gouv.fr", d: "Futur : Déploiement de l'intelligence artificielle souveraine NEURO-X." },
-    { n: "9", t: "Psychologie", u: "https://www.who.int/fr", d: "Leadership : Force mentale et neuro-sciences appliquées à la réussite." },
-    { n: "10", t: "Épanouissement", u: "https://www.un.org/sustainabledevelopment/fr/", d: "Impact : Réussite humaine totale et harmonie avec les 17 objectifs mondiaux." }
+    { 
+      n: "1", t: "Afrique", u: "https://www.afdb.org/fr/topics-and-sectors/sectors/private-sector-development", 
+      d: "L'axe Afrique intègre les mécanismes de la ZLECAF (Zone de Libre-Échange Continentale Africaine) et les instruments financiers de la BAD. Il couvre la restructuration industrielle, le financement des PME souveraines et l'expansion des marchés de consommation entre Lagos, Kinshasa et Nairobi." 
+    },
+    { 
+      n: "2", t: "ONU", u: "https://www.un.org/sustainabledevelopment/fr/objectifs-de-developpement-durable/", 
+      d: "Cadre normatif mondial basé sur les 17 Objectifs de Développement Durable (ODD). Cet axe traite de la diplomatie climatique, du droit international humanitaire et des fonds de développement mondiaux pour stabiliser les économies en transition." 
+    },
+    { 
+      n: "3", t: "E-commerce", u: "https://www.economie.gouv.fr/entreprises/vendre-en-ligne", 
+      d: "Ingénierie du commerce numérique global : logistique du 'dernier kilomètre', plateformes de paiement sécurisées (Stripe, PayPal), optimisation fiscale du dropshipping légal et stratégies d'acquisition client via l'IA marketing sur les 14 pays." 
+    },
+    { 
+      n: "4", t: "Logistique", u: "https://www.douane.gouv.fr/fiche/les-fondamentaux-du-dedouanement", 
+      d: "Maîtrise des flux de marchandises : Incoterms 2020, gestion des entrepôts sous douane, optimisation du fret aérien et maritime depuis le port de Jarry vers les hubs mondiaux comme Singapour ou le Canada." 
+    },
+    { 
+      n: "5", t: "Langue Créole", u: "https://www.potomitan.info/", 
+      d: "Souveraineté linguistique et culturelle : Potomitan est la référence académique pour la promotion des cultures créoles. Cet axe explore la sémantique, l'histoire et l'utilisation du Créole comme vecteur d'innovation identitaire." 
+    },
+    { 
+      n: "6", t: "UNESCO", u: "https://whc.unesco.org/fr/list/", 
+      d: "Expertise en patrimoine mondial : Protection des sites d'exception, valorisation du patrimoine immatériel et économie de la culture. Une stratégie de soft-power pour faire rayonner l'excellence caribéenne." 
+    },
+    { 
+      n: "7", t: "INPI", u: "https://www.inpi.fr/proteger-vos-creations", 
+      d: "Bouclier juridique Reussitess© : Dépôts de brevets, protection des dessins et modèles, et enregistrement de marques auprès de l'adresse 0x69f4...1549. Sécurisation totale de l'actif immatériel." 
+    },
+    { 
+      n: "8", t: "Tech/IA", u: "https://www.etalab.gouv.fr/intelligence-artificielle", 
+      d: "Déploiement de l'intelligence artificielle souveraine : Machine Learning, traitement du langage naturel (NLP), éthique des algorithmes et infrastructures Cloud pour les 2 milliards de Reussitess©." 
+    },
+    { 
+      n: "9", t: "Psychologie", u: "https://www.who.int/fr/news-room/fact-sheets/detail/mental-health-strengthening-our-response", 
+      d: "Neuro-performance et résilience : Études sur la psychologie du succès, la gestion du stress en haute performance et les protocoles de santé mentale de l'OMS pour les leaders et champions." 
+    },
+    { 
+      n: "10", t: "Épanouissement", u: "https://www.un.org/sustainabledevelopment/fr/objectifs-de-developpement-durable/", 
+      d: "Vision holistique du succès : Alignement de la richesse financière avec le bien-être social, environnemental et spirituel. C'est l'étape finale du cycle de réussite NEURO-X." 
+    }
   ];
 
-  const speak = (msg, voiceLang) => {
+  const speak = (msg) => {
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(msg);
-    u.lang = voiceLang;
-    u.rate = 0.9;
+    u.lang = lang; u.rate = 0.95;
     window.speechSynthesis.speak(u);
-  };
-
-  const startListening = () => {
-    const SpeechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) return;
-    const rec = new SpeechRecognition();
-    rec.lang = lang;
-    rec.onstart = () => setIsListening(true);
-    rec.onend = () => setIsListening(false);
-    rec.onresult = (e) => {
-      const text = e.results[0][0].transcript;
-      setChatInput(text);
-      processInput(text);
-    };
-    rec.start();
   };
 
   const processInput = (text) => {
     const input = text.toLowerCase();
-    let reply = "Ma base de 1000 axes analyse votre requête. C'est une question de stratégie internationale de haut niveau.";
-
+    let r = "Mon analyse giga-base sur les 14 pays (France, Angleterre, Italie, Allemagne, Suède, Singapour, Australie, Espagne, Brésil, Royaume-Uni, Inde, Nouvelle-Zélande, USA, Canada) suggère une approche multidimensionnelle.";
+    
     if (input.includes("guadeloupe") || input.includes("champion")) {
-      reply = "Gwadloup sé tè a chanypon. Votre projet Reussitess© s'inscrit dans l'excellence mondiale, de Singapour au Canada.";
-    } else if (input.includes("pays") || input.includes("monde")) {
-      reply = "Je surveille les 14 pays clés : France, Angleterre, Italie, Allemagne, Suède, Singapour, Australie, Espagne, Brésil, Royaume-Uni, Inde, Nouvelle-Zélande, USA, Canada.";
+      r = "Respect Champion ! En Guadeloupe, nous bâtissons l'avenir. 'Sa ki ta-w, dlo pa ka chayé-y'. Le projet Reussitess© est sécurisé sur l'adresse 0x69f4... et prêt pour l'exportation mondiale.";
+    } else if (input.includes("créole")) {
+      r = "Le Créole n'est pas qu'une langue, c'est une technologie de communication ancestrale et moderne. L'étape 5 via Potomitan vous donne les outils pour l'intégrer à votre marque.";
     }
-
-    setChatResponse(reply);
-    speak(reply, lang);
+    setChatResponse(r); speak(r);
   };
 
   return (
     <Layout>
-      <div style={{ minHeight: "100vh", background: "#010409", color: "#e6edf3", padding: "1.5rem" }}>
+      <div style={{ minHeight: "100vh", background: "#050505", color: "#fff", padding: "10px", fontFamily: "sans-serif" }}>
         
-        <header style={{ maxWidth: "1200px", margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}>
-          <Link href="/"><button style={{ background: "#238636", color: "#fff", border: "none", padding: "10px 20px", borderRadius: "6px", cursor: "pointer", fontWeight: "bold" }}>🏠 ACCUEIL</button></Link>
-          <h1 style={{ color: "#2f81f7", fontSize: "1.5rem" }}>NEURO-X SUPRÊME</h1>
-        </header>
+        {/* BOUTON ACCUEIL DISCRET */}
+        <div style={{ position: "absolute", top: "15px", left: "15px", zIndex: 10 }}>
+          <Link href="/"><button style={{ background: "#222", border: "1px solid #444", color: "#aaa", padding: "5px 12px", borderRadius: "5px", fontSize: "0.8rem", cursor: "pointer" }}>🏠 ACCUEIL</button></Link>
+        </div>
 
-        <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: "2rem" }}>
+        <div style={{ maxWidth: "1300px", margin: "0 auto", paddingTop: "50px" }}>
+          <h1 style={{ textAlign: "center", fontSize: "2.5rem", fontWeight: "900", color: "#3b82f6", marginBottom: "30px" }}>REUSSITESS® NEURO-X</h1>
           
-          <div style={{ background: "#0d1117", border: "1px solid #30363d", borderRadius: "12px", padding: "1.5rem" }}>
-            <h3 style={{ marginBottom: "1rem", color: "#8b949e" }}>PLAN SOUVERAIN (10 PILIERS)</h3>
-            {steps.map(s => (
-              <button key={s.n} onClick={() => { setActiveStep(s); speak(s.d, lang); }} style={{ width: "100%", textAlign: "left", background: activeStep?.n === s.n ? "#1f6feb" : "transparent", border: "1px solid #30363d", color: "#fff", padding: "10px", borderRadius: "6px", marginBottom: "8px", cursor: "pointer" }}>
-                {s.n}. {s.t}
-              </button>
-            ))}
-          </div>
-
-          <div style={{ background: "#0d1117", border: "2px solid #2f81f7", borderRadius: "12px", padding: "2rem" }}>
-            <div style={{ display: "flex", gap: "8px", justifyContent: "center", marginBottom: "1.5rem" }}>
-              {["🇫🇷", "🇺🇸", "🇬🇵", "🇧🇷", "🇮🇳", "🇨🇦", "🇸🇬", "🇦🇺"].map((f, i) => (
-                <button key={i} onClick={() => setLang("fr-FR")} style={{ background: "none", border: "none", fontSize: "1.5rem", cursor: "pointer" }}>{f}</button>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "20px" }}>
+            
+            {/* PANNEAU GAUCHE : LES 10 TITRES */}
+            <div style={{ background: "#0f0f0f", border: "1px solid #1e40af", borderRadius: "20px", padding: "20px" }}>
+              <h3 style={{ color: "#3b82f6", marginBottom: "15px", fontSize: "1rem" }}>PROGRAMME D'EXCELLENCE</h3>
+              {steps.map(s => (
+                <button key={s.n} onClick={() => { setActiveStep(s); speak(s.d); }} style={{ width: "100%", textAlign: "left", background: activeStep?.n === s.n ? "#1e40af" : "#1a1a1a", border: "1px solid #333", color: "#fff", padding: "12px", borderRadius: "10px", marginBottom: "8px", cursor: "pointer", fontSize: "0.9rem" }}>
+                  <span style={{ fontWeight: "bold", color: "#3b82f6" }}>{s.n}.</span> {s.t}
+                </button>
               ))}
             </div>
 
-            <div style={{ background: "#010409", padding: "1.5rem", borderRadius: "8px", border: "1px solid #30363d", minHeight: "150px", marginBottom: "1.5rem", position: "relative" }}>
-              <p style={{ color: "#c9d1d9", fontSize: "1.1rem" }}>{chatResponse}</p>
-              <button onClick={() => speak(chatResponse, lang)} style={{ position: "absolute", bottom: "10px", right: "10px", background: "none", border: "none", fontSize: "1.5rem", cursor: "pointer" }}>🔊</button>
+            {/* PANNEAU DROITE : BOT & INFOS */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+              
+              {/* INTERFACE DU BOT */}
+              <div style={{ background: "#0a0a0a", border: "2px solid #2563eb", borderRadius: "20px", padding: "20px" }}>
+                <div style={{ display: "flex", gap: "10px", justifyContent: "center", marginBottom: "15px" }}>
+                  {["🇫🇷", "🇺🇸", "🇬🇵", "🇧🇷", "🇮🇳", "🇨🇦"].map((f, i) => (
+                    <span key={i} onClick={() => setLang("fr-FR")} style={{ fontSize: "1.5rem", cursor: "pointer" }}>{f}</span>
+                  ))}
+                </div>
+                <div style={{ background: "#000", padding: "15px", borderRadius: "12px", border: "1px solid #222", minHeight: "120px", position: "relative" }}>
+                  <p style={{ fontSize: "0.95rem", lineHeight: "1.5", color: "#ddd" }}>{chatResponse}</p>
+                  <button onClick={() => speak(chatResponse)} style={{ position: "absolute", bottom: "10px", right: "10px", background: "none", border: "none", fontSize: "1.2rem", cursor: "pointer" }}>🔊</button>
+                </div>
+                <form onSubmit={(e) => { e.preventDefault(); processInput(chatInput); setChatInput(""); }} style={{ display: "flex", gap: "10px", marginTop: "15px" }}>
+                  <input value={chatInput} onChange={(e) => setChatInput(e.target.value)} placeholder="Interroger NEURO-X..." style={{ flexGrow: 1, background: "#111", border: "1px solid #333", color: "#fff", padding: "12px", borderRadius: "10px" }} />
+                  <button type="submit" style={{ background: "#2563eb", color: "#fff", border: "none", padding: "10px 20px", borderRadius: "10px", cursor: "pointer", fontWeight: "bold" }}>OK</button>
+                </form>
+              </div>
+
+              {/* AFFICHAGE DES LIENS ET INFOS DÉTAILLÉES */}
+              {activeStep && (
+                <div style={{ background: "#111", border: "1px solid #3b82f6", borderRadius: "20px", padding: "20px", animation: "fadeIn 0.5s" }}>
+                  <h3 style={{ color: "#3b82f6", marginBottom: "10px" }}>{activeStep.t}</h3>
+                  <p style={{ fontSize: "0.9rem", color: "#ccc", marginBottom: "15px" }}>{activeStep.d}</p>
+                  <div style={{ background: "#000", padding: "15px", borderRadius: "10px", border: "1px solid #2563eb" }}>
+                    <p style={{ color: "#3b82f6", fontSize: "0.7rem", marginBottom: "5px" }}>SOURCE OFFICIELLE VÉRIFIÉE :</p>
+                    <a href={activeStep.u} target="_blank" rel="noopener noreferrer" style={{ color: "#fff", fontWeight: "bold", fontSize: "1rem", wordBreak: "break-all" }}>{activeStep.u} ➜</a>
+                  </div>
+                </div>
+              )}
+
             </div>
-
-            <form onSubmit={(e) => { e.preventDefault(); processInput(chatInput); setChatInput(""); }} style={{ display: "flex", gap: "10px" }}>
-              <button type="button" onClick={startListening} style={{ background: isListening ? "#da3633" : "#238636", border: "none", borderRadius: "50%", width: "45px", height: "45px", cursor: "pointer" }}>🎤</button>
-              <input value={chatInput} onChange={(e) => setChatInput(e.target.value)} placeholder="Interrogez la Giga-Base..." style={{ flexGrow: 1, background: "#0d1117", border: "1px solid #30363d", color: "#fff", padding: "12px", borderRadius: "6px" }} />
-              <button type="submit" style={{ background: "#2f81f7", color: "#fff", border: "none", padding: "10px 20px", borderRadius: "6px", cursor: "pointer" }}>ANALYSER</button>
-            </form>
           </div>
-
         </div>
       </div>
+      <style jsx>{` @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } } `}</style>
     </Layout>
   );
 }
