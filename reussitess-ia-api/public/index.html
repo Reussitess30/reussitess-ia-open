@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REUSSITESS IA API - 65+ Services d'Intelligence Artificielle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-white">
+    
+    <!-- Hero -->
+    <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 via-slate-900 to-blue-900">
+        <div class="text-center px-6">
+            <h1 class="text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                REUSSITESS IA API
+            </h1>
+            <p class="text-2xl mb-4 text-gray-300">65+ Services d'Intelligence Artificielle</p>
+            <p class="text-xl mb-12 text-gray-400">Une API. Tous vos besoins IA.</p>
+            
+            <div class="flex gap-4 justify-center">
+                <button onclick="scrollToPricing()" class="bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-4 rounded-lg text-xl font-bold hover:scale-105 transition">
+                    Voir les Prix
+                </button>
+                <button onclick="showDemo()" class="border-2 border-purple-500 px-8 py-4 rounded-lg text-xl font-bold hover:bg-purple-500/20 transition">
+                    Démo Live
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services -->
+    <div id="services" class="py-20 px-6">
+        <h2 class="text-5xl font-bold text-center mb-16">🎯 Services Disponibles</h2>
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+            <div class="bg-slate-800 p-8 rounded-xl hover:bg-slate-700 transition">
+                <div class="text-4xl mb-4">🌍</div>
+                <h3 class="text-2xl font-bold mb-4">Traduction IA</h3>
+                <p class="text-gray-400">Traduction instantanée dans 100+ langues avec contexte culturel</p>
+            </div>
+            <div class="bg-slate-800 p-8 rounded-xl hover:bg-slate-700 transition">
+                <div class="text-4xl mb-4">📝</div>
+                <h3 class="text-2xl font-bold mb-4">Copywriting</h3>
+                <p class="text-gray-400">Génération de publicités haute conversion en secondes</p>
+            </div>
+            <div class="bg-slate-800 p-8 rounded-xl hover:bg-slate-700 transition">
+                <div class="text-4xl mb-4">💰</div>
+                <h3 class="text-2xl font-bold mb-4">Optimisation Revenus</h3>
+                <p class="text-gray-400">IA d'optimisation de pricing et stratégies de monétisation</p>
+            </div>
+            <div class="bg-slate-800 p-8 rounded-xl hover:bg-slate-700 transition">
+                <div class="text-4xl mb-4">🔧</div>
+                <h3 class="text-2xl font-bold mb-4">Auto-Healing</h3>
+                <p class="text-gray-400">Monitoring et réparation automatique d'infrastructure</p>
+            </div>
+            <div class="bg-slate-800 p-8 rounded-xl hover:bg-slate-700 transition">
+                <div class="text-4xl mb-4">🛡️</div>
+                <h3 class="text-2xl font-bold mb-4">Protection</h3>
+                <p class="text-gray-400">Système avancé anti-tracking et anonymisation</p>
+            </div>
+            <div class="bg-slate-800 p-8 rounded-xl hover:bg-slate-700 transition">
+                <div class="text-4xl mb-4">🤖</div>
+                <h3 class="text-2xl font-bold mb-4">+ 60 autres</h3>
+                <p class="text-gray-400">Voir la documentation complète</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing -->
+    <div id="pricing" class="py-20 px-6 bg-slate-900">
+        <h2 class="text-5xl font-bold text-center mb-16">💰 Tarification Simple</h2>
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+            
+            <!-- Basic -->
+            <div class="bg-slate-800 p-8 rounded-xl hover:scale-105 transition">
+                <h3 class="text-3xl font-bold mb-4">Basic</h3>
+                <div class="mb-6">
+                    <span class="text-6xl font-bold">$49</span>
+                    <span class="text-gray-400">/mois</span>
+                </div>
+                <ul class="space-y-3 mb-8 text-gray-300">
+                    <li>✅ 100 requêtes/heure</li>
+                    <li>✅ 3 services IA</li>
+                    <li>✅ Support email</li>
+                    <li>✅ Documentation</li>
+                </ul>
+                <button onclick="signup('basic')" class="w-full bg-blue-600 py-4 rounded-lg font-bold hover:bg-blue-700 transition">
+                    Commencer
+                </button>
+            </div>
+
+            <!-- Pro -->
+            <div class="bg-gradient-to-br from-purple-600 to-blue-600 p-8 rounded-xl scale-110 shadow-2xl">
+                <div class="bg-yellow-400 text-black px-4 py-1 rounded-full text-sm font-bold inline-block mb-4">
+                    ⭐ POPULAIRE
+                </div>
+                <h3 class="text-3xl font-bold mb-4">Pro</h3>
+                <div class="mb-6">
+                    <span class="text-6xl font-bold">$299</span>
+                    <span class="text-gray-200">/mois</span>
+                </div>
+                <ul class="space-y-3 mb-8">
+                    <li>✅ 1,000 requêtes/heure</li>
+                    <li>✅ TOUS les services IA</li>
+                    <li>✅ Support prioritaire</li>
+                    <li>✅ Dashboard analytics</li>
+                    <li>✅ Webhooks</li>
+                </ul>
+                <button onclick="signup('pro')" class="w-full bg-white text-purple-600 py-4 rounded-lg font-bold hover:bg-gray-100 transition">
+                    Commencer
+                </button>
+            </div>
+
+            <!-- Enterprise -->
+            <div class="bg-slate-800 p-8 rounded-xl hover:scale-105 transition">
+                <h3 class="text-3xl font-bold mb-4">Enterprise</h3>
+                <div class="mb-6">
+                    <span class="text-6xl font-bold">$999</span>
+                    <span class="text-gray-400">/mois</span>
+                </div>
+                <ul class="space-y-3 mb-8 text-gray-300">
+                    <li>✅ 10,000 requêtes/heure</li>
+                    <li>✅ TOUS les services IA</li>
+                    <li>✅ Support 24/7</li>
+                    <li>✅ SLA 99.9%</li>
+                    <li>✅ Custom integration</li>
+                    <li>✅ Account manager</li>
+                </ul>
+                <button onclick="signup('enterprise')" class="w-full bg-gradient-to-r from-yellow-500 to-orange-600 py-4 rounded-lg font-bold hover:opacity-90 transition">
+                    Nous contacter
+                </button>
+            </div>
+        </div>
+        
+        <p class="text-center mt-12 text-xl text-gray-400">
+            🎁 14 jours d'essai gratuit • Annulez à tout moment
+        </p>
+    </div>
+
+    <!-- CTA -->
+    <div class="py-20 px-6 text-center">
+        <h2 class="text-5xl font-bold mb-6">Prêt à Démarrer ?</h2>
+        <p class="text-xl text-gray-400 mb-8">Rejoignez des centaines d'entreprises</p>
+        <button onclick="signup('pro')" class="bg-gradient-to-r from-blue-500 to-purple-600 px-12 py-5 rounded-lg text-2xl font-bold hover:scale-105 transition">
+            Essayer Gratuitement 14 Jours
+        </button>
+    </div>
+
+    <script>
+        function scrollToPricing() {
+            document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function showDemo() {
+            alert('🚀 Démo:\n\ncurl -X POST YOUR_API_URL/api/auth/register \\\n  -H "Content-Type: application/json" \\\n  -d \'{"email":"demo@test.com","plan":"pro"}\'');
+        }
+        
+        async function signup(plan) {
+            const email = prompt('Votre email professionnel:');
+            if (!email) return;
+            
+            try {
+                const res = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({email, plan})
+                });
+                
+                const data = await res.json();
+                
+                alert(`✅ Compte créé avec succès!\n\n🔑 API Key: ${data.api_key}\n📦 Plan: ${data.plan}\n🎁 14 jours d'essai gratuit\n\nDocumentation: YOUR_API_URL/docs`);
+            } catch (err) {
+                alert('❌ Erreur. Réessayez.');
+            }
+        }
+    </script>
+</body>
+</html>

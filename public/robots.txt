@@ -1,35 +1,8 @@
-# REUSSITESS® Global Nexus - Robots.txt Optimisé
 User-agent: *
 Allow: /
-Allow: /boutiques
-Allow: /champions
-Allow: /visa-universel
-Allow: /quiz
-Allow: /bibliotheque
-Allow: /hub-central
-Allow: /a-propos
-Allow: /contact
 
-# Priorités pour les bots
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 0
+# Lien vers votre carte du monde pour Google et Bing
+Sitemap: https://www.reussitess.fr/sitemap.xml
 
-User-agent: Googlebot-Image
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 0
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: WhatsApp
-Allow: /
-
-# Sitemap
-Sitemap: https://reussitess.fr/api/sitemap.xml
+# Optimisation pour Reussitess©
+Disallow: /_next/

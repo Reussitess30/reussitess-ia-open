@@ -1,20 +1,13 @@
 {
-  "version": 2,
-  "name": "reussitess-empire",
-  "builds": [
+  "headers": [
     {
-      "src": "package.json",
-      "use": "@vercel/next"
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, s-maxage=1, stale-while-revalidate=59"
+        }
+      ]
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
-  "env": {
-    "NEXT_PUBLIC_SITE_NAME": "REUSSITESS EMPIRE v2.0",
-    "NEXT_PUBLIC_VERSION": "2.0.0"
-  }
+  ]
 }
