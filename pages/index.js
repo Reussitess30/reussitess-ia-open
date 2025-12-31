@@ -50,6 +50,7 @@ export default function Home() {
 
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap", alignItems: "center" }}>
             <a href="#" style={{ background: "#0072ff", color: "white", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "bold" }}>🩺 MLC Health</a>
+            <Link href="/investir-reuss" style={{ background: "linear-gradient(135deg, #ffd700 0%, #b8860b 100%)", color: "black", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "900", border: "2px solid #fff" }}>💎 INVESTIR DANS REUSSITESS©</Link>
             <Link href="/champions" style={{ background: "linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%)", color: "#1e293b", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "900" }}>🏆 Passeport de Réussite</Link>
             <Link href="/visa-universel" style={{ background: "linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)", color: "white", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "900" }}>🌍 VISA UNIVERSEL</Link>
             <a href="https://reussitess-global-nexus-jfgk-git-copilo-3f98a8-porinus-projects.vercel.app/" target="_blank" style={{ background: "linear-gradient(135deg, #f5576c 0%, #f093fb 100%)", color: "white", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "bold" }}>🎯 Version Alternative</a>
