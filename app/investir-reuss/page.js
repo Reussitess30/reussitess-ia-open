@@ -2,79 +2,65 @@
 import Link from "next/link";
 
 export default function Investir() {
-  const addToken = async () => {
-    if (window.ethereum) {
-      try {
-        await window.ethereum.request({
-          method: 'wallet_watchAsset',
-          params: {
-            type: 'ERC20',
-            options: {
-              address: '0x4b3bFf4b58d22Ad363bb260e22032414d4CfdDB8',
-              symbol: 'REUSS',
-              decimals: 18,
-            },
-          },
-        });
-      } catch (error) { console.error(error); }
-    } else { alert("Installez MetaMask pour ajouter le token automatiquement."); }
-  };
-
   return (
-    <div style={{ minHeight: "100vh", padding: "1.5rem", background: "#020617", color: "white", fontFamily: "sans-serif", display: "flex", flexDirection: "column", alignItems: "center", overflowX: "hidden" }}>
+    <div style={{ minHeight: "100vh", padding: "2rem", background: "#020617", color: "white", fontFamily: "sans-serif", display: "flex", flexDirection: "column", alignItems: "center" }}>
       
-      <div style={{ position: "fixed", top: 0, left: 0, width: "100%", height: "2px", background: "#00ff41", boxShadow: "0 0 15px #00ff41", zIndex: 50, animation: "scan 4s linear infinite" }}></div>
-
-      <div style={{ maxWidth: "1000px", width: "100%", background: "rgba(15, 23, 42, 0.8)", padding: "2rem", borderRadius: "30px", border: "1px solid #00ff41", backdropFilter: "blur(10px)" }}>
+      <div style={{ maxWidth: "950px", width: "100%", background: "#0f172a", padding: "3rem", borderRadius: "30px", border: "1px solid #334155", boxShadow: "0 10px 30px rgba(0,0,0,0.5)" }}>
         
-        <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-          <h1 style={{ fontSize: "1.5rem", color: "#00ff41", fontWeight: "900", letterSpacing: "1px", whiteSpace: "nowrap" }}>
+        <header style={{ textAlign: "center", marginBottom: "3rem", borderBottom: "1px solid #1e293b", paddingBottom: "2rem" }}>
+          <h1 style={{ fontSize: "1.4rem", color: "#00ff41", fontWeight: "900", letterSpacing: "1px", margin: 0 }}>
             REUSSITESS®NEURO-X : L'IA PRÉDICTIVE SOUVERAINE DES 14 NATIONS
           </h1>
-          <p style={{ color: "#ffd700", fontSize: "0.8rem", marginTop: "5px" }}>CONFORMITÉ RÉGLEMENTAIRE INTERNATIONALE - ÉDITION 2025</p>
-        </div>
+          <p style={{ color: "#ffd700", fontSize: "0.9rem", marginTop: "10px", fontWeight: "bold" }}>GUIDE OPÉRATIONNEL ET CONFORMITÉ JURIDIQUE</p>
+        </header>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "1.5rem", marginBottom: "2rem" }}>
-          <section style={{ background: "rgba(255,255,255,0.03)", padding: "1.5rem", borderRadius: "20px" }}>
-            <h3 style={{ color: "#00ff41", fontSize: "1rem" }}>🛠 FONCTIONNEMENT RÉEL</h3>
-            <p style={{ fontSize: "0.85rem", lineHeight: "1.6", color: "#94a3b8" }}>
-              NEURO-X n'est pas un chatbot. C'est un <strong>Oracle de Calcul Prédictif</strong>. Il utilise le machine learning pour analyser les indicateurs macro-économiques (PIB, Inflation, Flux) des 14 pays partenaires (France, USA, Canada, etc.) afin d'anticiper les ruptures de marché. Le token REUSS est le carburant (Gas) nécessaire pour interroger l'IA.
-            </p>
-          </section>
+        <section style={{ marginBottom: "3rem" }}>
+          <h2 style={{ color: "#00ff41", fontSize: "1.2rem", marginBottom: "1rem" }}>1. QU'EST-CE QUE LE PROJET NEURO-X ?</h2>
+          <p style={{ lineHeight: "1.7", color: "#cbd5e1", textAlign: "justify" }}>
+            Le projet <strong>REUSSITESS®NEURO-X</strong> est une infrastructure d'Intelligence Artificielle de troisième génération. Contrairement aux IA génératives classiques, NEURO-X fonctionne comme un <strong>Oracle de calcul de probabilités</strong>. 
+            <br /><br />
+            Il analyse en temps réel les données économiques, technologiques et sanitaires des 14 pays partenaires (France, Belgique, Canada, USA, etc.) pour identifier des cycles de croissance avant qu'ils ne deviennent publics. Le token REUSS est l'unique unité de compte permettant d'alimenter la puissance de calcul nécessaire à ces analyses.
+          </p>
+        </section>
 
-          <section style={{ background: "rgba(255,255,255,0.03)", padding: "1.5rem", borderRadius: "20px" }}>
-            <h3 style={{ color: "#ffd700", fontSize: "1rem" }}>⚖️ CADRE JURIDIQUE MICA & SEC</h3>
-            <p style={{ fontSize: "0.85rem", lineHeight: "1.6", color: "#94a3b8" }}>
-              En conformité avec le règlement européen <strong>MiCA</strong> et les directives internationales, REUSSITESS® est classé comme <strong>Utility Token</strong>. 
-              L'acquisition du jeton n'est pas un investissement passif mais un droit d'usage technologique. La responsabilité juridique est limitée aux 14 juridictions autorisées.
-            </p>
-          </section>
-        </div>
-
-        <div style={{ border: "1px solid #334155", padding: "1.5rem", borderRadius: "20px", marginBottom: "2rem" }}>
-          <h3 style={{ fontSize: "0.9rem", textAlign: "center", marginBottom: "1rem" }}>🔧 PROTOCOLE DE DÉTENTION (WALLET)</h3>
-          <div style={{ display: "flex", justifyContent: "center", gap: "1rem", flexWrap: "wrap" }}>
-            <code style={{ background: "#000", padding: "0.8rem", borderRadius: "10px", color: "#00ff41", fontSize: "0.8rem" }}>
-              CONTRAT : 0x4b3bFf4b58d22Ad363bb260e22032414d4CfdDB8
-            </code>
-            <button onClick={addToken} style={{ background: "#00ff41", color: "black", border: "none", padding: "0.8rem 1.5rem", borderRadius: "10px", fontWeight: "bold", cursor: "pointer" }}>
-              + AJOUTER AU WALLET (MetaMask)
-            </button>
+        <section style={{ marginBottom: "3rem", background: "rgba(0,0,0,0.2)", padding: "2rem", borderRadius: "20px" }}>
+          <h2 style={{ color: "#ffd700", fontSize: "1.2rem", marginBottom: "1rem" }}>2. COMMENT CONFIGURER VOTRE WALLET (Procédure Universelle)</h2>
+          <p style={{ fontSize: "0.9rem", color: "#94a3b8", marginBottom: "1.5rem" }}>
+            Pour détenir vos jetons REUSS sur n'importe quel portefeuille (MetaMask, TrustWallet, etc.), suivez ces étapes :
+          </p>
+          <ol style={{ lineHeight: "2", color: "#e2e8f0" }}>
+            <li>Ouvrez votre application Wallet (Extension ou Mobile).</li>
+            <li>Cliquez sur <strong>"Importer des jetons"</strong> ou <strong>"Ajouter un actif personnalisé"</strong>.</li>
+            <li>Copiez et collez l'adresse officielle du contrat ci-dessous :</li>
+          </ol>
+          <div style={{ background: "#000", padding: "1rem", borderRadius: "10px", textAlign: "center", border: "1px solid #00ff41", margin: "1rem 0" }}>
+            <code style={{ fontSize: "1rem", color: "#00ff41", fontWeight: "bold", wordBreak: "break-all" }}>0x4b3bFf4b58d22Ad363bb260e22032414d4CfdDB8</code>
           </div>
-        </div>
+          <p style={{ fontSize: "0.8rem", color: "#64748b" }}>* Le symbole (REUSS) et les décimales (18) s'afficheront automatiquement.</p>
+        </section>
 
-        <div style={{ fontSize: "0.75rem", color: "#64748b", lineHeight: "1.5", textAlign: "justify", padding: "1rem", borderTop: "1px solid #334155" }}>
-          <strong>Avertissement sur les risques :</strong> Conformément aux règles de l'AMF et des régulateurs des 14 pays : La volatilité des crypto-actifs peut entraîner une perte totale du capital. Vérifiez votre éligibilité territoriale avant toute transaction. Le projet NEURO-X est une propriété intellectuelle déposée (®).
-        </div>
+        <section style={{ marginBottom: "3rem" }}>
+          <h2 style={{ color: "#00ff41", fontSize: "1.2rem", marginBottom: "1rem" }}>3. DÉMARCHES POUR L'INVESTISSEUR</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
+            <div style={{ borderLeft: "3px solid #00ff41", paddingLeft: "1rem" }}>
+              <h4 style={{ margin: "0 0 10px 0" }}>Étape A : Éligibilité</h4>
+              <p style={{ fontSize: "0.85rem", color: "#94a3b8" }}>Résider dans l'un des 14 pays autorisés et disposer d'un portefeuille compatible EVM (Ethereum/Polygon/BSC).</p>
+            </div>
+            <div style={{ borderLeft: "3px solid #00ff41", paddingLeft: "1rem" }}>
+              <h4 style={{ margin: "0 0 10px 0" }}>Étape B : Acquisition</h4>
+              <p style={{ fontSize: "0.85rem", color: "#94a3b8" }}>Les jetons sont distribués selon le calendrier de l'offre totale (1 000 000 000 unités).</p>
+            </div>
+          </div>
+        </section>
 
-        <div style={{ marginTop: "2rem", textAlign: "center" }}>
-          <Link href="/" style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.9rem" }}>← Retour au Portail Central</Link>
-        </div>
+        <footer style={{ borderTop: "1px solid #334155", paddingTop: "2rem", fontSize: "0.8rem", color: "#64748b", textAlign: "justify" }}>
+          <p><strong>CADRE JURIDIQUE :</strong> Ce document ne constitue pas une offre publique de titres financiers. Le token REUSS est un jeton utilitaire. Conformément aux directives MiCA, les utilisateurs doivent s'assurer que leur juridiction autorise la détention d'actifs numériques. Le projet REUSSITESS®NEURO-X décline toute responsabilité en cas d'erreur de saisie lors de l'importation manuelle du contrat.</p>
+          <div style={{ textAlign: "center", marginTop: "2rem" }}>
+            <Link href="/" style={{ color: "#00ff41", textDecoration: "none", fontWeight: "bold" }}>← RETOUR AU PORTAIL REUSSITESS©</Link>
+          </div>
+        </footer>
+
       </div>
-
-      <style jsx>{`
-        @keyframes scan { 0% { top: 0%; } 100% { top: 100%; } }
-      `}</style>
     </div>
   );
 }
