@@ -3,56 +3,42 @@ import Link from "next/link";
 
 export default function Investir() {
   return (
-    <div style={{ minHeight: "100vh", padding: "2rem", background: "#0f172a", color: "white", fontFamily: "sans-serif", display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <div style={{ maxWidth: "850px", width: "100%", background: "rgba(255,255,255,0.05)", padding: "2.5rem", borderRadius: "30px", border: "1px solid #ffd700", boxShadow: "0 0 30px rgba(0, 0, 0, 0.5)" }}>
+    <div style={{ minHeight: "100vh", padding: "2rem", background: "#020617", color: "white", fontFamily: "sans-serif", display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <div style={{ maxWidth: "900px", width: "100%", background: "linear-gradient(145deg, #0f172a 0%, #020617 100%)", padding: "3rem", borderRadius: "40px", border: "1px solid #00ff41", boxShadow: "0 0 50px rgba(0, 255, 65, 0.2)" }}>
         
-        <h1 style={{ fontSize: "2rem", color: "#ffd700", fontWeight: "900", textAlign: "center", marginBottom: "2rem" }}>CADRE JURIDIQUE & INVESTISSEMENT</h1>
-
-        <div style={{ background: "rgba(255,0,0,0.1)", borderLeft: "4px solid #ff4b2b", padding: "1rem", marginBottom: "2rem" }}>
-          <p style={{ fontSize: "0.85rem", color: "#ff8c7a", margin: 0 }}>
-            <strong>AVERTISSEMENT :</strong> L'investissement dans les actifs numériques comporte des risques de perte en capital. 
-            Le projet REUSSITESS© est régi par les lois en vigueur dans nos 14 pays partenaires.
-          </p>
+        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+          <h1 style={{ fontSize: "2.8rem", color: "#00ff41", fontWeight: "900", letterSpacing: "1px" }}>REUSSITESS®NEURO-X</h1>
+          <div style={{ background: "#ffd700", color: "black", display: "inline-block", padding: "0.2rem 1rem", borderRadius: "5px", fontWeight: "bold", fontSize: "0.8rem" }}>IA PRÉDICTIVE MONDIALE</div>
         </div>
 
-        <section style={{ marginBottom: "2rem" }}>
-          <h3 style={{ color: "#ffd700" }}>1. Statut du Jeton (Utility Token)</h3>
-          <p style={{ fontSize: "0.9rem", color: "#ccc", lineHeight: "1.6" }}>
-            L'unité REUSSITESS© (Contrat: 0x4b3b...) est définie comme un jeton utilitaire donnant accès à l'écosystème MedTech MLC Health et aux services exclusifs du groupe. 
-            Il ne constitue pas un titre financier (Security) au sens de la directive MiCA (Europe).
+        <section style={{ marginBottom: "2.5rem", textAlign: "center" }}>
+          <p style={{ fontSize: "1.2rem", lineHeight: "1.7", color: "#e2e8f0" }}>
+            L'infrastructure <strong>REUSSITESS®NEURO-X</strong> est la première intelligence artificielle décentralisée capable de modéliser les flux économiques des 14 nations partenaires.
           </p>
         </section>
 
-        <section style={{ marginBottom: "2rem" }}>
-          <h3 style={{ color: "#ffd700" }}>2. Conformité Géographique (14 Pays)</h3>
-          <p style={{ fontSize: "0.9rem", color: "#ccc", lineHeight: "1.6" }}>
-            L'offre est strictement limitée aux résidents fiscaux des pays suivants : 
-            France, Belgique, Canada, États-Unis, Allemagne, Italie, Suède, Singapour, Australie, Espagne, Brésil, Inde, Nouvelle-Zélande, Royaume-Uni.
-            Tout utilisateur hors zone est responsable de sa propre conformité.
-          </p>
-        </section>
-
-        <section style={{ marginBottom: "2rem" }}>
-          <h3 style={{ color: "#ffd700" }}>3. Transparence de l'Offre</h3>
-          <ul style={{ fontSize: "0.9rem", color: "#ccc", lineHeight: "1.8" }}>
-            <li><strong>Offre Max :</strong> 1 000 000 000 unités (Hard Cap).</li>
-            <li><strong>Audibilité :</strong> Transactions traçables sur la blockchain via l'adresse officielle.</li>
-            <li><strong>Propriété :</strong> Le détenteur initial (0x69f4...) assure la distribution initiale.</li>
-          </ul>
-        </section>
-
-        <div style={{ background: "#000", padding: "1.5rem", borderRadius: "15px", textAlign: "center", marginBottom: "2rem" }}>
-          <p style={{ fontSize: "0.7rem", color: "#888", marginBottom: "10px" }}>VÉRIFICATION BLOCKCHAIN</p>
-          <code style={{ fontSize: "0.8rem", color: "#00ff41", wordBreak: "break-all" }}>0x4b3bFf4b58d22Ad363bb260e22032414d4CfdDB8</code>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem", marginBottom: "3rem" }}>
+          <div style={{ border: "1px solid rgba(0,255,65,0.3)", padding: "1.5rem", borderRadius: "20px", background: "rgba(0,0,0,0.2)" }}>
+            <h3 style={{ color: "#00ff41" }}>Calcul Souverain</h3>
+            <p style={{ fontSize: "0.9rem", color: "#94a3b8" }}>Indépendance totale face aux IA traditionnelles. Vos données restent dans le cercle des 14 pays.</p>
+          </div>
+          <div style={{ border: "1px solid rgba(255,215,0,0.3)", padding: "1.5rem", borderRadius: "20px", background: "rgba(0,0,0,0.2)" }}>
+            <h3 style={{ color: "#ffd700" }}>Token Utility</h3>
+            <p style={{ fontSize: "0.9rem", color: "#94a3b8" }}>Le jeton REUSSITESS© alimente les processeurs de NEURO-X. Pas de token, pas d'accès.</p>
+          </div>
         </div>
 
-        <div style={{ textAlign: "center" }}>
-          <Link href="/" style={{ display: "inline-block", border: "1px solid #ffd700", color: "#ffd700", padding: "0.8rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "bold" }}>
-            ACCEPTER ET RETOURNER
+        <div style={{ background: "#000", padding: "2rem", borderRadius: "20px", textAlign: "center", border: "1px solid #334155" }}>
+          <p style={{ fontSize: "0.7rem", color: "#888", marginBottom: "10px" }}>CONTRAT OFFICIEL RÉSEAU NEURO-X</p>
+          <code style={{ fontSize: "1.1rem", color: "#00ff41", fontWeight: "bold", wordBreak: "break-all" }}>0x4b3bFf4b58d22Ad363bb260e22032414d4CfdDB8</code>
+        </div>
+
+        <div style={{ marginTop: "3rem", textAlign: "center" }}>
+          <Link href="/" style={{ background: "#00ff41", color: "black", padding: "1.2rem 3rem", borderRadius: "50px", textDecoration: "none", fontWeight: "900", boxShadow: "0 0 20px rgba(0, 255, 65, 0.4)" }}>
+            ACTIVER MON ACCÈS NEURO-X
           </Link>
         </div>
       </div>
-      <p style={{ marginTop: "2rem", fontSize: "0.7rem", opacity: 0.5 }}>© 2025 REUSSITESS - Direction Juridique Internationale</p>
     </div>
   );
 }
