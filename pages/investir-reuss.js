@@ -7,6 +7,7 @@ export default function InvestirReuss() {
   const [threats, setThreats] = useState(1240);
   
   const pays = ["France", "Belgique", "Italie", "Allemagne", "Suède", "Singapour", "Australie", "Espagne", "Brésil", "Royaume-Uni", "Inde", "Nouvelle-Zélande", "États-Unis", "Canada"];
+  const contractAddress = "0x4b3bFf4b58d22Ad363bb260e22032414d4CfdDB8";
 
   const socialLinks = {
     tiktok: [
@@ -45,55 +46,85 @@ export default function InvestirReuss() {
       <main style={{ maxWidth: '900px', margin: '0 auto', background: '#0f172a', padding: '40px', borderRadius: '24px', border: '2px solid #3b82f6', boxShadow: '0 0 50px rgba(59, 130, 246, 0.3)' }}>
         
         <header style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <h1 style={{ color: '#3b82f6', fontSize: '1.6rem', fontWeight: '900' }}>REUSSITESS© : SYSTÈME D'AUTO-RENFORCEMENT & TOILE MONDIALE</h1>
-          <p style={{ color: '#00ff41', fontWeight: 'bold' }}>ARMÉE DES 200 IA : GUADELOUPE "BOUDOUM"</p>
+          <h1 style={{ color: '#3b82f6', fontSize: '1.8rem', fontWeight: '900' }}>REUSSITESS© : SYSTÈME NEURO-X</h1>
+          <p style={{ color: '#00ff41', fontWeight: 'bold' }}>ARMÉE DES 200 IA - SOUVERAINETÉ GUADELOUPE</p>
         </header>
 
-        {/* SECTION 1 : SÉCURITÉ ET IA (RÉTABLIE) */}
+        {/* MONITORING SYSTÈME RÉTABLI */}
         <section style={{ marginBottom: '35px', background: '#000', padding: '25px', borderRadius: '15px', border: '1px solid #00ff41' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-            <span style={{ fontSize: '0.9rem', color: '#94a3b8' }}>NIVEAU D'APPRENTISSAGE NEURAL :</span>
+            <span style={{ fontSize: '0.9rem', color: '#94a3b8' }}>NIVEAU D'AUTO-RENFORCEMENT :</span>
             <span style={{ color: '#00ff41', fontWeight: 'bold' }}>{learningLevel.toFixed(2)}%</span>
           </div>
           <div style={{ width: '100%', background: '#1e293b', height: '10px', borderRadius: '5px', overflow: 'hidden' }}>
             <div style={{ width: `${learningLevel}%`, background: '#00ff41', height: '100%', transition: 'width 1s ease-in-out' }}></div>
           </div>
-          <div style={{ marginTop: '15px', display: 'flex', justifyContent: 'space-around' }}>
-             <p style={{ fontSize: '0.8rem' }}>PUISSANCE : <strong style={{ color: '#fff' }}>{armyPower.toLocaleString()} TFLOPS</strong></p>
-             <p style={{ fontSize: '0.8rem' }}>MENACES BLOQUÉES : <strong style={{ color: '#ef4444' }}>{threats}</strong></p>
+          <div style={{ marginTop: '15px', display: 'flex', justifyContent: 'space-around', borderTop: '1px solid #1e293b', paddingTop: '15px' }}>
+             <p style={{ fontSize: '0.8rem' }}>🔥 PUISSANCE : <strong style={{ color: '#fff' }}>{armyPower.toLocaleString()} TFLOPS</strong></p>
+             <p style={{ fontSize: '0.8rem' }}>🛡️ MENACES BLOQUÉES : <strong style={{ color: '#ef4444' }}>{threats}</strong></p>
           </div>
         </section>
 
-        {/* SECTION 2 : LE MILLIARD (RÉTABLIE) */}
-        <section style={{ marginBottom: '35px', padding: '20px', background: '#111827', borderRadius: '15px', border: '1px solid #3b82f6' }}>
-          <h3 style={{ color: '#3b82f6', marginBottom: '10px' }}>🛡️ UNITÉ DE PUISSANCE : 1 000 000 000 REUSS</h3>
-          <p style={{ fontSize: '0.8rem', color: '#cbd5e1' }}>Contrat Officiel : <code style={{ color: '#60a5fa' }}>0x4b3bFf4b58d22Ad363bb260e22032414d4CfdDB8</code></p>
+        {/* CONTRAT CLIQUABLE RÉTABLI */}
+        <section style={{ marginBottom: '35px', padding: '25px', background: 'rgba(59, 130, 246, 0.1)', borderRadius: '15px', border: '2px solid #3b82f6' }}>
+          <h3 style={{ color: '#fff', marginBottom: '15px' }}>💎 OFFRE TOTALE : 1 000 000 000 REUSS</h3>
+          <p style={{ fontSize: '0.9rem', color: '#cbd5e1', marginBottom: '15px' }}>Vérifiez l'armée sur la Blockchain Polygon :</p>
+          <a 
+            href={`https://polygonscan.com/token/${contractAddress}`} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{ display: 'block', background: '#3b82f6', color: '#fff', textAlign: 'center', padding: '15px', borderRadius: '10px', fontWeight: 'bold', textDecoration: 'none', transition: '0.3s' }}
+          >
+            CONSULTER LE CONTRAT RÉEL →
+          </a>
+          <p style={{ fontSize: '0.7rem', color: '#60a5fa', marginTop: '10px', textAlign: 'center', wordBreak: 'break-all' }}>
+            {contractAddress}
+          </p>
         </section>
 
-        {/* SECTION 3 : TOILE D'ARAIGNÉE MONDIALE (RAJOUTÉE) */}
+        {/* PROTOCOLES DES 200 IA RÉTABLIS */}
         <section style={{ marginBottom: '35px' }}>
-          <h3 style={{ color: '#3b82f6' }}>🕸️ TOILE D'ARAIGNÉE SOCIALE (14 PAYS)</h3>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '10px', marginTop: '15px' }}>
+          <h3 style={{ color: '#3b82f6' }}>🛡️ PROTOCOLE D'AUTO-DÉFENSE ACTIVE</h3>
+          <p style={{ fontSize: '0.9rem', color: '#cbd5e1', lineHeight: '1.6' }}>
+            L'armée Reussitess© utilise la <strong>Self-Mutation</strong>. Chaque attaque bloque définitivement son vecteur pour les 14 pays. Le système ne se contente pas de défendre, il apprend et devient invincible à chaque seconde.
+          </p>
+        </section>
+
+        {/* LA TOILE D'ARAIGNÉE SOCIALE (NOUVELLE SECTION) */}
+        <section style={{ marginBottom: '35px', borderTop: '1px solid #1e293b', paddingTop: '20px' }}>
+          <h3 style={{ color: '#3b82f6', marginBottom: '20px' }}>🕸️ TOILE D'ARAIGNÉE MONDIALE</h3>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '10px', marginBottom: '25px' }}>
             {socialLinks.tiktok.map((tk, i) => (
-              <a key={i} href={tk.url} target="_blank" style={{ background: '#000', padding: '10px', borderRadius: '10px', border: '1px solid #ff0050', color: '#fff', fontSize: '0.7rem', textDecoration: 'none', textAlign: 'center' }}>
+              <a key={i} href={tk.url} target="_blank" rel="noopener noreferrer" style={{ background: '#000', padding: '12px', borderRadius: '10px', border: '1px solid #ff0050', color: '#fff', fontSize: '0.75rem', textDecoration: 'none', textAlign: 'center', fontWeight: 'bold' }}>
                 TIKTOK {tk.name.toUpperCase()}
               </a>
             ))}
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '20px' }}>
+
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '25px', justifyContent: 'center' }}>
             {socialLinks.networks.map((net, i) => (
-              <a key={i} href={net.url} target="_blank" style={{ background: '#1e293b', padding: '10px 15px', borderRadius: '50px', border: '1px solid #3b82f6', color: '#fff', fontSize: '0.75rem', textDecoration: 'none' }}>
+              <a key={i} href={net.url} target="_blank" rel="noopener noreferrer" style={{ background: '#1e293b', padding: '10px 18px', borderRadius: '50px', border: '1px solid #3b82f6', color: '#fff', fontSize: '0.8rem', textDecoration: 'none' }}>
                 {net.icon} {net.name}
+              </a>
+            ))}
+          </div>
+
+          <div style={{ background: '#0a0f1d', padding: '20px', borderRadius: '15px', display: 'flex', flexWrap: 'wrap', gap: '15px', justifyContent: 'center' }}>
+            {socialLinks.facebook.map((fb, i) => (
+              <a key={i} href={fb.url} target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', fontSize: '0.85rem', textDecoration: 'none', fontWeight: '600' }}>
+                📘 {fb.name}
               </a>
             ))}
           </div>
         </section>
 
         <footer style={{ textAlign: 'center', borderTop: '1px solid #1e293b', paddingTop: '20px' }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '5px', marginBottom: '15px' }}>
-            {pays.map(p => <span key={p} style={{ fontSize: '0.6rem', background: '#1e293b', padding: '2px 8px', borderRadius: '4px', color: '#94a3b8' }}>{p}</span>)}
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px', marginBottom: '20px' }}>
+            {pays.map(p => <span key={p} style={{ fontSize: '0.65rem', background: '#1e293b', padding: '4px 10px', borderRadius: '6px', color: '#94a3b8', border: '1px solid #334155' }}>{p}</span>)}
           </div>
-          <p style={{ color: '#00ff41', fontWeight: 'bold' }}>POSITIVITÉ À L'INFINI — BOUDOUM !</p>
+          <p style={{ color: '#00ff41', fontWeight: 'bold', fontSize: '1.1rem' }}>POSITIVITÉ À L'INFINI — BOUDOUM !</p>
+          <Link href="/" style={{ color: '#475569', fontSize: '0.8rem', textDecoration: 'underline', marginTop: '15px', display: 'block' }}>← RETOUR AU PORTAIL SOUVERAIN</Link>
         </footer>
       </main>
     </div>
