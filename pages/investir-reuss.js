@@ -57,14 +57,13 @@ export default function InvestirReuss() {
           </a>
         </section>
 
-        {/* RUBRIQUE JURIDIQUE (POSITIONNÉE POUR ÊTRE VUE) */}
+        {/* RUBRIQUE JURIDIQUE */}
         <section style={{ marginBottom: '30px', padding: '20px', background: '#000', borderRadius: '15px', border: '2px solid #ef4444' }}>
           <h3 style={{ color: '#ef4444', fontSize: '1rem', marginBottom: '10px', fontWeight: 'bold' }}>⚖️ PROTECTION JURIDIQUE & RESPONSABILITÉ</h3>
           <div style={{ fontSize: '0.85rem', color: '#cbd5e1', lineHeight: '1.6' }}>
             <p><strong>1. Nature du Projet :</strong> Le projet REUSSITESS© est une infrastructure technologique expérimentale basée en Guadeloupe.</p>
             <p><strong>2. Non-Investissement :</strong> L'acquisition d'unités REUSS ne constitue pas un produit financier ou un investissement régulé.</p>
             <p><strong>3. Responsabilité :</strong> Vous êtes seul responsable de la sécurisation de vos actifs. Aucun remboursement n'est possible une fois la transaction gravée sur la blockchain Polygon.</p>
-            <p><strong>4. Risques :</strong> En utilisant ce système, vous reconnaissez les risques inhérents aux technologies décentralisées et à l'intelligence artificielle.</p>
           </div>
         </section>
 
@@ -76,12 +75,14 @@ export default function InvestirReuss() {
               <a key={i} href={tk.url} target="_blank" rel="noopener noreferrer" style={{ background: '#000', padding: '10px', borderRadius: '8px', border: '1px solid #ff0050', color: '#fff', fontSize: '0.7rem', textDecoration: 'none', textAlign: 'center' }}>TIKTOK {tk.name}</a>
             ))}
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '15px', justifyContent: 'center' }}>
-            {socialLinks.networks.map((net, i) => (
-              <a key={i} href={net.url} target="_blank" rel="noopener noreferrer" style={{ background: '#1e293b', padding: '8px 12px', borderRadius: '50px', border: '1px solid #3b82f6', color: '#fff', fontSize: '0.7rem', textDecoration: 'none' }}>{net.icon} {net.name}</a>
-            ))}
-          </div>
         </section>
+
+        {/* BOUTON DE RETOUR (AJOUTÉ ICI) */}
+        <div style={{ textAlign: 'center', margin: '40px 0' }}>
+          <Link href="/" style={{ background: '#1e293b', color: '#fff', padding: '15px 40px', borderRadius: '50px', border: '2px solid #3b82f6', textDecoration: 'none', fontWeight: 'bold', fontSize: '1rem', transition: '0.3s', boxShadow: '0 0 15px rgba(59, 130, 246, 0.5)' }}>
+            ↩️ RETOUR AU PORTAIL PRINCIPAL
+          </Link>
+        </div>
 
         <footer style={{ textAlign: 'center', borderTop: '1px solid #1e293b', paddingTop: '20px' }}>
           <p style={{ color: '#00ff41', fontWeight: 'bold' }}>POSITIVITÉ À L'INFINI — BOUDOUM !</p>
