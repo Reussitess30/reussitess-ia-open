@@ -1692,7 +1692,7 @@ export default function BotAssistant() {
       url: "/valeurs/boudoume",
     },
     amazon: {
-      info: "REUSSITESS® Global Nexus - 26 boutiques Amazon affiliées dans 14 pays sur 5 continents",
+      info: "REUSSITESS® REUSSITESS®NEURO-X - 26 boutiques Amazon affiliées dans 14 pays sur 5 continents",
       pays: {
         usa: "États-Unis - amazon.com",
         canada: "Canada - amazon.ca",
@@ -2326,11 +2326,11 @@ if (typeof knowledgeBase !== "undefined") {
 // FORCE NOUVEAU MESSAGE BONSOIR
 if (typeof knowledgeBase !== "undefined") {
   knowledgeBase.bonsoir =
-    "Bonsoir ! 🌙 Nouvelle version du bot en ligne, Reussitess Global Nexus mis à jour.";
+    "Bonsoir ! 🌙 Nouvelle version du bot en ligne, Reussitess REUSSITESS®NEURO-X mis à jour.";
 }
 
 // OPTION 1 BOT (forcée)
 if (typeof knowledgeBase !== "undefined") {
   knowledgeBase.option1 =
-    "Option 1 : Accès direct à tes 26 Boutiques Amazon Reussitess Global Nexus (France, USA, UK, Guadeloupe → 14 pays).";
+    "Option 1 : Accès direct à tes 26 Boutiques Amazon Reussitess REUSSITESS®NEURO-X (France, USA, UK, Guadeloupe → 14 pays).";
 }

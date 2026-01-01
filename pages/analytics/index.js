@@ -7,7 +7,7 @@ export default function Analytics() {
   return (
     <>
       <Head>
-        <title>Analyse de Performance - Reussitess® Global Nexus</title>
+        <title>Analyse de Performance - Reussitess® REUSSITESS®NEURO-X</title>
       </Head>
       <div style={{ padding: "50px", maxWidth: "1200px", margin: "0 auto" }}>
         <button

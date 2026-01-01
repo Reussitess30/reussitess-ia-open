@@ -7,7 +7,7 @@ export default function Affiliation() {
   return (
     <>
       <Head>
-        <title>Programme d'Affiliation - Reussitess® Global Nexus</title>
+        <title>Programme d'Affiliation - Reussitess® REUSSITESS®NEURO-X</title>
       </Head>
       <div style={{ padding: "50px", maxWidth: "1200px", margin: "0 auto" }}>
         <button

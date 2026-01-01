@@ -1,6 +1,6 @@
 // AUTO-CONVERTED from amazonData.js
 const botStrings = {
-  info: "REUSSITESS® Global Nexus - 26 boutiques Amazon affiliées dans 14 pays sur 5 continents",
+  info: "REUSSITESS® REUSSITESS®NEURO-X - 26 boutiques Amazon affiliées dans 14 pays sur 5 continents",
   pays: {
     "usa": "États-Unis - amazon.com",
     "canada": "Canada - amazon.ca",

@@ -41,7 +41,7 @@ export default function PWAApp() {
   return (
     <>
       <Head>
-        <title>📱 Application PWA - Reussitess® Global Nexus</title>
+        <title>📱 Application PWA - Reussitess® REUSSITESS®NEURO-X</title>
         <meta
           name="description"
           content="Installez l'app REUSSITESS® pour un accès hors ligne et une expérience optimale"

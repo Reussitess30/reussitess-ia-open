@@ -6,7 +6,7 @@ module.exports = {
       answers: ["14", "20", "26"],
       correct: 2,
       explanation:
-        "REUSSITESS® Global Nexus possède 26 boutiques Amazon à travers le monde.",
+        "REUSSITESS® REUSSITESS®NEURO-X possède 26 boutiques Amazon à travers le monde.",
     },
     {
       question: "Combien de pays sont couverts ?",

@@ -34,7 +34,7 @@ export default function MentionsLegales() {
               Affiliation Amazon
             </h3>
             <p style={{ fontSize: "1rem", opacity: 0.85 }}>
-              Reussitess® Global Nexus participe au Programme Partenaires Amazon
+              Reussitess® REUSSITESS®NEURO-X participe au Programme Partenaires Amazon
               EU. En tant que Partenaire Amazon, nous réalisons un bénéfice sur
               les achats remplissant les conditions requises.
             </p>

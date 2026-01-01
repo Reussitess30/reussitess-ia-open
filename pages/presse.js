@@ -14,10 +14,10 @@ export default function Presse() {
   return (
     <>
       <Head>
-        <title>📰 Presse & Média - Reussitess® Global Nexus</title>
+        <title>📰 Presse & Média - Reussitess® REUSSITESS®NEURO-X</title>
         <meta
           name="description"
-          content="Kit presse, communiqués, statistiques et contacts média pour Reussitess® Global Nexus"
+          content="Kit presse, communiqués, statistiques et contacts média pour Reussitess® REUSSITESS®NEURO-X"
         />
       </Head>
 
@@ -142,7 +142,7 @@ export default function Presse() {
                   marginBottom: "20px",
                 }}
               >
-                <strong>Reussitess® Global Nexus</strong> est la référence
+                <strong>Reussitess® REUSSITESS®NEURO-X</strong> est la référence
                 mondiale francophone pour le e-commerce Amazon. Fondée en 2024,
                 notre plateforme connecte 26 boutiques Amazon à travers 14 pays
                 et 5 continents.

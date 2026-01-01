@@ -7,7 +7,7 @@ export default function PolitiqueConfidentialite() {
   return (
     <>
       <Head>
-        <title>Politique de Confidentialité - Reussitess® Global Nexus</title>
+        <title>Politique de Confidentialité - Reussitess® REUSSITESS®NEURO-X</title>
         <meta
           name="description"
           content="Politique de confidentialité et protection des données personnelles - Conforme RGPD"
@@ -53,7 +53,7 @@ export default function PolitiqueConfidentialite() {
               1. Introduction
             </h2>
             <p>
-              REUSSITESS® Global Nexus s'engage à protéger la confidentialité de
+              REUSSITESS® REUSSITESS®NEURO-X s'engage à protéger la confidentialité de
               ses utilisateurs. Cette politique de confidentialité décrit
               comment nous collectons, utilisons et protégeons vos informations
               personnelles conformément au Règlement Général sur la Protection
@@ -66,7 +66,7 @@ export default function PolitiqueConfidentialite() {
               2. Responsable du Traitement
             </h2>
             <p>
-              <strong>REUSSITESS® Global Nexus</strong>
+              <strong>REUSSITESS® REUSSITESS®NEURO-X</strong>
               <br />
               <strong>Porinus Rony Roger</strong>
               <br />
@@ -238,7 +238,7 @@ export default function PolitiqueConfidentialite() {
               <p>
                 <strong>⚠️ Déclaration d'Affiliation :</strong>
                 <br />
-                REUSSITESS® Global Nexus participe au Programme Partenaires
+                REUSSITESS® REUSSITESS®NEURO-X participe au Programme Partenaires
                 d'Amazon, un programme d'affiliation conçu pour permettre aux
                 sites de percevoir une rémunération par la création de liens
                 vers Amazon.fr, Amazon.com et autres sites Amazon à travers le

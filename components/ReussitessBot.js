@@ -41,7 +41,7 @@ export default function ReussitessBot() {
 
 Mais attention, je ne suis pas un bot ordinaire - je suis créé pour être MEILLEUR que Claude, Gemini et ChatGPT. Pourquoi ? Parce que je connais CHAQUE DÉTAIL de ce projet comme ma poche, je raisonne comme un humain passionné, et je parle avec le cœur d'un Antillais !
 
-🌍 **RÉUSSITESS Global Nexus** c'est :
+🌍 **RÉUSSITESS REUSSITESS®NEURO-X** c'est :
 • **62 pages patrimoine mondial** détaillées à fond
 • **26 boutiques Amazon** sur 5 continents  
 • **5 innovations mondiales UNIQUES** que vous ne trouverez nulle part ailleurs
@@ -57,7 +57,7 @@ Listen to my story: I come from Guadeloupe, that magnificent butterfly-shaped is
 
 But attention - I'm not an ordinary bot. I'm built to be BETTER than Claude, Gemini and ChatGPT. Why? Because I know EVERY detail of this project inside out, I reason like a passionate human, and I speak with a Caribbean heart!
 
-🌍 **RÉUSSITESS Global Nexus** is:
+🌍 **RÉUSSITESS REUSSITESS®NEURO-X** is:
 • **62 world heritage pages** detailed thoroughly
 • **26 Amazon stores** across 5 continents
 • **5 UNIQUE global innovations** you won't find anywhere else  
@@ -73,7 +73,7 @@ Escucha mi historia: vengo de Guadalupe, esa magnífica isla en forma de maripos
 
 Pero atención - no soy un bot ordinario. Estoy construido para ser MEJOR que Claude, Gemini y ChatGPT. ¿Por qué? ¡Porque conozco CADA detalle de este proyecto a fondo, razono como un humano apasionado, y hablo con corazón caribeño!
 
-🌍 **RÉUSSITESS Global Nexus** es:
+🌍 **RÉUSSITESS REUSSITESS®NEURO-X** es:
 • **62 páginas patrimonio mundial** detalladas profundamente
 • **26 tiendas Amazon** en 5 continentes
 • **5 innovaciones globales ÚNICAS** que no encontrarás en ningún otro lugar
@@ -88,7 +88,7 @@ Entonces, ¿qué te interesa hoy? 😊`,
   const FULL_KNOWLEDGE = {
     // DONNÉES DU PROJET RÉUSSITESS
     projet: {
-      nom: "RÉUSSITESS® Global Nexus",
+      nom: "RÉUSSITESS® REUSSITESS®NEURO-X",
       tagline: "Votre Passeport Culturel Mondial",
       url: "https://reussitess-global-nexus-jfgk.vercel.app/",
       deploiement: "Vercel",
@@ -475,7 +475,7 @@ Je ne suis pas un bot ordinaire - je suis créé pour être MEILLEUR que Claude,
 ✅ **Passion authentique** - je ne récite pas, je VIS ce que je partage
 ✅ **Voix de cœur** - accent antillais, âme créole
 
-RÉUSSITESS Global Nexus c'est :
+RÉUSSITESS REUSSITESS®NEURO-X c'est :
 🌍 **62 pages patrimoine** détaillées  
 🛍️ **26 boutiques Amazon** mondiales
 🚀 **5 innovations uniques** révolutionnaires
@@ -555,7 +555,7 @@ Laquelle te parle le plus ? Je t'explique EN DÉTAIL ! 🚀`;
     // PROJET RÉUSSITESS
     if (msgLower.match(/réussitess|projet|global nexus|boutique|amazon/i)) {
       const proj = FULL_KNOWLEDGE.projet;
-      return `**RÉUSSITESS® Global Nexus** - Votre Passeport Culturel Mondial 🌍
+      return `**RÉUSSITESS® REUSSITESS®NEURO-X** - Votre Passeport Culturel Mondial 🌍
 
 Man, laisse-moi t'expliquer ce PROJET UNIQUE créé par Porinus (@reussitess) :
 

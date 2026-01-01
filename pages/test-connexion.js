@@ -95,7 +95,7 @@ export default function TestConnexion() {
   return (
     <>
       <Head>
-        <title>🔌 Test Connexion - Reussitess® Global Nexus</title>
+        <title>🔌 Test Connexion - Reussitess® REUSSITESS®NEURO-X</title>
       </Head>
 
       <div

@@ -145,7 +145,7 @@ export default function Footer() {
           <a href="mailto:influenceur@reussitess.fr">
             influenceur@reussitess.fr
           </a>{" "}
-          | © 2025 REUSSITESS® Global Nexus
+          | © 2025 REUSSITESS® REUSSITESS®NEURO-X
         </p>
         <div className="social-links">
           <a

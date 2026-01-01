@@ -7,7 +7,7 @@ export default function Document() {
         {/* SEO Essentiel */}
         <meta
           name="description"
-          content="REUSSITESS® Global Nexus - Hub central de 26 boutiques Amazon dans 14 pays. E-commerce global, analytics temps réel, programme affiliation."
+          content="REUSSITESS® REUSSITESS®NEURO-X - Hub central de 26 boutiques Amazon dans 14 pays. E-commerce global, analytics temps réel, programme affiliation."
         />
         <meta
           name="keywords"
@@ -17,7 +17,7 @@ export default function Document() {
         {/* Open Graph */}
         <meta
           property="og:title"
-          content="REUSSITESS® Global Nexus - 26 Boutiques Amazon • 14 Pays"
+          content="REUSSITESS® REUSSITESS®NEURO-X - 26 Boutiques Amazon • 14 Pays"
         />
         <meta
           property="og:description"
@@ -28,7 +28,7 @@ export default function Document() {
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="REUSSITESS® Global Nexus" />
+        <meta name="twitter:title" content="REUSSITESS® REUSSITESS®NEURO-X" />
         <meta
           name="twitter:description"
           content="26 boutiques Amazon • 14 pays • E-commerce global"
@@ -59,7 +59,7 @@ export default function Document() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "REUSSITESS® Global Nexus",
+              name: "REUSSITESS® REUSSITESS®NEURO-X",
               description: "Hub e-commerce global de boutiques Amazon",
               url: "https://reussitess-global-nexus-jfgk.vercel.app",
               numberOfEmployees: "26",

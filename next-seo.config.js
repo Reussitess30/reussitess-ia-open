@@ -1,5 +1,5 @@
 export default {
-  defaultTitle: 'REUSSITESS® Global Nexus - 26 Boutiques Amazon | Passeport de Réussite | VISA Universel',
+  defaultTitle: 'REUSSITESS® REUSSITESS®NEURO-X - 26 Boutiques Amazon | Passeport de Réussite | VISA Universel',
   titleTemplate: '%s | REUSSITESS®971 Guadeloupe',
   description: 'REUSSITESS® : 26 boutiques Amazon dans 14 pays, Passeport de Réussite (15,247+ champions), VISA Universel (10K+ bourses), Quiz gratuits, Bibliothèque mondiale. Excellence depuis la Guadeloupe 🇬🇵',
   
@@ -9,7 +9,7 @@ export default {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://reussitess-global-nexus-jfgk.vercel.app',
-    siteName: 'REUSSITESS® Global Nexus',
+    siteName: 'REUSSITESS® REUSSITESS®NEURO-X',
     title: 'REUSSITESS® - Excellence, Innovation, Succès depuis la Guadeloupe 🇬🇵',
     description: '26 boutiques Amazon mondiales | Passeport de Réussite | VISA Universel | 10K+ bourses | Quiz gratuits | Bibliothèque DOM-TOM',
     images: [
@@ -17,7 +17,7 @@ export default {
         url: 'https://reussitess-global-nexus-jfgk.vercel.app/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'REUSSITESS® Global Nexus',
+        alt: 'REUSSITESS® REUSSITESS®NEURO-X',
       }
     ],
   },

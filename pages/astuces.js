@@ -8,7 +8,7 @@ const Astuces = () => {
   return (
     <>
       <Head>
-        <title>Astuces & Solutions | REUSSITESS® Global Nexus</title>
+        <title>Astuces & Solutions | REUSSITESS® REUSSITESS®NEURO-X</title>
         <meta
           name="description"
           content="Astuces Amazon, business rentables, IA monétisation, remèdes naturels, plantes médicinales"

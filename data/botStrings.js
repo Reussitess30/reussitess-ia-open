@@ -1,6 +1,6 @@
 /**
  * data/botStrings.js
- * Centralisation minimale des textes du bot (REUSSITESS Global Nexus)
+ * Centralisation minimale des textes du bot (REUSSITESS REUSSITESS®NEURO-X)
  */
 
 const botStrings = {

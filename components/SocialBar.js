@@ -4,7 +4,7 @@ export default function SocialBar() {
   const [isOpen, setIsOpen] = useState(false);
   const url = typeof window !== "undefined" ? window.location.href : "";
   const title =
-    "REUSSITESS® Global Nexus - La référence mondiale e-commerce Amazon";
+    "REUSSITESS® REUSSITESS®NEURO-X - La référence mondiale e-commerce Amazon";
 
   const socials = [
     {

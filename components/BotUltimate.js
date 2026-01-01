@@ -928,8 +928,8 @@ export default function BotUltimate() {
   // BASE DE CONNAISSANCES ENRICHIE SUR VOTRE PROJET
   const knowledgeBase = {
     reussitess: {
-      titre: "REUSSITESS® Global Nexus",
-      contenu: `**REUSSITESS® Global Nexus** est un réseau d'affiliation Amazon international couvrant **26 boutiques** dans **14 pays** sur **5 continents** ! 🌍
+      titre: "REUSSITESS® REUSSITESS®NEURO-X",
+      contenu: `**REUSSITESS® REUSSITESS®NEURO-X** est un réseau d'affiliation Amazon international couvrant **26 boutiques** dans **14 pays** sur **5 continents** ! 🌍
       
       **Notre Mission :** Valoriser le savoir, la connaissance et la culture mondiale tout en créant une plateforme d'e-commerce globale.
       

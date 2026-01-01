@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 export default function SEOHead({
-  title = "REUSSITESS® Global Nexus",
+  title = "REUSSITESS® REUSSITESS®NEURO-X",
   description = "55 pages culturelles mondiales + 26 boutiques Amazon dans 14 pays sur 5 continents",
   path = "",
   country = "FR",
@@ -68,7 +68,7 @@ export default function SEOHead({
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: "REUSSITESS® Global Nexus",
+          name: "REUSSITESS® REUSSITESS®NEURO-X",
           url: baseUrl,
           description: description,
           inLanguage: [language],

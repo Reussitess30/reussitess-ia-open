@@ -4,7 +4,7 @@ export default function StructuredData() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "REUSSITESS® Global Nexus",
+    "name": "REUSSITESS® REUSSITESS®NEURO-X",
     "alternateName": "REUSSITESS®971",
     "url": "https://reussitess-global-nexus-jfgk.vercel.app",
     "logo": "https://reussitess-global-nexus-jfgk.vercel.app/logo.png",
@@ -43,7 +43,7 @@ export default function StructuredData() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "REUSSITESS® Global Nexus",
+    "name": "REUSSITESS® REUSSITESS®NEURO-X",
     "url": "https://reussitess-global-nexus-jfgk.vercel.app",
     "potentialAction": {
       "@type": "SearchAction",
@@ -55,7 +55,7 @@ export default function StructuredData() {
   const educationalSchema = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
-    "name": "REUSSITESS® Global Nexus",
+    "name": "REUSSITESS® REUSSITESS®NEURO-X",
     "description": "Bibliothèque mondiale de 55+ pages, 25 quiz gratuits, formations IA",
     "numberOfStudents": 15247,
     "areaServed": "Worldwide",

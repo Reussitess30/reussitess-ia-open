@@ -2,11 +2,11 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "RÉUSSITESS Global Nexus - 26 Boutiques Amazon • 14 Pays",
+  title: "RÉUSSITESS REUSSITESS®NEURO-X - 26 Boutiques Amazon • 14 Pays",
   description:
     "Guadeloupe → France USA Brésil Canada UK - Vos Boutiques Amazon personnelles",
   openGraph: {
-    title: "REUSSITESS Global Nexus",
+    title: "REUSSITESS REUSSITESS®NEURO-X",
     description: "26 Boutiques Amazon Guadeloupe 14 Pays",
     images: "/guadeloupe-26-boutiques.jpg",
     url: "https://reussitess-global-nexus-jfgk.vercel.app/",
@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "OnlineStore",
-              name: "REUSSITESS Global Nexus",
+              name: "REUSSITESS REUSSITESS®NEURO-X",
               url: "https://reussitess-global-nexus-jfgk.vercel.app/",
               areaServed: [
                 "FR",
