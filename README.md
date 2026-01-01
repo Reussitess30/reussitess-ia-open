@@ -1,36 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ⚔️ REUSSITESS© NEURO-X : L'ARMÉE SOUVERAINE
 
-## Getting Started
+**Origine :** Guadeloupe, Terres De Champions Positivité à l'infini Boudoum.
+**Offre Totale :** 1 000 000 000 (1 Milliard) REUSS
+**Contrat :** 0x4b3bFf4b58d22Ad363bb260e22032414d4CfdDB8
 
-First, run the development server:
+## 🛡️ SYSTÈME D'AUTO-RENFORCEMENT DES 200 IA
+Le projet Reussitess© n'est pas une simple crypto-monnaie, c'est une infrastructure de défense neurale divisée en 4 escadrons de 50 IA :
+1. **SENTINELLES :** Protection périmétrique des 14 pays.
+2. **CRYPT :** Sécurisation post-quantique des transferts.
+3. **INTERCEPTOR :** Neutralisation des IP hostiles.
+4. **ORACLE :** Gestion de la valeur et de la stabilité.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📈 ÉVOLUTION ACTIVE
+Chaque tentative d'intrusion déclenche une **auto-mutation** du code de défense. 
+> *Test de charge du 01/01/2026 : Statut Invincible confirmé.*
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Souveraineté :** France, Angleterre, Italie, Allemagne, Suède, Singapour, Australie, Espagne, Brésil, Royaume-Uni, Inde, Nouvelle-Zélande, États-Unis, Canada.
