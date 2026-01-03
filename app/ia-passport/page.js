@@ -54,7 +54,8 @@ export default function IAPassport() {
       links: [
         { text: 'Etherscan', url: 'https://etherscan.io' },
         { text: 'Polygon Scan', url: 'https://polygonscan.com' },
-        { text: 'CoinGecko', url: 'https://coingecko.com' }
+        { text: 'CoinGecko', url: 'https://coingecko.com' },
+        { text: 'ACHETER LE TOKEN (QuickSwap)', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' }
       ]
     },
     { 
