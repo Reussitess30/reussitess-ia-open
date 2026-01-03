@@ -79,6 +79,17 @@ export default function IAPassport() {
         { text: 'Make', url: 'https://make.com' },
         { text: 'n8n', url: 'https://n8n.io' }
       ]
+    },
+    { 
+      icon: '🛒', 
+      title: 'Acheter REUSS', 
+      desc: 'Obtenez vos tokens maintenant',
+      stats: ['QuickSwap', 'Instant', 'Polygon'],
+      links: [
+        { text: 'Acheter sur QuickSwap', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' },
+        { text: 'Voir le Pool', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
+        { text: 'PolygonScan', url: 'https://polygonscan.com/token/0xB37531727fC07c6EED4f97F852A115B428046EB2' }
+      ]
     }
   ]
 
@@ -147,7 +158,6 @@ export default function IAPassport() {
             Le Premier Passeport Universel IA
           </p>
 
-          {/* Features Grid */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
@@ -187,7 +197,6 @@ export default function IAPassport() {
                   {feature.desc}
                 </p>
 
-                {/* Stats */}
                 <div style={{
                   display: 'flex',
                   gap: '0.5rem',
@@ -209,7 +218,6 @@ export default function IAPassport() {
                   ))}
                 </div>
 
-                {/* Links */}
                 {selectedFeature === i && (
                   <div style={{
                     marginTop: '1.5rem',
@@ -261,7 +269,6 @@ export default function IAPassport() {
             ))}
           </div>
 
-          {/* Beta Form */}
           <div style={{
             background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%)',
             backdropFilter: 'blur(20px)',
@@ -345,7 +352,6 @@ export default function IAPassport() {
             )}
           </div>
 
-          {/* Footer */}
           <div style={{
             marginTop: '5rem',
             paddingTop: '3rem',
