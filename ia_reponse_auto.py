@@ -1,16 +1,26 @@
-# 📩 IA de Réponse Automatique Reussitess©
-# Support client mondial 24/7
+import random
 
-REPONSES_TYPES = {
-    "Japon": "Reussitess©へお問い合わせいただきありがとうございます。担当者がすぐにご連絡いたします。",
-    "Mexique": "Gracias por contactar a Reussitess©. Un asesor se pondrá en contacto con usted pronto.",
-    "France": "Merci d'avoir contacté Reussitess©. Un conseiller reviendra vers vous rapidement."
-}
-
-def generer_reponse_auto(langue_detectee):
-    reponse = REPONSES_TYPES.get(langue_detectee, REPONSES_TYPES["France"])
-    return f"🤖 [IA REUSSITESS©] : {reponse}"
+def reponse_automatique(pays_emetteur):
+    print(f"📩 [IA-REPONSE] Requête entrante détectée depuis : {pays_emetteur}")
+    
+    # Signature Maître Reussitess©
+    MASTER_ADDRESS = "0xB37531727fC07c6EED4f97F852A115B428046EB2"
+    
+    reponses = {
+        "France": "Connexion établie. Positivité à l'infini activée. BOUDOUM !",
+        "Belgique": "Succès Reussitess© confirmé. Bienvenue dans l'écosystème.",
+        "Brésil": "Sucesso total. Reussitess© operando com força.",
+        "Singapour": "Global Nexus Active. Security Protocol 0xB375 Verified.",
+        "Canada": "Protocole Nord-Américain validé. Progrès en cours."
+    }
+    
+    # Réponse par défaut pour les autres pays autorisés
+    message = reponses.get(pays_emetteur, "Signal Reussitess© reçu. Autorisation Maître OK.")
+    
+    print(f"✍️ Signature : {MASTER_ADDRESS}")
+    print(f"📢 Message envoyé : {message}")
+    print("🏁 Statut : RÉPONDU (BOUDOUM)")
 
 if __name__ == "__main__":
-    # Test de réponse pour un client Japonais
-    print(generer_reponse_auto("Japon"))
+    # Test sur votre nouvelle zone : la Belgique
+    reponse_automatique("Belgique")
