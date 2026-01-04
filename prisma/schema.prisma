@@ -1,0 +1,21 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./reussitess.db"
+}
+
+generator client {
+  provider             = "prisma-client-py"
+  recursive_type_depth = 5
+}
+
+model Country {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  code  String @unique
+}
+
+model TokenStatus {
+  id      Int    @id @default(autoincrement())
+  address String @unique
+  supply  String
+}

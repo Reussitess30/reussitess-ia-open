@@ -1,39 +1,7 @@
-# Dependencies
-node_modules/
-.pnp
-.pnp.js
-
-# Testing
-coverage/
-
-# Next.js
-.next/
-out/
-build/
-dist/
-
-# Environment
 .env
 .env.local
-.env.production
-*.key
-*.pem
-
-# Logs
-logs/
-*.log
-npm-debug.log*
-
-# OS
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-
-# Backup
-*.backup
-*.bak
-*.zip
+.next/
+node_modules/
 *.tar.gz
+*.log
+os-release
