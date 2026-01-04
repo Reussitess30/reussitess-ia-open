@@ -1,18 +1,16 @@
-# 🎭 Traducteur Fantôme Reussitess©
-# Traduction automatique sans changement visuel
+import random
 
-DICTIONNAIRE_MOTEUR = {
-    "Japon": {"Bienvenue": "ようこそ", "Succès": "成功"},
-    "Mexique": {"Bienvenue": "Bienvenido", "Succès": "Éxito"},
-    "France": {"Bienvenue": "Bienvenue", "Succès": "Succès"}
-}
-
-def traduire_contenu_invisible(texte, pays):
-    # Si le pays est dans notre dictionnaire, on traduit silencieusement
-    traduction = DICTIONNAIRE_MOTEUR.get(pays, {}).get(texte, texte)
-    return traduction
+def traduire_signal(message, pays_cible):
+    dictionnaire_positivite = {
+        "Belgique": "Succès infini (FR/NL)",
+        "Brésil": "Sucesso infinito (PT)",
+        "Inde": "अनंत सफलता (HI)",
+        "Allemagne": "Unendlicher Erfolg (DE)"
+    }
+    traduction = dictionnaire_positivite.get(pays_cible, "Success (Global)")
+    print(f"📡 [TRADUCTEUR] Conversion du signal pour {pays_cible}...")
+    return f"✨ {message} -> {traduction} (BOUDOUM!)"
 
 if __name__ == "__main__":
-    # Test d'invisibilité : L'interface ne change pas, seul le texte s'adapte
-    print(f"Test Japon : {traduire_contenu_invisible('Bienvenue', 'Japon')}")
-    print(f"Test France : {traduire_contenu_invisible('Bienvenue', 'France')}")
+    print(traduire_signal("Positivité à l'infini", "Belgique"))
+    print(traduire_signal("Positivité à l'infini", "Brésil"))
