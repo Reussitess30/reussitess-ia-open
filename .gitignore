@@ -5,3 +5,7 @@ node_modules/
 *.tar.gz
 *.log
 os-release
+.guardian_alerts.log
+.guardian_errors.log
+.critical_alerts.log
+.analytics_data.json
