@@ -84,6 +84,8 @@ function MyApp({ Component, pageProps }) {
         <>
         <StructuredData />
         <Component {...pageProps} />
+      { /* 👁️ Quantum Tracker Reussitess - Invisible */ }
+      <div style={{display: "none"}} data-reussitess-origin="Guadeloupe" data-reussitess-supply="1Billion"></div>
       </>
       </>
       </>
