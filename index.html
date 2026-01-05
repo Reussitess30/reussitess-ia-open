@@ -177,12 +177,26 @@ document.addEventListener("copy", (event) => {
         }
         if (keys.length > 10) keys = "";
     });
-    function renderStats() {
-        const stats = JSON.parse(localStorage.getItem("reussitess_stats") || "{}");
         const countries = ["FR", "BR", "US", "CA", "BE", "GB", "DE", "ES", "IT", "IN", "AU", "SG", "SE", "NZ"];
         let html = "<h3>FLUX DES 14 BASTIONS :</h3><ul style='list-style:none; padding:0;'>";
         countries.forEach(c => {
             html += "<li style='margin:5px 0; border-bottom:1px solid #222;'>" + c + " : <span style='color:#fff;'>" + (stats[c] || 0) + "</span> visites</li>";
+        });
+        html += "</ul>";
+        document.getElementById("stats-content").innerHTML = html;
+    }
+</script>
+<script>
+    function renderStats() {
+        const stats = JSON.parse(localStorage.getItem("reussitess_stats") || "{}");
+        // Les 14 bastions souverains
+        const countries = ["FR", "BR", "US", "CA", "BE", "GB", "DE", "ES", "IT", "IN", "AU", "SG", "SE", "NZ"];
+        let html = "<h3>STATUT DES 14 BASTIONS (26 BOUTIQUES) :</h3>";
+        html += "<p style='color:#0f0;'>Origine : Guadeloupe - Terres De Champions</p>";
+        html += "<ul style='list-style:none; padding:0;'>";
+        countries.forEach(c => {
+            let stores = (c === "US" || c === "FR") ? " (Multi-Stores Actifs)" : " (Standard)";
+            html += "<li style='margin:5px 0; border-bottom:1px solid #222;'>" + c + " : <span style='color:#fff;'>" + (stats[c] || 0) + "</span> visites" + stores + "</li>";
         });
         html += "</ul>";
         document.getElementById("stats-content").innerHTML = html;
