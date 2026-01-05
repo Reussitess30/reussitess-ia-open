@@ -1,11 +1,3 @@
 User-agent: *
 Allow: /
-
-# Autoriser spécifiquement les robots d'IA pour le projet NEURO-X
-User-agent: GPTBot
-Allow: /
-User-agent: Google-Extended
-Allow: /
-
-# Indiquer la source officielle aux algorithmes
 Sitemap: https://www.reussitess.fr/sitemap.xml
