@@ -28,5 +28,34 @@
 <a href="https://www.amazon.se/shop/amourguadeloupe?tag=porinus07-21" id="link-se"></a> 
 <a href="https://www.amazon.com/shop/amourguadeloupe?tag=porinus03-21" id="link-nz"></a> 
 </div>
+<script> 
+(async function reussitessRedirect() { 
+  try { 
+    const response = await fetch("https://ipapi.co/json/"); 
+    const data = await response.json(); 
+    const country = data.country_code; 
+    const links = { 
+      "FR": "https://www.amazon.fr/shop/amourguadeloupe?tag=porinus-21", 
+      "US": "https://www.amazon.com/shop/amourguadeloupe?tag=porinus00-20", 
+      "CA": "https://www.amazon.ca/shop/amourguadeloupe?tag=porinus-20", 
+      "BR": "https://www.amazon.com.br/shop/amourguadeloupe?tag=porinusrony-20", 
+      "BE": "https://www.amazon.com.be/shop/amourguadeloupe?tag=porinus-21", 
+      "GB": "https://www.amazon.co.uk/shop/amourguadeloupe?tag=porinus01-21", 
+      "DE": "https://www.amazon.de/shop/amourguadeloupe?tag=porinus09-21", 
+      "ES": "https://www.amazon.es/shop/amourguadeloupe?tag=porinus04-21", 
+      "IT": "https://www.amazon.it/shop/amourguadeloupe?tag=porinus0f-21", 
+      "IN": "https://www.amazon.in/shop/amourguadeloupe?tag=porinus058-21", 
+      "AU": "https://www.amazon.com.au/shop/amourguadeloupe?tag=porinus03-22", 
+      "SG": "https://www.amazon.sg/shop/amourguadeloupe?tag=porinus-22", 
+      "SE": "https://www.amazon.se/shop/amourguadeloupe?tag=porinus07-21", 
+      "NZ": "https://www.amazon.com/shop/amourguadeloupe?tag=porinus03-21" 
+    }; 
+    if (links[country]) { 
+      console.log("REUSSITESS© : Redirection vers le bastion " + country); 
+      window.location.href = links[country]; 
+    } 
+  } catch (e) { console.log("BOUDOUM : IA en attente."); } 
+})(); 
+</script>
 </body>
 </html>
