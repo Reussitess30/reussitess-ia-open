@@ -776,6 +776,49 @@ export default function IAPassport() {
             </div>
           </div>
 
+          {/* --- AMÉLIORATION TECHNIQUE REUSSITESS© --- */}
+          <div style={{
+            marginTop: '4rem',
+            padding: '4rem 2rem',
+            background: 'rgba(10, 10, 10, 0.8)',
+            border: '2px solid rgba(139, 92, 246, 0.3)',
+            borderRadius: '40px',
+            textAlign: 'left',
+            boxShadow: '0 20px 50px rgba(0,0,0,0.5)'
+          }}>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: '900', color: '#fff', marginBottom: '3rem', textAlign: 'center' }}>
+              🛠️ ARCHITECTURE TECHNIQUE COMPLÈTE
+            </h2>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+              <div style={{ background: 'rgba(255,255,255,0.02)', padding: '2rem', borderRadius: '25px', borderLeft: '5px solid #8b5cf6' }}>
+                <h3 style={{ color: '#a78bfa', marginBottom: '1rem' }}>1. Infrastructure APIs</h3>
+                <p style={{ color: '#94a3b8' }}>Plan technique pour chaque service (APIs, smart contracts, infrastructure cloud) optimisé pour les 14 pays partenaires.</p>
+              </div>
+
+              <div style={{ background: 'rgba(255,255,255,0.02)', padding: '2rem', borderRadius: '25px', borderLeft: '5px solid #10b981' }}>
+                <h3 style={{ color: '#34d399', marginBottom: '1rem' }}>2. Smart Contracts</h3>
+                <p style={{ color: '#94a3b8' }}>Contrats audités pour le Staking, NFT ID biométrique, DAO spatiale et Quantum Pool automatisé.</p>
+              </div>
+
+              <div style={{ background: 'rgba(255,255,255,0.02)', padding: '2rem', borderRadius: '25px', borderLeft: '5px solid #3b82f6' }}>
+                <h3 style={{ color: '#60a5fa', marginBottom: '1rem' }}>3. Intégrations IA</h3>
+                <p style={{ color: '#94a3b8' }}>Connexions natives ultra-rapides aux APIs OpenAI (GPT-4), Anthropic (Claude), Google (Gemini) et DeepL.</p>
+              </div>
+            </div>
+
+            <div style={{ marginTop: '3rem', padding: '2rem', background: 'rgba(245, 158, 11, 0.05)', borderRadius: '25px', border: '1px dashed #f59e0b' }}>
+              <h3 style={{ color: '#fbbf24', marginBottom: '1rem' }}>🚀 Roadmap & Partenariats</h3>
+              <p style={{ color: '#e2e8f0' }}>Implémentation progressive : Phase 1 (Prioritaire), Phase 2 (Avancée), Phase 3 (Futuriste). Liste des partenaires stratégiques disponible via le Quantum ID.</p>
+            </div>
+            
+            <div style={{ marginTop: '3rem', textAlign: 'center' }}>
+               <p style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#10b981' }}>💡 PAR QUEL SERVICE VOULEZ-VOUS COMMENCER ?</p>
+               <p style={{ color: '#94a3b8' }}>✅ AI Universal Brain | ✅ Real-Time Translator | ✅ Quantum Pool</p>
+            </div>
+          </div>
+          {/* --- FIN AMÉLIORATION --- */}
+
           {/* Footer */}
           <div style={{
             marginTop: '6rem',

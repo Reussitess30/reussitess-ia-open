@@ -1,0 +1,53 @@
+╔══════════════════════════════════════════════════════════╗
+║        🎯 GUIDE RAPIDE - TRANSFERT DES TOKENS           ║
+╚══════════════════════════════════════════════════════════╝
+
+ÉTAPE 1: Envoyer du POL pour les frais
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Commande:
+$ node send_pol_to_address1.js
+
+Vous allez entrer:
+→ Clé privée de l'ADRESSE 2 (celle qui a 0.23 POL)
+
+Résultat:
+✅ 0.01 POL envoyé à l'adresse 1
+✅ L'adresse 1 peut maintenant payer les frais
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ÉTAPE 2: Transférer tous les tokens
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Commande:
+$ node transfer_all_tokens.js
+
+Vous allez entrer:
+→ Clé privée de l'ADRESSE 1 (celle qui a les tokens)
+
+Résultat:
+✅ 1 milliard de REUSS transféré vers l'adresse 2
+✅ Tous vos tokens sur l'adresse 2 maintenant!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️  IMPORTANT:
+• Les clés privées ne sont JAMAIS enregistrées
+• Vérifiez toujours les adresses avant de confirmer
+• Ne partagez JAMAIS vos clés privées
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RÉSULTAT FINAL:
+
+AVANT:
+├─ Adresse 1: 1,000,000,000 REUSS + 0 POL
+└─ Adresse 2: 0 REUSS + 0.23 POL
+
+APRÈS:
+├─ Adresse 1: 0 REUSS + ~0.009 POL
+└─ Adresse 2: 1,000,000,000 REUSS + ~0.22 POL
+
+✅ CONTRÔLE TOTAL SUR L'ADRESSE 2!
+
