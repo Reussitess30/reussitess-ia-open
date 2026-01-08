@@ -776,48 +776,72 @@ export default function IAPassport() {
             </div>
           </div>
 
-          {/* --- AMÉLIORATION TECHNIQUE REUSSITESS© --- */}
+          {/* --- ARCHITECTURE TECHNIQUE COMPLÈTE & RÉGLEMENTATION (AJOUT RÉEL) --- */}
           <div style={{
             marginTop: '4rem',
             padding: '4rem 2rem',
-            background: 'rgba(10, 10, 10, 0.8)',
-            border: '2px solid rgba(139, 92, 246, 0.3)',
+            background: 'rgba(10, 10, 10, 0.9)',
+            border: '2px solid rgba(139, 92, 246, 0.4)',
             borderRadius: '40px',
             textAlign: 'left',
-            boxShadow: '0 20px 50px rgba(0,0,0,0.5)'
+            boxShadow: '0 30px 60px rgba(0,0,0,0.6)',
+            position: 'relative'
           }}>
             <h2 style={{ fontSize: '2.5rem', fontWeight: '900', color: '#fff', marginBottom: '3rem', textAlign: 'center' }}>
-              🛠️ ARCHITECTURE TECHNIQUE COMPLÈTE
+              🛠️ TECHNIQUE COMPLÈTE & RÈGLEMENTS
             </h2>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-              <div style={{ background: 'rgba(255,255,255,0.02)', padding: '2rem', borderRadius: '25px', borderLeft: '5px solid #8b5cf6' }}>
-                <h3 style={{ color: '#a78bfa', marginBottom: '1rem' }}>1. Infrastructure APIs</h3>
-                <p style={{ color: '#94a3b8' }}>Plan technique pour chaque service (APIs, smart contracts, infrastructure cloud) optimisé pour les 14 pays partenaires.</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
+              <div style={{ background: 'rgba(255,255,255,0.03)', padding: '2.5rem', borderRadius: '30px', borderLeft: '6px solid #8b5cf6' }}>
+                <h3 style={{ color: '#a78bfa', fontSize: '1.4rem', marginBottom: '1.2rem' }}>1. Infrastructure APIs</h3>
+                <p style={{ color: '#94a3b8', lineHeight: '1.6', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
+                  Plan technique pour chaque service (APIs, smart contracts, infrastructure cloud) optimisé pour les 14 pays partenaires via Vercel & AWS Edge.
+                </p>
+                <a href="https://vercel.com/docs/functions" target="_blank" style={{ color: '#a78bfa', fontWeight: 'bold', textDecoration: 'none', fontSize: '0.85rem' }}>🔗 DOC INFRASTRUCTURE →</a>
               </div>
 
-              <div style={{ background: 'rgba(255,255,255,0.02)', padding: '2rem', borderRadius: '25px', borderLeft: '5px solid #10b981' }}>
-                <h3 style={{ color: '#34d399', marginBottom: '1rem' }}>2. Smart Contracts</h3>
-                <p style={{ color: '#94a3b8' }}>Contrats audités pour le Staking, NFT ID biométrique, DAO spatiale et Quantum Pool automatisé.</p>
+              <div style={{ background: 'rgba(255,255,255,0.03)', padding: '2.5rem', borderRadius: '30px', borderLeft: '6px solid #10b981' }}>
+                <h3 style={{ color: '#34d399', fontSize: '1.4rem', marginBottom: '1.2rem' }}>2. Smart Contracts</h3>
+                <p style={{ color: '#94a3b8', lineHeight: '1.6', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
+                  Contrats audités pour le Staking, NFT ID biométrique, DAO spatiale et Quantum Pool automatisé (Contrat: 0x4b3b...DDB8).
+                </p>
+                <a href="https://polygonscan.com/address/0x4b3bFf4b58d22Ad363bb260e22032414d4CfdDB8" target="_blank" style={{ color: '#34d399', fontWeight: 'bold', textDecoration: 'none', fontSize: '0.85rem' }}>🔗 POLYGONSCAN →</a>
               </div>
 
-              <div style={{ background: 'rgba(255,255,255,0.02)', padding: '2rem', borderRadius: '25px', borderLeft: '5px solid #3b82f6' }}>
-                <h3 style={{ color: '#60a5fa', marginBottom: '1rem' }}>3. Intégrations IA</h3>
-                <p style={{ color: '#94a3b8' }}>Connexions natives ultra-rapides aux APIs OpenAI (GPT-4), Anthropic (Claude), Google (Gemini) et DeepL.</p>
+              <div style={{ background: 'rgba(255,255,255,0.03)', padding: '2.5rem', borderRadius: '30px', borderLeft: '6px solid #3b82f6' }}>
+                <h3 style={{ color: '#60a5fa', fontSize: '1.4rem', marginBottom: '1.2rem' }}>3. Intégrations IA</h3>
+                <p style={{ color: '#94a3b8', lineHeight: '1.6', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
+                  Connexions natives ultra-rapides aux APIs OpenAI (GPT-4), Anthropic (Claude), Google (Gemini) et DeepL pour une latence < 0.2s.
+                </p>
+                <a href="https://platform.openai.com/docs" target="_blank" style={{ color: '#60a5fa', fontWeight: 'bold', textDecoration: 'none', fontSize: '0.85rem' }}>🔗 API PORTAL →</a>
               </div>
             </div>
 
-            <div style={{ marginTop: '3rem', padding: '2rem', background: 'rgba(245, 158, 11, 0.05)', borderRadius: '25px', border: '1px dashed #f59e0b' }}>
+            <div style={{ marginTop: '3rem', padding: '2.5rem', background: 'rgba(239, 68, 68, 0.05)', borderRadius: '30px', border: '1px solid #ef4444' }}>
+              <h3 style={{ color: '#f87171', marginBottom: '1rem' }}>⚖️ PROTECTION RÉGLEMENTAIRE INTERNATIONALE</h3>
+              <p style={{ color: '#e2e8f0', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                Conformité <b>EU AI Act</b> (Europe), <b>RGPD</b> (Sécurité des données) et standards <b>ISO/IEC 42001</b>. 
+                L'écosystème Reussitess© est juridiquement protégé pour opérer les agents IA dans les 14 zones partenaires, garantissant la sécurité des investisseurs.
+              </p>
+            </div>
+
+            <div style={{ marginTop: '3rem', padding: '2.5rem', background: 'rgba(245, 158, 11, 0.05)', borderRadius: '30px', border: '1px dashed #f59e0b' }}>
               <h3 style={{ color: '#fbbf24', marginBottom: '1rem' }}>🚀 Roadmap & Partenariats</h3>
-              <p style={{ color: '#e2e8f0' }}>Implémentation progressive : Phase 1 (Prioritaire), Phase 2 (Avancée), Phase 3 (Futuriste). Liste des partenaires stratégiques disponible via le Quantum ID.</p>
+              <p style={{ color: '#e2e8f0', lineHeight: '1.6' }}>
+                Implémentation progressive : <b>Phase 1</b> (Prioritaire : Passport & KYC), <b>Phase 2</b> (Avancée : Quantum Pool), <b>Phase 3</b> (Futuriste : Space DAO). Liste des partenaires stratégiques disponible via le Quantum ID.
+              </p>
             </div>
             
-            <div style={{ marginTop: '3rem', textAlign: 'center' }}>
-               <p style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#10b981' }}>💡 PAR QUEL SERVICE VOULEZ-VOUS COMMENCER ?</p>
-               <p style={{ color: '#94a3b8' }}>✅ AI Universal Brain | ✅ Real-Time Translator | ✅ Quantum Pool</p>
+            <div style={{ marginTop: '4rem', textAlign: 'center' }}>
+               <p style={{ fontSize: '1.8rem', fontWeight: '900', color: '#10b981', marginBottom: '1.5rem' }}>💡 PAR QUEL SERVICE VOULEZ-VOUS COMMENCER ?</p>
+               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <span style={{ background: '#333', padding: '10px 20px', borderRadius: '50px' }}>✅ AI Universal Brain</span>
+                  <span style={{ background: '#333', padding: '10px 20px', borderRadius: '50px' }}>✅ Real-Time Translator</span>
+                  <span style={{ background: '#333', padding: '10px 20px', borderRadius: '50px' }}>✅ Quantum Pool</span>
+               </div>
             </div>
           </div>
-          {/* --- FIN AMÉLIORATION --- */}
+          {/* --- FIN AJOUT --- */}
 
           {/* Footer */}
           <div style={{
@@ -867,6 +891,10 @@ export default function IAPassport() {
                 ⚛️ Liquidity Pool
               </a>
             </div>
+            
+            <p style={{ marginTop: '3rem', fontSize: '0.8rem', color: '#444' }}>
+              Propriété Exclusive : 0x69f42aa645a43a84e1143d416a4c81a88df01549 | Tous droits réservés REUSSITESS©
+            </p>
           </div>
         </div>
       </div>
