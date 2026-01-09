@@ -1,0 +1,11 @@
+'use client'
+import { Wallet, TrendingUp, Flame, Lock, ExternalLink, CheckCircle, Sparkles } from 'lucide-react'
+
+// Déclaration TypeScript pour MetaMask
+declare global {
+  interface Window {
+    ethereum?: any
+  }
+}
+
+import { useState, useEffect } from 'react'
