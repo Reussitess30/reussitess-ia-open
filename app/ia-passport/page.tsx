@@ -13,7 +13,7 @@ import { useState, useEffect } from 'react'
 export default function IAPassport() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
-  const [selectedFeature, setSelectedFeature] = useState(null)
+  const [selectedFeature, setSelectedFeature] = useState<number | null>(null)
   const [walletConnected, setWalletConnected] = useState(false)
   const [walletAddress, setWalletAddress] = useState('')
   const [reussBalance, setReussBalance] = useState(0)
