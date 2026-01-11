@@ -1,3 +1,6 @@
 💸 [REVENU] Pays: France | Montant: 150 EUR | TOTAL: 150.00€
 💸 [REVENU] Pays: Japon | Montant: 50000 JPY | TOTAL: 325.00€
 💸 [REVENU] Pays: Mexique | Montant: 2500 MXN | TOTAL: 135.00€
+💸 [REVENU] Pays: France | Montant: 150 EUR | TOTAL: 150.00€
+💸 [REVENU] Pays: Japon | Montant: 50000 JPY | TOTAL: 325.00€
+💸 [REVENU] Pays: Mexique | Montant: 2500 MXN | TOTAL: 135.00€
