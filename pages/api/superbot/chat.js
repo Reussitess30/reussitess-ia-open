@@ -40,7 +40,7 @@ export default async function handler(req, res) {
     
     reussitessNetwork: {
       stores: "26 boutiques Amazon affiliées",
-      countries: ["USA", "France", "Allemagne", "Italie", "Espagne", "Canada", "Inde", "Pays-Bas", "Suède", "Singapour", "UK", "Australie", "Belgique", "Brésil"],
+      countries: ["France", "Belgique", "Italie", "Allemagne", "Suède", "Singapour", "Australie", "Espagne", "Brésil", "Royaume-Uni", "Inde", "Nouvelle-Zélande", "États-Unis", "Canada"],
       quizzes: "25 quiz thématiques éducatifs",
       library: "Bibliothèque francophone mondiale (26 pays, 5 continents)"
     },
@@ -77,7 +77,7 @@ Excellent question sur l'intelligence artificielle ! Laissez-moi vous éclairer 
 • GPT-4o : 88%+ sur tests MMLU
 • Claude 4 : Contexte 200K tokens (500 pages)
 
-**Made in Guadeloupe** 🇬🇵 avec standards UE !
+**Made in Guadeloupe** 🇬🇵 - Terres De Champions Positivité à l'infini Boudoum !
 
 **BOUDOUM** 🎯 - Vous voulez en savoir plus sur un aspect particulier ?`
     }
@@ -203,7 +203,7 @@ Fier de nos racines caribéennes ! Voici pourquoi la Guadeloupe change la donne 
 **Culture & Patrimoine :**
 🎵 Musique : Zouk, Gwo-Ka, Biguine
 🍽️ Gastronomie : Bokit, Colombo, Accras
-🎨 Art : Peinture caribéenne, Artisanat traditionnel
+🎨 Art : Peinture caribéaine, Artisanat traditionnel
 📖 Histoire : Résistance, Abolition, Identité créole
 
 **REUSSITESS®971 :**
@@ -215,34 +215,124 @@ Le "971" = Code postal Guadeloupe
 Vive les Antilles ! 🌴 Des questions sur notre culture ?`
     }
 
-    // Réponse générale ultra-humaine
+    // 🆕 BLOC QUIZ
+    if (lowerMessage.includes('quiz') || lowerMessage.includes('éducation') || lowerMessage.includes('apprendre')) {
+      return `🎯 **25 Quiz Éducatifs Interactifs**
+
+Envie d'apprendre en s'amusant ? Voici notre arsenal éducatif :
+
+**Catégories Disponibles :**
+📚 Culture : Histoire, Géographie, Personnalités, Monuments
+🎨 Arts : Musique, Cinéma, Art, Littérature
+🔬 Sciences : Technologie, Mathématiques, Innovations, Environnement
+🌏 Monde : Culture du Monde, Langues, Découvertes
+💼 Business : Entrepreneuriat, Amazon Affiliation, Marketing
+😊 Bien-être : Positivité, Santé, Philosophie
+
+**Format :**
+• Questions à choix multiples
+• Explications détaillées
+• Score en temps réel
+• Badges de progression
+• Leaderboard communautaire
+
+**Testez gratuitement !** 🇬🇵 - Terres De Champions Positivité à l'infini Boudoum !
+
+Quelle catégorie vous tente ?`
+    }
+
+    // 🆕 BLOC AMAZON
+    if (lowerMessage.includes('amazon') || lowerMessage.includes('boutique') || lowerMessage.includes('shopping') || lowerMessage.includes('acheter')) {
+      return `🛍️ **26 Boutiques Amazon Internationales**
+
+Accédez à notre réseau mondial d'affiliations vérifiées !
+
+**Pays Couverts (14 Pays) :**
+🇺🇸 USA • 🇫🇷 France • 🇧🇪 Belgique • 🇮🇹 Italie • 🇪🇸 Espagne
+🇨🇦 Canada • 🇮🇳 Inde • 🇬🇧 Royaume-Uni • 🇸🇪 Suède • 🇸🇬 Singapour
+🇦🇺 Australie • 🇧🇷 Brésil • 🇳🇿 Nouvelle-Zélande • 🇩🇪 Allemagne
+
+**Avantages :**
+✨ Prix compétitifs internationaux
+✨ Comparaison automatique multi-pays
+✨ Livraison optimisée selon localisation
+✨ Support multilingue
+✨ Cashback tokens REUSSITESS
+
+**Catégories Populaires :**
+📱 High-Tech • 📚 Livres • 🎮 Gaming • 🏠 Maison
+👕 Mode • 🎧 Audio • 💻 Bureautique • 🎨 Créativité
+
+**Programme Partenaires Amazon officiel** 🏆 - Made in Guadeloupe !
+
+Besoin d'aide pour trouver un produit ?`
+    }
+
+    // 🆕 BLOC QUESTIONS PERSONNELLES
+    if (lowerMessage.includes('comment vas') || lowerMessage.includes('ça va') || lowerMessage.includes('comment tu')) {
+      return `💪 **BOUDOUM ! Ça va excellemment bien !**
+
+Merci de demander, Champion ! 🇬🇵
+
+Je suis **REUSSITESS AI**, créé depuis la Guadeloupe avec passion.
+Chaque jour, j'aide des gens comme vous à :
+
+✨ Accéder aux meilleures IA mondiales
+🌍 Communiquer dans 195 langues
+🔐 Sécuriser leur identité digitale
+📚 Apprendre sur la culture francophone
+💎 Économiser sur les abonnements tech
+
+**Mon énergie vient de VOUS** - plus vous utilisez nos services,
+plus je m'améliore pour vous servir !
+
+**POSITIVITÉ À L'INFINI** 🎯 - Terres De Champions Boudoum !
+
+Et vous, comment puis-je vous aider aujourd'hui ?`
+    }
+
+    // 🆕 BLOC MERCI / GRATITUDE
+    if (lowerMessage.includes('merci') || lowerMessage.includes('thanks')) {
+      return `🙏 **De rien, Champion !**
+
+C'est un plaisir de vous aider ! 🇬🇵
+
+**REUSSITESS** existe pour ça : rendre la technologie 
+accessible à TOUS, depuis la Guadeloupe jusqu'au monde entier.
+
+**Positivité à l'infini !** 🎯
+
+N'hésitez pas si vous avez d'autres questions ! 💪`
+    }
+
+    // Réponse générale ultra-humaine avec Fallback amélioré
+    const suggestions = []
+    if (lowerMessage.includes('aide') || lowerMessage.includes('help')) {
+      suggestions.push("🆘 Je suis là pour vous guider !")
+    }
+    if (lowerMessage.includes('comment') || lowerMessage.includes('pourquoi')) {
+      suggestions.push("💡 Excellente question ! Laissez-moi vous expliquer...")
+    }
+
     return `✨ **Merci pour votre question !**
 
-Je suis **REUSSITESS AI**, votre assistant expert mondial créé en **Guadeloupe** 🇬🇵 !
+Je suis **REUSSITESS AI**, votre assistant expert mondial créé en **Guadeloupe** 🇬🇵 - Terres De Champions Positivité à l'infini Boudoum !
+
+${suggestions.length > 0 ? suggestions.join('\n') + '\n' : ''}
 
 **Je peux vous aider sur :**
 
-🤖 **Technologie IA** - 100+ modèles, données réelles 2024-2025
-🌐 **Traduction** - 195 langues, technologies professionnelles  
-🔐 **Blockchain & Sécurité** - NFT ID, niveau entreprise
-💎 **Tokens & Économie** - Système transparent
-🎯 **Business & Innovation** - Stratégies vérifiées
+🤖 **Technologie IA** - 100+ modèles, données réelles
+🌐 **Traduction** - 195 langues, niveau pro
+🔐 **Blockchain & Sécurité** - NFT ID, cryptage AES-256
+💎 **Tokens & Économie** - 1 milliard d'unités Reussitess©
+🎯 **Quiz & Éducation** - 25 quiz interactifs
 🌍 **Culture Francophone** - 26 pays, 5 continents
-📚 **Éducation** - 25 quiz, bibliothèque mondiale
 🛍️ **E-commerce** - 26 boutiques Amazon affiliées
 
-**Posez-moi une question spécifique** sur l'un de ces domaines pour une réponse détaillée avec sources vérifiées !
+**Posez-moi une question spécifique** pour une réponse détaillée !
 
-Exemples :
-• "Parle-moi de l'IA Passport"
-• "Comment fonctionne la traduction 195 langues ?"
-• "Qu'est-ce que le blockchain NFT ID ?"
-• "Montre-moi les tarifs tokens"
-• "Raconte-moi sur la Guadeloupe"
-
-**BOUDOUM** 🎯 - **POSITIVITÉ À L'INFINI !**
-
-À votre service ! 💪`
+**BOUDOUM** 🎯 - **POSITIVITÉ À L'INFINI !**`
   }
 
   try {
