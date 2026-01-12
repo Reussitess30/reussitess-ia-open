@@ -3,7 +3,6 @@ import { useState } from 'react'
 
 export default function IAPassport() {
   const [showFortune, setShowFortune] = useState(false)
-  
   const countries = ['🇬🇵 Guadeloupe', '🇫🇷 France', '🇧🇪 Belgique', '🇮🇹 Italie', '🇩🇪 Allemagne', '🇸🇪 Suède', '🇸🇬 Singapour', '🇦🇺 Australie', '🇪🇸 Espagne', '🇧🇷 Brésil', '🇮🇳 Inde', '🇳🇿 Nouvelle-Zélande', '🇺🇸 États-Unis', '🇨🇦 Canada']
 
   return (
@@ -12,6 +11,7 @@ export default function IAPassport() {
         <div style={{ fontSize: '5rem' }}>🌍</div>
         <h1 style={{ color: '#10b981', fontSize: '3rem', fontWeight: '900' }}>IA PASSPORT</h1>
         <p style={{ letterSpacing: '2px' }}>VÉRITÉ PROUVÉE - REUSSITESS©</p>
+        <p style={{ fontSize: '0.8rem', color: '#666' }}>Guadeloupe - Terres De Champions</p>
       </div>
 
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
