@@ -1,5 +1,5 @@
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
+// Police locale;
+// Utilisation police système;
 
 export const metadata = {
   title: "RÉUSSITESS REUSSITESS®NEURO-X - 26 Boutiques Amazon • 14 Pays",
@@ -62,7 +62,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body style={{ fontFamily: "sans-serif" }}>{children}</body>
     </html>
   );
 }
