@@ -3,15 +3,19 @@ import { useState } from 'react'
 
 export default function IAPassport() {
   const [showFortune, setShowFortune] = useState(false)
+  
+  const CONTRACT_GAMMA = "0xB37531727fC07c6EED4f97F852A115B428046EB2"
+  const POOL_ADDRESS = "0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c"
+  const PROJECT_URL = "https://github.com/Reussitess30/reussitess-global-nexus"
+  
   const countries = ['🇬🇵 Guadeloupe', '🇫🇷 France', '🇧🇪 Belgique', '🇮🇹 Italie', '🇩🇪 Allemagne', '🇸🇪 Suède', '🇸🇬 Singapour', '🇦🇺 Australie', '🇪🇸 Espagne', '🇧🇷 Brésil', '🇮🇳 Inde', '🇳🇿 Nouvelle-Zélande', '🇺🇸 États-Unis', '🇨🇦 Canada']
 
   return (
     <div style={{ minHeight: '100vh', background: '#0a0a0a', color: 'white', fontFamily: 'monospace', padding: '2rem' }}>
       <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-        <div style={{ fontSize: '5rem' }}>🌍</div>
         <h1 style={{ color: '#10b981', fontSize: '3rem', fontWeight: '900' }}>IA PASSPORT</h1>
-        <p style={{ letterSpacing: '2px' }}>VÉRITÉ PROUVÉE - REUSSITESS©</p>
-        <p style={{ fontSize: '0.8rem', color: '#666' }}>Guadeloupe - Terres De Champions</p>
+        <p style={{ color: '#10b981' }}>GUADELOUPE : TERRES DE CHAMPIONS 🇬🇵</p>
+        <p style={{ fontSize: '0.8rem', opacity: 0.7 }}>Source : <a href={PROJECT_URL} target="_blank" style={{ color: '#10b981' }}>GitHub Officiel</a></p>
       </div>
 
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
@@ -23,29 +27,26 @@ export default function IAPassport() {
         
         {showFortune && (
           <div style={{ marginTop: '2rem', padding: '2rem', border: '2px solid #10b981', borderRadius: '20px', textAlign: 'left', background: 'rgba(16, 185, 129, 0.1)', maxWidth: '800px', margin: '2rem auto' }}>
-            <h3 style={{ color: '#10b981' }}>📊 AUDIT RÉEL DES 200 IA</h3>
-            <p>• Fortune : 1 000 000 000 REUSS détectés.</p>
-            <p>• Blockchain : Polygon (78+ mouvements certifiés).</p>
-            <p>• Réglementation : Conforme EU AI Act & RGPD (14 pays).</p>
+            <h3 style={{ color: '#10b981' }}>📊 AUDIT RÉEL (POLYGON POS)</h3>
+            <p>• <b>Contrat Jeton (GAMMA) :</b> {CONTRACT_GAMMA}</p>
+            <p>• <b>Pool Liquidité :</b> {POOL_ADDRESS}</p>
+            <p>• <b>Offre Totale :</b> 1 000 000 000 REUSSITESS©</p>
             <div style={{ color: '#ff4444', border: '1px solid red', padding: '15px', marginTop: '15px', fontWeight: 'bold' }}>
-              🛡️ GAZ : UTILISATION INTERDITE SANS AUTORISATION MANUELLE
+              🛡️ GAZ : UTILISATION INTERDITE SANS AUTORISATION MANUELLE (REUSSITESS©)
             </div>
           </div>
         )}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem', marginBottom: '4rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '1rem' }}>
         {countries.map((c, i) => (
           <div key={i} style={{ padding: '10px', border: '1px solid #333', textAlign: 'center', borderRadius: '10px', background: '#111' }}>{c}</div>
         ))}
       </div>
 
-      <footer style={{ textAlign: 'center', borderTop: '1px solid #222', paddingTop: '2rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', color: '#10b981' }}>
-          <span style={{ width: '10px', height: '10px', background: '#10b981', borderRadius: '50%', boxShadow: '0 0 10px #10b981' }}></span>
-          <p>IA LOGIC : ACTIVE (SURVEILLANCE INFLUENCEUR@REUSSITESS.FR)</p>
-        </div>
-        <p style={{ marginTop: '1rem', fontWeight: 'bold' }}>POSITIVITÉ À L'INFINI 🎯 BOUDOUM !</p>
+      <footer style={{ textAlign: 'center', marginTop: '4rem', opacity: 0.8 }}>
+        <p>POSITIVITÉ À L'INFINI 🎯 BOUDOUM !</p>
+        <p>© 2026 Reussitess©GlobalNexus</p>
       </footer>
     </div>
   )
