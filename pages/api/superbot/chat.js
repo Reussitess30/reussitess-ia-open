@@ -40,7 +40,7 @@ export default async function handler(req, res) {
     
     reussitessNetwork: {
       stores: "26 boutiques Amazon affiliées",
-      countries: ["USA", "France", "Allemagne", "Italie", "Espagne", "Canada", "Inde", "Pays-Bas", "Suède", "Singapour", "UK", "Australie", "Belgique", "Brésil"],
+      countries: ["France", "Belgique", "Italie", "Allemagne", "Suède", "Singapour", "Australie", "Espagne", "Brésil", "Royaume-Uni", "Inde", "Nouvelle-Zélande", "États-Unis", "Canada"],
       quizzes: "25 quiz thématiques éducatifs",
       library: "Bibliothèque francophone mondiale (26 pays, 5 continents)"
     },
@@ -213,6 +213,203 @@ Le "971" = Code postal Guadeloupe
 **Excellence • Innovation • Succès** - Made with ❤️ in Guadeloupe !
 
 Vive les Antilles ! 🌴 Des questions sur notre culture ?`
+    }
+
+    // 🆕 BLOC QUIZ - AJOUTÉ
+    if (lowerMessage.includes('quiz') || lowerMessage.includes('éducation') || lowerMessage.includes('apprendre') || lowerMessage.includes('test') || lowerMessage.includes('connaissance')) {
+      return `🎯 **25 Quiz Éducatifs Interactifs**
+
+Envie d'apprendre en s'amusant ? Voici notre arsenal éducatif **REUSSITESS** !
+
+**📚 Catégories Disponibles :**
+
+**CULTURE & HISTOIRE :**
+📖 Histoire mondiale • 🌍 Géographie • 👤 Personnalités • 🏰 Monuments
+🌏 Culture du Monde • 🗣️ Langues • 🔭 Découvertes
+
+**ARTS & DIVERTISSEMENT :**
+🎵 Musique • 🎬 Cinéma • 🎨 Art • 📚 Littérature
+
+**SCIENCES & TECH :**
+🔬 Sciences • 💻 Technologie • 🔢 Mathématiques 
+💡 Innovations • 🌱 Environnement
+
+**VIE & SOCIÉTÉ :**
+💼 Business • 🛍️ Amazon Affiliation • ⚕️ Santé
+😊 Positivité • 🤔 Philosophie • 🏛️ Politique
+
+**🎮 Format Interactif :**
+• Questions à choix multiples
+• Explications détaillées après chaque réponse
+• Score en temps réel
+• Badges de progression
+• Leaderboard communautaire
+• Difficulté adaptative
+
+**🏆 Gamification :**
+Gagnez des **tokens REUSSITESS** en jouant !
+• 1 quiz complet = 5 tokens
+• Score parfait = 10 tokens bonus
+• Streak 7 jours = 50 tokens
+
+**Made in Guadeloupe** 🇬🇵 avec passion éducative !
+
+**BOUDOUM** 🎯 - Quelle catégorie vous intéresse ?`
+    }
+
+    // 🆕 BLOC AMAZON - AJOUTÉ
+    if (lowerMessage.includes('amazon') || lowerMessage.includes('boutique') || lowerMessage.includes('shopping') || lowerMessage.includes('acheter') || lowerMessage.includes('produit') || lowerMessage.includes('store')) {
+      return `🛍️ **26 Boutiques Amazon Internationales**
+
+Accédez à notre **réseau mondial** d'affiliations vérifiées !
+
+**🌍 14 Pays Couverts (26 Boutiques) :**
+
+**AMÉRIQUES :**
+🇺🇸 USA (Amazon.com)
+🇨🇦 Canada (Amazon.ca)
+🇧🇷 Brésil (Amazon.com.br)
+
+**EUROPE :**
+🇫🇷 France (Amazon.fr) - Notre hub principal 🇬🇵
+🇩🇪 Allemagne (Amazon.de)
+🇮🇹 Italie (Amazon.it)
+🇪🇸 Espagne (Amazon.es)
+🇬🇧 Royaume-Uni (Amazon.co.uk)
+🇳🇱 Pays-Bas (Amazon.nl)
+🇸🇪 Suède (Amazon.se)
+🇧🇪 Belgique (Amazon.be)
+
+**ASIE-PACIFIQUE :**
+🇮🇳 Inde (Amazon.in)
+🇸🇬 Singapour (Amazon.sg)
+🇦🇺 Australie (Amazon.com.au)
+
+**✨ Avantages Réseau REUSSITESS :**
+• **Comparaison prix** automatique multi-pays
+• **Livraison optimisée** selon votre localisation
+• **Support multilingue** (14 langues)
+• **Cashback tokens** sur tous achats
+• **Curation experte** par catégorie
+• **Programme Partenaires Amazon officiel** ✅
+
+**🎯 Catégories Populaires :**
+📱 High-Tech & Électronique
+📚 Livres & Éducation
+🎮 Gaming & Consoles
+🏠 Maison & Décoration
+👕 Mode & Accessoires
+🎧 Audio & Musique
+💻 Bureautique & Productivité
+🎨 Arts & Créativité
+⚽ Sport & Fitness
+🍽️ Cuisine & Gastronomie
+
+**💎 Comment ça marche :**
+1. Choisissez votre pays
+2. Parcourez nos sélections curées
+3. Achetez sur Amazon normalement
+4. Recevez tokens REUSSITESS automatiquement !
+
+**Programme Affiliation Transparent :** En tant qu'Affilié Amazon, nous réalisons un bénéfice sur les achats qualifiés. Merci de soutenir REUSSITESS ! 🙏
+
+**BOUDOUM** 🎯 - Quel pays/catégorie vous intéresse ?`
+    }
+
+    // 🆕 BLOC BIBLIOTHÈQUE - AJOUTÉ
+    if (lowerMessage.includes('bibliothèque') || lowerMessage.includes('livre') || lowerMessage.includes('lecture') || lowerMessage.includes('francophonie') || lowerMessage.includes('culture francophone')) {
+      return `📚 **Bibliothèque Francophone Mondiale**
+
+La plus grande collection culturelle francophone digitale !
+
+**🌍 26 Pays - 5 Continents Couverts :**
+
+**DOM-TOM (Notre Cœur) :**
+🇬🇵 Guadeloupe • 🇲🇶 Martinique • 🇬🇫 Guyane
+🇷🇪 Réunion • 🇾🇹 Mayotte • 🇵🇫 Polynésie Française
+🇳🇨 Nouvelle-Calédonie • 🇵🇲 Saint-Pierre-et-Miquelon
+
+**AFRIQUE :**
+🇸🇳 Sénégal • 🇨🇲 Cameroun • 🇨🇮 Côte d'Ivoire
+🇲🇬 Madagascar • 🇨🇩 RDC • 🇷🇼 Rwanda • 🇲🇱 Mali
+🇧🇯 Bénin • 🇹🇬 Togo • 🇬🇦 Gabon
+
+**AMÉRIQUES :**
+🇭🇹 Haïti • 🇨🇦 Québec (Canada) • 🇺🇸 Louisiane (USA)
+
+**EUROPE :**
+🇫🇷 France • 🇧🇪 Belgique • 🇨🇭 Suisse
+🇱🇺 Luxembourg • 🇲🇨 Monaco
+
+**MAGHREB & MOYEN-ORIENT :**
+🇲🇦 Maroc • 🇹🇳 Tunisie • 🇩🇿 Algérie • 🇱🇧 Liban
+
+**ASIE-PACIFIQUE :**
+🇻🇳 Vietnam • 🇰🇭 Cambodge • 🇱🇦 Laos • 🇻🇺 Vanuatu
+
+**📖 Collections Thématiques :**
+
+**LITTÉRATURE :**
+• Classiques francophones (Césaire, Senghor, Damas)
+• Littérature caribéenne contemporaine
+• Romans africains primés
+• Poésie créole et orale
+• Théâtre francophone
+
+**HISTOIRE & PATRIMOINE :**
+• Histoire coloniale et post-coloniale
+• Mouvements d'indépendance
+• Négritude et créolité
+• Patrimoine UNESCO francophone
+• Archives numériques
+
+**CULTURE & TRADITIONS :**
+• Musiques traditionnelles (Gwoka, Zouk, Mbalax, Raï)
+• Gastronomie régionale
+• Artisanat et savoir-faire
+• Contes et légendes orales
+• Fêtes et célébrations
+
+**LANGUES :**
+• Créole guadeloupéen, martiniquais, haïtien
+• Wolof, Bambara, Lingala
+• Dialectes berbères
+• Vietnamien francophone
+
+**🎯 Fonctionnalités :**
+✨ Recherche multilingue intelligente
+✨ Recommandations personnalisées
+✨ Audio-livres et podcasts culturels
+✨ Traduction contextuelle 195 langues
+✨ Annotations collaboratives
+✨ Préservation numérique patrimoine
+
+**Made in Guadeloupe** 🇬🇵 - Préservons notre richesse culturelle !
+
+**BOUDOUM** 🎯 - Quelle culture voulez-vous explorer ?`
+    }
+
+    // 🆕 BLOC SALUTATIONS - AJOUTÉ
+    if (lowerMessage.includes('bonjour') || lowerMessage.includes('salut') || lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+      return `👋 **Bonjour Champion !**
+
+**BOUDOUM** 🎯 Bienvenue chez **REUSSITESS** !
+
+Je suis votre assistant IA créé avec passion depuis la **Guadeloupe** 🇬🇵 !
+
+**✨ Comment puis-je vous aider aujourd'hui ?**
+
+**Mes expertises :**
+🤖 **Intelligence Artificielle** (100+ modèles)
+🌐 **Traduction Universelle** (195 langues)
+🔐 **Blockchain & Sécurité**
+🎯 **Quiz Éducatifs** (25 thèmes)
+📚 **Bibliothèque Mondiale** (26 pays)
+🛍️ **Amazon International** (14 pays)
+
+**Posez-moi une question ou choisissez un domaine !**
+
+**BOUDOUM** 🎯 - **POSITIVITÉ À L'INFINI !**`
     }
 
     // Réponse générale ultra-humaine
