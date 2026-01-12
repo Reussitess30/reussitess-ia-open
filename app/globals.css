@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; box-shadow: 0 0 20px rgba(16, 185, 129, 0.2); }
+  50% { opacity: 1; box-shadow: 0 0 40px rgba(16, 185, 129, 0.6); }
+}
+
+.ia-log-entry {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Effet de mouvement pour le milliard de REUSS */
+.burn-counter {
+  font-variant-numeric: tabular-nums;
+  transition: all 0.5s ease-in-out;
+}
