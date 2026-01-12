@@ -1,0 +1,1824 @@
+{
+  "timestamp": "2026-01-12T14:32:17.380353",
+  "tests": [
+    {
+      "name": "Ports exposés",
+      "ports": [],
+      "count": 0
+    },
+    {
+      "name": "Secrets exposés",
+      "files": [
+        {
+          "file": "find_all_delegations.py",
+          "type": "API Key",
+          "count": 1
+        },
+        {
+          "file": "find_all_delegations.py",
+          "type": "Token",
+          "count": 1
+        },
+        {
+          "file": "reussitess_seal.py",
+          "type": "Secret Key",
+          "count": 1
+        },
+        {
+          "file": "check_status.py",
+          "type": "API Key",
+          "count": 1
+        },
+        {
+          "file": "publish_source_v3.py",
+          "type": "API Key",
+          "count": 1
+        },
+        {
+          "file": "check_ticket_v2.py",
+          "type": "API Key",
+          "count": 1
+        },
+        {
+          "file": "check_market_readiness.py",
+          "type": "Token",
+          "count": 1
+        },
+        {
+          "file": "global_boost.py",
+          "type": "Token",
+          "count": 1
+        },
+        {
+          "file": "check_exact_balances.js",
+          "type": "Token",
+          "count": 2
+        },
+        {
+          "file": "full_contract_investigation.js",
+          "type": "Token",
+          "count": 1
+        },
+        {
+          "file": "transfer_without_pol_on_address1.js",
+          "type": "Token",
+          "count": 2
+        },
+        {
+          "file": "reussitess_v2/control_v2/REUSS_V2.js",
+          "type": "Token",
+          "count": 1
+        },
+        {
+          "file": "reussitess-ia-api/server/index.js",
+          "type": "API Key",
+          "count": 1
+        }
+      ],
+      "count": 13
+    },
+    {
+      "name": "Permissions dangereuses",
+      "files": [],
+      "count": 0
+    },
+    {
+      "name": "Risques d'injection",
+      "findings": [
+        {
+          "file": "reussitess_dashboard.py",
+          "function": "os.system(",
+          "type": "OS system",
+          "occurrences": 1
+        },
+        {
+          "file": "reussitess_security_audit.py",
+          "function": "exec(",
+          "type": "Python exec",
+          "occurrences": 2
+        },
+        {
+          "file": "reussitess_security_audit.py",
+          "function": "eval(",
+          "type": "Eval",
+          "occurrences": 2
+        },
+        {
+          "file": "reussitess_security_audit.py",
+          "function": "subprocess.call(",
+          "type": "Subprocess call",
+          "occurrences": 1
+        },
+        {
+          "file": "reussitess_security_audit.py",
+          "function": "os.system(",
+          "type": "OS system",
+          "occurrences": 2
+        },
+        {
+          "file": "reussitess_security_audit.py",
+          "function": "shell=True",
+          "type": "Shell injection",
+          "occurrences": 1
+        },
+        {
+          "file": "reussitess_security_audit.py",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": "reussitess_security_audit.py",
+          "function": "innerHTML =",
+          "type": "DOM XSS",
+          "occurrences": 1
+        },
+        {
+          "file": "components/BotAssistant.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": "components/BotAssistant.old.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": "components/ReussitessAI.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": "components/ReussitessBot.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": "components/BotAssistant.AVANT_AJOUTS.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": "components/BotAssistant.backup.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": "components/BotAssistant.original.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": "components/StructuredData.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 4
+        },
+        {
+          "file": "pages/_document.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": "public/script.js",
+          "function": "innerHTML =",
+          "type": "DOM XSS",
+          "occurrences": 4
+        },
+        {
+          "file": "app/layout.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 2
+        },
+        {
+          "file": "lib/generatePDF.js",
+          "function": "innerHTML =",
+          "type": "DOM XSS",
+          "occurrences": 1
+        },
+        {
+          "file": "public/reussitess971_v2/script.js",
+          "function": "innerHTML =",
+          "type": "DOM XSS",
+          "occurrences": 5
+        },
+        {
+          "file": ".next/server/chunks/2341.js",
+          "function": "exec(",
+          "type": "Python exec",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/chunks/2341.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 12
+        },
+        {
+          "file": ".next/server/chunks/549.js",
+          "function": "exec(",
+          "type": "Python exec",
+          "occurrences": 4
+        },
+        {
+          "file": ".next/server/chunks/4233.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 7
+        },
+        {
+          "file": ".next/server/chunks/6761.js",
+          "function": "exec(",
+          "type": "Python exec",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/chunks/4690.js",
+          "function": "exec(",
+          "type": "Python exec",
+          "occurrences": 4
+        },
+        {
+          "file": ".next/server/chunks/4690.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/chunks/1813.js",
+          "function": "exec(",
+          "type": "Python exec",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/chunks/8387.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 5
+        },
+        {
+          "file": ".next/server/chunks/8237.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/chunks/3181.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 3
+        },
+        {
+          "file": ".next/server/pages/_error.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 2
+        },
+        {
+          "file": ".next/server/pages/_document.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/404.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/affiliation.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/airpods.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/analytics.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/astuces.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/certificat.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/index.before-coach.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/investir-reuss.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/legal.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/outils-calculateurs.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/passe-port-mondial.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/politique-confidentialite.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/presse.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/pwa-app.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/quiz.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/test-connexion.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/test-hub.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/vamazon.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/histoire.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/outils.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/prof.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/reglementation.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/afrique/senegal.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/afrique/cameroun.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/afrique/cote-ivoire.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/afrique/madagascar.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/afrique/mali.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/afrique/rdc.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/afrique/rwanda.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/ameriques/haiti.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/ameriques/louisiane.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/ameriques/quebec.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/asie-pacifique/cambodge.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/asie-pacifique/inde.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/asie-pacifique/laos.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/asie-pacifique/vanuatu.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/asie-pacifique/vietnam.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/dom-tom/guadeloupe.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/dom-tom/guyane.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/dom-tom/martinique.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/dom-tom/mayotte.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/dom-tom/nouvelle-caledonie.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/dom-tom/polynesie.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/dom-tom/reunion.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/dom-tom/saint-barthelemy.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/dom-tom/saint-martin.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/dom-tom/saint-pierre.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/dom-tom/wallis-futuna.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/europe/belgique.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/europe/luxembourg.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/europe/monaco.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/europe/suisse.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/maghreb/algerie.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/maghreb/liban.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/maghreb/maroc.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/maghreb/tunisie.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/pays/fr.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/pays/guadeloupe.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/pays/guyane.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/pages/bibliotheque/pays/martinique.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/server/app/_not-found/page.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 2
+        },
+        {
+          "file": ".next/static/chunks/polyfills-42372ed130431b0a.js",
+          "function": "exec(",
+          "type": "Python exec",
+          "occurrences": 4
+        },
+        {
+          "file": ".next/static/chunks/main-89e8ada6a75cc645.js",
+          "function": "exec(",
+          "type": "Python exec",
+          "occurrences": 5
+        },
+        {
+          "file": ".next/static/chunks/main-89e8ada6a75cc645.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 9
+        },
+        {
+          "file": ".next/static/chunks/5414.efdee4708373633d.js",
+          "function": "exec(",
+          "type": "Python exec",
+          "occurrences": 5
+        },
+        {
+          "file": ".next/static/chunks/framework-ce757b396f77691a.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 12
+        },
+        {
+          "file": ".next/static/chunks/4163ae0c.7018b5720c221e63.js",
+          "function": "exec(",
+          "type": "Python exec",
+          "occurrences": 4
+        },
+        {
+          "file": ".next/static/chunks/4bd1b696-43ba64781d20dbb7.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 12
+        },
+        {
+          "file": ".next/static/chunks/643144ee-e5f684098252e0e1.js",
+          "function": "exec(",
+          "type": "Python exec",
+          "occurrences": 7
+        },
+        {
+          "file": ".next/static/chunks/8773-32f3ca1dd7bd26b8.js",
+          "function": "exec(",
+          "type": "Python exec",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/static/chunks/3794-b16d22429af19980.js",
+          "function": "exec(",
+          "type": "Python exec",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/static/chunks/3794-b16d22429af19980.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 2
+        },
+        {
+          "file": ".next/static/chunks/app/page-a037814803c24996.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/static/chunks/pages/_app-ae1c9b5427c1bb1c.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 6
+        },
+        {
+          "file": ".next/static/chunks/app/_not-found/page-c8807a6129959e3e.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        },
+        {
+          "file": ".next/static/chunks/app/ia-passport/page-24fa08895935297d.js",
+          "function": "dangerouslySetInnerHTML",
+          "type": "XSS React",
+          "occurrences": 1
+        }
+      ],
+      "count": 111
+    },
+    {
+      "name": "NPM Audit",
+      "critical": 1,
+      "high": 3,
+      "moderate": 0,
+      "low": 0
+    },
+    {
+      "name": "Logs sensibles",
+      "files": [
+        {
+          "file": "build-normalize.log",
+          "patterns": [
+            "token"
+          ]
+        }
+      ],
+      "count": 1
+    },
+    {
+      "name": "API Endpoints",
+      "endpoints": [
+        {
+          "path": "/",
+          "file": "moteur_v2.py",
+          "framework": "Flask"
+        },
+        {
+          "path": "/",
+          "file": "reussitess-ia-api/server/index.js",
+          "framework": "Express"
+        },
+        {
+          "path": "/health",
+          "file": "reussitess-ia-api/server/index.js",
+          "framework": "Express"
+        },
+        {
+          "path": "/api/docs",
+          "file": "reussitess-ia-api/server/index.js",
+          "framework": "Express"
+        },
+        {
+          "path": "/api/auth/register",
+          "file": "reussitess-ia-api/server/index.js",
+          "framework": "Express"
+        },
+        {
+          "path": "/api/v1/translate",
+          "file": "reussitess-ia-api/server/index.js",
+          "framework": "Express"
+        }
+      ],
+      "total_count": 6
+    },
+    {
+      "name": "Protection IA",
+      "active": [
+        "bouclier_fantome.py",
+        "ia_contre_tracage.py",
+        "ia_diversion_leurre.py",
+        "mode_sommeil_reussitess.py"
+      ],
+      "count": 4,
+      "expected": 4
+    },
+    {
+      "name": "Sécurité Database",
+      "issues": [
+        "reussitess_security_audit.py",
+        "reussitess_security_audit.py",
+        "reussitess_security_audit.py"
+      ],
+      "count": 3
+    },
+    {
+      "name": "Sécurité Web",
+      "cors_issues": 7,
+      "security_headers": 2
+    }
+  ],
+  "vulnerabilities": [
+    {
+      "title": "API Key exposé dans le code",
+      "severity": "CRITICAL",
+      "description": "Secret détecté en clair dans find_all_delegations.py",
+      "file": "find_all_delegations.py",
+      "timestamp": "2026-01-12T14:32:17.395540"
+    },
+    {
+      "title": "Token exposé dans le code",
+      "severity": "CRITICAL",
+      "description": "Secret détecté en clair dans find_all_delegations.py",
+      "file": "find_all_delegations.py",
+      "timestamp": "2026-01-12T14:32:17.395770"
+    },
+    {
+      "title": "Secret Key exposé dans le code",
+      "severity": "CRITICAL",
+      "description": "Secret détecté en clair dans reussitess_seal.py",
+      "file": "reussitess_seal.py",
+      "timestamp": "2026-01-12T14:32:17.396230"
+    },
+    {
+      "title": "API Key exposé dans le code",
+      "severity": "CRITICAL",
+      "description": "Secret détecté en clair dans check_status.py",
+      "file": "check_status.py",
+      "timestamp": "2026-01-12T14:32:17.401133"
+    },
+    {
+      "title": "API Key exposé dans le code",
+      "severity": "CRITICAL",
+      "description": "Secret détecté en clair dans publish_source_v3.py",
+      "file": "publish_source_v3.py",
+      "timestamp": "2026-01-12T14:32:17.402331"
+    },
+    {
+      "title": "API Key exposé dans le code",
+      "severity": "CRITICAL",
+      "description": "Secret détecté en clair dans check_ticket_v2.py",
+      "file": "check_ticket_v2.py",
+      "timestamp": "2026-01-12T14:32:17.411961"
+    },
+    {
+      "title": "Token exposé dans le code",
+      "severity": "CRITICAL",
+      "description": "Secret détecté en clair dans check_market_readiness.py",
+      "file": "check_market_readiness.py",
+      "timestamp": "2026-01-12T14:32:17.413670"
+    },
+    {
+      "title": "Token exposé dans le code",
+      "severity": "CRITICAL",
+      "description": "Secret détecté en clair dans global_boost.py",
+      "file": "global_boost.py",
+      "timestamp": "2026-01-12T14:32:17.413890"
+    },
+    {
+      "title": "Token exposé dans le code",
+      "severity": "CRITICAL",
+      "description": "Secret détecté en clair dans check_exact_balances.js",
+      "file": "check_exact_balances.js",
+      "timestamp": "2026-01-12T14:32:17.699983"
+    },
+    {
+      "title": "Token exposé dans le code",
+      "severity": "CRITICAL",
+      "description": "Secret détecté en clair dans full_contract_investigation.js",
+      "file": "full_contract_investigation.js",
+      "timestamp": "2026-01-12T14:32:17.714527"
+    },
+    {
+      "title": "Token exposé dans le code",
+      "severity": "CRITICAL",
+      "description": "Secret détecté en clair dans transfer_without_pol_on_address1.js",
+      "file": "transfer_without_pol_on_address1.js",
+      "timestamp": "2026-01-12T14:32:17.716128"
+    },
+    {
+      "title": "Token exposé dans le code",
+      "severity": "CRITICAL",
+      "description": "Secret détecté en clair dans reussitess_v2/control_v2/REUSS_V2.js",
+      "file": "reussitess_v2/control_v2/REUSS_V2.js",
+      "timestamp": "2026-01-12T14:32:18.919802"
+    },
+    {
+      "title": "API Key exposé dans le code",
+      "severity": "CRITICAL",
+      "description": "Secret détecté en clair dans reussitess-ia-api/server/index.js",
+      "file": "reussitess-ia-api/server/index.js",
+      "timestamp": "2026-01-12T14:32:18.931183"
+    },
+    {
+      "title": "Fonction dangereuse: os.system(",
+      "severity": "HIGH",
+      "description": "1x OS system trouvé dans reussitess_dashboard.py",
+      "file": "reussitess_dashboard.py",
+      "timestamp": "2026-01-12T14:32:20.607137"
+    },
+    {
+      "title": "Fonction dangereuse: exec(",
+      "severity": "HIGH",
+      "description": "2x Python exec trouvé dans reussitess_security_audit.py",
+      "file": "reussitess_security_audit.py",
+      "timestamp": "2026-01-12T14:32:20.608230"
+    },
+    {
+      "title": "Fonction dangereuse: eval(",
+      "severity": "HIGH",
+      "description": "2x Eval trouvé dans reussitess_security_audit.py",
+      "file": "reussitess_security_audit.py",
+      "timestamp": "2026-01-12T14:32:20.608280"
+    },
+    {
+      "title": "Fonction dangereuse: subprocess.call(",
+      "severity": "MEDIUM",
+      "description": "1x Subprocess call trouvé dans reussitess_security_audit.py",
+      "file": "reussitess_security_audit.py",
+      "timestamp": "2026-01-12T14:32:20.608305"
+    },
+    {
+      "title": "Fonction dangereuse: os.system(",
+      "severity": "HIGH",
+      "description": "2x OS system trouvé dans reussitess_security_audit.py",
+      "file": "reussitess_security_audit.py",
+      "timestamp": "2026-01-12T14:32:20.608334"
+    },
+    {
+      "title": "Fonction dangereuse: shell=True",
+      "severity": "MEDIUM",
+      "description": "1x Shell injection trouvé dans reussitess_security_audit.py",
+      "file": "reussitess_security_audit.py",
+      "timestamp": "2026-01-12T14:32:20.608361"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans reussitess_security_audit.py",
+      "file": "reussitess_security_audit.py",
+      "timestamp": "2026-01-12T14:32:20.608382"
+    },
+    {
+      "title": "Fonction dangereuse: innerHTML =",
+      "severity": "MEDIUM",
+      "description": "1x DOM XSS trouvé dans reussitess_security_audit.py",
+      "file": "reussitess_security_audit.py",
+      "timestamp": "2026-01-12T14:32:20.608435"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans components/BotAssistant.js",
+      "file": "components/BotAssistant.js",
+      "timestamp": "2026-01-12T14:32:20.879862"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans components/BotAssistant.old.js",
+      "file": "components/BotAssistant.old.js",
+      "timestamp": "2026-01-12T14:32:20.881663"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans components/ReussitessAI.js",
+      "file": "components/ReussitessAI.js",
+      "timestamp": "2026-01-12T14:32:20.883930"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans components/ReussitessBot.js",
+      "file": "components/ReussitessBot.js",
+      "timestamp": "2026-01-12T14:32:20.884831"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans components/BotAssistant.AVANT_AJOUTS.js",
+      "file": "components/BotAssistant.AVANT_AJOUTS.js",
+      "timestamp": "2026-01-12T14:32:20.887186"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans components/BotAssistant.backup.js",
+      "file": "components/BotAssistant.backup.js",
+      "timestamp": "2026-01-12T14:32:20.890429"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans components/BotAssistant.original.js",
+      "file": "components/BotAssistant.original.js",
+      "timestamp": "2026-01-12T14:32:20.892758"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "4x XSS React trouvé dans components/StructuredData.js",
+      "file": "components/StructuredData.js",
+      "timestamp": "2026-01-12T14:32:20.893260"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans pages/_document.js",
+      "file": "pages/_document.js",
+      "timestamp": "2026-01-12T14:32:20.895568"
+    },
+    {
+      "title": "Fonction dangereuse: innerHTML =",
+      "severity": "MEDIUM",
+      "description": "4x DOM XSS trouvé dans public/script.js",
+      "file": "public/script.js",
+      "timestamp": "2026-01-12T14:32:20.900908"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "2x XSS React trouvé dans app/layout.js",
+      "file": "app/layout.js",
+      "timestamp": "2026-01-12T14:32:20.901475"
+    },
+    {
+      "title": "Fonction dangereuse: innerHTML =",
+      "severity": "MEDIUM",
+      "description": "1x DOM XSS trouvé dans lib/generatePDF.js",
+      "file": "lib/generatePDF.js",
+      "timestamp": "2026-01-12T14:32:20.901896"
+    },
+    {
+      "title": "Fonction dangereuse: innerHTML =",
+      "severity": "MEDIUM",
+      "description": "5x DOM XSS trouvé dans public/reussitess971_v2/script.js",
+      "file": "public/reussitess971_v2/script.js",
+      "timestamp": "2026-01-12T14:32:21.239416"
+    },
+    {
+      "title": "Fonction dangereuse: exec(",
+      "severity": "HIGH",
+      "description": "1x Python exec trouvé dans .next/server/chunks/2341.js",
+      "file": ".next/server/chunks/2341.js",
+      "timestamp": "2026-01-12T14:32:21.255533"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "12x XSS React trouvé dans .next/server/chunks/2341.js",
+      "file": ".next/server/chunks/2341.js",
+      "timestamp": "2026-01-12T14:32:21.255792"
+    },
+    {
+      "title": "Fonction dangereuse: exec(",
+      "severity": "HIGH",
+      "description": "4x Python exec trouvé dans .next/server/chunks/549.js",
+      "file": ".next/server/chunks/549.js",
+      "timestamp": "2026-01-12T14:32:21.256510"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "7x XSS React trouvé dans .next/server/chunks/4233.js",
+      "file": ".next/server/chunks/4233.js",
+      "timestamp": "2026-01-12T14:32:21.257005"
+    },
+    {
+      "title": "Fonction dangereuse: exec(",
+      "severity": "HIGH",
+      "description": "1x Python exec trouvé dans .next/server/chunks/6761.js",
+      "file": ".next/server/chunks/6761.js",
+      "timestamp": "2026-01-12T14:32:21.257124"
+    },
+    {
+      "title": "Fonction dangereuse: exec(",
+      "severity": "HIGH",
+      "description": "4x Python exec trouvé dans .next/server/chunks/4690.js",
+      "file": ".next/server/chunks/4690.js",
+      "timestamp": "2026-01-12T14:32:21.259919"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/chunks/4690.js",
+      "file": ".next/server/chunks/4690.js",
+      "timestamp": "2026-01-12T14:32:21.261030"
+    },
+    {
+      "title": "Fonction dangereuse: exec(",
+      "severity": "HIGH",
+      "description": "1x Python exec trouvé dans .next/server/chunks/1813.js",
+      "file": ".next/server/chunks/1813.js",
+      "timestamp": "2026-01-12T14:32:21.261578"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "5x XSS React trouvé dans .next/server/chunks/8387.js",
+      "file": ".next/server/chunks/8387.js",
+      "timestamp": "2026-01-12T14:32:21.263351"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/chunks/8237.js",
+      "file": ".next/server/chunks/8237.js",
+      "timestamp": "2026-01-12T14:32:21.263758"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "3x XSS React trouvé dans .next/server/chunks/3181.js",
+      "file": ".next/server/chunks/3181.js",
+      "timestamp": "2026-01-12T14:32:21.263959"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "2x XSS React trouvé dans .next/server/pages/_error.js",
+      "file": ".next/server/pages/_error.js",
+      "timestamp": "2026-01-12T14:32:21.264375"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/_document.js",
+      "file": ".next/server/pages/_document.js",
+      "timestamp": "2026-01-12T14:32:21.264463"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/404.js",
+      "file": ".next/server/pages/404.js",
+      "timestamp": "2026-01-12T14:32:21.264561"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/affiliation.js",
+      "file": ".next/server/pages/affiliation.js",
+      "timestamp": "2026-01-12T14:32:21.264761"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/airpods.js",
+      "file": ".next/server/pages/airpods.js",
+      "timestamp": "2026-01-12T14:32:21.264862"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/analytics.js",
+      "file": ".next/server/pages/analytics.js",
+      "timestamp": "2026-01-12T14:32:21.265039"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/astuces.js",
+      "file": ".next/server/pages/astuces.js",
+      "timestamp": "2026-01-12T14:32:21.265555"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque.js",
+      "file": ".next/server/pages/bibliotheque.js",
+      "timestamp": "2026-01-12T14:32:21.265722"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/certificat.js",
+      "file": ".next/server/pages/certificat.js",
+      "timestamp": "2026-01-12T14:32:21.266065"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/index.before-coach.js",
+      "file": ".next/server/pages/index.before-coach.js",
+      "timestamp": "2026-01-12T14:32:21.269458"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/investir-reuss.js",
+      "file": ".next/server/pages/investir-reuss.js",
+      "timestamp": "2026-01-12T14:32:21.269788"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/legal.js",
+      "file": ".next/server/pages/legal.js",
+      "timestamp": "2026-01-12T14:32:21.270564"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/outils-calculateurs.js",
+      "file": ".next/server/pages/outils-calculateurs.js",
+      "timestamp": "2026-01-12T14:32:21.271121"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/passe-port-mondial.js",
+      "file": ".next/server/pages/passe-port-mondial.js",
+      "timestamp": "2026-01-12T14:32:21.271357"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/politique-confidentialite.js",
+      "file": ".next/server/pages/politique-confidentialite.js",
+      "timestamp": "2026-01-12T14:32:21.271520"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/presse.js",
+      "file": ".next/server/pages/presse.js",
+      "timestamp": "2026-01-12T14:32:21.271650"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/pwa-app.js",
+      "file": ".next/server/pages/pwa-app.js",
+      "timestamp": "2026-01-12T14:32:21.271779"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/quiz.js",
+      "file": ".next/server/pages/quiz.js",
+      "timestamp": "2026-01-12T14:32:21.271876"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/test-connexion.js",
+      "file": ".next/server/pages/test-connexion.js",
+      "timestamp": "2026-01-12T14:32:21.272190"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/test-hub.js",
+      "file": ".next/server/pages/test-hub.js",
+      "timestamp": "2026-01-12T14:32:21.272282"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/vamazon.js",
+      "file": ".next/server/pages/vamazon.js",
+      "timestamp": "2026-01-12T14:32:21.272447"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/histoire.js",
+      "file": ".next/server/pages/bibliotheque/histoire.js",
+      "timestamp": "2026-01-12T14:32:21.274574"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/outils.js",
+      "file": ".next/server/pages/bibliotheque/outils.js",
+      "timestamp": "2026-01-12T14:32:21.274716"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/prof.js",
+      "file": ".next/server/pages/bibliotheque/prof.js",
+      "timestamp": "2026-01-12T14:32:21.274878"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/reglementation.js",
+      "file": ".next/server/pages/bibliotheque/reglementation.js",
+      "timestamp": "2026-01-12T14:32:21.275043"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/afrique/senegal.js",
+      "file": ".next/server/pages/bibliotheque/afrique/senegal.js",
+      "timestamp": "2026-01-12T14:32:21.276721"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/afrique/cameroun.js",
+      "file": ".next/server/pages/bibliotheque/afrique/cameroun.js",
+      "timestamp": "2026-01-12T14:32:21.276850"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/afrique/cote-ivoire.js",
+      "file": ".next/server/pages/bibliotheque/afrique/cote-ivoire.js",
+      "timestamp": "2026-01-12T14:32:21.276973"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/afrique/madagascar.js",
+      "file": ".next/server/pages/bibliotheque/afrique/madagascar.js",
+      "timestamp": "2026-01-12T14:32:21.277098"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/afrique/mali.js",
+      "file": ".next/server/pages/bibliotheque/afrique/mali.js",
+      "timestamp": "2026-01-12T14:32:21.277219"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/afrique/rdc.js",
+      "file": ".next/server/pages/bibliotheque/afrique/rdc.js",
+      "timestamp": "2026-01-12T14:32:21.277341"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/afrique/rwanda.js",
+      "file": ".next/server/pages/bibliotheque/afrique/rwanda.js",
+      "timestamp": "2026-01-12T14:32:21.277479"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/ameriques/haiti.js",
+      "file": ".next/server/pages/bibliotheque/ameriques/haiti.js",
+      "timestamp": "2026-01-12T14:32:21.277756"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/ameriques/louisiane.js",
+      "file": ".next/server/pages/bibliotheque/ameriques/louisiane.js",
+      "timestamp": "2026-01-12T14:32:21.277884"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/ameriques/quebec.js",
+      "file": ".next/server/pages/bibliotheque/ameriques/quebec.js",
+      "timestamp": "2026-01-12T14:32:21.278015"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/asie-pacifique/cambodge.js",
+      "file": ".next/server/pages/bibliotheque/asie-pacifique/cambodge.js",
+      "timestamp": "2026-01-12T14:32:21.278336"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/asie-pacifique/inde.js",
+      "file": ".next/server/pages/bibliotheque/asie-pacifique/inde.js",
+      "timestamp": "2026-01-12T14:32:21.278460"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/asie-pacifique/laos.js",
+      "file": ".next/server/pages/bibliotheque/asie-pacifique/laos.js",
+      "timestamp": "2026-01-12T14:32:21.278578"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/asie-pacifique/vanuatu.js",
+      "file": ".next/server/pages/bibliotheque/asie-pacifique/vanuatu.js",
+      "timestamp": "2026-01-12T14:32:21.278884"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/asie-pacifique/vietnam.js",
+      "file": ".next/server/pages/bibliotheque/asie-pacifique/vietnam.js",
+      "timestamp": "2026-01-12T14:32:21.279003"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/dom-tom/guadeloupe.js",
+      "file": ".next/server/pages/bibliotheque/dom-tom/guadeloupe.js",
+      "timestamp": "2026-01-12T14:32:21.279201"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/dom-tom/guyane.js",
+      "file": ".next/server/pages/bibliotheque/dom-tom/guyane.js",
+      "timestamp": "2026-01-12T14:32:21.279334"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/dom-tom/martinique.js",
+      "file": ".next/server/pages/bibliotheque/dom-tom/martinique.js",
+      "timestamp": "2026-01-12T14:32:21.279458"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/dom-tom/mayotte.js",
+      "file": ".next/server/pages/bibliotheque/dom-tom/mayotte.js",
+      "timestamp": "2026-01-12T14:32:21.279579"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/dom-tom/nouvelle-caledonie.js",
+      "file": ".next/server/pages/bibliotheque/dom-tom/nouvelle-caledonie.js",
+      "timestamp": "2026-01-12T14:32:21.279702"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/dom-tom/polynesie.js",
+      "file": ".next/server/pages/bibliotheque/dom-tom/polynesie.js",
+      "timestamp": "2026-01-12T14:32:21.279824"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/dom-tom/reunion.js",
+      "file": ".next/server/pages/bibliotheque/dom-tom/reunion.js",
+      "timestamp": "2026-01-12T14:32:21.279945"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/dom-tom/saint-barthelemy.js",
+      "file": ".next/server/pages/bibliotheque/dom-tom/saint-barthelemy.js",
+      "timestamp": "2026-01-12T14:32:21.280070"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/dom-tom/saint-martin.js",
+      "file": ".next/server/pages/bibliotheque/dom-tom/saint-martin.js",
+      "timestamp": "2026-01-12T14:32:21.280192"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/dom-tom/saint-pierre.js",
+      "file": ".next/server/pages/bibliotheque/dom-tom/saint-pierre.js",
+      "timestamp": "2026-01-12T14:32:21.280314"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/dom-tom/wallis-futuna.js",
+      "file": ".next/server/pages/bibliotheque/dom-tom/wallis-futuna.js",
+      "timestamp": "2026-01-12T14:32:21.280439"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/europe/belgique.js",
+      "file": ".next/server/pages/bibliotheque/europe/belgique.js",
+      "timestamp": "2026-01-12T14:32:21.280767"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/europe/luxembourg.js",
+      "file": ".next/server/pages/bibliotheque/europe/luxembourg.js",
+      "timestamp": "2026-01-12T14:32:21.281221"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/europe/monaco.js",
+      "file": ".next/server/pages/bibliotheque/europe/monaco.js",
+      "timestamp": "2026-01-12T14:32:21.281343"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/europe/suisse.js",
+      "file": ".next/server/pages/bibliotheque/europe/suisse.js",
+      "timestamp": "2026-01-12T14:32:21.281680"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/maghreb/algerie.js",
+      "file": ".next/server/pages/bibliotheque/maghreb/algerie.js",
+      "timestamp": "2026-01-12T14:32:21.281852"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/maghreb/liban.js",
+      "file": ".next/server/pages/bibliotheque/maghreb/liban.js",
+      "timestamp": "2026-01-12T14:32:21.281975"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/maghreb/maroc.js",
+      "file": ".next/server/pages/bibliotheque/maghreb/maroc.js",
+      "timestamp": "2026-01-12T14:32:21.282097"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/maghreb/tunisie.js",
+      "file": ".next/server/pages/bibliotheque/maghreb/tunisie.js",
+      "timestamp": "2026-01-12T14:32:21.282269"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/pays/fr.js",
+      "file": ".next/server/pages/bibliotheque/pays/fr.js",
+      "timestamp": "2026-01-12T14:32:21.282447"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/pays/guadeloupe.js",
+      "file": ".next/server/pages/bibliotheque/pays/guadeloupe.js",
+      "timestamp": "2026-01-12T14:32:21.282604"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/pays/guyane.js",
+      "file": ".next/server/pages/bibliotheque/pays/guyane.js",
+      "timestamp": "2026-01-12T14:32:21.282767"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/server/pages/bibliotheque/pays/martinique.js",
+      "file": ".next/server/pages/bibliotheque/pays/martinique.js",
+      "timestamp": "2026-01-12T14:32:21.282912"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "2x XSS React trouvé dans .next/server/app/_not-found/page.js",
+      "file": ".next/server/app/_not-found/page.js",
+      "timestamp": "2026-01-12T14:32:21.283565"
+    },
+    {
+      "title": "Fonction dangereuse: exec(",
+      "severity": "HIGH",
+      "description": "4x Python exec trouvé dans .next/static/chunks/polyfills-42372ed130431b0a.js",
+      "file": ".next/static/chunks/polyfills-42372ed130431b0a.js",
+      "timestamp": "2026-01-12T14:32:21.285372"
+    },
+    {
+      "title": "Fonction dangereuse: exec(",
+      "severity": "HIGH",
+      "description": "5x Python exec trouvé dans .next/static/chunks/main-89e8ada6a75cc645.js",
+      "file": ".next/static/chunks/main-89e8ada6a75cc645.js",
+      "timestamp": "2026-01-12T14:32:21.286478"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "9x XSS React trouvé dans .next/static/chunks/main-89e8ada6a75cc645.js",
+      "file": ".next/static/chunks/main-89e8ada6a75cc645.js",
+      "timestamp": "2026-01-12T14:32:21.286957"
+    },
+    {
+      "title": "Fonction dangereuse: exec(",
+      "severity": "HIGH",
+      "description": "5x Python exec trouvé dans .next/static/chunks/5414.efdee4708373633d.js",
+      "file": ".next/static/chunks/5414.efdee4708373633d.js",
+      "timestamp": "2026-01-12T14:32:21.289281"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "12x XSS React trouvé dans .next/static/chunks/framework-ce757b396f77691a.js",
+      "file": ".next/static/chunks/framework-ce757b396f77691a.js",
+      "timestamp": "2026-01-12T14:32:21.290874"
+    },
+    {
+      "title": "Fonction dangereuse: exec(",
+      "severity": "HIGH",
+      "description": "4x Python exec trouvé dans .next/static/chunks/4163ae0c.7018b5720c221e63.js",
+      "file": ".next/static/chunks/4163ae0c.7018b5720c221e63.js",
+      "timestamp": "2026-01-12T14:32:21.291664"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "12x XSS React trouvé dans .next/static/chunks/4bd1b696-43ba64781d20dbb7.js",
+      "file": ".next/static/chunks/4bd1b696-43ba64781d20dbb7.js",
+      "timestamp": "2026-01-12T14:32:21.293293"
+    },
+    {
+      "title": "Fonction dangereuse: exec(",
+      "severity": "HIGH",
+      "description": "7x Python exec trouvé dans .next/static/chunks/643144ee-e5f684098252e0e1.js",
+      "file": ".next/static/chunks/643144ee-e5f684098252e0e1.js",
+      "timestamp": "2026-01-12T14:32:21.294894"
+    },
+    {
+      "title": "Fonction dangereuse: exec(",
+      "severity": "HIGH",
+      "description": "1x Python exec trouvé dans .next/static/chunks/8773-32f3ca1dd7bd26b8.js",
+      "file": ".next/static/chunks/8773-32f3ca1dd7bd26b8.js",
+      "timestamp": "2026-01-12T14:32:21.298995"
+    },
+    {
+      "title": "Fonction dangereuse: exec(",
+      "severity": "HIGH",
+      "description": "1x Python exec trouvé dans .next/static/chunks/3794-b16d22429af19980.js",
+      "file": ".next/static/chunks/3794-b16d22429af19980.js",
+      "timestamp": "2026-01-12T14:32:21.299724"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "2x XSS React trouvé dans .next/static/chunks/3794-b16d22429af19980.js",
+      "file": ".next/static/chunks/3794-b16d22429af19980.js",
+      "timestamp": "2026-01-12T14:32:21.300436"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/static/chunks/app/page-a037814803c24996.js",
+      "file": ".next/static/chunks/app/page-a037814803c24996.js",
+      "timestamp": "2026-01-12T14:32:21.302159"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "6x XSS React trouvé dans .next/static/chunks/pages/_app-ae1c9b5427c1bb1c.js",
+      "file": ".next/static/chunks/pages/_app-ae1c9b5427c1bb1c.js",
+      "timestamp": "2026-01-12T14:32:21.304046"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/static/chunks/app/_not-found/page-c8807a6129959e3e.js",
+      "file": ".next/static/chunks/app/_not-found/page-c8807a6129959e3e.js",
+      "timestamp": "2026-01-12T14:32:21.308915"
+    },
+    {
+      "title": "Fonction dangereuse: dangerouslySetInnerHTML",
+      "severity": "MEDIUM",
+      "description": "1x XSS React trouvé dans .next/static/chunks/app/ia-passport/page-24fa08895935297d.js",
+      "file": ".next/static/chunks/app/ia-passport/page-24fa08895935297d.js",
+      "timestamp": "2026-01-12T14:32:21.309160"
+    },
+    {
+      "title": "Dépendances npm critiques",
+      "severity": "CRITICAL",
+      "description": "1 vulnérabilités critiques dans node_modules",
+      "file": null,
+      "timestamp": "2026-01-12T14:32:27.159524"
+    },
+    {
+      "title": "Données sensibles dans logs",
+      "severity": "HIGH",
+      "description": "Mots-clés sensibles trouvés: token",
+      "file": "build-normalize.log",
+      "timestamp": "2026-01-12T14:32:27.161668"
+    },
+    {
+      "title": "Protection IA inactive: bouclier_fantome.py",
+      "severity": "MEDIUM",
+      "description": "Le fichier existe mais le processus ne tourne pas",
+      "file": null,
+      "timestamp": "2026-01-12T14:32:28.133992"
+    },
+    {
+      "title": "Protection IA inactive: ia_contre_tracage.py",
+      "severity": "MEDIUM",
+      "description": "Le fichier existe mais le processus ne tourne pas",
+      "file": null,
+      "timestamp": "2026-01-12T14:32:28.142959"
+    },
+    {
+      "title": "Protection IA inactive: ia_diversion_leurre.py",
+      "severity": "MEDIUM",
+      "description": "Le fichier existe mais le processus ne tourne pas",
+      "file": null,
+      "timestamp": "2026-01-12T14:32:28.152016"
+    },
+    {
+      "title": "Protection IA inactive: mode_sommeil_reussitess.py",
+      "severity": "MEDIUM",
+      "description": "Le fichier existe mais le processus ne tourne pas",
+      "file": null,
+      "timestamp": "2026-01-12T14:32:28.162365"
+    },
+    {
+      "title": "Credentials DB en clair",
+      "severity": "CRITICAL",
+      "description": "Connexion BDD avec credentials dans reussitess_security_audit.py",
+      "file": "reussitess_security_audit.py",
+      "timestamp": "2026-01-12T14:32:28.168777"
+    },
+    {
+      "title": "Credentials DB en clair",
+      "severity": "CRITICAL",
+      "description": "Connexion BDD avec credentials dans reussitess_security_audit.py",
+      "file": "reussitess_security_audit.py",
+      "timestamp": "2026-01-12T14:32:28.168823"
+    },
+    {
+      "title": "Credentials DB en clair",
+      "severity": "CRITICAL",
+      "description": "Connexion BDD avec credentials dans reussitess_security_audit.py",
+      "file": "reussitess_security_audit.py",
+      "timestamp": "2026-01-12T14:32:28.168849"
+    },
+    {
+      "title": "CORS trop permissif",
+      "severity": "MEDIUM",
+      "description": "CORS wildcard (*) détecté dans pages/api/passeport/register.js",
+      "file": "pages/api/passeport/register.js",
+      "timestamp": "2026-01-12T14:32:29.713421"
+    },
+    {
+      "title": "CORS trop permissif",
+      "severity": "MEDIUM",
+      "description": "CORS wildcard (*) détecté dans pages/api/passeport/stats.js",
+      "file": "pages/api/passeport/stats.js",
+      "timestamp": "2026-01-12T14:32:29.713509"
+    },
+    {
+      "title": "CORS trop permissif",
+      "severity": "MEDIUM",
+      "description": "CORS wildcard (*) détecté dans pages/api/visa/register.js",
+      "file": "pages/api/visa/register.js",
+      "timestamp": "2026-01-12T14:32:29.713847"
+    },
+    {
+      "title": "CORS trop permissif",
+      "severity": "MEDIUM",
+      "description": "CORS wildcard (*) détecté dans .next/server/pages/api/passeport/register.js",
+      "file": ".next/server/pages/api/passeport/register.js",
+      "timestamp": "2026-01-12T14:32:29.746250"
+    },
+    {
+      "title": "CORS trop permissif",
+      "severity": "MEDIUM",
+      "description": "CORS wildcard (*) détecté dans .next/server/pages/api/passeport/stats.js",
+      "file": ".next/server/pages/api/passeport/stats.js",
+      "timestamp": "2026-01-12T14:32:29.746339"
+    },
+    {
+      "title": "CORS trop permissif",
+      "severity": "MEDIUM",
+      "description": "CORS wildcard (*) détecté dans .next/server/pages/api/visa/register.js",
+      "file": ".next/server/pages/api/visa/register.js",
+      "timestamp": "2026-01-12T14:32:29.746580"
+    },
+    {
+      "title": "CORS trop permissif",
+      "severity": "MEDIUM",
+      "description": "CORS wildcard (*) détecté dans reussitess-ia-api/server/simple.js",
+      "file": "reussitess-ia-api/server/simple.js",
+      "timestamp": "2026-01-12T14:32:29.786519"
+    }
+  ],
+  "critical_count": 17,
+  "high_count": 17,
+  "medium_count": 106,
+  "low_count": 0
+}

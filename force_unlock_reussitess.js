@@ -5,7 +5,7 @@ async function unlock() {
     const walletGas = new ethers.Wallet('CLE_PRIVEE_ADRESSE_2', provider); // Celle qui a les 62 POL
     const walletToken = new ethers.Wallet('CLE_PRIVEE_ADRESSE_1', provider); // 0x69f4...
     
-    const tokenAddress = '0x4b3bFf4b58d22Ad363bb260e22032414d4CfdDB8';
+    const tokenAddress = '0xB37531727fC07c6EED4f97F852A115B428046EB2';
     const abi = ["function transfer(address to, uint256 amount) public returns (bool)"];
     const contract = new ethers.Contract(tokenAddress, abi, walletToken);
 

@@ -938,7 +938,7 @@ export default function IAPassport() {
                 <p style={{ color: '#94a3b8', lineHeight: '1.6', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
                   Contrats audités pour le Staking, NFT ID biométrique, DAO spatiale et Quantum Pool automatisé (Contrat: 0x4b3b...DDB8).
                 </p>
-                <a href="https://polygonscan.com/address/0x4b3bFf4b58d22Ad363bb260e22032414d4CfdDB8" target="_blank" rel="noopener noreferrer" style={{ color: '#34d399', fontWeight: 'bold', textDecoration: 'none', fontSize: '0.85rem' }}>🔗 POLYGONSCAN →</a>
+                <a href="https://polygonscan.com/address/0xB37531727fC07c6EED4f97F852A115B428046EB2" target="_blank" rel="noopener noreferrer" style={{ color: '#34d399', fontWeight: 'bold', textDecoration: 'none', fontSize: '0.85rem' }}>🔗 POLYGONSCAN →</a>
               </div>
 
               <div style={{ background: 'rgba(255,255,255,0.03)', padding: '2.5rem', borderRadius: '30px', borderLeft: '6px solid #3b82f6' }}>

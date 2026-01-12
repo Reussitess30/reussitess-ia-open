@@ -3,7 +3,7 @@ const { ethers } = require('ethers');
 async function checkAndUnlock() {
     const provider = new ethers.JsonRpcProvider('https://polygon-rpc.com');
     const wallet = new ethers.Wallet('TA_CLE_PRIVEE_ADRESSE_1', provider);
-    const contractAddress = '0x4b3bFf4b58d22Ad363bb260e22032414d4CfdDB8';
+    const contractAddress = '0xB37531727fC07c6EED4f97F852A115B428046EB2';
     
     // ABI minimale pour vérifier les fonctions de blocage
     const abi = [

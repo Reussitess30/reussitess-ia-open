@@ -6,7 +6,7 @@ web3 = Web3(Web3.HTTPProvider(RPC_URL))
 
 # Tes adresses connues
 NOYAU_ADDR = web3.to_checksum_address("0xB37531727fC07c6EED4f97F852A115B428046EB2")
-OLD_ADDR = web3.to_checksum_address("0x4b3bFf4b58d22Ad363bb260e22032414d4CfdDB8")
+OLD_ADDR = web3.to_checksum_address("0xB37531727fC07c6EED4f97F852A115B428046EB2")
 
 def extraire_empreinte(addr):
     code = web3.eth.get_code(addr).hex()
