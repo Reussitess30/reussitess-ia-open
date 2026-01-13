@@ -9,7 +9,7 @@ export default function IAPassport() {
     <div style={{ minHeight: '100vh', background: '#0a0a0a', color: 'white', fontFamily: 'monospace', padding: '2rem' }}>
       <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h1 style={{ color: '#10b981', fontSize: '3rem', fontWeight: '900' }}>IA PASSPORT</h1>
-        <p>VÉRITÉ PROUVÉE - REUSSITESS©</p>
+        <p>🛡️ 200 IA AU COMBAT - SÉCURITÉ 100%  - REUSSITESS©</p>
         <p style={{ color: '#10b981' }}>GUADELOUPE : TERRES DE CHAMPIONS 🇬🇵</p>
       </div>
 
