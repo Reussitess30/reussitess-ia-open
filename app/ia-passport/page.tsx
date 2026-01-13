@@ -1,7 +1,6 @@
 'use client'
 import { Wallet, TrendingUp, Flame, Lock, ExternalLink, CheckCircle, Sparkles } from 'lucide-react'
 
-// Déclaration TypeScript pour MetaMask
 declare global {
   interface Window {
     ethereum?: any
@@ -69,177 +68,65 @@ export default function IAPassport() {
     { 
       icon: '⚛️', 
       title: 'QUANTUM ECOSYSTEM', 
-      desc: '200 IA gèrent 0x1d2e...9c - Premier pool auto-piloté au monde',
-      stats: ['200 IA Actives', '14 Pays', '$10M Target', 'APY 40-60%'],
+      desc: '200 IA surveillent le contrat 0xB375...EB2 - Système de protection automatisé',
+      stats: ['200 IA Actives', '14 Pays', 'En Développement', 'Protection 24/7'],
       links: [
-        { text: '🛡️ Quantum Guardian - Anti-Hack absolu (détection 0.1s)', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
-        { text: '📊 Price Stabilizer - Floor price garanti par IA', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
-        { text: '💰 Yield Generator - Auto-farming 12 protocoles DeFi', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
-        { text: '🌍 Global Bridge - Transferts instantanés 14 pays (0 frais)', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
-        { text: '🔮 Oracle AI - Prédictions prix 78% précision', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
-        { text: '🎮 Liquidity Wars - Gagnez 100K REUSS/mois', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
-        { text: '💎 ACHETER MAINTENANT - Pool Liquide', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' }
+        { text: '📊 Voir le Pool QuickSwap', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
+        { text: '🔐 Contrat Vérifié PolygonScan', url: 'https://polygonscan.com/address/0xB37531727fC07c6EED4f97F852A115B428046EB2' },
+        { text: '💎 Acheter REUSS sur QuickSwap', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' }
       ],
       special: 'quantum'
     },
     { 
-      icon: '🧠', 
-      title: 'AI UNIVERSAL BRAIN', 
-      desc: 'Une IA qui contrôle TOUTES les autres - Payez 1 REUSS, utilisez 100+ modèles',
-      stats: ['ChatGPT-4', 'Claude 3.5', 'Gemini Ultra', 'Grok 2'],
+      icon: '🛡️', 
+      title: 'SYSTÈME DE PROTECTION', 
+      desc: '40 IA Sentinelles protègent votre wallet et le contrat en temps réel',
+      stats: ['Protection 24/7', 'Détection Anomalies', 'Alertes Temps Réel', 'Audit Continu'],
       links: [
-        { text: '💬 Super-Chat - GPT-4 + Claude + Gemini en même temps', url: 'https://chat.openai.com' },
-        { text: '🎨 Super-Image - DALL-E 3 + Midjourney + Stable Diffusion', url: 'https://midjourney.com' },
-        { text: '🎬 Super-Video - Sora + Runway + Pika fusionnés', url: 'https://runwayml.com' },
-        { text: '🎵 Super-Audio - 11Labs + Murf + Descript combinés', url: 'https://elevenlabs.io' },
-        { text: '📊 Super-Data - Analyse prédictive multi-modèles', url: 'https://claude.ai' },
-        { text: '💡 Économie : 1 REUSS = 100 requêtes (vs $200/mois ailleurs)', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' }
-      ]
-    },
-    { 
-      icon: '🌐', 
-      title: 'REAL-TIME EARTH TRANSLATOR', 
-      desc: 'Traduction instantanée 195 langues + dialectes - Même langues mortes',
-      stats: ['195 Langues', '500+ Dialectes', 'Temps Réel', '99.8% Précision'],
-      links: [
-        { text: '🗣️ Live Translation - Parlez, IA traduit instantanément (0.2s)', url: 'https://translate.google.com' },
-        { text: '📱 AR Glasses Mode - Voit + traduit textes en réalité augmentée', url: 'https://www.meta.com' },
-        { text: '🎓 Ancient Languages - Traduit hiéroglyphes, latin, sanscrit', url: 'https://www.deepl.com' },
-        { text: '🤝 Business Interpreter - Négocie pour vous (ton, culture, contexte)', url: 'https://wordly.ai' },
-        { text: '💼 Legal Precision - Contrats internationaux (validation juridique)', url: 'https://www.lionbridge.com' },
-        { text: '🌍 Payez 10 REUSS/mois vs $500/mois traducteurs', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' }
-      ]
-    },
-    { 
-      icon: '🔐', 
-      title: 'QUANTUM ID BLOCKCHAIN', 
-      desc: 'Identité digitale indestructible - NFT biométrique + IA',
-      stats: ['NFT Âme', 'Biométrie', 'Quantum-Safe', 'Universel'],
-      links: [
-        { text: '👤 Biometric NFT - Empreinte + rétine + voix = vous', url: 'https://polygon.technology/polygon-id' },
-        { text: '🔒 Zero-Knowledge Proof - Prouvez qui vous êtes sans révéler', url: 'https://worldcoin.org' },
-        { text: '🌐 Universal Login - 1 ID pour tous services web3/web2', url: 'https://ens.domains' },
-        { text: '💳 Quantum Wallet - Impossible à hacker (résiste ordinateurs quantiques)', url: 'https://metamask.io' },
-        { text: '🏛️ Legal Entity - Valeur juridique 195 pays (passeport digital)', url: 'https://www.idhub.com' },
-        { text: '📜 Heritage Protocol - Transférez actifs post-mortem (smart testament)', url: 'https://polygonscan.com/token/0xB37531727fC07c6EED4f97F852A115B428046EB2' }
+        { text: '🔒 Wallet Protégé : 0x69f4...1549', url: 'https://polygonscan.com/address/0x69f42aa645a43a84e1143d416a4c81a88df01549' },
+        { text: '📊 Transactions Surveillées', url: 'https://polygonscan.com/token/0xB37531727fC07c6EED4f97F852A115B428046EB2' }
       ],
       special: 'security'
     },
     { 
-      icon: '💎', 
-      title: 'REUSS ECONOMY', 
-      desc: 'La crypto qui PAIE pour utiliser l\'IA - Modèle économique inversé',
-      stats: ['Deflation 2%/an', 'Yield 40%', 'Burn Auto', 'Rewards Passifs'],
+      icon: '🧠', 
+      title: 'NEURO-X ANALYTICS', 
+      desc: '60 IA analysent les marchés Amazon et préparent l\'expansion internationale',
+      stats: ['Analyse Marché', 'Amazon BE/US/CA', 'Stratégie Growth', 'Data Mining'],
       links: [
-        { text: '💰 Pay-to-Earn - Utilisez IA, GAGNEZ des REUSS', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' },
-        { text: '🔥 Auto-Burn - 0.5% brûlé à chaque transaction', url: 'https://polygonscan.com/token/0xB37531727fC07c6EED4f97F852A115B428046EB2' },
-        { text: '📈 Staking Rewards - 40% APY (géré par Quantum AI)', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
-        { text: '🌍 Cross-Border Payment - Envoyez $$ 14 pays (frais = $0.01)', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
-        { text: '💼 B2B Discounts - Entreprises paient -50% avec REUSS', url: 'https://polygonscan.com/token/0xB37531727fC07c6EED4f97F852A115B428046EB2' },
-        { text: '📊 Market Cap Target : $500M en 2026', url: 'https://www.coingecko.com' }
+        { text: '📈 Voir le Roadmap 14 Pays', url: 'https://reussitess.fr' }
+      ]
+    },
+    { 
+      icon: '🎯', 
+      title: 'NEXUS DATABASE', 
+      desc: '99 IA gèrent les bases de données et préparent le déploiement multi-pays',
+      stats: ['14 Pays Ciblés', 'BDD Distribuée', 'Sync Globale', 'Infrastructure'],
+      links: [
+        { text: '🌍 Pays Cibles : FR, BE, IT, DE, SE, SG, AU, ES, BR, UK, IN, NZ, US, CA', url: 'https://reussitess.fr' }
+      ]
+    },
+    { 
+      icon: '👑', 
+      title: 'IA SUPRÊME', 
+      desc: 'L\'IA maître qui orchestre les 199 autres agents du système',
+      stats: ['Orchestration', 'Coordination', 'Décisions Auto', 'Monitoring Global'],
+      links: [
+        { text: '📊 Dashboard de Monitoring', url: '/monitoring-ia' }
       ],
       special: 'money'
     },
     { 
-      icon: '🤖', 
-      title: 'PERSONAL AI CLONE', 
-      desc: 'IA qui devient VOUS - Apprend votre style, prend décisions à votre place',
-      stats: ['24/7 Actif', 'Learning 1M tokens/jour', 'Voice Clone', 'Auto-Tasks'],
+      icon: '💎', 
+      title: 'REUSS ECONOMY', 
+      desc: 'Token REUSS sur Polygon - Supply : 1 Milliard d\'unités',
+      stats: ['1B Supply Total', 'Polygon Network', 'Pool QuickSwap', 'Vérifié'],
       links: [
-        { text: '🧬 Digital Twin - Clone parfait de votre personnalité', url: 'https://personal.ai' },
-        { text: '📧 Auto-Emails - Répond emails comme VOUS (98% indétectable)', url: 'https://superhuman.com' },
-        { text: '📅 Life Manager - Gère agenda, RDV, priorités automatiquement', url: 'https://reclaim.ai' },
-        { text: '💼 Business Decisions - Analyse deals, conseille (basé votre expérience)', url: 'https://notion.so/product/ai' },
-        { text: '🎯 Legacy Mode - Continue votre travail après vous', url: 'https://rewind.ai' },
-        { text: '⏰ Gagnez 15h/semaine - Coût : 50 REUSS/mois', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' }
-      ]
-    },
-    { 
-      icon: '🎨', 
-      title: 'HOLLYWOOD AI STUDIO', 
-      desc: 'Créez films/séries complets avec IA - De l\'idée au cinéma',
-      stats: ['Script Auto', 'Actors IA', '8K Render', 'Oscar-Ready'],
-      links: [
-        { text: '✍️ AI Screenwriter - Scénario complet en 10min (structure Hollywood)', url: 'https://www.scriptbook.ai' },
-        { text: '🎭 Virtual Actors - Créez acteurs photoréalistes (voix, émotions)', url: 'https://www.synthesia.io' },
-        { text: '🎬 Auto-Director - IA dirige scènes (angles, lumière, timing)', url: 'https://runwayml.com' },
-        { text: '🎵 Soundtrack Generator - Musique épique adaptée à chaque scène', url: 'https://www.aiva.ai' },
-        { text: '🏆 Festival Ready - Format 8K, son Dolby Atmos', url: 'https://www.adobe.com/products/premiere.html' },
-        { text: '💰 Budget : 100 REUSS = 1 court-métrage vs $50K traditionnel', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' }
+        { text: '💰 Acheter sur QuickSwap', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' },
+        { text: '📊 Voir sur PolygonScan', url: 'https://polygonscan.com/token/0xB37531727fC07c6EED4f97F852A115B428046EB2' },
+        { text: '⚛️ Pool de Liquidité', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' }
       ],
-      special: 'creative'
-    },
-    { 
-      icon: '💼', 
-      title: 'EMPIRE BUILDER AI', 
-      desc: 'IA qui construit entreprise pour vous - De $0 à $1M automatiquement',
-      stats: ['Auto-Startup', 'Market Research', 'Product Build', '$1M/an'],
-      links: [
-        { text: '🔍 Market Finder - Détecte niches profitables (analyse 10M data points)', url: 'https://trends.co' },
-        { text: '🏗️ Product Builder - Crée MVP complet (design, dev, test)', url: 'https://bubble.io' },
-        { text: '📢 Marketing AI - Campagnes virales multi-plateformes', url: 'https://www.jasper.ai' },
-        { text: '💰 Sales Agent - Prospecte, qualifie, close deals automatiquement', url: 'https://www.gong.io' },
-        { text: '📊 CFO Assistant - Gestion finances, taxes, investisseurs', url: 'https://www.bench.co' },
-        { text: '🚀 Success Rate : 67% atteignent $100K/an première année', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' }
-      ]
-    },
-    { 
-      icon: '🎓', 
-      title: 'GENIUS ACCELERATOR', 
-      desc: 'Transforme n\'importe qui en expert - Méthode accélérée 10x',
-      stats: ['Expert en 30j', 'Any Domain', 'Certifié', 'Memory Palace'],
-      links: [
-        { text: '🧠 Neural Upload - Charge connaissances directement (comme Matrix)', url: 'https://www.coursera.org' },
-        { text: '🎯 Personalized Path - Curriculum adapté à VOTRE cerveau', url: 'https://www.khanacademy.org' },
-        { text: '💪 Practice AI - Sparring partner expert infini (feedback temps réel)', url: 'https://www.brilliant.org' },
-        { text: '🏆 Certifications - Reconnues Fortune 500 + universités', url: 'https://www.udacity.com' },
-        { text: '📈 Stats : 30 jours expert vs 4 ans traditionnel', url: 'https://www.edx.org' },
-        { text: '💡 Devenez expert en : Code, Trading, Law, Medicine, Art...', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' }
-      ]
-    },
-    { 
-      icon: '🏥', 
-      title: 'HEALTH IMMORTALITY AI', 
-      desc: 'Prolongez votre vie - IA médicale personnalisée 24/7',
-      stats: ['+20 ans vie', 'DNA Analysis', 'Disease Predict', '24/7 Monitoring'],
-      links: [
-        { text: '🧬 DNA Optimization - Analyse génome, recommande interventions', url: 'https://www.23andme.com' },
-        { text: '⚕️ Disease Prediction - Détecte cancer 5 ans avant (94% précision)', url: 'https://www.tempus.com' },
-        { text: '💊 Custom Medicine - Médicaments personnalisés (basé votre biologie)', url: 'https://www.atlasbio.com' },
-        { text: '🏃 Longevity Protocol - Plan anti-âge scientifique (nutrition, exercice, suppléments)', url: 'https://www.insidetracker.com' },
-        { text: '📱 Real-Time Monitor - Alerte maladies avant symptômes', url: 'https://www.apple.com/watch' },
-        { text: '🎯 Objectif : +20 ans espérance vie vs moyenne', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' }
-      ],
-      special: 'health'
-    },
-    { 
-      icon: '🌍', 
-      title: 'PLANET SAVIOR NETWORK', 
-      desc: 'IA qui sauve la Terre - Actions concrètes climat/océans/forêts',
-      stats: ['Carbon Negative', 'Ocean Clean', 'Reforest', 'Green Energy'],
-      links: [
-        { text: '🌳 1 REUSS = 10 arbres plantés (vérifiable blockchain)', url: 'https://onetreeplanted.org' },
-        { text: '🌊 Ocean Cleanup - 1kg plastique retiré/token brûlé', url: 'https://theoceancleanup.com' },
-        { text: '☀️ Solar Network - Financement panneaux solaires communautaires', url: 'https://www.solar.com' },
-        { text: '📊 Impact Dashboard - Trackez VOTRE impact environnemental réel', url: 'https://www.wren.co' },
-        { text: '🏆 Green Rewards - Gagnez tokens en agissant écolo', url: 'https://earthhero.org' },
-        { text: '🎯 Objectif : Carbon Negative d\'ici 2026', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' }
-      ]
-    },
-    { 
-      icon: '🚀', 
-      title: 'SPACE COLONIZATION DAO', 
-      desc: 'Financez conquête spatiale - Possédez morceaux Lune/Mars',
-      stats: ['Moon Plot NFT', 'Mars Colony', 'Asteroid Mining', 'Space Tourism'],
-      links: [
-        { text: '🌙 Moon Land NFT - Achetez terrain Lune (légalement reconnu)', url: 'https://www.lunarregistry.com' },
-        { text: '🔴 Mars Colony DAO - Votez décisions colonie martienne', url: 'https://www.marssociety.org' },
-        { text: '💎 Asteroid Mining - Profits minéraux espace (trillions $)', url: 'https://www.planetaryresources.com' },
-        { text: '🛸 Space Tourism - Réservez vol suborbital (1000 REUSS)', url: 'https://www.spacex.com' },
-        { text: '🔬 Zero-G Research - Financez expériences station spatiale', url: 'https://www.nasa.gov' },
-        { text: '🎯 Vision : Humanité multi-planétaire d\'ici 2050', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' }
-      ],
-      special: 'space'
+      special: 'money'
     }
   ]
 
@@ -371,6 +258,51 @@ export default function IAPassport() {
             </button>
           )}
 
+          {/* BOUTON MONITORING DES 200 IA */}
+          <button
+            onClick={() => window.open('/monitoring-ia', '_blank')}
+            style={{
+              position: 'fixed',
+              bottom: '20px',
+              left: '20px',
+              background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '50px',
+              padding: '1.2rem 2rem',
+              fontSize: '1rem',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              boxShadow: '0 10px 30px rgba(16, 185, 129, 0.8)',
+              zIndex: 999999,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.8rem',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px) scale(1.05)'
+              e.currentTarget.style.boxShadow = '0 15px 40px rgba(16, 185, 129, 1)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0) scale(1)'
+              e.currentTarget.style.boxShadow = '0 10px 30px rgba(16, 185, 129, 0.8)'
+            }}
+          >
+            <span style={{
+              display: 'inline-block',
+              width: '12px',
+              height: '12px',
+              backgroundColor: 'white',
+              borderRadius: '50%',
+              animation: 'pulse 2s infinite'
+            }} />
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '0.2rem' }}>
+              <span style={{ fontSize: '1rem' }}>🤖 Monitoring Live</span>
+              <span style={{ fontSize: '0.7rem', opacity: 0.9 }}>200 IA Actives</span>
+            </div>
+          </button>
+
           <div style={{ 
             fontSize: '8rem', 
             marginBottom: '2rem',
@@ -406,7 +338,7 @@ export default function IAPassport() {
             lineHeight: '1.1'
           }}>
             IA PASSPORT<br/>
-            <span style={{ fontSize: '0.6em' }}>RÉVOLUTION MONDIALE</span>
+            <span style={{ fontSize: '0.6em' }}>PROJET EN DÉVELOPPEMENT</span>
           </h1>
 
           <p style={{
@@ -417,10 +349,10 @@ export default function IAPassport() {
             maxWidth: '900px',
             margin: '0 auto 3rem'
           }}>
-            Le Seul Écosystème qui PAIE pour utiliser l'IA
+            Écosystème d'IA Protégé par 200 Agents Autonomes
             <br/>
             <span style={{ color: '#10b981', fontSize: '0.8em' }}>
-              💰 Utilisez → Gagnez des REUSS → Réutilisez → Repeat ∞
+              🤖 200 IA → Surveillance Continue → Protection 24/7
             </span>
           </p>
 
@@ -459,7 +391,8 @@ export default function IAPassport() {
               style={{
                 padding: '1.5rem 3rem',
                 background: 'rgba(139, 92, 246, 0.2)',
-                color: 'white',border: '2px solid #8b5cf6',
+                color: 'white',
+                border: '2px solid #8b5cf6',
                 borderRadius: '50px',
                 fontSize: '1.3rem',
                 fontWeight: 'bold',
@@ -469,7 +402,7 @@ export default function IAPassport() {
               }}
               className="cta-button-secondary"
             >
-              ⚛️ QUANTUM POOL
+              ⚛️ VOIR LE POOL
             </a>
           </div>
 
@@ -514,15 +447,9 @@ export default function IAPassport() {
                       ? 'linear-gradient(135deg, rgba(234, 179, 8, 0.2) 0%, rgba(16, 185, 129, 0.2) 100%)'
                       : feature.special === 'security'
                         ? 'linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(16, 185, 129, 0.2) 100%)'
-                        : feature.special === 'creative'
-                          ? 'linear-gradient(135deg, rgba(236, 72, 153, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%)'
-                          : feature.special === 'health'
-                            ? 'linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%)'
-                            : feature.special === 'space'
-                              ? 'linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%)'
-                              : selectedFeature === i 
-                                ? 'rgba(16, 185, 129, 0.15)' 
-                                : 'rgba(255, 255, 255, 0.03)',
+                        : selectedFeature === i 
+                          ? 'rgba(16, 185, 129, 0.15)' 
+                          : 'rgba(255, 255, 255, 0.03)',
                   backdropFilter: 'blur(10px)',
                   border: feature.special
                     ? '2px solid rgba(139, 92, 246, 0.5)'
@@ -557,12 +484,9 @@ export default function IAPassport() {
                     textTransform: 'uppercase',
                     letterSpacing: '1px'
                   }}>
-                    {feature.special === 'quantum' ? '🚀 RÉVOLUTION' : 
-                     feature.special === 'money' ? '💰 PROFIT' :
-                     feature.special === 'security' ? '🔐 SECURE' :
-                     feature.special === 'creative' ? '🎨 CREATE' :
-                     feature.special === 'health' ? '🏥 LIFE+' :
-                     feature.special === 'space' ? '🚀 SPACE' : '✨ NEW'}
+                    {feature.special === 'quantum' ? '🚀 CORE' : 
+                     feature.special === 'money' ? '💰 TOKEN' :
+                     feature.special === 'security' ? '🔐 SECURE' : '✨ NEW'}
                   </div>
                 )}
                 
@@ -628,7 +552,7 @@ export default function IAPassport() {
                       marginBottom: '1.5rem',
                       fontWeight: 'bold'
                     }}>
-                      🔗 {feature.special ? '⚡ ACCÈS DIRECT :' : 'Ressources disponibles :'}
+                      🔗 {feature.special ? '⚡ LIENS VÉRIFIÉS :' : 'Ressources :'}
                     </p>
                     <div style={{
                       display: 'flex',
@@ -705,7 +629,7 @@ export default function IAPassport() {
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
             }}>
-              🚀 POURQUOI REUSS VA EXPLOSER ?
+              🤖 SYSTÈME DES 200 IA
             </h2>
             
             <div style={{
@@ -714,14 +638,13 @@ export default function IAPassport() {
               textAlign: 'left',
               marginBottom: '3rem'
             }}>
-              {[
-                { icon: '💰', text: 'Seule crypto qui PAIE pour utiliser (pas dépenser)', color: '#10b981' },
-                { icon: '🔥', text: 'Auto-burn 0.5% = Deflation naturelle (supply diminue)', color: '#ef4444' },
-                { icon: '📈', text: 'Yield 40% APY géré par 200 IA (vs 5% ailleurs)', color: '#eab308' },
-                { icon: '🌍', text: '14 pays = adoption massive garantie', color: '#3b82f6' },
-                { icon: '🤖', text: '200 IA travaillent 24/7 pour augmenter valeur', color: '#8b5cf6' },
-                { icon: '💎', text: 'Use cases RÉELS : traduction, santé, business, space', color: '#ec4899' },
-                { icon: '🎯', text: 'Target $500M market cap = 100x depuis aujourd\'hui', color: '#10b981' }
+              {[{ icon: '🛡️', text: '40 IA Sentinelles protègent le contrat et votre wallet', color: '#ef4444' },
+                { icon: '🧠', text: '60 IA Neuro-X analysent les marchés et opportunités', color: '#3b82f6' },
+                { icon: '🎯', text: '99 IA Nexus gèrent les bases de données 14 pays', color: '#8b5cf6' },
+                { icon: '👑', text: '1 IA Suprême orchestre l\'ensemble du système', color: '#eab308' },
+                { icon: '🔐', text: 'Protection 24/7 du contrat 0xB375...EB2', color: '#10b981' },
+                { icon: '🌍', text: 'Déploiement prévu dans 14 pays (en cours)', color: '#ec4899' },
+                { icon: '📊', text: 'Monitoring en temps réel via dashboard dédié', color: '#10b981' }
               ].map((item, i) => (
                 <div key={i} style={{
                   display: 'flex',
@@ -750,26 +673,26 @@ export default function IAPassport() {
               borderRadius: '20px',
               marginBottom: '3rem'
             }}>
-              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>💡</div>
+              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>⚠️</div>
               <h3 style={{ 
                 fontSize: '1.8rem', 
                 color: '#10b981', 
                 fontWeight: 'bold',
                 marginBottom: '1rem'
               }}>
-                CALCUL SIMPLE
+                AVERTISSEMENT IMPORTANT
               </h3>
               <p style={{ 
                 fontSize: '1.2rem', 
                 color: '#e2e8f0',
                 lineHeight: '1.8'
               }}>
-                Si 0.1% des 195 pays adoptent (195K personnes)<br/>
-                × $100 investi moyen<br/>
-                = <span style={{ color: '#10b981', fontWeight: 'bold' }}>$19.5M market cap</span><br/>
+                Ce projet est en développement actif.<br/>
+                Les cryptomonnaies comportent des risques.<br/>
+                <span style={{ color: '#fde047', fontWeight: 'bold' }}>N'investissez que ce que vous pouvez perdre.</span><br/>
                 <br/>
-                Avec 14 pays actifs + network effect :<br/>
-                Target réaliste = <span style={{ color: '#fde047', fontWeight: 'bold', fontSize: '1.4rem' }}>$500M en 2026</span>
+                Les rendements ne sont pas garantis.<br/>
+                Faites vos propres recherches (DYOR).
               </p>
             </div>
 
@@ -779,7 +702,7 @@ export default function IAPassport() {
               color: 'white',
               marginBottom: '1.5rem'
             }}>
-              🎯 LISTE BETA 2025
+              🎯 LISTE BETA 2026
             </h2>
             
             <p style={{
@@ -787,7 +710,7 @@ export default function IAPassport() {
               color: '#94a3b8',
               marginBottom: '2.5rem'
             }}>
-              Premiers inscrits = <span style={{ color: '#10b981' }}>100 REUSS offerts</span> + Accès prioritaire
+              Rejoignez la communauté et suivez le développement
             </p>
 
             {!submitted ? (
@@ -843,7 +766,7 @@ export default function IAPassport() {
                     e.currentTarget.style.boxShadow = '0 15px 40px rgba(16, 185, 129, 0.5)'
                   }}
                 >
-                  ✨ REJOINDRE LA RÉVOLUTION
+                  ✨ REJOINDRE LA COMMUNAUTÉ
                 </button>
               </form>
             ) : (
@@ -860,10 +783,10 @@ export default function IAPassport() {
                   fontWeight: 'bold',
                   marginBottom: '1rem'
                 }}>
-                  BIENVENUE DANS LA RÉVOLUTION !
+                  BIENVENUE !
                 </h3>
                 <p style={{ color: '#e2e8f0', fontSize: '1.2rem' }}>
-                  Vous recevrez 100 REUSS dès le lancement 🎁 tu
+                  Vous recevrez les mises à jour du projet 🎁
                 </p>
               </div>
             )}
@@ -882,7 +805,7 @@ export default function IAPassport() {
               color: 'white',
               marginBottom: '2rem'
             }}>
-              🌍 EXPANSION MONDIALE EN COURS
+              🌍 EXPANSION MONDIALE PLANIFIÉE
             </h3>
             <div style={{
               display: 'grid',
@@ -921,56 +844,58 @@ export default function IAPassport() {
             position: 'relative'
           }}>
             <h2 style={{ fontSize: '2.5rem', fontWeight: '900', color: '#fff', marginBottom: '3rem', textAlign: 'center' }}>
-              🛠️ TECHNIQUE COMPLÈTE & RÈGLEMENTS
+              🛠️ INFORMATIONS TECHNIQUES
             </h2>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
               <div style={{ background: 'rgba(255,255,255,0.03)', padding: '2.5rem', borderRadius: '30px', borderLeft: '6px solid #8b5cf6' }}>
-                <h3 style={{ color: '#a78bfa', fontSize: '1.4rem', marginBottom: '1.2rem' }}>1. Infrastructure APIs</h3>
+                <h3 style={{ color: '#a78bfa', fontSize: '1.4rem', marginBottom: '1.2rem' }}>1. Infrastructure</h3>
                 <p style={{ color: '#94a3b8', lineHeight: '1.6', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
-                  Plan technique pour chaque service (APIs, smart contracts, infrastructure cloud) optimisé pour les 14 pays partenaires via Vercel & AWS Edge.
+                  Hébergement sur Vercel avec déploiement continu depuis GitHub. Infrastructure optimisée pour la performance et la sécurité.
                 </p>
-                <a href="https://vercel.com/docs/functions" target="_blank" rel="noopener noreferrer" style={{ color: '#a78bfa', fontWeight: 'bold', textDecoration: 'none', fontSize: '0.85rem' }}>🔗 DOC INFRASTRUCTURE →</a>
+                <a href="https://github.com/Reussitess30/reussitess-global-nexus" target="_blank" rel="noopener noreferrer" style={{ color: '#a78bfa', fontWeight: 'bold', textDecoration: 'none', fontSize: '0.85rem' }}>🔗 VOIR LE CODE SOURCE →</a>
               </div>
 
               <div style={{ background: 'rgba(255,255,255,0.03)', padding: '2.5rem', borderRadius: '30px', borderLeft: '6px solid #10b981' }}>
-                <h3 style={{ color: '#34d399', fontSize: '1.4rem', marginBottom: '1.2rem' }}>2. Smart Contracts</h3>
+                <h3 style={{ color: '#34d399', fontSize: '1.4rem', marginBottom: '1.2rem' }}>2. Smart Contract</h3>
                 <p style={{ color: '#94a3b8', lineHeight: '1.6', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
-                  Contrats audités pour le Staking, NFT ID biométrique, DAO spatiale et Quantum Pool automatisé (Contrat: 0x4b3b...DDB8).
+                  Token REUSS déployé sur Polygon Network. Contrat vérifié et auditable publiquement sur PolygonScan.
                 </p>
-                <a href="https://polygonscan.com/address/0xB37531727fC07c6EED4f97F852A115B428046EB2" target="_blank" rel="noopener noreferrer" style={{ color: '#34d399', fontWeight: 'bold', textDecoration: 'none', fontSize: '0.85rem' }}>🔗 POLYGONSCAN →</a>
+                <a href="https://polygonscan.com/address/0xB37531727fC07c6EED4f97F852A115B428046EB2" target="_blank" rel="noopener noreferrer" style={{ color: '#34d399', fontWeight: 'bold', textDecoration: 'none', fontSize: '0.85rem' }}>🔗 VOIR LE CONTRAT →</a>
               </div>
 
               <div style={{ background: 'rgba(255,255,255,0.03)', padding: '2.5rem', borderRadius: '30px', borderLeft: '6px solid #3b82f6' }}>
-                <h3 style={{ color: '#60a5fa', fontSize: '1.4rem', marginBottom: '1.2rem' }}>3. Intégrations IA</h3>
+                <h3 style={{ color: '#60a5fa', fontSize: '1.4rem', marginBottom: '1.2rem' }}>3. Système des 200 IA</h3>
                 <p style={{ color: '#94a3b8', lineHeight: '1.6', fontSize: '0.95rem', marginBottom: '1.5rem' }}>
-                  Connexions natives ultra-rapides aux APIs OpenAI (GPT-4), Anthropic (Claude), Google (Gemini) et DeepL pour une latence &lt; 0.2s.
+                  Scripts Python automatisés surveillant le contrat, le pool et les transactions 24/7. Dashboard de monitoring en temps réel.
                 </p>
-                <a href="https://platform.openai.com/docs" target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', fontWeight: 'bold', textDecoration: 'none', fontSize: '0.85rem' }}>🔗 API PORTAL →</a>
+                <a href="/monitoring-ia" style={{ color: '#60a5fa', fontWeight: 'bold', textDecoration: 'none', fontSize: '0.85rem' }}>🔗 VOIR LE MONITORING →</a>
               </div>
             </div>
 
             <div style={{ marginTop: '3rem', padding: '2.5rem', background: 'rgba(239, 68, 68, 0.05)', borderRadius: '30px', border: '1px solid #ef4444' }}>
-              <h3 style={{ color: '#f87171', marginBottom: '1rem' }}>⚖️ PROTECTION RÉGLEMENTAIRE INTERNATIONALE</h3>
+              <h3 style={{ color: '#f87171', marginBottom: '1rem' }}>⚖️ CONFORMITÉ RÉGLEMENTAIRE</h3>
               <p style={{ color: '#e2e8f0', lineHeight: '1.6', fontSize: '0.95rem' }}>
-                Conformité <b>EU AI Act</b> (Europe), <b>RGPD</b> (Sécurité des données) et standards <b>ISO/IEC 42001</b>. 
-                L&apos;écosystème Reussitess© est juridiquement protégé pour opérer les agents IA dans les 14 zones partenaires, garantissant la sécurité des investisseurs.
+                Projet en conformité avec les réglementations européennes : <b>EU AI Act</b>, <b>RGPD</b> pour la protection des données. 
+                Développement responsable avec transparence totale du code source et des smart contracts.
               </p>
             </div>
 
             <div style={{ marginTop: '3rem', padding: '2.5rem', background: 'rgba(245, 158, 11, 0.05)', borderRadius: '30px', border: '1px dashed #f59e0b' }}>
-              <h3 style={{ color: '#fbbf24', marginBottom: '1rem' }}>🚀 Roadmap & Partenariats</h3>
+              <h3 style={{ color: '#fbbf24', marginBottom: '1rem' }}>🚀 Roadmap 2026</h3>
               <p style={{ color: '#e2e8f0', lineHeight: '1.6' }}>
-                Implémentation progressive : <b>Phase 1</b> (Prioritaire : Passport & KYC), <b>Phase 2</b> (Avancée : Quantum Pool), <b>Phase 3</b> (Futuriste : Space DAO). Liste des partenaires stratégiques disponible via le Quantum ID.
+                <b>Q1 2026</b> : Consolidation infrastructure & monitoring<br/>
+                <b>Q2 2026</b> : Tests expansion multi-pays<br/>
+                <b>Q3-Q4 2026</b> : Déploiement progressif 14 pays
               </p>
             </div>
             
             <div style={{ marginTop: '4rem', textAlign: 'center' }}>
-               <p style={{ fontSize: '1.8rem', fontWeight: '900', color: '#10b981', marginBottom: '1.5rem' }}>💡 PAR QUEL SERVICE VOULEZ-VOUS COMMENCER ?</p>
+               <p style={{ fontSize: '1.8rem', fontWeight: '900', color: '#10b981', marginBottom: '1.5rem' }}>💡 TECHNOLOGIE VÉRIFIABLE</p>
                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                  <span style={{ background: '#333', padding: '10px 20px', borderRadius: '50px', color: '#10b981' }}>✅ AI Universal Brain</span>
-                  <span style={{ background: '#333', padding: '10px 20px', borderRadius: '50px', color: '#10b981' }}>✅ Real-Time Translator</span>
-                  <span style={{ background: '#333', padding: '10px 20px', borderRadius: '50px', color: '#10b981' }}>✅ Quantum Pool</span>
+                  <span style={{ background: '#333', padding: '10px 20px', borderRadius: '50px', color: '#10b981' }}>✅ Code Open Source</span>
+                  <span style={{ background: '#333', padding: '10px 20px', borderRadius: '50px', color: '#10b981' }}>✅ Contrat Vérifié</span>
+                  <span style={{ background: '#333', padding: '10px 20px', borderRadius: '50px', color: '#10b981' }}>✅ 200 IA Actives</span>
                </div>
             </div>
           </div>
@@ -1002,7 +927,7 @@ export default function IAPassport() {
               fontSize: '1.2rem',
               fontWeight: 'bold'
             }}>
-              🏁 BOUDOUM ! La Révolution IA commence ici
+              🏁 BOUDOUM ! Innovation Made in Guadeloupe
             </p>
             
             <div style={{
@@ -1020,6 +945,9 @@ export default function IAPassport() {
               </a>
               <a href="https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c" target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'none', fontSize: '1.1rem' }}>
                 ⚛️ Liquidity Pool
+              </a>
+              <a href="https://github.com/Reussitess30/reussitess-global-nexus" target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'none', fontSize: '1.1rem' }}>
+                💻 GitHub
               </a>
             </div>
             
