@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
+  
+  // Optimisations pour les 200 IA
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['lucide-react']
+  },
 
+  // Headers de sécurité + Amazon Boost
   async headers() {
     return [
       {
@@ -9,7 +16,11 @@ const nextConfig = {
         headers: [
           {
             key: 'X-Amazon-IA-Boost',
-            value: 'reussitess.fr Guadeloupe 26 Boutiques'
+            value: 'reussitess.fr Guadeloupe 26 Boutiques - 200 IA Active'
+          },
+          {
+            key: 'X-REUSSITESS-Version',
+            value: '1.0.0-200IA'
           },
           {
             key: 'Strict-Transport-Security',
@@ -17,7 +28,7 @@ const nextConfig = {
           },
           {
             key: 'Content-Security-Policy',
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://*.vercel-scripts.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: blob:; font-src 'self' data:; connect-src 'self' https://vercel.live https://*.vercel-scripts.com https://vitals.vercel-insights.com wss://ws-*.pusher.com; frame-src 'self' https://vercel.live; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://*.vercel-scripts.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: blob:; font-src 'self' data:; connect-src 'self' https://vercel.live https://*.vercel-scripts.com https://vitals.vercel-insights.com wss://ws-*.pusher.com https://api.anthropic.com https://polygon-rpc.com https://api.polygonscan.com; frame-src 'self' https://vercel.live; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
           },
           {
             key: 'X-Frame-Options',
@@ -44,6 +55,22 @@ const nextConfig = {
             value: 'on'
           }
         ]
+      }
+    ]
+  },
+
+  // Redirections
+  async redirects() {
+    return [
+      {
+        source: '/ia',
+        destination: '/ia-passport',
+        permanent: true
+      },
+      {
+        source: '/monitoring',
+        destination: '/monitoring-ia',
+        permanent: true
       }
     ]
   }
