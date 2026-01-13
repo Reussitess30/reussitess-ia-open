@@ -17,7 +17,7 @@ export default function IAPassport() {
         <button 
           onClick={() => setShowFortune(!showFortune)}
           style={{ background: '#f59e0b', color: '#000', padding: '1.5rem 3rem', borderRadius: '50px', fontWeight: '900', cursor: 'pointer', border: 'none', fontSize: '1.2rem' }}>
-          {showFortune ? '✖ FERMER L\'AUDIT' : '🔍 VÉRIFIER LA FORTUNE (1 000 000 000 U)'}
+          {showFortune ? '✖ FERMER L\'AUDIT' : '🔍 SOLDE RÉEL : 1 000 000 000 REUSS (1 000 000 000 U)'}
         </button>
         
         {showFortune && (
