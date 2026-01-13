@@ -94,7 +94,7 @@ export default function IAPassport() {
       desc: '60 IA analysent les marchés Amazon et préparent l\'expansion internationale',
       stats: ['Analyse Marché', 'Amazon BE/US/CA', 'Stratégie Growth', 'Data Mining'],
       links: [
-        { text: '📈 Voir le Roadmap 14 Pays', url: 'https://reussitess.fr' }
+        { text: '📈 Voir le Roadmap 14 Pays', url: 'https://reussitess.fr/ia-passport#roadmap' }
       ]
     },
     { 
