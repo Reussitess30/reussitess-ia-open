@@ -1,3 +1,7 @@
 User-agent: *
-Allow: /
-Sitemap: https://www.reussitess.fr/sitemap.xml
+Allow: /ia-control
+Allow: /ia-files
+Allow: /api/ai-status
+Disallow: /api/sentinelle-protect
+Disallow: /.env
+Sitemap: https://ton-app.vercel.app/sitemap.xml

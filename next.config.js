@@ -77,3 +77,53 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+// 🔒 PROTECTION MILITAIRE - Ajouté
+const securityHeaders = [
+  {
+    key: 'Strict-Transport-Security',
+    value: 'max-age=63072000; includeSubDomains; preload'
+  },
+  {
+    key: 'Content-Security-Policy',
+    value: "default-src 'self'; script-src 'self' 'unsafe-inline' https://vercel.live; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: blob:; connect-src 'self' https://polygonscan.com https://api.reussitess.fr wss://ws-*.vercel.com"
+  },
+  {
+    key: 'X-Frame-Options',
+    value: 'SAMEORIGIN'
+  },
+  {
+    key: 'X-XSS-Protection',
+    value: '1; mode=block'
+  },
+  {
+    key: 'X-Content-Type-Options',
+    value: 'nosniff'
+  },
+  {
+    key: 'Referrer-Policy',
+    value: 'strict-origin-when-cross-origin'
+  },
+  {
+    key: 'Permissions-Policy',
+    value: 'camera=(), microphone=(), geolocation=()'
+  }
+]
+
+module.exports = {
+  ...nextConfig,
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders
+      }
+    ]
+  },
+  // AUTO-FIX 404 + robots.txt SEO international
+  async redirects() {
+    return [
+      { source: '/404', destination: '/', permanent: false },
+      { source: '/:lang(en|fr|es|de|it)/:path*', destination: '/:path*' }
+    ]
+  }
+}
