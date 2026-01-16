@@ -9,3 +9,13 @@ os-release
 .guardian_errors.log
 .critical_alerts.log
 .analytics_data.json
+
+# Fichiers sensibles - NE JAMAIS COMMIT
+*.key
+*.pem
+*_private_*
+*secret*
+.env
+.env.*
+cold_wallet_*.json
+wallet_backup_*.json
