@@ -13,3 +13,9 @@ France, Belgique, Italie, Allemagne, Suède, Singapour, Australie, Espagne, Bré
 ​Infrastructure : Déploiement sécurisé sur Vercel et analyse via l'API Moralis.  
 ​Support : rony.porinus@gmail.com  
 ​© 2026 Reussitess©GlobalNexus - De la Guadeloupe au monde entier. Boudoum !]
+
+## 🤖 IA Reussitess® Open Source
+- **SuperBot Reussitess®** : Chatbot multi-pays, quizzes Caraïbes/Afrique, Amazon 26 boutiques.
+- **BotAssistant** : Flow PWA/voix, token REUSS Polygon (0xB375...).
+
+🚀 Déployez sur Vercel : `npm i && vercel --prod`
