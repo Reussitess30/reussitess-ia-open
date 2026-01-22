@@ -19,3 +19,5 @@ os-release
 .env.*
 cold_wallet_*.json
 wallet_backup_*.json
+reussitess-global-nexus-backup.zip
+reussitess-repo-backup.bundle
