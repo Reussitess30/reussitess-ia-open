@@ -21,3 +21,20 @@ cold_wallet_*.json
 wallet_backup_*.json
 reussitess-global-nexus-backup.zip
 reussitess-repo-backup.bundle
+
+# Environment variables
+.env
+.env.local
+.env.production
+*.env
+
+# Private keys
+*.pem
+*.key
+*_pk
+*private*
+
+# Sensitive configs
+config/secrets.json
+.env
+*.env
