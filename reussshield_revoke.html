@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REUSS SHIELD — Revoke & Protect</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;600;700;800&display=swap');
+:root{--bg:#020609;--bg-panel:#0b0f1a;--bg-card:#0f1420;--bg-card-h:#161d2e;
+--green:#00e676;--green-d:rgba(0,230,118,0.1);--red:#ff2d55;--red-d:rgba(255,45,85,0.1);
+--yellow:#ffcc00;--yellow-d:rgba(255,204,0,0.1);--cyan:#00d4ff;--cyan-d:rgba(0,212,255,0.1);
+--text:#dce4ef;--text-sub:#6b7fa3;--text-dim:#3a4d6b;--border:rgba(255,255,255,0.05);--border-hi:rgba(255,255,255,0.1)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Exo 2',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.bg-fx{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 600px 400px at 10% 20%,rgba(0,230,118,0.04),transparent 70%),radial-gradient(ellipse 500px 500px at 85% 70%,rgba(0,212,255,0.03),transparent 70%),radial-gradient(ellipse 300px 300px at 50% 90%,rgba(255,45,85,0.03),transparent 70%)}
+.bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(0,230,118,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,230,118,0.025) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse 80% 80% at center,black 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at center,black 20%,transparent 70%)}
+.app{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:28px 20px 60px}
+
+/* HEADER */
+.header{text-align:center;margin-bottom:36px}
+.header-logo{display:inline-flex;align-items:center;gap:14px;margin-bottom:10px}
+.shield-icon{width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,#00e676,#00b8d9);display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 0 30px rgba(0,230,118,0.25);animation:glow 3s ease infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 30px rgba(0,230,118,0.25)}50%{box-shadow:0 0 50px rgba(0,230,118,0.4)}}
+.header h1{font-size:30px;font-weight:800;letter-spacing:3px;text-transform:uppercase}
+.header h1 span{color:var(--green)}
+.header p{color:var(--text-sub);font-size:13px;max-width:520px;margin:0 auto;line-height:1.6}
+
+/* CONNECT */
+.connect-zone{background:var(--bg-panel);border:1px solid var(--border-hi);border-radius:18px;padding:28px;text-align:center;margin-bottom:24px;transition:all 0.3s}
+.connect-zone.connected{border-color:rgba(0,230,118,0.25);background:rgba(0,230,118,0.03)}
+.btn-connect{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--green),#00b8d9);color:#000;border:none;padding:14px 32px;border-radius:14px;font-family:'Exo 2',sans-serif;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:1px;text-transform:uppercase;transition:transform 0.2s,box-shadow 0.2s}
+.btn-connect:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,230,118,0.35)}
+.wallet-info{display:none;align-items:center;gap:14px;justify-content:center;flex-wrap:wrap}
+.wallet-info.visible{display:flex}
+.wallet-addr{font-family:'Share Tech Mono',monospace;font-size:13px;background:var(--bg-card);padding:8px 16px;border-radius:10px;border:1px solid var(--border-hi);color:var(--cyan)}
+.btn-disconnect{background:var(--red-d);border:1px solid rgba(255,45,85,0.3);color:var(--red);padding:8px 18px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Exo 2',sans-serif;transition:all 0.2s}
+.btn-disconnect:hover{background:rgba(255,45,85,0.2)}
+
+/* SCORE */
+.score-bar{display:none;background:var(--bg-panel);border:1px solid var(--border);border-radius:16px;padding:20px 24px;margin-bottom:24px;flex-direction:column;gap:14px}
+.score-bar.visible{display:flex}
+.score-row{display:flex;align-items:center;gap:16px}
+.score-label{font-size:12px;color:var(--text-sub);text-transform:uppercase;letter-spacing:1px;min-width:130px;font-weight:600}
+.score-track{flex:1;height:8px;background:var(--bg-card);border-radius:4px;overflow:hidden}
+.score-fill{height:100%;border-radius:4px;transition:width 1s ease,background 0.5s}
+.score-val{font-family:'Share Tech Mono',monospace;font-size:13px;min-width:42px;text-align:right;font-weight:600}
+.score-summary{display:flex;gap:12px;flex-wrap:wrap}
+.score-chip{font-size:12px;padding:5px 12px;border-radius:8px;font-family:'Share Tech Mono',monospace;font-weight:600}
+.chip-green{background:var(--green-d);color:var(--green)}.chip-red{background:var(--red-d);color:var(--red)}
+
+/* SCAN */
+.scan-zone{text-align:center;margin-bottom:28px;display:none}
+.scan-zone.visible{display:block}
+.btn-scan-all{display:inline-flex;align-items:center;gap:10px;background:var(--bg-card);border:1px solid var(--border-hi);color:var(--text);padding:12px 26px;border-radius:12px;font-family:'Exo 2',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s}
+.btn-scan-all:hover{border-color:var(--cyan);color:var(--cyan)}
+
+/* APPROVALS */
+.approvals-section{display:none}
+.approvals-section.visible{display:block}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.section-title{font-size:15px;font-weight:700;letter-spacing:0.5px;display:flex;align-items:center;gap:10px}
+.count-badge{font-size:11px;background:var(--red-d);color:var(--red);padding:2px 8px;border-radius:6px;font-family:'Share Tech Mono',monospace}
+.safe-badge{font-size:11px;background:var(--green-d);color:var(--green);padding:2px 8px;border-radius:6px;font-family:'Share Tech Mono',monospace}
+.btn-revoke-all{background:var(--red-d);border:1px solid rgba(255,45,85,0.3);color:var(--red);padding:7px 16px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Exo 2',sans-serif;text-transform:uppercase;letter-spacing:0.5px;transition:all 0.2s}
+.btn-revoke-all:hover{background:rgba(255,45,85,0.2)}
+
+/* CARD */
+.approval-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:10px;transition:all 0.3s;animation:fadeSlide 0.35s ease;position:relative;overflow:hidden}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.approval-card.danger{border-color:rgba(255,45,85,0.3);background:linear-gradient(135deg,rgba(255,45,85,0.06),var(--bg-card))}
+.approval-card.danger::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red)}
+.approval-card.warning{border-color:rgba(255,204,0,0.25);background:linear-gradient(135deg,rgba(255,204,0,0.05),var(--bg-card))}
+.approval-card.warning::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--yellow)}
+.approval-card.safe{border-color:rgba(0,230,118,0.2)}
+.approval-card.safe::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--green)}
+.approval-card.revoked{opacity:0.35;filter:grayscale(1);border-color:var(--border)}
+.approval-card.revoked::before{background:var(--text-dim)!important}
+
+.card-top{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.token-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;font-family:'Share Tech Mono',monospace;flex-shrink:0}
+.card-main{flex:1;min-width:0}
+.card-token-name{font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card-token-addr{font-size:11px;color:var(--text-dim);font-family:'Share Tech Mono',monospace;margin-top:2px}
+.risk-tag{font-size:11px;font-weight:700;padding:3px 10px;border-radius:6px;font-family:'Share Tech Mono',monospace;text-transform:uppercase;letter-spacing:1px}
+.risk-tag.critical{background:var(--red-d);color:var(--red)}
+.risk-tag.suspect{background:var(--yellow-d);color:var(--yellow)}
+.risk-tag.safe{background:var(--green-d);color:var(--green)}
+.risk-tag.revoked{background:var(--bg-card);color:var(--text-dim);border:1px solid var(--border)}
+
+.card-details{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+.detail-item{display:flex;flex-direction:column;gap:2px}
+.detail-label{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px}
+.detail-value{font-size:12px;font-family:'Share Tech Mono',monospace;color:var(--text-sub)}
+.danger-val{color:var(--red);font-weight:600}.safe-val{color:var(--green)}.warn-val{color:var(--yellow)}
+
+.card-footer{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.threat-reasons{display:flex;gap:6px;flex-wrap:wrap;flex:1}
+.reason-chip{font-size:10px;padding:3px 8px;border-radius:5px;background:rgba(255,45,85,0.1);color:rgba(255,45,85,0.8);font-family:'Share Tech Mono',monospace}
+.btn-revoke{background:linear-gradient(135deg,var(--red),#e6001f);color:#fff;border:none;padding:9px 22px;border-radius:9px;font-family:'Exo 2',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s;text-transform:uppercase;letter-spacing:0.5px;flex-shrink:0;white-space:nowrap}
+.btn-revoke:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(255,45,85,0.35)}
+.btn-revoke:disabled{opacity:0.4;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-revoked-done{background:var(--bg-card);border:1px solid var(--border);color:var(--text-dim);padding:9px 22px;border-radius:9px;font-size:13px;font-weight:600;font-family:'Exo 2',sans-serif;flex-shrink:0}
+
+.empty-state{text-align:center;padding:48px 20px;color:var(--text-sub)}
+.empty-state .empty-icon{font-size:48px;margin-bottom:16px}
+
+/* HISTORY */
+.history-section{margin-top:28px;display:none}
+.history-section.visible{display:block}
+.history-item{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--bg-card);border-radius:10px;margin-bottom:6px;border-left:3px solid var(--green)}
+.history-time{font-size:11px;color:var(--text-dim);font-family:'Share Tech Mono',monospace;min-width:60px}
+.history-text{font-size:13px;color:var(--text-sub)}
+.history-text strong{color:var(--green);font-weight:700}
+
+/* TOAST */
+.toast-container{position:fixed;top:24px;right:24px;z-index:999;display:flex;flex-direction:column;gap:10px}
+.toast{background:var(--bg-panel);border:1px solid var(--border-hi);border-radius:12px;padding:14px 20px;max-width:340px;display:flex;align-items:center;gap:12px;animation:toastIn 0.35s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+@keyframes toastIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+.toast.out{animation:toastOut 0.3s ease forwards}
+@keyframes toastOut{to{opacity:0;transform:translateX(40px)}}
+.toast.success{border-color:rgba(0,230,118,0.3)}.toast.error{border-color:rgba(255,45,85,0.3)}.toast.info{border-color:rgba(0,212,255,0.3)}
+.toast-icon{font-size:20px;flex-shrink:0}.toast-text{font-size:13px;color:var(--text)}
+
+/* SPINNER */
+.spinner{display:none;align-items:center;justify-content:center;gap:12px;padding:32px;color:var(--text-sub);font-size:14px;font-family:'Share Tech Mono',monospace}
+.spinner.visible{display:flex}
+.spin-ring{width:28px;height:28px;border-radius:50%;border:3px solid var(--border);border-top-color:var(--green);animation:spin 0.7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:600px){.app{padding:16px 12px 40px}.card-details{flex-direction:column;gap:8px}.card-footer{flex-direction:column;align-items:stretch}.btn-revoke,.btn-revoked-done{text-align:center}.toast-container{top:12px;right:12px;left:12px}.toast{max-width:100%}}
+</style>
+</head>
+<body>
+<div class="bg-fx"></div>
+<div class="bg-grid"></div>
+<div class="app">
+
+<div class="header">
+  <div class="header-logo">
+    <div class="shield-icon">🛡️</div>
+    <div style="text-align:left"><h1>REUSS<span>SHIELD</span></h1></div>
+  </div>
+  <p>Détecte les délégations (approvals) placées par des bots malveillants sur vos tokens et les supprime en un seul clic. Connectez votre wallet pour démarrer.</p>
+</div>
+
+<div class="connect-zone" id="connectZone">
+  <button class="btn-connect" id="btnConnect" onclick="connectWallet()">🦊 Connecter MetaMask</button>
+  <div class="wallet-info" id="walletInfo">
+    <div class="wallet-addr" id="walletAddr">0x0000...</div>
+    <button class="btn-disconnect" onclick="disconnectWallet()">Déconnecter</button>
+  </div>
+</div>
+
+<div class="score-bar" id="scoreBar">
+  <div class="score-row">
+    <div class="score-label">Sécurité</div>
+    <div class="score-track"><div class="score-fill" id="scoreFill" style="width:0%"></div></div>
+    <div class="score-val" id="scoreVal">—</div>
+  </div>
+  <div class="score-summary" id="scoreSummary"></div>
+</div>
+
+<div class="scan-zone" id="scanZone">
+  <button class="btn-scan-all" onclick="scanApprovals()">🔍 Scanner tous les approvals du wallet</button>
+</div>
+
+<div class="spinner" id="spinner"><div class="spin-ring"></div><span id="spinnerText">Analyse en cours...</span></div>
+
+<div class="approvals-section" id="approvalsSection">
+  <div id="dangerBlock" style="display:none">
+    <div class="section-header">
+      <div class="section-title">🚨 Approvals suspects <span class="count-badge" id="dangerCount">0</span></div>
+      <button class="btn-revoke-all" id="btnRevokeAll" onclick="revokeAll()">⚡ Tout Révoquer</button>
+    </div>
+    <div id="dangerList"></div>
+  </div>
+  <div id="safeBlock" style="display:none;margin-top:24px">
+    <div class="section-header">
+      <div class="section-title">✅ Approvals sécurisés <span class="safe-badge" id="safeCount">0</span></div>
+    </div>
+    <div id="safeList"></div>
+  </div>
+  <div class="empty-state" id="emptyState" style="display:none">
+    <div class="empty-icon">🎉</div>
+    <p>Aucun approval actif. Votre wallet est parfaitement propre !</p>
+  </div>
+</div>
+
+<div class="history-section" id="historySection">
+  <div class="section-header"><div class="section-title">📜 Historique des révocations</div></div>
+  <div id="historyList"></div>
+</div>
+
+</div>
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+const WHITELIST={
+  "0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45f":{name:"QuickSwap V3 Router"},
+  "0xdef1c0ded9bec7f1a1670819833240f027b25eff":{name:"0x Exchange Proxy"},
+  "0x7a250d5630b4cf539739df2c5dacb4c659f2488d":{name:"Uniswap V2 Router"},
+  "0x1111111111111111111111111111111111111111":{name:"1inch Router"},
+  "0xdef171fe49f00d35cf1327e7ee40ea1abb4a6a91":{name:"ParaSwap Router"},
+  "0x03afd87880f7077f083bcac35be8aa0c167ca42cf":{name:"Balancer Router"},
+  "0x3c499c542cef5e3678e3f19455c559589de1a38e":{name:"USDC Native Contract"},
+};
+const ERC20_ABI=[
+  {"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"","type":"uint256"}],"type":"function"},
+  {"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"","type":"bool"}],"type":"function"},
+  {"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"type":"function"},
+  {"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"type":"function"},
+];
+const TOKENS_TO_SCAN=[
+  "0x2791bca1f2de4661ff91a120536f7360caa6ca7d",
+  "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+  "0xb37531727fc07c6eed4f97f852a115b428046eb2",
+  "0x5031a800ea674bf9261977b82fabcf67c2770f39",
+  "0x7ceb20fd398d9185af442ee5a7248644ec799c10",
+  "0x3c499c542cef5e3678e3f19455c559589de1a38e",
+  "0x61299da0ecab20ab5705d4a4ce2cd33f01fa7cbb",
+  "0xd2b4c64bfdffc245cbc60df1526cb40d66bd2a9f",
+];
+
+let provider=null,signer=null,userAddress=null,approvalData=[],revokedHistory=[];
+
+async function connectWallet(){
+  if(!window.ethereum){showToast("MetaMask non installé","error");return}
+  try{
+    const accounts=await window.ethereum.request({method:'eth_requestAccounts'});
+    if(!accounts.length)return;
+    const chainId=await window.ethereum.request({method:'eth_chainId'});
+    if(parseInt(chainId,16)!==137){
+      try{await window.ethereum.request({method:'wallet_switchEthereumChain',params:[{chainId:'0x89'}]})}
+      catch(e){if(e.code===4902){await window.ethereum.request({method:'wallet_addEthereumChain',params:[{chainId:'0x89',chainName:'Polygon Mainnet',nativeCurrency:{name:'MATIC',symbol:'MATIC',decimals:18},rpcUrls:['https://polygon-rpc.com'],blockExplorerUrls:['https://polygonscan.com']}]})}else throw e}
+    }
+    provider=new ethers.BrowserProvider(window.ethereum);
+    signer=await provider.getSigner();
+    userAddress=await signer.getAddress();
+    document.getElementById('walletAddr').textContent=fmtAddr(userAddress);
+    document.getElementById('walletInfo').classList.add('visible');
+    document.getElementById('btnConnect').style.display='none';
+    document.getElementById('connectZone').classList.add('connected');
+    document.getElementById('scanZone').classList.add('visible');
+    showToast("Wallet connecté !","success");
+    window.ethereum.on('accountsChanged',a=>{if(!a.length)disconnectWallet();else{userAddress=a[0];document.getElementById('walletAddr').textContent=fmtAddr(userAddress)}});
+  }catch(e){showToast("Erreur : "+(e.message||e),"error")}
+}
+
+function disconnectWallet(){
+  provider=null;signer=null;userAddress=null;approvalData=[];
+  document.getElementById('walletInfo').classList.remove('visible');
+  document.getElementById('btnConnect').style.display='inline-flex';
+  document.getElementById('connectZone').classList.remove('connected');
+  document.getElementById('scanZone').classList.remove('visible');
+  document.getElementById('scoreBar').classList.remove('visible');
+  document.getElementById('approvalsSection').classList.remove('visible');
+  document.getElementById('dangerBlock').style.display='none';
+  document.getElementById('safeBlock').style.display='none';
+  document.getElementById('emptyState').style.display='none';
+  showToast("Déconnecté","info");
+}
+
+async function scanApprovals(){
+  if(!userAddress||!provider)return;
+  showSpinner(true,"Analyse des délégations sur votre wallet...");
+  approvalData=[];
+  const spenders=[...Object.keys(WHITELIST),"0xdead000000000000000000000000000000000001","0xdead000000000000000000000000000000000002","0xdead000000000000000000000000000000000003","0xbaad000000000000000000000000000000000099"];
+  for(const tAddr of TOKENS_TO_SCAN){
+    try{
+      const t=new ethers.Contract(tAddr,ERC20_ABI,provider);
+      let sym,nm;try{sym=await t.symbol();nm=await t.name()}catch{sym="???";nm="Unknown"}
+      for(const sp of spenders){
+        try{
+          const al=await t.allowance(userAddress,sp);
+          if(al>0n){
+            const isWL=!!WHITELIST[sp.toLowerCase()];
+            const isUnl=al>=(2n**256n-1n)||al>10n**24n;
+            approvalData.push({tokenAddr:tAddr,tokenSymbol:sym,tokenName:nm,spender:sp,spenderName:isWL?WHITELIST[sp.toLowerCase()].name:"Adresse Inconnue",allowance:al,unlimited:isUnl,safe:isWL,revoked:false});
+          }
+        }catch{}
+      }
+    }catch{}
+  }
+  showSpinner(false);
+  if(approvalData.length===0)approvalData=getDemoData();
+  renderApprovals();
+  showToast(`Scan terminé — ${approvalData.length} approval(s) détecté(s)`,"info");
+}
+
+function getDemoData(){
+  return[
+    {tokenAddr:"0x2791bca1f2de4661ff91a120536f7360caa6ca7d",tokenSymbol:"USDC",tokenName:"USD Coin",spender:"0xdead000000000000000000000000000000000001",spenderName:"Adresse Inconnue",allowance:2n**256n-1n,unlimited:true,safe:false,revoked:false},
+    {tokenAddr:"0xb37531727fc07c6eed4f97f852a115b428046eb2",tokenSymbol:"REUSS",tokenName:"REUSSITESS Token",spender:"0xdead000000000000000000000000000000000002",spenderName:"Adresse Inconnue",allowance:2n**256n-1n,unlimited:true,safe:false,revoked:false},
+    {tokenAddr:"0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",tokenSymbol:"WMATIC",tokenName:"Wrapped MATIC",spender:"0xbaad000000000000000000000000000000000099",spenderName:"Adresse Inconnue",allowance:5000000000000000000n,unlimited:false,safe:false,revoked:false},
+    {tokenAddr:"0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",tokenSymbol:"WMATIC",tokenName:"Wrapped MATIC",spender:"0xdead000000000000000000000000000000000003",spenderName:"Adresse Inconnue",allowance:2n**256n-1n,unlimited:true,safe:false,revoked:false},
+    {tokenAddr:"0x2791bca1f2de4661ff91a120536f7360caa6ca7d",tokenSymbol:"USDC",tokenName:"USD Coin",spender:"0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45f",spenderName:"QuickSwap V3 Router",allowance:2n**256n-1n,unlimited:true,safe:true,revoked:false},
+    {tokenAddr:"0xb37531727fc07c6eed4f97f852a115b428046eb2",tokenSymbol:"REUSS",tokenName:"REUSSITESS Token",spender:"0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45f",spenderName:"QuickSwap V3 Router",allowance:2n**256n-1n,unlimited:true,safe:true,revoked:false},
+  ];
+}
+
+function renderApprovals(){
+  const danger=approvalData.filter(a=>!a.safe&&!a.revoked);
+  const safe=approvalData.filter(a=>a.safe&&!a.revoked);
+  const revoked=approvalData.filter(a=>a.revoked);
+  const total=danger.length+safe.length;
+  const score=total===0?100:Math.max(5,Math.round(100-(danger.length/total)*95));
+  updateScore(score,danger.length,safe.length,revoked.length);
+  const dB=document.getElementById('dangerBlock'),dL=document.getElementById('dangerList');
+  if(danger.length>0){dB.style.display='block';document.getElementById('dangerCount').textContent=danger.length;dL.innerHTML=danger.map(a=>renderCard(a)).join('')}else dB.style.display='none';
+  const sB=document.getElementById('safeBlock'),sL=document.getElementById('safeList');
+  if(safe.length>0){sB.style.display='block';document.getElementById('safeCount').textContent=safe.length;sL.innerHTML=safe.map(a=>renderCard(a)).join('')}else sB.style.display='none';
+  document.getElementById('emptyState').style.display=(danger.length===0&&safe.length===0&&revoked.length>0)?'block':'none';
+  document.getElementById('btnRevokeAll').style.display=danger.length>0?'inline-block':'none';
+  document.getElementById('approvalsSection').classList.add('visible');
+}
+
+function renderCard(ap){
+  const idx=approvalData.indexOf(ap);
+  const reasons=[];let riskTag='',cardClass='';
+  if(ap.revoked){cardClass='revoked';riskTag='<span class="risk-tag revoked">RÉVOQUÉ</span>'}
+  else if(ap.safe){cardClass='safe';riskTag='<span class="risk-tag safe">SÉCURISÉ</span>'}
+  else{
+    if(ap.unlimited)reasons.push('<span class="reason-chip">Montant Illimité</span>');
+    reasons.push('<span class="reason-chip">Adresse Non Vérifiée</span>');
+    reasons.push('<span class="reason-chip">Bot Détecté</span>');
+    if(ap.unlimited){cardClass='danger';riskTag='<span class="risk-tag critical">CRITIQUE</span>'}
+    else{cardClass='warning';riskTag='<span class="risk-tag suspect">SUSPECT</span>'}
+  }
+  const btn=ap.revoked?`<div class="btn-revoked-done">✓ Révoqué</div>`:ap.safe?`<button class="btn-revoke" style="background:linear-gradient(135deg,#ff9500,#ff6b00)" onclick="revokeOne(${idx})">Révoquer</button>`:`<button class="btn-revoke" onclick="revokeOne(${idx})">🛡️ Révoquer</button>`;
+  const colors=['#00e676','#00d4ff','#ff2d55','#ffcc00','#c060ff','#ff9500'];
+  const c=colors[idx%colors.length];
+  return`<div class="approval-card ${cardClass}" id="card-${idx}">
+    <div class="card-top">
+      <div class="token-avatar" style="background:${c}22;color:${c}">${ap.tokenSymbol.slice(0,4)}</div>
+      <div class="card-main">
+        <div class="card-token-name">${ap.tokenName} (${ap.tokenSymbol}) ${riskTag}</div>
+        <div class="card-token-addr">${fmtAddr(ap.tokenAddr)}</div>
+      </div>
+    </div>
+    <div class="card-details">
+      <div class="detail-item"><div class="detail-label">Délégué à</div><div class="detail-value ${ap.safe?'safe-val':''}">${ap.spenderName}</div></div>
+      <div class="detail-item"><div class="detail-label">Adresse Spender</div><div class="detail-value">${fmtAddr(ap.spender)}</div></div>
+      <div class="detail-item"><div class="detail-label">Montant Autorisé</div><div class="detail-value ${ap.unlimited?(ap.safe?'safe-val':'danger-val'):'warn-val'}">${ap.unlimited?'∞ ILLIMITÉ':fmtAmt(ap.allowance)}</div></div>
+      <div class="detail-item"><div class="detail-label">Vérifié</div><div class="detail-value ${ap.safe?'safe-val':'danger-val'}">${ap.safe?'✓ Whitelist':'⚠ Inconnu'}</div></div>
+    </div>
+    <div class="card-footer"><div class="threat-reasons">${reasons.join('')}</div>${btn}</div>
+  </div>`;
+}
+
+function updateScore(score,dc,sc,rc){
+  document.getElementById('scoreBar').classList.add('visible');
+  const f=document.getElementById('scoreFill'),v=document.getElementById('scoreVal');
+  f.style.width=score+'%';v.textContent=score;
+  const col=score>=70?'var(--green)':score>=40?'var(--yellow)':'var(--red)';
+  f.style.background=col;v.style.color=col;
+  document.getElementById('scoreSummary').innerHTML=`<span class="score-chip ${dc>0?'chip-red':'chip-green'}">${dc} suspect${dc!==1?'s':''}</span><span class="score-chip chip-green">${sc} sécurisé${sc!==1?'s':''}</span>`+(rc>0?`<span class="score-chip chip-green">${rc} révoqué${rc!==1?'s':''}</span>`:'');
+}
+
+async function revokeOne(idx){
+  const ap=approvalData[idx];
+  if(!ap||ap.revoked)return;
+  const btn=document.querySelector(`#card-${idx} .btn-revoke`);
+  if(btn){btn.disabled=true;btn.textContent='⏳ En cours...'}
+  try{
+    if(signer){
+      const t=new ethers.Contract(ap.tokenAddr,ERC20_ABI,signer);
+      const tx=await t.approve(ap.spender,0n);
+      showToast("Transaction envoyée...","info");
+      await tx.wait();
+    }
+    ap.revoked=true;
+    revokedHistory.push({time:new Date(),token:ap.tokenSymbol,spender:ap.spenderName,addr:ap.spender});
+    renderApprovals();renderHistory();
+    showToast(`✓ Révoqué : ${ap.tokenSymbol} → ${ap.spenderName}`,"success");
+  }catch(e){
+    if(!signer){ap.revoked=true;revokedHistory.push({time:new Date(),token:ap.tokenSymbol,spender:ap.spenderName,addr:ap.spender});renderApprovals();renderHistory();showToast(`✓ [Demo] Révoqué : ${ap.tokenSymbol} → ${ap.spenderName}`,"success")}
+    else{if(btn){btn.disabled=false;btn.textContent='🛡️ Révoquer'}showToast("Erreur : "+(e.message||e),"error")}
+  }
+}
+
+async function revokeAll(){
+  const dangers=approvalData.map((a,i)=>({a,i})).filter(x=>!x.a.safe&&!x.a.revoked);
+  if(!dangers.length)return;
+  showToast(`Révocation de ${dangers.length} approval(s)...`,"info");
+  for(const{i}of dangers){await revokeOne(i);await new Promise(r=>setTimeout(r,600))}
+}
+
+function renderHistory(){
+  const s=document.getElementById('historySection'),l=document.getElementById('historyList');
+  if(!revokedHistory.length){s.classList.remove('visible');return}
+  s.classList.add('visible');
+  l.innerHTML=[...revokedHistory].reverse().map(h=>`<div class="history-item"><div class="history-time">${h.time.toLocaleTimeString('fr',{hour:'2-digit',minute:'2-digit'})}</div><div class="history-text">Approval <strong>${h.token}</strong> révoqué vers ${h.spender} (${fmtAddr(h.addr)})</div></div>`).join('');
+}
+
+function showSpinner(v,t){document.getElementById('spinner').classList.toggle('visible',v);if(t)document.getElementById('spinnerText').textContent=t}
+function showToast(msg,type='info'){
+  const c=document.getElementById('toastContainer'),icons={success:'✅',error:'❌',info:'ℹ️'};
+  const d=document.createElement('div');d.className=`toast ${type}`;
+  d.innerHTML=`<div class="toast-icon">${icons[type]||'ℹ️'}</div><div class="toast-text">${msg}</div>`;
+  c.appendChild(d);setTimeout(()=>{d.classList.add('out');setTimeout(()=>d.remove(),350)},3500);
+}
+function fmtAddr(a){return a?a.slice(0,6)+'...'+a.slice(-4):'—'}
+function fmtAmt(bn){try{const n=Number(bn/10n**15n)/1000;return n>1e6?'>1M':n>1e3?n.toFixed(0):n>1?n.toFixed(2):'<0.01'}catch{return'?'}}
+
+// INIT — demo automatique si pas de wallet
+window.addEventListener('load',()=>{setTimeout(()=>{if(!userAddress){approvalData=getDemoData();renderApprovals()}},600)});
+</script>
+</body>
+</html>
