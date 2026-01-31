@@ -1,0 +1,19 @@
+{
+  "name": "reussitess-global-nexus",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "hardhat": "^2.22.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.1.0"
+  },
+  "description": "",
+  "main": "deploy_v3_secure.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

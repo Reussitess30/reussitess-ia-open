@@ -1,0 +1,17 @@
+VÉRIFICATION POLYGONSCAN
+======================================================================
+
+URL: https://polygonscan.com/verifyContract?a=0xB37531727fC07c6EED4f97F852A115B428046EB2
+
+Paramètres:
+- Compiler Type: Solidity (Single file)
+- Compiler Version: v0.8.31
+- License: MIT
+- Optimization: Yes
+- Runs: 200
+
+Constructor Arguments (SANS 0x):
+00000000000000000000000069f42aa645a43a84e1143d416a4c81a88df0154900000000000000000000000069f42aa645a43a84e1143d416a4c81a88df01549
+
+recipient: 0x69f42aa645a43a84e1143d416a4c81a88df01549
+initialOwner: 0x69f42aa645a43a84e1143d416a4c81a88df01549

@@ -1,0 +1,8 @@
+{
+  "timestamp": "2026-01-28T12:39:02.232593",
+  "total_files": 15,
+  "total_lines": 7914,
+  "python_scripts": 6,
+  "files_with_secrets": 9,
+  "danger_level": "HIGH"
+}
