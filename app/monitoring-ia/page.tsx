@@ -12,7 +12,7 @@ export default function MonitoringIA() {
         const res = await fetch('/api/ai-status')
         const data = await res.json()
         setStats(data)
-        
+
         const logMessages = [
           `[SENTINELLE-${Math.floor(Math.random() * 40)}] Protection contrat ✅`,
           `[NEURO-X-${Math.floor(Math.random() * 60)}] Analyse Amazon BE ✅`,
@@ -53,11 +53,13 @@ export default function MonitoringIA() {
           </div>
           <Link href="/ia-passport" style={{ background: 'rgba(16, 185, 129, 0.2)', border: '2px solid #10b981', color: '#10b981', padding: '1rem 2rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold' }}>← Retour</Link>
         </div>
+        
         <div style={{ background: 'rgba(16, 185, 129, 0.1)', border: '2px solid #10b981', borderRadius: '20px', padding: '2rem', marginBottom: '2rem', textAlign: 'center' }}>
           <div style={{ display: 'inline-block', width: '15px', height: '15px', background: '#10b981', borderRadius: '50%', marginRight: '10px', animation: 'pulse 2s infinite' }} />
           <span style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#10b981' }}>SYSTÈME OPÉRATIONNEL - {stats.global.tasksRunning} TÂCHES EN COURS</span>
           <p style={{ color: '#94a3b8', marginTop: '0.5rem', fontSize: '0.9rem' }}>Dernière mise à jour : {new Date(stats.global.lastUpdate).toLocaleString()}</p>
         </div>
+        
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
           <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '2px solid #ef4444', borderRadius: '20px', padding: '2rem' }}>
             <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🛡️</div>
@@ -68,6 +70,7 @@ export default function MonitoringIA() {
               <p>📍 Status: {stats.sentinelles.status}</p>
             </div>
           </div>
+          
           <div style={{ background: 'rgba(59, 130, 246, 0.1)', border: '2px solid #3b82f6', borderRadius: '20px', padding: '2rem' }}>
             <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🧠</div>
             <h2 style={{ color: '#3b82f6', fontSize: '1.8rem', marginBottom: '1rem' }}>{stats.neurox.active} Neuro-X</h2>
@@ -77,6 +80,7 @@ export default function MonitoringIA() {
               <p>📍 Status: {stats.neurox.status}</p>
             </div>
           </div>
+          
           <div style={{ background: 'rgba(139, 92, 246, 0.1)', border: '2px solid #8b5cf6', borderRadius: '20px', padding: '2rem' }}>
             <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🎯</div>
             <h2 style={{ color: '#8b5cf6', fontSize: '1.8rem', marginBottom: '1rem' }}>{stats.nexus.active} Nexus Quiz</h2>
@@ -86,6 +90,7 @@ export default function MonitoringIA() {
               <p>📍 Status: {stats.nexus.status}</p>
             </div>
           </div>
+          
           <div style={{ background: 'rgba(234, 179, 8, 0.1)', border: '2px solid #eab308', borderRadius: '20px', padding: '2rem' }}>
             <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>👑</div>
             <h2 style={{ color: '#eab308', fontSize: '1.8rem', marginBottom: '1rem' }}>{stats.supreme.active} IA Suprême</h2>
@@ -96,12 +101,35 @@ export default function MonitoringIA() {
             </div>
           </div>
         </div>
-        <div style={{ background: '#000', border: '2px solid #10b981', borderRadius: '20px', padding: '2rem' }}>
+        
+        <div style={{ background: '#000', border: '2px solid #10b981', borderRadius: '20px', padding: '2rem', marginBottom: '3rem' }}>
           <h3 style={{ color: '#10b981', fontSize: '1.5rem', marginBottom: '1rem' }}>📡 LOGS TEMPS RÉEL</h3>
           <div style={{ height: '300px', overflowY: 'auto', fontFamily: 'monospace', fontSize: '0.9rem', lineHeight: '1.8' }}>
             {logs.map((log, i) => <div key={i} style={{ color: '#10b981', marginBottom: '0.3rem' }}>{log}</div>)}
           </div>
         </div>
+
+        {/* Widget Prix Temps Réel - DEXScreener */}
+        <div style={{ background: 'rgba(16, 185, 129, 0.05)', border: '2px solid #10b981', borderRadius: '20px', padding: '2rem', marginBottom: '2rem' }}>
+          <h3 style={{ color: '#10b981', fontSize: '1.8rem', marginBottom: '1.5rem', textAlign: 'center', fontWeight: '900' }}>
+            📈 PRIX REUSSITESS EN TEMPS RÉEL
+          </h3>
+          <div style={{ 
+            width: '100%', 
+            height: '650px', 
+            background: 'rgba(0,0,0,0.3)', 
+            borderRadius: '15px',
+            overflow: 'hidden',
+            border: '1px solid rgba(16, 185, 129, 0.2)'
+          }}>
+            <iframe
+              src="https://dexscreener.com/polygon/0xB37531727fC07c6EED4f97F852A115B428046EB2?embed=1&theme=dark"
+              style={{ width: '100%', height: '100%', border: 'none' }}
+              allow="clipboard-write"
+            />
+          </div>
+        </div>
+        
         <div style={{ textAlign: 'center', marginTop: '3rem', color: '#64748b' }}>
           <p style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#10b981' }}>{stats.global.message}</p>
         </div>
