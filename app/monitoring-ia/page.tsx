@@ -3,8 +3,17 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { ethers } from 'ethers'
 
+// Interface pour stabiliser le build Vercel
+interface IAStats {
+  global: { tasksRunning: number; lastUpdate: string; message: string };
+  sentinelles: { active: number; tasksCompleted: number; alerts: number; status: string };
+  neurox: { active: number; predictions: number; accuracy: number; status: string };
+  nexus: { active: number; queries: number; countries: number; status: string };
+  supreme: { active: number; commands: number; uptime: number; status: string };
+}
+
 export default function MonitoringIA() {
-  const [stats, setStats] = useState<any>(null)
+  const [stats, setStats] = useState<IAStats | null>(null)
   const [logs, setLogs] = useState<string[]>([])
 
   useEffect(() => {
@@ -178,10 +187,9 @@ function ReussShieldSection() {
       try {
         const provider = new ethers.BrowserProvider((window as any).ethereum);
         const accounts = await provider.send("eth_requestAccounts", []);
-        const address = accounts[0];
-        setWalletAddress(address)
+        setWalletAddress(accounts[0])
         setWalletConnected(true)
-        scanApprovals(address)
+        scanApprovals(accounts[0])
       } catch (error) {
         console.error('Erreur connexion wallet:', error)
       }
@@ -190,52 +198,51 @@ function ReussShieldSection() {
     }
   }
 
-  const scanApprovals = async (userAddress: string) => {
-    setLoading(true);
+  // FONCTION RÉELLE POUR SCANNER LA BLOCKCHAIN POLYGON
+  const scanApprovals = async (userAddr: string) => {
+    setLoading(true)
     try {
+      const provider = new ethers.BrowserProvider((window as any).ethereum)
+      const abi = ["function allowance(address owner, address spender) view returns (uint256)"]
+      
       const tokens = [
         { symbol: 'REUSS', address: '0xB37531727fC07c6EED4f97F852A115B428046EB2' },
         { symbol: 'USDC', address: '0x2791Bca1f2de4661fF91a120536f7360Ca6ca7d' },
         { symbol: 'WMATIC', address: '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270' }
-      ];
+      ]
 
-      const provider = new ethers.BrowserProvider((window as any).ethereum);
-      const abi = ["function allowance(address owner, address spender) view returns (uint256)"];
-      
-      const spenders = [
-        { name: 'QuickSwap V3', address: '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45f' },
-        { name: 'Bot Inconnu 1', address: '0xdead000000000000000000000000000000000001' },
-        { name: 'Bot Inconnu 2', address: '0xbaad000000000000000000000000000000000099' }
-      ];
+      const suspiciousSpenders = [
+        { name: 'QuickSwap V3', address: '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45f', safe: true },
+        { name: 'Bot Inconnu 1', address: '0xdead000000000000000000000000000000000001', safe: false },
+        { name: 'Bot Inconnu 2', address: '0xbaad000000000000000000000000000000000099', safe: false }
+      ]
 
-      let foundApprovals = [];
+      let realApprovals = []
 
       for (const token of tokens) {
-        const contract = new ethers.Contract(token.address, abi, provider);
-        for (const spender of spenders) {
-          const allowance = await contract.allowance(userAddress, spender.address);
-          
+        const contract = new ethers.Contract(token.address, abi, provider)
+        for (const spender of suspiciousSpenders) {
+          const allowance = await contract.allowance(userAddr, spender.address)
           if (allowance > 0) {
-            foundApprovals.push({
+            realApprovals.push({
               token: token.symbol,
               tokenAddress: token.address,
               spender: spender.name,
               spenderFull: spender.address,
               amount: allowance > ethers.parseUnits("1000000", 18) ? '∞ ILLIMITÉ' : ethers.formatUnits(allowance, 18),
-              risk: spender.name.includes('Bot') ? 'CRITIQUE' : 'SÉCURISÉ',
-              safe: !spender.name.includes('Bot'),
+              risk: spender.safe ? 'SÉCURISÉ' : 'CRITIQUE',
+              safe: spender.safe,
               revoked: false
-            });
+            })
           }
         }
       }
-
-      setApprovals(foundApprovals);
-      setStats((prev: any) => ({ ...prev, approvalsScanned: foundApprovals.length }));
-    } catch (err) {
-      console.error("Erreur lors du scan réel:", err);
+      setApprovals(realApprovals)
+      setStats((prev: any) => ({ ...prev, approvalsScanned: realApprovals.length }))
+    } catch (e) {
+      console.error("Scan failed", e)
     }
-    setLoading(false);
+    setLoading(false)
   }
 
   const revokeApproval = async (index: number) => {
@@ -307,7 +314,7 @@ function ReussShieldSection() {
             <h3 style={{ color: '#10b981', fontSize: '1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
               🚨 Approvals Détectés <span style={{ fontSize: '0.9rem', background: 'rgba(239, 68, 68, 0.2)', color: '#ef4444', padding: '4px 12px', borderRadius: '8px' }}>{approvals.filter(a => !a.safe && !a.revoked).length} suspects</span>
             </h3>
-            {loading ? <div style={{color:'#10b981'}}>Analyse en cours...</div> : approvals.map((approval, index) => (
+            {loading ? <p style={{color:'#10b981'}}>Analyse du réseau Polygon en cours...</p> : approvals.map((approval, index) => (
               <div key={index} style={{ background: approval.safe ? 'rgba(16, 185, 129, 0.05)' : 'rgba(239, 68, 68, 0.05)', border: `2px solid ${approval.safe ? 'rgba(16, 185, 129, 0.2)' : 'rgba(239, 68, 68, 0.3)'}`, borderRadius: '14px', padding: '1.5rem', marginBottom: '1rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
                   <div style={{ flex: 1, minWidth: '250px' }}>
