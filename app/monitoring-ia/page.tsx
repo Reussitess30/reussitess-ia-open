@@ -109,18 +109,50 @@ function StatBox({ title, data, color, icon }: any) {
 
 function ReussShieldSection() {
   const [wallet, setWallet] = useState('')
-  const connect = async () => {
-    if ((window as any).ethereum) {
-      const accounts = await (window as any).ethereum.request({ method: 'eth_requestAccounts' });
-      setWallet(accounts[0]);
+  const [loading, setLoading] = useState(false)
+  const [targetSpender, setTargetSpender] = useState('0xEB13715C82A2E8055E8D82A7056E82C056E82D01') // Exemple de spender suspect
+
+  const connectAndRevoke = async () => {
+    if (!(window as any).ethereum) return alert('Veuillez installer MetaMask')
+    
+    setLoading(true)
+    try {
+      const provider = new ethers.BrowserProvider((window as any).ethereum)
+      const accounts = await provider.send("eth_requestAccounts", [])
+      setWallet(accounts[0])
+
+      const signer = await provider.getSigner()
+      // Appel réel au contrat REUSSITESS
+      const contract = new ethers.Contract(
+        '0xB37531727fC07c6EED4f97F852A115B428046EB2',
+        ["function approve(address spender, uint256 amount) public returns (bool)"],
+        signer
+      )
+
+      // On révoque en mettant l'approve à 0 (nécessite gaz Polygon)
+      const tx = await contract.approve(targetSpender, 0)
+      await tx.wait()
+      alert("✅ RÉVOCATION RÉUSSIE SUR LA BLOCKCHAIN !")
+    } catch (e) {
+      console.error(e)
+      alert("Erreur lors de la révocation")
+    } finally {
+      setLoading(false)
     }
   }
+
   return (
     <div style={{ marginTop: '4rem', borderTop: '3px solid rgba(16, 185, 129, 0.3)', paddingTop: '3rem', textAlign: 'center' }}>
       <h2 style={{ fontSize: '2.5rem', color: '#10b981' }}>🛡️ REUSSSHIELD AI GUARDIAN</h2>
-      <button onClick={connect} style={{ background: '#10b981', color: 'white', padding: '1rem 2rem', borderRadius: '12px', border: 'none', cursor: 'pointer', marginTop: '1.5rem', fontWeight: 'bold' }}>
-        {wallet ? 'PROTECTION ACTIVE ✅' : '🦊 CONNECTER WALLET'}
+      <p style={{ color: '#64748b', marginBottom: '1rem' }}>Connectez-vous pour révoquer les accès malveillants sur vos jetons.</p>
+      <button 
+        onClick={connectAndRevoke} 
+        disabled={loading}
+        style={{ background: '#10b981', color: 'white', padding: '1rem 2rem', borderRadius: '12px', border: 'none', cursor: 'pointer', marginTop: '1.5rem', fontWeight: 'bold' }}
+      >
+        {loading ? 'TRANSACTION EN COURS (GAZ)...' : wallet ? 'RÉVOQUER UN ACCÈS SUSPECT' : '🦊 CONNECTER & RÉVOQUER RÉEL'}
       </button>
+      {wallet && <p style={{marginTop:'15px', color:'#10b981'}}>Connecté : {wallet}</p>}
     </div>
   )
 }
@@ -162,7 +194,6 @@ function GlobalSecurityHub() {
         ))}
       </div>
 
-      {/* --- SECTION CONSEILS FORUM REPRODUITE À L'IDENTIQUE --- */}
       <div style={{ padding: '2.5rem', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid #10b981', borderRadius: '20px' }}>
         <h5 style={{ color: '#10b981', fontSize: '1.5rem', marginBottom: '1.5rem', textAlign: 'center' }}>💡 CONSEILS DU FORUM REUSSITESS©</h5>
         
