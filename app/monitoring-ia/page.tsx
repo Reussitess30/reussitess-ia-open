@@ -127,7 +127,6 @@ export default function MonitoringIA() {
           <p style={{ fontSize: '1.2rem', fontWeight: 'bold', color: '#10b981' }}>{stats.global.message}</p>
         </div>
 
-        {/* AJOUT DE TA NOUVELLE SECTION DE SÉCURITÉ ICI */}
         <ReussShieldSection />
 
       </div>
@@ -135,34 +134,16 @@ export default function MonitoringIA() {
   )
 }
 
-// --- LOGIQUE DE PROTECTION REUSSSHIELD ---
-
-const ERC20_ABI = [
-  "function approve(address spender, uint256 amount) public returns (bool)",
-  "function allowance(address owner, address spender) public view returns (uint256)",
-  "function name() public view returns (string)",
-  "function symbol() public view returns (string)"
+// --- CONSTANTES DE SCAN RÉEL ---
+const MALICIOUS_SPENDERS = [
+  '0x885b37586ad4263835f949c17B38b367541b85ea',
+  '0xB3E28eF64A312abB5F13CDE0400697cdE25da60b'
 ]
 
 const TOKENS_TO_SCAN = [
   { address: '0x2791bca1f2de4661ff91a120536f7360caa6ca7d', symbol: 'USDC' },
-  { address: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270', symbol: 'WMATIC' },
-  { address: '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619', symbol: 'WETH' },
-  { address: '0xc2132d05d31c914a87c6611c10748aeb04b58e8f', symbol: 'USDT' },
-  { address: '0xb37531727fc07c6eed4f97f852a115b428046eb2', symbol: 'REUSS' }
-]
-
-const SAFE_SPENDERS = [
-  '0x68b3465833fb72a70ecdf485e0e4c7bd8665fc45', // QuickSwap V3
-  '0x7a250d5630b4cf539739df2c5dacb4c659f2488d', // Uniswap V2
-  '0xdef1c0ded9bec7f1a1670819833240f027b25eff', // 0x Exchange
-  '0x1111111254eeb25477b68fb85ed929f73a960582'  // 1inch V5
-]
-
-// Liste noire spécifique basée sur tes consignes
-const MALICIOUS_SPENDERS = [
-  '0x885b37586ad4263835f949c17B38b367541b85ea',
-  '0xB3E28eF64A312abB5F13CDE0400697cdE25da60b'
+  { address: '0xb37531727fc07c6eed4f97f852a115b428046eb2', symbol: 'REUSS' },
+  { address: '0xc2132d05d31c914a87c6611c10748aeb04b58e8f', symbol: 'USDT' }
 ]
 
 function ReussShieldSection() {
@@ -171,125 +152,107 @@ function ReussShieldSection() {
   const [approvals, setApprovals] = useState<any[]>([])
   const [threats, setThreats] = useState<any[]>([])
   const [loading, setLoading] = useState(false)
-  const [scanning, setScanning] = useState(false)
+  const [stats, setStats] = useState({ threatsBlocked: 0, approvalsScanned: 0, mlScore: 98 })
 
-  // Simulation de feed IA
-  useEffect(() => {
-    if (walletConnected) {
-      const interval = setInterval(() => {
-        const feeds = [
-          "Analyse Nexus 14 pays : Trafic sécurisé ✅",
-          "Shield IA : Détection de bot frontrun neutralisée",
-          "Surveillance Guadeloupe : Système stable",
-          "Scan REUSS : 0x885b bloqué par Sentinelle"
-        ]
-        const newFeed = {
-          time: new Date().toLocaleTimeString(),
-          message: feeds[Math.floor(Math.random() * feeds.length)],
-          type: 'info'
-        }
-        setThreats(prev => [newFeed, ...prev.slice(0, 9)])
-      }, 5000)
-      return () => clearInterval(interval)
-    }
-  }, [walletConnected])
+  // Scan réel des approvals sur Polygon
+  const scanRealApprovals = async (userAddress: string) => {
+    if (!(window as any).ethereum) return
+    const provider = new ethers.BrowserProvider((window as any).ethereum)
+    let found = []
 
-  const connectWallet = async () => {
-    if (typeof window === 'undefined' || !(window as any).ethereum) {
-      alert('Installez MetaMask')
-      return
-    }
-    try {
-      setLoading(true)
-      const provider = new ethers.BrowserProvider((window as any).ethereum)
-      const accounts = await (window as any).ethereum.request({ method: 'eth_requestAccounts' })
-      setWalletAddress(accounts[0])
-      setWalletConnected(true)
-      await scanRealApprovals(accounts[0])
-    } catch (e) { console.error(e) } finally { setLoading(false) }
-  }
-
-  const scanRealApprovals = async (address: string) => {
-    setScanning(true)
-    const found: any[] = []
-    try {
-      const provider = new ethers.BrowserProvider((window as any).ethereum)
-      const allSpenders = [...SAFE_SPENDERS, ...MALICIOUS_SPENDERS]
-
-      for (const token of TOKENS_TO_SCAN) {
-        const contract = new ethers.Contract(token.address, ERC20_ABI, provider)
-        for (const spender of allSpenders) {
-          const allowance = await contract.allowance(address, spender)
+    for (const token of TOKENS_TO_SCAN) {
+      const contract = new ethers.Contract(token.address, ["function allowance(address owner, address spender) view returns (uint256)"], provider)
+      for (const spender of MALICIOUS_SPENDERS) {
+        try {
+          const allowance = await contract.allowance(userAddress, spender)
           if (allowance > 0n) {
-            const isMalicious = MALICIOUS_SPENDERS.some(m => m.toLowerCase() === spender.toLowerCase())
             found.push({
               token: token.symbol,
               tokenAddress: token.address,
-              spender: isMalicious ? "⚠️ CIBLE MALVEILLANTE" : "DEX VÉRIFIÉ",
+              spender: 'BOT MALVEILLANT DÉTECTÉ',
               spenderFull: spender,
-              amount: allowance >= ethers.MaxUint256 / 2n ? '∞' : ethers.formatUnits(allowance, 18),
-              risk: isMalicious ? 'CRITIQUE' : 'SÉCURISÉ',
-              safe: !isMalicious,
+              amount: 'VOL POTENTIEL ILLIMITÉ',
+              risk: 'CRITIQUE',
+              safe: false,
               revoked: false
             })
           }
-        }
+        } catch (e) { console.error(e) }
       }
-      setApprovals(found)
-    } catch (e) { console.error(e) } finally { setScanning(false) }
+    }
+    setApprovals(found)
+    setStats(prev => ({ ...prev, approvalsScanned: found.length }))
   }
 
-  const revoke = async (index: number) => {
-    const item = approvals[index]
-    setLoading(true)
+  const connectWallet = async () => {
+    if (typeof window !== 'undefined' && (window as any).ethereum) {
+      try {
+        const provider = new ethers.BrowserProvider((window as any).ethereum);
+        const accounts = await provider.send("eth_requestAccounts", []);
+        setWalletAddress(accounts[0])
+        setWalletConnected(true)
+        await scanRealApprovals(accounts[0])
+      } catch (error) { console.error(error) }
+    } else { alert('MetaMask non installé') }
+  }
+
+  const revokeApproval = async (index: number) => {
+    if (!(window as any).ethereum) return;
+    const item = approvals[index];
+    setLoading(true);
     try {
-      const provider = new ethers.BrowserProvider((window as any).ethereum)
-      const signer = await provider.getSigner()
-      const contract = new ethers.Contract(item.tokenAddress, ERC20_ABI, signer)
-      const tx = await contract.approve(item.spenderFull, 0)
-      await tx.wait()
-      const updated = [...approvals]
-      updated[index].revoked = true
-      setApprovals(updated)
-      alert("✅ Révocation confirmée sur la blockchain !")
-    } catch (e) { alert("Action annulée ou erreur") } finally { setLoading(false) }
+      const provider = new ethers.BrowserProvider((window as any).ethereum);
+      const signer = await provider.getSigner();
+      const contract = new ethers.Contract(item.tokenAddress, ["function approve(address spender, uint256 amount) public returns (bool)"], signer);
+      
+      const tx = await contract.approve(item.spenderFull, 0); // Destruction réelle du bot
+      await tx.wait(); 
+
+      const newApprovals = [...approvals]
+      newApprovals[index].revoked = true
+      setApprovals(newApprovals)
+      setStats(prev => ({ ...prev, threatsBlocked: prev.threatsBlocked + 1 }))
+      setThreats(prev => [{ time: new Date().toLocaleTimeString(), message: `Bot ${item.spenderFull} DÉTRUIT ✅`, type: 'blocked' }, ...prev.slice(0, 10)])
+    } catch (e) { alert("Action de destruction échouée") } finally { setLoading(false) }
   }
 
   return (
-    <div style={{ marginTop: '5rem', borderTop: '2px solid #10b981', paddingTop: '3rem' }}>
+    <div style={{ marginTop: '4rem', borderTop: '3px solid rgba(16, 185, 129, 0.3)', paddingTop: '3rem' }}>
       <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-        <h2 style={{ fontSize: '2.5rem', fontWeight: '900', color: '#10b981' }}>🛡️ REUSSSHIELD AI GUARDIAN</h2>
-        <p style={{ color: '#64748b' }}>Analyse des délégations et protection des fonds Reussitess®</p>
+        <div style={{ fontSize: '4rem', marginBottom: '1rem', filter: 'drop-shadow(0 0 20px rgba(16, 185, 129, 0.5))' }}>🛡️</div>
+        <h2 style={{ fontSize: '2.5rem', fontWeight: '900', background: 'linear-gradient(135deg, #10b981, #3b82f6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>REUSSSHIELD AI GUARDIAN</h2>
+        <p style={{ color: '#64748b' }}>Neutralisation réelle des bots malveillants sur Polygon</p>
       </div>
 
       {!walletConnected ? (
-        <button onClick={connectWallet} style={{ width: '100%', padding: '1.5rem', background: '#10b981', color: 'black', fontWeight: '900', borderRadius: '15px', cursor: 'pointer', border: 'none', fontSize: '1.1rem' }}>
-          ACTIVER LA SENTINELLE ANTI-FRAUDE
-        </button>
+        <button onClick={connectWallet} style={{ width: '100%', padding: '1.2rem', background: '#10b981', color: '#000', border: 'none', borderRadius: '14px', fontWeight: '900', cursor: 'pointer' }}>ACTIVER LE SHIELD RÉEL</button>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-          <div style={{ background: 'rgba(0,0,0,0.5)', border: '1px solid #10b981', borderRadius: '20px', padding: '1.5rem' }}>
-            <h3 style={{ color: '#10b981', marginBottom: '1rem' }}>🚨 DÉLÉGATIONS DÉTECTÉES</h3>
-            {approvals.length === 0 ? <p>Aucun risque détecté.</p> : approvals.map((app, i) => (
-              <div key={i} style={{ borderBottom: '1px solid #333', padding: '10px 0', display: 'flex', justifyContent: 'space-between' }}>
+        <>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
+            <div style={{ background: 'rgba(16, 185, 129, 0.1)', border: '2px solid #10b981', borderRadius: '20px', padding: '1.5rem' }}>
+              <div style={{ fontSize: '2rem', fontWeight: '900', color: '#10b981' }}>{stats.threatsBlocked}</div>
+              <div style={{ color: '#64748b' }}>Bots Détruits</div>
+            </div>
+            <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '2px solid #ef4444', borderRadius: '20px', padding: '1.5rem' }}>
+              <div style={{ fontSize: '2rem', fontWeight: '900', color: '#ef4444' }}>{approvals.filter(a => !a.revoked).length}</div>
+              <div style={{ color: '#64748b' }}>Menaces Actives</div>
+            </div>
+          </div>
+
+          <div style={{ background: '#000', border: '2px solid #ef4444', borderRadius: '20px', padding: '2rem' }}>
+            <h3 style={{ color: '#ef4444' }}>🚨 ANALYSE DES BOTS DÉTECTÉS</h3>
+            {approvals.length === 0 ? <p style={{ color: '#10b981' }}>Aucun bot malveillant n'a accès à votre wallet actuellement. ✅</p> : approvals.map((app, i) => (
+              <div key={i} style={{ padding: '1rem', borderBottom: '1px solid #333', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
-                  <div style={{ color: app.safe ? '#10b981' : '#ef4444', fontWeight: 'bold' }}>{app.token} : {app.risk}</div>
-                  <div style={{ fontSize: '0.7rem', color: '#64748b' }}>{app.spenderFull}</div>
+                  <div style={{ color: '#ef4444', fontWeight: 'bold' }}>{app.token} : {app.spender}</div>
+                  <div style={{ fontSize: '0.7rem' }}>Cible : {app.spenderFull}</div>
                 </div>
-                {!app.revoked && !app.safe && (
-                  <button onClick={() => revoke(i)} style={{ background: '#ef4444', border: 'none', color: 'white', padding: '5px 10px', borderRadius: '5px', cursor: 'pointer' }}>RÉVOQUER</button>
-                )}
-                {app.revoked && <span style={{ color: '#10b981' }}>RÉVOQUÉ</span>}
+                {!app.revoked && <button onClick={() => revokeApproval(i)} style={{ background: '#ef4444', color: '#fff', border: 'none', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer', fontWeight: 'bold' }}>{loading ? '...' : 'DÉTRUIRE LE BOT'}</button>}
+                {app.revoked && <div style={{ color: '#10b981' }}>DÉTRUIT</div>}
               </div>
             ))}
           </div>
-          <div style={{ background: 'rgba(0,0,0,0.5)', border: '1px solid #10b981', borderRadius: '20px', padding: '1.5rem' }}>
-            <h3 style={{ color: '#10b981', marginBottom: '1rem' }}>📡 SHIELD ACTIVITY</h3>
-            <div style={{ fontSize: '0.8rem' }}>
-              {threats.map((t, i) => <div key={i} style={{ marginBottom: '5px', color: '#64748b' }}>[{t.time}] {t.message}</div>)}
-            </div>
-          </div>
-        </div>
+        </>
       )}
     </div>
   )
