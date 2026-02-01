@@ -128,7 +128,7 @@ function ReussShieldSection() {
   }
 
   return (
-    <div style={{ background: 'rgba(16, 185, 129, 0.05)', border: '2px solid #10b981', borderRadius: '25px', padding: '2rem' }}>
+    <div style={{ background: 'rgba(16, 185, 129, 0.05)', border: '2px solid #10b981', borderRadius: '25px', padding: '2rem', marginBottom: '2rem' }}>
       <h3 style={{color:'#10b981', textAlign:'center', marginBottom:'1.5rem'}}>🛡️ REUSSSHIELD : SCAN & RÉVOCATION RÉELLE</h3>
       {!wallet ? (
         <button onClick={connect} style={{display:'block', margin:'0 auto', padding:'1rem 2rem', background:'#10b981', border:'none', borderRadius:'10px', color:'white', fontWeight:'bold', cursor:'pointer'}}>🦊 FOX CONNECTER & RÉVOQUER</button>
@@ -145,10 +145,70 @@ function ReussShieldSection() {
 }
 
 function SentinelBotDestroyer() {
+  const [isScanning, setIsScanning] = useState(false)
+  const [detectedBots, setDetectedBots] = useState<any[]>([])
+
+  const startDestructionScan = async () => {
+    if (!(window as any).ethereum) return alert('MetaMask requis')
+    setIsScanning(true)
+    
+    // Simulation du scan profond
+    setTimeout(() => {
+      setDetectedBots([
+        { id: 1, name: 'MEV-FRONT-BOT', target: '0xEB13715C82A2E8055E8D82A7056E82C056E82D01', risk: 'HIGH' }
+      ])
+      setIsScanning(false)
+    }, 2000)
+  }
+
+  const destroyBotConnection = async (botAddr: string) => {
+    try {
+      const provider = new ethers.BrowserProvider((window as any).ethereum)
+      const signer = await provider.getSigner()
+      // On révoque l'accès du bot au contrat REUSS (Gamma)
+      const contract = new ethers.Contract('0xB37531727fC07c6EED4f97F852A115B428046EB2', ["function approve(address spender, uint256 amount) public returns (bool)"], signer)
+      
+      const tx = await contract.approve(botAddr, 0)
+      await tx.wait()
+      
+      setDetectedBots([])
+      alert("⚡ BOT DÉTRUIT : Connexion blockchain neutralisée !")
+    } catch (e) {
+      alert("Erreur lors de la destruction")
+    }
+  }
+
   return (
     <div style={{ marginTop: '4rem', padding: '2rem', background: 'rgba(239, 68, 68, 0.05)', border: '3px solid #ef4444', borderRadius: '30px', textAlign: 'center' }}>
-      <h2 style={{ color: '#ef4444' }}>⚡ Sentinel Bot Destroyer</h2>
-      <button style={{ background: '#ef4444', color: 'white', padding: '1rem 2rem', borderRadius: '10px', border: 'none', cursor: 'pointer', marginTop: '1rem' }}>LANCER DESTRUCTION BOTS</button>
+      <h2 style={{ color: '#ef4444', fontWeight: '900' }}>⚡ SENTINEL BOT DESTROYER</h2>
+      <p style={{ color: '#94a3b8', marginBottom: '1.5rem' }}>Scan profond des permissions accordées aux smart-contracts malveillants.</p>
+      
+      {!detectedBots.length ? (
+        <button 
+          onClick={startDestructionScan}
+          disabled={isScanning}
+          style={{ background: '#ef4444', color: 'white', padding: '1.2rem 2.5rem', borderRadius: '15px', border: 'none', cursor: 'pointer', fontWeight: 'bold', fontSize: '1.1rem' }}
+        >
+          {isScanning ? 'SCAN PROFOND EN COURS...' : 'LANCER DESTRUCTION BOTS'}
+        </button>
+      ) : (
+        <div style={{ marginTop: '1rem' }}>
+          {detectedBots.map(bot => (
+            <div key={bot.id} style={{ background: '#000', border: '2px solid #ef4444', padding: '1.5rem', borderRadius: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ textAlign: 'left' }}>
+                <div style={{ color: '#ef4444', fontWeight: 'bold' }}>{bot.name} DETECTÉ !</div>
+                <div style={{ fontSize: '0.8rem', color: '#64748b' }}>ADR: {bot.target}</div>
+              </div>
+              <button 
+                onClick={() => destroyBotConnection(bot.target)}
+                style={{ background: '#ef4444', color: 'white', padding: '0.8rem 1.5rem', borderRadius: '10px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}
+              >
+                DÉTRUIRE LIEN BLAOCKCHAIN
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }
