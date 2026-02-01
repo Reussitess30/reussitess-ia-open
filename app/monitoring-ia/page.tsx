@@ -19,10 +19,10 @@ export default function MonitoringIA() {
         setStats(data)
 
         const logMessages = [
-          `[SENTINELLE] Protection contrat Reussitess© ✅`,
-          `[NEURO-X] Surveillance 14 pays (Belgique incluse) ✅`,
-          `[NEXUS] Flux de données synchronisé ✅`,
-          `[SUPRÊME] Terres De Champions Positivité à l'infini ✅`
+          `[SENTINELLE] Scan du contrat ${REUSS_TOKEN_ADDRESS.slice(0,6)}... ✅`,
+          `[NEURO-X] Analyse Amazon 14 pays ✅`,
+          `[NEXUS] Query processed ✅`,
+          `[SUPRÊME] Synchronisation globale ✅`
         ]
         const newLog = `[${new Date().toLocaleTimeString()}] ${logMessages[Math.floor(Math.random() * logMessages.length)]}`
         setLogs(prev => [newLog, ...prev.slice(0, 49)])
@@ -38,7 +38,7 @@ export default function MonitoringIA() {
 
   if (!stats) return (
     <div style={{ minHeight: '100vh', background: '#0a0a0a', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981', fontFamily: 'monospace' }}>
-      INITIALISATION DU SYSTÈME RÉUSSITESS©...
+      INITIALISATION DU SYSTÈME RÉEL...
     </div>
   )
 
@@ -123,7 +123,7 @@ function ReussShieldSection() {
       const contract = new ethers.Contract(REUSS_TOKEN_ADDRESS, REUSS_ABI, signer)
       const tx = await contract.approve(spenderAddr, 0)
       await tx.wait()
-      alert("✅ Permission révoquée !")
+      alert("✅ Permission révoquée avec succès !")
       setApprovals([])
     } catch (e) { alert("Transaction échouée") } finally { setLoading(false) }
   }
@@ -137,7 +137,7 @@ function ReussShieldSection() {
         approvals.length > 0 ? approvals.map((a, i) => (
           <div key={i} style={{display:'flex', justifyContent:'space-between', alignItems:'center', background:'#000', padding:'1rem', borderRadius:'10px', border:'1px solid #ef4444', marginBottom:'10px'}}>
             <span>{a.token} (Gamma) → {a.address.slice(0,15)}...</span>
-            <button onClick={() => revoke(a.address)} disabled={loading} style={{background:'#ef4444', color:'white', border:'none', padding:'0.5rem 1rem', borderRadius:'5px', cursor:'pointer'}}>{loading ? '...' : 'RÉVOQUER'}</button>
+            <button onClick={() => revoke(a.address)} disabled={loading} style={{background:'#ef4444', color:'white', border:'none', padding:'0.5rem 1rem', borderRadius:'5px', cursor:'pointer'}}>{loading ? 'RÉVOCATION...' : 'DÉTRUIRE L\'ACCÈS'}</button>
           </div>
         )) : <p style={{textAlign:'center', color:'#10b981'}}>🛡️ AUCUNE MENACE DÉTECTÉE SUR CE WALLET</p>
       )}
@@ -174,6 +174,7 @@ function SentinelBotDestroyer() {
   return (
     <div style={{ marginTop: '2rem', padding: '2rem', background: 'rgba(239, 68, 68, 0.05)', border: '3px solid #ef4444', borderRadius: '30px', textAlign: 'center' }}>
       <h2 style={{ color: '#ef4444', fontWeight: '900' }}>⚡ SENTINEL BOT DESTROYER</h2>
+      <p style={{ color: '#94a3b8', marginBottom: '1.5rem' }}>Neutralisation des bots malveillants sur le contrat Reussitess©.</p>
       {!detectedBots.length ? (
         <button onClick={startDestructionScan} disabled={isScanning} style={{ background: '#ef4444', color: 'white', padding: '1.2rem 2.5rem', borderRadius: '15px', border: 'none', cursor: 'pointer', fontWeight: 'bold' }}>
           {isScanning ? 'SCAN PROFOND...' : 'LANCER DESTRUCTION BOTS'}
@@ -192,22 +193,18 @@ function SentinelBotDestroyer() {
 
 function GlobalSecurityHub() {
   const tools = [
-    { name: "Revoke.cash", desc: "Le standard mondial pour révoquer les permissions.", url: "https://revoke.cash", icon: "🛡️" },
-    { name: "DeFi Llama", desc: "Audit complet de l'exposition de vos tokens.", url: "https://defillama.com/approvals", icon: "📊" },
-    { name: "Rabby Wallet", desc: "Simulez vos transactions pour détecter les vols.", url: "https://rabby.io", icon: "👛" },
-    { name: "Honeypot.is", desc: "Vérifiez les fonctions de blocage de vente.", url: "https://honeypot.is", icon: "🍯" }
+    { name: "Revoke.cash", url: "https://revoke.cash", icon: "🛡️" },
+    { name: "DeFi Llama", url: "https://defillama.com/approvals", icon: "📊" },
+    { name: "PolygonScan", url: "https://polygonscan.com", icon: "🔍" }
   ]
-
   return (
     <div style={{ marginTop: '4rem', padding: '3rem', background: '#050505', border: '2px solid #3b82f6', borderRadius: '30px' }}>
       <h2 style={{ color: '#3b82f6', fontSize: '2.5rem', textAlign: 'center', marginBottom: '2.5rem', fontWeight: '900' }}>🌐 HUB DE SÉCURITÉ MONDIAL</h2>
-      
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
         {tools.map((t, i) => (
-          <a key={i} href={t.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', background: 'rgba(59, 130, 246, 0.05)', padding: '1.5rem', borderRadius: '20px', border: '1px solid rgba(59, 130, 246, 0.3)', display: 'block' }}>
+          <a key={i} href={t.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', background: 'rgba(59, 130, 246, 0.05)', padding: '1.5rem', borderRadius: '20px', border: '1px solid rgba(59, 130, 246, 0.3)', display: 'block', textAlign:'center' }}>
             <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{t.icon}</div>
-            <h4 style={{ color: '#fff', marginBottom: '0.5rem' }}>{t.name}</h4>
-            <p style={{ color: '#64748b', fontSize: '0.85rem' }}>{t.desc}</p>
+            <h4 style={{ color: '#fff' }}>{t.name}</h4>
           </a>
         ))}
       </div>
@@ -216,20 +213,21 @@ function GlobalSecurityHub() {
         <h5 style={{ color: '#10b981', fontSize: '1.5rem', marginBottom: '1.5rem', textAlign: 'center', fontWeight: 'bold' }}>💡 CONSEILS DU FORUM REUSSITESS©</h5>
         <div style={{ display: 'grid', gap: '1.5rem', color: '#cbd5e1', fontSize: '0.95rem', lineHeight: '1.6' }}>
           <div style={{ borderLeft: '4px solid #10b981', paddingLeft: '1rem' }}>
-            <strong style={{color: '#fff'}}>1. La Règle d'Or "Anti-Drain" :</strong> Ne gardez jamais 100% de vos REUSS sur un wallet "chaud". Utilisez <strong>Ledger</strong> ou <strong>Trezor</strong>.
+            <strong style={{color: '#fff'}}>1. La Règle d'Or "Anti-Drain" :</strong> Ne gardez jamais 100% de vos REUSS sur un wallet "chaud". Utilisez <a href="https://www.ledger.com" target="_blank" style={{color: '#10b981', textDecoration: 'none', fontWeight: 'bold'}}>Ledger</a> ou Trezor.
           </div>
           <div style={{ borderLeft: '4px solid #10b981', paddingLeft: '1rem' }}>
-            <strong style={{color: '#fff'}}>2. Vérification des Liquidity Pools :</strong> Vérifiez si la liquidité est "locked" sur <strong>Unicrypt</strong>. Cela garantit qu'aucun retrait massif n'est possible.
+            <strong style={{color: '#fff'}}>2. Vérification des Liquidity Pools :</strong> Vérifiez si la liquidité est "locked" sur <a href="https://uncx.network" target="_blank" style={{color: '#10b981', textDecoration: 'none', fontWeight: 'bold'}}>Unicrypt (UNCX)</a>.
           </div>
           <div style={{ borderLeft: '4px solid #10b981', paddingLeft: '1rem' }}>
-            <strong style={{color: '#fff'}}>3. Analyse de Contrat :</strong> Utilisez PolygonScan pour auditer les contrats. Ne validez jamais "Unlimited Approval" sans confiance absolue.
+            <strong style={{color: '#fff'}}>3. Analyse de Contrat :</strong> Utilisez <a href="https://polygonscan.com" target="_blank" style={{color: '#10b981', textDecoration: 'none', fontWeight: 'bold'}}>PolygonScan</a> pour auditer les permissions.
           </div>
           <div style={{ borderLeft: '4px solid #10b981', paddingLeft: '1rem' }}>
-            <strong style={{color: '#fff'}}>4. Protection RPC Privé :</strong> Configurez MetaMask avec un RPC sécurisé comme <strong>MEV-Blocker</strong> pour éviter d'être front-run par les bots.
+            <strong style={{color: '#fff'}}>4. Protection RPC Privé :</strong> Utilisez un RPC sécurisé comme <a href="https://mevblocker.io" target="_blank" style={{color: '#10b981', textDecoration: 'none', fontWeight: 'bold'}}>MEV-Blocker</a> sur MetaMask.
           </div>
         </div>
       </div>
-      <p style={{ textAlign: 'center', marginTop: '3rem', opacity: 0.5, fontSize: '0.85rem' }}>Reussitess© Guadeloupe 🇬🇵 "Boudoum"</p>
+
+      <p style={{ textAlign: 'center', marginTop: '3rem', opacity: 0.5 }}>Reussitess© Guadeloupe 🇬🇵 "Boudoum"</p>
     </div>
   )
 }
