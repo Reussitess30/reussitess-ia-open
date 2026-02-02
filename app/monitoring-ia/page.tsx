@@ -153,14 +153,34 @@ function PriceChart() {
   )
 }
 
-// ✅ SECTION RÉELLE - SCAN BLOCKCHAIN DES APPROVALS
+// ✅ SECTION RÉELLE - SCAN BLOCKCHAIN + DÉTECTION EIP-7702
 function ReussShieldSection() {
   const [wallet, setWallet] = useState('')
   const [isScanning, setIsScanning] = useState(false)
   const [isRevoking, setIsRevoking] = useState(false)
   const [threats, setThreats] = useState<any[]>([])
+  const [delegation, setDelegation] = useState<string | null>(null) // ✅ NOUVEAU
   const [balance, setBalance] = useState('0')
   const [totalApprovals, setTotalApprovals] = useState(0)
+
+  // ✅ NOUVEAU: Vérifier délégation EIP-7702
+  const checkDelegation = async (address: string, provider: any) => {
+    try {
+      const code = await provider.getCode(address)
+      if (code && code !== '0x' && code.length > 2) {
+        if (code.startsWith('0xef0100')) {
+          const delegatedAddr = '0x' + code.slice(8, 48)
+          setDelegation(delegatedAddr)
+        } else {
+          setDelegation('DÉTECTÉE')
+        }
+      } else {
+        setDelegation(null)
+      }
+    } catch (err) {
+      console.error('Erreur vérification délégation:', err)
+    }
+  }
 
   // ✅ FONCTION RÉELLE: Connexion + Scan blockchain
   const connectAndScan = async () => {
@@ -173,9 +193,9 @@ function ReussShieldSection() {
     try {
       const provider = new ethers.BrowserProvider((window as any).ethereum)
       
-      // Connexion MetaMask
-      const accounts = await provider.send("eth_requestAccounts", [])
-      const userAddr = accounts[0]
+      await provider.send("eth_requestAccounts", [])
+      const signer = await provider.getSigner()
+      const userAddr = await signer.getAddress()
       
       // Vérifier réseau Polygon
       const network = await provider.getNetwork()
@@ -203,14 +223,15 @@ function ReussShieldSection() {
 
       setWallet(userAddr)
 
+      // ✅ NOUVEAU: Vérifier délégation EIP-7702
+      await checkDelegation(userAddr, provider)
+
       // Contrat REUSS
       const contract = new ethers.Contract(REUSS_TOKEN_ADDRESS, REUSS_ABI, provider)
-
-      // Récupérer balance REUSS
       const bal = await contract.balanceOf(userAddr)
       setBalance(ethers.formatEther(bal))
 
-      // Scanner les approvals sur tous les spenders connus
+      // Scanner approvals
       const allSpenders = [...SAFE_SPENDERS, ...KNOWN_MALICIOUS]
       const foundThreats: any[] = []
       let totalChecked = 0
@@ -220,7 +241,6 @@ function ReussShieldSection() {
           const allowance = await contract.allowance(userAddr, spender)
           totalChecked++
 
-          // Si allowance > 0, il y a un approval
           if (allowance > 0n) {
             const isMalicious = KNOWN_MALICIOUS.some(m => m.toLowerCase() === spender.toLowerCase())
             const isUnlimited = allowance >= ethers.MaxUint256 / 2n
@@ -264,16 +284,11 @@ function ReussShieldSection() {
       const signer = await provider.getSigner()
       const contract = new ethers.Contract(REUSS_TOKEN_ADDRESS, REUSS_ABI, signer)
 
-      // approve(spender, 0) = révocation
       const tx = await contract.approve(spender, 0)
-      
-      // Attendre confirmation blockchain
       const receipt = await tx.wait()
 
       if (receipt.status === 1) {
-        // Retirer de la liste des menaces
         setThreats(prev => prev.filter(t => t.address !== spender))
-        
         alert(`✅ ACCÈS RÉVOQUÉ SUR LA BLOCKCHAIN !\n\nTransaction: ${receipt.hash}\n\nVoir sur PolygonScan:\nhttps://polygonscan.com/tx/${receipt.hash}`)
       }
 
@@ -299,7 +314,6 @@ function ReussShieldSection() {
 
     for (const threat of threats) {
       await revokeAccess(threat.address)
-      // Pause 2 secondes entre chaque
       await new Promise(resolve => setTimeout(resolve, 2000))
     }
   }
@@ -335,7 +349,7 @@ function ReussShieldSection() {
               boxShadow: '0 4px 20px rgba(239, 68, 68, 0.4)'
             }}
           >
-            {isScanning ? '⏳ SCAN DU RÉSEAU POLYGON...' : '🦊 CONNECTER & SCANNER LA BLOCKCHAIN'}
+            {isScanning ? '⏳ SCAN DU RÉSEAU POLYGON...' : '🦊 CONNECTER & LANCER SCAN RÉEL'}
           </button>
         </div>
       ) : (
@@ -363,6 +377,52 @@ function ReussShieldSection() {
               </div>
             </div>
           </div>
+
+          {/* ✅ ALERTE DÉLÉGATION EIP-7702 */}
+          {delegation && (
+            <div style={{ 
+              background: 'rgba(239, 68, 68, 0.1)', 
+              border: '3px solid #ef4444', 
+              borderRadius: '15px', 
+              padding: '2rem', 
+              marginBottom: '2rem'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', marginBottom: '1rem' }}>
+                <div style={{ fontSize: '3rem' }}>⚠️</div>
+                <div style={{ flex: 1 }}>
+                  <h3 style={{ color: '#ef4444', fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+                    DÉLÉGATION DÉTECTÉE (EIP-7702) !
+                  </h3>
+                  <p style={{ color: '#cbd5e1', fontSize: '0.9rem', marginBottom: '1rem' }}>
+                    Un smart contract a une autorité déléguée sur votre wallet
+                  </p>
+                  <div style={{ background: '#000', padding: '1rem', borderRadius: '10px', marginBottom: '1rem' }}>
+                    <p style={{ color: '#64748b', fontSize: '0.85rem', marginBottom: '0.5rem' }}>Délégué à :</p>
+                    <p style={{ color: '#ef4444', fontFamily: 'monospace', fontSize: '0.9rem', fontWeight: 'bold' }}>
+                      {delegation}
+                    </p>
+                  </div>
+                  <a
+                    href={`https://polygonscan.com/address/${wallet}#authorizations`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      background: 'linear-gradient(135deg, #ef4444, #dc2626)',
+                      color: '#fff',
+                      border: 'none',
+                      padding: '0.75rem 2rem',
+                      borderRadius: '10px',
+                      fontWeight: 'bold',
+                      textDecoration: 'none',
+                      display: 'inline-block'
+                    }}
+                  >
+                    🔍 RÉVOQUER SUR POLYGONSCAN
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Rescan Button */}
           <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
@@ -458,7 +518,7 @@ function ReussShieldSection() {
                 </div>
               ))}
             </div>
-          ) : (
+          ) : !delegation ? (
             <div style={{ 
               background: 'rgba(16, 185, 129, 0.1)', 
               border: '2px solid #10b981', 
@@ -467,14 +527,14 @@ function ReussShieldSection() {
               textAlign: 'center' 
             }}>
               <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✅</div>
-              <h3 style={{ color: '#10b981', fontSize: '1.5rem', fontWeight: 'bold' }}>
-                AUCUNE PERMISSION MALVEILLANTE DÉTECTÉE SUR LA BLOCKCHAIN
+              <h3 style={{ color: '#10b981', fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+                SÉCURISATION ACTIVE : {wallet.slice(0,6)}...{wallet.slice(-4)}
               </h3>
-              <p style={{ color: '#64748b', marginTop: '1rem' }}>
-                Votre wallet est sécurisé. Aucun bot malveillant détecté.
+              <p style={{ color: '#10b981', fontSize: '1.1rem', fontWeight: 'bold' }}>
+                ✅ AUCUNE PERMISSION MALVEILLANTE DÉTECTÉE SUR LA BLOCKCHAIN
               </p>
             </div>
-          )}
+          ) : null}
         </div>
       )}
     </div>
