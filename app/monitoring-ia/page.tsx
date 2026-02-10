@@ -169,7 +169,7 @@ function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: 
   const [balance, setBalance] = useState('0')
   const [totalApprovals, setTotalApprovals] = useState(0)
 
-  const decreaseScore = (amount: number) => setSecurityScore(prev => Math.max(prev - amount, 0))
+  const decreaseScore = (amount: number) => setSecurityScore((prev: number) => Math.max(prev - amount, 0))
 
   const checkDelegation = async (address: string, provider: any) => {
     try {
@@ -178,24 +178,28 @@ function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: 
         if (code.startsWith('0xef0100')) {
           const delegatedAddr = '0x' + code.slice(8, 48)
           setDelegation(delegatedAddr)
-          decreaseScore(20)
         } else {
           setDelegation('DÉTECTÉE')
-          decreaseScore(10)
         }
       } else {
         setDelegation(null)
       }
-    } catch (err) { console.error(err) }
+    } catch (err) {
+      console.error('Erreur vérification délégation:', err)
+    }
   }
 
   const connectAndScan = async () => {
-    if (typeof window === 'undefined' || !(window as any).ethereum) return alert('❌ MetaMask non installé')
+    if (typeof window === 'undefined' || !(window as any).ethereum) {
+      alert('❌ MetaMask non détecté')
+      return
+    }
+
     setIsScanning(true)
+    setThreats([])
 
     try {
       const provider = new ethers.BrowserProvider((window as any).ethereum)
-      await provider.send("eth_requestAccounts", [])
       const signer = await provider.getSigner()
       const userAddr = await signer.getAddress()
       setWallet(userAddr)
@@ -233,17 +237,19 @@ function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: 
       setTotalApprovals(totalChecked)
       setThreats(foundThreats)
 
-      // Surveiller transactions entrantes/sortantes
-      const readProvider = new ethers.providers.JsonRpcProvider('https://polygon-rpc.com/')
-      readProvider.on('block', async blockNum=>{
-        const block = await readProvider.getBlockWithTransactions(blockNum)
-        block.transactions.forEach(tx=>{
-          if(tx.to?.toLowerCase()===userAddr.toLowerCase() || tx.from.toLowerCase()===userAddr.toLowerCase()){
-            const logMsg = `[${new Date().toLocaleTimeString()}] Transaction détectée : ${tx.hash.slice(0,10)}...`
-            setLogs(prev=>[logMsg,...prev.slice(0,49)])
-            decreaseScore(1)
-          }
-        })
+      // ✅ CORRECTION : Utiliser ethers.JsonRpcProvider pour ethers v6
+      const readProvider = new ethers.JsonRpcProvider('https://polygon-rpc.com/')
+      readProvider.on('block', async (blockNum: number) => {
+        const block = await readProvider.getBlock(blockNum, true)
+        if (block && block.transactions) {
+          block.transactions.forEach((tx: any) => {
+            if(tx.to?.toLowerCase()===userAddr.toLowerCase() || tx.from?.toLowerCase()===userAddr.toLowerCase()){
+              const logMsg = `[${new Date().toLocaleTimeString()}] Transaction détectée : ${typeof tx === 'string' ? tx.slice(0,10) : tx.hash?.slice(0,10)}...`
+              setLogs((prev: string[]) => [logMsg,...prev.slice(0,49)])
+              decreaseScore(1)
+            }
+          })
+        }
       })
 
     } catch(e:any){ console.error(e); alert('❌ Erreur scan: '+(e.message||'')) }
@@ -274,7 +280,151 @@ function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: 
 
   return (
     <div style={{ background: 'rgba(239, 68, 68, 0.05)', border: '3px solid #ef4444', borderRadius: '30px', padding: '3rem', marginBottom: '2rem' }}>
-      {/* Ici, tu gardes tout le JSX et le design existant, boutons, logs, alertes, approvals */}
+      <h2 style={{ color: '#ef4444', fontSize: '2.5rem', textAlign: 'center', marginBottom: '1rem', fontWeight: '900' }}>
+        🛡️ REUSSSHIELD & BOT DESTROYER
+      </h2>
+      <p style={{ textAlign: 'center', color: '#cbd5e1', fontSize: '1.1rem', marginBottom: '2rem' }}>
+        Analyse en direct de vos permissions sur le contrat Reussitess©
+      </p>
+
+      <div style={{ background: '#000', padding: '1.5rem', borderRadius: '15px', marginBottom: '2rem', textAlign: 'center' }}>
+        <p style={{ color: '#64748b', fontSize: '0.9rem', marginBottom: '0.5rem' }}>Contrat: {REUSS_TOKEN_ADDRESS}</p>
+        {delegation && (
+          <div style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(239, 68, 68, 0.2)', borderRadius: '10px' }}>
+            <p style={{ color: '#ef4444', fontWeight: 'bold' }}>⚠️ DÉLÉGATION EIP-7702 DÉTECTÉE</p>
+            <p style={{ color: '#cbd5e1', fontSize: '0.9rem' }}>{delegation}</p>
+          </div>
+        )}
+      </div>
+
+      {!wallet ? (
+        <div style={{ textAlign: 'center' }}>
+          <button
+            onClick={connectAndScan}
+            disabled={isScanning}
+            style={{
+              background: 'linear-gradient(135deg, #10b981, #059669)',
+              border: 'none',
+              color: '#fff',
+              padding: '1.25rem 3rem',
+              borderRadius: '50px',
+              fontSize: '1.2rem',
+              fontWeight: 'bold',
+              cursor: isScanning ? 'not-allowed' : 'pointer',
+              boxShadow: '0 10px 30px rgba(16, 185, 129, 0.3)'
+            }}
+          >
+            {isScanning ? '⏳ SCAN EN COURS...' : '🦊 CONNECTER & LANCER SCAN RÉEL'}
+          </button>
+        </div>
+      ) : (
+        <div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
+            <div>
+              <p style={{ color: '#10b981', fontSize: '1.1rem', marginBottom: '0.5rem' }}>
+                ✅ Connecté: {wallet.slice(0,6)}...{wallet.slice(-4)}
+              </p>
+              <p style={{ color: '#cbd5e1', fontSize: '0.95rem' }}>
+                Balance: {parseFloat(balance).toFixed(4)} REUSS
+              </p>
+              <p style={{ color: '#cbd5e1', fontSize: '0.95rem' }}>
+                Score sécurité: <span style={{ color: securityScore > 70 ? '#10b981' : securityScore > 40 ? '#eab308' : '#ef4444', fontWeight: 'bold' }}>{securityScore}/100</span>
+              </p>
+            </div>
+
+            {threats.length > 0 && (
+              <button
+                onClick={revokeAll}
+                disabled={isRevoking}
+                style={{
+                  background: 'linear-gradient(135deg, #ef4444, #dc2626)',
+                  border: 'none',
+                  color: '#fff',
+                  padding: '0.75rem 2rem',
+                  borderRadius: '10px',
+                  cursor: isRevoking ? 'not-allowed' : 'pointer',
+                  fontWeight: 'bold'
+                }}
+              >
+                🛡️ TOUT RÉVOQUER ({threats.length})
+              </button>
+            )}
+          </div>
+
+          {threats.length > 0 ? (
+            <div>
+              <h3 style={{ color: '#ef4444', marginBottom: '1.5rem', fontSize: '1.3rem', textAlign: 'center' }}>
+                ⚠️ {threats.length} MENACE{threats.length > 1 ? 'S' : ''} DÉTECTÉE{threats.length > 1 ? 'S' : ''} !
+              </h3>
+              {threats.map((threat, i) => (
+                <div 
+                  key={i}
+                  style={{ 
+                    background: '#000', 
+                    border: '2px solid #ef4444', 
+                    padding: '1.5rem', 
+                    borderRadius: '15px', 
+                    marginBottom: '1rem'
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ 
+                        fontSize: '0.75rem', 
+                        color: '#ef4444', 
+                        background: 'rgba(239, 68, 68, 0.2)', 
+                        padding: '4px 10px', 
+                        borderRadius: '6px', 
+                        display: 'inline-block',
+                        marginBottom: '0.5rem'
+                      }}>
+                        {threat.type}
+                      </div>
+                      <p style={{ color: '#fff', fontFamily: 'monospace', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+                        {threat.address}
+                      </p>
+                      <p style={{ color: '#64748b', fontSize: '0.85rem' }}>
+                        Montant autorisé: <strong style={{ color: '#ef4444' }}>{threat.amount}</strong>
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => revokeAccess(threat.address)}
+                      disabled={isRevoking}
+                      style={{
+                        background: isRevoking ? '#666' : '#ef4444',
+                        border: 'none',
+                        color: 'white',
+                        padding: '0.75rem 1.5rem',
+                        borderRadius: '10px',
+                        cursor: isRevoking ? 'not-allowed' : 'pointer',
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      {isRevoking ? '⏳' : '🗑️ DÉTRUIRE'}
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : !delegation ? (
+            <div style={{ 
+              background: 'rgba(16, 185, 129, 0.1)', 
+              border: '2px solid #10b981', 
+              borderRadius: '15px', 
+              padding: '3rem', 
+              textAlign: 'center' 
+            }}>
+              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✅</div>
+              <h3 style={{ color: '#10b981', fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
+                SÉCURISATION ACTIVE : {wallet.slice(0,6)}...{wallet.slice(-4)}
+              </h3>
+              <p style={{ color: '#10b981', fontSize: '1.1rem', fontWeight: 'bold' }}>
+                ✅ AUCUNE PERMISSION MALVEILLANTE DÉTECTÉE SUR LA BLOCKCHAIN
+              </p>
+            </div>
+          ) : null}
+        </div>
+      )}
     </div>
   )
 }
@@ -298,7 +448,7 @@ function GlobalSecurityHub() {
           💡 CONSEILS SÉCURITÉ DU FORUM REUSSITESS©
         </h5>
         <div style={{ display: 'grid', gap: '1rem', fontSize: '0.95rem', color: '#cbd5e1' }}>
-          <p><strong style={{ color: '#10b981' }}>1. Hardware Wallet :</strong> Utilisez un <a href="https://ledger.com" target="_blank" rel="noopener noreferrer" style={{ color<p>
+          <p>
             <strong style={{ color: '#10b981' }}>1. Hardware Wallet :</strong> Utilisez un{' '}
             <a href="https://ledger.com" target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'underline' }}>
               Ledger
