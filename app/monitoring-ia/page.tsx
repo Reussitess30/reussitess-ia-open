@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { ethers } from 'ethers'
 
 const REUSS_TOKEN_ADDRESS = "0xB37531727fC07c6EED4f97F852A115B428046EB2"
+const AMAZON_ASSOCIATE_TAG = "ronyporinu0ac-21"
 
 // ABI ERC20 complet pour scanner les approvals
 const REUSS_ABI = [
@@ -70,6 +71,7 @@ export default function MonitoringIA() {
         <StatsGrid stats={stats} />
         <RealTimeLogs logs={logs} />
         <PriceChart />
+        <AmazonDealsSection />
         <ReussShieldSection securityScore={securityScore} setSecurityScore={setSecurityScore} logs={logs} setLogs={setLogs} />
         <GlobalSecurityHub />
       </div>
@@ -159,7 +161,218 @@ function PriceChart() {
   )
 }
 
-// ----------------------- REUSS SHIELD -----------------------
+// ----------------------- AMAZON DEALS SECTION ✨ NOUVEAU -----------------------
+function AmazonDealsSection() {
+  // Produits exemple (à remplacer par API réelle)
+  const deals = [
+    {
+      asin: 'B08N5WRWNW',
+      title: 'Apple AirPods Pro (2ème génération)',
+      price: 279.99,
+      image: 'https://via.placeholder.com/300x300/1a1a1a/10b981?text=AirPods+Pro',
+      cashback: 2799
+    },
+    {
+      asin: 'B0BSHF7WHW',
+      title: 'Samsung Galaxy S24 Ultra',
+      price: 1199.99,
+      image: 'https://via.placeholder.com/300x300/1a1a1a/3b82f6?text=Galaxy+S24',
+      cashback: 11999
+    },
+    {
+      asin: 'B0CX23V2ZK',
+      title: 'MacBook Air M3',
+      price: 1299.99,
+      image: 'https://via.placeholder.com/300x300/1a1a1a/8b5cf6?text=MacBook+Air',
+      cashback: 12999
+    }
+  ]
+
+  return (
+    <div style={{ marginTop: '4rem', marginBottom: '4rem' }}>
+      {/* 1️⃣ DIVULGATION LÉGALE OBLIGATOIRE */}
+      <div style={{ 
+        background: 'rgba(255, 193, 7, 0.1)', 
+        border: '2px solid #ffc107', 
+        borderLeft: '6px solid #ffc107',
+        borderRadius: '15px', 
+        padding: '1.5rem', 
+        marginBottom: '2rem' 
+      }}>
+        <p style={{ color: '#ffc107', fontSize: '0.95rem', margin: 0 }}>
+          ⚠️ <strong>Divulgation importante :</strong> En tant que Partenaire Amazon, REUSSITESS réalise un bénéfice sur les achats remplissant les conditions requises.
+        </p>
+      </div>
+
+      {/* 2️⃣ HEADER SECTION */}
+      <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <h2 style={{ color: '#10b981', fontSize: '2.5rem', fontWeight: '900', marginBottom: '1rem' }}>
+          🛍️ AMAZON DEALS + CASHBACK REUSS
+        </h2>
+        <p style={{ color: '#cbd5e1', fontSize: '1.1rem', marginBottom: '2rem' }}>
+          Achetez sur Amazon via nos liens et recevez des tokens REUSSITESS en cashback !
+        </p>
+        
+        {/* Explication cashback */}
+        <div style={{ 
+          background: 'rgba(139, 92, 246, 0.1)', 
+          border: '2px solid #8b5cf6', 
+          borderRadius: '15px', 
+          padding: '1.5rem',
+          maxWidth: '800px',
+          margin: '0 auto'
+        }}>
+          <p style={{ color: '#8b5cf6', fontSize: '1rem', margin: 0 }}>
+            💎 <strong>Programme Cashback :</strong> Achetez via nos liens et recevez des tokens REUSSITESS gratuits (utility tokens, pas une promesse d'investissement).
+          </p>
+        </div>
+      </div>
+
+      {/* 3️⃣ PRODUITS */}
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+        gap: '2rem',
+        marginBottom: '3rem'
+      }}>
+        {deals.map((deal, i) => (
+          <DealCard key={i} {...deal} />
+        ))}
+      </div>
+
+      {/* 4️⃣ CONTACT */}
+      <div style={{ 
+        textAlign: 'center', 
+        padding: '2rem',
+        background: 'rgba(16, 185, 129, 0.05)',
+        borderRadius: '15px',
+        border: '1px solid rgba(16, 185, 129, 0.2)'
+      }}>
+        <p style={{ color: '#cbd5e1', fontSize: '0.9rem', marginBottom: '0.5rem' }}>
+          Questions sur le programme cashback ?
+        </p>
+        <a 
+          href="mailto:influenceur@reussitess.fr" 
+          style={{ 
+            color: '#10b981', 
+            textDecoration: 'underline',
+            fontSize: '1rem',
+            fontWeight: 'bold'
+          }}
+        >
+          📧 influenceur@reussitess.fr
+        </a>
+      </div>
+    </div>
+  )
+}
+
+function DealCard({ asin, title, price, image, cashback }: any) {
+  const affiliateLink = `https://www.amazon.fr/dp/${asin}?tag=${AMAZON_ASSOCIATE_TAG}`
+  
+  return (
+    <div style={{ 
+      background: '#1a1a1a', 
+      border: '2px solid #10b981', 
+      borderRadius: '20px', 
+      padding: '2rem',
+      transition: 'transform 0.3s, box-shadow 0.3s',
+      cursor: 'pointer'
+    }}
+    onMouseEnter={(e) => {
+      e.currentTarget.style.transform = 'translateY(-5px)'
+      e.currentTarget.style.boxShadow = '0 10px 40px rgba(16, 185, 129, 0.3)'
+    }}
+    onMouseLeave={(e) => {
+      e.currentTarget.style.transform = 'translateY(0)'
+      e.currentTarget.style.boxShadow = 'none'
+    }}
+    >
+      {/* Image produit */}
+      <div style={{ 
+        width: '100%', 
+        height: '250px', 
+        background: '#0a0a0a',
+        borderRadius: '15px',
+        marginBottom: '1.5rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden'
+      }}>
+        <img 
+          src={image} 
+          alt={title}
+          style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+        />
+      </div>
+
+      {/* Titre */}
+      <h3 style={{ 
+        color: '#fff', 
+        fontSize: '1.1rem', 
+        marginBottom: '1rem',
+        minHeight: '60px'
+      }}>
+        {title}
+      </h3>
+
+      {/* Prix */}
+      <div style={{ 
+        color: '#eab308', 
+        fontSize: '2rem', 
+        fontWeight: 'bold',
+        marginBottom: '1rem'
+      }}>
+        {price.toFixed(2)}€
+      </div>
+
+      {/* Cashback */}
+      <div style={{ 
+        background: 'rgba(139, 92, 246, 0.2)',
+        border: '1px solid #8b5cf6',
+        borderRadius: '10px',
+        padding: '0.75rem',
+        marginBottom: '1.5rem',
+        textAlign: 'center'
+      }}>
+        <p style={{ color: '#8b5cf6', margin: 0, fontSize: '1rem', fontWeight: 'bold' }}>
+          💎 Cashback : +{cashback.toLocaleString()} REUSS
+        </p>
+      </div>
+
+      {/* Bouton */}
+      <a 
+        href={affiliateLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ 
+          display: 'block',
+          background: 'linear-gradient(135deg, #10b981, #059669)',
+          border: 'none',
+          color: '#fff',
+          padding: '1rem 2rem',
+          borderRadius: '50px',
+          textAlign: 'center',
+          textDecoration: 'none',
+          fontWeight: 'bold',
+          fontSize: '1rem',
+          transition: 'transform 0.2s'
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = 'scale(1.05)'
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = 'scale(1)'
+        }}
+      >
+        🛒 Voir sur Amazon
+      </a>
+    </div>
+  )
+}
+
+// ----------------------- REUSS SHIELD (INCHANGÉ) -----------------------
 function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: any) {
   const [wallet, setWallet] = useState('')
   const [isScanning, setIsScanning] = useState(false)
@@ -237,7 +450,6 @@ function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: 
       setTotalApprovals(totalChecked)
       setThreats(foundThreats)
 
-      // ✅ CORRECTION : Utiliser ethers.JsonRpcProvider pour ethers v6
       const readProvider = new ethers.JsonRpcProvider('https://polygon-rpc.com/')
       readProvider.on('block', async (blockNum: number) => {
         const block = await readProvider.getBlock(blockNum, true)
@@ -429,7 +641,7 @@ function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: 
   )
 }
 
-// ----------------------- GLOBAL HUB -----------------------
+// ----------------------- GLOBAL HUB (MODIFIÉ AVEC EMAIL) -----------------------
 function GlobalSecurityHub() {
   return (
     <div style={{ marginTop: '4rem', padding: '3rem', background: '#050505', border: '2px solid #3b82f6', borderRadius: '30px' }}>
@@ -480,9 +692,19 @@ function GlobalSecurityHub() {
         </div>
       </div>
       
-      <p style={{ textAlign: 'center', marginTop: '3rem', opacity: 0.5, fontSize: '0.9rem' }}>
-        Reussitess© Guadeloupe 🇬🇵 • Terres De Champions • Positivité à l'infini • Boudoum
-      </p>
+      {/* Footer avec email */}
+      <div style={{ marginTop: '3rem', textAlign: 'center' }}>
+        <p style={{ color: '#64748b', fontSize: '0.9rem', marginBottom: '1rem' }}>
+          Reussitess© Guadeloupe 🇬🇵 • Terres De Champions • Positivité à l'infini • Boudoum
+        </p>
+        <p style={{ color: '#cbd5e1', fontSize: '0.95rem' }}>
+          Contact : <a href="mailto:influenceur@reussitess.fr" style={{ color: '#10b981', textDecoration: 'underline' }}>influenceur@reussitess.fr</a>
+        </p>
+        <p style={{ color: '#64748b', fontSize: '0.85rem', marginTop: '1rem' }}>
+          <a href="/legal" style={{ color: '#64748b', textDecoration: 'none', marginRight: '1rem' }}>Mentions légales</a>
+          <a href="/privacy" style={{ color: '#64748b', textDecoration: 'none' }}>Politique de confidentialité</a>
+        </p>
+      </div>
     </div>
   )
 }
