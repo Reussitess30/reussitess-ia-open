@@ -161,36 +161,37 @@ function PriceChart() {
   )
 }
 
-// ----------------------- AMAZON DEALS SECTION ✨ NOUVEAU -----------------------
+// ----------------------- AMAZON DEALS SECTION (API RÉELLE - CORRIGÉ) -----------------------
 function AmazonDealsSection() {
-  // Produits exemple (à remplacer par API réelle)
-  const deals = [
-    {
-      asin: 'B08N5WRWNW',
-      title: 'Apple AirPods Pro (2ème génération)',
-      price: 279.99,
-      image: 'https://via.placeholder.com/300x300/1a1a1a/10b981?text=AirPods+Pro',
-      cashback: 2799
-    },
-    {
-      asin: 'B0BSHF7WHW',
-      title: 'Samsung Galaxy S24 Ultra',
-      price: 1199.99,
-      image: 'https://via.placeholder.com/300x300/1a1a1a/3b82f6?text=Galaxy+S24',
-      cashback: 11999
-    },
-    {
-      asin: 'B0CX23V2ZK',
-      title: 'MacBook Air M3',
-      price: 1299.99,
-      image: 'https://via.placeholder.com/300x300/1a1a1a/8b5cf6?text=MacBook+Air',
-      cashback: 12999
+  const [deals, setDeals] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+  const [searchKeywords, setSearchKeywords] = useState('tech populaire')
+  
+  useEffect(() => {
+    fetchAmazonDeals()
+  }, [])
+  
+  const fetchAmazonDeals = async (keywords?: string) => {
+    setLoading(true)
+    try {
+      const searchQuery = keywords || searchKeywords
+      const res = await fetch(`/api/amazon-deals?keywords=${encodeURIComponent(searchQuery)}&max=6`)
+      const data = await res.json()
+      
+      if (data.success && data.deals) {
+        setDeals(data.deals)
+        console.log(`✅ ${data.deals.length} produits Amazon chargés`)
+      }
+    } catch (error) {
+      console.error('❌ Erreur chargement deals:', error)
+    } finally {
+      setLoading(false)
     }
-  ]
+  }
 
   return (
     <div style={{ marginTop: '4rem', marginBottom: '4rem' }}>
-      {/* 1️⃣ DIVULGATION LÉGALE OBLIGATOIRE */}
+      {/* Divulgation légale obligatoire */}
       <div style={{ 
         background: 'rgba(255, 193, 7, 0.1)', 
         border: '2px solid #ffc107', 
@@ -204,7 +205,7 @@ function AmazonDealsSection() {
         </p>
       </div>
 
-      {/* 2️⃣ HEADER SECTION */}
+      {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h2 style={{ color: '#10b981', fontSize: '2.5rem', fontWeight: '900', marginBottom: '1rem' }}>
           🛍️ AMAZON DEALS + CASHBACK REUSS
@@ -212,6 +213,55 @@ function AmazonDealsSection() {
         <p style={{ color: '#cbd5e1', fontSize: '1.1rem', marginBottom: '2rem' }}>
           Achetez sur Amazon via nos liens et recevez des tokens REUSSITESS en cashback !
         </p>
+        
+        {/* Barre de recherche */}
+        <div style={{ 
+          maxWidth: '600px', 
+          margin: '0 auto 2rem',
+          display: 'flex',
+          gap: '1rem'
+        }}>
+          <input
+            type="text"
+            value={searchKeywords}
+            onChange={(e) => setSearchKeywords(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault()
+                fetchAmazonDeals()
+              }
+            }}
+            placeholder="Rechercher des produits..."
+            style={{
+              flex: 1,
+              padding: '1rem 1.5rem',
+              background: '#1a1a1a',
+              border: '2px solid #10b981',
+              borderRadius: '50px',
+              color: '#fff',
+              fontSize: '1rem',
+              outline: 'none'
+            }}
+          />
+          <button
+            onClick={(e) => {
+              e.preventDefault()
+              fetchAmazonDeals()
+            }}
+            disabled={loading}
+            style={{
+              padding: '1rem 2rem',
+              background: loading ? '#666' : 'linear-gradient(135deg, #10b981, #059669)',
+              border: 'none',
+              borderRadius: '50px',
+              color: '#fff',
+              fontWeight: 'bold',
+              cursor: loading ? 'not-allowed' : 'pointer'
+            }}
+          >
+            {loading ? '⏳' : '🔍'}
+          </button>
+        </div>
         
         {/* Explication cashback */}
         <div style={{ 
@@ -228,19 +278,77 @@ function AmazonDealsSection() {
         </div>
       </div>
 
-      {/* 3️⃣ PRODUITS */}
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-        gap: '2rem',
-        marginBottom: '3rem'
-      }}>
-        {deals.map((deal, i) => (
-          <DealCard key={i} {...deal} />
-        ))}
+      {/* Produits */}
+      {loading ? (
+        <div style={{ 
+          textAlign: 'center', 
+          padding: '4rem',
+          color: '#10b981',
+          fontSize: '1.5rem'
+        }}>
+          ⏳ Chargement des meilleurs deals Amazon...
+        </div>
+      ) : deals.length === 0 ? (
+        <div style={{ 
+          textAlign: 'center', 
+          padding: '4rem',
+          color: '#64748b',
+          fontSize: '1.2rem'
+        }}>
+          Aucun produit trouvé. Essayez une autre recherche !
+        </div>
+      ) : (
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+          gap: '2rem',
+          marginBottom: '3rem'
+        }}>
+          {deals.map((deal, i) => (
+            <DealCard key={i} {...deal} />
+          ))}
+        </div>
+      )}
+
+      {/* Catégories rapides - CORRIGÉ */}
+      <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <p style={{ color: '#cbd5e1', marginBottom: '1rem' }}>🎯 Recherches populaires :</p>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+          {['Tech', 'Gaming', 'Audio', 'Smartphones', 'Tablettes', 'Montres'].map(cat => (
+            <button
+              key={cat}
+              onClick={(e) => {
+                e.preventDefault()
+                setSearchKeywords(cat)
+                fetchAmazonDeals(cat)
+              }}
+              type="button"
+              style={{
+                padding: '0.5rem 1.5rem',
+                background: 'rgba(16, 185, 129, 0.2)',
+                border: '1px solid #10b981',
+                borderRadius: '50px',
+                color: '#10b981',
+                cursor: 'pointer',
+                fontSize: '0.9rem',
+                transition: 'all 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(16, 185, 129, 0.3)'
+                e.currentTarget.style.transform = 'scale(1.05)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(16, 185, 129, 0.2)'
+                e.currentTarget.style.transform = 'scale(1)'
+              }}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* 4️⃣ CONTACT */}
+      {/* Contact */}
       <div style={{ 
         textAlign: 'center', 
         padding: '2rem',
@@ -267,7 +375,7 @@ function AmazonDealsSection() {
   )
 }
 
-function DealCard({ asin, title, price, image, cashback }: any) {
+function DealCard({ asin, title, price, image, cashback, features }: any) {
   const affiliateLink = `https://www.amazon.fr/dp/${asin}?tag=${AMAZON_ASSOCIATE_TAG}`
   
   return (
@@ -288,7 +396,6 @@ function DealCard({ asin, title, price, image, cashback }: any) {
       e.currentTarget.style.boxShadow = 'none'
     }}
     >
-      {/* Image produit */}
       <div style={{ 
         width: '100%', 
         height: '250px', 
@@ -304,30 +411,45 @@ function DealCard({ asin, title, price, image, cashback }: any) {
           src={image} 
           alt={title}
           style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = 'https://via.placeholder.com/300x300/1a1a1a/10b981?text=Amazon'
+          }}
         />
       </div>
 
-      {/* Titre */}
       <h3 style={{ 
         color: '#fff', 
         fontSize: '1.1rem', 
         marginBottom: '1rem',
-        minHeight: '60px'
+        minHeight: '60px',
+        lineHeight: '1.4'
       }}>
-        {title}
+        {title && title.length > 60 ? title.substring(0, 60) + '...' : title}
       </h3>
 
-      {/* Prix */}
+      {features && features.length > 0 && (
+        <div style={{ marginBottom: '1rem' }}>
+          {features.slice(0, 2).map((feature: string, i: number) => (
+            <p key={i} style={{ 
+              color: '#64748b', 
+              fontSize: '0.85rem',
+              marginBottom: '0.25rem'
+            }}>
+              ✓ {feature.length > 40 ? feature.substring(0, 40) + '...' : feature}
+            </p>
+          ))}
+        </div>
+      )}
+
       <div style={{ 
         color: '#eab308', 
         fontSize: '2rem', 
         fontWeight: 'bold',
         marginBottom: '1rem'
       }}>
-        {price.toFixed(2)}€
+        {price ? price.toFixed(2) : '0.00'}€
       </div>
 
-      {/* Cashback */}
       <div style={{ 
         background: 'rgba(139, 92, 246, 0.2)',
         border: '1px solid #8b5cf6',
@@ -337,11 +459,10 @@ function DealCard({ asin, title, price, image, cashback }: any) {
         textAlign: 'center'
       }}>
         <p style={{ color: '#8b5cf6', margin: 0, fontSize: '1rem', fontWeight: 'bold' }}>
-          💎 Cashback : +{cashback.toLocaleString()} REUSS
+          💎 Cashback : +{cashback ? cashback.toLocaleString() : '0'} REUSS
         </p>
       </div>
 
-      {/* Bouton */}
       <a 
         href={affiliateLink}
         target="_blank"
@@ -372,7 +493,7 @@ function DealCard({ asin, title, price, image, cashback }: any) {
   )
 }
 
-// ----------------------- REUSS SHIELD (INCHANGÉ) -----------------------
+// ----------------------- REUSS SHIELD -----------------------
 function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: any) {
   const [wallet, setWallet] = useState('')
   const [isScanning, setIsScanning] = useState(false)
@@ -514,6 +635,7 @@ function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: 
           <button
             onClick={connectAndScan}
             disabled={isScanning}
+            type="button"
             style={{
               background: 'linear-gradient(135deg, #10b981, #059669)',
               border: 'none',
@@ -548,6 +670,7 @@ function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: 
               <button
                 onClick={revokeAll}
                 disabled={isRevoking}
+                type="button"
                 style={{
                   background: 'linear-gradient(135deg, #ef4444, #dc2626)',
                   border: 'none',
@@ -602,6 +725,7 @@ function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: 
                     <button
                       onClick={() => revokeAccess(threat.address)}
                       disabled={isRevoking}
+                      type="button"
                       style={{
                         background: isRevoking ? '#666' : '#ef4444',
                         border: 'none',
@@ -641,7 +765,7 @@ function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: 
   )
 }
 
-// ----------------------- GLOBAL HUB (MODIFIÉ AVEC EMAIL) -----------------------
+// ----------------------- GLOBAL HUB -----------------------
 function GlobalSecurityHub() {
   return (
     <div style={{ marginTop: '4rem', padding: '3rem', background: '#050505', border: '2px solid #3b82f6', borderRadius: '30px' }}>
@@ -692,7 +816,6 @@ function GlobalSecurityHub() {
         </div>
       </div>
       
-      {/* Footer avec email */}
       <div style={{ marginTop: '3rem', textAlign: 'center' }}>
         <p style={{ color: '#64748b', fontSize: '0.9rem', marginBottom: '1rem' }}>
           Reussitess© Guadeloupe 🇬🇵 • Terres De Champions • Positivité à l'infini • Boudoum
@@ -701,8 +824,8 @@ function GlobalSecurityHub() {
           Contact : <a href="mailto:influenceur@reussitess.fr" style={{ color: '#10b981', textDecoration: 'underline' }}>influenceur@reussitess.fr</a>
         </p>
         <p style={{ color: '#64748b', fontSize: '0.85rem', marginTop: '1rem' }}>
-          <a href="/legal" style={{ color: '#64748b', textDecoration: 'none', marginRight: '1rem' }}>Mentions légales</a>
-          <a href="/privacy" style={{ color: '#64748b', textDecoration: 'none' }}>Politique de confidentialité</a>
+          <span style={{ marginRight: '1rem' }}>Mentions légales en cours</span>
+          <span>Politique de confidentialité en cours</span>
         </p>
       </div>
     </div>
