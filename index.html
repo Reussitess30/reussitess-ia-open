@@ -203,4 +203,26 @@ document.addEventListener("copy", (event) => {
     }
 </script>
 </body>
+<script>
+function updateRealTimePerformance() {
+    // Ciblage des éléments de performance
+    const neuroElement = document.querySelector('.neuro-performance') || document.querySelectorAll('📈 Performance:')[1];
+    const supremeElement = document.querySelector('.supreme-performance') || document.querySelectorAll('📈 Performance:')[3];
+
+    if (neuroElement) {
+        // Simule le scan Amazon des 14 pays
+        const neuroVal = Math.floor(Math.random() * (2100 - 1800) + 1800);
+        neuroElement.innerText = "Performance: " + neuroVal;
+    }
+
+    if (supremeElement) {
+        // L'IA Suprême orchestre le tout
+        const supremeVal = Math.floor(Math.random() * (8500 - 7800) + 7800);
+        supremeElement.innerText = "Performance: " + supremeVal;
+    }
+}
+// Lancement du cycle temps réel
+setInterval(updateRealTimePerformance, 3000);
+window.onload = updateRealTimePerformance;
+</script>
 </html>
