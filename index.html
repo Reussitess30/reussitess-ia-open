@@ -225,4 +225,33 @@ function updateRealTimePerformance() {
 setInterval(updateRealTimePerformance, 3000);
 window.onload = updateRealTimePerformance;
 </script>
+<script>
+function updateRealTimePerformance() {
+    // Sélection par le texte du statut pour trouver les bons blocs
+    const statusElements = document.querySelectorAll('p');
+    
+    statusElements.forEach(el => {
+        // Mise à jour Neuro-X
+        if (el.innerText.includes('Analyzing Markets')) {
+            const perfTag = el.previousElementSibling;
+            if (perfTag && perfTag.innerText.includes('Performance')) {
+                const neuroVal = Math.floor(Math.random() * (1950 - 1750) + 1750);
+                perfTag.innerHTML = '📈 Performance: <span style="color:#00ff00">' + neuroVal + '</span>';
+            }
+        }
+        
+        // Mise à jour IA Suprême
+        if (el.innerText.includes('Orchestrating 199 Agents')) {
+            const perfTag = el.previousElementSibling;
+            if (perfTag && perfTag.innerText.includes('Performance')) {
+                const supremeVal = Math.floor(Math.random() * (9200 - 8800) + 8800);
+                perfTag.innerHTML = '📈 Performance: <span style="color:#00ff00">' + supremeVal + '</span>';
+            }
+        }
+    });
+}
+// Mise à jour toutes les 2 secondes pour un effet "Live Nexus"
+setInterval(updateRealTimePerformance, 2000);
+window.onload = updateRealTimePerformance;
+</script>
 </html>
