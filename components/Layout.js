@@ -7,12 +7,86 @@ import Image from 'next/image'
 export default function Layout({ children, title = 'REUSSITESS®971' }) {
   const router = useRouter()
 
+  const siteTitle = `${title} — Écosystème de Réussite · Diaspora · Bitcoin · 14 Pays`
+  const siteDescription = "Reussitess®971 : Le premier écosystème de réussite pour la diaspora mondiale. Quiz éducatifs, revenus passifs Bitcoin (GoMining), affiliation Amazon, MedTech IA. Guadeloupe, Afrique, France, 14 pays partenaires."
+  const siteUrl = "https://reussitess.fr"
+  const siteImage = `${siteUrl}/images/logo-guadeloupe-monde.svg`
+
+  const schemaOrg = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Reussitess®971",
+    "url": siteUrl,
+    "logo": siteImage,
+    "description": siteDescription,
+    "foundingLocation": {
+      "@type": "Place",
+      "name": "Guadeloupe, France"
+    },
+    "areaServed": [
+      "France", "Guadeloupe", "Martinique", "Guyane", "Réunion",
+      "Sénégal", "Côte d'Ivoire", "Cameroun", "Mali", "Bénin",
+      "Togo", "Congo", "Madagascar", "Haïti"
+    ],
+    "sameAs": [
+      "https://reussitess.fr",
+      "https://shop.reussitess.fr"
+    ],
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Quiz éducatifs gratuits",
+        "description": "Quiz interactifs sur la culture, technologie, business, Bitcoin mining"
+      },
+      {
+        "@type": "Offer",
+        "name": "GoMining — Minage Bitcoin NFT",
+        "description": "Générez des revenus passifs en Bitcoin depuis n'importe quel pays"
+      }
+    ]
+  }
+
   return (
     <>
       <Head>
-        <title>{title} - Excellence Innovation Succès</title>
-        <meta name="description" content="REUSSITESS®971 - Guadeloupe au cœur du monde francophone" />
+        {/* ===== TITRE SEO ===== */}
+        <title>{siteTitle}</title>
+
+        {/* ===== META DESCRIPTION ===== */}
+        <meta name="description" content={siteDescription} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* ===== MOTS-CLÉS SEO ===== */}
+        <meta name="keywords" content="réussite diaspora, revenus passifs bitcoin, minage bitcoin guadeloupe, gomining, investir depuis guadeloupe, gagner argent diaspora, quiz educatif francophone, reussitess, guadeloupe monde, afrique crypto, bitcoin antilles, revenus passifs afrique, investissement diaspora, miner bitcoin smartphone" />
+
+        {/* ===== AUTEUR & ROBOTS ===== */}
+        <meta name="author" content="Reussitess®971" />
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
+        <link rel="canonical" href={`${siteUrl}${router.pathname}`} />
+
+        {/* ===== OPEN GRAPH (Facebook, WhatsApp, LinkedIn) ===== */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${siteUrl}${router.pathname}`} />
+        <meta property="og:title" content={siteTitle} />
+        <meta property="og:description" content={siteDescription} />
+        <meta property="og:image" content={siteImage} />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:site_name" content="Reussitess®971" />
+
+        {/* ===== TWITTER CARD ===== */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={siteTitle} />
+        <meta name="twitter:description" content={siteDescription} />
+        <meta name="twitter:image" content={siteImage} />
+
+        {/* ===== SCHEMA.ORG (données structurées Google) ===== */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
+        />
+
+        {/* ===== ICÔNE ===== */}
         <link rel="icon" href="/images/logo-guadeloupe-monde.svg" />
       </Head>
 
@@ -54,10 +128,10 @@ export default function Layout({ children, title = 'REUSSITESS®971' }) {
             gap: '0.75rem',
             textDecoration: 'none'
           }}>
-            <Image 
-              src="/images/logo-guadeloupe-monde.svg" 
-              alt="Guadeloupe au centre du monde" 
-              width={50} 
+            <Image
+              src="/images/logo-guadeloupe-monde.svg"
+              alt="Guadeloupe au centre du monde"
+              width={50}
               height={50}
               style={{ filter: 'drop-shadow(0 0 10px rgba(16, 185, 129, 0.5))' }}
             />
@@ -147,8 +221,8 @@ export default function Layout({ children, title = 'REUSSITESS®971' }) {
               🛍️ Boutiques
             </Link>
 
-            <a 
-              href="https://shop.reussitess.fr/" 
+            <a
+              href="https://shop.reussitess.fr/"
               target="_blank"
               rel="noopener noreferrer"
               style={{

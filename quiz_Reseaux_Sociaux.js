@@ -1,0 +1,15 @@
+const quizReseauxSociaux = {
+  title: "Réseaux Sociaux",
+  description: "Maîtrisez les plateformes qui connectent le monde !",
+  emoji: "📲",
+  questions: [
+    { question: "📲 Quel réseau social compte le plus d'utilisateurs actifs dans le monde ?", answers: ["Instagram", "TikTok", "Facebook/Meta", "YouTube"], correct: 2, explanation: "Facebook reste la plateforme avec le plus grand nombre d'utilisateurs actifs mensuels (plus de 3 milliards). Mais chez les moins de 25 ans, TikTok et Instagram dominent largement." },
+    { question: "🎵 Sur TikTok, qu'est-ce que l'algorithme favorise principalement ?", answers: ["Les comptes avec le plus d'abonnés", "L'engagement et le temps de visionnage — même les nouveaux comptes peuvent devenir viraux", "Les contenus sponsorisés", "Les utilisateurs premium"], correct: 1, explanation: "L'algorithme TikTok est unique : il peut rendre viral n'importe quel compte, même avec 0 abonnés, si le contenu génère de l'engagement. C'est pourquoi c'est la meilleure plateforme pour démarrer de zéro." },
+    { question: "💼 Quel réseau social est le plus adapté au B2B et au recrutement ?", answers: ["Snapchat", "Pinterest", "LinkedIn", "Twitter/X"], correct: 2, explanation: "LinkedIn est la plateforme de référence pour les professionnels avec plus de 1 milliard de membres. C'est l'endroit idéal pour le networking, la recherche d'emploi, la prospection B2B et le personal branding professionnel." },
+    { question: "📸 Quel format de contenu génère le plus d'engagement sur Instagram en 2024-2025 ?", answers: ["Les photos statiques", "Les Reels (vidéos courtes)", "Les stories uniquement", "Les IGTV longues"], correct: 1, explanation: "Les Reels génèrent la plus grande portée organique sur Instagram depuis 2022. Meta favorise ce format pour concurrencer TikTok. Les Reels atteignent souvent des non-abonnés, amplifiant la découverte." },
+    { question: "🌍 Quel réseau social est dominant en Afrique francophone ?", answers: ["Snapchat", "Pinterest", "Facebook et WhatsApp", "Twitter uniquement"], correct: 2, explanation: "Facebook et surtout WhatsApp dominent en Afrique francophone. WhatsApp est utilisé pour les affaires, les groupes familiaux et la communication quotidienne. Facebook reste la principale plateforme de divertissement et d'information." },
+    { question: "🤝 Qu'est-ce qu'un micro-influenceur ?", answers: ["Un enfant influenceur", "Un créateur avec 1 000 à 100 000 abonnés très engagés dans une niche spécifique", "Un influenceur qui fait de petites publicités", "Un compte créé récemment"], correct: 1, explanation: "Les micro-influenceurs (1K-100K abonnés) ont souvent des taux d'engagement bien supérieurs aux mega-influenceurs. Leur audience est plus ciblée et leur crédibilité plus forte. Pour les marques, ils offrent souvent un meilleur ROI." },
+  ],
+  tips: ["📲 Choisissez 1-2 plateformes et maîtrisez-les avant de vous disperser", "🎯 La constance bat la perfection — publiez régulièrement", "🌍 WhatsApp est votre meilleur outil pour toucher la diaspora"],
+};
+export default quizReseauxSociaux;

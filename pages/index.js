@@ -32,6 +32,31 @@ export default function Home() {
     { id: "Positivité", name: "Positivité", icon: "😊", color: "#fdcb6e" },
     { id: "Amazon_Affiliation", name: "Amazon Affiliation", icon: "🛍️", color: "#ff9f43" },
     { id: "Boutique_Motivation", name: "Boutique Motivation", icon: "🚀", color: "#ee5a6f" },
+    { id: "GoMining", name: "Bitcoin Mining", icon: "⛏️", color: "#7c3aed" },
+    { id: "Crypto", name: "Crypto & Blockchain", icon: "₿", color: "#f7931a" },
+    { id: "Intelligence_Artificielle", name: "Intelligence Artificielle", icon: "🤖", color: "#00d2ff" },
+    { id: "Entrepreneuriat", name: "Entrepreneuriat", icon: "🚀", color: "#e84393" },
+    { id: "Finance_Personnelle", name: "Finance Personnelle", icon: "💰", color: "#2ecc71" },
+    { id: "Immobilier", name: "Immobilier", icon: "🏠", color: "#e67e22" },
+    { id: "Voyage", name: "Voyage", icon: "✈️", color: "#3498db" },
+    { id: "Mode_Beaute", name: "Mode & Beauté", icon: "👗", color: "#e91e8c" },
+    { id: "Cuisine_Antillaise", name: "Cuisine Antillaise", icon: "🥘", color: "#ff5722" },
+    { id: "Afrique", name: "Afrique", icon: "🌍", color: "#4caf50" },
+    { id: "Caraibes", name: "Caraïbes", icon: "🌴", color: "#00bcd4" },
+    { id: "Developpement_Personnel", name: "Développement Personnel", icon: "🧘", color: "#9c27b0" },
+    { id: "Leadership", name: "Leadership", icon: "👑", color: "#ffc107" },
+    { id: "Marketing_Digital", name: "Marketing Digital", icon: "📱", color: "#e91e63" },
+    { id: "Reseaux_Sociaux", name: "Réseaux Sociaux", icon: "📲", color: "#1da1f2" },
+    { id: "Photographie", name: "Photographie", icon: "📸", color: "#607d8b" },
+    { id: "Jeux_Video", name: "Jeux Vidéo", icon: "🎮", color: "#673ab7" },
+    { id: "Astronomie", name: "Astronomie", icon: "🌌", color: "#1a237e" },
+    { id: "Psychologie", name: "Psychologie", icon: "🧠", color: "#7b1fa2" },
+    { id: "Droit", name: "Droit & Justice", icon: "⚖️", color: "#455a64" },
+    { id: "Architecture", name: "Architecture", icon: "🏗️", color: "#795548" },
+    { id: "Litterature", name: "Littérature", icon: "📖", color: "#558b2f" },
+    { id: "Mythologie", name: "Mythologie", icon: "⚡", color: "#f44336" },
+    { id: "Anime_Manga", name: "Anime & Manga", icon: "🎌", color: "#e53935" },
+    { id: "Medecine", name: "Médecine", icon: "🩺", color: "#0097a7" },
   ];
 
   return (
@@ -41,7 +66,7 @@ export default function Home() {
           <div style={{ fontSize: "5rem", marginBottom: "1rem" }}>🎯</div>
           <h1 style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)", fontWeight: "900", marginBottom: "1.5rem", textShadow: "0 4px 30px rgba(0,0,0,0.3)" }}>Reussitess®971</h1>
           
-          {/* BOUTON AIRPODS (Le petit unique) */}
+          {/* BOUTON AIRPODS */}
           <div style={{ marginBottom: "1.5rem" }}>
             <Link href="/passe-port-mondial" style={{ background: "#00ff41", color: "black", padding: "0.8rem 2rem", borderRadius: "50px", textDecoration: "none", fontSize: "1rem", fontWeight: "900", border: "2px solid #000" }}>
               🎧 ACCÈS AIRPODS PRO
@@ -52,13 +77,16 @@ export default function Home() {
             <a href="https://mlc.health/fr/byg727" target="_blank" style={{ background: "#0072ff", color: "white", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "bold" }}>🩺 MLC Health</a>
             <p style={{ fontSize: "0.8rem", color: "#00c6ff", marginTop: "-5px", marginBottom: "10px", maxWidth: "300px" }}>Diagnostic Médical par IA & Prévention Santé - Rejoignez le futur de la MedTech</p>
             <Link href="/investir-reuss" style={{ background: "linear-gradient(135deg, #ffd700 0%, #b8860b 100%)", color: "black", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "900", border: "2px solid #fff" }}>💎 INVESTIR DANS Reussitess®NEURO-X</Link>
-            <p style={{ fontSize: "0.8rem", color: "#00ff41", marginTop: "-5px", marginBottom: "15px", maxWidth: "300px" }}>L’Intelligence Artificielle de rupture pour les 14 pays partenaires.</p>
+            <p style={{ fontSize: "0.8rem", color: "#00ff41", marginTop: "-5px", marginBottom: "15px", maxWidth: "300px" }}>L'Intelligence Artificielle de rupture pour les 14 pays partenaires.</p>
             <Link href="/champions" style={{ background: "linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%)", color: "#1e293b", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "900" }}>🏆 Passeport de Réussite</Link>
             <Link href="/visa-universel" style={{ background: "linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)", color: "white", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "900" }}>🌍 VISA UNIVERSEL</Link>
             <a href="https://reussitess-global-nexus-jfgk-git-copilo-3f98a8-porinus-projects.vercel.app/" target="_blank" style={{ background: "linear-gradient(135deg, #f5576c 0%, #f093fb 100%)", color: "white", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "bold" }}>🎯 Version Alternative</a>
             <a href="https://www.amazon.fr/shop/amourguadeloupe" target="_blank" style={{ background: "linear-gradient(135deg, #10b981 0%, #059669 100%)", color: "white", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "bold" }}>🎮 🇫🇷 France Amazon Officiel</a>
-            <Link href="/ia-passport" style={{ background: 'linear-gradient(135deg, #10b981 0%, #3b82f6 100%)', color: 'white', padding: '1rem 2rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold' }}>🌍 IA PASSPORT MONDIAL - Révolution 2025</Link><Link href="/neuro-x" style={{ background: "linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)", color: "white", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "900", border: "2px solid rgba(255,255,255,0.3)" }}>🧠 Reussitess®NEURO-X</Link>
+            <Link href="/ia-passport" style={{ background: 'linear-gradient(135deg, #10b981 0%, #3b82f6 100%)', color: 'white', padding: '1rem 2rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold' }}>🌍 IA PASSPORT MONDIAL - Révolution 2025</Link>
+            <Link href="/neuro-x" style={{ background: "linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)", color: "white", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "900", border: "2px solid rgba(255,255,255,0.3)" }}>🧠 Reussitess®NEURO-X</Link>
             <Link href="https://shop.reussitess.fr/" target="_blank" style={{ background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)", color: "white", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "bold" }}>🏪 Visitez Notre Shop</Link>
+            <a href="https://gomining.com/?ref=OT3GI2U" target="_blank" rel="noopener noreferrer" style={{ background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 50%, #5b21b6 100%)", color: "white", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "900", border: "2px solid rgba(167,139,250,0.5)", boxShadow: "0 0 20px rgba(124,58,237,0.4)" }}>⛏️ Miner du Bitcoin — GoMining</a>
+            <p style={{ fontSize: "0.8rem", color: "#c4b5fd", marginTop: "-5px", marginBottom: "10px", maxWidth: "300px" }}>NFT Mineur Bitcoin · $0.84/jour · Top 3% mondial · 130+ pays</p>
           </div>
         </div>
       </div>
