@@ -5,7 +5,7 @@ export default function InvestirReuss() {
   const [threats, setThreats] = useState(1240);
   const [learningLevel, setLearningLevel] = useState(99.1);
   const [armyPower, setArmyPower] = useState(1000000);
-  
+
   const pays = ["France", "Angleterre", "Italie", "Allemagne", "Suède", "Singapour", "Australie", "Espagne", "Brésil", "Royaume-Uni", "Inde", "Nouvelle-Zélande", "États-Unis", "Canada"];
   const contractAddress = "0xbe8777aB450937bf107090F4F5F7c4834Db079cF";
   const genesisHash = "0xbc4e93ca3b4a04c5a5fa3b2ab19050fb85aa01e24df856d3be0171f163019a16";
@@ -45,7 +45,7 @@ export default function InvestirReuss() {
   return (
     <div style={{ backgroundColor: '#020617', color: '#f8fafc', minHeight: '100vh', padding: '15px', fontFamily: 'Inter, sans-serif' }}>
       <main style={{ maxWidth: '800px', margin: '0 auto', background: '#0f172a', padding: '30px', borderRadius: '25px', border: '2px solid #3b82f6', boxShadow: '0 0 50px rgba(59, 130, 246, 0.3)' }}>
-        
+
         <header style={{ textAlign: 'center', marginBottom: '30px' }}>
           <h1 style={{ color: '#3b82f6', fontSize: '1.5rem', fontWeight: '900' }}>REUSSITESS© NEURO-X : CENTRE DE COMMANDEMENT</h1>
           <p style={{ color: '#00ff41', fontWeight: 'bold', fontSize: '0.9rem' }}>GUADELOUPE - TERRES DE CHAMPIONS - BOUDOUM !</p>
@@ -67,8 +67,29 @@ export default function InvestirReuss() {
         <section style={{ background: 'rgba(59, 130, 246, 0.1)', padding: '20px', borderRadius: '15px', border: '1px solid #3b82f6', marginBottom: '30px' }}>
           <h3 style={{ color: '#fff', fontSize: '0.9rem' }}>🛡️ UNITÉ DE PUISSANCE : 1 000 000 000 REUSS</h3>
           <p style={{ fontSize: '0.7rem', color: '#94a3b8', margin: '10px 0' }}>Hash Genèse: <code style={{color: '#00ff41'}}>{genesisHash}</code></p>
-          <a href={`https://polygonscan.com/token/${contractAddress}`} target="_blank" rel="noopener noreferrer" style={{ display: 'block', background: '#3b82f6', color: '#fff', textAlign: 'center', padding: '10px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.8rem' }}>
+          <a href={`https://polygonscan.com/token/${contractAddress}`} target="_blank" rel="noopener noreferrer" style={{ display: 'block', background: '#3b82f6', color: '#fff', textAlign: 'center', padding: '10px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.8rem', marginBottom: '10px' }}>
             VÉRIFIER SUR LA BLOCKCHAIN →
+          </a>
+
+          {/* 📄 BOUTON WHITEPAPER — NOUVEAU */}
+          <a
+            href="/documents/REUSS_Whitepaper_v1.0_2026.docx"
+            download
+            style={{
+              display: 'block',
+              background: 'linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%)',
+              color: '#fff',
+              textAlign: 'center',
+              padding: '10px',
+              borderRadius: '8px',
+              textDecoration: 'none',
+              fontWeight: 'bold',
+              fontSize: '0.8rem',
+              border: '1px solid rgba(167,139,250,0.4)',
+              boxShadow: '0 0 15px rgba(124,58,237,0.3)',
+            }}
+          >
+            📄 TÉLÉCHARGER LE WHITEPAPER OFFICIEL REUSS →
           </a>
         </section>
 
@@ -85,7 +106,7 @@ export default function InvestirReuss() {
         {/* SECTION 2 : LA TOILE D'ARAIGNÉE MONDIALE */}
         <section style={{ marginBottom: '30px' }}>
           <h3 style={{ color: '#3b82f6', fontSize: '1rem', borderBottom: '1px solid #1e293b', paddingBottom: '10px' }}>🕸️ TOILE D'ARAIGNÉE SOCIALE (14 PAYS)</h3>
-          
+
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '10px', marginBottom: '20px', marginTop: '15px' }}>
             {socialLinks.tiktok.map((tk, i) => (
               <a key={i} href={tk.url} target="_blank" rel="noopener noreferrer" style={{ background: '#000', padding: '10px', borderRadius: '10px', border: '1px solid #ff0050', color: '#fff', fontSize: '0.7rem', textDecoration: 'none', textAlign: 'center' }}>
