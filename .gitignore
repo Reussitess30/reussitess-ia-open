@@ -39,3 +39,4 @@ config/secrets.json
 .env
 *.env
 eip7702-clean/.env
+.env*.local
