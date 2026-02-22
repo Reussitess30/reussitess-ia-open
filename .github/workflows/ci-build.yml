@@ -1,1 +1,32 @@
-# (colle ici le contenu exact du fichier YAML fourni ci-dessus)
+name: Build TWA Android
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Install Bubblewrap
+        run: npm install -g @bubblewrap/cli
+
+      - name: Init TWA
+        run: |
+          bubblewrap init --manifest https://reussitess.fr/manifest.json
+
+      - name: Build AAB
+        run: bubblewrap build
+
+      - name: Upload AAB
+        uses: actions/upload-artifact@v3
+        with:
+          name: reussitess-aab
+          path: app-release-bundle.aab
