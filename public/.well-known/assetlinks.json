@@ -1,10 +1,8 @@
-[
-  {
-    "relation": ["delegate_permission/common.handle_all_urls"],
-    "target": {
-      "namespace": "android_app",
-      "package_name": "com.reussitess.twa",
-      "sha256_cert_fingerprints": ["FC:70:8F:2B:4E:38:31:27:36:9A:BF:B3:BF:33:76:5D:59:F0:20:15:13:2B:C9:09:B3:C2:25:82:D3:70:CF:33"]
-    }
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.reussitess.twa",
+    "sha256_cert_fingerprints": ["9A:D4:75:82:C0:4C:8C:51:67:E8:4A:41:FE:F8:19:B5:C1:B4:B2:4C:21:AB:57:65:B0:DF:05:92:BE:69:75:F6"]
   }
-]
+}]
