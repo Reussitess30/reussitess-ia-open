@@ -3,8 +3,8 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "com.reussitess.global",
-      "sha256_cert_fingerprints": ["VOTRE_SHA256_FINGERPRINT_ICI"]
+      "package_name": "com.reussitess.twa",
+      "sha256_cert_fingerprints": ["FC:70:8F:2B:4E:38:31:27:36:9A:BF:B3:BF:33:76:5D:59:F0:20:15:13:2B:C9:09:B3:C2:25:82:D3:70:CF:33"]
     }
   }
 ]
