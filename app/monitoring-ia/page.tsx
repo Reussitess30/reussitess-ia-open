@@ -123,7 +123,7 @@ function StatCard({ title, data, color, icon }: any) {
     <div style={{ background: `${color}1a`, border: `2px solid ${color}`, borderRadius: '20px', padding: '2rem' }}>
       <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{icon}</div>
       <h2 style={{ color: color, fontSize: '1.8rem', marginBottom: '1rem' }}>{data.active} {title}</h2>
-      <p style={{ color: '#cbd5e1', fontSize: '0.95rem' }}>📈 Performance: {data.tasksCompleted || data.queries || 0}</p>
+      <p style={{ color: '#cbd5e1', fontSize: '0.95rem' }}>📈 Performance: {data.tasksCompleted || data.queries || data.predictions || data.commands || 0}</p>
       <p style={{ color: '#cbd5e1', fontSize: '0.95rem' }}>📍 Status: {data.status}</p>
     </div>
   )
