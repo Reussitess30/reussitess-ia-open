@@ -4,25 +4,27 @@
   "name": "reussitess-global-nexus",
   "headers": [
     {
+      "source": "/.well-known/assetlinks.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache, no-store" },
+        { "key": "Content-Type", "value": "application/json" }
+      ]
+    },
+    {
       "source": "/images/(.*)",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
       "source": "/(.*).js",
       "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     }
   ],
   "rewrites": [
+    { "source": "/.well-known/assetlinks.json", "destination": "/.well-known/assetlinks.json" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
