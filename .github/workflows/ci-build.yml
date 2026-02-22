@@ -20,13 +20,17 @@ jobs:
 
       - name: Init TWA
         run: |
-          bubblewrap init --manifest https://reussitess.fr/manifest.json
+          bubblewrap init \
+            --manifest https://reussitess.fr/manifest.json \
+            --directory twa-project
 
       - name: Build AAB
-        run: bubblewrap build
+        run: |
+          cd twa-project
+          bubblewrap build
 
       - name: Upload AAB
         uses: actions/upload-artifact@v3
         with:
           name: reussitess-aab
-          path: app-release-bundle.aab
+          path: twa-project/app-release-bundle.aab
