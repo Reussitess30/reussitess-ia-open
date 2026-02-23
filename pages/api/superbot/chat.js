@@ -457,9 +457,10 @@ Exemples :
     // Enrichissement Wikipedia
     let wikiData = null
     const words = message.toLowerCase().split(" ")
-    const searchTerms = words.filter(w => w.length > 4)
+    const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest", "faire", "quoi"]
+    const searchTerms = words.filter(w => w.length > 3 && !noiseWords.includes(w))
     if (searchTerms.length > 0) {
-      wikiData = await getWikipedia(searchTerms[0])
+      wikiData = await getWikipedia(searchTerms[searchTerms.length - 1])
     }
 
     const finalResponse = wikiData 
