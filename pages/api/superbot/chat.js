@@ -1,3 +1,12 @@
+async function getWikipedia(term) {
+  try {
+    const res = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`)
+    if (!res.ok) return null
+    const data = await res.json()
+    return data.extract || null
+  } catch (e) { return null }
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
@@ -444,6 +453,18 @@ Exemples :
 
   try {
     const response = generateResponse()
+
+    // Enrichissement Wikipedia
+    let wikiData = null
+    const words = message.toLowerCase().split(" ")
+    const searchTerms = words.filter(w => w.length > 4)
+    if (searchTerms.length > 0) {
+      wikiData = await getWikipedia(searchTerms[0])
+    }
+
+    const finalResponse = wikiData 
+      ? `${response}\n\n📚 **Wikipedia :** ${wikiData.substring(0, 300)}...`
+      : response
     res.status(200).json({ response })
   } catch (error) {
     console.error('Erreur SuperBot:', error)
