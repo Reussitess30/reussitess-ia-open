@@ -464,7 +464,7 @@ Exemples :
     }
 
     const finalResponse = wikiData 
-      ? `${response}\n\n📚 **Wikipedia :** ${wikiData.substring(0, 300)}...`
+      ? `📚 **Wikipedia :** ${wikiData.substring(0, 500)}...`
       : response
     res.status(200).json({ response: finalResponse })
   } catch (error) {
