@@ -465,7 +465,7 @@ Exemples :
     const finalResponse = wikiData 
       ? `${response}\n\n📚 **Wikipedia :** ${wikiData.substring(0, 300)}...`
       : response
-    res.status(200).json({ response })
+    res.status(200).json({ response: finalResponse })
   } catch (error) {
     console.error('Erreur SuperBot:', error)
     res.status(500).json({ 
