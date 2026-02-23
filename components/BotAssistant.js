@@ -1986,9 +1986,16 @@ export default function BotAssistant() {
 
     try {
       const response = await getResponse(userMessage);
+        const noiseWords = ["parle", "moi", "dis", "explique", "raconte"]
+        const searchTerms = userMessage.toLowerCase().split(" ").filter(w => w.length > 3 && !noiseWords.includes(w))
+        let finalResponse = response
+        if (searchTerms.length > 0) {
+          const wd = await fetchWikipedia(searchTerms[searchTerms.length - 1])
+          if (wd) finalResponse = response + "\n\n📚 **Wikipedia :** " + wd.substring(0, 400) + "..."
+        }
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: response },
+        { role: "assistant", content: finalResponse },
       ]);
       speak(response);
     } catch (error) {
@@ -2013,7 +2020,7 @@ export default function BotAssistant() {
       const response = await getResponse(actionText);
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: response },
+        { role: "assistant", content: finalResponse },
       ]);
       speak(response);
     } catch (error) {
