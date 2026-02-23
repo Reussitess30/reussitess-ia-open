@@ -457,9 +457,101 @@ Exemples :
     // Enrichissement Wikipedia
     let wikiData = null
     const words = message.toLowerCase().split(" ")
-    const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest", "faire", "quoi"]
+    // Mots-clés prioritaires du livre blanc REUSSITESS
+const priorityKeywords = {
+  // Blockchain & Crypto
+  "polygon": "Polygon (blockchain)",
+  "ethereum": "Ethereum",
+  "erc20": "ERC-20",
+  "quickswap": "QuickSwap",
+  "metamask": "MetaMask",
+  "bitcoin": "Bitcoin",
+  "blockchain": "Blockchain",
+  "nft": "Jeton non fongible",
+  "staking": "Staking cryptomonnaie",
+  "defi": "Finance décentralisée",
+
+  // Pays francophones
+  "guadeloupe": "Guadeloupe",
+  "martinique": "Martinique",
+  "sénégal": "Sénégal",
+  "senegal": "Sénégal",
+  "cameroun": "Cameroun",
+  "côte": "Côte d'Ivoire",
+  "ivoire": "Côte d'Ivoire",
+  "haïti": "Haïti",
+  "haiti": "Haïti",
+  "madagascar": "Madagascar",
+  "réunion": "La Réunion",
+  "guyane": "Guyane",
+  "mayotte": "Mayotte",
+  "québec": "Québec",
+  "quebec": "Québec",
+  "maroc": "Maroc",
+  "tunisie": "Tunisie",
+  "algérie": "Algérie",
+  "algerie": "Algérie",
+  "mali": "Mali",
+  "rwanda": "Rwanda",
+  "congo": "République démocratique du Congo",
+  "belgique": "Belgique",
+  "suisse": "Suisse",
+  "luxembourg": "Luxembourg",
+  "vietnam": "Viêt Nam",
+  "liban": "Liban",
+
+  // Technologies
+  "intelligence artificielle": "Intelligence artificielle",
+  "nextjs": "Next.js",
+  "react": "React (bibliothèque)",
+  "typescript": "TypeScript",
+  "tailwind": "Tailwind CSS",
+  "postgresql": "PostgreSQL",
+  "supabase": "Supabase",
+  "tensorflow": "TensorFlow",
+  "vercel": "Vercel",
+
+  // Business
+  "amazon": "Amazon (entreprise)",
+  "diaspora": "Diaspora africaine",
+  "entrepreneuriat": "Entrepreneuriat",
+  "affilié": "Marketing d'affiliation",
+  "affiliation": "Marketing d'affiliation",
+  "gomining": "Minage de cryptomonnaie",
+  "minage": "Minage de cryptomonnaie",
+  "gouvernance": "Gouvernance décentralisée",
+  "amf": "Autorité des marchés financiers (France)",
+  "mica": "Markets in Crypto-Assets",
+  "rgpd": "Règlement général sur la protection des données",
+  "kyc": "Connaissance du client",
+
+  // Culture
+  "créole": "Créole (langue)",
+  "creole": "Créole (langue)",
+  "zouk": "Zouk",
+  "gwo-ka": "Gwo Ka",
+  "biguine": "Biguine",
+  "caraïbes": "Caraïbes",
+  "caraibes": "Caraïbes",
+  "antilles": "Antilles",
+  "francophonie": "Organisation internationale de la Francophonie",
+}
+
+// Vérifier si le message contient un mot-clé prioritaire
+const msgLower = message.toLowerCase()
+let priorityTerm = null
+for (const [key, wikiTerm] of Object.entries(priorityKeywords)) {
+  if (msgLower.includes(key)) {
+    priorityTerm = wikiTerm
+    break
+  }
+}
+
+const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest", "faire", "quoi"]
     const searchTerms = words.filter(w => w.length > 3 && !noiseWords.includes(w))
-    if (searchTerms.length > 0) {
+    if (priorityTerm) {
+      wikiData = await getWikipedia(priorityTerm)
+    } else if (searchTerms.length > 0) {
       wikiData = await getWikipedia(searchTerms[searchTerms.length - 1])
     }
 
