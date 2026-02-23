@@ -179,7 +179,7 @@ const Astuces = () => {
                     pays
                   </p>
                   <a
-                    href="https://reussitess-global-nexus-jfgk.vercel.app/"
+                    href="https://reussitess.fr/"
                     className="inline-block bg-white text-orange-600 px-8 py-4 rounded-xl font-bold hover:scale-105 transition-all text-xl"
                   >
                     Explorer les Boutiques →
@@ -1114,7 +1114,7 @@ const Astuces = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                href="https://reussitess-global-nexus-jfgk.vercel.app/"
+                href="https://reussitess.fr/"
                 className="bg-white text-purple-600 px-8 py-4 rounded-xl font-bold text-xl hover:scale-105 transition-all"
               >
                 🛍️ Explorer Maintenant

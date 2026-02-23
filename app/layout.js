@@ -9,7 +9,7 @@ export const metadata = {
     title: "REUSSITESS REUSSITESS®NEURO-X",
     description: "26 Boutiques Amazon Guadeloupe 14 Pays",
     images: "/guadeloupe-26-boutiques.jpg",
-    url: "https://reussitess-global-nexus-jfgk.vercel.app/",
+    url: "https://reussitess.fr/",
   },
 };
 
@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "OnlineStore",
               name: "REUSSITESS REUSSITESS®NEURO-X",
-              url: "https://reussitess-global-nexus-jfgk.vercel.app/",
+              url: "https://reussitess.fr/",
               areaServed: [
                 "FR",
                 "GP",

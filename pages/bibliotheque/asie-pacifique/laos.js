@@ -107,7 +107,7 @@ const Laos = () => {
           <div className="bg-gradient-to-r from-orange-600 to-yellow-600 rounded-2xl p-8 text-white">
             <h2 className="text-3xl font-bold mb-4">🛍️ Découvrir</h2>
             <a
-              href="https://reussitess-global-nexus-jfgk.vercel.app/"
+              href="https://reussitess.fr/"
               className="bg-white text-orange-600 px-6 py-3 rounded-xl font-bold inline-block hover:scale-105 transition"
             >
               Boutiques

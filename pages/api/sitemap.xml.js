@@ -1,5 +1,5 @@
 export default function handler(req, res) {
-  const baseUrl = 'https://reussitess-global-nexus-jfgk.vercel.app'
+  const baseUrl = 'https://reussitess.fr'
   
   const pages = [
     { url: '/', priority: '1.0', changefreq: 'daily' },

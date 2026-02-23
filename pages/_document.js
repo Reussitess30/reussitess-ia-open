@@ -61,7 +61,7 @@ export default function Document() {
               "@type": "Organization",
               name: "REUSSITESS® REUSSITESS®NEURO-X",
               description: "Hub e-commerce global de boutiques Amazon",
-              url: "https://reussitess-global-nexus-jfgk.vercel.app",
+              url: "https://reussitess.fr",
               numberOfEmployees: "26",
               address: {
                 "@type": "PostalAddress",

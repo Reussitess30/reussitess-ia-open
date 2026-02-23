@@ -126,7 +126,7 @@ const Page = () => {
               Explorez notre sélection de produits en lien avec Saint-Barthélemy
             </p>
             <a
-              href="https://reussitess-global-nexus-jfgk.vercel.app/"
+              href="https://reussitess.fr/"
               className="bg-white text-rose-600 px-6 py-3 rounded-xl font-bold hover:scale-105 transition-all inline-block"
             >
               Voir les boutiques

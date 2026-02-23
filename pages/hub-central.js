@@ -218,7 +218,7 @@ export default function Home() {
             </Link>
 
             <a
-              href="https://reussitess-global-nexus-jfgk-git-copilo-3f98a8-porinus-projects.vercel.app/"
+              href="https://reussitess.fr"
               target="_blank"
               rel="noopener noreferrer"
               className="hub-card"
