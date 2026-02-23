@@ -818,6 +818,7 @@ function GlobalSecurityHub() {
       
       <div style={{ marginTop: '3rem', textAlign: 'center' }}>
         <p style={{ color: '#64748b', fontSize: '0.9rem', marginBottom: '1rem' }}>
+          <div style={{ textAlign: "center", marginBottom: "2rem" }}><Link href="/" style={{ background: "#10b981", color: "#000", padding: "1rem 3rem", borderRadius: "50px", textDecoration: "none", fontWeight: "900", fontSize: "1.2rem" }}>🏠 Retour Accueil</Link></div>
           Reussitess© Guadeloupe 🇬🇵 • Terres De Champions • Positivité à l'infini • Boudoum
         </p>
         <p style={{ color: '#cbd5e1', fontSize: '0.95rem' }}>
