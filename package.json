@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
     "@capacitor-community/speech-recognition": "^7.0.1",
     "@capacitor/android": "^7.4.4",
     "@capacitor/cli": "^7.4.4",
