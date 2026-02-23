@@ -1,3 +1,134 @@
+
+// ============================================
+// LIVRE BLANC REUSSITESS® — DONNÉES OFFICIELLES
+// ============================================
+const whitepaperData = {
+  // RÉEL ET OPÉRATIONNEL ✅
+  reel: {
+    token: {
+      nom: "REUSSITESS Token",
+      symbole: "REUSS",
+      standard: "ERC-20 + ERC20Burnable",
+      blockchain: "Polygon (POS)",
+      contrat: "0xB37531727fC07c6EED4f97F852A115B428046EB2",
+      supply: "999 999 999 REUSS (1 brûlé symboliquement)",
+      pool: "QuickSwap V3 — REUSS/POL",
+      reserve: "0xbe8777aB450937bf107090F4F5F7c4834Db079cF",
+      holders: "20 personnes (phase amorçage)",
+      polygonscan: "polygonscan.com/token/0xB37531727fC07c6EED4f97F852A115B428046EB2"
+    },
+    plateforme: {
+      site: "reussitess.fr",
+      quiz: "50 catégories en 6 langues (FR, EN, ES, PT, Créole, AR)",
+      languebot: "LanguageBot — lecture vocale 6 langues",
+      amazon: "26 boutiques dans 14 pays — tag: ronyporinu0ac-21",
+      pays_amazon: ["USA", "France", "Allemagne", "Italie", "Espagne", "Canada", "UK", "Australie", "Belgique", "Inde", "Pays-Bas", "Suède", "Singapour", "Brésil"],
+      gomining: "gomining.com/?ref=OT3GI2U — 0.84$/jour top 3% mondial",
+      agents_ia: "200 agents IA (1 Suprême, 99 Nexus, 60 Neuro-X, 40 Sentinelles)",
+      fondateur: "Rony Porinus — Guadeloupe, France",
+    },
+    tokenomics: {
+      reserve_treasury: "~978 000 000 REUSS (97.9%)",
+      fondateur: "~26 000 000 REUSS (2.6%)",
+      acheteurs: "~7 500 000 REUSS (0.75%)",
+      burned: "1 REUSS (symbolique — philosophie excellence infinie)"
+    },
+    gamma: {
+      gamma1: "Cashback Amazon 4-8% redistribués en REUSS aux acheteurs",
+      gamma2: "Quiz rewards : 1 000 à 50 000 REUSS selon niveau",
+      gamma3: "Staking : APR 10-20% pour holders stakés"
+    },
+    tiers: {
+      bronze: "3% cashback — fonctions de base",
+      silver: "8% cashback — NEURO-X standard",
+      gold: "15% cashback — NEURO-X avancé + priorité",
+      platinum: "20% cashback — accès complet + gouvernance"
+    },
+    securite: {
+      gas: "REQUIRE_OWNER_APPROVAL: true — aucun agent IA ne peut utiliser le gas sans validation humaine",
+      sentinelles: "40 Sentinelles IA surveillent contrat, pool, réserve et boutiques"
+    }
+  },
+  // EN PRÉVISION — PAS ENCORE RÉALISÉ ⏳
+  prevision: {
+    t1_2026: {
+      holders_objectif: "1 000 holders",
+      tvl_objectif: "$20 000",
+      prix_objectif: "$0.0001",
+      volume_objectif: "$1 000/jour",
+      revenus_objectif: "5 000€/mois"
+    },
+    t2_t3_2026: {
+      holders_objectif: "10 000 holders",
+      tvl_objectif: "$100 000",
+      prix_objectif: "$0.001",
+      revenus_objectif: "15 000€/mois"
+    },
+    t4_2026: {
+      holders_objectif: "100 000 holders",
+      tvl_objectif: "$1 000 000",
+      prix_objectif: "$0.01",
+      listing: "CoinGecko, CoinMarketCap, CEX tier 2",
+      revenus_objectif: "50 000€/mois",
+      equipe: "5 à 10 personnes"
+    },
+    conformite: {
+      psan: "Enregistrement AMF en cours",
+      mica: "Whitepaper MiCA-compliant en préparation",
+      kyc_aml: "Procédures KYC/AML pour gros volumes — à venir",
+      budget: "45 000€ setup + 75 000€/an récurrent"
+    },
+    multisig: "Migration ownership vers wallet multi-signature 3/5 — recommandée"
+  }
+}
+
+function getWhitepaperResponse(message) {
+  const msg = message.toLowerCase()
+  
+  // Token REUSS
+  if (msg.includes('contrat') || msg.includes('adresse token') || msg.includes('0xb375')) {
+    return \`✅ **Token REUSS — Données officielles :**\n\nContrat : \${whitepaperData.reel.token.contrat}\nSupply : \${whitepaperData.reel.token.supply}\nPool : \${whitepaperData.reel.token.pool}\nHolders actuels : \${whitepaperData.reel.token.holders}\n\n🔗 Vérifiable sur : \${whitepaperData.reel.token.polygonscan}\`
+  }
+  
+  // Tokenomics
+  if (msg.includes('tokenomics') || msg.includes('distribution') || msg.includes('répartition')) {
+    return \`✅ **Tokenomics REUSS — Distribution actuelle :**\n\n• Réserve/Treasury : \${whitepaperData.reel.tokenomics.reserve_treasury}\n• Fondateur : \${whitepaperData.reel.tokenomics.fondateur}\n• Acheteurs : \${whitepaperData.reel.tokenomics.acheteurs}\n• Burned : \${whitepaperData.reel.tokenomics.burned}\n\nBOUDOUM ! 🌴\`
+  }
+  
+  // Gamma
+  if (msg.includes('gamma') || msg.includes('récompense') || msg.includes('reward')) {
+    return \`✅ **Vecteurs GAMMA — Distribution des récompenses :**\n\n🛍️ GAMMA-1 : \${whitepaperData.reel.gamma.gamma1}\n🎓 GAMMA-2 : \${whitepaperData.reel.gamma.gamma2}\n💰 GAMMA-3 : \${whitepaperData.reel.gamma.gamma3}\n\nBOUDOUM ! 🇬🇵\`
+  }
+  
+  // Tiers
+  if (msg.includes('tier') || msg.includes('bronze') || msg.includes('silver') || msg.includes('gold') || msg.includes('platinum')) {
+    return \`✅ **Tiers d'accès Premium REUSS :**\n\n🥉 Bronze : \${whitepaperData.reel.tiers.bronze}\n🥈 Silver : \${whitepaperData.reel.tiers.silver}\n🥇 Gold : \${whitepaperData.reel.tiers.gold}\n💎 Platinum : \${whitepaperData.reel.tiers.platinum}\n\nBOUDOUM ! 🌴\`
+  }
+  
+  // Roadmap
+  if (msg.includes('roadmap') || msg.includes('objectif') || msg.includes('prévision') || msg.includes('2026')) {
+    return \`⏳ **Roadmap 2026 — Objectifs prévisionnels (pas encore réalisés) :**\n\n📅 T1 2026 : \${whitepaperData.prevision.t1_2026.holders_objectif} holders · TVL \${whitepaperData.prevision.t1_2026.tvl_objectif} · \${whitepaperData.prevision.t1_2026.revenus_objectif}\n📅 T2-T3 2026 : \${whitepaperData.prevision.t2_t3_2026.holders_objectif} · TVL \${whitepaperData.prevision.t2_t3_2026.tvl_objectif}\n📅 T4 2026 : \${whitepaperData.prevision.t4_2026.holders_objectif} · Listing \${whitepaperData.prevision.t4_2026.listing}\n\n⚠️ Ces chiffres sont des objectifs, pas des garanties.\`
+  }
+
+  // Conformité
+  if (msg.includes('conformité') || msg.includes('amf') || msg.includes('mica') || msg.includes('kyc') || msg.includes('juridique')) {
+    return \`⏳ **Conformité juridique — En cours :**\n\n• PSAN : \${whitepaperData.prevision.conformite.psan}\n• MiCA : \${whitepaperData.prevision.conformite.mica}\n• KYC/AML : \${whitepaperData.prevision.conformite.kyc_aml}\n• Budget estimé : \${whitepaperData.prevision.conformite.budget}\n\n⚠️ Ces démarches sont en cours de mise en place.\`
+  }
+
+  // Amazon
+  if (msg.includes('amazon') || msg.includes('boutique') || msg.includes('affilié')) {
+    return \`✅ **Réseau Amazon — 26 boutiques · 14 pays :**\n\n\${whitepaperData.reel.plateforme.pays_amazon.join(", ")}\n\nTag affilié : ronyporinu0ac-21\nCommissions : 4-8% sur chaque vente qualifiée\n\nBOUDOUM ! 🌴\`
+  }
+
+  // Sécurité
+  if (msg.includes('sécurité') || msg.includes('gas') || msg.includes('sentinelle')) {
+    return \`✅ **Sécurité REUSS :**\n\n🔒 Gas : \${whitepaperData.reel.securite.gas}\n👁️ Surveillance : \${whitepaperData.reel.securite.sentinelles}\n⏳ Multi-sig : \${whitepaperData.prevision.multisig}\n\nBOUDOUM ! 🇬🇵\`
+  }
+
+  return null
+}
+
+
 async function getWikipedia(term) {
   try {
     const res = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`)
