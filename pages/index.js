@@ -1,3 +1,11 @@
+async function fetchWikipedia(term) {
+  try {
+    const r = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`)
+    const d = await r.json()
+    return d.extract ? '📚 **Wikipedia :** ' + d.extract.substring(0, 300) + '...' : null
+  } catch(e) { return null }
+}
+
 "use client";
 import Layout from "../components/Layout";
 import Link from "next/link";
