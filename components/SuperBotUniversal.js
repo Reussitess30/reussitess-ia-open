@@ -298,7 +298,8 @@ Tape 'formation' pour plus d'infos !`
         const wd = await fetchWikipedia(searchTerms[searchTerms.length - 1])
         if (wd) wikiExtra = "\n\n📚 **Wikipedia :** " + wd.substring(0, 400) + "..."
       }
-      const finalResponse = response ? response + wikiExtra : (wikiExtra || null)
+      const isDefaultResponse = response && response.includes("Je peux t'aider")
+      const finalResponse = wikiExtra ? (isDefaultResponse ? wikiExtra.trim() : response + wikiExtra) : response
       if (finalResponse) {
         addMessage(finalResponse, 'bot')
         speakText(finalResponse)
