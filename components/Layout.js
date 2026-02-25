@@ -7,10 +7,10 @@ import Image from 'next/image'
 export default function Layout({ children, title = 'REUSSITESS®971' }) {
   const router = useRouter()
 
-  const siteTitle = `${title} — Écosystème de Réussite · Diaspora · Bitcoin · 14 Pays`
-  const siteDescription = "Reussitess®971 : Le premier écosystème de réussite pour la diaspora mondiale. Quiz éducatifs, revenus passifs Bitcoin (GoMining), affiliation Amazon, MedTech IA. Guadeloupe, Afrique, France, 14 pays partenaires."
+  const siteTitle = `${title} — Bibliothèque Mondiale · Affiliation Amazon · Quiz Francophone`
+  const siteDescription = "Reussitess®971 : Bibliothèque mondiale francophone 26 pays, affiliation Amazon Afrique et diaspora, quiz éducatifs interactifs, revenus passifs Bitcoin GoMining. Guadeloupe, Sénégal, Cameroun, Martinique, France, Québec, 14 pays partenaires."
   const siteUrl = "https://reussitess.fr"
-  const siteImage = `${siteUrl}/images/logo-guadeloupe-monde.svg`
+  const siteImage = `${siteUrl}/icon-512x512.png`
 
   const schemaOrg = {
     "@context": "https://schema.org",
@@ -57,7 +57,7 @@ export default function Layout({ children, title = 'REUSSITESS®971' }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {/* ===== MOTS-CLÉS SEO ===== */}
-        <meta name="keywords" content="réussite diaspora, revenus passifs bitcoin, minage bitcoin guadeloupe, gomining, investir depuis guadeloupe, gagner argent diaspora, quiz educatif francophone, reussitess, guadeloupe monde, afrique crypto, bitcoin antilles, revenus passifs afrique, investissement diaspora, miner bitcoin smartphone" />
+        <meta name="keywords" content="bibliothèque mondiale francophone, affiliation amazon afrique, amazon nexus diaspora, quiz francophone interactif, reussitess971, guadeloupe bibliothèque, minage bitcoin guadeloupe, gomining afrique, revenus passifs diaspora, affiliation amazon guadeloupe, quiz educatif antilles, culture francophone 26 pays, investir diaspora, bitcoin martinique, amazon sénégal" />
 
         {/* ===== AUTEUR & ROBOTS ===== */}
         <meta name="author" content="Reussitess®971" />
