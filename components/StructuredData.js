@@ -66,6 +66,7 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "VISA Universel de Réussite",
+    "image": "https://reussitess.fr/icon-512x512.png",
     "description": "Accès à 10,000+ bourses internationales, 50,000+ emplois, 5,000+ mentors, 100M€+ de fonds",
     "brand": "REUSSITESS®",
     "offers": {
