@@ -1,10 +1,26 @@
 "use client";
+import { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import Link from "next/link";
 import { useState } from "react";
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [reussPrice, setReussPrice] = useState(null);
+  const CONTRACT = "0xB37531727fC07c6EED4f97F852A115B428046EB2";
+
+  useEffect(() => {
+    const fetchPrice = async () => {
+      try {
+        const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${CONTRACT}`)
+        const data = await res.json()
+        if (data.pairs && data.pairs.length > 0) setReussPrice(data.pairs[0])
+      } catch(e) {}
+    }
+    fetchPrice()
+    const interval = setInterval(fetchPrice, 30000)
+    return () => clearInterval(interval)
+  }, [])
 
   const quizCategories = [
     { id: "Gastronomie", name: "Gastronomie", icon: "🍽️", color: "#ff6b6b" },
@@ -65,6 +81,20 @@ export default function Home() {
         <div style={{ textAlign: "center", color: "white", zIndex: 1, maxWidth: "1000px", margin: "0 auto" }}>
           <div style={{ marginBottom: "1rem" }}><img src="/icon-512x512.png" alt="Reussitess®971" style={{ width: "120px", height: "120px", borderRadius: "20px", boxShadow: "0 10px 40px rgba(0,0,0,0.3)" }} /></div>
           <h1 style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)", fontWeight: "900", marginBottom: "1.5rem", textShadow: "0 4px 30px rgba(0,0,0,0.3)" }}>Reussitess®971</h1>
+
+            {/* WIDGET REUSS LIVE */}
+            <div style={{ display: "inline-flex", alignItems: "center", gap: "1rem", background: "rgba(0,0,0,0.3)", border: "1px solid rgba(16,185,129,0.5)", borderRadius: "50px", padding: "0.6rem 1.5rem", marginBottom: "1.5rem", flexWrap: "wrap", justifyContent: "center" }}>
+              <span style={{ color: "#a78bfa", fontWeight: "bold", fontSize: "0.9rem" }}>💎 REUSS</span>
+              {reussPrice ? (
+                <>
+                  <span style={{ color: "#10b981", fontWeight: "900", fontSize: "1rem" }}>${parseFloat(reussPrice.priceUsd || 0).toFixed(8)}</span>
+                  <span style={{ color: "#94a3b8", fontSize: "0.75rem" }}>Vol 24h: ${parseFloat(reussPrice.volume?.h24 || 0).toLocaleString()}</span>
+                </>
+              ) : (
+                <span style={{ color: "#94a3b8", fontSize: "0.85rem" }}>Chargement...</span>
+              )}
+              <a href="/investir-reuss" style={{ color: "#ffd700", fontSize: "0.8rem", textDecoration: "none", fontWeight: "bold" }}>Voir →</a>
+            </div>
           
           {/* BOUTON AIRPODS */}
           <div style={{ marginBottom: "1.5rem" }}>
