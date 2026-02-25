@@ -207,6 +207,19 @@ export default function Layout({ children, title = 'REUSSITESS®971' }) {
               Juridique
             </Link>
 
+            <Link href="/mon-compte" style={{
+              background: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
+              color: 'white',
+              padding: '0.5rem 1.25rem',
+              borderRadius: '50px',
+              textDecoration: 'none',
+              fontWeight: 'bold',
+              fontSize: '0.9rem',
+              boxShadow: '0 4px 15px rgba(124, 58, 237, 0.3)'
+            }}>
+              💎 Mes REUSS
+            </Link>
+
             <Link href="/boutiques" style={{
               background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
               color: 'white',

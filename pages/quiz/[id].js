@@ -11,7 +11,19 @@ export default function QuizPage() {
   const [quiz, setQuiz] = useState(null);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
+  const [reussEarned, setReussEarned] = useState(0);
   const [showResults, setShowResults] = useState(false);
+
+  // Sauvegarder REUSS dans localStorage quand quiz terminé
+  const saveReussReward = (percentage, quizTitle) => {
+    const reward = percentage >= 80 ? 10000 : percentage >= 60 ? 5000 : 1000;
+    setReussEarned(reward);
+    const current = parseInt(localStorage.getItem("reuss_points") || "0");
+    localStorage.setItem("reuss_points", current + reward);
+    const history = JSON.parse(localStorage.getItem("reuss_history") || "[]");
+    history.unshift({ quiz: quizTitle || "Quiz", reuss: reward, date: new Date().toLocaleDateString("fr-FR") });
+    localStorage.setItem("reuss_history", JSON.stringify(history.slice(0, 50)));
+  };
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showExplanation, setShowExplanation] = useState(false);
 
@@ -41,6 +53,8 @@ export default function QuizPage() {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setShowResults(true);
+    const pct = Math.round((score / quiz.questions.length) * 100);
+    saveReussReward(pct, quiz.title);
     }
   };
 
