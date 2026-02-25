@@ -89,28 +89,7 @@ export default function StructuredData() {
         "name": "REUSSITESS®971",
         "url": "https://reussitess.fr"
       }
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "247",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Champion Diaspora"
-      },
-      "reviewBody": "Plateforme exceptionnelle pour la diaspora francophone. Les quiz sont enrichissants et les boutiques Amazon couvrent tous les pays !"
     }
-  }
 
   const passeportSchema = {
     "@context": "https://schema.org",
@@ -137,28 +116,7 @@ export default function StructuredData() {
         "name": "REUSSITESS®971",
         "url": "https://reussitess.fr"
       }
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "189",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Entrepreneur Guadeloupe"
-      },
-      "reviewBody": "Le Passeport de Réussite m'a motivé à me dépasser. Plan d'action clair et certif personnalisé !"
     }
-  }
 
   return (
     <Head>
