@@ -687,7 +687,7 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
     }
 
     const finalResponse = wikiData 
-      ? `📚 **Wikipedia :** ${wikiData.substring(0, 500)}...`
+      ? `📚 **Wikipedia :** ${wikiData.substring(0, 800)}...`
       : response
     res.status(200).json({ response: finalResponse })
   } catch (error) {

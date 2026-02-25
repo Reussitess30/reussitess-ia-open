@@ -296,7 +296,7 @@ Tape 'formation' pour plus d'infos !`
       let wikiExtra = ""
       if (searchTerms.length > 0) {
         const wd = await fetchWikipedia(searchTerms[searchTerms.length - 1])
-        if (wd) wikiExtra = "\n\n📚 **Wikipedia :** " + wd.substring(0, 400) + "..."
+        if (wd) wikiExtra = "\n\n" + wd.substring(0, 400) + "..."
       }
       const isDefaultResponse = response && response.includes("Je peux t'aider")
       const finalResponse = wikiExtra ? (isDefaultResponse ? wikiExtra.trim() : response + wikiExtra) : response
