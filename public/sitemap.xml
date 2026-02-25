@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ton-app.vercel.app/</loc><priority>1.0</priority></url>
-  <url><loc>https://ton-app.vercel.app/ia-control</loc><priority>0.9</priority></url>
-  <url><loc>https://ton-app.vercel.app/ia-files</loc><priority>0.8</priority></url>
+  <!-- Pages principales -->
+  <url><loc>https://reussitess.fr/</loc><priority>1.0</priority><changefreq>daily</changefreq></url>
+  <url><loc>https://reussitess.fr/boutiques</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://reussitess.fr/quiz</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://reussitess.fr/champions</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://reussitess.fr/visa-universel</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://reussitess.fr/neuro-x</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://reussitess.fr/investir-reuss</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://reussitess.fr/guide-complet</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/monitoring-ia</loc><priority>0.7</priority><changefreq>daily</changefreq></url>
+  <!-- Bibliothèque Caraïbes -->
+  <url><loc>https://reussitess.fr/bibliotheque/caraibes/guadeloupe</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/caraibes/martinique</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/caraibes/haiti</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/caraibes/guyane</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/caraibes/reunion</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/caraibes/mayotte</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <!-- Bibliothèque Afrique -->
+  <url><loc>https://reussitess.fr/bibliotheque/afrique/senegal</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/afrique/cameroun</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/afrique/cote-ivoire</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/afrique/madagascar</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/afrique/mali</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/afrique/rwanda</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/afrique/congo</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <!-- Bibliothèque Europe -->
+  <url><loc>https://reussitess.fr/bibliotheque/europe/france</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/europe/belgique</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/europe/suisse</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/europe/luxembourg</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <!-- Bibliothèque Amériques -->
+  <url><loc>https://reussitess.fr/bibliotheque/ameriques/quebec</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <!-- Bibliothèque Maghreb -->
+  <url><loc>https://reussitess.fr/bibliotheque/maghreb/maroc</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/maghreb/tunisie</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/maghreb/algerie</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/maghreb/liban</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <!-- Bibliothèque Asie -->
+  <url><loc>https://reussitess.fr/bibliotheque/asie/vietnam</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
 </urlset>

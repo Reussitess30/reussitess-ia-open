@@ -1,7 +1,6 @@
 User-agent: *
-Allow: /ia-control
-Allow: /ia-files
-Allow: /api/ai-status
+Allow: /
 Disallow: /api/sentinelle-protect
 Disallow: /.env
-Sitemap: https://ton-app.vercel.app/sitemap.xml
+
+Sitemap: https://reussitess.fr/sitemap.xml
