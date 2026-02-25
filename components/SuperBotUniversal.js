@@ -279,7 +279,7 @@ Tape 'formation' pour plus d'infos !`
     return `🤔 Je peux t'aider avec :\n\n🎓 Quiz interactifs (tape 'quiz')\n🇬🇵 Guadeloupe & DOM-TOM\n🚀 Vision IA 2030\n😄 Blagues antillaises\n🛍️ Boutiques Amazon\n🏆 Passeport de Réussite\n🌍 VISA Universel\n💥 Easter Egg BOUDOUM\n\nQue veux-tu découvrir ? Score actuel : ${userScore} points`
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const userInput = input.trim()
     if (!userInput) return
@@ -290,9 +290,18 @@ Tape 'formation' pour plus d'infos !`
 
     setTimeout(() => {
       const response = getResponse(userInput)
-      if (response) {
-        addMessage(response, 'bot')
-        speakText(response)
+      // Enrichissement Wikipedia
+      const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest"]
+      const searchTerms = userInput.toLowerCase().split(" ").filter(w => w.length > 3 && !noiseWords.includes(w))
+      let wikiExtra = ""
+      if (searchTerms.length > 0) {
+        const wd = await fetchWikipedia(searchTerms[searchTerms.length - 1])
+        if (wd) wikiExtra = "\n\n📚 **Wikipedia :** " + wd.substring(0, 400) + "..."
+      }
+      const finalResponse = response ? response + wikiExtra : (wikiExtra || null)
+      if (finalResponse) {
+        addMessage(finalResponse, 'bot')
+        speakText(finalResponse)
       }
       setIsLoading(false)
     }, 800)
