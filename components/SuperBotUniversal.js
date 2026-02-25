@@ -288,7 +288,7 @@ Tape 'formation' pour plus d'infos !`
     setInput('')
     setIsLoading(true)
 
-    setTimeout(() => {
+    setTimeout(async () => {
       const response = getResponse(userInput)
       // Enrichissement Wikipedia
       const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest"]
