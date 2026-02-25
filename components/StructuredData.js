@@ -90,6 +90,7 @@ export default function StructuredData() {
         "url": "https://reussitess.fr"
       }
     }
+  }
 
   const passeportSchema = {
     "@context": "https://schema.org",
@@ -117,6 +118,7 @@ export default function StructuredData() {
         "url": "https://reussitess.fr"
       }
     }
+  }
 
   return (
     <Head>
