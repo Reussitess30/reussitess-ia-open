@@ -328,14 +328,14 @@ Tape 'formation' pour plus d'infos !`
           position: 'fixed',
           top: '100px',
           right: '30px',
-          width: '60px',
-          height: '60px',
+          width: '40px',
+          height: '40px',
           background: 'linear-gradient(135deg, #fbbf24, #f59e0b)',
           border: 'none',
           borderRadius: '50%',
           boxShadow: '0 8px 30px rgba(251,191,36,0.5)',
           cursor: 'pointer',
-          fontSize: '2rem',
+          fontSize: '1.2rem',
           zIndex: 1000
         }}
       >

@@ -2041,7 +2041,7 @@ export default function BotAssistant() {
       {/* Bouton flottant ultra-personnalisé avec animation 🌟 */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 z-50 ${pulseAnimation ? "animate-pulse ring-4 ring-yellow-300" : ""}`}
+        className={`fixed bottom-6 right-6 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 text-white p-2 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 z-50 ${pulseAnimation ? "animate-pulse ring-4 ring-yellow-300" : ""}`}
         aria-label="SuperBot REUSSITESS®"
         style={{
           boxShadow:
