@@ -21,6 +21,34 @@ async function fetchCountry(term) {
   } catch(e) { return null }
 }
 
+async function fetchWikipediaEN(term) {
+  try {
+    const r = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`)
+    const d = await r.json()
+    return d.extract ? '📖 **Wikipedia EN:** ' + d.extract : null
+  } catch(e) { return null }
+}
+
+async function fetchOpenLibrary(term) {
+  try {
+    const r = await fetch('https://openlibrary.org/search.json?q=' + encodeURIComponent(term) + '&limit=2')
+    const d = await r.json()
+    if (!d.docs || d.docs.length === 0) return null
+    const books = d.docs.slice(0, 2).map(b => '- ' + b.title + ' (' + (b.author_name || ['?'])[0] + ')').join('\n')
+    return 'Livres: ' + books
+  } catch(e) { return null }
+}
+
+async function fetchDictionary(term) {
+  try {
+    const r = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + encodeURIComponent(term))
+    const d = await r.json()
+    if (!d[0]) return null
+    const def = d[0].meanings[0].definitions[0].definition
+    return 'Definition: ' + def
+  } catch(e) { return null }
+}
+
 async function fetchWikipedia(term) {
   try {
     const r = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`)
@@ -312,14 +340,30 @@ Tape 'formation' pour plus d'infos !`
       // Enrichissement Wikipedia
       const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest"]
       const searchTerms = userInput.toLowerCase().split(" ").filter(w => w.length > 3 && !noiseWords.includes(w))
+      const lastTerm = searchTerms[searchTerms.length - 1]
       let wikiExtra = ""
         // REST Countries enrichissement
         const countryData = await fetchCountry(userInput)
         if (countryData) wikiExtra = countryData + "\n\n"
 
-      if (searchTerms.length > 0) {
-        const wd = await fetchWikipedia(searchTerms[searchTerms.length - 1])
-        if (wd) wikiExtra = "\n\n" + wd.substring(0, 800) + (wd.length > 800 ? "..." : "")
+      if (lastTerm) {
+        // Wikipedia FR
+        const wdFR = await fetchWikipedia(lastTerm)
+        if (wdFR) wikiExtra += wdFR + "\n\n"
+
+        // Open Library si livre/auteur
+        const isBook = ["livre","auteur","roman","ecrit","poeme","book","culture"].some(k => userInput.toLowerCase().includes(k))
+        if (isBook) {
+          const lib = await fetchOpenLibrary(lastTerm)
+          if (lib) wikiExtra += lib + "\n\n"
+        }
+
+        // Dictionary si mot anglais pur
+        const isEnglish = /^[a-zA-Z]+$/.test(lastTerm) && lastTerm.length > 3
+        if (isEnglish && !wdFR) {
+          const dict = await fetchDictionary(lastTerm)
+          if (dict) wikiExtra += dict + "\n\n"
+        }
       }
       const isDefaultResponse = response && response.includes("Je peux t'aider")
       const finalResponse = wikiExtra ? (isDefaultResponse ? wikiExtra.trim() : response + wikiExtra) : response
