@@ -48,7 +48,7 @@ export default function MonitoringIA() {
           `[SHIELD] Monitoring approvals Polygon ✅`,
           `[NEXUS] Protection temps réel active ✅`
         ]
-        const newLog = `[${new Date().toLocaleTimeString()}] ${logMessages[Math.floor(Math.random() * logMessages.length)]}`
+        const newLog = `[${new Date().toLocaleTimeString()}] [SIMULATION] ${logMessages[Math.floor(Math.random() * logMessages.length)]}`
         setLogs(prev => [newLog, ...prev.slice(0, 49)])
       } catch (e) { console.error(e) }
     }
@@ -375,7 +375,7 @@ function AmazonDealsSection() {
   )
 }
 
-function DealCard({ asin, title, price, image, cashback, features }: any) {
+function DealCard({ asin, title, price, image, features }: any) {
   const affiliateLink = `https://www.amazon.fr/dp/${asin}?tag=${AMAZON_ASSOCIATE_TAG}`
   
   return (
