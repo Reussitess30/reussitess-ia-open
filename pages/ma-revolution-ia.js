@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 const questions = [
@@ -82,6 +82,14 @@ export default function MaRevolutionIA() {
   const [scores, setScores] = useState({ toussaint: 0, cesaire: 0, dessalines: 0, fanon: 0, malcolm: 0 })
   const [resultat, setResultat] = useState(null)
   const [animating, setAnimating] = useState(false)
+  const [citation, setCitation] = useState(null)
+
+  useEffect(() => {
+    fetch('https://zenquotes.io/api/random')
+      .then(r => r.json())
+      .then(d => setCitation({ text: d[0].q, author: d[0].a }))
+      .catch(() => {})
+  }, [])
 
   const handleAnswer = (profil) => {
     if (animating) return
@@ -193,6 +201,12 @@ export default function MaRevolutionIA() {
             <Link href="/mon-adn" style={{ background: 'linear-gradient(135deg, #ec4899, #8b5cf6)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.9rem' }}>🧬 Mon ADN</Link>
             <button onClick={restart} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.15)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.9rem' }}>🔄 Recommencer</button>
           </div>
+          {citation && (
+            <div style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: '12px', padding: '1rem', marginBottom: '1rem' }}>
+              <p style={{ color: '#86efac', fontSize: '0.85rem', fontStyle: 'italic' }}>"{citation.text}"</p>
+              <p style={{ color: '#10b981', fontSize: '0.75rem', marginTop: '0.5rem' }}>— {citation.author}</p>
+            </div>
+          )}
           <p style={{ color: '#475569', fontSize: '0.75rem', marginTop: '1.5rem' }}>REUSSITESS®971 — Guadeloupe 🇬🇵 BOUDOUM !</p>
         </div>
       </div>

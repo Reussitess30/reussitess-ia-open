@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 
 const questions = [
@@ -39,6 +39,14 @@ export default function Oracle971() {
   const [prophecy, setProphecy] = useState(null)
   const [animating, setAnimating] = useState(false)
   const [particles, setParticles] = useState([])
+  const [citation, setCitation] = useState(null)
+
+  useEffect(() => {
+    fetch('https://zenquotes.io/api/random')
+      .then(r => r.json())
+      .then(d => setCitation({ text: d[0].q, author: d[0].a }))
+      .catch(() => {})
+  }, [])
 
   useEffect(() => {
     setParticles(Array.from({length: 20}, (_, i) => ({
@@ -140,6 +148,12 @@ export default function Oracle971() {
           <Link href="/mon-compte" style={{ background: 'rgba(109,40,217,0.3)', border: '1px solid #6d28d9', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.9rem' }}>💎 Mes REUSS</Link>
           <button onClick={restart} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.15)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.9rem' }}>🔄 Reconsulter</button>
         </div>
+        {citation && (
+          <div style={{ background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.2)', borderRadius: '12px', padding: '1rem', marginBottom: '1rem' }}>
+            <p style={{ color: '#c4b5fd', fontSize: '0.85rem', fontStyle: 'italic' }}>"{citation.text}"</p>
+            <p style={{ color: '#7c3aed', fontSize: '0.75rem', marginTop: '0.5rem' }}>— {citation.author}</p>
+          </div>
+        )}
         <p style={{ color: '#475569', fontSize: '0.75rem', marginTop: '1.5rem' }}>REUSSITESS®971 — Guadeloupe 🇬🇵 BOUDOUM !</p>
       </div>
     </div>

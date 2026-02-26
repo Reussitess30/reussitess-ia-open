@@ -2,6 +2,25 @@
 
 import { useState, useEffect, useRef } from 'react'
 
+async function fetchCountry(term) {
+  try {
+    const pays = {
+      'guadeloupe':'GP','martinique':'MQ','france':'FR','senegal':'SN','cameroun':'CM',
+      'cote ivoire':'CI','mali':'ML','burkina':'BF','togo':'TG','benin':'BJ',
+      'congo':'CG','gabon':'GA','madagascar':'MG','haiti':'HT','canada':'CA',
+      'belgique':'BE','suisse':'CH','maroc':'MA','algerie':'DZ','tunisie':'TN'
+    }
+    const code = Object.entries(pays).find(([k]) => term.toLowerCase().includes(k))?.[1]
+    if (!code) return null
+    const r = await fetch(`https://restcountries.com/v3.1/alpha/${code}`)
+    const d = await r.json()
+    const p = d[0]
+    const langs = Object.values(p.languages || {}).join(', ')
+    const currencies = Object.values(p.currencies || {}).map(c => c.name).join(', ')
+    return `🌍 **${p.name.common}** | 👥 ${p.population.toLocaleString()} hab. | 🏛️ ${p.capital?.[0] || 'N/A'} | 🗣️ ${langs} | 💰 ${currencies}`
+  } catch(e) { return null }
+}
+
 async function fetchWikipedia(term) {
   try {
     const r = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`)
@@ -294,6 +313,10 @@ Tape 'formation' pour plus d'infos !`
       const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest"]
       const searchTerms = userInput.toLowerCase().split(" ").filter(w => w.length > 3 && !noiseWords.includes(w))
       let wikiExtra = ""
+        // REST Countries enrichissement
+        const countryData = await fetchCountry(userInput)
+        if (countryData) wikiExtra = countryData + "\n\n"
+
       if (searchTerms.length > 0) {
         const wd = await fetchWikipedia(searchTerms[searchTerms.length - 1])
         if (wd) wikiExtra = "\n\n" + wd.substring(0, 800) + (wd.length > 800 ? "..." : "")

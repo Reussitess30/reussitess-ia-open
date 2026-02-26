@@ -1,6 +1,27 @@
 'use client'
 
 import { useState, useEffect, useRef, useCallback } from "react";
+
+async function fetchTriviaQuestion() {
+  try {
+    const cats = [22, 23, 9, 17] // Geography, History, General, Science
+    const cat = cats[Math.floor(Math.random() * cats.length)]
+    const r = await fetch(`https://opentdb.com/api.php?amount=1&category=${cat}&difficulty=medium&type=multiple`)
+    const d = await r.json()
+    if (d.response_code !== 0) return null
+    const q = d.results[0]
+    const decode = (s) => { try { return decodeURIComponent(s.replace(/\+/g,' ')) } catch(e) { return s } }
+    const options = [...q.incorrect_answers, q.correct_answer]
+      .sort(() => Math.random() - 0.5)
+      .map((o, i) => `${i+1}. ${decode(o)}`)
+    return {
+      question: decode(q.question),
+      options,
+      correct: decode(q.correct_answer),
+      category: decode(q.category)
+    }
+  } catch(e) { return null }
+}
 import useFullKnowledge from "./useFullKnowledge";
 
 export default function BotAssistant() {
@@ -1756,7 +1777,21 @@ export default function BotAssistant() {
   );
 
   // Start a quiz
-  const startQuiz = useCallback(() => {
+  const startQuiz = useCallback(async () => {
+    // 50% chance d'utiliser Open Trivia DB
+    if (Math.random() > 0.5) {
+      const trivia = await fetchTriviaQuestion()
+      if (trivia) {
+        const triviaQuiz = {
+          q: `🌍 [${trivia.category}] ${trivia.question}`,
+          options: trivia.options.map(o => o.replace(/^\d+\. /, '')),
+          correct: parseInt(trivia.options.findIndex(o => o.includes(trivia.correct))) + 1,
+          fact: `La bonne réponse était : ${trivia.correct}`
+        }
+        setCurrentQuiz(triviaQuiz)
+        return `🧠 **QUIZ MONDIAL!** Question internationale :\n\n**${triviaQuiz.q}**\n\n${trivia.options.join('\n')}\n\n👉 Réponds avec le numéro (1, 2, 3 ou 4)`
+      }
+    }
     const randomQuiz =
       quizQuestions[Math.floor(Math.random() * quizQuestions.length)];
     setCurrentQuiz(randomQuiz);
