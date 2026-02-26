@@ -1,15 +1,15 @@
 'use client'
 
+import { useState, useEffect, useRef, useCallback } from "react";
+import useFullKnowledge from "./useFullKnowledge";
+
 async function fetchWikipedia(term) {
   try {
     const r = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`)
     const d = await r.json()
-    return d.extract ? '📚 **Wikipedia :** ' + d.extract.substring(0, 300) + '...' : null
+    return d.extract ? '📚 **Wikipedia :** ' + d.extract : null
   } catch(e) { return null }
 }
-
-import { useState, useEffect, useRef, useCallback } from "react";
-import useFullKnowledge from "./useFullKnowledge";
 
 export default function BotAssistant() {
   const effectiveData =
