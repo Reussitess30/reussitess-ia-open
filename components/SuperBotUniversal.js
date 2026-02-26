@@ -296,13 +296,13 @@ Tape 'formation' pour plus d'infos !`
       let wikiExtra = ""
       if (searchTerms.length > 0) {
         const wd = await fetchWikipedia(searchTerms[searchTerms.length - 1])
-        if (wd) wikiExtra = "\n\n" + wd
+        if (wd) wikiExtra = "\n\n" + wd.substring(0, 800) + (wd.length > 800 ? "..." : "")
       }
       const isDefaultResponse = response && response.includes("Je peux t'aider")
       const finalResponse = wikiExtra ? (isDefaultResponse ? wikiExtra.trim() : response + wikiExtra) : response
       if (finalResponse) {
         addMessage(finalResponse, 'bot')
-        speakText(finalResponse)
+        speakText(finalResponse.substring(0, 500))
       }
       setIsLoading(false)
     }, 800)
