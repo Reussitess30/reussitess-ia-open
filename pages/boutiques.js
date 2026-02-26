@@ -348,9 +348,7 @@ export default function Boutiques() {
                     textAlign: "center",
                   }}
                 >
-                  🔒{" "}
-                  {translations[boutique.flag]?.disclaimer ||
-                    "Commission sur certains achats"}
+                  #CommissionsGagnées — {translations[boutique.flag]?.disclaimer || "En tant que partenaire Amazon, je gagne des commissions sur les achats qualifiés."}
                 </div>
               </div>
             ))}
