@@ -4,14 +4,14 @@ async function fetchWikipedia(term) {
   try {
     const r = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`)
     const d = await r.json()
-    return d.extract ? '📚 **Wikipedia :** ' + d.extract.substring(0, 300) + '...' : null
+    return d.extract ? '📚 **Wikipedia :** ' + d.extract : null
   } catch(e) { return null }
 }
 
 import { useState, useEffect, useRef } from 'react'
 
 export default function SuperBotUniversal() {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -296,7 +296,7 @@ Tape 'formation' pour plus d'infos !`
       let wikiExtra = ""
       if (searchTerms.length > 0) {
         const wd = await fetchWikipedia(searchTerms[searchTerms.length - 1])
-        if (wd) wikiExtra = "\n\n" + wd.substring(0, 400) + "..."
+        if (wd) wikiExtra = "\n\n" + wd
       }
       const isDefaultResponse = response && response.includes("Je peux t'aider")
       const finalResponse = wikiExtra ? (isDefaultResponse ? wikiExtra.trim() : response + wikiExtra) : response
