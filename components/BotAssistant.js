@@ -1806,6 +1806,7 @@ export default function BotAssistant() {
   }, [isOpen, currentLang]);
 
   const speak = (text) => {
+    if (!text || typeof text !== "string") return;
     if ("speechSynthesis" in window) {
       window.speechSynthesis.cancel();
 
@@ -1861,7 +1862,7 @@ export default function BotAssistant() {
         if (badges.length === 0) {
           return `😏 Tu n'as pas encore de badges ! Continue à me poser des questions et tu en gagneras. ${getRandomPunchline()}`;
         }
-        return `🏆 **Tes badges (${badges.length}):**\n\n${badges.map((b) => `${allBadges[b].icon} **${allBadges[b].name}** - ${allBadges[b].desc}`).join("\n")}\n\n${getRandomPunchline()}`;
+        return `🏆 **Tes badges (${badges.length}):**\n\n${badges.filter(b => allBadges[b]).map((b) => `${allBadges[b].icon} **${allBadges[b].name}** - ${allBadges[b].desc}`).join("\n")}\n\n${getRandomPunchline()}`;
       }
 
       // Ego score check
