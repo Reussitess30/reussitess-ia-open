@@ -34,15 +34,15 @@ const whitepaperData = {
       burned: "1 REUSS (symbolique — philosophie excellence infinie)"
     },
     gamma: {
-      gamma1: "Cashback Amazon 4-8% redistribués en REUSS aux acheteurs",
+      gamma1: "Récompenses communautaires REUSS financées par les revenus de l'écosystème",
       gamma2: "Quiz rewards : 1 000 à 50 000 REUSS selon niveau",
       gamma3: "Staking : APR 10-20% pour holders stakés"
     },
     tiers: {
-      bronze: "3% cashback — fonctions de base",
-      silver: "8% cashback — NEURO-X standard",
-      gold: "15% cashback — NEURO-X avancé + priorité",
-      platinum: "20% cashback — accès complet + gouvernance"
+      bronze: "Récompenses 3% — fonctions de base",
+      silver: "Récompenses 8% — NEURO-X standard",
+      gold: "Récompenses 15% — NEURO-X avancé + priorité",
+      platinum: "Récompenses 20% — accès complet + gouvernance"
     },
     securite: {
       gas: "REQUIRE_OWNER_APPROVAL: true — aucun agent IA ne peut utiliser le gas sans validation humaine",
@@ -429,7 +429,7 @@ Accédez à notre **réseau mondial** d'affiliations vérifiées !
 • **Comparaison prix** automatique multi-pays
 • **Livraison optimisée** selon votre localisation
 • **Support multilingue** (14 langues)
-• **Cashback tokens** sur tous achats
+• **Récompenses communautaires** sur l'écosystème
 • **Curation experte** par catégorie
 • **Programme Partenaires Amazon officiel** ✅
 

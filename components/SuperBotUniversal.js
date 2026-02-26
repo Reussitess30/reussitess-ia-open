@@ -1,5 +1,7 @@
 'use client'
 
+import { useState, useEffect, useRef } from 'react'
+
 async function fetchWikipedia(term) {
   try {
     const r = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`)
@@ -7,8 +9,6 @@ async function fetchWikipedia(term) {
     return d.extract ? '📚 **Wikipedia :** ' + d.extract : null
   } catch(e) { return null }
 }
-
-import { useState, useEffect, useRef } from 'react'
 
 export default function SuperBotUniversal() {
   const [isOpen, setIsOpen] = useState(false)
@@ -187,7 +187,7 @@ export default function SuperBotUniversal() {
     // NOUVEAU QUIZ
     if (q.includes('quiz')) {
       startQuiz()
-      return null // Message déjà ajouté par startQuiz
+      return "" // Message déjà ajouté par startQuiz
     }
     
     // SCORE
