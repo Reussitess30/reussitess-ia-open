@@ -459,7 +459,7 @@ function DealCard({ asin, title, price, image, features }: any) {
         textAlign: 'center'
       }}>
         <p style={{ color: '#8b5cf6', margin: 0, fontSize: '1rem', fontWeight: 'bold' }}>
-          💎 Cashback : +{cashback ? cashback.toLocaleString() : '0'} REUSS
+
         </p>
       </div>
 
