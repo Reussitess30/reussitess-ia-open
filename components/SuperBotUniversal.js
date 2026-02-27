@@ -157,26 +157,23 @@ export default function SuperBotUniversal() {
   const speakText = (text, lang = currentLang) => {
     if (typeof window !== 'undefined' && window.speechSynthesis) {
       window.speechSynthesis.cancel()
-      
-      const utterance = new SpeechSynthesisUtterance(text)
-      utterance.lang = lang
-      utterance.rate = 0.95
-      utterance.pitch = 1.1
-      utterance.volume = 1.0
-      
-      // Attendre que les voix soient chargées
-      const setVoice = () => {
-        const voices = window.speechSynthesis.getVoices()
-        const voice = voices.find(v => v.lang.startsWith(lang.split('-')[0]))
-        if (voice) utterance.voice = voice
-        window.speechSynthesis.speak(utterance)
+      const chunks = text.match(/[^.!?]+[.!?]+/g) || [text]
+      const voices = window.speechSynthesis.getVoices()
+      const voice = voices.find(v => v.lang.startsWith(lang.split('-')[0]))
+      let i = 0
+      const speakChunk = () => {
+        if (i >= chunks.length) return
+        const utt = new SpeechSynthesisUtterance(chunks[i].trim())
+        utt.lang = lang
+        utt.rate = 0.95
+        utt.pitch = 1.1
+        utt.volume = 1.0
+        if (voice) utt.voice = voice
+        utt.onend = () => { i++; speakChunk() }
+        utt.onerror = () => {}
+        window.speechSynthesis.speak(utt)
       }
-      
-      if (window.speechSynthesis.getVoices().length > 0) {
-        setVoice()
-      } else {
-        window.speechSynthesis.onvoiceschanged = setVoice
-      }
+      speakChunk()
     }
   }
 
@@ -369,7 +366,7 @@ Tape 'formation' pour plus d'infos !`
       const finalResponse = wikiExtra ? (isDefaultResponse ? wikiExtra.trim() : response + wikiExtra) : response
       if (finalResponse) {
         addMessage(finalResponse, 'bot')
-        speakText(finalResponse.substring(0, 500))
+        speakText(finalResponse)
       }
       setIsLoading(false)
     }, 800)
