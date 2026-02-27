@@ -170,7 +170,8 @@ export default function ReussitessAI() {
       window.speechSynthesis.speak(utterance);
     }
     speakChunk();
-  };
+  }
+};
 
   const stopSpeaking = function () {
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
