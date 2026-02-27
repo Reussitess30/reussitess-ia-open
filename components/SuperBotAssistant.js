@@ -124,7 +124,7 @@ Je réponds avec expertise, sources vérifiées et **positivité à l'infini** �
       .replace(/###/g, '')
       .replace(/##/g, '')
       .replace(/#/g, '')
-      .substring(0, 500)
+      
 
     const utterance = new SpeechSynthesisUtterance(cleanText)
     
