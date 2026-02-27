@@ -74,6 +74,20 @@ export default function Home() {
     { id: "Medecine", name: "Médecine", icon: "🩺", color: "#0097a7" },
     { id: "Afro_Caraibes_1", name: "Afro-Caraïbes & Indépendances", icon: "✊🏿", color: "#b45309" },
     { id: "Afro_Caraibes_2", name: "Grands Hommes Noirs & Inventeurs", icon: "🏆", color: "#047857" },
+    { id: "USA_Essentiel", name: "USA — Voyage Essentiel", icon: "🇺🇸", color: "#1e3a5f" },
+    { id: "France_Essentiel", name: "France — Voyage Essentiel", icon: "🇫🇷", color: "#002395" },
+    { id: "Allemagne_Essentiel", name: "Allemagne — Voyage Essentiel", icon: "🇩🇪", color: "#dd0000" },
+    { id: "Italie_Essentiel", name: "Italie — Voyage Essentiel", icon: "🇮🇹", color: "#009246" },
+    { id: "Espagne_Essentiel", name: "Espagne — Voyage Essentiel", icon: "🇪🇸", color: "#c60b1e" },
+    { id: "Canada_Essentiel", name: "Canada — Voyage Essentiel", icon: "🇨🇦", color: "#d80621" },
+    { id: "UK_Essentiel", name: "Royaume-Uni — Voyage Essentiel", icon: "🇬🇧", color: "#012169" },
+    { id: "Australie_Essentiel", name: "Australie — Voyage Essentiel", icon: "🇦🇺", color: "#00008b" },
+    { id: "Belgique_Essentiel", name: "Belgique — Voyage Essentiel", icon: "🇧🇪", color: "#fdda00" },
+    { id: "Inde_Essentiel", name: "Inde — Voyage Essentiel", icon: "🇮🇳", color: "#ff9933" },
+    { id: "PaysBas_Essentiel", name: "Pays-Bas — Voyage Essentiel", icon: "🇳🇱", color: "#ae1c28" },
+    { id: "Suede_Essentiel", name: "Suède — Voyage Essentiel", icon: "🇸🇪", color: "#006aa7" },
+    { id: "Singapour_Essentiel", name: "Singapour — Voyage Essentiel", icon: "🇸🇬", color: "#ef3340" },
+    { id: "Bresil_Essentiel", name: "Brésil — Voyage Essentiel", icon: "🇧🇷", color: "#009c3b" },
   ];
 
   return (
