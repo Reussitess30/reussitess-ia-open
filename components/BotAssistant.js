@@ -1,11 +1,3 @@
-async function fetchWikipedia(term) {
-  try {
-    const res = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`);
-    const data = await res.json();
-    return data.extract ? `\n\n${data.extract}` : null;
-  } catch (e) { return null; }
-}
-
 'use client'
 
 import { useState, useEffect, useRef, useCallback } from "react";
