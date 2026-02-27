@@ -72,6 +72,8 @@ export default function Home() {
     { id: "Mythologie", name: "Mythologie", icon: "⚡", color: "#f44336" },
     { id: "Anime_Manga", name: "Anime & Manga", icon: "🎌", color: "#e53935" },
     { id: "Medecine", name: "Médecine", icon: "🩺", color: "#0097a7" },
+    { id: "Afro_Caraibes_1", name: "Afro-Caraïbes & Indépendances", icon: "✊🏿", color: "#b45309" },
+    { id: "Afro_Caraibes_2", name: "Grands Hommes Noirs & Inventeurs", icon: "🏆", color: "#047857" },
   ];
 
   return (
