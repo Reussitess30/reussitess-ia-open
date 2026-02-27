@@ -3,9 +3,7 @@ async function fetchWikipedia(term) {
     const res = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`);
     if (res.ok) {
       const data = await res.json();
-      return `
-
-📖 Source Wikipédia : ${data.extract}`;
+      return `\n\n${data.extract}`;
     }
   } catch (e) { return null; }
   return null;

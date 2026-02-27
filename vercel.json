@@ -1,7 +1,6 @@
 {
   "version": 2,
   "public": true,
-  "name": "reussitess-global-nexus",
   "headers": [
     {
       "source": "/.well-known/assetlinks.json",
