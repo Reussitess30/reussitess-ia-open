@@ -1842,16 +1842,21 @@ export default function BotAssistant() {
         .replace(/\*\*/g, "")
         .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
 
-      const utterance = new SpeechSynthesisUtterance(cleanText);
-      utterance.lang = currentLang;
-      utterance.rate = 0.9;
-      utterance.pitch = 1;
-
-      utterance.onstart = () => setIsSpeaking(true);
-      utterance.onend = () => setIsSpeaking(false);
-      utterance.onerror = () => setIsSpeaking(false);
-
-      window.speechSynthesis.speak(utterance);
+      // Fix bug navigateur textes longs coupes
+      const chunks = cleanText.match(/[^.!?]+[.!?]+/g) || [cleanText]
+      let i = 0
+      const speakChunk = () => {
+        if (i >= chunks.length) { setIsSpeaking(false); return }
+        const utt = new SpeechSynthesisUtterance(chunks[i].trim())
+        utt.lang = currentLang
+        utt.rate = 0.9
+        utt.pitch = 1
+        if (i === 0) utt.onstart = () => setIsSpeaking(true)
+        utt.onend = () => { i++; speakChunk() }
+        utt.onerror = () => { setIsSpeaking(false) }
+        window.speechSynthesis.speak(utt)
+      }
+      speakChunk()
     }
   };
 
