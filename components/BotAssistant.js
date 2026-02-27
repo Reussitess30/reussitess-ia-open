@@ -1,12 +1,9 @@
 async function fetchWikipedia(term) {
   try {
     const res = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`);
-    if (res.ok) {
-      const data = await res.json();
-      return `\n\n${data.extract}`;
-    }
+    const data = await res.json();
+    return data.extract ? `\n\n${data.extract}` : null;
   } catch (e) { return null; }
-  return null;
 }
 
 'use client'
