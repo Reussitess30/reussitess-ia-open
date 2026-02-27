@@ -124,14 +124,17 @@ export default function ReussitessAI() {
       const cleanText = text
         .replace(/\*\*/g, "")
         .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1")
-        .replace(/#{1,6}\s/g, "")
-        .substring(0, 700);
+        .replace(/#{1,6}\s/g, "");
 
-      const utterance = new SpeechSynthesisUtterance(cleanText);
-      utterance.lang = currentLang;
-      utterance.rate = 0.9;
-      utterance.pitch = 0.82;
-      utterance.volume = 1.0;
+      const chunks = cleanText.match(/[^.!?]+[.!?]+/g) || [cleanText]
+      let i = 0
+      const speakChunk = () => {
+        if (i >= chunks.length) { setIsSpeaking && setIsSpeaking(false); return }
+        const utterance = new SpeechSynthesisUtterance(chunks[i].trim())
+        utterance.lang = currentLang
+        utterance.rate = 0.9
+        utterance.pitch = 0.82
+        utterance.volume = 1.0
 
       if (emotion === "enthusiastic") {
         utterance.rate = 0.95;
@@ -155,19 +158,18 @@ export default function ReussitessAI() {
       if (preferredVoice) utterance.voice = preferredVoice;
 
       utterance.onstart = function () {
-        setIsSpeaking(true);
+        if (i === 0) setIsSpeaking(true);
       };
       utterance.onend = function () {
+        i++;
+        speakChunk();
+      };
+      utterance.onerror = function () {
         setIsSpeaking(false);
       };
-
-      const trySpeak = function () {
-        if (!isSpeaking) {
-          window.speechSynthesis.speak(utterance);
-        }
-      };
-      setTimeout(trySpeak, 100);
+      window.speechSynthesis.speak(utterance);
     }
+    speakChunk();
   };
 
   const stopSpeaking = function () {
