@@ -664,12 +664,12 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
 
       if (response === '__GROQ__') {
         if (wikiData) {
-          finalResponse = `📚 **Wikipedia :** \${wikiData.substring(0, 1500)}\${wikiData.length > 1500 ? "..." : ""}`
+          finalResponse = `📚 **Wikipedia :** ${wikiData.substring(0, 1500)}${wikiData.length > 1500 ? "..." : ""}`
         } else {
           try {
             const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
               method: "POST",
-              headers: { "Content-Type": "application/json", "Authorization": `Bearer \${process.env.GROQ_API_KEY}` },
+              headers: { "Content-Type": "application/json", "Authorization": `Bearer ${process.env.GROQ_API_KEY}` },
               body: JSON.stringify({
                 model: "llama-3.3-70b-versatile",
                 messages: [
@@ -684,7 +684,7 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
           } catch(e) { console.error("Groq:", e) }
         }
       } else if (wikiData) {
-        finalResponse = `📚 **Wikipedia :** \${wikiData.substring(0, 1500)}\${wikiData.length > 1500 ? "..." : ""}`
+        finalResponse = `📚 **Wikipedia :** ${wikiData.substring(0, 1500)}${wikiData.length > 1500 ? "..." : ""}`
       }
 
       res.status(200).json({ response: finalResponse })
