@@ -554,33 +554,6 @@ Je suis votre assistant IA créé avec passion depuis la **Guadeloupe** 🇬🇵
 
     // Réponse générale → Groq prend le relais
     return `__GROQ__`
-    // return `✨ **Merci pour votre question !**
-
-Je suis **REUSSITESS AI**, votre assistant expert mondial créé en **Guadeloupe** 🇬🇵 !
-
-**Je peux vous aider sur :**
-
-🤖 **Technologie IA** - 100+ modèles, données réelles 2024-2025
-🌐 **Traduction** - 195 langues, technologies professionnelles  
-🔐 **Blockchain & Sécurité** - NFT ID, niveau entreprise
-💎 **Tokens & Économie** - Système transparent
-🎯 **Business & Innovation** - Stratégies vérifiées
-🌍 **Culture Francophone** - 26 pays, 5 continents
-📚 **Éducation** - 25 quiz, bibliothèque mondiale
-🛍️ **E-commerce** - 26 boutiques Amazon affiliées
-
-**Posez-moi une question spécifique** sur l'un de ces domaines pour une réponse détaillée avec sources vérifiées !
-
-Exemples :
-• "Parle-moi de l'IA Passport"
-• "Comment fonctionne la traduction 195 langues ?"
-• "Qu'est-ce que le blockchain NFT ID ?"
-• "Montre-moi les tarifs tokens"
-• "Raconte-moi sur la Guadeloupe"
-
-**BOUDOUM** 🎯 - **POSITIVITÉ À L'INFINI !**
-
-À votre service ! 💪`
   }
 
   try {
