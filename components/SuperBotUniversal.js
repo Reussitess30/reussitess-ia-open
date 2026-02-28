@@ -333,7 +333,36 @@ Tape 'formation' pour plus d'infos !`
     setIsLoading(true)
 
     setTimeout(async () => {
-      const response = getResponse(userInput)
+      let response = getResponse(userInput)
+
+      // 🤖 Groq si bot ne sait pas
+      if (response.startsWith('__GROQ_FALLBACK__')) {
+        const query = response.replace('__GROQ_FALLBACK__', '')
+        try {
+          const r = await fetch('/api/gemini', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: query })
+          })
+          const d = await r.json()
+          response = d.response || `🤔 Je peux t'aider avec :
+
+🎓 Quiz (tape 'quiz')
+🇬🇵 Guadeloupe
+🛍️ Boutiques Amazon
+🏆 Passeport
+
+Score: ${userScore} points`
+        } catch(e) {
+          response = `🤔 Je peux t'aider avec :
+
+🎓 Quiz (tape 'quiz')
+🇬🇵 Guadeloupe
+🛍️ Boutiques Amazon
+
+Score: ${userScore} points`
+        }
+      }
       // Enrichissement Wikipedia
       const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest"]
       const searchTerms = userInput.toLowerCase().split(" ").filter(w => w.length > 3 && !noiseWords.includes(w))
