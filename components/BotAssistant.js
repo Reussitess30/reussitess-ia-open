@@ -2008,6 +2008,29 @@ export default function BotAssistant() {
     ],
   );
 
+  // 📚 Wikipedia + 🤖 Groq en renfort
+  const askWikipedia = async (query) => {
+    try {
+      const r = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`);
+      if (r.ok) { const d = await r.json(); if (d.extract) return d.extract; }
+      const r2 = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`);
+      if (r2.ok) { const d2 = await r2.json(); if (d2.extract) return d2.extract; }
+      return null;
+    } catch(e) { return null; }
+  };
+
+  const askGroq = async (msg) => {
+    try {
+      const r = await fetch("/api/gemini", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: msg })
+      });
+      const d = await r.json();
+      return d.response || null;
+    } catch(e) { return null; }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!input.trim()) return;
