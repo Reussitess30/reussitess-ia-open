@@ -660,10 +660,34 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
       wikiData = await getWikipedia(searchTerms[searchTerms.length - 1])
     }
 
-    const finalResponse = wikiData 
-      ? `📚 **Wikipedia :** ${wikiData.substring(0, 1500)}${wikiData.length > 1500 ? "..." : ""}`
-      : response
-    res.status(200).json({ response: finalResponse })
+    let finalResponse = response
+
+      if (response === '__GROQ__') {
+        if (wikiData) {
+          finalResponse = `📚 **Wikipedia :** \${wikiData.substring(0, 1500)}\${wikiData.length > 1500 ? "..." : ""}`
+        } else {
+          try {
+            const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+              method: "POST",
+              headers: { "Content-Type": "application/json", "Authorization": `Bearer \${process.env.GROQ_API_KEY}` },
+              body: JSON.stringify({
+                model: "llama-3.3-70b-versatile",
+                messages: [
+                  { role: "system", content: "Tu es REUSSITESS AI du projet REUSSITESS971 fonde par Porinus depuis la Guadeloupe. BOUDOUM!" },
+                  { role: "user", content: message }
+                ],
+                max_tokens: 1024
+              })
+            })
+            const groqData = await groqRes.json()
+            if (groqData.choices?.[0]) finalResponse = groqData.choices[0].message.content
+          } catch(e) { console.error("Groq:", e) }
+        }
+      } else if (wikiData) {
+        finalResponse = `📚 **Wikipedia :** \${wikiData.substring(0, 1500)}\${wikiData.length > 1500 ? "..." : ""}`
+      }
+
+      res.status(200).json({ response: finalResponse })
   } catch (error) {
     console.error('Erreur SuperBot:', error)
     res.status(500).json({ 
