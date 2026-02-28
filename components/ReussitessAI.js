@@ -19,6 +19,26 @@ export default function ReussitessAI() {
   const [thinkingProcess, setThinkingProcess] = useState("");
   const messagesEndRef = useRef(null);
 
+  // 🤖 GEMINI ENRICHISSEMENT — Renfort pour questions complexes
+  const askGemini = async (userMessage, conversationContext = "") => {
+    try {
+      const response = await fetch("/api/gemini", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: userMessage,
+          context: conversationContext
+        })
+      });
+      const data = await response.json();
+      if (data.response) return data.response;
+      return null;
+    } catch (error) {
+      console.error("Gemini error:", error);
+      return null;
+    }
+  };
+
   // 🌍 CONFORMITÉ USER: LISTE STRICTE DES PAYS AUTORISÉS (14)
   const APIS_ALLOWED = [
     "France",
@@ -451,6 +471,16 @@ C'est ce niveau de **précision factuelle ET culturelle** que ALEX apporte pour 
 
     try {
       response = await getHumanResponse(userMessage);
+
+        // 🤖 GEMINI EN RENFORT — si le bot ne sait pas répondre
+        const isDefaultResponse = response.includes("Raisonnement Multicouche") || response.includes("Pose-moi une question précise");
+        if (isDefaultResponse) {
+          const geminiEnrichment = await askGemini(
+            userMessage,
+            messages.slice(-4).map(m => m.role + ": " + m.content).join("\n")
+          );
+          if (geminiEnrichment) response = geminiEnrichment;
+        }
 
       emotion = userMessage.toLowerCase().includes("merci")
         ? "empathetic"
