@@ -1,57 +1,19 @@
 const quizEntrepreneuriat = {
-  title: "Entrepreneuriat",
-  description: "Testez votre esprit d'entrepreneur et découvrez les clés du succès en affaires !",
+  title: "Astuces pour Réussir en Entrepreneuriat",
+  description: "Les secrets des entrepreneurs qui réussissent — mindset, stratégie et exécution !",
   emoji: "🚀",
   questions: [
-    {
-      question: "🚀 Qu'est-ce qu'un MVP (Minimum Viable Product) ?",
-      answers: ["Le meilleur joueur d'une équipe", "Une version minimale d'un produit avec juste assez de fonctionnalités pour tester le marché", "Un contrat d'entreprise", "Un logiciel de gestion"],
-      correct: 1,
-      explanation: "Le MVP est la version la plus simple d'un produit qu'on peut lancer pour tester si l'idée intéresse vraiment des clients. Mieux vaut échouer vite et apprendre que dépenser des années sur quelque chose qui ne marche pas.",
-    },
-    {
-      question: "💡 Qu'est-ce que le 'pitch' d'un entrepreneur ?",
-      answers: ["Un terrain de sport", "Une présentation courte et percutante d'un projet pour convaincre des investisseurs ou clients", "Un contrat de vente", "Une stratégie marketing longue"],
-      correct: 1,
-      explanation: "Le pitch est l'art de présenter son projet de façon claire et convaincante en quelques minutes. Un bon pitch répond à : quel problème je résous, pour qui, comment, et pourquoi moi.",
-    },
-    {
-      question: "📊 Qu'est-ce qu'un business plan ?",
-      answers: ["Un plan de vacances d'affaires", "Un document décrivant la vision, la stratégie, le marché et les finances d'une entreprise", "Un contrat entre associés", "Un registre comptable"],
-      correct: 1,
-      explanation: "Le business plan est la carte routière de votre entreprise. Il décrit votre vision, vos clients cibles, votre modèle de revenus, vos concurrents et vos projections financières. Indispensable pour convaincre des investisseurs.",
-    },
-    {
-      question: "💰 Qu'est-ce que le 'bootstrapping' ?",
-      answers: ["Un type de chaussure pour entrepreneurs", "Financer son entreprise uniquement avec ses propres ressources sans investisseurs externes", "Un prêt bancaire startup", "Une technique de marketing"],
-      correct: 1,
-      explanation: "Le bootstrapping consiste à lancer et développer son entreprise avec ses propres fonds, sans lever de capital extérieur. Cela preserve le contrôle total mais demande de croître progressivement.",
-    },
-    {
-      question: "🌍 Quel est le principal avantage de l'entrepreneuriat pour la diaspora ?",
-      answers: ["Travailler plus d'heures", "Créer de la valeur économique indépendamment du marché local, avec possibilité d'impact dans plusieurs pays", "Éviter les impôts", "Ne pas avoir de patron"],
-      correct: 1,
-      explanation: "L'entrepreneuriat permet à la diaspora de créer des ponts économiques entre pays, d'employer localement, de valoriser les cultures d'origine et de générer des revenus indépendants des contraintes du marché du travail local.",
-    },
-    {
-      question: "🔄 Qu'est-ce que le 'pivot' en entrepreneuriat ?",
-      answers: ["Un mouvement de danse", "Changer de direction stratégique quand le modèle initial ne fonctionne pas", "Fermer son entreprise", "Changer d'associé"],
-      correct: 1,
-      explanation: "Pivoter c'est adapter son business model après avoir appris des retours du marché. Les plus grands succès (Instagram, YouTube, Twitter) sont des pivots — leur idée originale était totalement différente !",
-    },
-    {
-      question: "💎 Qu'est-ce qu'un 'side hustle' ?",
-      answers: ["Un passe-temps coûteux", "Une activité génératrice de revenus en parallèle de son emploi principal", "Un partenaire d'affaires", "Un type d'investissement"],
-      correct: 1,
-      explanation: "Le side hustle est une activité secondaire qui génère des revenus supplémentaires. C'est souvent le point de départ d'une entreprise. Beaucoup d'entrepreneurs commencent en side hustle avant de passer à temps plein.",
-    },
+    { question: "Qu'est-ce que le MVP (Minimum Viable Product) selon Eric Ries ?", answers: ["Le meilleur produit possible avant lancement", "La version la plus simple d'un produit permettant de tester le marché avec le minimum d'effort et de coûts", "Le produit vendu en promotion", "Le prototype interne jamais montré aux clients"], correct: 1, explanation: "Le MVP (Eric Ries, Lean Startup) est la version la plus épurée d'un produit qui permet de tester les hypothèses clés avec de vrais clients en minimisant temps et argent. Dropbox a lancé une simple vidéo de démo comme MVP. Airbnb a commencé avec un site basique et 3 matelas gonflables. L'idée : apprendre vite et pivoter si nécessaire." },
+    { question: "Qu'est-ce que la méthode Lean Startup et son cycle Build-Measure-Learn ?", answers: ["Lancer un produit parfait après 2 ans de développement", "Construire rapidement, mesurer les résultats réels, apprendre et recommencer — itérations courtes plutôt que plans longs", "Réduire les coûts au maximum", "Copier le modèle des grandes entreprises"], correct: 1, explanation: "La méthode Lean Startup (Eric Ries, 2011) : Build (construire le MVP rapidement), Measure (mesurer les comportements réels des utilisateurs), Learn (tirer des conclusions et pivoter ou persévérer). Ce cycle court remplace les business plans de 50 pages. Utilisé par Google, Facebook, Amazon dans leurs nouvelles initiatives." },
+    { question: "Quel statut juridique est le plus simple pour démarrer seul en France avec peu de risques ?", answers: ["SARL uniquement", "Auto-entrepreneur (micro-entreprise) — création en ligne en 24h, charges proportionnelles au CA, comptabilité simplifiée", "SA (Société Anonyme)", "Entreprise Individuelle classique"], correct: 1, explanation: "Le statut auto-entrepreneur (micro-entreprise) est le plus accessible : création gratuite en ligne sur autoentrepreneur.urssaf.fr en 24h, pas de comptabilité complexe, charges sociales proportionnelles au chiffre d'affaires (pas de CA = pas de charges). Plafonds CA : 77 700€ pour services, 188 700€ pour ventes. Comme REUSSITESS®971 !" },
+    { question: "Qu'est-ce que le Business Model Canvas et pourquoi remplace-t-il le business plan classique ?", answers: ["Un tableau Excel des finances", "Outil visuel sur 1 page résumant les 9 éléments clés d'un modèle d'affaires — plus rapide et flexible que le business plan", "Un contrat commercial", "Un plan marketing de 50 pages"], correct: 1, explanation: "Le Business Model Canvas (Alexander Osterwalder, 2010) est un tableau visuel sur une seule page avec 9 blocs : Segments clients, Proposition de valeur, Canaux, Relations clients, Sources de revenus, Ressources clés, Activités clés, Partenaires, Structure de coûts. Il remplace les business plans statiques par un outil vivant et modifiable rapidement." },
+    { question: "Qu'est-ce que le marketing de contenu (content marketing) et pourquoi est-il plus efficace que la publicité classique ?", answers: ["Publier des publicités déguisées", "Créer et partager du contenu utile/éducatif/divertissant pour attirer naturellement des clients sans payer pour chaque vue", "Acheter des articles sponsorisés", "Uniquement faire des vidéos YouTube"], correct: 1, explanation: "Le content marketing crée de la valeur gratuitement (articles, vidéos, podcasts, quiz comme REUSSITESS®971) pour attirer une audience. Avantages vs publicité : coût décroissant (contenu permanent), confiance bâtie (expertise perçue), SEO naturel, audience qualifiée. HubSpot, Airbnb et Buffer ont bâti leur croissance principalement par le content marketing." },
+    { question: "Qu'est-ce que le Personal Branding et pourquoi est-il crucial à l'ère des réseaux sociaux ?", answers: ["Uniquement pour les célébrités", "L'art de se construire une réputation professionnelle distinctive en ligne — votre marque personnelle vaut plus que votre CV", "Un logo et une charte graphique personnelle", "Une stratégie réservée aux influenceurs"], correct: 1, explanation: "Le Personal Branding est la gestion de votre réputation et image professionnelle en ligne. À compétences égales, la personne avec une forte présence en ligne obtient plus d'opportunités. Gary Vaynerchuk, Seth Godin et des milliers d'entrepreneurs caribéens comme REUSSITESS®971 montrent qu'une expertise documentée en ligne crée des opportunités inimaginables." },
+    { question: "Qu'est-ce que l'effet réseau (network effect) qui rend certaines plateformes indestructibles ?", answers: ["Le nombre de connexions internet disponibles", "La valeur d'un service augmente exponentiellement avec chaque nouvel utilisateur — Facebook, WhatsApp, Amazon en bénéficient", "Le marketing viral uniquement", "L'affiliation de réseau MLM"], correct: 1, explanation: "L'effet réseau : chaque nouvel utilisateur augmente la valeur du service pour tous les autres. Facebook vaut quelque chose car vos amis y sont. WhatsApp est incontournable car votre famille y est. Amazon Marketplace est attractif car vendeurs et acheteurs s'attirent mutuellement. C'est le fossé défensif (moat) le plus puissant pour une plateforme numérique." },
+    { question: "Qu'est-ce que la règle des 1000 vrais fans de Kevin Kelly pour monétiser sa passion ?", answers: ["Avoir 1000 followers sur Instagram", "1000 personnes qui vous aiment suffisamment pour acheter tout ce que vous créez peuvent générer un revenu suffisant pour vivre", "Vendre à 1000 clients par mois minimum", "Avoir 1000 avis positifs sur Amazon"], correct: 1, explanation: "Kevin Kelly (2008) : vous n'avez pas besoin de millions de fans. 1000 vrais fans (qui achètent tout ce que vous produisez à 100€/an = 100 000€/an) suffisent pour vivre de sa passion. Cela s'applique à la musique, l'artisanat, la création de contenu, les cours en ligne. REUSSITESS®971 avec son écosystème de 14 pays illustre parfaitement cette approche." },
+    { question: "Pourquoi la plupart des startups échouent-elles selon les études (90% dans les 5 premières années) ?", answers: ["Manque de capital uniquement", "Absence de besoin marché réel (42%), manque de cash (29%), mauvaise équipe (23%), concurrence (19%) — dans cet ordre", "Mauvais produit uniquement", "Mauvaise localisation géographique"], correct: 1, explanation: "CB Insights analyse post-mortem de 101 startups : 1ère raison d'échec = pas de besoin marché réel (42%) — le produit ne résout pas un vrai problème. Leçon : validez le problème AVANT de construire la solution. Parlez à 100 clients potentiels avant d'écrire une ligne de code ou de dépenser un euro en développement." },
+    { question: "Qu'est-ce que la proposition de valeur unique (UVP) et comment la formuler efficacement ?", answers: ["Un slogan publicitaire accrocheur", "La raison claire et concise pour laquelle votre client idéal doit choisir vous plutôt que toute autre alternative", "La liste de toutes les fonctionnalités de votre produit", "Le prix le plus bas du marché"], correct: 1, explanation: "La UVP (Unique Value Proposition) répond à : 'Pour [qui], [votre produit/service] est [la solution] qui [bénéfice principal] contrairement à [concurrents] parce que [raison unique].' REUSSITESS®971 : pour la diaspora caribéenne et francophone, un écosystème unique combinant culture, apprentissage, crypto et commerce — contrairement aux plateformes génériques sans identité culturelle." },
   ],
-  tips: [
-    "💡 Commencez petit — un side hustle avant de quitter votre emploi",
-    "🌍 La diaspora a un avantage unique : des connexions dans plusieurs pays",
-    "📱 Les outils numériques permettent aujourd'hui de lancer une entreprise avec très peu d'argent",
-    "🚀 Reussitess®971 est un exemple d'écosystème entrepreneurial diaspora construit depuis la Guadeloupe",
-  ],
+  tips: ["Le MVP est la clé — lancez vite, apprenez vite, améliorez vite. La perfection est l'ennemie du lancement", "1000 vrais fans suffisent pour vivre de sa passion — la niche est votre force, pas votre faiblesse", "42% des startups échouent par absence de besoin marché — validez d'abord le problème, construisez ensuite"],
 };
-
 export default quizEntrepreneuriat;

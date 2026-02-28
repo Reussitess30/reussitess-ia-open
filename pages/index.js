@@ -111,6 +111,18 @@ export default function Home() {
     { id: "EpicesMonde", name: "Épices du Monde — Saveurs & Secrets", icon: "🌶️", color: "#dc2626" },
     { id: "VinsSpiriteux", name: "Vins & Spiritueux du Monde", icon: "🍷", color: "#7e22ce" },
     { id: "StreetFood", name: "Street Food Mondiale", icon: "🍜", color: "#0369a1" },
+    { id: "DroitsCitoyen", name: "Droits & Devoirs du Citoyen Français", icon: "🇫🇷", color: "#1d4ed8" },
+    { id: "DroitTravail", name: "Droit du Travail — Ce que Tout Salarié Doit Savoir", icon: "⚖️", color: "#1e40af" },
+    { id: "DroitConsommateur", name: "Droits du Consommateur", icon: "🛒", color: "#0f766e" },
+    { id: "DroitsNumeriques", name: "Droits Numériques & RGPD", icon: "💻", color: "#6d28d9" },
+    { id: "DroitFamille", name: "Droit de la Famille", icon: "👨‍👩‍👧‍👦", color: "#be185d" },
+    { id: "DroitEtrangers", name: "Droit des Étrangers & Immigration", icon: "🌐", color: "#0369a1" },
+    { id: "DroitNumerique2", name: "Droits du Numérique — Réseaux & Plateformes", icon: "📱", color: "#7c3aed" },
+    { id: "Entrepreneuriat", name: "Astuces pour Réussir en Entrepreneuriat", icon: "🚀", color: "#0f172a" },
+    { id: "MarketingDigital", name: "Marketing Digital & Réseaux Sociaux", icon: "📊", color: "#0369a1" },
+    { id: "Crypto", name: "Cryptomonnaies & Blockchain pour Tous", icon: "₿", color: "#b45309" },
+    { id: "Amazon", name: "Amazon & E-commerce — Secrets des Vendeurs", icon: "📦", color: "#f97316" },
+    { id: "IntelligenceArtificielle", name: "Intelligence Artificielle — Ce que Tout le Monde Doit Savoir", icon: "🤖", color: "#6d28d9" },
   ];
 
   return (

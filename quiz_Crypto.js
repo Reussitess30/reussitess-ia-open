@@ -1,63 +1,19 @@
 const quizCrypto = {
-  title: "Crypto & Blockchain",
-  description: "Testez vos connaissances sur les cryptomonnaies et la blockchain !",
+  title: "Cryptomonnaies & Blockchain pour Tous",
+  description: "Comprendre la blockchain, Bitcoin, Ethereum et la révolution financière décentralisée !",
   emoji: "₿",
   questions: [
-    {
-      question: "₿ Qui a créé le Bitcoin ?",
-      answers: ["Elon Musk", "Satoshi Nakamoto", "Vitalik Buterin", "Bill Gates"],
-      correct: 1,
-      explanation: "Bitcoin a été créé en 2008 par une personne (ou un groupe) sous le pseudonyme Satoshi Nakamoto. Son identité réelle reste inconnue à ce jour.",
-    },
-    {
-      question: "🔗 Qu'est-ce qu'une blockchain ?",
-      answers: ["Un type de monnaie physique", "Une base de données décentralisée et immuable", "Un réseau social crypté", "Un serveur bancaire sécurisé"],
-      correct: 1,
-      explanation: "Une blockchain est une chaîne de blocs de données, décentralisée et partagée entre des milliers d'ordinateurs. Chaque bloc contient des transactions vérifiées et ne peut pas être modifié.",
-    },
-    {
-      question: "💎 Quelle blockchain supporte les NFT et les smart contracts principalement ?",
-      answers: ["Bitcoin", "Litecoin", "Ethereum", "Dogecoin"],
-      correct: 2,
-      explanation: "Ethereum est la blockchain pionnière des smart contracts et des NFT. Elle permet de créer des programmes autonomes (DApps) qui s'exécutent sans intermédiaire.",
-    },
-    {
-      question: "🏦 Qu'est-ce qu'un wallet (portefeuille) crypto ?",
-      answers: ["Un compte bancaire crypto", "Un logiciel qui stocke vos clés privées et permet de gérer vos cryptos", "Une carte de crédit crypto", "Un exchange centralisé"],
-      correct: 1,
-      explanation: "Un wallet crypto ne stocke pas vraiment vos cryptos — il stocke vos clés privées qui prouvent que vous êtes propriétaire de vos actifs sur la blockchain.",
-    },
-    {
-      question: "🔥 Qu'est-ce que le 'halving' du Bitcoin ?",
-      answers: ["La division du prix par deux", "La réduction de moitié de la récompense des mineurs tous les 4 ans environ", "La fermeture de la moitié des exchanges", "Un bug informatique"],
-      correct: 1,
-      explanation: "Tous les 210 000 blocs (~4 ans), la récompense des mineurs Bitcoin est divisée par 2. Cela rend le Bitcoin plus rare avec le temps — un mécanisme anti-inflation prévu dès le départ par Satoshi.",
-    },
-    {
-      question: "🌐 Qu'est-ce que la DeFi ?",
-      answers: ["De la finance défensive", "La finance décentralisée — des services financiers sans banques ni intermédiaires", "Un type de cryptomonnaie", "Un réseau de paiement gouvernemental"],
-      correct: 1,
-      explanation: "La DeFi (Finance Décentralisée) regroupe tous les services financiers (prêts, épargne, échanges) qui fonctionnent via des smart contracts, sans banque ni autorité centrale.",
-    },
-    {
-      question: "📊 Qu'est-ce qu'un stablecoin ?",
-      answers: ["Un Bitcoin très stable", "Une cryptomonnaie dont la valeur est indexée sur une monnaie stable comme le dollar", "Un token de gouvernance", "Une action d'entreprise crypto"],
-      correct: 1,
-      explanation: "Les stablecoins comme USDT ou USDC sont indexés sur le dollar américain (1 stablecoin = 1$). Ils permettent de rester dans l'écosystème crypto sans subir la volatilité.",
-    },
-    {
-      question: "🔑 Que signifie 'Not your keys, not your coins' ?",
-      answers: ["Il faut acheter des clés USB pour stocker ses cryptos", "Si vous ne contrôlez pas vos clés privées, vous ne possédez pas vraiment vos cryptos", "Les exchanges sont toujours sûrs", "Il faut partager ses clés avec sa famille"],
-      correct: 1,
-      explanation: "Ce principe fondamental signifie que si vos cryptos sont sur un exchange (Binance, Coinbase...), c'est l'exchange qui détient vraiment vos fonds. Pour une vraie possession, il faut utiliser son propre wallet.",
-    },
+    { question: "Qu'est-ce que la blockchain et pourquoi est-elle révolutionnaire ?", answers: ["Une base de données classique", "Un registre décentralisé et immuable partagé par des milliers de nœuds — aucune autorité centrale ne peut le modifier ou le censurer", "Le nom de l'entreprise Bitcoin", "Un système de paiement bancaire sécurisé"], correct: 1, explanation: "La blockchain est un registre distribué où les transactions sont enregistrées dans des blocs chaînés cryptographiquement. Décentralisée : pas de serveur central (impossible à censurer ou pirater par un point unique). Immuable : un bloc ajouté ne peut pas être modifié sans refaire tout le calcul. Bitcoin utilise une blockchain Proof of Work, Polygon (utilisé par REUSSITESS®971) une blockchain Proof of Stake." },
+    { question: "Quelle est la différence entre Bitcoin (BTC) et Ethereum (ETH) ?", answers: ["Bitcoin est plus récent", "Bitcoin = monnaie numérique (or digital). Ethereum = plateforme programmable permettant les smart contracts, DeFi, NFT et tokens comme REUSS", "Ils sont identiques", "Ethereum est plus sécurisé que Bitcoin"], correct: 1, explanation: "Bitcoin (2009, Satoshi Nakamoto) : conçu uniquement comme monnaie numérique décentralisée, réserve de valeur. Supply limitée à 21 millions de BTC. Ethereum (2015, Vitalik Buterin) : plateforme programmable avec smart contracts. Permet de créer des applications décentralisées (DApps), tokens ERC-20 (comme REUSS sur Polygon), NFT, DeFi. Polygon est un réseau Layer 2 d'Ethereum, plus rapide et moins cher." },
+    { question: "Qu'est-ce qu'un smart contract et comment fonctionne-t-il sur Ethereum/Polygon ?", answers: ["Un contrat juridique numérique signé electroniquement", "Un programme autonome sur la blockchain qui s'exécute automatiquement quand les conditions prédéfinies sont remplies — sans intermédiaire", "Un contrat entre deux exchanges crypto", "Un accord entre mineurs de cryptomonnaies"], correct: 1, explanation: "Un smart contract est du code déployé sur la blockchain qui s'exécute automatiquement. Exemple : 'Si le paiement de X ETH est reçu → transférer la propriété du NFT'. Personne ne peut l'arrêter ou le modifier après déploiement. Base de la DeFi (finance décentralisée), NFT, DAOs. Le token REUSS de REUSSITESS®971 sur Polygon est gouverné par un smart contract immuable." },
+    { question: "Qu'est-ce que la DeFi (Finance Décentralisée) et quels services propose-t-elle ?", answers: ["Des banques en ligne classiques", "Services financiers (prêt, emprunt, trading, épargne) sans intermédiaire bancaire — via smart contracts sur blockchain", "Uniquement l'échange de cryptomonnaies", "Un système de paiement mobile africain"], correct: 1, explanation: "La DeFi recrée les services bancaires sur la blockchain sans banque : prêt/emprunt (Aave, Compound), trading décentralisé (Uniswap, PancakeSwap), épargne à rendement (yield farming), stablecoins algorithmiques (DAI). Avantages : accessible 24/7 mondialement, sans KYC, rendements souvent supérieurs aux banques. Risques : bugs de smart contracts, volatilité, hacks." },
+    { question: "Qu'est-ce qu'un NFT (Non-Fungible Token) et quelle est sa vraie utilité ?", answers: ["Une cryptomonnaie comme Bitcoin", "Un token unique et non duplicable sur blockchain prouvant la propriété d'un actif numérique — art, musique, jeux, certificats", "Une image JPEG sur internet", "Un type de monnaie stable"], correct: 1, explanation: "Un NFT prouve la propriété unique d'un actif numérique via la blockchain. Utilisations réelles : art numérique (preuve de provenance), musique (royalties automatiques via smart contract), jeux vidéo (items possédés réellement), certificats d'authenticité, billets d'événements infalsifiables, diplômes. La spéculation des NFT art a masqué leurs vraies applications utilitaires." },
+    { question: "Comment sécuriser ses cryptomonnaies et éviter les hacks ?", answers: ["Laisser sur l'exchange (Binance, Coinbase)", "Hardware wallet (Ledger, Trezor) = cold storage hors ligne. Not your keys, not your coins — posséder ses clés privées", "Mot de passe fort suffit", "Assurance crypto des exchanges suffit"], correct: 1, explanation: "'Not your keys, not your coins' : si vos crypto sont sur un exchange, l'exchange les possède (Mt Gox 2014, FTX 2022 : des milliards perdus). Solution : hardware wallet (Ledger, Trezor) = clé privée stockée hors ligne, inaccessible depuis internet. La seed phrase (12-24 mots) = sauvegarde absolue à noter sur papier et stocker en lieu sûr. Ne jamais la partager." },
+    { question: "Qu'est-ce que le Polygon (MATIC) et pourquoi REUSSITESS®971 l'utilise pour le token REUSS ?", answers: ["Une cryptomonnaie concurrente de Bitcoin", "Network Layer 2 d'Ethereum : transactions 100x moins chères et plus rapides que l'ETH mainnet — idéal pour les petites transactions", "Un exchange décentralisé", "Une blockchain pour les NFT uniquement"], correct: 1, explanation: "Polygon (ex-Matic) est un réseau Layer 2 qui traite les transactions hors de l'Ethereum mainnet puis les soumette en lot. Résultat : frais de gas de 0,001$ vs 5-50$ sur Ethereum, confirmations en secondes. Idéal pour les tokens utilitaires, les récompenses Learn-to-Earn et les micropaiements — exactement l'usage du token REUSS de REUSSITESS®971 pour récompenser l'apprentissage." },
+    { question: "Qu'est-ce que le Learn-to-Earn (L2E) dans le Web3 ?", answers: ["Apprendre à gagner de l'argent classiquement", "Modèle où les utilisateurs gagnent des tokens cryptographiques en réalisant des activités éducatives — apprentissage monétisé", "Un cours payant sur la blockchain", "Un programme d'affiliation classique"], correct: 1, explanation: "Le Learn-to-Earn (L2E) est un modèle Web3 où compléter des activités éducatives (quiz, cours, tutoriels) génère des récompenses en tokens. REUSSITESS®971 avec son token REUSS sur Polygon en est un exemple concret : répondre aux quiz génère des REUSS tokens. Rabbithole, Layer3, Coinbase Learn sont d'autres exemples récompensant l'apprentissage crypto." },
+    { question: "Qu'est-ce que la volatilité des cryptomonnaies et comment la gérer ?", answers: ["Un défaut à éliminer", "La variation importante et rapide des prix — gérée par diversification, DCA (Dollar Cost Averaging) et stablecoins", "Uniquement un problème pour les petits investisseurs", "Un phénomène temporaire qui disparaîtra"], correct: 1, explanation: "La volatilité crypto est inhérente à un marché jeune (capitalisation mondiale = 2 000 milliards$ vs bourse US = 40 000 milliards$). Gestion : DCA (investir une somme fixe régulièrement pour lisser le prix moyen), stablecoins (USDC, USDT = ancré à 1$) pour préserver la valeur, ne jamais investir plus que ce qu'on peut perdre, horizon long terme (hodl). Bitcoin a perdu 80% en 2018 avant de faire x20 en 2020-2021." },
+    { question: "Qu'est-ce que la tokenomics et pourquoi est-elle cruciale pour un projet crypto ?", answers: ["L'économie générale des cryptomonnaies", "Le modèle économique d'un token spécifique : supply, distribution, utilité, mécanismes de burn et d'émission — détermine la valeur à long terme", "Le prix actuel d'une cryptomonnaie", "Les frais de transaction d'une blockchain"], correct: 1, explanation: "La tokenomics (token + economics) définit la viabilité économique d'un token : supply totale et circulante, distribution (équipe, communauté, investisseurs), utilité (pourquoi en avoir besoin), mécanismes déflationnistes (burn), émission (inflation). Une bonne tokenomics aligne les intérêts de tous les acteurs. Le token REUSS de REUSSITESS®971 est conçu avec une utilité Learn-to-Earn réelle." },
   ],
-  tips: [
-    "💡 Ne jamais investir plus que ce qu'on peut se permettre de perdre",
-    "🔐 Toujours garder ses clés privées hors ligne dans un endroit sûr",
-    "📚 Se former avant d'investir — la connaissance protège mieux que n'importe quel stop-loss",
-    "⛏️ Le minage Bitcoin via GoMining est une façon passive de s'exposer au BTC sans gérer de matériel",
-  ],
+  tips: ["Not your keys, not your coins — un hardware wallet Ledger protège vos crypto contre les hacks d'exchanges", "Polygon (réseau du token REUSS) offre des frais de 0,001$ vs 50$ sur Ethereum — révolution pour les micropaiements", "Le DCA (investissement régulier fixe) est la stratégie la plus efficace pour gérer la volatilité crypto sur le long terme"],
 };
-
 export default quizCrypto;
