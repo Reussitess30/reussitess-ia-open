@@ -552,7 +552,8 @@ Je suis votre assistant IA créé avec passion depuis la **Guadeloupe** 🇬🇵
 **BOUDOUM** 🎯 - **POSITIVITÉ À L'INFINI !**`
     }
 
-    // Réponse générale ultra-humaine
+    // Réponse générale → Groq prend le relais
+    return `__GROQ__`
     return `✨ **Merci pour votre question !**
 
 Je suis **REUSSITESS AI**, votre assistant expert mondial créé en **Guadeloupe** 🇬🇵 !
