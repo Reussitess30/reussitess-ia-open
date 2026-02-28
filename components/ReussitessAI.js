@@ -19,6 +19,29 @@ export default function ReussitessAI() {
   const [thinkingProcess, setThinkingProcess] = useState("");
   const messagesEndRef = useRef(null);
 
+  // 📚 WIKIPEDIA — Couche 2 : Faits précis
+  const askWikipedia = async (query) => {
+    try {
+      const search = await fetch(
+        `https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`
+      );
+      if (!search.ok) {
+        // Essai en anglais si pas en français
+        const searchEN = await fetch(
+          `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`
+        );
+        if (!searchEN.ok) return null;
+        const dataEN = await searchEN.json();
+        return dataEN.extract || null;
+      }
+      const data = await search.json();
+      return data.extract || null;
+    } catch (error) {
+      console.error("Wikipedia error:", error);
+      return null;
+    }
+  };
+
   // 🤖 GEMINI ENRICHISSEMENT — Renfort pour questions complexes
   const askGemini = async (userMessage, conversationContext = "") => {
     try {
@@ -472,14 +495,21 @@ C'est ce niveau de **précision factuelle ET culturelle** que ALEX apporte pour 
     try {
       response = await getHumanResponse(userMessage);
 
-        // 🤖 GEMINI EN RENFORT — si le bot ne sait pas répondre
+        // 🔄 COUCHES 2 & 3 — Wikipedia puis Gemini si bot ne sait pas
         const isDefaultResponse = response.includes("Raisonnement Multicouche") || response.includes("Pose-moi une question précise");
         if (isDefaultResponse) {
-          const geminiEnrichment = await askGemini(
-            userMessage,
-            messages.slice(-4).map(m => m.role + ": " + m.content).join("\n")
-          );
-          if (geminiEnrichment) response = geminiEnrichment;
+          // Couche 2 : Wikipedia
+          const wikiResponse = await askWikipedia(userMessage);
+          if (wikiResponse) {
+            response = `📚 ${wikiResponse}`;
+          } else {
+            // Couche 3 : Gemini
+            const geminiEnrichment = await askGemini(
+              userMessage,
+              messages.slice(-4).map(m => m.role + ": " + m.content).join("\n")
+            );
+            if (geminiEnrichment) response = geminiEnrichment;
+          }
         }
 
       emotion = userMessage.toLowerCase().includes("merci")
