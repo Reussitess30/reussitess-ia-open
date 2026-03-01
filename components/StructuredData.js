@@ -7,7 +7,7 @@ export default function StructuredData() {
     "name": "REUSSITESS®971",
     "alternateName": "REUSSITESS® Global Nexus",
     "url": "https://reussitess.fr",
-    "logo": "https://reussitess.fr/icon-512x512.png",
+    "logo": "https://reussitess.fr/icon-512x512.webp",
     "description": "Réseau mondial de 26 boutiques Amazon, Passeport de Réussite, VISA Universel donnant accès à 10,000+ bourses et 50,000+ emplois internationaux",
     "foundingDate": "2022",
     "foundingLocation": {
@@ -57,7 +57,7 @@ export default function StructuredData() {
     "@type": "EducationalOrganization",
     "name": "REUSSITESS®971",
     "url": "https://reussitess.fr",
-    "logo": "https://reussitess.fr/icon-512x512.png",
+    "logo": "https://reussitess.fr/icon-512x512.webp",
     "description": "Bibliothèque mondiale de 55+ pages, 25 quiz gratuits, formations IA en 6 langues",
     "numberOfStudents": 15247,
     "areaServed": "Worldwide",
@@ -68,7 +68,7 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "VISA Universel de Réussite",
-    "image": "https://reussitess.fr/icon-512x512.png",
+    "image": "https://reussitess.fr/icon-512x512.webp",
     "description": "Accès à 10,000+ bourses internationales, 50,000+ emplois, 5,000+ mentors, 100M€+ de fonds",
     "brand": {
       "@type": "Brand",
@@ -96,7 +96,7 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Passeport de Réussite REUSSITESS®",
-    "image": "https://reussitess.fr/icon-512x512.png",
+    "image": "https://reussitess.fr/icon-512x512.webp",
     "description": "Certificat personnalisé de réussite avec plan d'action 7 jours pour champions du monde",
     "brand": {
       "@type": "Brand",

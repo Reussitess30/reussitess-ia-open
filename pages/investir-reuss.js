@@ -19,7 +19,6 @@ export default function InvestirReuss() {
           setTokenData(data.pairs[0])
         }
       } catch(e) {
-        console.log('DexScreener offline')
       } finally {
         setLoading(false)
       }
@@ -58,7 +57,7 @@ export default function InvestirReuss() {
 
         {/* HEADER */}
         <header style={{ textAlign: 'center', marginBottom: '30px' }}>
-          <img src="/icon-512x512.png" alt="Reussitess®971" style={{ width: '80px', height: '80px', borderRadius: '16px', marginBottom: '1rem' }} />
+          <img src="/icon-512x512.webp" alt="Reussitess®971" style={{ width: '80px', height: '80px', borderRadius: '16px', marginBottom: '1rem' }} />
           <h1 style={{ color: '#3b82f6', fontSize: '1.5rem', fontWeight: '900' }}>TOKEN REUSS — REUSSITESS®971</h1>
           <p style={{ color: '#00ff41', fontWeight: 'bold', fontSize: '0.9rem' }}>GUADELOUPE 🇬🇵 · TERRES DE CHAMPIONS · BOUDOUM !</p>
         </header>

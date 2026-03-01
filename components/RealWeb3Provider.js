@@ -12,7 +12,6 @@ export default function RealWeb3Provider() {
         // Dans une version finale, on utilise 'ethers.js' ou 'wagmi'
         const response = await fetch('https://polygonscan.com/token/0xB37531727fC07c6EED4f97F852A115B428046EB2')
         // Ici, on récupère le vrai Burn (adresse 0x000...dead)
-      } catch (e) { console.log("IA Syncing...") }
     }
     fetchBlockchainData()
   }, [])

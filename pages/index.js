@@ -129,7 +129,7 @@ export default function Home() {
     <Layout>
       <div style={{ minHeight: "70vh", background: "linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden", padding: "4rem 1rem" }}>
         <div style={{ textAlign: "center", color: "white", zIndex: 1, maxWidth: "1000px", margin: "0 auto" }}>
-          <div style={{ marginBottom: "1rem" }}><img src="/icon-512x512.png" alt="Reussitess®971" style={{ width: "120px", height: "120px", borderRadius: "20px", boxShadow: "0 10px 40px rgba(0,0,0,0.3)" }} /></div>
+          <div style={{ marginBottom: "1rem" }}><img src="/icon-512x512.webp" alt="Reussitess®971" style={{ width: "120px", height: "120px", borderRadius: "20px", boxShadow: "0 10px 40px rgba(0,0,0,0.3)" }} /></div>
           <h1 style={{ fontSize: "clamp(2.5rem, 8vw, 5rem)", fontWeight: "900", marginBottom: "1.5rem", textShadow: "0 4px 30px rgba(0,0,0,0.3)" }}>Reussitess®971</h1>
 
             {/* WIDGET REUSS LIVE */}

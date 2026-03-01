@@ -412,7 +412,7 @@ function DealCard({ asin, title, price, image, features }: any) {
           alt={title}
           style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
           onError={(e) => {
-            (e.target as HTMLImageElement).src = 'https://via.placeholder.com/300x300/1a1a1a/10b981?text=Amazon'
+            (e.target as HTMLImageElement).src = '/icon-192x192.png'
           }}
         />
       </div>
@@ -825,8 +825,8 @@ function GlobalSecurityHub() {
           Contact : <a href="mailto:influenceur@reussitess.fr" style={{ color: '#10b981', textDecoration: 'underline' }}>influenceur@reussitess.fr</a>
         </p>
         <p style={{ color: '#64748b', fontSize: '0.85rem', marginTop: '1rem' }}>
-          <span style={{ marginRight: '1rem' }}>Mentions légales en cours</span>
-          <span>Politique de confidentialité en cours</span>
+          <span style={{ marginRight: '1rem' }}><a href="/mentions-legales" style={{color:"#94a3b8"}}>Mentions légales</a></span>
+          <span><a href="/politique-confidentialite" style={{color:"#94a3b8"}}>Politique de confidentialité</a></span>
         </p>
       </div>
     </div>

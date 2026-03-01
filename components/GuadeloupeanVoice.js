@@ -1,7 +1,6 @@
 // Synthèse vocale avec accent créole guadeloupéen
 export const speakGuadeloupean = (text) => {
   if (!('speechSynthesis' in window)) {
-    console.log('Synthèse vocale non supportée')
     return
   }
 

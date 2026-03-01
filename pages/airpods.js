@@ -20,7 +20,7 @@ export default function AirPodsPage() {
         </p>
 
         {/* ICI LE LIEN FINAL VERS L'ACHAT */}
-        <a href="https://amzn.to/votre-lien-affilie" target="_blank" style={{ background: '#fff', color: '#000', padding: '20px 40px', borderRadius: '10px', textDecoration: 'none', fontWeight: '900', fontSize: '1.5rem' }}>
+        <a href="https://amzn.to/az0G6w0uuYRlg" target="_blank" style={{ background: '#fff', color: '#000', padding: '20px 40px', borderRadius: '10px', textDecoration: 'none', fontWeight: '900', fontSize: '1.5rem' }}>
           VOIR SUR AMAZON 🛒
         </a>
 

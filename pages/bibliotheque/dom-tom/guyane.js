@@ -163,13 +163,13 @@ const Guyane = () => {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://reussitess.fr/boutiques/france"
+                href="https://www.amazon.fr/shop/amourguadeloupe"
                 className="bg-white text-green-600 px-6 py-3 rounded-xl font-bold hover:scale-105 transition-all"
               >
                 🇫🇷 Boutique France
               </a>
               <a
-                href="https://reussitess.fr/boutiques/usa"
+                href="https://www.amazon.com/shop/amourguadeloupe"
                 className="bg-white text-blue-600 px-6 py-3 rounded-xl font-bold hover:scale-105 transition-all"
               >
                 🇺🇸 Boutique USA

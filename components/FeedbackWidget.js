@@ -13,7 +13,6 @@ export default function FeedbackWidget() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // In a real application, this would send data to a backend
-    console.log("Feedback submitted:", formData);
     setSubmitted(true);
     setTimeout(() => {
       setIsOpen(false);

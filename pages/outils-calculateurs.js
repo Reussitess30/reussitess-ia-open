@@ -13,16 +13,12 @@ export default function OutilsCalculateurs() {
         <div className="card">
           <h3>Calculateur TVA</h3>
           <p>Calculs de taxes automatiques</p>
-          <button className="btn" disabled>
-            Bientôt disponible
-          </button>
+          <a href="/calculateur-amazon" className="btn" style={{textDecoration:"none"}}>✅ Accéder</a>
         </div>
         <div className="card">
           <h3>Analyse de Rentabilité</h3>
           <p>Optimisez vos performances</p>
-          <button className="btn" disabled>
-            Bientôt disponible
-          </button>
+          <a href="/calculateur-amazon" className="btn" style={{textDecoration:"none"}}>✅ Accéder</a>
         </div>
       </div>
       <a href="/" className="back-link">

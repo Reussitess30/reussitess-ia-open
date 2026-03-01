@@ -1070,7 +1070,7 @@ export default function VisaUniversel() {
           >
             <button
               onClick={() =>
-                alert("Fonction téléchargement VISA en PDF à venir")
+                window.open("/documents/REUSS_Whitepaper_v1.0_2026.docx", "_blank")
               }
               style={{
                 padding: "1rem 2rem",
