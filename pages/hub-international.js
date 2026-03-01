@@ -167,22 +167,22 @@ export default function HubInternational() {
         <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
           <Link href="/fr">
             <a rel="noopener noreferrer" style={{ textDecoration: "none" }}>
-              <img src="/flags/france.png" alt="Français" style={{ width: "40px", borderRadius: "50%" }} />
+              <img src="/flags/france.svg" alt="Français" style={{ width: "40px", borderRadius: "50%" }} />
             </a>
           </Link>
           <Link href="/en">
             <a rel="noopener noreferrer" style={{ textDecoration: "none" }}>
-              <img src="/flags/usa.png" alt="English" style={{ width: "40px", borderRadius: "50%" }} />
+              <img src="/flags/usa.svg" alt="English" style={{ width: "40px", borderRadius: "50%" }} />
             </a>
           </Link>
           <Link href="/es">
             <a rel="noopener noreferrer" style={{ textDecoration: "none" }}>
-              <img src="/flags/spain.png" alt="Español" style={{ width: "40px", borderRadius: "50%" }} />
+              <img src="/flags/spain.svg" alt="Español" style={{ width: "40px", borderRadius: "50%" }} />
             </a>
           </Link>
           <Link href="/de">
             <a rel="noopener noreferrer" style={{ textDecoration: "none" }}>
-              <img src="/flags/germany.png" alt="Deutsch" style={{ width: "40px", borderRadius: "50%" }} />
+              <img src="/flags/germany.svg" alt="Deutsch" style={{ width: "40px", borderRadius: "50%" }} />
             </a>
           </Link>
         </div>

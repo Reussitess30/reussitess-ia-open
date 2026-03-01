@@ -10,7 +10,7 @@ export default function Layout({ children, title = 'REUSSITESS®971' }) {
   const siteTitle = `${title} — Bibliothèque Mondiale · Affiliation Amazon · Quiz Francophone`
   const siteDescription = "Reussitess®971 : Bibliothèque mondiale francophone 26 pays, affiliation Amazon Afrique et diaspora, quiz éducatifs interactifs, revenus passifs Bitcoin GoMining. Guadeloupe, Sénégal, Cameroun, Martinique, France, Québec, 14 pays partenaires."
   const siteUrl = "https://reussitess.fr"
-  const siteImage = `${siteUrl}/icon-512x512.png`
+  const siteImage = `${siteUrl}/icon-512x512.webp`
 
   const schemaOrg = {
     "@context": "https://schema.org",
