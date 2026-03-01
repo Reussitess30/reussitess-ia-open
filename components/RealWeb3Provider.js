@@ -7,11 +7,11 @@ export default function RealWeb3Provider() {
   // Connexion réelle aux données de la Blockchain Polygon
   useEffect(() => {
     const fetchBlockchainData = async () => {
-      try {
+      
         // Simulation d'appel RPC pour le contrat 0xB37531727fC07c6EED4f97F852A115B428046EB2
         // Dans une version finale, on utilise 'ethers.js' ou 'wagmi'
         const response = await fetch('https://polygonscan.com/token/0xB37531727fC07c6EED4f97F852A115B428046EB2')
-        // Ici, on récupère le vrai Burn (adresse 0x000...dead)
+        
     }
     fetchBlockchainData()
   }, [])
