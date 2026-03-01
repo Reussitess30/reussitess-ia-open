@@ -180,7 +180,7 @@ export default function HubInternational() {
               <img src="/flags/spain.png" alt="Español" style={{ width: "40px", borderRadius: "50%" }} />
             </a>
           </Link>
-          <Link href="/es">
+          <Link href="/de">
             <a rel="noopener noreferrer" style={{ textDecoration: "none" }}>
               <img src="/flags/germany.png" alt="Deutsch" style={{ width: "40px", borderRadius: "50%" }} />
             </a>
