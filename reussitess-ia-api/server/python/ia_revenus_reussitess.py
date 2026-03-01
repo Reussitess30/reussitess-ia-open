@@ -1,1 +1,1 @@
-../ia_revenus_reussitess.py
+/data/data/com.termux/files/home/reussitess-global-nexus/ia_revenus_reussitess.py

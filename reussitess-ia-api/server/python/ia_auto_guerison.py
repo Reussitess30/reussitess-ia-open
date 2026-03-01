@@ -1,1 +1,1 @@
-../ia_auto_guerison.py
+/data/data/com.termux/files/home/reussitess-global-nexus/ia_auto_guerison.py

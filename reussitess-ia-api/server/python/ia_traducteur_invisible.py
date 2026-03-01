@@ -1,1 +1,1 @@
-../ia_traducteur_invisible.py
+/data/data/com.termux/files/home/reussitess-global-nexus/ia_traducteur_invisible.py

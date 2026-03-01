@@ -1,0 +1,16 @@
+{
+	"appId": "fr.reussitess.ai",
+	"appName": "REUSSITESS AI",
+	"webDir": "out",
+	"server": {
+		"url": "https://reussitess.fr/chat",
+		"cleartext": false
+	},
+	"plugins": {
+		"SplashScreen": {
+			"launchShowDuration": 2000,
+			"backgroundColor": "#0a0a0a",
+			"showSpinner": false
+		}
+	}
+}

@@ -1,1 +1,1 @@
-../reussitess_ad_copy.py
+/data/data/com.termux/files/home/reussitess-global-nexus/reussitess_ad_copy.py
