@@ -69,8 +69,7 @@ export default function SuperBotAssistant() {
   const speakResponse = (text, langCode) => {
     if (!audioEnabled || !('speechSynthesis' in window)) return
     window.speechSynthesis.cancel()
-    // Correction de la durée : passage de 500 à 4000 caractères pour lire tout le texte
-    const cleanText = text.replace(/\[([^\]]+)\]\([^)]+\)/g,'$1').replace(/https?:\/\/\S+/g,'').replace(/[\u{1F300}-\u{1F9FF}]/gu,'').replace(/\*\*/g,'').replace(/\*/g,'').replace(/#{1,3}/g,'').substring(0, 4000)
+    const cleanText = text.replace(/\[([^\]]+)\]\([^)]+\)/g,'$1').replace(/https?:\/\/\S+/g,'').replace(/[\u{1F300}-\u{1F9FF}]/gu,'').replace(/\*\*/g,'').replace(/\*/g,'').replace(/#{1,3}/g,'').substring(0, 500)
     if (!cleanText.trim()) return
     const utterance = new SpeechSynthesisUtterance(cleanText)
     utterance.lang = langCode || LANGUES[langue].voice
