@@ -20,7 +20,7 @@ def get_token_stats():
 
 def get_recent_tx():
     try:
-        r = requests.get(f"https://api.polygonscan.com/api?module=account&action=tokentx&contractaddress={CONTRACT}&sort=desc&offset=10&page=1&apikey=YourApiKeyToken", timeout=10)
+        r = requests.get(f"https://api.polygonscan.com/api?module=account&action=tokentx&contractaddress={CONTRACT}&sort=desc&offset=10&page=1&apikey=2ZPHAAZFKZTN26Q5HAVYB8KTYP1BUXICYX", timeout=10)
         data = r.json()
         if data.get("status") == "1":
             return data.get("result", [])
