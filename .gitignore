@@ -40,3 +40,17 @@ config/secrets.json
 *.env
 eip7702-clean/.env
 .env*.local
+
+# Fichiers backup components
+components/*.backup.js
+components/*.old.js
+components/*.original.js
+components/*.AVANT_AJOUTS.js
+components/*.bak
+pages/*.bak
+pages/*.pre_fix*
+pages/*.prefix_fix*
+pages/*.bak_*
+*.config.ts.bak
+*.config.mjs.bak
+*.config.js.backup
