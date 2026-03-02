@@ -69,7 +69,7 @@ export default function SuperBotAssistant() {
   const speakResponse = (text, langCode) => {
     if (!audioEnabled || !('speechSynthesis' in window)) return
     window.speechSynthesis.cancel()
-    const cleanText = text.replace(/\[([^\]]+)\]\([^)]+\)/g,'$1').replace(/https?:\/\/\S+/g,'').replace(/[\u{1F300}-\u{1F9FF}]/gu,'').replace(/\*\*/g,'').replace(/\*\*/g,'').replace(/#{1,3}/g,'').substring(0, 4000)
+    const cleanText = text.replace(/\[([^\]]+)\]\([^)]+\)/g,'$1').replace(/https?:\/\/\S+/g,'').replace(/[\u{1F300}-\u{1F9FF}]/gu,'').replace(/\*\*/g,'').replace(/\*/g,'').replace(/#{1,3}/g,'').substring(0, 500)
     if (!cleanText.trim()) return
     const utterance = new SpeechSynthesisUtterance(cleanText)
     utterance.lang = langCode || LANGUES[langue].voice
@@ -136,6 +136,8 @@ export default function SuperBotAssistant() {
           boxShadow:'0 20px 60px rgba(0,0,0,0.5)', display:'flex', flexDirection:'column',
           zIndex:9998, border:'2px solid rgba(16,185,129,0.3)', overflow:'hidden'
         }}>
+
+          {/* HEADER */}
           <div style={{ background:'linear-gradient(135deg,#10b981,#3b82f6)', padding:'1rem 1.5rem', color:'white' }}>
             <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between' }}>
               <div style={{ display:'flex', alignItems:'center', gap:'0.8rem' }}>
@@ -169,6 +171,8 @@ export default function SuperBotAssistant() {
               </div>
             </div>
           </div>
+
+          {/* MESSAGES */}
           <div style={{flex:1,overflowY:'auto',padding:'1.5rem',display:'flex',flexDirection:'column',gap:'1rem'}}>
             {messages.map((msg, idx) => (
               <div key={idx} style={{alignSelf: msg.role==='user'?'flex-end':'flex-start', maxWidth:'85%'}}>
@@ -197,18 +201,24 @@ export default function SuperBotAssistant() {
             )}
             <div ref={messagesEndRef} />
           </div>
+
+          {/* BARRE AUDIO */}
           {isSpeaking && (
             <div style={{padding:'0.5rem 1.5rem',background:'rgba(16,185,129,0.2)',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
               <span style={{color:'#10b981',fontSize:'0.85rem'}}>🔊 Audio... ({LANGUES[langue].label})</span>
               <button onClick={stopSpeaking} style={{background:'#ef4444',color:'white',border:'none',padding:'0.3rem 0.8rem',borderRadius:'10px',cursor:'pointer',fontSize:'0.8rem'}}>⏹ Stop</button>
             </div>
           )}
+
+          {/* BARRE MICRO */}
           {isListening && (
             <div style={{padding:'0.5rem 1.5rem',background:'rgba(239,68,68,0.2)',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
               <span style={{color:'#ef4444',fontSize:'0.85rem',animation:'blink 1s infinite'}}>🎤 Parlez maintenant...</span>
               <button onClick={stopListening} style={{background:'#ef4444',color:'white',border:'none',padding:'0.3rem 0.8rem',borderRadius:'10px',cursor:'pointer',fontSize:'0.8rem'}}>⏹ Stop</button>
             </div>
           )}
+
+          {/* INPUT */}
           <form onSubmit={handleSubmit} style={{padding:'1rem 1.5rem',borderTop:'1px solid rgba(255,255,255,0.1)'}}>
             <div style={{display:'flex',gap:'0.5rem',alignItems:'center'}}>
               <button type="button" onClick={isListening ? stopListening : startListening} disabled={isLoading}
@@ -216,20 +226,25 @@ export default function SuperBotAssistant() {
                 {isListening ? '⏹' : '🎤'}
               </button>
               <input type="text" value={input} onChange={e => setInput(e.target.value)}
-                placeholder={`Parlez ou écrivez...`}
+                placeholder={`Parlez ou écrivez en ${LANGUES[langue].label.split(' ')[1]}...`}
                 disabled={isLoading || isListening}
                 style={{flex:1,padding:'0.8rem 1rem',borderRadius:'15px',border:'2px solid rgba(16,185,129,0.3)',background:'rgba(15,23,42,0.8)',color:'white',fontSize:'0.9rem',outline:'none'}} />
               <button type="submit" disabled={isLoading || !input.trim()} style={btnStyle('linear-gradient(135deg,#10b981,#059669)', isLoading || !input.trim())}>
                 ➤
               </button>
             </div>
+            <p style={{color:'#475569',fontSize:'0.7rem',textAlign:'center',marginTop:'0.5rem',marginBottom:0}}>
+              🎤 Micro • 🔊 Audio • 🌐 8 langues • 🇬🇵 BOUDOUM
+            </p>
           </form>
         </div>
       )}
+
       <style jsx>{`
         @keyframes pulse { 0%,100%{transform:scale(1);box-shadow:0 10px 40px rgba(16,185,129,0.5)} 50%{transform:scale(1.05);box-shadow:0 15px 50px rgba(16,185,129,0.7)} }
         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.5} }
-        .bot-button:hover { transform:scale(1.1); }
+        .bot-button:hover { transform:scale(1.1); box-shadow:0 15px 50px rgba(16,185,129,0.7); }
+        input:focus { border-color:#10b981 !important; }
       `}</style>
     </>
   )
