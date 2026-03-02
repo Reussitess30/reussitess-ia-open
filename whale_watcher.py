@@ -1,25 +1,55 @@
-from web3 import Web3
+import requests
 import time
+from datetime import datetime
 
-web3 = Web3(Web3.HTTPProvider("https://polygon-rpc.com"))
-POOL_ADDR = web3.to_checksum_address("0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c")
+CONTRACT = "0xB37531727fC07c6EED4f97F852A115B428046EB2"
 
-print("🐳 SURVEILLANCE DES FLUX INTERNATIONAUX (14 PAYS)...")
+def log(msg):
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}")
+
+def get_token_stats():
+    try:
+        r = requests.get(f"https://api.dexscreener.com/latest/dex/tokens/{CONTRACT}", timeout=10)
+        data = r.json()
+        if data.get("pairs"):
+            pair = data["pairs"][0]
+            return pair
+    except:
+        pass
+    return None
+
+def get_recent_tx():
+    try:
+        r = requests.get(f"https://api.polygonscan.com/api?module=account&action=tokentx&contractaddress={CONTRACT}&sort=desc&offset=10&page=1&apikey=YourApiKeyToken", timeout=10)
+        data = r.json()
+        if data.get("status") == "1":
+            return data.get("result", [])
+    except:
+        pass
+    return []
 
 def watch():
-    last_block = web3.eth.block_number
+    log("🐳 WHALE WATCHER REUSSITESS®971 ACTIVÉ")
+    log(f"🔍 Token : {CONTRACT}")
+    seen = set()
     while True:
-        current_block = web3.eth.block_number
-        if current_block > last_block:
-            # On cherche les transactions vers le pool
-            txs = web3.eth.get_block(current_block, full_transactions=True).transactions
-            for tx in txs:
-                if tx['to'] == POOL_ADDR:
-                    print(f"\n🔥 MOUVEMENT DÉTECTÉ !")
-                    print(f"💰 Valeur: {web3.from_wei(tx['value'], 'ether')} MATIC injectés.")
-                    print(f"📍 Origine probable: Un de tes 14 pays cibles.")
-            last_block = current_block
-        time.sleep(2)
+        stats = get_token_stats()
+        if stats:
+            log(f"💎 Prix: ${stats.get('priceUsd','N/A')} | Vol 24h: ${stats.get('volume',{}).get('h24','N/A')} | Liq: ${stats.get('liquidity',{}).get('usd','N/A')}")
+            change = stats.get('priceChange',{}).get('h24','N/A')
+            log(f"📈 Variation 24h: {change}%")
+        else:
+            log("⚠️ Stats non disponibles")
+        txs = get_recent_tx()
+        new = [tx for tx in txs if tx.get("hash") not in seen]
+        for tx in new:
+            seen.add(tx["hash"])
+            value = int(tx.get("value",0)) / (10**int(tx.get("tokenDecimal",18)))
+            log(f"💸 TX: {value:,.0f} REUSS | {tx.get('from','')[:10]}... → {tx.get('to','')[:10]}...")
+        if not new:
+            log("😴 Aucune nouvelle transaction")
+        log("⏳ Prochain scan dans 30s...")
+        time.sleep(30)
 
 if __name__ == "__main__":
     watch()

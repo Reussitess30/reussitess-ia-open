@@ -1,29 +1,57 @@
+import requests
 import time
-from llama_cpp import Llama
+import os
+from datetime import datetime
 
-# Initialisation du moteur supérieur
-llm = Llama(model_path="./model_reussitess.gguf", verbose=False)
+SITE_URL = "https://reussitess-global-nexus-jfgk.vercel.app"
+LOG_FILE = os.path.expanduser("~/reussitess-global-nexus/logs/sentinelle.log")
+CHECK_INTERVAL = 60
 
-# Liste stricte des 14 pays autorisés (Reussitess©)
-PAYS_AUTORISES = [
-    "France", "Angleterre", "Italie", "Allemagne", "Suède", 
-    "Singapour", "Australie", "Espagne", "Brésil", "Royaume-Uni", 
-    "Inde", "Nouvelle-Zélande", "États-Unis", "Canada"
-]
+ENDPOINTS = ["/", "/investir-reuss", "/boutiques", "/bibliotheque", "/calculateur-amazon"]
 
-def analyser_menace(ip, pays):
-    if pays not in PAYS_AUTORISES:
-        # L'IA décide de l'action de blocage
-        prompt = f"Un utilisateur tente d'accéder au site depuis {pays} avec l'IP {ip}. C'est un pays interdit. Rédige un code de blocage."
-        reponse = llm(f"<|user|>\n{prompt}</s>\n<|assistant|>\n", max_tokens=50)
-        return f"[ALERTE] Blocage immédiat : {pays} n'est pas autorisé."
-    return f"[OK] Accès autorisé pour {pays}."
+os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
 
-print("🛡️ Sentinelle Reussitess© activée (100 IA en veille)...")
+def log(msg):
+    ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    line = f"[{ts}] {msg}"
+    print(line)
+    with open(LOG_FILE, "a") as f:
+        f.write(line + "\n")
 
-# Simulation de surveillance continue
-while True:
-    # Ici, le script pourrait lire vos fichiers logs en temps réel
-    # Pour le test, on simule une détection
-    print(analyser_menace("192.168.1.1", "France"))
-    time.sleep(10) # L'IA scanne toutes les 10 secondes en invisible
+def check_site():
+    results = []
+    for endpoint in ENDPOINTS:
+        url = SITE_URL + endpoint
+        try:
+            start = time.time()
+            r = requests.get(url, timeout=10)
+            elapsed = round((time.time() - start) * 1000)
+            status = "✅ OK" if r.status_code == 200 else f"⚠️ {r.status_code}"
+            results.append(f"{status} {endpoint} ({elapsed}ms)")
+        except Exception as e:
+            results.append(f"❌ ERREUR {endpoint}: {str(e)[:50]}")
+    return results
+
+def get_reuss_price():
+    try:
+        r = requests.get("https://api.dexscreener.com/latest/dex/tokens/0xB37531727fC07c6EED4f97F852A115B428046EB2", timeout=10)
+        data = r.json()
+        if data.get("pairs"):
+            pair = data["pairs"][0]
+            return f"💎 REUSS: ${pair.get('priceUsd','N/A')} | Vol 24h: ${pair.get('volume',{}).get('h24','N/A')}"
+        return "💎 REUSS: Prix non disponible"
+    except:
+        return "💎 REUSS: Erreur"
+
+def main():
+    log("🚀 SENTINELLE REUSSITESS®971 ACTIVÉE — Guadeloupe 🇬🇵 BOUDOUM!")
+    while True:
+        log("--- SCAN ---")
+        for r in check_site():
+            log(r)
+        log(get_reuss_price())
+        log(f"⏳ Prochain scan dans {CHECK_INTERVAL}s...")
+        time.sleep(CHECK_INTERVAL)
+
+if __name__ == "__main__":
+    main()
