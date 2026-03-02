@@ -69,7 +69,7 @@ export default function SuperBotAssistant() {
   const speakResponse = (text, langCode) => {
     if (!audioEnabled || !('speechSynthesis' in window)) return
     window.speechSynthesis.cancel()
-    const cleanText = text.replace(/\[([^\]]+)\]\([^)]+\)/g,'$1').replace(/https?:\/\/\S+/g,'').replace(/[\u{1F300}-\u{1F9FF}]/gu,'').replace(/\*\*/g,'').replace(/\*/g,'').replace(/#{1,3}/g,'').substring(0, 4000)
+    const cleanText = text.replace(/\[([^\]]+)\]\([^)]+\)/g,'$1').replace(/https?:\/\/\S+/g,'').replace(/[\u{1F300}-\u{1F9FF}]/gu,'').replace(/\*\*/g,'').replace(/\*/g,'').replace(/#{1,3}/g,'').substring(0, 500)
     if (!cleanText.trim()) return
     const utterance = new SpeechSynthesisUtterance(cleanText)
     utterance.lang = langCode || LANGUES[langue].voice
@@ -233,6 +233,9 @@ export default function SuperBotAssistant() {
                 ➤
               </button>
             </div>
+            <p style={{color:'#475569',fontSize:'0.7rem',textAlign:'center',marginTop:'0.5rem',marginBottom:0}}>
+              🎤 Micro • 🔊 Audio • 🌐 8 langues • 🇬🇵 BOUDOUM
+            </p>
           </form>
         </div>
       )}
