@@ -26,7 +26,6 @@ export default function SuperBotAssistant() {
   const [nexusStats, setNexusStats] = useState(null)
   const [nexusLoading, setNexusLoading] = useState(false)
   const [visitorCount, setVisitorCount] = useState(null)
-  const [visitorCount, setVisitorCount] = useState(null)
   const messagesEndRef = useRef(null)
   const recognitionRef = useRef(null)
 
