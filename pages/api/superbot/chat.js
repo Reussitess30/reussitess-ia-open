@@ -85,6 +85,73 @@ const whitepaperData = {
 function getWhitepaperResponse(message) {
   const msg = message.toLowerCase()
   
+
+  // PRÉSENTATION COMPLÈTE DU PROJET
+  if (msg.includes('présente') || msg.includes('presente') || msg.includes('ensemble') || msg.includes('projet') || msg.includes('reussitess971') || msg.includes('tout ce que') || msg.includes('cest quoi')) {
+    return `🌍 **REUSSITESS®971 — Écosystème Complet**
+Fondateur : Rony Porinus • Guadeloupe 🇬🇵 • BOUDOUM !
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+💎 **TOKEN REUSS** — Blockchain Polygon
+• Contrat : 0xB37531727fC07c6EED4f97F852A115B428046EB2
+• Supply : 999 999 999 REUSS
+• DEX : QuickSwap V3
+• 🔗 polygonscan.com/token/0xB375...46EB2
+• 🔗 dexscreener.com — chart live
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+🛍️ **RÉSEAU AMAZON** — 26 boutiques • 14 pays
+• 🇫🇷 amazon.fr/shop/amourguadeloupe
+• 🇺🇸 amazon.com/shop/amourguadeloupe
+• 🇩🇪 amazon.de/shop/amourguadeloupe
+• 🇬🇧 amazon.co.uk/shop/amourguadeloupe
+• 🇨🇦 amazon.ca/shop/amourguadeloupe
+• 🇮🇹 amazon.it/shop/amourguadeloupe
+• 🇪🇸 amazon.es/shop/amourguadeloupe
+• 🇧🇪 amazon.com.be/shop/influencer-fb942837
+• 🇦🇺 amzlink.to/az05kTTrYJ06L
+• 🇧🇷 amzlink.to/az0ymmoCLHvyA
+• + Inde • Singapour • Suède • Pays-Bas
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+🎓 **QUIZ LEARN-TO-EARN** — 100+ thèmes
+• Crypto • IA • Amazon • Caraïbes • Business
+• Culture Monde • Droit • Finance • Science...
+• Récompenses : 1 000 à 50 000 REUSS/quiz
+• 🔗 reussitess-global-nexus-jfgk.vercel.app/quiz
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+🤖 **200 AGENTS IA — QUANTUM NEXUS**
+• 50 Sentinelles — surveillance 24h/24
+• 80 Neuro-X — analyse & données
+• 40 Nexus Quiz — contenu éducatif
+• 30 Supreme AI — orchestration
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 **VECTEURS ÉCONOMIQUES**
+• ALPHA-1 : Staking (APY 10-20%)
+• BETA-2 : Quiz Learn-to-Earn
+• GAMMA-1 : Cashback Amazon
+• DELTA-4 : Gouvernance DAO
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+⛏️ **GOMINING** — Bitcoin passif
+• Lien : gomining.com/?ref=OT3GI2U
+• Rendement : 0.84$/jour • Top 3% mondial
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+🌐 **SITE OFFICIEL**
+• reussitess-global-nexus-jfgk.vercel.app
+• Whitepaper • Passeport IA • Hub International
+
+━━━━━━━━━━━━━━━━━━━━━━━━━
+💼 **TIERS D'ACCÈS**
+🥉 Bronze 3% • 🥈 Silver 8% • 🥇 Gold 15% • 💎 Platinum 20%
+
+**EXCELLENCE • INNOVATION • SUCCÈS**
+🇬🇵 Positivité à l'infini — BOUDOUM !`
+  }
+
   // Token REUSS
   if (msg.includes('contrat') || msg.includes('adresse token') || msg.includes('0xb375')) {
     return `✅ **Token REUSS — Données officielles :**\n\nContrat : \${whitepaperData.reel.token.contrat}\nSupply : \${whitepaperData.reel.token.supply}\nPool : \${whitepaperData.reel.token.pool}\nHolders actuels : \${whitepaperData.reel.token.holders}\n\n🔗 Vérifiable sur : \${whitepaperData.reel.token.polygonscan}`
