@@ -131,6 +131,12 @@ function getWhitepaperResponse(message) {
 
 async function getWikipedia(term) {
   try {
+    // ✅ NEXUS COMMANDS — priorité maximale
+    const nexusResponse = await handleNexusCommand(message)
+    if (nexusResponse) {
+      return res.status(200).json({ response: nexusResponse })
+    }
+
     const res = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`)
     if (!res.ok) return null
     const data = await res.json()
