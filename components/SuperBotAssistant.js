@@ -274,6 +274,18 @@ export default function SuperBotAssistant() {
                   <span style={{marginLeft:'auto',color:'#f59e0b'}}>→</span>
                 </a>
               ))}
+
+              <p style={{color:'#3b82f6',fontWeight:'bold',marginTop:'1rem',marginBottom:'0.5rem'}}>⭐ Boutiques Influenceur fb942837 (12)</p>
+              {[['🇺🇸','USA','https://amzlink.to/az0G6w0uuYRlg'],['🇩🇪','Allemagne','https://amzlink.to/az0PuGdrA0kgh'],['🇬🇧','UK','https://amzlink.to/az0VutIAPP8MY'],['🇨🇦','Canada','https://amzlink.to/az0YFa3j2fsnv'],['🇮🇹','Italie','https://amzlink.to/az0yC7BiDQmPg'],['🇪🇸','Espagne','https://amzlink.to/az0DKsP6Zr5IL'],['🇦🇺','Australie','https://amzlink.to/az0on91nKaQvh'],['🇧🇪','Belgique','https://amzlink.to/az08ZB76xWpGm'],['🇮🇳','Inde','https://amzlink.to/az0Qry9pNlCkw'],['🇸🇬','Singapour','https://amzlink.to/az05gMuq73i99'],['🇸🇪','Suède','https://amzlink.to/az0Q5qEXfyqk5'],['🇳🇱','Pays-Bas','https://amzlink.to/az0v9jdbSf7Km']].map(([flag,name,url]) => (
+                <a key={'i-'+name} href={url} target="_blank" rel="noopener noreferrer" style={{display:'flex',alignItems:'center',gap:'0.8rem',padding:'0.7rem',background:'rgba(59,130,246,0.1)',border:'1px solid rgba(59,130,246,0.2)',borderRadius:'10px',marginBottom:'0.5rem',textDecoration:'none',color:'white'}}>
+                  <span style={{fontSize:'1.5rem'}}>{flag}</span>
+                  <div>
+                    <p style={{margin:0,fontWeight:'bold',fontSize:'0.85rem'}}>{name} <span style={{fontSize:'0.65rem',color:'#3b82f6'}}>• Influenceur</span></p>
+                    <p style={{margin:0,fontSize:'0.65rem',color:'#94a3b8'}}>{url.replace('https://','').substring(0,35)}...</p>
+                  </div>
+                  <span style={{marginLeft:'auto',color:'#3b82f6'}}>→</span>
+                </a>
+              ))}
             </div>
           )}
 
