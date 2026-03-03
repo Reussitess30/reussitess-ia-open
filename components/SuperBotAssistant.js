@@ -26,6 +26,7 @@ export default function SuperBotAssistant() {
   const [nexusStats, setNexusStats] = useState(null)
   const [nexusLoading, setNexusLoading] = useState(false)
   const [visitorCount, setVisitorCount] = useState(null)
+  const [visitorCount, setVisitorCount] = useState(null)
   const messagesEndRef = useRef(null)
   const recognitionRef = useRef(null)
 
@@ -37,6 +38,27 @@ export default function SuperBotAssistant() {
 
   const scrollToBottom = () => { messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' }) }
   useEffect(() => { scrollToBottom() }, [messages])
+
+  useEffect(() => {
+    if (messages.length > 1) {
+      try { localStorage.setItem('reussitess_chat_v2', JSON.stringify(messages.slice(-10))) } catch(e) {}
+    }
+  }, [messages])
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('reussitess_chat_v2')
+      if (saved) { const p = JSON.parse(saved); if (p && p.length > 0) setMessages(p) }
+    } catch(e) {}
+  }, [])
+
+  useEffect(() => {
+    try {
+      const v = parseInt(localStorage.getItem('reussitess_visits') || '0') + 1
+      localStorage.setItem('reussitess_visits', String(v))
+      setVisitorCount(v)
+    } catch(e) {}
+  }, [])
 
   useEffect(() => {
     if (messages.length > 1) {
@@ -278,6 +300,16 @@ export default function SuperBotAssistant() {
                       <p style={{color:'white',fontWeight:'bold',fontSize:'1.1rem',margin:'0.2rem 0 0'}}>99</p>
                     </div>
                   </div>
+                  <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'0.5rem'}}>
+                    <div style={{background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',borderRadius:'10px',padding:'0.7rem',textAlign:'center'}}>
+                      <p style={{color:'#94a3b8',fontSize:'0.7rem',margin:0}}>👥 Mes visites</p>
+                      <p style={{color:'white',fontWeight:'bold',fontSize:'1.1rem',margin:'0.2rem 0 0'}}>{visitorCount || '...'}</p>
+                    </div>
+                    <div style={{background:'rgba(168,85,247,0.1)',border:'1px solid rgba(168,85,247,0.3)',borderRadius:'10px',padding:'0.7rem',textAlign:'center'}}>
+                      <p style={{color:'#94a3b8',fontSize:'0.7rem',margin:0}}>📚 Quiz actifs</p>
+                      <p style={{color:'white',fontWeight:'bold',fontSize:'1.1rem',margin:'0.2rem 0 0'}}>99</p>
+                    </div>
+                  </div>
                   <button onClick={fetchNexusStats} style={{background:'linear-gradient(135deg,#10b981,#3b82f6)',border:'none',color:'white',padding:'0.8rem',borderRadius:'12px',cursor:'pointer',fontWeight:'bold'}}>
                     🔄 Actualiser les données
                   </button>
@@ -338,6 +370,70 @@ export default function SuperBotAssistant() {
             </div>
           )}
 
+          {activeTab === 'quiz' && (
+            <div style={{flex:1,overflowY:'auto',padding:'1rem'}}>
+              <p style={{color:'#10b981',fontWeight:'bold',marginBottom:'0.3rem'}}>📚 99 Quiz • Learn-to-Earn REUSS</p>
+              <p style={{color:'#64748b',fontSize:'0.75rem',marginBottom:'0.8rem'}}>Cliquez une catégorie → le bot lance le quiz !</p>
+              {[['🛒','Amazon & Affiliation','quiz amazon affiliation'],['💎','Crypto & Blockchain','quiz crypto blockchain'],['🤖','IA & Tech','quiz intelligence artificielle'],['🇬🇵','Caraibes & Antilles','quiz caraibes antilles'],['📈','Business & Entrepreneuriat','quiz business entrepreneuriat'],['🌍','Géographie & Culture','quiz géographie culture'],['🍽️','Gastronomie Antillaise','quiz gastronomie cuisine antillaise'],['📖','Histoire & Civilisations','quiz histoire civilisations'],['🏃','Sport & Santé','quiz sport santé'],['🎭','Arts & Cinéma','quiz art cinéma musique'],['⚖️','Droit & Finance','quiz droit finance'],['🌿','Nature & Sciences','quiz nature sciences'],['💡','Développement Personnel','quiz développement personnel'],['🌐','Langues & Voyage','quiz langues voyage']].map(([icon,cat,msg]) => (
+                <button key={cat} onClick={() => { setActiveTab('chat'); submitMessage(msg) }}
+                  style={{display:'flex',alignItems:'center',gap:'0.5rem',width:'100%',padding:'0.65rem 0.8rem',background:'rgba(16,185,129,0.08)',border:'1px solid rgba(16,185,129,0.2)',borderRadius:'10px',marginBottom:'0.4rem',cursor:'pointer',color:'white',fontSize:'0.82rem',fontWeight:'bold'}}>
+                  <span>{icon}</span><span style={{flex:1,textAlign:'left'}}>{cat}</span><span style={{color:'#10b981'}}>▶</span>
+                </button>
+              ))}
+              <div style={{marginTop:'0.8rem',padding:'0.8rem',background:'rgba(168,85,247,0.1)',border:'1px solid rgba(168,85,247,0.2)',borderRadius:'10px'}}>
+                <p style={{color:'#a855f7',fontWeight:'bold',margin:'0 0 0.3rem',fontSize:'0.8rem'}}>🎯 Vecteur BETA-2 — Learn-to-Earn</p>
+                <p style={{color:'#94a3b8',fontSize:'0.72rem',margin:0}}>Répondez correctement → Gagnez des REUSS 💎</p>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'menu' && (
+            <div style={{flex:1,overflowY:'auto',padding:'1rem'}}>
+              <p style={{color:'#f59e0b',fontWeight:'bold',marginBottom:'0.3rem'}}>🗺️ Navigation REUSSITESS®971</p>
+              <p style={{color:'#64748b',fontSize:'0.75rem',marginBottom:'0.8rem'}}>Toutes les sections de l'écosystème</p>
+
+              <p style={{color:'#10b981',fontSize:'0.75rem',fontWeight:'bold',marginBottom:'0.4rem'}}>💼 BUSINESS</p>
+              {[['🛍️','Boutiques Amazon','/boutiques'],['💎','Investir REUSS','/investir-reuss'],['📊','Affiliation','/affiliation'],['🚀','Booster Amazon','/booster-reussitess-amazon']].map(([icon,label,url]) => (
+                <a key={label} href={url} target="_blank" rel="noopener noreferrer"
+                  style={{display:'flex',alignItems:'center',gap:'0.6rem',padding:'0.6rem 0.8rem',background:'rgba(16,185,129,0.08)',border:'1px solid rgba(16,185,129,0.2)',borderRadius:'10px',marginBottom:'0.35rem',textDecoration:'none',color:'white',fontSize:'0.82rem',fontWeight:'bold'}}>
+                  <span>{icon}</span><span style={{flex:1}}>{label}</span><span style={{color:'#10b981'}}>→</span>
+                </a>
+              ))}
+
+              <p style={{color:'#a855f7',fontSize:'0.75rem',fontWeight:'bold',marginBottom:'0.4rem',marginTop:'0.8rem'}}>🤖 INTELLIGENCE ARTIFICIELLE</p>
+              {[['🤖','Neuro-X IA','/neuro-x'],['🔮','Oracle 971','/oracle-971'],['🧠','Ma Révolution IA','/ma-revolution-ia'],['📡','Agents Dashboard','/agents-dashboard']].map(([icon,label,url]) => (
+                <a key={label} href={url} target="_blank" rel="noopener noreferrer"
+                  style={{display:'flex',alignItems:'center',gap:'0.6rem',padding:'0.6rem 0.8rem',background:'rgba(168,85,247,0.08)',border:'1px solid rgba(168,85,247,0.2)',borderRadius:'10px',marginBottom:'0.35rem',textDecoration:'none',color:'white',fontSize:'0.82rem',fontWeight:'bold'}}>
+                  <span>{icon}</span><span style={{flex:1}}>{label}</span><span style={{color:'#a855f7'}}>→</span>
+                </a>
+              ))}
+
+              <p style={{color:'#3b82f6',fontSize:'0.75rem',fontWeight:'bold',marginBottom:'0.4rem',marginTop:'0.8rem'}}>🌍 ÉCOSYSTÈME MONDIAL</p>
+              {[['🏆','Champions','/champions'],['🌐','Hub Central','/hub-central'],['🌍','Hub International','/hub-international'],['🛂','Passe-Port Mondial','/passe-port-mondial'],['🌐','Visa Universel','/visa-universel']].map(([icon,label,url]) => (
+                <a key={label} href={url} target="_blank" rel="noopener noreferrer"
+                  style={{display:'flex',alignItems:'center',gap:'0.6rem',padding:'0.6rem 0.8rem',background:'rgba(59,130,246,0.08)',border:'1px solid rgba(59,130,246,0.2)',borderRadius:'10px',marginBottom:'0.35rem',textDecoration:'none',color:'white',fontSize:'0.82rem',fontWeight:'bold'}}>
+                  <span>{icon}</span><span style={{flex:1}}>{label}</span><span style={{color:'#3b82f6'}}>→</span>
+                </a>
+              ))}
+
+              <p style={{color:'#f59e0b',fontSize:'0.75rem',fontWeight:'bold',marginBottom:'0.4rem',marginTop:'0.8rem'}}>📚 SAVOIR & CULTURE</p>
+              {[['📚','Bibliothèque','/bibliotheque'],['🎓','Quiz Learn-to-Earn','/quiz'],['💡','Astuces','/astuces'],['🌺','Guadeloupe 971','/guadeloupe'],['📖','Savoir & Culture','/savoir-culture']].map(([icon,label,url]) => (
+                <a key={label} href={url} target="_blank" rel="noopener noreferrer"
+                  style={{display:'flex',alignItems:'center',gap:'0.6rem',padding:'0.6rem 0.8rem',background:'rgba(245,158,11,0.08)',border:'1px solid rgba(245,158,11,0.2)',borderRadius:'10px',marginBottom:'0.35rem',textDecoration:'none',color:'white',fontSize:'0.82rem',fontWeight:'bold'}}>
+                  <span>{icon}</span><span style={{flex:1}}>{label}</span><span style={{color:'#f59e0b'}}>→</span>
+                </a>
+              ))}
+
+              <p style={{color:'#94a3b8',fontSize:'0.75rem',fontWeight:'bold',marginBottom:'0.4rem',marginTop:'0.8rem'}}>⚙️ OUTILS & LÉGAL</p>
+              {[['🔧','Outils & Calculateurs','/outils'],['📜','Mentions Légales','/mentions-legales'],['🔒','Confidentialité','/politique-confidentialite'],['📞','Contact','/contact'],['🏅','À Propos','/a-propos']].map(([icon,label,url]) => (
+                <a key={label} href={url} target="_blank" rel="noopener noreferrer"
+                  style={{display:'flex',alignItems:'center',gap:'0.6rem',padding:'0.6rem 0.8rem',background:'rgba(148,163,184,0.08)',border:'1px solid rgba(148,163,184,0.2)',borderRadius:'10px',marginBottom:'0.35rem',textDecoration:'none',color:'white',fontSize:'0.82rem',fontWeight:'bold'}}>
+                  <span>{icon}</span><span style={{flex:1}}>{label}</span><span style={{color:'#94a3b8'}}>→</span>
+                </a>
+              ))}
+            </div>
+          )}
+
           {activeTab === 'token' && (
             <div style={{flex:1,overflowY:'auto',padding:'1rem'}}>
               <p style={{color:'#a855f7',fontWeight:'bold',marginBottom:'1rem'}}>💎 Token REUSS — Données Officielles</p>
@@ -380,6 +476,16 @@ export default function SuperBotAssistant() {
                 )}
               </div>
             ))}
+            {messages.length === 1 && !isLoading && (
+              <div style={{display:'flex',flexWrap:'wrap',gap:'0.4rem',marginTop:'0.3rem'}}>
+                {['💎 Token REUSS','🛍️ Boutiques','🤖 Agents IA','📊 Stats Nexus','📚 Lancer Quiz','🇬🇵 Guadeloupe'].map(s => (
+                  <button key={s} onClick={() => submitMessage(s)}
+                    style={{padding:'0.4rem 0.7rem',background:'rgba(16,185,129,0.15)',border:'1px solid rgba(16,185,129,0.3)',borderRadius:'20px',color:'#10b981',fontSize:'0.72rem',cursor:'pointer',fontWeight:'bold',whiteSpace:'nowrap'}}>
+                    {s}
+                  </button>
+                ))}
+              </div>
+            )}
             {messages.length === 1 && !isLoading && (
               <div style={{display:'flex',flexWrap:'wrap',gap:'0.4rem',marginTop:'0.3rem'}}>
                 {['💎 Token REUSS','🛍️ Boutiques','🤖 Agents IA','📊 Stats Nexus','📚 Lancer Quiz','🇬🇵 Guadeloupe'].map(s => (
