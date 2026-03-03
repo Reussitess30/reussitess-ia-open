@@ -695,3 +695,115 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
     })
   }
 }
+// ============================================
+// NEXUS ECOSYSTEM COMMANDS
+// ============================================
+async function handleNexusCommand(cmd) {
+  const c = cmd.toLowerCase()
+
+  if (c.includes('stats') || c.includes('rapport') || c.includes('report')) {
+    const site = await fetch('https://reussitess-global-nexus-jfgk.vercel.app').then(r => ({ok: r.ok, status: r.status})).catch(() => ({ok: false}))
+    const token = await fetch('https://api.dexscreener.com/latest/dex/tokens/0xB37531727fC07c6EED4f97F852A115B428046EB2').then(r => r.json()).catch(() => null)
+    const pair = token?.pairs?.[0]
+    return `📊 RAPPORT NEXUS — ${new Date().toLocaleString('fr-FR')}
+
+🌐 Site Web : ${site.ok ? '✅ EN LIGNE' : '❌ HORS LIGNE'}
+💎 REUSS Prix : ${pair ? '$'+pair.priceUsd : 'N/A'}
+📈 Variation 24h : ${pair ? pair.priceChange?.h24+'%' : 'N/A'}
+💧 Liquidité : ${pair ? '$'+pair.liquidity?.usd : 'N/A'}
+📦 Volume 24h : ${pair ? '$'+pair.volume?.h24 : 'N/A'}
+🛍️ Boutiques Amazon : 26 actives • 14 pays
+🤖 Agents IA : 200 déployés
+🏆 Contract : 0xB37531...46EB2
+
+BOUDOUM ! 🇬🇵`
+  }
+
+  if (c.includes('quiz') || c.includes('contenu')) {
+    return `📚 GESTION QUIZ REUSSITESS®971
+
+Fichiers quiz disponibles dans le projet :
+• quiz_Amazon.js • quiz_Crypto.js • quiz_IA.js
+• quiz_Caraibes.js • quiz_Business.js
+• quiz_Blockchain.js • quiz_Histoire.js
+• + 80 autres thèmes
+
+📋 Commandes disponibles :
+→ "quiz amazon" — voir quiz Amazon
+→ "créer quiz [thème]" — générer un quiz
+→ "stats quiz" — performances des quiz
+
+BOUDOUM ! 🇬🇵`
+  }
+
+  if (c.includes('amazon') || c.includes('boutique')) {
+    return `🛍️ RÉSEAU AMAZON REUSSITESS®971
+
+26 boutiques actives • 14 pays • ID: fb942837
+
+🌍 Boutiques principales :
+🇺🇸 USA → amazon.com/shop/amourguadeloupe
+🇫🇷 France → amazon.fr/shop/amourguadeloupe
+🇩🇪 Allemagne → amazon.de/shop/amourguadeloupe
+🇬🇧 UK → amazon.co.uk/shop/amourguadeloupe
+🇨🇦 Canada → amazon.ca/shop/amourguadeloupe
+🇮🇹 Italie → amazon.it/shop/amourguadeloupe
+🇪🇸 Espagne → amazon.es/shop/amourguadeloupe
+🇦🇺 Australie → amzlink.to/az05kTTrYJ06L
+🇧🇪 Belgique → amazon.com.be/shop/influencer-fb942837
+🇮🇳 Inde → amazon.in/shop/amourguadeloupe
+🇸🇬 Singapour → amazon.sg/shop/amourguadeloupe
+🇸🇪 Suède → amazon.se/shop/amourguadeloupe
+🇳🇱 Pays-Bas → amazon.nl/shop/amourguadeloupe
+🇧🇷 Brésil → amzlink.to/az0ymmoCLHvyA
+
+BOUDOUM ! 🇬🇵`
+  }
+
+  if (c.includes('token') || c.includes('reuss') || c.includes('blockchain')) {
+    return `💎 TOKEN REUSS — DONNÉES OFFICIELLES
+
+📋 Contrat : 0xB37531727fC07c6EED4f97F852A115B428046EB2
+🌐 Réseau : Polygon (MATIC)
+💰 Supply : 999,999,999 REUSS
+🔥 Brûlés : 1 REUSS symbolique
+📊 DEX : QuickSwap V3
+🔍 Explorer : polygonscan.com
+📈 Chart : dexscreener.com
+🦅 Birdeye : birdeye.so
+
+💼 Vecteurs économiques :
+• ALPHA-1 : Staking (APY variable)
+• BETA-2 : Quiz Learn-to-Earn
+• GAMMA-1 : Cashback Amazon
+• DELTA-4 : Gouvernance DAO
+
+BOUDOUM ! 🇬🇵`
+  }
+
+  if (c.includes('agent') || c.includes('ia') || c.includes('nexus')) {
+    return `🤖 SYSTÈME 200 AGENTS IA — QUANTUM NEXUS
+
+🛡️ Sentinelles (50) : Surveillance sécurité 24h/24
+🧠 Neuro-X (80) : Analyse & traitement données
+🎯 Nexus Quiz (40) : Génération contenu éducatif
+👑 Supreme AI (30) : Orchestration & décisions
+
+📊 État actuel :
+✅ Sentinelle → Active (scan /60s)
+✅ Whale Watcher → Active (blockchain)
+✅ Morning Report → Planifié (7h00)
+✅ Auto-Guérison → Score 100/100
+
+🔧 Commandes :
+→ "lancer sentinelle" — activer surveillance
+→ "rapport matin" — générer bilan
+→ "santé système" — diagnostic complet
+
+BOUDOUM ! 🇬🇵`
+  }
+
+  return null
+}
+
+module.exports.handleNexusCommand = handleNexusCommand

@@ -22,6 +22,9 @@ export default function SuperBotAssistant() {
   const [langue, setLangue] = useState('fr')
   const [showLangMenu, setShowLangMenu] = useState(false)
   const [audioEnabled, setAudioEnabled] = useState(true)
+  const [activeTab, setActiveTab] = useState('chat')
+  const [nexusStats, setNexusStats] = useState(null)
+  const [nexusLoading, setNexusLoading] = useState(false)
   const messagesEndRef = useRef(null)
   const recognitionRef = useRef(null)
 
@@ -110,6 +113,29 @@ export default function SuperBotAssistant() {
     } finally { setIsLoading(false) }
   }
 
+
+  const fetchNexusStats = async () => {
+    setNexusLoading(true)
+    try {
+      const [site, token, matic] = await Promise.all([
+        fetch('https://reussitess-global-nexus-jfgk.vercel.app').then(r => ({ok:r.ok})).catch(()=>({ok:false})),
+        fetch('https://api.dexscreener.com/latest/dex/tokens/0xB37531727fC07c6EED4f97F852A115B428046EB2').then(r=>r.json()).catch(()=>null),
+        fetch('https://api.coingecko.com/api/v3/simple/price?ids=matic-network&vs_currencies=usd').then(r=>r.json()).catch(()=>null)
+      ])
+      const pair = token?.pairs?.[0]
+      setNexusStats({
+        siteOk: site.ok,
+        price: pair?.priceUsd || 'N/A',
+        change: pair?.priceChange?.h24 || 'N/A',
+        volume: pair?.volume?.h24 || 'N/A',
+        liquidity: pair?.liquidity?.usd || 'N/A',
+        pol: matic?.['matic-network']?.usd || 'N/A',
+        time: new Date().toLocaleTimeString('fr-FR')
+      })
+    } catch(e) {}
+    setNexusLoading(false)
+  }
+
   const handleSubmit = (e) => { e.preventDefault(); submitMessage(input) }
 
   const btnStyle = (bg, disabled) => ({
@@ -173,6 +199,104 @@ export default function SuperBotAssistant() {
             </div>
           </div>
 
+
+          {/* ONGLETS */}
+          <div style={{display:'flex',borderBottom:'1px solid rgba(255,255,255,0.1)'}}>
+            {[['chat','💬 Chat'],['nexus','🌐 Nexus'],['amazon','🛍️ Amazon'],['token','💎 Token']].map(([tab,label]) => (
+              <button key={tab} onClick={() => { setActiveTab(tab); if(tab==='nexus') fetchNexusStats() }}
+                style={{flex:1,padding:'0.6rem',border:'none',background: activeTab===tab?'rgba(16,185,129,0.2)':'transparent',color: activeTab===tab?'#10b981':'#64748b',fontSize:'0.7rem',cursor:'pointer',fontWeight: activeTab===tab?'bold':'normal',borderBottom: activeTab===tab?'2px solid #10b981':'2px solid transparent'}}>
+                {label}
+              </button>
+            ))}
+          </div>
+
+          {/* CONTENU TABS */}
+          {activeTab === 'nexus' && (
+            <div style={{flex:1,overflowY:'auto',padding:'1rem'}}>
+              {nexusLoading ? (
+                <div style={{textAlign:'center',color:'#10b981',padding:'2rem'}}>⏳ Chargement des données live...</div>
+              ) : nexusStats ? (
+                <div style={{display:'flex',flexDirection:'column',gap:'0.8rem'}}>
+                  <div style={{background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',borderRadius:'12px',padding:'1rem'}}>
+                    <p style={{color:'#10b981',fontWeight:'bold',margin:'0 0 0.5rem'}}>🌐 Site Web</p>
+                    <p style={{color: nexusStats.siteOk?'#10b981':'#ef4444',margin:0}}>{nexusStats.siteOk?'✅ EN LIGNE':'❌ HORS LIGNE'}</p>
+                    <p style={{color:'#64748b',fontSize:'0.75rem',margin:'0.3rem 0 0'}}>Mis à jour à {nexusStats.time}</p>
+                  </div>
+                  <div style={{background:'rgba(168,85,247,0.1)',border:'1px solid rgba(168,85,247,0.3)',borderRadius:'12px',padding:'1rem'}}>
+                    <p style={{color:'#a855f7',fontWeight:'bold',margin:'0 0 0.5rem'}}>💎 Token REUSS</p>
+                    <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'0.5rem'}}>
+                      {[['Prix','$'+nexusStats.price],['Var 24h',nexusStats.change+'%'],['Volume','$'+nexusStats.volume],['Liquidité','$'+nexusStats.liquidity]].map(([k,v]) => (
+                        <div key={k} style={{background:'rgba(0,0,0,0.2)',padding:'0.5rem',borderRadius:'8px'}}>
+                          <p style={{color:'#94a3b8',fontSize:'0.7rem',margin:0}}>{k}</p>
+                          <p style={{color:'white',fontWeight:'bold',fontSize:'0.85rem',margin:0}}>{v}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div style={{background:'rgba(59,130,246,0.1)',border:'1px solid rgba(59,130,246,0.3)',borderRadius:'12px',padding:'1rem'}}>
+                    <p style={{color:'#3b82f6',fontWeight:'bold',margin:'0 0 0.5rem'}}>🔷 POL (Polygon)</p>
+                    <p style={{color:'white',fontWeight:'bold',margin:0}}>${nexusStats.pol}</p>
+                  </div>
+                  <div style={{background:'rgba(245,158,11,0.1)',border:'1px solid rgba(245,158,11,0.3)',borderRadius:'12px',padding:'1rem'}}>
+                    <p style={{color:'#f59e0b',fontWeight:'bold',margin:'0 0 0.5rem'}}>🏗️ Écosystème</p>
+                    {[['🛍️ Boutiques Amazon','26 actives • 14 pays'],['🤖 Agents IA','200 déployés'],['📚 Quiz','100+ thèmes'],['🇬🇵 Base','Guadeloupe 971']].map(([k,v]) => (
+                      <div key={k} style={{display:'flex',justifyContent:'space-between',padding:'0.3rem 0',borderBottom:'1px solid rgba(255,255,255,0.05)'}}>
+                        <span style={{color:'#94a3b8',fontSize:'0.8rem'}}>{k}</span>
+                        <span style={{color:'white',fontSize:'0.8rem',fontWeight:'bold'}}>{v}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <button onClick={fetchNexusStats} style={{background:'linear-gradient(135deg,#10b981,#3b82f6)',border:'none',color:'white',padding:'0.8rem',borderRadius:'12px',cursor:'pointer',fontWeight:'bold'}}>
+                    🔄 Actualiser les données
+                  </button>
+                </div>
+              ) : (
+                <div style={{textAlign:'center',padding:'2rem'}}>
+                  <p style={{color:'#94a3b8'}}>Cliquez pour charger les données live</p>
+                  <button onClick={fetchNexusStats} style={{background:'#10b981',border:'none',color:'white',padding:'0.8rem 1.5rem',borderRadius:'12px',cursor:'pointer',fontWeight:'bold',marginTop:'1rem'}}>
+                    🚀 Charger NEXUS
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+
+          {activeTab === 'amazon' && (
+            <div style={{flex:1,overflowY:'auto',padding:'1rem'}}>
+              <p style={{color:'#f59e0b',fontWeight:'bold',marginBottom:'1rem'}}>🛍️ 26 Boutiques • 14 Pays</p>
+              {[['🇺🇸','USA','https://amazon.com/shop/amourguadeloupe'],['🇫🇷','France','https://amazon.fr/shop/amourguadeloupe'],['🇩🇪','Allemagne','https://amazon.de/shop/amourguadeloupe'],['🇬🇧','UK','https://amazon.co.uk/shop/amourguadeloupe'],['🇨🇦','Canada','https://amazon.ca/shop/amourguadeloupe'],['🇮🇹','Italie','https://amazon.it/shop/amourguadeloupe'],['🇪🇸','Espagne','https://amazon.es/shop/amourguadeloupe'],['🇦🇺','Australie','https://amzlink.to/az05kTTrYJ06L'],['🇧🇪','Belgique','https://amazon.com.be/shop/influencer-fb942837'],['🇮🇳','Inde','https://amazon.in/shop/amourguadeloupe'],['🇸🇬','Singapour','https://amazon.sg/shop/amourguadeloupe'],['🇸🇪','Suède','https://amazon.se/shop/amourguadeloupe'],['🇳🇱','Pays-Bas','https://amazon.nl/shop/amourguadeloupe'],['🇧🇷','Brésil','https://amzlink.to/az0ymmoCLHvyA']].map(([flag,name,url]) => (
+                <a key={name} href={url} target="_blank" rel="noopener noreferrer" style={{display:'flex',alignItems:'center',gap:'0.8rem',padding:'0.7rem',background:'rgba(245,158,11,0.1)',border:'1px solid rgba(245,158,11,0.2)',borderRadius:'10px',marginBottom:'0.5rem',textDecoration:'none',color:'white'}}>
+                  <span style={{fontSize:'1.5rem'}}>{flag}</span>
+                  <div>
+                    <p style={{margin:0,fontWeight:'bold',fontSize:'0.85rem'}}>{name}</p>
+                    <p style={{margin:0,fontSize:'0.65rem',color:'#94a3b8'}}>{url.replace('https://','').substring(0,35)}...</p>
+                  </div>
+                  <span style={{marginLeft:'auto',color:'#f59e0b'}}>→</span>
+                </a>
+              ))}
+            </div>
+          )}
+
+          {activeTab === 'token' && (
+            <div style={{flex:1,overflowY:'auto',padding:'1rem'}}>
+              <p style={{color:'#a855f7',fontWeight:'bold',marginBottom:'1rem'}}>💎 Token REUSS — Données Officielles</p>
+              {[['📋 Contrat','0xB37531...46EB2'],['🌐 Réseau','Polygon (MATIC)'],['💰 Supply','999,999,999 REUSS'],['🔥 Brûlés','1 REUSS symbolique'],['📊 DEX','QuickSwap V3'],['⚡ Vecteur 1','ALPHA-1 : Staking'],['🎓 Vecteur 2','BETA-2 : Quiz L2E'],['🛍️ Vecteur 3','GAMMA-1 : Amazon CB'],['🏛️ Vecteur 4','DELTA-4 : Gouvernance']].map(([k,v]) => (
+                <div key={k} style={{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'0.7rem',background:'rgba(168,85,247,0.08)',border:'1px solid rgba(168,85,247,0.2)',borderRadius:'10px',marginBottom:'0.5rem'}}>
+                  <span style={{color:'#94a3b8',fontSize:'0.8rem'}}>{k}</span>
+                  <span style={{color:'white',fontSize:'0.8rem',fontWeight:'bold'}}>{v}</span>
+                </div>
+              ))}
+              <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'0.5rem',marginTop:'0.5rem'}}>
+                {[['🔍 PolygonScan','https://polygonscan.com/token/0xB37531727fC07c6EED4f97F852A115B428046EB2'],['📈 DexScreener','https://dexscreener.com/polygon/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c'],['🦅 Birdeye','https://birdeye.so/token/0xB37531727fC07c6EED4f97F852A115B428046EB2'],['💱 QuickSwap','https://quickswap.exchange']].map(([label,url]) => (
+                  <a key={label} href={url} target="_blank" rel="noopener noreferrer" style={{padding:'0.7rem',background:'rgba(168,85,247,0.15)',border:'1px solid rgba(168,85,247,0.3)',borderRadius:'10px',textDecoration:'none',color:'#a855f7',textAlign:'center',fontSize:'0.8rem',fontWeight:'bold'}}>
+                    {label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'chat' && <>
           {/* MESSAGES */}
           <div style={{flex:1,overflowY:'auto',padding:'1.5rem',display:'flex',flexDirection:'column',gap:'1rem'}}>
             {messages.map((msg, idx) => (
@@ -238,6 +362,7 @@ export default function SuperBotAssistant() {
               🎤 Micro • 🔊 Audio • 🌐 8 langues • 🇬🇵 BOUDOUM
             </p>
           </form>
+          </> }
         </div>
       )}
 
