@@ -237,6 +237,36 @@ async function getWikipedia(term) {
     } catch(e) {}
   }
 
+  // CITATION DU JOUR
+  if (msgLow.includes("citation") || msgLow.includes("inspire") || msgLow.includes("inspirant") || msgLow.includes("sagesse") || msgLow.includes("motivation")) {
+    try {
+      const cit = await getCitation()
+      return res.status(200).json({ response: "✨ **Citation du Jour**\n\n"+cit+"\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
+  // FAIT INSOLITE
+  if (msgLow.includes("insolite") || msgLow.includes("saviez") || msgLow.includes("fait du jour") || msgLow.includes("anecdote") || msgLow.includes("surprise")) {
+    try {
+      const fait = await getFaitInsolite()
+      return res.status(200).json({ response: "🤔 **Fait Insolite du Jour**\n\n"+fait+"\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
+  // ISS POSITION
+  if (msgLow.includes("iss") || msgLow.includes("station spatiale") || msgLow.includes("espace") || msgLow.includes("satellite")) {
+    try {
+      const iss = await getISSPosition()
+      return res.status(200).json({ response: "🛸 **Station Spatiale ISS — Position Temps Réel**\n\n"+iss+"\n\n🌍 Visible à l'oeil nu la nuit !\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
+  // PHASE DE LUNE
+  if (msgLow.includes("lune") || msgLow.includes("moon") || msgLow.includes("pleine lune") || msgLow.includes("phase")) {
+    const lune = getLunePhase()
+    return res.status(200).json({ response: "🌙 **Phase de la Lune**\n\n"+lune+"\n\nBOUDOUM ! 🇬🇵" })
+  }
+
   // ACTUALITES DIRECTES
   if (msgLow.includes('actualite') || msgLow.includes('actualité') || msgLow.includes('news') || msgLow.includes('nouvelles') || msgLow.includes('info du jour')) {
     try {
@@ -366,6 +396,43 @@ async function getExchangeRates() {
   } catch(e) { return null }
 }
 
+async function getCitation() {
+  try {
+    const r = await fetch("https://zenquotes.io/api/random")
+    const d = await r.json()
+    return "\"" + d[0].q + "\" — " + d[0].a
+  } catch(e) { return null }
+}
+
+async function getFaitInsolite() {
+  try {
+    const r = await fetch("https://uselessfacts.jsph.pl/api/v2/facts/random?language=en")
+    const d = await r.json()
+    return d.text
+  } catch(e) { return null }
+}
+
+async function getISSPosition() {
+  try {
+    const r = await fetch("http://api.open-notify.org/iss-now.json")
+    const d = await r.json()
+    const lat = parseFloat(d.iss_position.latitude).toFixed(2)
+    const lon = parseFloat(d.iss_position.longitude).toFixed(2)
+    const zone = lat > 0 ? lat+"°N" : Math.abs(lat)+"°S"
+    const zoneL = lon > 0 ? lon+"°E" : Math.abs(lon)+"°O"
+    return "Lat "+zone+" | Lon "+zoneL+" | Altitude ~408 km | Vitesse ~27 600 km/h"
+  } catch(e) { return null }
+}
+
+function getLunePhase() {
+  const now = new Date()
+  const diff = (now - new Date(2001,0,1)) / 86400000
+  const phase = (diff / 29.53058868) % 1
+  const phases = ["🌑 Nouvelle lune","🌒 Croissant","🌓 Premier quartier","🌔 Gibbeuse croissante","🌕 Pleine lune","🌖 Gibbeuse décroissante","🌗 Dernier quartier","🌘 Croissant décroissant"]
+  const pct = Math.round(phase * 100)
+  return phases[Math.floor(phase*8)] + " (" + pct + "% du cycle)"
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
@@ -409,6 +476,36 @@ export default async function handler(req, res) {
       const r = fd.rates
       return res.status(200).json({ response: "💱 **Taux de Change — Temps réel**\n\n💵 EUR/USD : "+r.USD+"\n💷 EUR/GBP : "+r.GBP+"\n🇧🇷 EUR/BRL : "+r.BRL+"\n🇨🇦 EUR/CAD : "+r.CAD+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) { return res.status(200).json({ response: "💱 Service taux indisponible. BOUDOUM 🇬🇵" }) }
+  }
+
+  // CITATION DU JOUR
+  if (msgLow.includes("citation") || msgLow.includes("inspire") || msgLow.includes("inspirant") || msgLow.includes("sagesse") || msgLow.includes("motivation")) {
+    try {
+      const cit = await getCitation()
+      return res.status(200).json({ response: "✨ **Citation du Jour**\n\n"+cit+"\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
+  // FAIT INSOLITE
+  if (msgLow.includes("insolite") || msgLow.includes("saviez") || msgLow.includes("fait du jour") || msgLow.includes("anecdote") || msgLow.includes("surprise")) {
+    try {
+      const fait = await getFaitInsolite()
+      return res.status(200).json({ response: "🤔 **Fait Insolite du Jour**\n\n"+fait+"\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
+  // ISS POSITION
+  if (msgLow.includes("iss") || msgLow.includes("station spatiale") || msgLow.includes("espace") || msgLow.includes("satellite")) {
+    try {
+      const iss = await getISSPosition()
+      return res.status(200).json({ response: "🛸 **Station Spatiale ISS — Position Temps Réel**\n\n"+iss+"\n\n🌍 Visible à l'oeil nu la nuit !\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
+  // PHASE DE LUNE
+  if (msgLow.includes("lune") || msgLow.includes("moon") || msgLow.includes("pleine lune") || msgLow.includes("phase")) {
+    const lune = getLunePhase()
+    return res.status(200).json({ response: "🌙 **Phase de la Lune**\n\n"+lune+"\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // ACTUALITES DIRECTES
