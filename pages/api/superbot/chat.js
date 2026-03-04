@@ -224,6 +224,21 @@ BOUDOUM ! 🇬🇵` })
   } catch (e) { return null }
 }
 
+async function getNewsRSS(query) {
+  try {
+    const url = "https://news.google.com/rss/search?q=" + encodeURIComponent(query) + "&hl=fr&gl=FR&ceid=FR:fr"
+    const r = await fetch(url)
+    const xml = await r.text()
+    const items = xml.match(/<item>[\s\S]*?<\/item>/g) || []
+    const results = items.slice(0, 5).map(function(item) {
+      const t = (item.match(/<title>(.*?)<\/title>/) || [])[1] || ""
+      const s = (item.match(/<source[^>]*>(.*?)<\/source>/) || [])[1] || ""
+      return "• " + t + (s ? " — " + s : "")
+    })
+    return results.join("\n")
+  } catch(e) { return null }
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
@@ -753,6 +768,8 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
           finalResponse = `📚 **Wikipedia :** ${wikiData.substring(0, 1500)}${wikiData.length > 1500 ? "..." : ""}`
         } else {
           try {
+            const nd = await getNewsRSS(message.substring(0, 60))
+            const nc = nd ? "\nACTUALITES DU JOUR:\n" + nd : ""
             const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
               method: "POST",
               headers: { "Content-Type": "application/json", "Authorization": `Bearer ${process.env.GROQ_API_KEY}` },
@@ -762,7 +779,7 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
                   { role: "system", content: `Tu es REUSSITESS AI du projet REUSSITESS971 fondé par Porinus depuis la Guadeloupe. BOUDOUM!
 CONTEXTE TEMPS RÉEL : Nous sommes le ${datetime?.date || new Date().toLocaleDateString('fr-FR', {weekday:'long',year:'numeric',month:'long',day:'numeric'})} à ${datetime?.heure || new Date().toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit'})} (${datetime?.timezone || 'Europe/Paris'}).
 Si on te demande l'heure, la date ou le jour, utilise EXACTEMENT ces données temps réel.
-Projet REUSSITESS®971 : 99 quiz, 26 boutiques Amazon (14 pays), Token REUSS sur Polygon, 200 agents IA.` },
+Projet REUSSITESS®971 : 99 quiz, 26 boutiques Amazon (14 pays), Token REUSS sur Polygon, 200 agents IA." + nc + "` },
                   { role: "user", content: message }
                 ],
                 max_tokens: 1024
