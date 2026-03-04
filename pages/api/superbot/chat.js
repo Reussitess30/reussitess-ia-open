@@ -237,6 +237,58 @@ async function getWikipedia(term) {
     } catch(e) {}
   }
 
+  // DETECTION PRENOM
+  const prenom = detectPrenom(message)
+  if (prenom) {
+    return res.status(200).json({ response: "🎉 Enchanté"+", "+prenom+" ! Je vais retenir ton prénom pour notre conversation. Bienvenue chez REUSSITESS AI — Excellence • Innovation • Succès !\n\nBOUDOUM ! 🇬🇵" })
+  }
+
+  // DETECTION EMOTION
+  const emotion = detectEmotion(message)
+  if (emotion) {
+    const emoResp = getEmotionResponse(emotion)
+    if (emoResp) return res.status(200).json({ response: emoResp })
+  }
+
+  // DETECTION MODE
+  const mode = detectMode(message)
+  if (mode) {
+    const modeResp = getModeResponse(mode, null)
+    if (modeResp) return res.status(200).json({ response: modeResp })
+  }
+
+  // SALUTATION AVEC HEURE
+  if (msgLow.includes("bonjour") || msgLow.includes("bonsoir") || msgLow.includes("bonjou") || msgLow.includes("salut") || msgLow.includes("hello") || msgLow.includes("hey")) {
+    const sal = getSalutation(datetime)
+    const lune = getLunePhase()
+    return res.status(200).json({ response: sal+" ! Je suis REUSSITESS AI, né en Guadeloupe 🇬🇵\n\n🌙 Lune : "+lune+"\n\n✨ Je peux t'aider avec :\n• 📰 Actualités temps réel\n• 💎 Prix crypto live\n• 🌤️ Météo\n• 🎓 99 Quiz\n• 🛍️ 26 Boutiques Amazon\n• 😂 Blagues caribéennes\n• 🔢 Conversions\n\nQue puis-je faire pour toi ?\n\nBOUDOUM ! 🇬🇵" })
+  }
+
+  // MOT CREOLE DU JOUR
+  if (msgLow.includes("creole") || msgLow.includes("créole") || msgLow.includes("mot du jour") || msgLow.includes("gwadloup") || msgLow.includes("patois")) {
+    const m = getMotCreoleJour()
+    return res.status(200).json({ response: "🇬🇵 **Mot Créole du Jour**\n\n📖 **"+m.mot+"** = "+m.sens+"\n\n💬 Exemple : *"+m.phrase+"*\n\nBOUDOUM ! 🌴" })
+  }
+
+  // BLAGUE CARIBEENNE
+  if (msgLow.includes("blague") || msgLow.includes("humour") || msgLow.includes("drole") || msgLow.includes("drôle") || msgLow.includes("rire") || msgLow.includes("joke")) {
+    const b = getBlague()
+    return res.status(200).json({ response: "😂 **Blague Caribéenne**\n\n"+b+"\n\nBOUDOUM ! 🇬🇵" })
+  }
+
+  // HOROSCOPE
+  if (msgLow.includes("horoscope") || msgLow.includes("signe") || msgLow.includes("astrologie") || msgLow.includes("belier") || msgLow.includes("taureau") || msgLow.includes("gemeaux") || msgLow.includes("cancer") || msgLow.includes("lion") || msgLow.includes("vierge") || msgLow.includes("balance") || msgLow.includes("scorpion") || msgLow.includes("sagittaire") || msgLow.includes("capricorne") || msgLow.includes("verseau") || msgLow.includes("poissons")) {
+    const h = getHoroscope(msgLow)
+    if (h) return res.status(200).json({ response: "🔮 **Horoscope du Jour**\n\n"+h.signe+"\n\n"+h.msg+"\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ response: "🔮 **Horoscope du Jour**\n\nPrécise ton signe : Bélier, Taureau, Gémeaux, Cancer, Lion, Vierge, Balance, Scorpion, Sagittaire, Capricorne, Verseau ou Poissons ?\n\nBOUDOUM ! 🇬🇵" })
+  }
+
+  // CONVERTISSEUR
+  if (msgLow.includes("convertir") || msgLow.includes("convert") || (msgLow.includes("km") && msgLow.includes("mile")) || (msgLow.includes("kg") && msgLow.includes("lb")) || msgLow.includes("celsius") || msgLow.includes("fahrenheit")) {
+    const conv = convertir(msgLow)
+    if (conv) return res.status(200).json({ response: "🔢 **Convertisseur**\n\n✅ "+conv+"\n\nBOUDOUM ! 🇬🇵" })
+  }
+
   // CITATION DU JOUR
   if (msgLow.includes("citation") || msgLow.includes("inspire") || msgLow.includes("inspirant") || msgLow.includes("sagesse") || msgLow.includes("motivation")) {
     try {
@@ -433,6 +485,169 @@ function getLunePhase() {
   return phases[Math.floor(phase*8)] + " (" + pct + "% du cycle)"
 }
 
+// ============================================
+// BASE DE DONNÉES LOCALE REUSSITESS
+// ============================================
+const MOTS_CREOLES = [
+  {mot:"Bonjou",sens:"Bonjour",phrase:"Bonjou tout moun ! (Bonjour tout le monde !)"},
+  {mot:"Bèl",sens:"Beau/Belle",phrase:"Ou bèl jodi a ! (Tu es beau/belle aujourd'hui !)"},
+  {mot:"Kouri",sens:"Courir/Partir",phrase:"Kouri pou réussi ! (Cours pour réussir !)"},
+  {mot:"Lajan",sens:"Argent",phrase:"Travay pou ganyen lajan ou ! (Travaille pour gagner ton argent !)"},
+  {mot:"Fòs",sens:"Force",phrase:"Ou ni fòs ! (Tu as de la force !)"},
+  {mot:"Doubout",sens:"Debout/Déterminé",phrase:"Ress doubout ! (Reste debout !)"},
+  {mot:"Lanmou",sens:"Amour",phrase:"Lanmou sé bèl bagay ! (L'amour est une belle chose !)"},
+  {mot:"Péyi",sens:"Pays/Île",phrase:"Nou enmé nou péyi ! (Nous aimons notre pays !)"},
+  {mot:"Solèy",sens:"Soleil",phrase:"Solèy la ka brilé ! (Le soleil brille !)"},
+  {mot:"Viktwa",sens:"Victoire",phrase:"Viktwa sé pou nou ! (La victoire est pour nous !)"},
+  {mot:"Espwa",sens:"Espoir",phrase:"Toujou ni espwa ! (Il y a toujours de l'espoir !)"},
+  {mot:"Chans",sens:"Chance",phrase:"Chans ka souri ba ou ! (La chance te sourit !)"},
+  {mot:"Kontan",sens:"Content/Heureux",phrase:"Mwen kontan wè ou ! (Je suis content de te voir !)"},
+  {mot:"Kouraj",sens:"Courage",phrase:"Pran kouraj ! (Prends courage !)"},
+  {mot:"Richès",sens:"Richesse",phrase:"Richès sé pa sèlman lajan ! (La richesse n'est pas seulement l'argent !)"},
+]
+
+const BLAGUES_CARAIBES = [
+  "Pourquoi les Guadeloupéens sont toujours de bonne humeur ? Parce que même les nuages chez nous ont du soleil dedans ! ☀️",
+  "Un touriste demande à un Martiniquais : C'est loin la plage ? Il répond : Non non, juste après le prochain virage... (3 virages plus tard) 😄",
+  "Comment on appelle un Antillais qui fait du ski ? Un pionnier ! 🎿",
+  "Pourquoi les crabes des Antilles marchent de côté ? Pour éviter les touristes qui font des selfies ! 🦀",
+  "Un Guadeloupéen arrive en retard au travail. Son patron : Vous êtes en retard ! Lui : Non, je suis en avance pour demain ! 🇬🇵",
+  "Quelle est la différence entre un cyclone et une réunion de famille antillaise ? Le cyclone finit par partir ! 🌀",
+  "Pourquoi les cocotiers poussent si droit en Guadeloupe ? Parce qu'ils regardent le ciel pour trouver l'inspiration comme nous ! 🌴",
+  "Comment s'appelle un Caribéen qui a froid ? Un menteur ! 😂",
+]
+
+const HOROSCOPES = {
+  belier:{signe:"♈ Bélier",msg:"Votre énergie est au maximum aujourd'hui. Foncez sur vos projets REUSSITESS !"},
+  taureau:{signe:"♉ Taureau",msg:"La persévérance paie. Votre token REUSS monte comme votre détermination !"},
+  gemeaux:{signe:"♊ Gémeaux",msg:"Communication au top ! Partagez votre projet avec votre réseau aujourd'hui."},
+  cancer:{signe:"♋ Cancer",msg:"Intuition forte. Faites confiance à votre vision entrepreneuriale."},
+  lion:{signe:"♌ Lion",msg:"Vous brillez ! C'est le moment de vous montrer sur les réseaux sociaux."},
+  vierge:{signe:"♍ Vierge",msg:"Analyse et précision au rendez-vous. Vérifiez vos stratégies Amazon."},
+  balance:{signe:"♎ Balance",msg:"Équilibre parfait entre innovation et tradition caribéenne."},
+  scorpion:{signe:"♏ Scorpion",msg:"Transformation en cours. Votre projet entre dans une nouvelle phase."},
+  sagittaire:{signe:"♐ Sagittaire",msg:"Expansion internationale ! Vos 14 pays Amazon n'attendent que vous."},
+  capricorne:{signe:"♑ Capricorne",msg:"Discipline et ambition. BOUDOUM — le succès est au bout de l'effort !"},
+  verseau:{signe:"♒ Verseau",msg:"Innovation et originalité. Votre IA révolutionne le monde caribéen !"},
+  poissons:{signe:"♓ Poissons",msg:"Créativité débordante. Exprimez votre culture guadeloupéenne avec fierté."},
+}
+
+function getMotCreoleJour() {
+  const idx = new Date().getDate() % MOTS_CREOLES.length
+  return MOTS_CREOLES[idx]
+}
+
+function getBlague() {
+  const idx = Math.floor(Math.random() * BLAGUES_CARAIBES.length)
+  return BLAGUES_CARAIBES[idx]
+}
+
+function getHoroscope(signe) {
+  const s = signe.toLowerCase()
+  for (const [key, val] of Object.entries(HOROSCOPES)) {
+    if (s.includes(key)) return val
+  }
+  return null
+}
+
+function convertir(msg) {
+  const nb = parseFloat(msg.match(/[\d.,]+/)?.[0]?.replace(",","."))
+  if (isNaN(nb)) return null
+  if (msg.includes("km") && msg.includes("mile")) return nb + " km = " + (nb*0.621371).toFixed(2) + " miles"
+  if (msg.includes("mile") && (msg.includes("km") || msg.includes("kilo"))) return nb + " miles = " + (nb*1.60934).toFixed(2) + " km"
+  if (msg.includes("kg") && (msg.includes("lb") || msg.includes("livre"))) return nb + " kg = " + (nb*2.20462).toFixed(2) + " lbs"
+  if ((msg.includes("lb") || msg.includes("livre")) && msg.includes("kg")) return nb + " lbs = " + (nb*0.453592).toFixed(2) + " kg"
+  if (msg.includes("celsius") || msg.includes("°c")) return nb + "°C = " + (nb*9/5+32).toFixed(1) + "°F"
+  if (msg.includes("fahrenheit") || msg.includes("°f")) return nb + "°F = " + ((nb-32)*5/9).toFixed(1) + "°C"
+  if (msg.includes("metre") || msg.includes("mètre")) return nb + " m = " + (nb*3.28084).toFixed(2) + " pieds"
+  if (msg.includes("pied") || msg.includes("feet") || msg.includes("ft")) return nb + " pieds = " + (nb*0.3048).toFixed(2) + " m"
+  return null
+}
+
+// ============================================
+// INTELLIGENCE REUSSITESS AI
+// ============================================
+
+// Détection émotion
+function detectEmotion(msg) {
+  const m = msg.toLowerCase()
+  if (m.includes("triste") || m.includes("déprimé") || m.includes("déprime") || m.includes("malheureux") || m.includes("pleure") || m.includes("mal")) return "triste"
+  if (m.includes("stressé") || m.includes("stresse") || m.includes("anxieux") || m.includes("peur") || m.includes("angoisse") || m.includes("inquiet")) return "stresse"
+  if (m.includes("motivé") || m.includes("motive") || m.includes("foncé") || m.includes("déterminé") || m.includes("prêt") || m.includes("champion")) return "motif"
+  if (m.includes("colère") || m.includes("enervé") || m.includes("énervé") || m.includes("fâché") || m.includes("furieux")) return "colere"
+  if (m.includes("heureux") || m.includes("content") || m.includes("joie") || m.includes("super") || m.includes("excellent") || m.includes("génial")) return "joie"
+  return null
+}
+
+// Réponse émotionnelle
+function getEmotionResponse(emotion) {
+  if (emotion === "triste") return "💙 Je sens que tu traverses un moment difficile. En Guadeloupe on dit : *'Apré lapli, solèy ka briyé'* — Après la pluie, le soleil brille. Tu n'es pas seul(e), je suis là. Comment puis-je t'aider ?\n\nBOUDOUM ! 🇬🇵"
+  if (emotion === "stresse") return "🌴 Respire... Comme la mer des Caraïbes, laisse les vagues passer. Le stress est temporaire, ta valeur est permanente. Dis-moi ce qui te préoccupe, on trouve une solution ensemble.\n\nBOUDOUM ! 🇬🇵"
+  if (emotion === "motif") return "🔥 OUIII ! Cette énergie c'est REUSSITESS pure ! Tu es en mode champion aujourd'hui. Dis-moi sur quoi tu travailles, on va tout déchirer ensemble !\n\nBOUDOUM ! 🇬🇵"
+  if (emotion === "colere") return "🌊 Je comprends ta frustration. Prends un moment, comme une vague qui se retire avant de revenir plus forte. Qu'est-ce qui s'est passé ? Je t'écoute.\n\nBOUDOUM ! 🇬🇵"
+  if (emotion === "joie") return "🎉 Cette bonne énergie est contagieuse ! C'est exactement l'esprit REUSSITESS — Positivité à l'infini ! Partage ta joie avec moi !\n\nBOUDOUM ! 🇬🇵"
+  return null
+}
+
+// Détection prénom
+function detectPrenom(msg) {
+  const patterns = [
+    /je m'?appelle ([A-Za-zÀ-ÿ]+)/i,
+    /mon (?:prénom|prenom|nom) est ([A-Za-zÀ-ÿ]+)/i,
+    /appelle[- ]moi ([A-Za-zÀ-ÿ]+)/i,
+    /c'est ([A-Za-zÀ-ÿ]+) ici/i,
+  ]
+  for (const p of patterns) {
+    const m = msg.match(p)
+    if (m) return m[1]
+  }
+  return null
+}
+
+// Détection langue automatique
+function detectLangue(msg) {
+  const fr = ["bonjour","merci","comment","pourquoi","quest","quel","aide","faire","avoir","être"]
+  const en = ["hello","thank","how","why","what","help","make","have","please","good"]
+  const es = ["hola","gracias","como","porque","que","ayuda","hacer","tener","buenas","buenos"]
+  const pt = ["ola","obrigado","como","porque","que","ajuda","fazer","ter","bom","boa"]
+  const m = msg.toLowerCase()
+  let scores = {fr:0, en:0, es:0, pt:0}
+  fr.forEach(w => { if(m.includes(w)) scores.fr++ })
+  en.forEach(w => { if(m.includes(w)) scores.en++ })
+  es.forEach(w => { if(m.includes(w)) scores.es++ })
+  pt.forEach(w => { if(m.includes(w)) scores.pt++ })
+  return Object.entries(scores).sort((a,b)=>b[1]-a[1])[0][0]
+}
+
+// Détection mode
+function detectMode(msg) {
+  const m = msg.toLowerCase()
+  if (m.includes("mode entrepreneur") || m.includes("conseils business") || m.includes("business")) return "entrepreneur"
+  if (m.includes("mode fun") || m.includes("mode humour") || m.includes("amuse")) return "fun"
+  if (m.includes("mode apprenant") || m.includes("explique") || m.includes("apprends") || m.includes("apprendre")) return "apprenant"
+  if (m.includes("mode sérieux") || m.includes("mode serieux") || m.includes("professionnel")) return "serieux"
+  return null
+}
+
+// Réponse mode
+function getModeResponse(mode, prenom) {
+  const nom = prenom ? " "+prenom : ""
+  if (mode === "entrepreneur") return "💼 Mode Entrepreneur activé"+nom+" ! Je vais te parler stratégie, business, revenus passifs et token REUSS. Qu'est-ce qu'on développe aujourd'hui ?\n\nBOUDOUM ! 🇬🇵"
+  if (mode === "fun") return "😄 Mode Fun activé"+nom+" ! On va rigoler tout en apprenant — style caribéen ! Pose-moi n'importe quoi !\n\nBOUDOUM ! 🇬🇵"
+  if (mode === "apprenant") return "🎓 Mode Apprenant activé"+nom+" ! Je vais tout t'expliquer simplement, avec des exemples caribéens. On commence par quoi ?\n\nBOUDOUM ! 🇬🇵"
+  if (mode === "serieux") return "🎯 Mode Professionnel activé"+nom+" ! Réponses précises et directes. Que puis-je faire pour toi ?\n\nBOUDOUM ! 🇬🇵"
+  return null
+}
+
+// Salutation avec heure
+function getSalutation(datetime) {
+  const heure = datetime?.heure ? parseInt(datetime.heure.split(":")[0]) : new Date().getHours()
+  if (heure >= 5 && heure < 12) return "🌅 Bonjou ! Bon matin"
+  if (heure >= 12 && heure < 18) return "☀️ Bonjou ! Bon après-midi"
+  if (heure >= 18 && heure < 22) return "🌆 Bonsoir"
+  return "🌙 Bonne nuit"
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
@@ -476,6 +691,58 @@ export default async function handler(req, res) {
       const r = fd.rates
       return res.status(200).json({ response: "💱 **Taux de Change — Temps réel**\n\n💵 EUR/USD : "+r.USD+"\n💷 EUR/GBP : "+r.GBP+"\n🇧🇷 EUR/BRL : "+r.BRL+"\n🇨🇦 EUR/CAD : "+r.CAD+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) { return res.status(200).json({ response: "💱 Service taux indisponible. BOUDOUM 🇬🇵" }) }
+  }
+
+  // DETECTION PRENOM
+  const prenom = detectPrenom(message)
+  if (prenom) {
+    return res.status(200).json({ response: "🎉 Enchanté"+", "+prenom+" ! Je vais retenir ton prénom pour notre conversation. Bienvenue chez REUSSITESS AI — Excellence • Innovation • Succès !\n\nBOUDOUM ! 🇬🇵" })
+  }
+
+  // DETECTION EMOTION
+  const emotion = detectEmotion(message)
+  if (emotion) {
+    const emoResp = getEmotionResponse(emotion)
+    if (emoResp) return res.status(200).json({ response: emoResp })
+  }
+
+  // DETECTION MODE
+  const mode = detectMode(message)
+  if (mode) {
+    const modeResp = getModeResponse(mode, null)
+    if (modeResp) return res.status(200).json({ response: modeResp })
+  }
+
+  // SALUTATION AVEC HEURE
+  if (msgLow.includes("bonjour") || msgLow.includes("bonsoir") || msgLow.includes("bonjou") || msgLow.includes("salut") || msgLow.includes("hello") || msgLow.includes("hey")) {
+    const sal = getSalutation(datetime)
+    const lune = getLunePhase()
+    return res.status(200).json({ response: sal+" ! Je suis REUSSITESS AI, né en Guadeloupe 🇬🇵\n\n🌙 Lune : "+lune+"\n\n✨ Je peux t'aider avec :\n• 📰 Actualités temps réel\n• 💎 Prix crypto live\n• 🌤️ Météo\n• 🎓 99 Quiz\n• 🛍️ 26 Boutiques Amazon\n• 😂 Blagues caribéennes\n• 🔢 Conversions\n\nQue puis-je faire pour toi ?\n\nBOUDOUM ! 🇬🇵" })
+  }
+
+  // MOT CREOLE DU JOUR
+  if (msgLow.includes("creole") || msgLow.includes("créole") || msgLow.includes("mot du jour") || msgLow.includes("gwadloup") || msgLow.includes("patois")) {
+    const m = getMotCreoleJour()
+    return res.status(200).json({ response: "🇬🇵 **Mot Créole du Jour**\n\n📖 **"+m.mot+"** = "+m.sens+"\n\n💬 Exemple : *"+m.phrase+"*\n\nBOUDOUM ! 🌴" })
+  }
+
+  // BLAGUE CARIBEENNE
+  if (msgLow.includes("blague") || msgLow.includes("humour") || msgLow.includes("drole") || msgLow.includes("drôle") || msgLow.includes("rire") || msgLow.includes("joke")) {
+    const b = getBlague()
+    return res.status(200).json({ response: "😂 **Blague Caribéenne**\n\n"+b+"\n\nBOUDOUM ! 🇬🇵" })
+  }
+
+  // HOROSCOPE
+  if (msgLow.includes("horoscope") || msgLow.includes("signe") || msgLow.includes("astrologie") || msgLow.includes("belier") || msgLow.includes("taureau") || msgLow.includes("gemeaux") || msgLow.includes("cancer") || msgLow.includes("lion") || msgLow.includes("vierge") || msgLow.includes("balance") || msgLow.includes("scorpion") || msgLow.includes("sagittaire") || msgLow.includes("capricorne") || msgLow.includes("verseau") || msgLow.includes("poissons")) {
+    const h = getHoroscope(msgLow)
+    if (h) return res.status(200).json({ response: "🔮 **Horoscope du Jour**\n\n"+h.signe+"\n\n"+h.msg+"\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ response: "🔮 **Horoscope du Jour**\n\nPrécise ton signe : Bélier, Taureau, Gémeaux, Cancer, Lion, Vierge, Balance, Scorpion, Sagittaire, Capricorne, Verseau ou Poissons ?\n\nBOUDOUM ! 🇬🇵" })
+  }
+
+  // CONVERTISSEUR
+  if (msgLow.includes("convertir") || msgLow.includes("convert") || (msgLow.includes("km") && msgLow.includes("mile")) || (msgLow.includes("kg") && msgLow.includes("lb")) || msgLow.includes("celsius") || msgLow.includes("fahrenheit")) {
+    const conv = convertir(msgLow)
+    if (conv) return res.status(200).json({ response: "🔢 **Convertisseur**\n\n✅ "+conv+"\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // CITATION DU JOUR
