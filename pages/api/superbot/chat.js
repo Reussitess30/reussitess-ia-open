@@ -198,7 +198,20 @@ Fondateur : Rony Porinus • Guadeloupe 🇬🇵 • BOUDOUM !
 
 async function getWikipedia(term) {
   try {
-    // ✅ NEXUS COMMANDS — priorité maximale
+    // ✅ DATE/HEURE TEMPS RÉEL — priorité absolue
+  const msgLow = message.toLowerCase()
+  if (msgLow.includes('heure') || msgLow.includes('quelle heure') || msgLow.includes('time') || msgLow.includes('jour') || msgLow.includes('date') || msgLow.includes('aujourd') || msgLow.includes('quel jour')) {
+    const now = datetime || {}
+    return res.status(200).json({ response: `🕐 **Temps Réel REUSSITESS AI**
+
+📅 Date : ${now.date || new Date().toLocaleDateString('fr-FR', {weekday:'long',year:'numeric',month:'long',day:'numeric'})}
+⏰ Heure : ${now.heure || new Date().toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit'})}
+🌍 Fuseau : ${now.timezone || 'Europe/Paris'}
+
+BOUDOUM ! 🇬🇵` })
+  }
+
+  // ✅ NEXUS COMMANDS — priorité maximale
     const nexusResponse = await handleNexusCommand(message)
     if (nexusResponse) {
       return res.status(200).json({ response: nexusResponse })
@@ -216,7 +229,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const { message, personality, context } = req.body
+  const { message, personality, context, langue, datetime } = req.body
 
   // Base de connaissances enrichie du projet
   const knowledgeBase = {
@@ -253,8 +266,8 @@ export default async function handler(req, res) {
     
     reussitessNetwork: {
       stores: "26 boutiques Amazon affiliées",
-      countries: ["France", "Belgique", "Italie", "Allemagne", "Suède", "Singapour", "Australie", "Espagne", "Brésil", "Royaume-Uni", "Inde", "Nouvelle-Zélande", "États-Unis", "Canada"],
-      quizzes: "25 quiz thématiques éducatifs",
+      countries: ["France", "Belgique", "Italie", "Allemagne", "Suède", "Singapour", "Australie", "Espagne", "Brésil", "Royaume-Uni", "Inde", "Pays-Bas", "États-Unis", "Canada"],
+      quizzes: "99 quiz thématiques éducatifs en 14 catégories (Amazon, Crypto, IA, Caraibes, Business, Histoire, Droit, Sciences, Sport, Arts, Finance, Gastronomie, Langues, Voyage...)",
       library: "Bibliothèque francophone mondiale (26 pays, 5 continents)"
     },
     
@@ -746,7 +759,10 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
               body: JSON.stringify({
                 model: "llama-3.3-70b-versatile",
                 messages: [
-                  { role: "system", content: "Tu es REUSSITESS AI du projet REUSSITESS971 fonde par Porinus depuis la Guadeloupe. BOUDOUM!" },
+                  { role: "system", content: `Tu es REUSSITESS AI du projet REUSSITESS971 fondé par Porinus depuis la Guadeloupe. BOUDOUM!
+CONTEXTE TEMPS RÉEL : Nous sommes le ${datetime?.date || new Date().toLocaleDateString('fr-FR', {weekday:'long',year:'numeric',month:'long',day:'numeric'})} à ${datetime?.heure || new Date().toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit'})} (${datetime?.timezone || 'Europe/Paris'}).
+Si on te demande l'heure, la date ou le jour, utilise EXACTEMENT ces données temps réel.
+Projet REUSSITESS®971 : 99 quiz, 26 boutiques Amazon (14 pays), Token REUSS sur Polygon, 200 agents IA.` },
                   { role: "user", content: message }
                 ],
                 max_tokens: 1024
