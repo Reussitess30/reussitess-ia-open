@@ -198,24 +198,7 @@ Fondateur : Rony Porinus • Guadeloupe 🇬🇵 • BOUDOUM !
 
 async function getWikipedia(term) {
   try {
-    // ✅ GOOGLE NEWS RSS — actualités temps réel
-async function getNewsRSS(query) {
-  try {
-    const url = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=fr&gl=FR&ceid=FR:fr`
-    const res = await fetch(url)
-    const xml = await res.text()
-    const items = xml.match(/<item>([\s\S]*?)<\/item>/g) || []
-    return items.slice(0, 5).map(item => {
-      const title = item.match(/<title>(.*?)<\/title>/)?.[1] || ''
-      const source = item.match(/<source[^>]*>(.*?)<\/source>/)?.[1] || ''
-      const date = item.match(/<pubDate>(.*?)<\/pubDate>/)?.[1] || ''
-      return `• ${title} — ${source}`
-    }).join('
-')
-  } catch(e) { return null }
-}
-
-// ✅ DATE/HEURE TEMPS RÉEL — priorité absolue
+    // ✅ DATE/HEURE TEMPS RÉEL — priorité absolue
   const msgLow = message.toLowerCase()
   if (msgLow.includes('heure') || msgLow.includes('quelle heure') || msgLow.includes('time') || msgLow.includes('jour') || msgLow.includes('date') || msgLow.includes('aujourd') || msgLow.includes('quel jour')) {
     const now = datetime || {}
@@ -226,22 +209,6 @@ async function getNewsRSS(query) {
 🌍 Fuseau : ${now.timezone || 'Europe/Paris'}
 
 BOUDOUM ! 🇬🇵` })
-  }
-
-  // ✅ ACTUALITÉS RSS — détection mots clés
-  const newsKeywords = ['actualité', 'actu', 'news', 'dernière', 'récent', 'aujourd', 'maintenant', '2024', '2025', '2026', 'crypto', 'bitcoin', 'ia ', 'intelligence artificielle', 'amazon', 'blockchain', 'polygon', 'polygon']
-  if (newsKeywords.some(k => msgLow.includes(k)) && (msgLow.includes('news') || msgLow.includes('actu') || msgLow.includes('dernière') || msgLow.includes('récent'))) {
-    const searchQuery = message.replace(/actualité|actu|news|dernière|récent/gi, '').trim() || 'technologie IA'
-    const news = await getNewsRSS(searchQuery)
-    if (news) {
-      return res.status(200).json({ response: `📰 **Actualités récentes — ${searchQuery}**
-
-${news}
-
-🔄 Source : Google News temps réel
-
-BOUDOUM ! 🇬🇵` })
-    }
   }
 
   // ✅ NEXUS COMMANDS — priorité maximale
@@ -255,35 +222,6 @@ BOUDOUM ! 🇬🇵` })
     const data = await res.json()
     return data.extract || null
   } catch (e) { return null }
-}
-
-async function getNewsRSS(query) {
-  try {
-    const url = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=fr&gl=FR&ceid=FR:fr`
-    const r = await fetch(url)
-    const xml = await r.text()
-    const items = xml.match(/<item>[\s\S]*?<\/item>/g) || []
-    return items.slice(0, 5).map(item => {
-      const title = (item.match(/<title>(.*?)<\/title>/) || [])[1] || ''
-      const source = (item.match(/<source[^>]*>(.*?)<\/source>/) || [])[1] || ''
-      return `• ${title}${source ? ' — ' + source : ''}`
-    }).join('\n')
-  } catch(e) { return null }
-}
-
-async function getNewsRSS(query) {
-  try {
-    const url = "https://news.google.com/rss/search?q=" + encodeURIComponent(query) + "&hl=fr&gl=FR&ceid=FR:fr"
-    const r = await fetch(url)
-    const xml = await r.text()
-    const items = xml.match(/<item>[\s\S]*?<\/item>/g) || []
-    return items.slice(0, 5).map(function(item) {
-      const title = (item.match(/<title>(.*?)<\/title>/) || [])[1] || ''
-      const source = (item.match(/<source[^>]*>(.*?)<\/source>/) || [])[1] || ''
-      return "• " + title + (source ? " — " + source : "")
-    }).join("
-")
-  } catch(e) { return null }
 }
 
 export default async function handler(req, res) {
@@ -815,13 +753,6 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
           finalResponse = `📚 **Wikipedia :** ${wikiData.substring(0, 1500)}${wikiData.length > 1500 ? "..." : ""}`
         } else {
           try {
-            const newsData = await getNewsRSS(message.substring(0, 60))
-            const newsCtx = newsData ? `\nACTUALITÉS RÉCENTES (Google News temps réel) :\n${newsData}\nUtilise ces infos si pertinentes.` : ''
-            const newsData = await getNewsRSS(message.substring(0, 60))
-            const newsCtx = newsData ? "
-ACTUALITES RECENTES (Google News):
-" + newsData + "
-Utilise ces infos si pertinentes." : ""
             const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
               method: "POST",
               headers: { "Content-Type": "application/json", "Authorization": `Bearer ${process.env.GROQ_API_KEY}` },
@@ -831,7 +762,7 @@ Utilise ces infos si pertinentes." : ""
                   { role: "system", content: `Tu es REUSSITESS AI du projet REUSSITESS971 fondé par Porinus depuis la Guadeloupe. BOUDOUM!
 CONTEXTE TEMPS RÉEL : Nous sommes le ${datetime?.date || new Date().toLocaleDateString('fr-FR', {weekday:'long',year:'numeric',month:'long',day:'numeric'})} à ${datetime?.heure || new Date().toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit'})} (${datetime?.timezone || 'Europe/Paris'}).
 Si on te demande l'heure, la date ou le jour, utilise EXACTEMENT ces données temps réel.
-Projet REUSSITESS®971 : 99 quiz, 26 boutiques Amazon (14 pays), Token REUSS sur Polygon, 200 agents IA.\${newsCtx}` },
+Projet REUSSITESS®971 : 99 quiz, 26 boutiques Amazon (14 pays), Token REUSS sur Polygon, 200 agents IA.` },
                   { role: "user", content: message }
                 ],
                 max_tokens: 1024
