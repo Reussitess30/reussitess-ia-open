@@ -260,6 +260,65 @@ async function getCryptoPrice() {
   } catch(e) { return null }
 }
 
+async function getFrance24News() {
+  try {
+    const r = await fetch("https://www.france24.com/fr/rss")
+    const xml = await r.text()
+    const items = xml.match(/<item>[\s\S]*?<\/item>/g) || []
+    return items.slice(0,5).map(function(i){
+      const t = (i.match(/<title>(.*?)<\/title>/) || [])[1] || ""
+      return "- " + t.replace(/<![\s\S]*?>/g,"").trim()
+    }).join(" | ")
+  } catch(e) { return null }
+}
+
+async function getAlJazeeraNews() {
+  try {
+    const r = await fetch("https://www.aljazeera.com/xml/rss/all.xml")
+    const xml = await r.text()
+    const items = xml.match(/<item>[\s\S]*?<\/item>/g) || []
+    return items.slice(0,5).map(function(i){
+      const t = (i.match(/<title>(.*?)<\/title>/) || [])[1] || ""
+      return "- " + t.replace(/<![\s\S]*?>/g,"").trim()
+    }).join(" | ")
+  } catch(e) { return null }
+}
+
+async function getCoinGeckoTrending() {
+  try {
+    const r = await fetch("https://api.coingecko.com/api/v3/search/trending")
+    const d = await r.json()
+    return d.coins.slice(0,5).map(function(c){ return c.item.name }).join(", ")
+  } catch(e) { return null }
+}
+
+async function getFearGreed() {
+  try {
+    const r = await fetch("https://api.alternative.me/fng/")
+    const d = await r.json()
+    return d.data[0].value_classification + " (" + d.data[0].value + "/100)"
+  } catch(e) { return null }
+}
+
+async function getMeteo(lat, lon) {
+  try {
+    lat = lat || 16.26
+    lon = lon || -61.55
+    const r = await fetch("https://api.open-meteo.com/v1/forecast?latitude="+lat+"&longitude="+lon+"&current_weather=true")
+    const d = await r.json()
+    const w = d.current_weather
+    return w.temperature + "C | vent " + w.windspeed + "km/h | code " + w.weathercode
+  } catch(e) { return null }
+}
+
+async function getExchangeRates() {
+  try {
+    const r = await fetch("https://open.er-api.com/v6/latest/EUR")
+    const d = await r.json()
+    return "EUR/USD: " + d.rates.USD + " | EUR/GBP: " + d.rates.GBP + " | EUR/BRL: " + d.rates.BRL + " | EUR/CAD: " + d.rates.CAD
+  } catch(e) { return null }
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
@@ -792,7 +851,13 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
             const rfi = await getRFINews()
             const bbc = await getBBCNews()
             const crypto = await getCryptoPrice()
-            const nc = (rfi?"RFI: "+rfi+" ":"")+(bbc?"BBC: "+bbc+" ":"")+(crypto?"CRYPTO: "+crypto:"")
+            const f24 = await getFrance24News()
+            const alj = await getAlJazeeraNews()
+            const trend = await getCoinGeckoTrending()
+            const fg = await getFearGreed()
+            const meteo = await getMeteo()
+            const fx = await getExchangeRates()
+            const nc = (rfi?"RFI: "+rfi+" ":"")+(bbc?"BBC: "+bbc+" ":"")+(f24?"FRANCE24: "+f24+" ":"")+(alj?"ALJAZEERA: "+alj+" ":"")+(crypto?"CRYPTO PRIX: "+crypto+" ":"")+(trend?"CRYPTO TENDANCE: "+trend+" ":"")+(fg?"MARCHE CRYPTO: "+fg+" ":"")+(meteo?"METEO GUADELOUPE: "+meteo+" ":"")+(fx?"TAUX DE CHANGE: "+fx:"")
             const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
               method: "POST",
               headers: { "Content-Type": "application/json", "Authorization": `Bearer ${process.env.GROQ_API_KEY}` },
@@ -802,7 +867,7 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
                   { role: "system", content: `Tu es REUSSITESS AI du projet REUSSITESS971 fondé par Porinus depuis la Guadeloupe. BOUDOUM!
 CONTEXTE TEMPS RÉEL : Nous sommes le ${datetime?.date || new Date().toLocaleDateString('fr-FR', {weekday:'long',year:'numeric',month:'long',day:'numeric'})} à ${datetime?.heure || new Date().toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit'})} (${datetime?.timezone || 'Europe/Paris'}).
 Si on te demande l'heure, la date ou le jour, utilise EXACTEMENT ces données temps réel.
-Projet REUSSITESS®971 : 99 quiz, 26 boutiques Amazon (14 pays), Token REUSS sur Polygon, 200 agents IA.` },
+Projet REUSSITESS®971 : 99 quiz, 26 boutiques Amazon (14 pays), Token REUSS sur Polygon, 200 agents IA." + (nc?" INFOS TEMPS REEL: "+nc:"") + "` },
                   { role: "user", content: message }
                 ],
                 max_tokens: 1024
