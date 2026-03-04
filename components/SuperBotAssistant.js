@@ -60,12 +60,6 @@ export default function SuperBotAssistant() {
   }, [])
 
   useEffect(() => {
-    if (messages.length > 1) {
-      try { localStorage.setItem('reussitess_chat_v2', JSON.stringify(messages.slice(-10))) } catch(e) {}
-    }
-  }, [messages])
-
-  useEffect(() => {
     try {
       const saved = localStorage.getItem('reussitess_chat_v2')
       if (saved) { const p = JSON.parse(saved); if (p && p.length > 0) setMessages(p) }
@@ -145,7 +139,18 @@ export default function SuperBotAssistant() {
     try {
       const response = await fetch('/api/superbot/chat', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMessage, personality: botPersonality, context: messages, langue })
+        body: JSON.stringify({
+          message: userMessage,
+          personality: botPersonality,
+          context: messages,
+          langue,
+          datetime: {
+            date: new Date().toLocaleDateString('fr-FR', {weekday:'long',year:'numeric',month:'long',day:'numeric'}),
+            heure: new Date().toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit'}),
+            timestamp: new Date().toISOString(),
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+          }
+        })
       })
       const data = await response.json()
       const botResponse = data.response || "Désolé, une erreur s'est produite. Réessayez ! 🔄"
