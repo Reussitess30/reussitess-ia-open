@@ -271,6 +271,21 @@ async function getNewsRSS(query) {
   } catch(e) { return null }
 }
 
+async function getNewsRSS(query) {
+  try {
+    const url = "https://news.google.com/rss/search?q=" + encodeURIComponent(query) + "&hl=fr&gl=FR&ceid=FR:fr"
+    const r = await fetch(url)
+    const xml = await r.text()
+    const items = xml.match(/<item>[\s\S]*?<\/item>/g) || []
+    return items.slice(0, 5).map(function(item) {
+      const title = (item.match(/<title>(.*?)<\/title>/) || [])[1] || ''
+      const source = (item.match(/<source[^>]*>(.*?)<\/source>/) || [])[1] || ''
+      return "• " + title + (source ? " — " + source : "")
+    }).join("
+")
+  } catch(e) { return null }
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
@@ -802,6 +817,11 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
           try {
             const newsData = await getNewsRSS(message.substring(0, 60))
             const newsCtx = newsData ? `\nACTUALITÉS RÉCENTES (Google News temps réel) :\n${newsData}\nUtilise ces infos si pertinentes.` : ''
+            const newsData = await getNewsRSS(message.substring(0, 60))
+            const newsCtx = newsData ? "
+ACTUALITES RECENTES (Google News):
+" + newsData + "
+Utilise ces infos si pertinentes." : ""
             const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
               method: "POST",
               headers: { "Content-Type": "application/json", "Authorization": `Bearer ${process.env.GROQ_API_KEY}` },
