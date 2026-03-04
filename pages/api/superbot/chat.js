@@ -224,18 +224,39 @@ BOUDOUM ! 🇬🇵` })
   } catch (e) { return null }
 }
 
-async function getNewsRSS(query) {
+async function getRFINews() {
   try {
-    const url = "https://news.google.com/rss/search?q=" + encodeURIComponent(query) + "&hl=fr&gl=FR&ceid=FR:fr"
-    const r = await fetch(url)
+    const r = await fetch("https://www.rfi.fr/fr/rss")
     const xml = await r.text()
     const items = xml.match(/<item>[\s\S]*?<\/item>/g) || []
-    const results = items.slice(0, 5).map(function(item) {
-      const t = (item.match(/<title>(.*?)<\/title>/) || [])[1] || ""
-      const s = (item.match(/<source[^>]*>(.*?)<\/source>/) || [])[1] || ""
-      return "• " + t + (s ? " — " + s : "")
-    })
-    return results.join("\n")
+    return items.slice(0,5).map(function(i){
+      const t = (i.match(/<title>(.*?)<\/title>/) || [])[1] || ""
+      return "- " + t.replace(/<![\s\S]*?>/g,"").trim()
+    }).join(" | ")
+  } catch(e) { return null }
+}
+
+async function getBBCNews() {
+  try {
+    const r = await fetch("https://feeds.bbci.co.uk/afrique/rss.xml")
+    const xml = await r.text()
+    const items = xml.match(/<item>[\s\S]*?<\/item>/g) || []
+    return items.slice(0,5).map(function(i){
+      const t = (i.match(/<title>(.*?)<\/title>/) || [])[1] || ""
+      return "- " + t.replace(/<![\s\S]*?>/g,"").trim()
+    }).join(" | ")
+  } catch(e) { return null }
+}
+
+async function getCryptoPrice() {
+  try {
+    const r = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=usd")
+    const d = await r.json()
+    const parts = []
+    if(d.bitcoin) parts.push("BTC $" + d.bitcoin.usd)
+    if(d.ethereum) parts.push("ETH $" + d.ethereum.usd)
+    if(d["matic-network"]) parts.push("POL $" + d["matic-network"].usd)
+    return parts.join(" | ")
   } catch(e) { return null }
 }
 
@@ -768,8 +789,10 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
           finalResponse = `📚 **Wikipedia :** ${wikiData.substring(0, 1500)}${wikiData.length > 1500 ? "..." : ""}`
         } else {
           try {
-            const nd = await getNewsRSS(message.substring(0, 60))
-            const nc = nd ? "\nACTUALITES DU JOUR:\n" + nd : ""
+            const rfi = await getRFINews()
+            const bbc = await getBBCNews()
+            const crypto = await getCryptoPrice()
+            const nc = (rfi?"RFI: "+rfi+" ":"")+(bbc?"BBC: "+bbc+" ":"")+(crypto?"CRYPTO: "+crypto:"")
             const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
               method: "POST",
               headers: { "Content-Type": "application/json", "Authorization": `Bearer ${process.env.GROQ_API_KEY}` },
@@ -779,7 +802,7 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
                   { role: "system", content: `Tu es REUSSITESS AI du projet REUSSITESS971 fondé par Porinus depuis la Guadeloupe. BOUDOUM!
 CONTEXTE TEMPS RÉEL : Nous sommes le ${datetime?.date || new Date().toLocaleDateString('fr-FR', {weekday:'long',year:'numeric',month:'long',day:'numeric'})} à ${datetime?.heure || new Date().toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit'})} (${datetime?.timezone || 'Europe/Paris'}).
 Si on te demande l'heure, la date ou le jour, utilise EXACTEMENT ces données temps réel.
-Projet REUSSITESS®971 : 99 quiz, 26 boutiques Amazon (14 pays), Token REUSS sur Polygon, 200 agents IA." + nc + "` },
+Projet REUSSITESS®971 : 99 quiz, 26 boutiques Amazon (14 pays), Token REUSS sur Polygon, 200 agents IA.` },
                   { role: "user", content: message }
                 ],
                 max_tokens: 1024
