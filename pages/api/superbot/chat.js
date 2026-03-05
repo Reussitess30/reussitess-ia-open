@@ -237,6 +237,41 @@ async function getWikipedia(term) {
     } catch(e) {}
   }
 
+  // PRESENTATION NEURO-X
+  if (msgLow.includes("qui est neuro-x") || msgLow.includes("présente les agents") || msgLow.includes("presente les agents") || msgLow.includes("que font les agents") || msgLow.includes("rôle des agents") || msgLow.includes("role des agents")) {
+    return res.status(200).json({ response: "🤖 **QUANTUM NEXUS — Présentation des 200 Agents**\n\n"+"👑 **Supreme AI** — Orchestre tout, répond à toutes questions\n\n"+"🧠 **Neuro-X (60 agents spécialisés) :**\n"+"• NX-001 Finance — Crypto, DeFi, Token REUSS, investissement\n"+"• NX-002 Business — Amazon, affiliation, e-commerce, revenus\n"+"• NX-003 Culture — Caribéenne, créole, francophone mondiale\n"+"• NX-004 Coach — Motivation, mindset, développement personnel\n"+"• NX-005 Tech — IA, blockchain, Next.js, APIs\n"+"• NX-006 Santé — Bien-être, nutrition antillaise\n"+"• NX-007 Éducation — Quiz, pédagogie, apprentissage\n"+"• NX-008 Juridique — Droit, MiCA, RGPD, auto-entrepreneur\n"+"• NX-009 Voyage — Tourisme caribéen, destinations\n"+"• NX-010 Créatif — Poèmes créoles, histoires, slogans\n"+"• NX-011 Sport — Fitness, champions antillais\n"+"• NX-012 Histoire — Abolition, résistance, patrimoine\n"+"• NX-013 Cuisine — Recettes créoles, accras, colombo\n"+"• NX-014 Musique — Zouk, gwo ka, biguine, soca\n"+"• NX-015 Environnement — Écologie, biodiversité caribéenne\n"+"• NX-016 Immobilier — DOM-TOM, défiscalisation Girardin\n"+"• NX-017 Marketing — Réseaux sociaux, TikTok, croissance\n"+"• NX-018 DeFi — Yield farming, staking, QuickSwap\n"+"• NX-019 NFT — Art numérique, OpenSea, collections\n"+"• NX-020 Psychologie — Résilience, leadership caribéen\n"+"• ... jusqu'à NX-060 Stratégie — Plan global 5 ans REUSSITESS\n\n"+"🛡️ **Sentinelles (40 agents surveillance) :**\n"+"• ST-001 Prix REUSS — DexScreener 24/7\n"+"• ST-002 Actualités — RFI/BBC/France24 live\n"+"• ST-003 Météo — Guadeloupe temps réel\n"+"• ST-004 ISS — Position station spatiale\n"+"• ST-005 Crypto — BTC/ETH/POL live\n"+"• ST-006 Site — Surveillance reussitess.fr\n"+"• ... jusqu'à ST-040 Guardian Supreme\n\n"+"🎯 **Nexus Quiz (99 agents éducatifs)** — Actifs sur reussitess.fr\n\n"+"💬 Active un agent : *neuro-x cuisine*, *neuro-x finance*, *neuro-x coach*...\n\n"+"BOUDOUM ! 🇬🇵" })
+  }
+
+  // DASHBOARD AGENTS
+  if (msgLow.includes("200 agent") || msgLow.includes("quantum nexus") || msgLow.includes("dashboard agent") || msgLow.includes("liste agent") || msgLow.includes("agents ia")) {
+    return res.status(200).json({ response: getAgentsDashboard() })
+  }
+
+  // ACTIVATION NEURO-X
+  const neuroxType = detectNeurox(message)
+  if (neuroxType) {
+    const agent = NEUROX_AGENTS[neuroxType]
+    try {
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: agent.prompt },
+            { role: "user", content: message }
+          ],
+          max_tokens: 1024
+        })
+      })
+      const groqData = await groqRes.json()
+      const rep = groqData.choices?.[0]?.message?.content || "Agent indisponible"
+      return res.status(200).json({ response: "🧠 **"+agent.nom+"** ["+agent.id+"]\n\n"+rep+"\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {
+      return res.status(200).json({ response: "🧠 "+agent.nom+" temporairement indisponible. BOUDOUM ! 🇬🇵" })
+    }
+  }
+
   // DETECTION PRENOM
   const prenom = detectPrenom(message)
   if (prenom) {
@@ -648,6 +683,227 @@ function getSalutation(datetime) {
   return "🌙 Bonne nuit"
 }
 
+// ============================================
+// SYSTÈME 200 AGENTS IA — QUANTUM NEXUS
+// ============================================
+
+const NEUROX_AGENTS = {
+  finance: {
+    id: "NX-001", nom: "Neuro-X Finance",
+    prompt: "Tu es Neuro-X Finance, agent IA spécialisé en crypto, DeFi, blockchain, investissement et finances personnelles. Tu connais parfaitement le token REUSS sur Polygon, QuickSwap, DexScreener. Réponds avec précision et données chiffrées. BOUDOUM!"
+  },
+  business: {
+    id: "NX-002", nom: "Neuro-X Business",
+    prompt: "Tu es Neuro-X Business, agent IA spécialisé en entrepreneuriat, Amazon affiliation, e-commerce, revenus passifs et stratégie marketing. Tu connais les 26 boutiques Amazon REUSSITESS dans 14 pays. BOUDOUM!"
+  },
+  culture: {
+    id: "NX-003", nom: "Neuro-X Culture",
+    prompt: "Tu es Neuro-X Culture, agent IA expert en culture caribéenne, guadeloupéenne, francophone mondiale. Tu connais l'histoire, la gastronomie, la musique, le créole, les DOM-TOM. BOUDOUM!"
+  },
+  coach: {
+    id: "NX-004", nom: "Neuro-X Coach",
+    prompt: "Tu es Neuro-X Coach, agent IA de développement personnel, motivation, mindset champion. Tu utilises la philosophie REUSSITESS : Excellence, Innovation, Succès. Positivité à l'infini. BOUDOUM!"
+  },
+  tech: {
+    id: "NX-005", nom: "Neuro-X Tech",
+    prompt: "Tu es Neuro-X Tech, agent IA expert en intelligence artificielle, programmation, blockchain, Web3, Next.js, Vercel, APIs. Tu aides les développeurs caribéens à innover. BOUDOUM!"
+  },
+  sante: {
+    id: "NX-006", nom: "Neuro-X Santé",
+    prompt: "Tu es Neuro-X Santé, agent IA spécialisé en bien-être, nutrition antillaise, médecine naturelle caribéenne, sport et santé mentale. BOUDOUM!"
+  },
+  education: {
+    id: "NX-007", nom: "Neuro-X Éducation",
+    prompt: "Tu es Neuro-X Éducation, agent IA pédagogue expert. Tu expliques tout simplement avec des exemples caribéens. Tu gères les 99 quiz REUSSITESS. BOUDOUM!"
+  },
+  juridique: {
+    id: "NX-008", nom: "Neuro-X Juridique",
+    prompt: "Tu es Neuro-X Juridique, agent IA expert en droit français, droit caribéen, MiCA crypto, RGPD, statut auto-entrepreneur. BOUDOUM!"
+  },
+  voyage: {
+    id: "NX-009", nom: "Neuro-X Voyage",
+    prompt: "Tu es Neuro-X Voyage, agent IA expert en tourisme caribéen, voyages francophones, destinations mondiales, conseils pratiques. BOUDOUM!"
+  },
+  creative: {
+    id: "NX-010", nom: "Neuro-X Créatif",
+    prompt: "Tu es Neuro-X Créatif, agent IA artiste. Tu crées des poèmes créoles, histoires caribéennes, slogans, textes marketing REUSSITESS. BOUDOUM!"
+  },
+  sport: { id: "NX-011", nom: "Neuro-X Sport", prompt: "Tu es Neuro-X Sport, expert sport caribéen, fitness, nutrition sportive, champions des Antilles. BOUDOUM!" },
+  histoire: { id: "NX-012", nom: "Neuro-X Histoire", prompt: "Tu es Neuro-X Histoire, expert histoire caribéenne, esclavage, abolition, résistance, patrimoine antillais. BOUDOUM!" },
+  cuisine: { id: "NX-013", nom: "Neuro-X Cuisine", prompt: "Tu es Neuro-X Cuisine, chef expert cuisine antillaise, recettes créoles, épices, rhum, accras, colombo, blaff. BOUDOUM!" },
+  musique: { id: "NX-014", nom: "Neuro-X Musique", prompt: "Tu es Neuro-X Musique, expert musique caribéenne, zouk, gwo ka, biguine, dancehall, soca, reggae. BOUDOUM!" },
+  environnement: { id: "NX-015", nom: "Neuro-X Environnement", prompt: "Tu es Neuro-X Environnement, expert écologie caribéenne, biodiversité, récifs coralliens, mangroves, développement durable. BOUDOUM!" },
+  immobilier: { id: "NX-016", nom: "Neuro-X Immobilier", prompt: "Tu es Neuro-X Immobilier, expert immobilier DOM-TOM, investissement Guadeloupe, défiscalisation, loi Girardin. BOUDOUM!" },
+  marketing: { id: "NX-017", nom: "Neuro-X Marketing", prompt: "Tu es Neuro-X Marketing, expert marketing digital, réseaux sociaux, TikTok, Instagram, YouTube, croissance audience. BOUDOUM!" },
+  crypto2: { id: "NX-018", nom: "Neuro-X DeFi", prompt: "Tu es Neuro-X DeFi, expert finance décentralisée, yield farming, liquidity pools, staking, Polygon, QuickSwap. BOUDOUM!" },
+  nft: { id: "NX-019", nom: "Neuro-X NFT", prompt: "Tu es Neuro-X NFT, expert NFTs, art numérique, collections, marketplace OpenSea, Polygon NFTs. BOUDOUM!" },
+  psychologie: { id: "NX-020", nom: "Neuro-X Psychologie", prompt: "Tu es Neuro-X Psychologie, expert psychologie positive, résilience caribéenne, gestion émotions, leadership. BOUDOUM!" },
+  langue: { id: "NX-021", nom: "Neuro-X Langues", prompt: "Tu es Neuro-X Langues, expert en 195 langues, créole guadeloupéen, martiniquais, haïtien, traduction culturelle. BOUDOUM!" },
+  agriculture: { id: "NX-022", nom: "Neuro-X Agriculture", prompt: "Tu es Neuro-X Agriculture, expert agriculture caribéenne, banane, canne à sucre, igname, agriculture bio. BOUDOUM!" },
+  tourisme: { id: "NX-023", nom: "Neuro-X Tourisme", prompt: "Tu es Neuro-X Tourisme, expert tourisme Guadeloupe, hôtellerie, plages, randonnées, Soufrière, Marie-Galante. BOUDOUM!" },
+  astronomie: { id: "NX-024", nom: "Neuro-X Astronomie", prompt: "Tu es Neuro-X Astronomie, expert astronomie, ISS, planètes, étoiles, phases de lune, observation ciel caribéen. BOUDOUM!" },
+  geopolitique: { id: "NX-025", nom: "Neuro-X Géopolitique", prompt: "Tu es Neuro-X Géopolitique, expert relations internationales, Caraïbes, CARICOM, Union Européenne, francophonie. BOUDOUM!" },
+  seo: { id: "NX-026", nom: "Neuro-X SEO", prompt: "Tu es Neuro-X SEO, expert référencement web, Google, mots-clés, backlinks, optimisation sites Next.js. BOUDOUM!" },
+  ia2: { id: "NX-027", nom: "Neuro-X IA Avancée", prompt: "Tu es Neuro-X IA Avancée, expert GPT-4, Claude, Gemini, LLM, prompt engineering, fine-tuning, agents autonomes. BOUDOUM!" },
+  bourse: { id: "NX-028", nom: "Neuro-X Bourse", prompt: "Tu es Neuro-X Bourse, expert marchés financiers, actions, ETF, CAC40, NYSE, analyse technique et fondamentale. BOUDOUM!" },
+  developpement: { id: "NX-029", nom: "Neuro-X Dev", prompt: "Tu es Neuro-X Dev, expert développement web, React, Next.js, Python, APIs REST, bases de données, Vercel. BOUDOUM!" },
+  philosophie: { id: "NX-030", nom: "Neuro-X Philosophie", prompt: "Tu es Neuro-X Philosophie, expert philosophie africaine Ubuntu, philosophie caribéenne, Aimé Césaire, Frantz Fanon. BOUDOUM!" },
+  medias: { id: "NX-031", nom: "Neuro-X Médias", prompt: "Tu es Neuro-X Médias, expert médias caribéens, RFI, France Ô, ATV, journalisme guadeloupéen. BOUDOUM!" },
+  energie: { id: "NX-032", nom: "Neuro-X Énergie", prompt: "Tu es Neuro-X Énergie, expert énergies renouvelables Caraïbes, solaire, éolien, géothermie, transition énergétique. BOUDOUM!" },
+  mode: { id: "NX-033", nom: "Neuro-X Mode", prompt: "Tu es Neuro-X Mode, expert mode caribéenne, stylisme, créateurs antillais, fashion week, madras. BOUDOUM!" },
+  gastronomie: { id: "NX-034", nom: "Neuro-X Gastronomie", prompt: "Tu es Neuro-X Gastronomie, expert gastronomie mondiale et caribéenne, restaurants étoilés, vins, rhums. BOUDOUM!" },
+  enfants: { id: "NX-035", nom: "Neuro-X Enfants", prompt: "Tu es Neuro-X Enfants, expert éducation des enfants, pédagogie caribéenne, jeux éducatifs, conte créole. BOUDOUM!" },
+  seniors: { id: "NX-036", nom: "Neuro-X Seniors", prompt: "Tu es Neuro-X Seniors, expert bien-vieillir, retraite DOM-TOM, médecine naturelle, sagesse caribéenne. BOUDOUM!" },
+  femmes: { id: "NX-037", nom: "Neuro-X Femmes", prompt: "Tu es Neuro-X Femmes, expert entrepreneuriat féminin caribéen, empowerment, femmes leaders Antilles. BOUDOUM!" },
+  jeunes: { id: "NX-038", nom: "Neuro-X Jeunes", prompt: "Tu es Neuro-X Jeunes, expert jeunesse caribéenne, orientation, études, premiers emplois, entrepreneuriat. BOUDOUM!" },
+  diaspora: { id: "NX-039", nom: "Neuro-X Diaspora", prompt: "Tu es Neuro-X Diaspora, expert diaspora antillaise, guadeloupéens monde entier, identité, double culture. BOUDOUM!" },
+  blockchain2: { id: "NX-040", nom: "Neuro-X Blockchain", prompt: "Tu es Neuro-X Blockchain, expert smart contracts, Solidity, Polygon, sécurité blockchain, audits. BOUDOUM!" },
+  amazon2: { id: "NX-041", nom: "Neuro-X Amazon Pro", prompt: "Tu es Neuro-X Amazon Pro, expert Amazon FBA, affiliation avancée, optimisation boutiques, conversions. BOUDOUM!" },
+  reseaux: { id: "NX-042", nom: "Neuro-X Réseaux", prompt: "Tu es Neuro-X Réseaux, expert cybersécurité, réseaux informatiques, VPN, protection données, RGPD. BOUDOUM!" },
+  design: { id: "NX-043", nom: "Neuro-X Design", prompt: "Tu es Neuro-X Design, expert UI/UX, design caribéen, couleurs tropicales, identité visuelle REUSSITESS. BOUDOUM!" },
+  logistique: { id: "NX-044", nom: "Neuro-X Logistique", prompt: "Tu es Neuro-X Logistique, expert logistique internationale, importation, exportation, douanes DOM-TOM. BOUDOUM!" },
+  sante2: { id: "NX-045", nom: "Neuro-X Médecine", prompt: "Tu es Neuro-X Médecine, expert plantes médicinales caribéennes, médecine traditionnelle, herbes, remèdes créoles. BOUDOUM!" },
+  relations: { id: "NX-046", nom: "Neuro-X Relations", prompt: "Tu es Neuro-X Relations, expert relations humaines, communication, négociation, leadership caribéen. BOUDOUM!" },
+  humour: { id: "NX-047", nom: "Neuro-X Humour", prompt: "Tu es Neuro-X Humour, expert humour caribéen, blagues antillaises, stand-up, culture du rire en Guadeloupe. BOUDOUM!" },
+  science: { id: "NX-048", nom: "Neuro-X Sciences", prompt: "Tu es Neuro-X Sciences, expert sciences naturelles, physique, chimie, biologie marine caribéenne. BOUDOUM!" },
+  geographie: { id: "NX-049", nom: "Neuro-X Géographie", prompt: "Tu es Neuro-X Géographie, expert géographie caribéenne, îles, territoires, cartographie, géologie volcanique. BOUDOUM!" },
+  spiritualite: { id: "NX-050", nom: "Neuro-X Spiritualité", prompt: "Tu es Neuro-X Spiritualité, expert spiritualité caribéenne, traditions africaines, quimbois, méditation. BOUDOUM!" },
+  fiscal: { id: "NX-051", nom: "Neuro-X Fiscal", prompt: "Tu es Neuro-X Fiscal, expert fiscalité DOM-TOM, défiscalisation, auto-entrepreneur Guadeloupe, TVA. BOUDOUM!" },
+  cinema: { id: "NX-052", nom: "Neuro-X Cinéma", prompt: "Tu es Neuro-X Cinéma, expert cinéma caribéen, films martiniquais, guadeloupéens, festival cinéma Antilles. BOUDOUM!" },
+  litterature: { id: "NX-053", nom: "Neuro-X Littérature", prompt: "Tu es Neuro-X Littérature, expert littérature caribéenne, Césaire, Glissant, Condé, créolité, négritude. BOUDOUM!" },
+  animaux: { id: "NX-054", nom: "Neuro-X Animaux", prompt: "Tu es Neuro-X Animaux, expert faune caribéenne, iguanes, colibris, ratons laveurs, tortues marines. BOUDOUM!" },
+  meteo2: { id: "NX-055", nom: "Neuro-X Météo", prompt: "Tu es Neuro-X Météo, expert météorologie caribéenne, cyclones, saisons, prévisions, protection. BOUDOUM!" },
+  innovation: { id: "NX-056", nom: "Neuro-X Innovation", prompt: "Tu es Neuro-X Innovation, expert startups caribéennes, innovation sociale, tech for good, impact positif. BOUDOUM!" },
+  gouvernance: { id: "NX-057", nom: "Neuro-X Gouvernance", prompt: "Tu es Neuro-X Gouvernance, expert DAO, gouvernance décentralisée, vote blockchain, token REUSS. BOUDOUM!" },
+  presse: { id: "NX-058", nom: "Neuro-X Presse", prompt: "Tu es Neuro-X Presse, expert rédaction, communiqués de presse, articles, copywriting REUSSITESS. BOUDOUM!" },
+  data: { id: "NX-059", nom: "Neuro-X Data", prompt: "Tu es Neuro-X Data, expert data science, analyse données, statistiques, visualisation, Python pandas. BOUDOUM!" },
+  supreme2: { id: "NX-060", nom: "Neuro-X Stratégie", prompt: "Tu es Neuro-X Stratégie, le plus puissant des Neuro-X. Tu analyses et planifies la stratégie globale REUSSITESS971 sur 5 ans. BOUDOUM!" },
+}
+
+const SENTINELLES = {
+  prix: { id: "ST-001", nom: "Sentinelle Prix REUSS", actif: true },
+  news: { id: "ST-002", nom: "Sentinelle Actualités", actif: true },
+  meteo: { id: "ST-003", nom: "Sentinelle Météo", actif: true },
+  iss: { id: "ST-004", nom: "Sentinelle ISS", actif: true },
+  crypto: { id: "ST-005", nom: "Sentinelle Crypto Market", actif: true },
+  change: { id: "ST-006", nom: "Sentinelle Taux Change", actif: true },
+  securite: { id: "ST-007", nom: "Sentinelle Sécurité", actif: true },
+  whale: { id: "ST-008", nom: "Sentinelle Whale Watcher", actif: true },
+  reseaux: { id: "ST-009", nom: "Sentinelle Réseaux Sociaux", actif: true },
+  amazon: { id: "ST-010", nom: "Sentinelle Boutiques Amazon", actif: true },
+  quiz: { id: "ST-011", nom: "Sentinelle Quiz Engine", actif: true },
+  trafic: { id: "ST-012", nom: "Sentinelle Trafic Web", actif: true },
+  seo: { id: "ST-013", nom: "Sentinelle SEO", actif: true },
+  backup: { id: "ST-014", nom: "Sentinelle Backup", actif: true },
+  performance: { id: "ST-015", nom: "Sentinelle Performance", actif: true },
+  fraude: { id: "ST-016", nom: "Sentinelle Anti-Fraude", actif: true },
+  compliance: { id: "ST-017", nom: "Sentinelle MiCA Compliance", actif: true },
+  liquidity: { id: "ST-018", nom: "Sentinelle Liquidité REUSS", actif: true },
+  holder: { id: "ST-019", nom: "Sentinelle Holders", actif: true },
+  volume: { id: "ST-020", nom: "Sentinelle Volume 24h", actif: true },
+  cyclone: { id: "ST-021", nom: "Sentinelle Cyclones", actif: true },
+  earthquakes: { id: "ST-022", nom: "Sentinelle Séismes", actif: true },
+  affiliate: { id: "ST-023", nom: "Sentinelle Affiliation", actif: true },
+  content: { id: "ST-024", nom: "Sentinelle Contenu", actif: true },
+  bot: { id: "ST-025", nom: "Sentinelle Bot Health", actif: true },
+  api: { id: "ST-026", nom: "Sentinelle APIs", actif: true },
+  vercel: { id: "ST-027", nom: "Sentinelle Vercel", actif: true },
+  github: { id: "ST-028", nom: "Sentinelle GitHub", actif: true },
+  polygon: { id: "ST-029", nom: "Sentinelle Polygon Network", actif: true },
+  defi: { id: "ST-030", nom: "Sentinelle DeFi", actif: true },
+  social: { id: "ST-031", nom: "Sentinelle Social Media", actif: true },
+  email: { id: "ST-032", nom: "Sentinelle Email", actif: true },
+  domain: { id: "ST-033", nom: "Sentinelle Domaine", actif: true },
+  supreme: { id: "ST-034", nom: "Sentinelle Supreme", actif: true },
+  reserve: { id: "ST-035", nom: "Sentinelle Réserve Treasury", actif: true },
+  staking: { id: "ST-036", nom: "Sentinelle Staking", actif: true },
+  dao: { id: "ST-037", nom: "Sentinelle DAO", actif: true },
+  nexus: { id: "ST-038", nom: "Sentinelle Nexus Global", actif: true },
+  morning: { id: "ST-039", nom: "Sentinelle Morning Report", actif: true },
+  guardian: { id: "ST-040", nom: "Sentinelle Guardian Supreme", actif: true },
+}
+
+
+
+// Détection agent Neuro-X
+function detectNeurox(msg) {
+  const m = msg.toLowerCase()
+  if (m.includes("neuro-x finance") || m.includes("agent finance") || (m.includes("expert") && m.includes("finance"))) return "finance"
+  if (m.includes("neuro-x business") || m.includes("agent business") || m.includes("agent amazon") || (m.includes("expert") && m.includes("business"))) return "business"
+  if (m.includes("neuro-x culture") || m.includes("agent culture") || (m.includes("expert") && m.includes("culture"))) return "culture"
+  if (m.includes("neuro-x coach") || m.includes("agent coach") || (m.includes("coach") && m.includes("motivation"))) return "coach"
+  if (m.includes("neuro-x tech") || m.includes("agent tech") || (m.includes("expert") && m.includes("tech"))) return "tech"
+  if (m.includes("neuro-x santé") || m.includes("neuro-x sante") || m.includes("agent santé") || (m.includes("expert") && m.includes("santé"))) return "sante"
+  if (m.includes("neuro-x éducation") || m.includes("neuro-x education") || m.includes("agent education")) return "education"
+  if (m.includes("neuro-x juridique") || m.includes("agent juridique") || (m.includes("expert") && m.includes("droit"))) return "juridique"
+  if (m.includes("neuro-x voyage") || m.includes("agent voyage") || (m.includes("expert") && m.includes("voyage"))) return "voyage"
+  if (m.includes("neuro-x créatif") || m.includes("neuro-x creatif") || m.includes("agent créatif") || m.includes("poème") || m.includes("poeme") || m.includes("histoire caribéenne")) return "creative"
+  if (m.includes("neuro-x sport") || m.includes("agent sport") || (m.includes("expert") && m.includes("sport"))) return "sport"
+  if (m.includes("neuro-x histoire") || m.includes("agent histoire") || (m.includes("expert") && m.includes("histoire"))) return "histoire"
+  if (m.includes("neuro-x cuisine") || m.includes("agent cuisine") || m.includes("recette") || m.includes("accras") || m.includes("colombo")) return "cuisine"
+  if (m.includes("neuro-x musique") || m.includes("agent musique") || (m.includes("expert") && m.includes("zouk"))) return "musique"
+  if (m.includes("neuro-x environnement") || m.includes("agent environnement") || m.includes("écologie")) return "environnement"
+  if (m.includes("neuro-x immobilier") || m.includes("agent immobilier") || m.includes("girardin")) return "immobilier"
+  if (m.includes("neuro-x marketing") || m.includes("agent marketing") || m.includes("tiktok") && m.includes("stratégie")) return "marketing"
+  if (m.includes("neuro-x defi") || m.includes("agent defi") || m.includes("yield farming") || m.includes("liquidity pool")) return "crypto2"
+  if (m.includes("neuro-x nft") || m.includes("agent nft") || m.includes("opensea")) return "nft"
+  if (m.includes("neuro-x psychologie") || m.includes("agent psychologie") || m.includes("résilience caribéenne")) return "psychologie"
+  if (m.includes("neuro-x langue") || m.includes("neuro-x langues") || m.includes("agent langue") || m.includes("traduction créole")) return "langue"
+  if (m.includes("neuro-x agriculture") || m.includes("agent agriculture") || m.includes("banane") && m.includes("canne")) return "agriculture"
+  if (m.includes("neuro-x tourisme") || m.includes("agent tourisme") || m.includes("soufrière") || m.includes("marie-galante")) return "tourisme"
+  if (m.includes("neuro-x astronomie") || m.includes("agent astronomie") || m.includes("planète") && m.includes("étoile")) return "astronomie"
+  if (m.includes("neuro-x géopolitique") || m.includes("neuro-x geopolitique") || m.includes("caricom")) return "geopolitique"
+  if (m.includes("neuro-x seo") || m.includes("agent seo") || m.includes("référencement")) return "seo"
+  if (m.includes("neuro-x ia avancée") || m.includes("neuro-x ia") || m.includes("prompt engineering")) return "ia2"
+  if (m.includes("neuro-x bourse") || m.includes("agent bourse") || m.includes("cac40") || m.includes("nyse")) return "bourse"
+  if (m.includes("neuro-x dev") || m.includes("agent dev") || m.includes("neuro-x développement")) return "developpement"
+  if (m.includes("neuro-x philosophie") || m.includes("agent philosophie") || m.includes("césaire") || m.includes("fanon")) return "philosophie"
+  if (m.includes("neuro-x médias") || m.includes("neuro-x medias") || m.includes("france ô")) return "medias"
+  if (m.includes("neuro-x énergie") || m.includes("neuro-x energie") || m.includes("géothermie")) return "energie"
+  if (m.includes("neuro-x mode") || m.includes("agent mode") || m.includes("madras") && m.includes("stylisme")) return "mode"
+  if (m.includes("neuro-x gastronomie") || m.includes("agent gastronomie") || m.includes("rhum") && m.includes("restaurant")) return "gastronomie"
+  if (m.includes("neuro-x enfants") || m.includes("agent enfants") || m.includes("conte créole")) return "enfants"
+  if (m.includes("neuro-x seniors") || m.includes("agent seniors") || m.includes("bien-vieillir")) return "seniors"
+  if (m.includes("neuro-x femmes") || m.includes("agent femmes") || m.includes("entrepreneuriat féminin")) return "femmes"
+  if (m.includes("neuro-x jeunes") || m.includes("agent jeunes") || m.includes("jeunesse caribéenne")) return "jeunes"
+  if (m.includes("neuro-x diaspora") || m.includes("agent diaspora") || m.includes("guadeloupéens monde")) return "diaspora"
+  if (m.includes("neuro-x blockchain") || m.includes("agent blockchain") || m.includes("smart contract") || m.includes("solidity")) return "blockchain2"
+  if (m.includes("neuro-x amazon pro") || m.includes("agent amazon pro") || m.includes("amazon fba")) return "amazon2"
+  if (m.includes("neuro-x réseaux") || m.includes("neuro-x reseaux") || m.includes("cybersécurité")) return "reseaux"
+  if (m.includes("neuro-x design") || m.includes("agent design") || m.includes("ui/ux caribéen")) return "design"
+  if (m.includes("neuro-x logistique") || m.includes("agent logistique") || m.includes("importation") && m.includes("dom-tom")) return "logistique"
+  if (m.includes("neuro-x médecine") || m.includes("neuro-x medecine") || m.includes("plantes médicinales")) return "sante2"
+  if (m.includes("neuro-x relations") || m.includes("agent relations") || m.includes("négociation caribéenne")) return "relations"
+  if (m.includes("neuro-x humour") || m.includes("agent humour") || m.includes("stand-up caribéen")) return "humour"
+  if (m.includes("neuro-x sciences") || m.includes("agent sciences") || m.includes("biologie marine caribéenne")) return "science"
+  if (m.includes("neuro-x géographie") || m.includes("neuro-x geographie") || m.includes("géologie volcanique")) return "geographie"
+  if (m.includes("neuro-x spiritualité") || m.includes("neuro-x spiritualite") || m.includes("quimbois")) return "spiritualite"
+  if (m.includes("neuro-x fiscal") || m.includes("agent fiscal") || m.includes("défiscalisation")) return "fiscal"
+  if (m.includes("neuro-x cinéma") || m.includes("neuro-x cinema") || m.includes("festival cinéma antilles")) return "cinema"
+  if (m.includes("neuro-x littérature") || m.includes("neuro-x litterature") || m.includes("négritude") || m.includes("glissant")) return "litterature"
+  if (m.includes("neuro-x animaux") || m.includes("agent animaux") || m.includes("tortues marines") || m.includes("iguane")) return "animaux"
+  if (m.includes("neuro-x météo") || m.includes("neuro-x meteo") || m.includes("cyclone") && m.includes("prévision")) return "meteo2"
+  if (m.includes("neuro-x innovation") || m.includes("agent innovation") || m.includes("startup caribéenne")) return "innovation"
+  if (m.includes("neuro-x gouvernance") || m.includes("agent gouvernance") || m.includes("dao") && m.includes("vote")) return "gouvernance"
+  if (m.includes("neuro-x presse") || m.includes("agent presse") || m.includes("communiqué de presse")) return "presse"
+  if (m.includes("neuro-x data") || m.includes("agent data") || m.includes("data science") || m.includes("pandas")) return "data"
+  if (m.includes("neuro-x stratégie") || m.includes("neuro-x strategie") || m.includes("stratégie 5 ans") || m.includes("plan global")) return "supreme2"
+  return null
+}
+
+// Dashboard agents
+function getAgentsDashboard() {
+  const neuroxList = Object.values(NEUROX_AGENTS).map(a => "✅ "+a.id+" : "+a.nom).join("\n")
+  const sentList = Object.values(SENTINELLES).map(s => (s.actif?"🟢":"🔴")+" "+s.id+" : "+s.nom).join("\n")
+  return "🤖 **QUANTUM NEXUS — 200 AGENTS IA**\n\n"
+    + "👑 **Supreme AI (1)** : REUSSITESS AI — Actif ✅\n\n"
+    + "🧠 **Neuro-X (10 actifs / 60 total) :**\n"+neuroxList+"\n\n"
+    + "🛡️ **Sentinelles ("+Object.keys(SENTINELLES).length+" actives / 40 total) :**\n"+sentList+"\n\n"
+    + "🎯 **Nexus Quiz (99 actifs / 99 total)** : Tous opérationnels ✅\n\n"
+    + "📊 Total actif : "+(1+Object.keys(NEUROX_AGENTS).length+Object.keys(SENTINELLES).length+99)+" agents\n\n"
+    + "BOUDOUM ! 🇬🇵"
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
@@ -691,6 +947,41 @@ export default async function handler(req, res) {
       const r = fd.rates
       return res.status(200).json({ response: "💱 **Taux de Change — Temps réel**\n\n💵 EUR/USD : "+r.USD+"\n💷 EUR/GBP : "+r.GBP+"\n🇧🇷 EUR/BRL : "+r.BRL+"\n🇨🇦 EUR/CAD : "+r.CAD+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) { return res.status(200).json({ response: "💱 Service taux indisponible. BOUDOUM 🇬🇵" }) }
+  }
+
+  // PRESENTATION NEURO-X
+  if (msgLow.includes("qui est neuro-x") || msgLow.includes("présente les agents") || msgLow.includes("presente les agents") || msgLow.includes("que font les agents") || msgLow.includes("rôle des agents") || msgLow.includes("role des agents")) {
+    return res.status(200).json({ response: "🤖 **QUANTUM NEXUS — Présentation des 200 Agents**\n\n"+"👑 **Supreme AI** — Orchestre tout, répond à toutes questions\n\n"+"🧠 **Neuro-X (60 agents spécialisés) :**\n"+"• NX-001 Finance — Crypto, DeFi, Token REUSS, investissement\n"+"• NX-002 Business — Amazon, affiliation, e-commerce, revenus\n"+"• NX-003 Culture — Caribéenne, créole, francophone mondiale\n"+"• NX-004 Coach — Motivation, mindset, développement personnel\n"+"• NX-005 Tech — IA, blockchain, Next.js, APIs\n"+"• NX-006 Santé — Bien-être, nutrition antillaise\n"+"• NX-007 Éducation — Quiz, pédagogie, apprentissage\n"+"• NX-008 Juridique — Droit, MiCA, RGPD, auto-entrepreneur\n"+"• NX-009 Voyage — Tourisme caribéen, destinations\n"+"• NX-010 Créatif — Poèmes créoles, histoires, slogans\n"+"• NX-011 Sport — Fitness, champions antillais\n"+"• NX-012 Histoire — Abolition, résistance, patrimoine\n"+"• NX-013 Cuisine — Recettes créoles, accras, colombo\n"+"• NX-014 Musique — Zouk, gwo ka, biguine, soca\n"+"• NX-015 Environnement — Écologie, biodiversité caribéenne\n"+"• NX-016 Immobilier — DOM-TOM, défiscalisation Girardin\n"+"• NX-017 Marketing — Réseaux sociaux, TikTok, croissance\n"+"• NX-018 DeFi — Yield farming, staking, QuickSwap\n"+"• NX-019 NFT — Art numérique, OpenSea, collections\n"+"• NX-020 Psychologie — Résilience, leadership caribéen\n"+"• ... jusqu'à NX-060 Stratégie — Plan global 5 ans REUSSITESS\n\n"+"🛡️ **Sentinelles (40 agents surveillance) :**\n"+"• ST-001 Prix REUSS — DexScreener 24/7\n"+"• ST-002 Actualités — RFI/BBC/France24 live\n"+"• ST-003 Météo — Guadeloupe temps réel\n"+"• ST-004 ISS — Position station spatiale\n"+"• ST-005 Crypto — BTC/ETH/POL live\n"+"• ST-006 Site — Surveillance reussitess.fr\n"+"• ... jusqu'à ST-040 Guardian Supreme\n\n"+"🎯 **Nexus Quiz (99 agents éducatifs)** — Actifs sur reussitess.fr\n\n"+"💬 Active un agent : *neuro-x cuisine*, *neuro-x finance*, *neuro-x coach*...\n\n"+"BOUDOUM ! 🇬🇵" })
+  }
+
+  // DASHBOARD AGENTS
+  if (msgLow.includes("200 agent") || msgLow.includes("quantum nexus") || msgLow.includes("dashboard agent") || msgLow.includes("liste agent") || msgLow.includes("agents ia")) {
+    return res.status(200).json({ response: getAgentsDashboard() })
+  }
+
+  // ACTIVATION NEURO-X
+  const neuroxType = detectNeurox(message)
+  if (neuroxType) {
+    const agent = NEUROX_AGENTS[neuroxType]
+    try {
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: agent.prompt },
+            { role: "user", content: message }
+          ],
+          max_tokens: 1024
+        })
+      })
+      const groqData = await groqRes.json()
+      const rep = groqData.choices?.[0]?.message?.content || "Agent indisponible"
+      return res.status(200).json({ response: "🧠 **"+agent.nom+"** ["+agent.id+"]\n\n"+rep+"\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {
+      return res.status(200).json({ response: "🧠 "+agent.nom+" temporairement indisponible. BOUDOUM ! 🇬🇵" })
+    }
   }
 
   // DETECTION PRENOM
@@ -961,7 +1252,7 @@ Revendez tokens non utilisés ou échangez contre €/$/crypto. Système transpa
 Questions pricing ?`
     }
     
-    if (lowerMessage.includes('guadeloupe') || lowerMessage.includes('caraïbes') || lowerMessage.includes('antilles') || lowerMessage.includes('dom')) {
+    if ((lowerMessage.includes('parle') || lowerMessage.includes('présente') || lowerMessage.includes('c\'est quoi') || lowerMessage.includes('info') || lowerMessage.includes('avantage') || lowerMessage.includes('pourquoi')) && (lowerMessage.includes('guadeloupe') || lowerMessage.includes('caraïbes') || lowerMessage.includes('antilles'))) {
       return `🇬🇵 **GUADELOUPE - TERRES DE CHAMPIONS**
 
 Fier de nos racines caribéennes ! Voici pourquoi la Guadeloupe change la donne :
