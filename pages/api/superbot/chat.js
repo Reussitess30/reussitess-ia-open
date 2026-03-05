@@ -261,7 +261,7 @@ async function getWikipedia(term) {
             { role: "system", content: agent.prompt },
             { role: "user", content: message }
           ],
-          max_tokens: 1024
+          max_tokens: 4096
         })
       })
       const groqData = await groqRes.json()
@@ -973,7 +973,7 @@ export default async function handler(req, res) {
             { role: "system", content: agent.prompt },
             { role: "user", content: message }
           ],
-          max_tokens: 1024
+          max_tokens: 4096
         })
       })
       const groqData = await groqRes.json()
@@ -1596,7 +1596,7 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
 
       if (response === '__GROQ__') {
         if (wikiData) {
-          finalResponse = `📚 **Wikipedia :** ${wikiData.substring(0, 1500)}${wikiData.length > 1500 ? "..." : ""}`
+          finalResponse = `📚 **Wikipedia :** ${wikiData.substring(0, 8000)}${wikiData.length > 8000 ? "..." : ""}`
         } else {
           try {
             const rfi = await getRFINews()
@@ -1623,7 +1623,7 @@ DONNEES LIVE OBLIGATOIRES: " + (nc||"indisponibles") + "
 Projet REUSSITESS971: 99 quiz, 26 boutiques Amazon, Token REUSS/Polygon, 200 agents IA.` },
                   { role: "user", content: message }
                 ],
-                max_tokens: 1024
+                max_tokens: 4096
               })
             })
             const groqData = await groqRes.json()
@@ -1631,7 +1631,7 @@ Projet REUSSITESS971: 99 quiz, 26 boutiques Amazon, Token REUSS/Polygon, 200 age
           } catch(e) { console.error("Groq:", e) }
         }
       } else if (wikiData) {
-        finalResponse = `📚 **Wikipedia :** ${wikiData.substring(0, 1500)}${wikiData.length > 1500 ? "..." : ""}`
+        finalResponse = `📚 **Wikipedia :** ${wikiData.substring(0, 8000)}${wikiData.length > 8000 ? "..." : ""}`
       }
 
       res.status(200).json({ response: finalResponse })
