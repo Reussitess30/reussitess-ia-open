@@ -1254,7 +1254,7 @@ Vive les Antilles ! 🌴 Des questions sur notre culture ?`
 
     // 🆕 BLOC QUIZ - AJOUTÉ
     if (lowerMessage.includes('quiz') || lowerMessage.includes('éducation') || lowerMessage.includes('apprendre') || lowerMessage.includes('test') || lowerMessage.includes('connaissance')) {
-      return `🎯 **25 Quiz Éducatifs Interactifs**
+      return `🎯 **99 Quiz Éducatifs Interactifs**
 
 Envie d'apprendre en s'amusant ? Voici notre arsenal éducatif **REUSSITESS** !
 
