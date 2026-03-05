@@ -463,17 +463,7 @@ export default function SuperBotAssistant() {
                 ))}
               </div>
             )}
-            {messages.length === 1 && !isLoading && (
-              <div style={{display:'flex',flexWrap:'wrap',gap:'0.4rem',marginTop:'0.3rem'}}>
-                {['💎 Token REUSS','🛍️ Boutiques','🤖 Agents IA','📊 Stats Nexus','📚 Lancer Quiz','🇬🇵 Guadeloupe'].map(s => (
-                  <button key={s} onClick={() => submitMessage(s)}
-                    style={{padding:'0.4rem 0.7rem',background:'rgba(16,185,129,0.15)',border:'1px solid rgba(16,185,129,0.3)',borderRadius:'20px',color:'#10b981',fontSize:'0.72rem',cursor:'pointer',fontWeight:'bold',whiteSpace:'nowrap'}}>
-                    {s}
-                  </button>
-                ))}
-              </div>
-            )}
-            {isLoading && (
+               {isLoading && (
               <div style={{alignSelf:'flex-start',background:'rgba(16,185,129,0.15)',padding:'1rem 1.5rem',borderRadius:'20px 20px 20px 5px',border:'1px solid rgba(16,185,129,0.3)'}}>
                 <span style={{color:'#10b981'}}>● ● ●</span> Réflexion en cours...
               </div>
