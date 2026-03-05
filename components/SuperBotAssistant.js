@@ -304,17 +304,7 @@ export default function SuperBotAssistant() {
                       <p style={{color:'white',fontWeight:'bold',fontSize:'1.1rem',margin:'0.2rem 0 0'}}>99</p>
                     </div>
                   </div>
-                  <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'0.5rem'}}>
-                    <div style={{background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.3)',borderRadius:'10px',padding:'0.7rem',textAlign:'center'}}>
-                      <p style={{color:'#94a3b8',fontSize:'0.7rem',margin:0}}>👥 Mes visites</p>
-                      <p style={{color:'white',fontWeight:'bold',fontSize:'1.1rem',margin:'0.2rem 0 0'}}>{visitorCount || '...'}</p>
-                    </div>
-                    <div style={{background:'rgba(168,85,247,0.1)',border:'1px solid rgba(168,85,247,0.3)',borderRadius:'10px',padding:'0.7rem',textAlign:'center'}}>
-                      <p style={{color:'#94a3b8',fontSize:'0.7rem',margin:0}}>📚 Quiz actifs</p>
-                      <p style={{color:'white',fontWeight:'bold',fontSize:'1.1rem',margin:'0.2rem 0 0'}}>99</p>
-                    </div>
-                  </div>
-                  <button onClick={fetchNexusStats} style={{background:'linear-gradient(135deg,#10b981,#3b82f6)',border:'none',color:'white',padding:'0.8rem',borderRadius:'12px',cursor:'pointer',fontWeight:'bold'}}>
+                                    <button onClick={fetchNexusStats} style={{background:'linear-gradient(135deg,#10b981,#3b82f6)',border:'none',color:'white',padding:'0.8rem',borderRadius:'12px',cursor:'pointer',fontWeight:'bold'}}>
                     🔄 Actualiser les données
                   </button>
                 </div>

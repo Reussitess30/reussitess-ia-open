@@ -124,7 +124,7 @@ Fondateur : Rony Porinus • Guadeloupe 🇬🇵 • BOUDOUM !
 🤖 **200 AGENTS IA — QUANTUM NEXUS**
 • 50 Sentinelles — surveillance 24h/24
 • 80 Neuro-X — analyse & données
-• 40 Nexus Quiz — contenu éducatif
+• 99 Nexus Quiz — contenu éducatif
 • 30 Supreme AI — orchestration
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -949,41 +949,6 @@ export default async function handler(req, res) {
     } catch(e) { return res.status(200).json({ response: "💱 Service taux indisponible. BOUDOUM 🇬🇵" }) }
   }
 
-  // PRESENTATION NEURO-X
-  if (msgLow.includes("qui est neuro-x") || msgLow.includes("présente les agents") || msgLow.includes("presente les agents") || msgLow.includes("que font les agents") || msgLow.includes("rôle des agents") || msgLow.includes("role des agents")) {
-    return res.status(200).json({ response: "🤖 **QUANTUM NEXUS — Présentation des 200 Agents**\n\n"+"👑 **Supreme AI** — Orchestre tout, répond à toutes questions\n\n"+"🧠 **Neuro-X (60 agents spécialisés) :**\n"+"• NX-001 Finance — Crypto, DeFi, Token REUSS, investissement\n"+"• NX-002 Business — Amazon, affiliation, e-commerce, revenus\n"+"• NX-003 Culture — Caribéenne, créole, francophone mondiale\n"+"• NX-004 Coach — Motivation, mindset, développement personnel\n"+"• NX-005 Tech — IA, blockchain, Next.js, APIs\n"+"• NX-006 Santé — Bien-être, nutrition antillaise\n"+"• NX-007 Éducation — Quiz, pédagogie, apprentissage\n"+"• NX-008 Juridique — Droit, MiCA, RGPD, auto-entrepreneur\n"+"• NX-009 Voyage — Tourisme caribéen, destinations\n"+"• NX-010 Créatif — Poèmes créoles, histoires, slogans\n"+"• NX-011 Sport — Fitness, champions antillais\n"+"• NX-012 Histoire — Abolition, résistance, patrimoine\n"+"• NX-013 Cuisine — Recettes créoles, accras, colombo\n"+"• NX-014 Musique — Zouk, gwo ka, biguine, soca\n"+"• NX-015 Environnement — Écologie, biodiversité caribéenne\n"+"• NX-016 Immobilier — DOM-TOM, défiscalisation Girardin\n"+"• NX-017 Marketing — Réseaux sociaux, TikTok, croissance\n"+"• NX-018 DeFi — Yield farming, staking, QuickSwap\n"+"• NX-019 NFT — Art numérique, OpenSea, collections\n"+"• NX-020 Psychologie — Résilience, leadership caribéen\n"+"• ... jusqu'à NX-060 Stratégie — Plan global 5 ans REUSSITESS\n\n"+"🛡️ **Sentinelles (40 agents surveillance) :**\n"+"• ST-001 Prix REUSS — DexScreener 24/7\n"+"• ST-002 Actualités — RFI/BBC/France24 live\n"+"• ST-003 Météo — Guadeloupe temps réel\n"+"• ST-004 ISS — Position station spatiale\n"+"• ST-005 Crypto — BTC/ETH/POL live\n"+"• ST-006 Site — Surveillance reussitess.fr\n"+"• ... jusqu'à ST-040 Guardian Supreme\n\n"+"🎯 **Nexus Quiz (99 agents éducatifs)** — Actifs sur reussitess.fr\n\n"+"💬 Active un agent : *neuro-x cuisine*, *neuro-x finance*, *neuro-x coach*...\n\n"+"BOUDOUM ! 🇬🇵" })
-  }
-
-  // DASHBOARD AGENTS
-  if (msgLow.includes("200 agent") || msgLow.includes("quantum nexus") || msgLow.includes("dashboard agent") || msgLow.includes("liste agent") || msgLow.includes("agents ia")) {
-    return res.status(200).json({ response: getAgentsDashboard() })
-  }
-
-  // ACTIVATION NEURO-X
-  const neuroxType = detectNeurox(message)
-  if (neuroxType) {
-    const agent = NEUROX_AGENTS[neuroxType]
-    try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
-            { role: "system", content: agent.prompt },
-            { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const groqData = await groqRes.json()
-      const rep = groqData.choices?.[0]?.message?.content || "Agent indisponible"
-      return res.status(200).json({ response: "🧠 **"+agent.nom+"** ["+agent.id+"]\n\n"+rep+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {
-      return res.status(200).json({ response: "🧠 "+agent.nom+" temporairement indisponible. BOUDOUM ! 🇬🇵" })
-    }
-  }
-
   // DETECTION PRENOM
   const prenom = detectPrenom(message)
   if (prenom) {
@@ -1733,7 +1698,7 @@ BOUDOUM ! 🇬🇵`
 
 🛡️ Sentinelles (50) : Surveillance sécurité 24h/24
 🧠 Neuro-X (80) : Analyse & traitement données
-🎯 Nexus Quiz (40) : Génération contenu éducatif
+🎯 Nexus Quiz (99) : Génération contenu éducatif
 👑 Supreme AI (30) : Orchestration & décisions
 
 📊 État actuel :
