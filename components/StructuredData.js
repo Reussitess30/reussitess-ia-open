@@ -58,7 +58,7 @@ export default function StructuredData() {
     "name": "REUSSITESS®971",
     "url": "https://reussitess.fr",
     "logo": "https://reussitess.fr/icon-512x512.webp",
-    "description": "Bibliothèque mondiale de 55+ pages, 25 quiz gratuits, formations IA en 6 langues",
+    "description": "Bibliothèque mondiale de 55+ pages, 99 quiz gratuits, formations IA en 6 langues",
     "numberOfStudents": 15247,
     "areaServed": "Worldwide",
     "educationalCredentialAwarded": "Passeport de Réussite REUSSITESS®"

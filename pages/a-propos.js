@@ -67,7 +67,7 @@ export default function APropos() {
               🎓 Nos Quiz Éducatifs
             </h2>
             <p>
-              <strong>25 quiz thématiques</strong> pour enrichir vos connaissances : Histoire, Géographie, Sciences, 
+              <strong>99 quiz thématiques</strong> pour enrichir vos connaissances : Histoire, Géographie, Sciences, 
               Art, Musique, Technologie, et bien plus encore.
             </p>
 
