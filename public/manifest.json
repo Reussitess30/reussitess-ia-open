@@ -1,0 +1,16 @@
+{
+  "name": "REUSSITESS AI",
+  "short_name": "REUSSITESS",
+  "description": "REUSSITESS®971 — Excellence • Innovation • Succès",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#00875A",
+  "theme_color": "#00875A",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
