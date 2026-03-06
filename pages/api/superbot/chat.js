@@ -531,6 +531,50 @@ async function getWikipedia(term) {
     } catch(e) {}
   }
 
+  // PASSEPORT DE REUSSITE 🏆
+  if (msgLow.includes("passeport de réussite") || msgLow.includes("passeport reussite") || msgLow.includes("certificat champion") || msgLow.includes("devenir champion") || msgLow.includes("passeport champion") || msgLow.includes("champions")) {
+    try {
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es Neuro-X Coach, expert Passeport de Réussite REUSSITESS. Ce concept unique permet à chaque personne de 127 pays de recevoir un certificat de champion personnalisé avec un plan d'action concret vers ses objectifs. Inspire, motive et guide vers reussitess.fr/champions. Terres de Champions ! BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 2048
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "🏆 **Passeport de Réussite REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton certificat :** https://reussitess.fr/champions\n\n🌍 15 247 Champions dans 127 pays !\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {
+      return res.status(200).json({ response: "🏆 **Passeport de Réussite REUSSITESS**\n\nTon certificat de champion t'attend ! 15 247 champions dans 127 pays ont déjà rejoint le mouvement REUSSITESS.\n\n✅ Remplis ton prénom, ton pays et ton objectif\n✅ Reçois ton certificat personnalisé\n✅ Obtiens ton plan d'action sur mesure\n\n👉 **Accède maintenant :** https://reussitess.fr/champions\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
+    }
+  }
+
+  // VISA UNIVERSEL 🌍
+  if (msgLow.includes("visa universel") || msgLow.includes("opportunité mondiale") || msgLow.includes("réseau mondial") || msgLow.includes("rejoindre reussitess") || msgLow.includes("visa reussitess") || msgLow.includes("opportunités reussitess")) {
+    try {
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es Neuro-X Stratégie, expert Visa Universel REUSSITESS. Ce concept unique donne accès à des opportunités mondiales dans 26 pays: affiliation Amazon, token REUSS, réseau d'entrepreneurs, formations IA, bibliothèque mondiale. Explique les avantages du réseau REUSSITESS et guide vers reussitess.fr/visa-universel. BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 2048
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "🌍 **Visa Universel REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton Visa :** https://reussitess.fr/visa-universel\n\n🚀 Accès aux opportunités mondiales dans 26 pays !\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {
+      return res.status(200).json({ response: "🌍 **Visa Universel REUSSITESS**\n\nTon passeport vers les opportunités mondiales !\n\n✅ Accès réseau entrepreneurs 26 pays\n✅ Affiliation Amazon 14 pays\n✅ Token REUSS sur Polygon\n✅ Bibliothèque mondiale\n✅ Formation IA gratuite\n\n👉 **Accède maintenant :** https://reussitess.fr/visa-universel\n\nBOUDOUM ! 🇬🇵" })
+    }
+  }
+
   // BILAN FINAL ECOSYSTEME
   if (msgLow.includes("que sais-tu faire") || msgLow.includes("tes capacités") || msgLow.includes("liste tes fonctions") || msgLow.includes("tout ce que tu fais") || msgLow.includes("fonctionnalités")) {
     return res.status(200).json({ response: "🤖 **REUSSITESS AI — 100+ Fonctionnalités**\n\n"
@@ -3617,6 +3661,50 @@ export default async function handler(req, res) {
       const txt = items.map((it,i) => `${i+1}. **${it.title}**\n   📰 ${it.pubDate?.substring(0,10)||""}`).join("\n\n")
       return res.status(200).json({ response: "🌍 **Actualités Monde Francophone — RFI**\n\n"+txt+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {}
+  }
+
+  // PASSEPORT DE REUSSITE 🏆
+  if (msgLow.includes("passeport de réussite") || msgLow.includes("passeport reussite") || msgLow.includes("certificat champion") || msgLow.includes("devenir champion") || msgLow.includes("passeport champion") || msgLow.includes("champions")) {
+    try {
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es Neuro-X Coach, expert Passeport de Réussite REUSSITESS. Ce concept unique permet à chaque personne de 127 pays de recevoir un certificat de champion personnalisé avec un plan d'action concret vers ses objectifs. Inspire, motive et guide vers reussitess.fr/champions. Terres de Champions ! BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 2048
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "🏆 **Passeport de Réussite REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton certificat :** https://reussitess.fr/champions\n\n🌍 15 247 Champions dans 127 pays !\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {
+      return res.status(200).json({ response: "🏆 **Passeport de Réussite REUSSITESS**\n\nTon certificat de champion t'attend ! 15 247 champions dans 127 pays ont déjà rejoint le mouvement REUSSITESS.\n\n✅ Remplis ton prénom, ton pays et ton objectif\n✅ Reçois ton certificat personnalisé\n✅ Obtiens ton plan d'action sur mesure\n\n👉 **Accède maintenant :** https://reussitess.fr/champions\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
+    }
+  }
+
+  // VISA UNIVERSEL 🌍
+  if (msgLow.includes("visa universel") || msgLow.includes("opportunité mondiale") || msgLow.includes("réseau mondial") || msgLow.includes("rejoindre reussitess") || msgLow.includes("visa reussitess") || msgLow.includes("opportunités reussitess")) {
+    try {
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es Neuro-X Stratégie, expert Visa Universel REUSSITESS. Ce concept unique donne accès à des opportunités mondiales dans 26 pays: affiliation Amazon, token REUSS, réseau d'entrepreneurs, formations IA, bibliothèque mondiale. Explique les avantages du réseau REUSSITESS et guide vers reussitess.fr/visa-universel. BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 2048
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "🌍 **Visa Universel REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton Visa :** https://reussitess.fr/visa-universel\n\n🚀 Accès aux opportunités mondiales dans 26 pays !\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {
+      return res.status(200).json({ response: "🌍 **Visa Universel REUSSITESS**\n\nTon passeport vers les opportunités mondiales !\n\n✅ Accès réseau entrepreneurs 26 pays\n✅ Affiliation Amazon 14 pays\n✅ Token REUSS sur Polygon\n✅ Bibliothèque mondiale\n✅ Formation IA gratuite\n\n👉 **Accède maintenant :** https://reussitess.fr/visa-universel\n\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // BILAN FINAL ECOSYSTEME
