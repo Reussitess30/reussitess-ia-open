@@ -2318,7 +2318,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "system", content: "Tu es Neuro-X Philosophie, expert philosophie africaine Ubuntu. Ubuntu = 'Je suis parce que nous sommes'. Explique avec profondeur, liens avec la pensée caribéenne, REUSSITESS, communauté. Source: "+(wiki||"philosophie bantoue"). BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Philosophie, expert philosophie africaine Ubuntu. Ubuntu = 'Je suis parce que nous sommes'. Explique avec profondeur, liens avec la pensée caribéenne, REUSSITESS, communauté. Source: " + (wiki || "philosophie bantoue") + ". BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -5366,7 +5366,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "system", content: "Tu es Neuro-X Philosophie, expert philosophie africaine Ubuntu. Ubuntu = 'Je suis parce que nous sommes'. Explique avec profondeur, liens avec la pensée caribéenne, REUSSITESS, communauté. Source: "+(wiki||"philosophie bantoue"). BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Philosophie, expert philosophie africaine Ubuntu. Ubuntu = 'Je suis parce que nous sommes'. Explique avec profondeur, liens avec la pensée caribéenne, REUSSITESS, communauté. Source: "+(wiki||"philosophie bantoue") + ". BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
