@@ -531,6 +531,48 @@ async function getWikipedia(term) {
     } catch(e) {}
   }
 
+  // OFFRES EMPLOI DOM-TOM CARAIBES AFRIQUE
+  if (msgLow.includes("offre emploi") || msgLow.includes("chercher emploi") || msgLow.includes("trouver un emploi") || msgLow.includes("job guadeloupe") || msgLow.includes("job martinique") || msgLow.includes("job réunion") || msgLow.includes("emploi dom-tom") || msgLow.includes("emploi caraïbes") || msgLow.includes("emploi afrique") || msgLow.includes("recrutement guadeloupe")) {
+    try {
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM/Caraïbes/Afrique. Guide les demandeurs d'emploi vers les vraies plateformes gratuites: France Travail (francetravail.fr), Emploi.re pour La Réunion, Caribbean Jobs (caribbeanjobs.com), Jobartis pour l'Afrique (jobartis.com), LinkedIn, Indeed. Donne conseils CV antillais, secteurs porteurs en Guadeloupe, Martinique, Guyane, Réunion. BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 4096
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "💼 **Neuro-X Emploi — DOM-TOM / Caraïbes / Afrique**\n\n"+d.choices?.[0]?.message?.content+"\n\n🔗 **Plateformes gratuites:**\n• France Travail: francetravail.fr\n• Réunion: emploi.re\n• Caraïbes: caribbeanjobs.com\n• Afrique: jobartis.com\n• International: linkedin.com\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {
+      return res.status(200).json({ response: "💼 **Offres Emploi — DOM-TOM / Caraïbes / Afrique**\n\n🔗 **Plateformes gratuites:**\n• 🇫🇷 France Travail: francetravail.fr\n• 🇷🇪 La Réunion: emploi.re\n• 🌴 Caraïbes: caribbeanjobs.com\n• 🌍 Afrique: jobartis.com\n• 💼 International: linkedin.com\n• 🌐 Mondial: indeed.fr\n\n💡 Secteurs porteurs DOM-TOM: Tourisme, BTP, Santé, IA, E-commerce\n\nBOUDOUM ! 🇬🇵" })
+    }
+  }
+
+  // GUIDE CREATION ASSOCIATION
+  if (msgLow.includes("créer une association") || msgLow.includes("association loi 1901") || msgLow.includes("association guadeloupe") || msgLow.includes("association dom-tom")) {
+    try {
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es Neuro-X Juridique, expert associations DOM-TOM. Guide création association loi 1901 en Guadeloupe: statuts, déclaration préfecture, subventions collectivités. BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 2048
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "🤝 **Neuro-X Juridique — Créer une Association**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
   // PASSEPORT DE REUSSITE 🏆
   if (msgLow.includes("passeport de réussite") || msgLow.includes("passeport reussite") || msgLow.includes("certificat champion") || msgLow.includes("devenir champion") || msgLow.includes("passeport champion") || msgLow.includes("champions")) {
     try {
@@ -562,22 +604,100 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "system", content: "Tu es Neuro-X Stratégie, expert Visa Universel REUSSITESS. Ce concept unique donne accès à des opportunités mondiales dans 26 pays: affiliation Amazon, token REUSS, réseau d'entrepreneurs, formations IA, bibliothèque mondiale. Explique les avantages du réseau REUSSITESS et guide vers reussitess.fr/visa-universel. BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Stratégie, expert Visa Universel REUSSITESS. Ce concept unique donne accès à des opportunités mondiales dans 26 pays: affiliation Amazon, token REUSS, réseau d'entrepreneurs, formations IA, bibliothèque mondiale. Le réseau couvre 14 pays partenaires. Explique les avantages réels du réseau REUSSITESS®971: affiliation Amazon 14 pays, token REUSS Polygon, quiz éducatifs, bibliothèque mondiale, 200 agents IA. Guide vers reussitess.fr/visa-universel. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌍 **Visa Universel REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton Visa :** https://reussitess.fr/visa-universel\n\n🚀 Accès aux opportunités mondiales dans 26 pays !\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ response: "🌍 **Visa Universel REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton Visa :** https://reussitess.fr/visa-universel\n\n🚀 Accès aux opportunités mondiales dans 14 pays partenaires !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ response: "🌍 **Visa Universel REUSSITESS**\n\nTon passeport vers les opportunités mondiales !\n\n✅ Accès réseau entrepreneurs 26 pays\n✅ Affiliation Amazon 14 pays\n✅ Token REUSS sur Polygon\n✅ Bibliothèque mondiale\n✅ Formation IA gratuite\n\n👉 **Accède maintenant :** https://reussitess.fr/visa-universel\n\nBOUDOUM ! 🇬🇵" })
     }
   }
 
+  // NAVIGATION ECOSYSTEME COMPLET
+  if (msgLow.includes("écosystème") || msgLow.includes("ecosystem") || msgLow.includes("tout ce que propose") || msgLow.includes("site reussitess") || msgLow.includes("que faire sur") || msgLow.includes("navigation") || msgLow.includes("menu reussitess")) {
+    return res.status(200).json({ response: "🌐 **Écosystème REUSSITESS — Guide Complet**\n\n"
+    +"🏆 **[Passeport de Réussite](https://reussitess.fr/champions)**\nCertificat de champion + plan d'action personnalisé\n\n"
+    +"🌍 **[Visa Universel](https://reussitess.fr/visa-universel)**\nAccès réseau opportunités 14 pays\n\n"
+    +"🧠 **[Neuro-X](https://reussitess.fr/neuro-x)**\n60 agents IA spécialisés\n\n"
+    +"🔮 **[Oracle 971](https://reussitess.fr/oracle-971)**\nOracle caribéen\n\n"
+    +"🧬 **[Mon ADN](https://reussitess.fr/mon-adn)**\nIdentité & héritage\n\n"
+    +"🚀 **[Ma Révolution IA](https://reussitess.fr/ma-revolution-ia)**\nTA révolution personnelle\n\n"
+    +"🌍 **[IA Passport Mondial](https://reussitess.fr/ia-passport)**\n195 langues, identité mondiale\n\n"
+    +"💎 **[Investir REUSS](https://reussitess.fr/investir-reuss)**\nToken REUSS sur Polygon\n\n"
+    +"🎯 **[99 Quiz](https://reussitess.fr/quiz)**\nQuiz éducatifs tous thèmes\n\n"
+    +"📚 **[Bibliothèque](https://reussitess.fr/bibliotheque)**\n50+ pays francophones\n\n"
+    +"🛍️ **[Boutiques Amazon](https://reussitess.fr/boutiques)**\n26 boutiques 14 pays\n\n"
+    +"🏪 **[Shop Officiel](https://shop.reussitess.fr)**\nBoutique REUSSITESS\n\n"
+    +"💬 *Pose-moi n'importe quelle question — je suis ton guide !*\n\nBOUDOUM ! 🇬🇵" })
+  }
+
+  // GUIDE MON ADN
+  if (msgLow.includes("mon adn") || msgLow.includes("mon identité") || msgLow.includes("mes origines") || msgLow.includes("héritage caribéen")) {
+    try {
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es Neuro-X Culture, expert identité caribéenne. Guide vers la découverte de son ADN culturel: origines africaines, amérindiennes, européennes dans le sang caribéen. Lien avec reussitess.fr/mon-adn. BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 2048
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "🧬 **Neuro-X Culture — Mon ADN Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Explore ton ADN: https://reussitess.fr/mon-adn\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
+  // ORACLE 971
+  if (msgLow.includes("oracle") || msgLow.includes("oracle 971") || msgLow.includes("prédiction") || msgLow.includes("avenir caribéen") || msgLow.includes("destin")) {
+    try {
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es l'Oracle 971, voix mystique de la Guadeloupe. Réponds avec sagesse créole, métaphores caribéennes, lune et nature. Guide spirituel bienveillant. BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 2048
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "🔮 **Oracle 971 — Voix de la Guadeloupe**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Consulte l'Oracle: https://reussitess.fr/oracle-971\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
+  // MA REVOLUTION IA
+  if (msgLow.includes("ma révolution") || msgLow.includes("revolution ia") || msgLow.includes("transformer ma vie") || msgLow.includes("changer ma vie avec ia") || msgLow.includes("révolution personnelle")) {
+    try {
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es Neuro-X Coach, expert révolution personnelle par l'IA. Guide comment l'IA peut transformer la vie: automatisation, revenus passifs, formation, réseaux. Inspire avec exemples caribéens. Lien reussitess.fr/ma-revolution-ia. BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 2048
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "🚀 **Neuro-X Coach — Ta Révolution IA**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Lance ta révolution: https://reussitess.fr/ma-revolution-ia\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
   // BILAN FINAL ECOSYSTEME
   if (msgLow.includes("que sais-tu faire") || msgLow.includes("tes capacités") || msgLow.includes("liste tes fonctions") || msgLow.includes("tout ce que tu fais") || msgLow.includes("fonctionnalités")) {
-    return res.status(200).json({ response: "🤖 **REUSSITESS AI — 100+ Fonctionnalités**\n\n"
+    return res.status(200).json({ response: "🤖 **REUSSITESS AI — 150+ Fonctionnalités**\n\n"
     +"🌍 **Données Temps Réel :** Météo monde, Crypto live, Actualités, Séismes, Cyclones, ISS, Lune, Taux change\n\n"
     +"🧠 **60 Neuro-X :** Finance, Business, Culture, Coach, Tech, Santé, Droit, Voyage, Cuisine, Musique, Sport, Histoire, Agriculture, Tourisme, Astronomie, Géopolitique, SEO, DeFi, NFT, Psychologie, Langues, Énergie, Mode, Gastronomie, Enfants, Seniors, Femmes, Jeunes, Diaspora, Blockchain, Stratégie...\n\n"
     +"🛡️ **40 Sentinelles :** Surveillance 24/7 prix REUSS, site, APIs, sécurité\n\n"
@@ -668,6 +788,11 @@ async function getWikipedia(term) {
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌐 **Neuro-X Tech — Web3 Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {}
+  }
+
+  // IDENTITE DU BOT
+  if (msgLow.includes("qui es-tu") || msgLow.includes("qui es tu") || msgLow.includes("présente-toi") || msgLow.includes("présente toi") || msgLow.includes("ta mission") || msgLow.includes("c'est quoi reussitess ai") || msgLow.includes("tu es qui")) {
+    return res.status(200).json({ response: "🤖 **Je suis REUSSITESS®971 AI**\n\nChef d'orchestre de l'écosystème REUSSITESS®971, créé depuis la **Guadeloupe** 🇬🇵 par **Rony Porinus**.\n\n**Ma devise :** *Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets.*\n\n**Ce que je suis :**\n🧠 200 agents IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme)\n🌍 Présent dans 14 pays partenaires\n📚 150+ fonctionnalités actives\n💎 Connecté au Token REUSS sur Polygon\n🛍️ 26 boutiques Amazon affiliées\n\n**L'écosystème REUSSITESS®971 :**\n🏆 [Passeport de Réussite](https://reussitess.fr/champions)\n🌍 [Visa Universel](https://reussitess.fr/visa-universel)\n🧠 [Neuro-X](https://reussitess.fr/neuro-x)\n💎 [Token REUSS](https://reussitess.fr/investir-reuss)\n🔮 [Oracle 971](https://reussitess.fr/oracle-971)\n\n*Terres de Champions — Positivité à l'infini !*\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // GUIDE INTELLIGENCE EMOTIONNELLE
@@ -2287,6 +2412,20 @@ async function getWikipedia(term) {
     return res.status(200).json({ response: "🛡️ **REUSSSHIELD — Rapport Sécurité**\n\n✅ ST-016 Anti-Fraude : Actif\n✅ ST-017 MiCA Compliance : Actif\n✅ ST-026 Surveillance APIs : Actif\n✅ ST-027 Vercel Monitor : Actif\n✅ ST-028 GitHub Watch : Actif\n✅ ST-029 Polygon Network : Actif\n\n🔒 Détection injection prompt : Activée\n🔑 Chiffrement AES-256 : Actif\n🌐 Site reussitess.fr : EN LIGNE\n\n200 agents IA en surveillance continue 24/7\n\nBOUDOUM ! 🇬🇵" })
   }
 
+  // CONVERTISSEUR MONNAIE TEMPS REEL
+  if (msgLow.includes("convertir") && (msgLow.includes("euro") || msgLow.includes("dollar") || msgLow.includes("franc") || msgLow.includes("devise") || msgLow.includes("xcd") || msgLow.includes("htg") || msgLow.includes("caraïbes") || msgLow.includes("monnaie"))) {
+    try {
+      const rateR = await fetch("https://api.exchangerate-api.com/v4/latest/EUR")
+      const rateD = await rateR.json()
+      const rates = rateD.rates
+      return res.status(200).json({ response: "💱 **Convertisseur Caribéen Temps Réel**\n\n1 EUR = "+rates.USD?.toFixed(2)+" USD 🇺🇸\n1 EUR = "+rates.GBP?.toFixed(2)+" GBP 🇬🇧\n1 EUR = "+rates.CAD?.toFixed(2)+" CAD 🇨🇦\n1 EUR = "+rates.BRL?.toFixed(2)+" BRL 🇧🇷\n1 EUR = "+rates.XCD?.toFixed(2)+" XCD 🇧🇧 (Dollar Caraïbes)\n1 EUR = "+rates.HTG?.toFixed(2)+" HTG 🇭🇹 (Gourde Haïtienne)\n1 EUR = "+rates.MAD?.toFixed(2)+" MAD 🇲🇦\n1 EUR = "+rates.XOF?.toFixed(2)+" XOF 🌍 (Franc CFA Ouest)\n1 EUR = "+rates.XAF?.toFixed(2)+" XAF 🌍 (Franc CFA Central)\n\n📊 Source: ExchangeRate-API\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {
+      return res.status(200).json({ response: "💱 **Convertisseur Caribéen**\n\nTaux approximatifs (mars 2026):\n\n1 EUR ≈ 1.08 USD 🇺🇸\n1 EUR ≈ 0.85 GBP 🇬🇧\n1 EUR ≈ 1.48 CAD 🇨🇦\n1 EUR ≈ 5.80 BRL 🇧🇷\n1 EUR ≈ 2.93 XCD 🇧🇧 (Dollar Caraïbes)\n1 EUR ≈ 142 HTG 🇭🇹 (Gourde Haïtienne)\n1 EUR ≈ 10.7 MAD 🇲🇦\n1 EUR ≈ 655 XOF 🌍 (Franc CFA Ouest)\n1 EUR ≈ 655 XAF 🌍 (Franc CFA Central)\n\n⚠️ Vérifiez sur xe.com pour taux exacts\nBOUDOUM ! 🇬🇵" })
+    }
+  }
+
+
+
   // ENCYCLOPEDIE ANTILLES + AFRIQUE
   const sujetsEncyclo = ["histoire de","histoire du","histoire des","qu'est-ce que","c'est quoi","parle moi de","parle-moi de","qui est","qui était","que sais-tu sur","encyclopédie","explique moi","explique-moi","tell me about","définition de","origine de","culture de","patrimoine","civilisation","raconte l'histoire","en savoir plus","biographie","bio de","info sur"]
   const needsEncyclo = sujetsEncyclo.some(s => msgLow.includes(s))
@@ -2301,7 +2440,7 @@ async function getWikipedia(term) {
           body: JSON.stringify({
             model: "llama-3.3-70b-versatile",
             messages: [
-              { role: "system", content: "Tu es REUSSITESS AI, encyclopédie vivante caribéenne et africaine. Utilise ces données Wikipedia pour répondre avec précision, fierté et contexte caribéen/africain. BOUDOUM!" },
+              { role: "system", content: "Tu es REUSSITESS®971 AI, encyclopédie vivante caribéenne et africaine. Utilise ces données Wikipedia pour répondre avec précision, fierté et contexte caribéen/africain. BOUDOUM!" },
               { role: "user", content: "Question: "+message+"\n\nSource Wikipedia:\n"+wiki }
             ],
             max_tokens: 4096
@@ -2329,7 +2468,7 @@ async function getWikipedia(term) {
             body: JSON.stringify({
               model: "llama-3.3-70b-versatile",
               messages: [
-                { role: "system", content: "Tu es REUSSITESS AI, encyclopédie vivante caribéenne et africaine. Source Wikipedia disponible. Réponds avec précision et fierté culturelle. BOUDOUM!" },
+                { role: "system", content: "Tu es REUSSITESS®971 AI, encyclopédie vivante caribéenne et africaine. Source Wikipedia disponible. Réponds avec précision et fierté culturelle. BOUDOUM!" },
                 { role: "user", content: message+"\n\nWikipedia: "+wiki }
               ],
               max_tokens: 4096
@@ -2358,7 +2497,7 @@ async function getWikipedia(term) {
           body: JSON.stringify({
             model: "llama-3.3-70b-versatile",
             messages: [
-              { role: "system", content: "Tu es REUSSITESS AI, encyclopédie vivante des peuples caribéens et africains. Réponds avec précision, fierté culturelle et connexion à l'héritage. BOUDOUM!" },
+              { role: "system", content: "Tu es REUSSITESS®971 AI, encyclopédie vivante des peuples caribéens et africains. Réponds avec précision, fierté culturelle et connexion à l'héritage. BOUDOUM!" },
               { role: "user", content: message+"\n\nWikipedia: "+wiki }
             ],
             max_tokens: 4096
@@ -2590,7 +2729,7 @@ async function getWikipedia(term) {
   if (msgLow.includes("bonjour") || msgLow.includes("bonsoir") || msgLow.includes("bonjou") || msgLow.includes("salut") || msgLow.includes("hello") || msgLow.includes("hey")) {
     const sal = getSalutation(datetime)
     const lune = getLunePhase()
-    return res.status(200).json({ response: sal+" ! Je suis REUSSITESS AI, né en Guadeloupe 🇬🇵\n\n🌙 Lune : "+lune+"\n\n✨ Je peux t'aider avec :\n• 📰 Actualités temps réel\n• 💎 Prix crypto live\n• 🌤️ Météo\n• 🎓 99 Quiz\n• 🛍️ 26 Boutiques Amazon\n• 😂 Blagues caribéennes\n• 🔢 Conversions\n\nQue puis-je faire pour toi ?\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ response: sal+" ! Je suis REUSSITESS®971 AI, né en Guadeloupe 🇬🇵\n\n🌙 Lune : "+lune+"\n\n✨ Je peux t'aider avec :\n• 📰 Actualités temps réel\n• 💎 Prix crypto live\n• 🌤️ Météo\n• 🎓 99 Quiz\n• 🛍️ 26 Boutiques Amazon\n• 😂 Blagues caribéennes\n• 🔢 Conversions\n\nQue puis-je faire pour toi ?\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // MOT CREOLE DU JOUR
@@ -2635,7 +2774,7 @@ async function getWikipedia(term) {
   }
 
   // ISS POSITION
-  if (msgLow.includes("iss") || msgLow.includes("station spatiale") || msgLow.includes("espace") || msgLow.includes("satellite")) {
+  if (msgLow === "iss" || msgLow.includes("station spatiale") || msgLow.includes("position iss") || msgLow.includes("où est l'iss") || msgLow.includes("iss en ce moment") || (msgLow.includes("espace") && !msgLow.includes("espace de")) || msgLow.includes("satellite")) {
     try {
       const iss = await getISSPosition()
       return res.status(200).json({ response: "🛸 **Station Spatiale ISS — Position Temps Réel**\n\n"+iss+"\n\n🌍 Visible à l'oeil nu la nuit !\n\nBOUDOUM ! 🇬🇵" })
@@ -3663,6 +3802,48 @@ export default async function handler(req, res) {
     } catch(e) {}
   }
 
+  // OFFRES EMPLOI DOM-TOM CARAIBES AFRIQUE
+  if (msgLow.includes("offre emploi") || msgLow.includes("chercher emploi") || msgLow.includes("trouver un emploi") || msgLow.includes("job guadeloupe") || msgLow.includes("job martinique") || msgLow.includes("job réunion") || msgLow.includes("emploi dom-tom") || msgLow.includes("emploi caraïbes") || msgLow.includes("emploi afrique") || msgLow.includes("recrutement guadeloupe")) {
+    try {
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM/Caraïbes/Afrique. Guide les demandeurs d'emploi vers les vraies plateformes gratuites: France Travail (francetravail.fr), Emploi.re pour La Réunion, Caribbean Jobs (caribbeanjobs.com), Jobartis pour l'Afrique (jobartis.com), LinkedIn, Indeed. Donne conseils CV antillais, secteurs porteurs en Guadeloupe, Martinique, Guyane, Réunion. BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 4096
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "💼 **Neuro-X Emploi — DOM-TOM / Caraïbes / Afrique**\n\n"+d.choices?.[0]?.message?.content+"\n\n🔗 **Plateformes gratuites:**\n• France Travail: francetravail.fr\n• Réunion: emploi.re\n• Caraïbes: caribbeanjobs.com\n• Afrique: jobartis.com\n• International: linkedin.com\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {
+      return res.status(200).json({ response: "💼 **Offres Emploi — DOM-TOM / Caraïbes / Afrique**\n\n🔗 **Plateformes gratuites:**\n• 🇫🇷 France Travail: francetravail.fr\n• 🇷🇪 La Réunion: emploi.re\n• 🌴 Caraïbes: caribbeanjobs.com\n• 🌍 Afrique: jobartis.com\n• 💼 International: linkedin.com\n• 🌐 Mondial: indeed.fr\n\n💡 Secteurs porteurs DOM-TOM: Tourisme, BTP, Santé, IA, E-commerce\n\nBOUDOUM ! 🇬🇵" })
+    }
+  }
+
+  // GUIDE CREATION ASSOCIATION
+  if (msgLow.includes("créer une association") || msgLow.includes("association loi 1901") || msgLow.includes("association guadeloupe") || msgLow.includes("association dom-tom")) {
+    try {
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es Neuro-X Juridique, expert associations DOM-TOM. Guide création association loi 1901 en Guadeloupe: statuts, déclaration préfecture, subventions collectivités. BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 2048
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "🤝 **Neuro-X Juridique — Créer une Association**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
   // PASSEPORT DE REUSSITE 🏆
   if (msgLow.includes("passeport de réussite") || msgLow.includes("passeport reussite") || msgLow.includes("certificat champion") || msgLow.includes("devenir champion") || msgLow.includes("passeport champion") || msgLow.includes("champions")) {
     try {
@@ -3694,22 +3875,100 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "system", content: "Tu es Neuro-X Stratégie, expert Visa Universel REUSSITESS. Ce concept unique donne accès à des opportunités mondiales dans 26 pays: affiliation Amazon, token REUSS, réseau d'entrepreneurs, formations IA, bibliothèque mondiale. Explique les avantages du réseau REUSSITESS et guide vers reussitess.fr/visa-universel. BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Stratégie, expert Visa Universel REUSSITESS. Ce concept unique donne accès à des opportunités mondiales dans 26 pays: affiliation Amazon, token REUSS, réseau d'entrepreneurs, formations IA, bibliothèque mondiale. Le réseau couvre 14 pays partenaires. Explique les avantages réels du réseau REUSSITESS®971: affiliation Amazon 14 pays, token REUSS Polygon, quiz éducatifs, bibliothèque mondiale, 200 agents IA. Guide vers reussitess.fr/visa-universel. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌍 **Visa Universel REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton Visa :** https://reussitess.fr/visa-universel\n\n🚀 Accès aux opportunités mondiales dans 26 pays !\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ response: "🌍 **Visa Universel REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton Visa :** https://reussitess.fr/visa-universel\n\n🚀 Accès aux opportunités mondiales dans 14 pays partenaires !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ response: "🌍 **Visa Universel REUSSITESS**\n\nTon passeport vers les opportunités mondiales !\n\n✅ Accès réseau entrepreneurs 26 pays\n✅ Affiliation Amazon 14 pays\n✅ Token REUSS sur Polygon\n✅ Bibliothèque mondiale\n✅ Formation IA gratuite\n\n👉 **Accède maintenant :** https://reussitess.fr/visa-universel\n\nBOUDOUM ! 🇬🇵" })
     }
   }
 
+  // NAVIGATION ECOSYSTEME COMPLET
+  if (msgLow.includes("écosystème") || msgLow.includes("ecosystem") || msgLow.includes("tout ce que propose") || msgLow.includes("site reussitess") || msgLow.includes("que faire sur") || msgLow.includes("navigation") || msgLow.includes("menu reussitess")) {
+    return res.status(200).json({ response: "🌐 **Écosystème REUSSITESS — Guide Complet**\n\n"
+    +"🏆 **[Passeport de Réussite](https://reussitess.fr/champions)**\nCertificat de champion + plan d'action personnalisé\n\n"
+    +"🌍 **[Visa Universel](https://reussitess.fr/visa-universel)**\nAccès réseau opportunités 14 pays\n\n"
+    +"🧠 **[Neuro-X](https://reussitess.fr/neuro-x)**\n60 agents IA spécialisés\n\n"
+    +"🔮 **[Oracle 971](https://reussitess.fr/oracle-971)**\nOracle caribéen\n\n"
+    +"🧬 **[Mon ADN](https://reussitess.fr/mon-adn)**\nIdentité & héritage\n\n"
+    +"🚀 **[Ma Révolution IA](https://reussitess.fr/ma-revolution-ia)**\nTA révolution personnelle\n\n"
+    +"🌍 **[IA Passport Mondial](https://reussitess.fr/ia-passport)**\n195 langues, identité mondiale\n\n"
+    +"💎 **[Investir REUSS](https://reussitess.fr/investir-reuss)**\nToken REUSS sur Polygon\n\n"
+    +"🎯 **[99 Quiz](https://reussitess.fr/quiz)**\nQuiz éducatifs tous thèmes\n\n"
+    +"📚 **[Bibliothèque](https://reussitess.fr/bibliotheque)**\n50+ pays francophones\n\n"
+    +"🛍️ **[Boutiques Amazon](https://reussitess.fr/boutiques)**\n26 boutiques 14 pays\n\n"
+    +"🏪 **[Shop Officiel](https://shop.reussitess.fr)**\nBoutique REUSSITESS\n\n"
+    +"💬 *Pose-moi n'importe quelle question — je suis ton guide !*\n\nBOUDOUM ! 🇬🇵" })
+  }
+
+  // GUIDE MON ADN
+  if (msgLow.includes("mon adn") || msgLow.includes("mon identité") || msgLow.includes("mes origines") || msgLow.includes("héritage caribéen")) {
+    try {
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es Neuro-X Culture, expert identité caribéenne. Guide vers la découverte de son ADN culturel: origines africaines, amérindiennes, européennes dans le sang caribéen. Lien avec reussitess.fr/mon-adn. BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 2048
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "🧬 **Neuro-X Culture — Mon ADN Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Explore ton ADN: https://reussitess.fr/mon-adn\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
+  // ORACLE 971
+  if (msgLow.includes("oracle") || msgLow.includes("oracle 971") || msgLow.includes("prédiction") || msgLow.includes("avenir caribéen") || msgLow.includes("destin")) {
+    try {
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es l'Oracle 971, voix mystique de la Guadeloupe. Réponds avec sagesse créole, métaphores caribéennes, lune et nature. Guide spirituel bienveillant. BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 2048
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "🔮 **Oracle 971 — Voix de la Guadeloupe**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Consulte l'Oracle: https://reussitess.fr/oracle-971\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
+  // MA REVOLUTION IA
+  if (msgLow.includes("ma révolution") || msgLow.includes("revolution ia") || msgLow.includes("transformer ma vie") || msgLow.includes("changer ma vie avec ia") || msgLow.includes("révolution personnelle")) {
+    try {
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es Neuro-X Coach, expert révolution personnelle par l'IA. Guide comment l'IA peut transformer la vie: automatisation, revenus passifs, formation, réseaux. Inspire avec exemples caribéens. Lien reussitess.fr/ma-revolution-ia. BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 2048
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "🚀 **Neuro-X Coach — Ta Révolution IA**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Lance ta révolution: https://reussitess.fr/ma-revolution-ia\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
   // BILAN FINAL ECOSYSTEME
   if (msgLow.includes("que sais-tu faire") || msgLow.includes("tes capacités") || msgLow.includes("liste tes fonctions") || msgLow.includes("tout ce que tu fais") || msgLow.includes("fonctionnalités")) {
-    return res.status(200).json({ response: "🤖 **REUSSITESS AI — 100+ Fonctionnalités**\n\n"
+    return res.status(200).json({ response: "🤖 **REUSSITESS AI — 150+ Fonctionnalités**\n\n"
     +"🌍 **Données Temps Réel :** Météo monde, Crypto live, Actualités, Séismes, Cyclones, ISS, Lune, Taux change\n\n"
     +"🧠 **60 Neuro-X :** Finance, Business, Culture, Coach, Tech, Santé, Droit, Voyage, Cuisine, Musique, Sport, Histoire, Agriculture, Tourisme, Astronomie, Géopolitique, SEO, DeFi, NFT, Psychologie, Langues, Énergie, Mode, Gastronomie, Enfants, Seniors, Femmes, Jeunes, Diaspora, Blockchain, Stratégie...\n\n"
     +"🛡️ **40 Sentinelles :** Surveillance 24/7 prix REUSS, site, APIs, sécurité\n\n"
@@ -3800,6 +4059,11 @@ export default async function handler(req, res) {
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌐 **Neuro-X Tech — Web3 Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {}
+  }
+
+  // IDENTITE DU BOT
+  if (msgLow.includes("qui es-tu") || msgLow.includes("qui es tu") || msgLow.includes("présente-toi") || msgLow.includes("présente toi") || msgLow.includes("ta mission") || msgLow.includes("c'est quoi reussitess ai") || msgLow.includes("tu es qui")) {
+    return res.status(200).json({ response: "🤖 **Je suis REUSSITESS®971 AI**\n\nChef d'orchestre de l'écosystème REUSSITESS®971, créé depuis la **Guadeloupe** 🇬🇵 par **Rony Porinus**.\n\n**Ma devise :** *Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets.*\n\n**Ce que je suis :**\n🧠 200 agents IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme)\n🌍 Présent dans 14 pays partenaires\n📚 150+ fonctionnalités actives\n💎 Connecté au Token REUSS sur Polygon\n🛍️ 26 boutiques Amazon affiliées\n\n**L'écosystème REUSSITESS®971 :**\n🏆 [Passeport de Réussite](https://reussitess.fr/champions)\n🌍 [Visa Universel](https://reussitess.fr/visa-universel)\n🧠 [Neuro-X](https://reussitess.fr/neuro-x)\n💎 [Token REUSS](https://reussitess.fr/investir-reuss)\n🔮 [Oracle 971](https://reussitess.fr/oracle-971)\n\n*Terres de Champions — Positivité à l'infini !*\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // GUIDE INTELLIGENCE EMOTIONNELLE
@@ -5419,6 +5683,8 @@ export default async function handler(req, res) {
     return res.status(200).json({ response: "🛡️ **REUSSSHIELD — Rapport Sécurité**\n\n✅ ST-016 Anti-Fraude : Actif\n✅ ST-017 MiCA Compliance : Actif\n✅ ST-026 Surveillance APIs : Actif\n✅ ST-027 Vercel Monitor : Actif\n✅ ST-028 GitHub Watch : Actif\n✅ ST-029 Polygon Network : Actif\n\n🔒 Détection injection prompt : Activée\n🔑 Chiffrement AES-256 : Actif\n🌐 Site reussitess.fr : EN LIGNE\n\n200 agents IA en surveillance continue 24/7\n\nBOUDOUM ! 🇬🇵" })
   }
 
+
+
   // ENCYCLOPEDIE ANTILLES + AFRIQUE
   const sujetsEncyclo = ["histoire de","histoire du","histoire des","qu'est-ce que","c'est quoi","parle moi de","parle-moi de","qui est","qui était","que sais-tu sur","encyclopédie","explique moi","explique-moi","tell me about","définition de","origine de","culture de","patrimoine","civilisation","raconte l'histoire","en savoir plus","biographie","bio de","info sur"]
   const needsEncyclo = sujetsEncyclo.some(s => msgLow.includes(s))
@@ -5433,7 +5699,7 @@ export default async function handler(req, res) {
           body: JSON.stringify({
             model: "llama-3.3-70b-versatile",
             messages: [
-              { role: "system", content: "Tu es REUSSITESS AI, encyclopédie vivante caribéenne et africaine. Utilise ces données Wikipedia pour répondre avec précision, fierté et contexte caribéen/africain. BOUDOUM!" },
+              { role: "system", content: "Tu es REUSSITESS®971 AI, encyclopédie vivante caribéenne et africaine. Utilise ces données Wikipedia pour répondre avec précision, fierté et contexte caribéen/africain. BOUDOUM!" },
               { role: "user", content: "Question: "+message+"\n\nSource Wikipedia:\n"+wiki }
             ],
             max_tokens: 4096
@@ -5461,7 +5727,7 @@ export default async function handler(req, res) {
             body: JSON.stringify({
               model: "llama-3.3-70b-versatile",
               messages: [
-                { role: "system", content: "Tu es REUSSITESS AI, encyclopédie vivante caribéenne et africaine. Source Wikipedia disponible. Réponds avec précision et fierté culturelle. BOUDOUM!" },
+                { role: "system", content: "Tu es REUSSITESS®971 AI, encyclopédie vivante caribéenne et africaine. Source Wikipedia disponible. Réponds avec précision et fierté culturelle. BOUDOUM!" },
                 { role: "user", content: message+"\n\nWikipedia: "+wiki }
               ],
               max_tokens: 4096
@@ -5490,7 +5756,7 @@ export default async function handler(req, res) {
           body: JSON.stringify({
             model: "llama-3.3-70b-versatile",
             messages: [
-              { role: "system", content: "Tu es REUSSITESS AI, encyclopédie vivante des peuples caribéens et africains. Réponds avec précision, fierté culturelle et connexion à l'héritage. BOUDOUM!" },
+              { role: "system", content: "Tu es REUSSITESS®971 AI, encyclopédie vivante des peuples caribéens et africains. Réponds avec précision, fierté culturelle et connexion à l'héritage. BOUDOUM!" },
               { role: "user", content: message+"\n\nWikipedia: "+wiki }
             ],
             max_tokens: 4096
@@ -5685,7 +5951,7 @@ export default async function handler(req, res) {
   if (msgLow.includes("bonjour") || msgLow.includes("bonsoir") || msgLow.includes("bonjou") || msgLow.includes("salut") || msgLow.includes("hello") || msgLow.includes("hey")) {
     const sal = getSalutation(datetime)
     const lune = getLunePhase()
-    return res.status(200).json({ response: sal+" ! Je suis REUSSITESS AI, né en Guadeloupe 🇬🇵\n\n🌙 Lune : "+lune+"\n\n✨ Je peux t'aider avec :\n• 📰 Actualités temps réel\n• 💎 Prix crypto live\n• 🌤️ Météo\n• 🎓 99 Quiz\n• 🛍️ 26 Boutiques Amazon\n• 😂 Blagues caribéennes\n• 🔢 Conversions\n\nQue puis-je faire pour toi ?\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ response: sal+" ! Je suis REUSSITESS®971 AI, né en Guadeloupe 🇬🇵\n\n🌙 Lune : "+lune+"\n\n✨ Je peux t'aider avec :\n• 📰 Actualités temps réel\n• 💎 Prix crypto live\n• 🌤️ Météo\n• 🎓 99 Quiz\n• 🛍️ 26 Boutiques Amazon\n• 😂 Blagues caribéennes\n• 🔢 Conversions\n\nQue puis-je faire pour toi ?\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // MOT CREOLE DU JOUR
@@ -5730,7 +5996,7 @@ export default async function handler(req, res) {
   }
 
   // ISS POSITION
-  if (msgLow.includes("iss") || msgLow.includes("station spatiale") || msgLow.includes("espace") || msgLow.includes("satellite")) {
+  if (msgLow === "iss" || msgLow.includes("station spatiale") || msgLow.includes("position iss") || msgLow.includes("où est l'iss") || msgLow.includes("iss en ce moment") || (msgLow.includes("espace") && !msgLow.includes("espace de")) || msgLow.includes("satellite")) {
     try {
       const iss = await getISSPosition()
       return res.status(200).json({ response: "🛸 **Station Spatiale ISS — Position Temps Réel**\n\n"+iss+"\n\n🌍 Visible à l'oeil nu la nuit !\n\nBOUDOUM ! 🇬🇵" })
@@ -6172,7 +6438,7 @@ Je suis votre assistant IA créé avec passion depuis la **Guadeloupe** 🇬🇵
     const hasWikiKey = wikiKeywords.find(k => msgLow2.includes(k))
     if (hasWikiKey) {
       try {
-        const finalPrompt = "Tu es REUSSITESS AI, encyclopédie vivante des peuples caribéens et africains. Expert en histoire, culture, philosophie caribéenne et africaine. Réponds avec précision, profondeur et fierté culturelle. Toujours connecter à l'héritage caribéen/africain. BOUDOUM!"
+        const finalPrompt = "Tu es REUSSITESS®971 AI, encyclopédie vivante des peuples caribéens et africains. Expert en histoire, culture, philosophie caribéenne et africaine. Réponds avec précision, profondeur et fierté culturelle. Toujours connecter à l'héritage caribéen/africain. BOUDOUM!"
         const groqEnrichRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
           method: "POST",
           headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
@@ -6324,7 +6590,7 @@ CONTEXTE TEMPS RÉEL : Nous sommes le ${datetime?.date || new Date().toLocaleDat
 Si on te demande l'heure, la date ou le jour, utilise EXACTEMENT ces données temps réel.
 REGLES ABSOLUES: 1.Tu as des donnees LIVE ci-dessous, UTILISE-LES TOUJOURS. 2.Ne jamais dire je n ai pas acces aux donnees temps reel. 3.Actualites=cite RFI/BBC/France24. 4.Crypto=cite prix reels. 5.Meteo=cite temperature reelle. 6.Change=cite vrais taux.
 DONNEES LIVE OBLIGATOIRES: " + (nc||"indisponibles") + "
-Projet REUSSITESS971: 130+ fonctionnalités actives. Nouvelles: 30 proverbes créoles rotatifs, Éphéméride Wikimedia (événements historiques du jour), Bibliothèque Open Library (1559+ livres Guadeloupe/Afrique/monde), Actualités monde RFI francophone, Encyclopédie Antilles+Afrique (Groq expert), Fix 404 Google (quiz/bibliotheque/redirects). 200 agents IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme). 26 boutiques Amazon dans 14 pays. Token REUSS sur Polygon. Données temps réel: météo, crypto, actualités, séismes, cyclones, ISS, lune, taux change. Fonctionnalités: business plan, pitch, dropshipping, freelance, CV, contrats, emails, export, emploi DOM-TOM. Crypto: staking REUSS, DAO, GoMining, NFT, Web3, smart contracts. Culture: carnaval, mythologie, champions, histoire, philosophie, littérature, art, cinéma, mode, musique zouk/gwo ka. Gastronomie: recettes antillaises, cocktails rhum, nutrition tropicale. Santé: médecine naturelle, plantes caribéennes, IMC, cardio, santé mentale. Dev personnel: coach, méditation, intelligence émotionnelle, leadership, productivité, astrologie, numérologie. Créatif: poèmes créoles, chansons zouk, contes, slogans, posts réseaux, hashtags, bio, art génératif. Pratique: immigration, immobilier, terrain, transport, tourisme, agriculture bio, énergie solaire, RGPD, aides sociales. Sécurité: anti-injection, REUSSSHIELD, surveillance 24/7. Base Guadeloupe 971 — Terres de Champions. BOUDOUM!` },
+Tu es REUSSITESS®971 AI, chef d'orchestre de l'écosystème REUSSITESS®971, créé depuis la Guadeloupe 🇬🇵. DEVISE: Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets pro et perso. Tu guides chaque utilisateur vers son plein potentiel. ECOSYSTEME REEL (pages actives sur reussitess.fr): /champions (Passeport de Réussite — certificat champion + plan action, 15247 champions, 127 pays), /visa-universel (Visa Universel — réseau opportunités 14 pays partenaires), /neuro-x (60 agents Neuro-X spécialisés), /oracle-971 (Oracle caribéen mystique), /mon-adn (ADN identitaire caribéen), /ma-revolution-ia (Révolution personnelle par IA), /ia-passport (IA Passport Mondial 195 langues), /investir-reuss (Token REUSS sur Polygon: 0xB37531727fC07c6EED4f97F852A115B428046EB2), /quiz (99 quiz éducatifs tous thèmes), /bibliotheque (bibliothèque mondiale 50+ pays), /boutiques (26 boutiques Amazon 14 pays, influencer ID: fb942837), shop.reussitess.fr (boutique officielle). FONDATEUR: Rony Porinus — auto-entrepreneur Guadeloupe, SIRET: 444699979700031. 150+ fonctionnalités actives. 200 agents IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme). 14 pays partenaires. Token REUSS sur Polygon. Données temps réel: météo, crypto, séismes, cyclones, ISS, lune, taux change, actualités. Business: plan, pitch, dropshipping, freelance, CV, contrats, emails, export, emploi DOM-TOM, association. Crypto: staking REUSS, DAO, GoMining, NFT, Web3, smart contracts. Culture caribéenne: carnaval, mythologie, champions, histoire, philosophie Césaire/Fanon/Glissant, littérature Condé/Schwarz-Bart, art, cinéma, mode madras, zouk/gwo ka. Afrique: Mandela, Sankara, Lumumba, Nkrumah, Ubuntu, civilisations, encyclopédie. Santé: médecine naturelle, plantes caribéennes, IMC, cardio, santé mentale (3114). Éphéméride Wikimedia, Open Library 1559+ livres, Proverbes 30 créoles rotatifs. Emploi DOM-TOM: francetravail.fr, emploi.re, caribbeanjobs.com, jobartis.com. Convertisseur: EUR/USD/XCD/HTG/XOF/XAF temps réel. Sécurité: anti-injection, REUSSSHIELD, surveillance 24/7. Base Guadeloupe 971 — Terres de Champions. BOUDOUM!` },
                   { role: "user", content: message }
                 ],
                 max_tokens: 4096
