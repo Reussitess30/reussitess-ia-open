@@ -491,6 +491,46 @@ async function getWikipedia(term) {
     } catch(e) {}
   }
 
+  // EVENEMENT HISTORIQUE DU JOUR — Wikimedia gratuit
+  if (msgLow.includes("événement du jour") || msgLow.includes("évènement du jour") || msgLow.includes("ce jour dans l'histoire") || msgLow.includes("éphéméride") || msgLow.includes("aujourd'hui dans l'histoire")) {
+    try {
+      const now = new Date()
+      const mm = String(now.getMonth()+1).padStart(2,"0")
+      const dd = String(now.getDate()).padStart(2,"0")
+      const wikiR = await fetch(`https://api.wikimedia.org/feed/v1/wikipedia/fr/onthisday/events/${mm}/${dd}`)
+      const wikiD = await wikiR.json()
+      const events = wikiD.events || []
+      const picks = events.sort(() => Math.random()-0.5).slice(0,5)
+      const txt = picks.map((e,i) => `${i+1}. **${e.year || ""}** — ${e.text}`).join("\n")
+      return res.status(200).json({ response: "📅 **Ce Jour dans l'Histoire — "+dd+"/"+mm+"**\n\n"+txt+"\n\nSource: Wikimedia\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {
+      return res.status(200).json({ response: "📅 **Éphéméride**\n\nLe 27 mai 1848 : Abolition de l'esclavage en Guadeloupe.\nLe 10 mai 2001 : Loi Taubira reconnaît l'esclavage comme crime contre l'humanité.\n\nBOUDOUM ! 🇬🇵" })
+    }
+  }
+
+  // BIBLIOTHEQUE MONDIALE — Open Library gratuit
+  if (msgLow.includes("livre sur") || msgLow.includes("bibliothèque") || msgLow.includes("recherche livre") || msgLow.includes("trouver livre") || msgLow.includes("open library")) {
+    try {
+      const query = encodeURIComponent(message.replace(/livre sur|bibliothèque|recherche livre|trouver livre/gi,"").trim() || "guadeloupe")
+      const libR = await fetch(`https://openlibrary.org/search.json?q=${query}&limit=5&language=fre`)
+      const libD = await libR.json()
+      const books = (libD.docs || []).slice(0,5)
+      const txt = books.map((b,i) => `${i+1}. 📖 **${b.title}** — ${(b.author_name||["Auteur inconnu"])[0]} (${b.first_publish_year||"?"})\n   🔗 openlibrary.org/works/${b.key}`).join("\n\n")
+      return res.status(200).json({ response: "📚 **Bibliothèque Mondiale — Open Library**\n\n🔍 Résultats pour: *"+decodeURIComponent(query)+"*\n\n"+txt+"\n\n"+libD.numFound+" livres trouvés gratuitement !\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
+  // ACTUALITES MONDE FRANCOPHONE — RSS gratuit
+  if (msgLow.includes("actualité monde") || msgLow.includes("news monde") || msgLow.includes("actualité internationale") || msgLow.includes("info monde")) {
+    try {
+      const rssR = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.rfi.fr/fr/rss-services/html/rss-services.html&count=5")
+      const rssD = await rssR.json()
+      const items = (rssD.items||[]).slice(0,5)
+      const txt = items.map((it,i) => `${i+1}. **${it.title}**\n   📰 ${it.pubDate?.substring(0,10)||""}`).join("\n\n")
+      return res.status(200).json({ response: "🌍 **Actualités Monde Francophone — RFI**\n\n"+txt+"\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
   // BILAN FINAL ECOSYSTEME
   if (msgLow.includes("que sais-tu faire") || msgLow.includes("tes capacités") || msgLow.includes("liste tes fonctions") || msgLow.includes("tout ce que tu fais") || msgLow.includes("fonctionnalités")) {
     return res.status(200).json({ response: "🤖 **REUSSITESS AI — 100+ Fonctionnalités**\n\n"
@@ -3539,6 +3579,46 @@ export default async function handler(req, res) {
     } catch(e) {}
   }
 
+  // EVENEMENT HISTORIQUE DU JOUR — Wikimedia gratuit
+  if (msgLow.includes("événement du jour") || msgLow.includes("évènement du jour") || msgLow.includes("ce jour dans l'histoire") || msgLow.includes("éphéméride") || msgLow.includes("aujourd'hui dans l'histoire")) {
+    try {
+      const now = new Date()
+      const mm = String(now.getMonth()+1).padStart(2,"0")
+      const dd = String(now.getDate()).padStart(2,"0")
+      const wikiR = await fetch(`https://api.wikimedia.org/feed/v1/wikipedia/fr/onthisday/events/${mm}/${dd}`)
+      const wikiD = await wikiR.json()
+      const events = wikiD.events || []
+      const picks = events.sort(() => Math.random()-0.5).slice(0,5)
+      const txt = picks.map((e,i) => `${i+1}. **${e.year || ""}** — ${e.text}`).join("\n")
+      return res.status(200).json({ response: "📅 **Ce Jour dans l'Histoire — "+dd+"/"+mm+"**\n\n"+txt+"\n\nSource: Wikimedia\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {
+      return res.status(200).json({ response: "📅 **Éphéméride**\n\nLe 27 mai 1848 : Abolition de l'esclavage en Guadeloupe.\nLe 10 mai 2001 : Loi Taubira reconnaît l'esclavage comme crime contre l'humanité.\n\nBOUDOUM ! 🇬🇵" })
+    }
+  }
+
+  // BIBLIOTHEQUE MONDIALE — Open Library gratuit
+  if (msgLow.includes("livre sur") || msgLow.includes("bibliothèque") || msgLow.includes("recherche livre") || msgLow.includes("trouver livre") || msgLow.includes("open library")) {
+    try {
+      const query = encodeURIComponent(message.replace(/livre sur|bibliothèque|recherche livre|trouver livre/gi,"").trim() || "guadeloupe")
+      const libR = await fetch(`https://openlibrary.org/search.json?q=${query}&limit=5&language=fre`)
+      const libD = await libR.json()
+      const books = (libD.docs || []).slice(0,5)
+      const txt = books.map((b,i) => `${i+1}. 📖 **${b.title}** — ${(b.author_name||["Auteur inconnu"])[0]} (${b.first_publish_year||"?"})\n   🔗 openlibrary.org/works/${b.key}`).join("\n\n")
+      return res.status(200).json({ response: "📚 **Bibliothèque Mondiale — Open Library**\n\n🔍 Résultats pour: *"+decodeURIComponent(query)+"*\n\n"+txt+"\n\n"+libD.numFound+" livres trouvés gratuitement !\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
+  // ACTUALITES MONDE FRANCOPHONE — RSS gratuit
+  if (msgLow.includes("actualité monde") || msgLow.includes("news monde") || msgLow.includes("actualité internationale") || msgLow.includes("info monde")) {
+    try {
+      const rssR = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.rfi.fr/fr/rss-services/html/rss-services.html&count=5")
+      const rssD = await rssR.json()
+      const items = (rssD.items||[]).slice(0,5)
+      const txt = items.map((it,i) => `${i+1}. **${it.title}**\n   📰 ${it.pubDate?.substring(0,10)||""}`).join("\n\n")
+      return res.status(200).json({ response: "🌍 **Actualités Monde Francophone — RFI**\n\n"+txt+"\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
   // BILAN FINAL ECOSYSTEME
   if (msgLow.includes("que sais-tu faire") || msgLow.includes("tes capacités") || msgLow.includes("liste tes fonctions") || msgLow.includes("tout ce que tu fais") || msgLow.includes("fonctionnalités")) {
     return res.status(200).json({ response: "🤖 **REUSSITESS AI — 100+ Fonctionnalités**\n\n"
@@ -6156,7 +6236,7 @@ CONTEXTE TEMPS RÉEL : Nous sommes le ${datetime?.date || new Date().toLocaleDat
 Si on te demande l'heure, la date ou le jour, utilise EXACTEMENT ces données temps réel.
 REGLES ABSOLUES: 1.Tu as des donnees LIVE ci-dessous, UTILISE-LES TOUJOURS. 2.Ne jamais dire je n ai pas acces aux donnees temps reel. 3.Actualites=cite RFI/BBC/France24. 4.Crypto=cite prix reels. 5.Meteo=cite temperature reelle. 6.Change=cite vrais taux.
 DONNEES LIVE OBLIGATOIRES: " + (nc||"indisponibles") + "
-Projet REUSSITESS971: 120+ fonctionnalités actives. 200 agents IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme). 26 boutiques Amazon dans 14 pays. Token REUSS sur Polygon. Données temps réel: météo, crypto, actualités, séismes, cyclones, ISS, lune, taux change. Fonctionnalités: business plan, pitch, dropshipping, freelance, CV, contrats, emails, export, emploi DOM-TOM. Crypto: staking REUSS, DAO, GoMining, NFT, Web3, smart contracts. Culture: carnaval, mythologie, champions, histoire, philosophie, littérature, art, cinéma, mode, musique zouk/gwo ka. Gastronomie: recettes antillaises, cocktails rhum, nutrition tropicale. Santé: médecine naturelle, plantes caribéennes, IMC, cardio, santé mentale. Dev personnel: coach, méditation, intelligence émotionnelle, leadership, productivité, astrologie, numérologie. Créatif: poèmes créoles, chansons zouk, contes, slogans, posts réseaux, hashtags, bio, art génératif. Pratique: immigration, immobilier, terrain, transport, tourisme, agriculture bio, énergie solaire, RGPD, aides sociales. Sécurité: anti-injection, REUSSSHIELD, surveillance 24/7. Base Guadeloupe 971 — Terres de Champions. BOUDOUM!` },
+Projet REUSSITESS971: 130+ fonctionnalités actives. Nouvelles: 30 proverbes créoles rotatifs, Éphéméride Wikimedia (événements historiques du jour), Bibliothèque Open Library (1559+ livres Guadeloupe/Afrique/monde), Actualités monde RFI francophone, Encyclopédie Antilles+Afrique (Groq expert), Fix 404 Google (quiz/bibliotheque/redirects). 200 agents IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme). 26 boutiques Amazon dans 14 pays. Token REUSS sur Polygon. Données temps réel: météo, crypto, actualités, séismes, cyclones, ISS, lune, taux change. Fonctionnalités: business plan, pitch, dropshipping, freelance, CV, contrats, emails, export, emploi DOM-TOM. Crypto: staking REUSS, DAO, GoMining, NFT, Web3, smart contracts. Culture: carnaval, mythologie, champions, histoire, philosophie, littérature, art, cinéma, mode, musique zouk/gwo ka. Gastronomie: recettes antillaises, cocktails rhum, nutrition tropicale. Santé: médecine naturelle, plantes caribéennes, IMC, cardio, santé mentale. Dev personnel: coach, méditation, intelligence émotionnelle, leadership, productivité, astrologie, numérologie. Créatif: poèmes créoles, chansons zouk, contes, slogans, posts réseaux, hashtags, bio, art génératif. Pratique: immigration, immobilier, terrain, transport, tourisme, agriculture bio, énergie solaire, RGPD, aides sociales. Sécurité: anti-injection, REUSSSHIELD, surveillance 24/7. Base Guadeloupe 971 — Terres de Champions. BOUDOUM!` },
                   { role: "user", content: message }
                 ],
                 max_tokens: 4096
