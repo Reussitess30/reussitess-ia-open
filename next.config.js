@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'standalone',
-  
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ['lucide-react']
@@ -25,29 +24,26 @@ const nextConfig = {
     ]
   },
 
-  // ✅ REDIRECTS CORRIGÉS (permanent: true/false obligatoire)
+  // ✅ REDIRECTS
   async redirects() {
     return [
-      {
-        source: '/ia',
-        destination: '/ia-passport',
-        permanent: true  // ✅ 308 Permanent
-      },
-      {
-        source: '/monitoring',
-        destination: '/monitoring-ia', 
-        permanent: true  // ✅ 308 Permanent
-      },
-      {
-        source: '/404',
-        destination: '/',
-        permanent: false  // ✅ 307 Temporary
-      }
-      // ✅ SUPPRIMÉ : redirection multilangue buggée
+      // Fix 404 Google Search Console
+      { source: '/quiz/Internet', destination: '/quiz/internet', permanent: true },
+      { source: '/quiz/Musique', destination: '/quiz/musique', permanent: true },
+      { source: '/quiz/Sport', destination: '/quiz/sport', permanent: true },
+      { source: '/bibliotheque/caraibes/:slug*', destination: '/bibliotheque/dom-tom/:slug*', permanent: true },
+      { source: '/bibliotheque/caraibes', destination: '/bibliotheque/dom-tom', permanent: true },
+      { source: '/bibliotheque/asie/:slug*', destination: '/bibliotheque/asie-pacifique/:slug*', permanent: true },
+      { source: '/bibliotheque/asie', destination: '/bibliotheque/asie-pacifique', permanent: true },
+      { source: '/Download', destination: '/', permanent: true },
+      { source: '/Download/', destination: '/', permanent: true },
+      { source: '/ME-CONTACTER', destination: '/', permanent: true },
+      { source: '/me-contacter', destination: '/', permanent: true },
+      { source: '/ia', destination: '/ia-passport', permanent: true },
+      { source: '/monitoring', destination: '/monitoring-ia', permanent: true },
+      { source: '/404', destination: '/', permanent: false }
     ]
   }
 }
 
 module.exports = nextConfig
-
-// Redirects ajoutés
