@@ -1167,7 +1167,7 @@ async function getWikipedia(term) {
   }
 
   // CHAMPIONS SPORTIFS ANTILLES
-  if (msgLow.includes("champion") || msgLow.includes("sportif antillais") || msgLow.includes("marie-jose perec") || msgLow.includes("teddy riner") || msgLow.includes("athlète guadeloupe")) {
+  if (msgLow.includes("champion") || msgLow.includes("sportif antillais") || msgLow.includes("marie-jose perec") || msgLow.includes("teddy riner") || msgLow.includes("athlète guadeloupe") || (msgLow.includes("qui est") && (msgLow.includes("mandela") || msgLow.includes("sankara") || msgLow.includes("lumumba") || msgLow.includes("nkrumah") || msgLow.includes("césaire") || msgLow.includes("fanon"))) || (msgLow.includes("qui était") && (msgLow.includes("mandela") || msgLow.includes("sankara") || msgLow.includes("africain")))) {
     try {
       const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
@@ -1209,7 +1209,7 @@ async function getWikipedia(term) {
   }
 
   // PHILOSOPHIE CARIBEENNE
-  if (msgLow.includes("philosophie") || msgLow.includes("césaire") || msgLow.includes("fanon") || msgLow.includes("glissant") || msgLow.includes("négritude") || msgLow.includes("créolité")) {
+  if (msgLow.includes("philosophie") || msgLow.includes("césaire") || msgLow.includes("fanon") || msgLow.includes("glissant") || msgLow.includes("négritude") || msgLow.includes("créolité") || (msgLow.includes("ubuntu") && !msgLow.includes("linux") && !msgLow.includes("installer")) || msgLow.includes("philosophie africaine") || msgLow.includes("pensée africaine")) {
     try {
       const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
@@ -1648,7 +1648,7 @@ async function getWikipedia(term) {
   }
 
   // HISTOIRE GUADELOUPE
-  if (msgLow.includes("histoire guadeloupe") || msgLow.includes("abolition") || msgLow.includes("victor schoelcher") || msgLow.includes("patrimoine antillais") || msgLow.includes("culture guadeloupéenne")) {
+  if (msgLow.includes("histoire guadeloupe") || msgLow.includes("histoire de la guadeloupe") || msgLow.includes("histoire des antilles") || msgLow.includes("histoire caribéenne") || msgLow.includes("histoire martinique") || msgLow.includes("histoire haiti") || msgLow.includes("histoire haïti") || msgLow.includes("histoire de la martinique") || msgLow.includes("histoire afrique") || msgLow.includes("abolition") || msgLow.includes("victor schoelcher") || msgLow.includes("patrimoine antillais") || msgLow.includes("culture guadeloupéenne") || (msgLow.includes("histoire") && msgLow.includes("guadeloupe")) || (msgLow.includes("histoire") && msgLow.includes("antilles")) || (msgLow.includes("histoire") && msgLow.includes("caraïbes")) || (msgLow.includes("histoire") && msgLow.includes("afrique")) || (msgLow.includes("histoire") && msgLow.includes("martinique"))) {
     try {
       const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
@@ -1656,15 +1656,19 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "system", content: "Tu es Neuro-X Histoire, expert histoire caribéenne. Parle avec fierté de la Guadeloupe: abolition 1848, résistance, Gerty Archimède, Félix Éboué, Joséphine Baker, champions sportifs. BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Histoire, expert histoire caribéenne et africaine. Réponds avec précision et fierté sur: Guadeloupe, Martinique, Haïti, Afrique, abolition 1848, résistance, Aimé Césaire, Frantz Fanon, Nelson Mandela, Thomas Sankara, Patrice Lumumba, Kwame Nkrumah, leaders africains. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📚 **Neuro-X Histoire — Guadeloupe Terres de Champions**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+      const rep = d.choices?.[0]?.message?.content
+      if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS — Histoire Caribéenne & Africaine**\n\n"+rep+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ response: "📚 **Histoire Caribéenne**\n\nLa Guadeloupe, Terres de Champions ! Notre histoire est riche: découverte par Christophe Colomb en 1493, peuplement par les Kalinagos, colonisation française, abolition de l'esclavage le 27 mai 1848 par Victor Schœlcher, résistance de Louis Delgrès. Aujourd'hui département français d'outre-mer fier de son identité créole.\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {
+      return res.status(200).json({ response: "📚 **Histoire Caribéenne & Africaine**\n\nLa Guadeloupe est une île des Caraïbes, département français d'outre-mer. Histoire marquée par: les peuples Kalinagos, la colonisation, l'esclavage et son abolition le 27 mai 1848. L'Afrique, berceau de l'humanité, a donné naissance aux grandes civilisations: Égypte ancienne, empire du Mali, royaume du Congo. Nelson Mandela, Thomas Sankara, Patrice Lumumba — des leaders qui ont changé le monde.\n\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR EMAIL PRO
@@ -2197,6 +2201,132 @@ async function getWikipedia(term) {
   // RAPPORT SECURITE
   if (msgLow.includes("sécurité") || msgLow.includes("securite") || msgLow.includes("rapport sécurité") || msgLow.includes("shield") || msgLow.includes("protection")) {
     return res.status(200).json({ response: "🛡️ **REUSSSHIELD — Rapport Sécurité**\n\n✅ ST-016 Anti-Fraude : Actif\n✅ ST-017 MiCA Compliance : Actif\n✅ ST-026 Surveillance APIs : Actif\n✅ ST-027 Vercel Monitor : Actif\n✅ ST-028 GitHub Watch : Actif\n✅ ST-029 Polygon Network : Actif\n\n🔒 Détection injection prompt : Activée\n🔑 Chiffrement AES-256 : Actif\n🌐 Site reussitess.fr : EN LIGNE\n\n200 agents IA en surveillance continue 24/7\n\nBOUDOUM ! 🇬🇵" })
+  }
+
+  // ENCYCLOPEDIE ANTILLES + AFRIQUE
+  const sujetsEncyclo = ["histoire de","histoire du","histoire des","qu'est-ce que","c'est quoi","parle moi de","parle-moi de","qui est","qui était","que sais-tu sur","encyclopédie","explique moi","explique-moi","tell me about","définition de","origine de","culture de","patrimoine","civilisation","raconte l'histoire","en savoir plus","biographie","bio de","info sur"]
+  const needsEncyclo = sujetsEncyclo.some(s => msgLow.includes(s))
+  if (needsEncyclo) {
+    try {
+      const wiki = await encyclopedieAntillesAfrique(message)
+      if (wiki) {
+        // Enrichit avec Groq
+        const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+          body: JSON.stringify({
+            model: "llama-3.3-70b-versatile",
+            messages: [
+              { role: "system", content: "Tu es REUSSITESS AI, encyclopédie vivante caribéenne et africaine. Utilise ces données Wikipedia pour répondre avec précision, fierté et contexte caribéen/africain. BOUDOUM!" },
+              { role: "user", content: "Question: "+message+"\n\nSource Wikipedia:\n"+wiki }
+            ],
+            max_tokens: 4096
+          })
+        })
+        const d = await groqRes.json()
+        const rep = d.choices?.[0]?.message?.content
+        if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS — Wikipedia Live**\n\n"+rep+"\n\nSource: Wikipedia FR\n\nBOUDOUM ! 🇬🇵" })
+      }
+    } catch(e) {}
+  }
+
+  // ENCYCLOPEDIE DIRECTE — mots-clés spécifiques
+  // FORCE encyclopédie si message court contient mot-clé Antilles/Afrique
+  if (message.split(" ").length <= 8) {
+    const forceWiki = ["guadeloupe","martinique","haïti","haiti","guyane","solitude","delgrès","kalinago","arawak","taïno","gwo ka","biguine","zouk","mandela","sankara","lumumba","nkrumah","nefertiti","pharaon","ubuntu","swahili","wolof","bambara","négritude","negritude"]
+    const fw = forceWiki.find(k => msgLow.includes(k))
+    if (fw) {
+      try {
+        const wiki = await rechercheWikipedia(message, "fr")
+        if (wiki) {
+          const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+            body: JSON.stringify({
+              model: "llama-3.3-70b-versatile",
+              messages: [
+                { role: "system", content: "Tu es REUSSITESS AI, encyclopédie vivante caribéenne et africaine. Source Wikipedia disponible. Réponds avec précision et fierté culturelle. BOUDOUM!" },
+                { role: "user", content: message+"\n\nWikipedia: "+wiki }
+              ],
+              max_tokens: 4096
+            })
+          })
+          const d = await groqRes.json()
+          const rep = d.choices?.[0]?.message?.content
+          if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS — "+fw.charAt(0).toUpperCase()+fw.slice(1)+"**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
+        }
+      } catch(e) {}
+    }
+  }
+
+  const motsAntilles = ["guadeloupe","martinique","haïti","haiti","guyane","caraïbes","caraibes","antilles","créole","abolition","esclavage","césaire","glissant","fanon","condé","gwo ka","zouk","soufrière","marie-galante","désirade","les saintes","basse-terre","pointe-à-pitre","schœlcher","solitude","delgrès","kalinago","arawak","taïno"]
+  const motsAfrique = ["afrique","sénégal","côte d'ivoire","cameroun","congo","mali","niger","burkina","ghana","nigeria","kenya","éthiopie","maroc","algérie","tunisie","égypte","dakar","abidjan","kinshasa","ubuntu","swahili","wolof","bambara","mandela","sankara","lumumba","nkrumah","nefertiti","pharaon","pyramide"]
+  const m = msgLow
+  const isAntilles2 = motsAntilles.some(k => m.includes(k))
+  const isAfrique2 = motsAfrique.some(k => m.includes(k))
+  if (isAntilles2 || isAfrique2) {
+    try {
+      const wiki = await rechercheWikipedia(message, "fr")
+      if (wiki) {
+        const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+          body: JSON.stringify({
+            model: "llama-3.3-70b-versatile",
+            messages: [
+              { role: "system", content: "Tu es REUSSITESS AI, encyclopédie vivante des peuples caribéens et africains. Réponds avec précision, fierté culturelle et connexion à l'héritage. BOUDOUM!" },
+              { role: "user", content: message+"\n\nWikipedia: "+wiki }
+            ],
+            max_tokens: 4096
+          })
+        })
+        const d = await groqRes.json()
+        const rep = d.choices?.[0]?.message?.content
+        if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
+      }
+    } catch(e) {}
+  }
+
+  // UBUNTU — PRIORITE ABSOLUE avant OS Linux
+  if (msgLow.includes("ubuntu") && !msgLow.includes("installer") && !msgLow.includes("télécharger") && !msgLow.includes("linux") && !msgLow.includes("canonical") && !msgLow.includes("système")) {
+    try {
+      const wiki = await rechercheWikipedia("Ubuntu philosophie africaine humanisme", "fr")
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es Neuro-X Philosophie, expert philosophie africaine. Ubuntu = philosophie bantoue: 'Umuntu ngumuntu ngabantu' = Je suis parce que nous sommes. Explique avec profondeur: origines africaines, lien avec Nelson Mandela, Desmond Tutu, connexion caribéenne. Source Wikipedia: "+(wiki||"philosophie ubuntu africaine")+". BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 4096
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n*Umuntu ngumuntu ngabantu — Je suis parce que nous sommes*\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
+  // UBUNTU — PRIORITE ABSOLUE avant OS Linux
+  if (msgLow.includes("ubuntu") && (msgLow.includes("philosophie") || msgLow.includes("afrique") || msgLow.includes("africain") || msgLow.includes("signifie") || msgLow.includes("valeur") || msgLow.includes("sagesse") || msgLow === "ubuntu" || msgLow === "qu est ce que ubuntu")) {
+    try {
+      const wiki = await rechercheWikipedia("Ubuntu philosophie africaine", "fr")
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es Neuro-X Philosophie, expert philosophie africaine Ubuntu. Ubuntu = 'Je suis parce que nous sommes'. Explique avec profondeur, liens avec la pensée caribéenne, REUSSITESS, communauté. Source: "+(wiki||"philosophie bantoue"). BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 4096
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n"+d.choices?.[0]?.message?.content+"\n\n*Ubuntu: Je suis parce que nous sommes*\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
   }
 
   // SECURITE — ANTI-INJECTION
@@ -2988,7 +3118,48 @@ function getAgentsDashboard() {
 // FONCTIONS EXTRAORDINAIRES
 // ============================================
 
+// ============================================
+// ENCYCLOPEDIE ANTILLES + AFRIQUE — Wikipedia
+// ============================================
+
+async function encyclopedieWikipedia(sujet, langue="fr") {
+  try {
+    const query = encodeURIComponent(sujet)
+    const r = await fetch(`https://${langue}.wikipedia.org/api/rest_v1/page/summary/${query}`)
+    const d = await r.json()
+    if (d.extract) return d.extract.substring(0, 8000)
+    return null
+  } catch(e) { return null }
+}
+
+async function rechercheWikipedia(query, langue="fr") {
+  try {
+    const q = encodeURIComponent(query)
+    const r = await fetch(`https://${langue}.wikipedia.org/w/api.php?action=query&list=search&srsearch=${q}&format=json&srlimit=3&origin=*`)
+    const d = await r.json()
+    const results = d.query?.search || []
+    if (!results.length) return null
+    // Prend le premier résultat
+    const titre = results[0].title
+    return await encyclopedieWikipedia(titre, langue)
+  } catch(e) { return null }
+}
+
+async function encyclopedieAntillesAfrique(sujet) {
+  // Mots-clés Antilles
+  const antilles = ["guadeloupe","martinique","haïti","haiti","caraïbes","caraibes","antilles","guyane","marie-galante","basse-terre","pointe-à-pitre","fort-de-france","saint-martin","saint-barthélemy","les saintes","désirade","créole","abolition esclavage","schœlcher","schoelcher","gwo ka","zouk","biguine","aimé césaire","edouard glissant","frantz fanon","maryse condé","victor hugues","félix éboué","louis delgrès","solitude","soufrière","lamentin","capesterre"]
+  const afrique = ["afrique","sénégal","côte d'ivoire","cameroun","congo","mali","niger","burkina","guinée","togo","bénin","gabon","madagascar","rwanda","kenya","ghana","nigeria","éthiopie","maroc","algérie","tunisie","égypte","dakar","abidjan","kinshasa","lagos","nairobi","francophonie africaine","ubuntu","swahili","wolof","bambara","peul","mandingue","bantou"]
+  const m = sujet.toLowerCase()
+  const isAntilles = antilles.some(k => m.includes(k))
+  const isAfrique = afrique.some(k => m.includes(k))
+  if (isAntilles || isAfrique) {
+    return await rechercheWikipedia(sujet, "fr")
+  }
+  return null
+}
+
 async function getSeismesCaraibes() {
+
   try {
     const r = await fetch("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minmagnitude=3&minlatitude=10&maxlatitude=20&minlongitude=-70&maxlongitude=-58&limit=5")
     const d = await r.json()
@@ -4044,7 +4215,7 @@ export default async function handler(req, res) {
   }
 
   // CHAMPIONS SPORTIFS ANTILLES
-  if (msgLow.includes("champion") || msgLow.includes("sportif antillais") || msgLow.includes("marie-jose perec") || msgLow.includes("teddy riner") || msgLow.includes("athlète guadeloupe")) {
+  if (msgLow.includes("champion") || msgLow.includes("sportif antillais") || msgLow.includes("marie-jose perec") || msgLow.includes("teddy riner") || msgLow.includes("athlète guadeloupe") || (msgLow.includes("qui est") && (msgLow.includes("mandela") || msgLow.includes("sankara") || msgLow.includes("lumumba") || msgLow.includes("nkrumah") || msgLow.includes("césaire") || msgLow.includes("fanon"))) || (msgLow.includes("qui était") && (msgLow.includes("mandela") || msgLow.includes("sankara") || msgLow.includes("africain")))) {
     try {
       const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
@@ -4086,7 +4257,7 @@ export default async function handler(req, res) {
   }
 
   // PHILOSOPHIE CARIBEENNE
-  if (msgLow.includes("philosophie") || msgLow.includes("césaire") || msgLow.includes("fanon") || msgLow.includes("glissant") || msgLow.includes("négritude") || msgLow.includes("créolité")) {
+  if (msgLow.includes("philosophie") || msgLow.includes("césaire") || msgLow.includes("fanon") || msgLow.includes("glissant") || msgLow.includes("négritude") || msgLow.includes("créolité") || (msgLow.includes("ubuntu") && !msgLow.includes("linux") && !msgLow.includes("installer")) || msgLow.includes("philosophie africaine") || msgLow.includes("pensée africaine")) {
     try {
       const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
@@ -4525,7 +4696,7 @@ export default async function handler(req, res) {
   }
 
   // HISTOIRE GUADELOUPE
-  if (msgLow.includes("histoire guadeloupe") || msgLow.includes("abolition") || msgLow.includes("victor schoelcher") || msgLow.includes("patrimoine antillais") || msgLow.includes("culture guadeloupéenne")) {
+  if (msgLow.includes("histoire guadeloupe") || msgLow.includes("histoire de la guadeloupe") || msgLow.includes("histoire des antilles") || msgLow.includes("histoire caribéenne") || msgLow.includes("histoire martinique") || msgLow.includes("histoire haiti") || msgLow.includes("histoire haïti") || msgLow.includes("histoire de la martinique") || msgLow.includes("histoire afrique") || msgLow.includes("abolition") || msgLow.includes("victor schoelcher") || msgLow.includes("patrimoine antillais") || msgLow.includes("culture guadeloupéenne") || (msgLow.includes("histoire") && msgLow.includes("guadeloupe")) || (msgLow.includes("histoire") && msgLow.includes("antilles")) || (msgLow.includes("histoire") && msgLow.includes("caraïbes")) || (msgLow.includes("histoire") && msgLow.includes("afrique")) || (msgLow.includes("histoire") && msgLow.includes("martinique"))) {
     try {
       const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
@@ -4533,15 +4704,19 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "system", content: "Tu es Neuro-X Histoire, expert histoire caribéenne. Parle avec fierté de la Guadeloupe: abolition 1848, résistance, Gerty Archimède, Félix Éboué, Joséphine Baker, champions sportifs. BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Histoire, expert histoire caribéenne et africaine. Réponds avec précision et fierté sur: Guadeloupe, Martinique, Haïti, Afrique, abolition 1848, résistance, Aimé Césaire, Frantz Fanon, Nelson Mandela, Thomas Sankara, Patrice Lumumba, Kwame Nkrumah, leaders africains. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📚 **Neuro-X Histoire — Guadeloupe Terres de Champions**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+      const rep = d.choices?.[0]?.message?.content
+      if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS — Histoire Caribéenne & Africaine**\n\n"+rep+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ response: "📚 **Histoire Caribéenne**\n\nLa Guadeloupe, Terres de Champions ! Notre histoire est riche: découverte par Christophe Colomb en 1493, peuplement par les Kalinagos, colonisation française, abolition de l'esclavage le 27 mai 1848 par Victor Schœlcher, résistance de Louis Delgrès. Aujourd'hui département français d'outre-mer fier de son identité créole.\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {
+      return res.status(200).json({ response: "📚 **Histoire Caribéenne & Africaine**\n\nLa Guadeloupe est une île des Caraïbes, département français d'outre-mer. Histoire marquée par: les peuples Kalinagos, la colonisation, l'esclavage et son abolition le 27 mai 1848. L'Afrique, berceau de l'humanité, a donné naissance aux grandes civilisations: Égypte ancienne, empire du Mali, royaume du Congo. Nelson Mandela, Thomas Sankara, Patrice Lumumba — des leaders qui ont changé le monde.\n\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR EMAIL PRO
@@ -5074,6 +5249,132 @@ export default async function handler(req, res) {
   // RAPPORT SECURITE
   if (msgLow.includes("sécurité") || msgLow.includes("securite") || msgLow.includes("rapport sécurité") || msgLow.includes("shield") || msgLow.includes("protection")) {
     return res.status(200).json({ response: "🛡️ **REUSSSHIELD — Rapport Sécurité**\n\n✅ ST-016 Anti-Fraude : Actif\n✅ ST-017 MiCA Compliance : Actif\n✅ ST-026 Surveillance APIs : Actif\n✅ ST-027 Vercel Monitor : Actif\n✅ ST-028 GitHub Watch : Actif\n✅ ST-029 Polygon Network : Actif\n\n🔒 Détection injection prompt : Activée\n🔑 Chiffrement AES-256 : Actif\n🌐 Site reussitess.fr : EN LIGNE\n\n200 agents IA en surveillance continue 24/7\n\nBOUDOUM ! 🇬🇵" })
+  }
+
+  // ENCYCLOPEDIE ANTILLES + AFRIQUE
+  const sujetsEncyclo = ["histoire de","histoire du","histoire des","qu'est-ce que","c'est quoi","parle moi de","parle-moi de","qui est","qui était","que sais-tu sur","encyclopédie","explique moi","explique-moi","tell me about","définition de","origine de","culture de","patrimoine","civilisation","raconte l'histoire","en savoir plus","biographie","bio de","info sur"]
+  const needsEncyclo = sujetsEncyclo.some(s => msgLow.includes(s))
+  if (needsEncyclo) {
+    try {
+      const wiki = await encyclopedieAntillesAfrique(message)
+      if (wiki) {
+        // Enrichit avec Groq
+        const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+          body: JSON.stringify({
+            model: "llama-3.3-70b-versatile",
+            messages: [
+              { role: "system", content: "Tu es REUSSITESS AI, encyclopédie vivante caribéenne et africaine. Utilise ces données Wikipedia pour répondre avec précision, fierté et contexte caribéen/africain. BOUDOUM!" },
+              { role: "user", content: "Question: "+message+"\n\nSource Wikipedia:\n"+wiki }
+            ],
+            max_tokens: 4096
+          })
+        })
+        const d = await groqRes.json()
+        const rep = d.choices?.[0]?.message?.content
+        if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS — Wikipedia Live**\n\n"+rep+"\n\nSource: Wikipedia FR\n\nBOUDOUM ! 🇬🇵" })
+      }
+    } catch(e) {}
+  }
+
+  // ENCYCLOPEDIE DIRECTE — mots-clés spécifiques
+  // FORCE encyclopédie si message court contient mot-clé Antilles/Afrique
+  if (message.split(" ").length <= 8) {
+    const forceWiki = ["guadeloupe","martinique","haïti","haiti","guyane","solitude","delgrès","kalinago","arawak","taïno","gwo ka","biguine","zouk","mandela","sankara","lumumba","nkrumah","nefertiti","pharaon","ubuntu","swahili","wolof","bambara","négritude","negritude"]
+    const fw = forceWiki.find(k => msgLow.includes(k))
+    if (fw) {
+      try {
+        const wiki = await rechercheWikipedia(message, "fr")
+        if (wiki) {
+          const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+            body: JSON.stringify({
+              model: "llama-3.3-70b-versatile",
+              messages: [
+                { role: "system", content: "Tu es REUSSITESS AI, encyclopédie vivante caribéenne et africaine. Source Wikipedia disponible. Réponds avec précision et fierté culturelle. BOUDOUM!" },
+                { role: "user", content: message+"\n\nWikipedia: "+wiki }
+              ],
+              max_tokens: 4096
+            })
+          })
+          const d = await groqRes.json()
+          const rep = d.choices?.[0]?.message?.content
+          if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS — "+fw.charAt(0).toUpperCase()+fw.slice(1)+"**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
+        }
+      } catch(e) {}
+    }
+  }
+
+  const motsAntilles = ["guadeloupe","martinique","haïti","haiti","guyane","caraïbes","caraibes","antilles","créole","abolition","esclavage","césaire","glissant","fanon","condé","gwo ka","zouk","soufrière","marie-galante","désirade","les saintes","basse-terre","pointe-à-pitre","schœlcher","solitude","delgrès","kalinago","arawak","taïno"]
+  const motsAfrique = ["afrique","sénégal","côte d'ivoire","cameroun","congo","mali","niger","burkina","ghana","nigeria","kenya","éthiopie","maroc","algérie","tunisie","égypte","dakar","abidjan","kinshasa","ubuntu","swahili","wolof","bambara","mandela","sankara","lumumba","nkrumah","nefertiti","pharaon","pyramide"]
+  const m = msgLow
+  const isAntilles2 = motsAntilles.some(k => m.includes(k))
+  const isAfrique2 = motsAfrique.some(k => m.includes(k))
+  if (isAntilles2 || isAfrique2) {
+    try {
+      const wiki = await rechercheWikipedia(message, "fr")
+      if (wiki) {
+        const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+          body: JSON.stringify({
+            model: "llama-3.3-70b-versatile",
+            messages: [
+              { role: "system", content: "Tu es REUSSITESS AI, encyclopédie vivante des peuples caribéens et africains. Réponds avec précision, fierté culturelle et connexion à l'héritage. BOUDOUM!" },
+              { role: "user", content: message+"\n\nWikipedia: "+wiki }
+            ],
+            max_tokens: 4096
+          })
+        })
+        const d = await groqRes.json()
+        const rep = d.choices?.[0]?.message?.content
+        if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
+      }
+    } catch(e) {}
+  }
+
+  // UBUNTU — PRIORITE ABSOLUE avant OS Linux
+  if (msgLow.includes("ubuntu") && !msgLow.includes("installer") && !msgLow.includes("télécharger") && !msgLow.includes("linux") && !msgLow.includes("canonical") && !msgLow.includes("système")) {
+    try {
+      const wiki = await rechercheWikipedia("Ubuntu philosophie africaine humanisme", "fr")
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es Neuro-X Philosophie, expert philosophie africaine. Ubuntu = philosophie bantoue: 'Umuntu ngumuntu ngabantu' = Je suis parce que nous sommes. Explique avec profondeur: origines africaines, lien avec Nelson Mandela, Desmond Tutu, connexion caribéenne. Source Wikipedia: "+(wiki||"philosophie ubuntu africaine")+". BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 4096
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n*Umuntu ngumuntu ngabantu — Je suis parce que nous sommes*\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
+
+  // UBUNTU — PRIORITE ABSOLUE avant OS Linux
+  if (msgLow.includes("ubuntu") && (msgLow.includes("philosophie") || msgLow.includes("afrique") || msgLow.includes("africain") || msgLow.includes("signifie") || msgLow.includes("valeur") || msgLow.includes("sagesse") || msgLow === "ubuntu" || msgLow === "qu est ce que ubuntu")) {
+    try {
+      const wiki = await rechercheWikipedia("Ubuntu philosophie africaine", "fr")
+      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: "Tu es Neuro-X Philosophie, expert philosophie africaine Ubuntu. Ubuntu = 'Je suis parce que nous sommes'. Explique avec profondeur, liens avec la pensée caribéenne, REUSSITESS, communauté. Source: "+(wiki||"philosophie bantoue"). BOUDOUM!" },
+            { role: "user", content: message }
+          ],
+          max_tokens: 4096
+        })
+      })
+      const d = await groqRes.json()
+      return res.status(200).json({ response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n"+d.choices?.[0]?.message?.content+"\n\n*Ubuntu: Je suis parce que nous sommes*\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
   }
 
   // SECURITE — ANTI-INJECTION
@@ -5670,7 +5971,7 @@ La plus grande collection culturelle francophone digitale !
     }
 
     // 🆕 BLOC SALUTATIONS - AJOUTÉ
-    if (lowerMessage.includes('bonjour') || lowerMessage.includes('salut') || lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+    if ((lowerMessage === 'bonjour' || lowerMessage === 'salut' || lowerMessage === 'hello' || lowerMessage === 'hi' || lowerMessage === 'hey' || lowerMessage.startsWith('bonjour ') || lowerMessage.startsWith('salut ') || lowerMessage.startsWith('hello ') || lowerMessage.startsWith('hey '))) {
       return `👋 **Bonjour Champion !**
 
 **BOUDOUM** 🎯 Bienvenue chez **REUSSITESS** !
@@ -5697,6 +5998,33 @@ Je suis votre assistant IA créé avec passion depuis la **Guadeloupe** 🇬🇵
   }
 
   try {
+    // ENCYCLOPEDIE PRIORITAIRE — Antilles + Afrique — Groq direct
+    const wikiKeywords = ["guadeloupe","martinique","haïti","haiti","guyane","marie-galante","caraïbes","caraibes","antilles","abolition","esclavage","solitude","delgrès","kalinago","arawak","taïno","gwo ka","biguine","zouk","schœlcher","schoelcher","césaire","glissant","fanon","condé","négritude","negritude","afrique","sénégal","côte d'ivoire","cameroun","congo","mali","niger","burkina","ghana","nigeria","kenya","éthiopie","maroc","algérie","tunisie","égypte","dakar","abidjan","kinshasa","mandela","sankara","lumumba","nkrumah","nefertiti","pharaon","swahili","wolof","bambara","ubuntu"]
+    const msgLow2 = message.toLowerCase()
+    const hasWikiKey = wikiKeywords.find(k => msgLow2.includes(k))
+    if (hasWikiKey) {
+      try {
+        const finalPrompt = "Tu es REUSSITESS AI, encyclopédie vivante des peuples caribéens et africains. Expert en histoire, culture, philosophie caribéenne et africaine. Réponds avec précision, profondeur et fierté culturelle. Toujours connecter à l'héritage caribéen/africain. BOUDOUM!"
+        const groqEnrichRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
+          body: JSON.stringify({
+            model: "llama-3.3-70b-versatile",
+            messages: [
+              { role: "system", content: finalPrompt },
+              { role: "user", content: message }
+            ],
+            max_tokens: 4096
+          })
+        })
+        const wikiEnrichData = await groqEnrichRes.json()
+        const wikiRep = wikiEnrichData.choices?.[0]?.message?.content
+        if (wikiRep) {
+          return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS — "+hasWikiKey.charAt(0).toUpperCase()+hasWikiKey.slice(1)+"**\n\n"+wikiRep+"\n\nBOUDOUM ! 🇬🇵" })
+        }
+      } catch(e) { console.error("Encyclo error:", e) }
+    }
+
     const response = generateResponse()
 
     // Enrichissement Wikipedia
