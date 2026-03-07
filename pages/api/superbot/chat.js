@@ -207,7 +207,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -215,7 +215,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎨 **Neuro-X Créatif — Art Génératif IA**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE PARENTALITE
@@ -227,7 +229,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -235,7 +237,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "👶 **Neuro-X Enfants — Parentalité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE GESTION TEMPS
@@ -247,7 +251,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -255,7 +259,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "⏰ **Neuro-X Coach — Productivité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE INTELLIGENCE COLLECTIVE
@@ -267,7 +273,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -275,7 +281,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🤝 **Neuro-X Stratégie — Intelligence Collective**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE CARNAVAL CARAIBE
@@ -288,7 +296,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Culture, expert carnaval caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -296,7 +304,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎭 **Neuro-X Culture — Carnaval Caribéen**\n\n"+agenda+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE PEINTURE CARIBEENNE
@@ -308,7 +318,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Culture, expert carnaval caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -316,7 +326,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎨 **Neuro-X Créatif — Art Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE EMPLOI DOM-TOM
@@ -328,7 +340,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Culture, expert carnaval caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -336,7 +348,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💼 **Neuro-X Business — Emploi DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // MESSAGE FINAL BOUDOUM
@@ -360,7 +374,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -368,7 +382,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎬 **Neuro-X Cinéma — Films Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE TRANSPORT DOM-TOM
@@ -380,7 +396,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -388,7 +404,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🚌 **Neuro-X Tourisme — Transport Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE ASSURANCE DOM-TOM
@@ -400,7 +418,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -408,7 +426,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🛡️ **Neuro-X Juridique — Assurances DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE MYTHOLOGIE CARIBEENNE
@@ -420,7 +440,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -428,7 +448,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "👻 **Neuro-X Spiritualité — Mythologie Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE PERMIS DE CONDUIRE
@@ -440,7 +462,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -448,7 +470,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🚗 **Neuro-X Juridique — Permis Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE AIDE SOCIALE
@@ -460,7 +484,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -468,7 +492,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🤝 **Neuro-X Juridique — Aides Sociales DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE LITTERATURE CARIBEENNE
@@ -480,7 +506,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -488,7 +514,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📚 **Neuro-X Littérature — Auteurs Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // EVENEMENT HISTORIQUE DU JOUR — Wikimedia gratuit
@@ -517,7 +545,9 @@ async function getWikipedia(term) {
       const books = (libD.docs || []).slice(0,5)
       const txt = books.map((b,i) => `${i+1}. 📖 **${b.title}** — ${(b.author_name||["Auteur inconnu"])[0]} (${b.first_publish_year||"?"})\n   🔗 openlibrary.org/works/${b.key}`).join("\n\n")
       return res.status(200).json({ response: "📚 **Bibliothèque Mondiale — Open Library**\n\n🔍 Résultats pour: *"+decodeURIComponent(query)+"*\n\n"+txt+"\n\n"+libD.numFound+" livres trouvés gratuitement !\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ACTUALITES MONDE FRANCOPHONE — RSS gratuit
@@ -528,7 +558,9 @@ async function getWikipedia(term) {
       const items = (rssD.items||[]).slice(0,5)
       const txt = items.map((it,i) => `${i+1}. **${it.title}**\n   📰 ${it.pubDate?.substring(0,10)||""}`).join("\n\n")
       return res.status(200).json({ response: "🌍 **Actualités Monde Francophone — RFI**\n\n"+txt+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // OFFRES EMPLOI DOM-TOM CARAIBES AFRIQUE
@@ -540,7 +572,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -562,7 +594,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -570,7 +602,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🤝 **Neuro-X Juridique — Créer une Association**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // PASSEPORT DE REUSSITE 🏆
@@ -582,7 +616,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -604,7 +638,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -644,7 +678,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -652,7 +686,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🧬 **Neuro-X Culture — Mon ADN Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Explore ton ADN: https://reussitess.fr/mon-adn\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ORACLE 971
@@ -664,7 +700,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -672,7 +708,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🔮 **Oracle 971 — Voix de la Guadeloupe**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Consulte l'Oracle: https://reussitess.fr/oracle-971\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // MA REVOLUTION IA
@@ -684,7 +722,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -692,7 +730,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🚀 **Neuro-X Coach — Ta Révolution IA**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Lance ta révolution: https://reussitess.fr/ma-revolution-ia\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // BILAN FINAL ECOSYSTEME
@@ -719,7 +759,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 1024
@@ -727,7 +767,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "✍️ **Neuro-X Marketing — Générateur Bio**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE SANTE CARDIOVASCULAIRE
@@ -739,7 +781,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -747,7 +789,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "❤️ **Neuro-X Santé — Santé Cardiovasculaire**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez votre médecin.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE ACHAT TERRAIN DOM-TOM
@@ -759,7 +803,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -767,7 +811,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🏡 **Neuro-X Immobilier — Achat Terrain Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE WEB3 CARAIBE
@@ -779,7 +825,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -787,12 +833,14 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌐 **Neuro-X Tech — Web3 Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // IDENTITE DU BOT
   if (msgLow.includes("qui es-tu") || msgLow.includes("qui es tu") || msgLow.includes("présente-toi") || msgLow.includes("présente toi") || msgLow.includes("ta mission") || msgLow.includes("c'est quoi reussitess ai") || msgLow.includes("tu es qui")) {
-    return res.status(200).json({ response: "🤖 **Je suis REUSSITESS®971 AI**\n\nChef d'orchestre de l'écosystème REUSSITESS®971, créé depuis la **Guadeloupe** 🇬🇵 par **Rony Porinus**.\n\n**Ma devise :** *Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets.*\n\n**Ce que je suis :**\n🧠 200 agents IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme)\n🌍 Présent dans 14 pays partenaires\n📚 160+ fonctionnalités actives\n💎 Connecté au Token REUSS sur Polygon\n🛍️ 26 boutiques Amazon affiliées\n\n**L'écosystème REUSSITESS®971 :**\n🏆 [Passeport de Réussite](https://reussitess.fr/champions)\n🌍 [Visa Universel](https://reussitess.fr/visa-universel)\n🧠 [Neuro-X](https://reussitess.fr/neuro-x)\n💎 [Token REUSS](https://reussitess.fr/investir-reuss)\n🔮 [Oracle 971](https://reussitess.fr/oracle-971)\n\n*Terres de Champions — Positivité à l'infini !*\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ response: "🤖 **Je suis REUSSITESS®971 AI**\n\nChef d'orchestre de l'écosystème REUSSITESS®971, créé depuis la **Guadeloupe** 🇬🇵 par **Rony Porinus**.\n\n**Ma devise :** *Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets.*\n\n**Ce que je suis :**\n🧠 200+ modules IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme)\n🌍 Présent dans 14 pays partenaires\n📚 160+ fonctionnalités actives\n💎 Connecté au Token REUSS sur Polygon\n🛍️ 26 boutiques Amazon affiliées\n\n**L'écosystème REUSSITESS®971 :**\n🏆 [Passeport de Réussite](https://reussitess.fr/champions)\n🌍 [Visa Universel](https://reussitess.fr/visa-universel)\n🧠 [Neuro-X](https://reussitess.fr/neuro-x)\n💎 [Token REUSS](https://reussitess.fr/investir-reuss)\n🔮 [Oracle 971](https://reussitess.fr/oracle-971)\n\n*Terres de Champions — Positivité à l'infini !*\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // GUIDE INTELLIGENCE EMOTIONNELLE
@@ -804,7 +852,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -812,7 +860,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💛 **Neuro-X Psychologie — Intelligence Émotionnelle**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE CROWDFUNDING
@@ -824,7 +874,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -832,7 +882,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🤝 **Neuro-X Business — Crowdfunding Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE BIEN-ETRE AU TRAVAIL
@@ -844,7 +896,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -852,7 +904,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌺 **Neuro-X Coach — Bien-Être au Travail**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE GEOPOLITIQUE CARAIBES
@@ -864,7 +918,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -872,7 +926,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌍 **Neuro-X Géopolitique — Caraïbes**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE PHOTOGRAPHIE
@@ -884,7 +940,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -892,7 +948,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📸 **Neuro-X Créatif — Photographie Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE MODE CARIBEENNE
@@ -904,7 +962,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -912,7 +970,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "👗 **Neuro-X Mode — Stylisme Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE LEADERSHIP
@@ -924,7 +984,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -932,7 +992,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "👑 **Neuro-X Coach — Leadership Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE PROTECTION DONNEES
@@ -944,7 +1006,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -952,7 +1014,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🔒 **Neuro-X Réseaux — Protection Données RGPD**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR HASHTAGS
@@ -964,7 +1028,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 1024
@@ -972,7 +1036,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "# **Neuro-X Marketing — Hashtags Viraux**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE CRYPTOMONNAIE DEBUTANT
@@ -985,7 +1051,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -993,7 +1059,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎓 **Neuro-X Finance — Crypto pour Débutants**\n\n📊 Marché: "+crypto+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE SANTE MENTALE
@@ -1005,7 +1073,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1013,7 +1081,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💚 **Neuro-X Psychologie — Santé Mentale**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un professionnel de santé.\nUrgence: 3114 (numéro national prévention suicide)\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE EXPORT INTERNATIONAL
@@ -1025,7 +1095,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1033,7 +1103,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌍 **Neuro-X Logistique — Export International**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE PODCASTING
@@ -1045,7 +1117,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1053,7 +1125,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎙️ **Neuro-X Marketing — Guide Podcast**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE MICRO-FINANCE
@@ -1065,7 +1139,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1073,7 +1147,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💰 **Neuro-X Business — Micro-Finance**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE BIEN-ETRE SENIOR
@@ -1085,7 +1161,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1093,7 +1169,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "👴 **Neuro-X Seniors — Bien-Vieillir Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR CONTRAT
@@ -1105,7 +1183,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1113,7 +1191,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📝 **Neuro-X Juridique — Générateur Contrats**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un avocat avant signature.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE DROPSHIPPING
@@ -1125,7 +1205,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1133,7 +1213,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🛒 **Neuro-X Business — Dropshipping Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE FREELANCE
@@ -1145,7 +1227,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1153,7 +1235,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💻 **Neuro-X Business — Guide Freelance**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE IA POUR DEBUTANTS
@@ -1165,7 +1249,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1173,7 +1257,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🤖 **Neuro-X IA — Guide Débutants**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CONSEIL NUTRITION CARIBEENNE
@@ -1185,7 +1271,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1193,7 +1279,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🥗 **Neuro-X Santé — Nutrition Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // AIDE DEUIL ET FAMILLE
@@ -1205,7 +1293,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1213,7 +1301,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💙 **REUSSITESS AI — Soutien & Accompagnement**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // RAPPEL MEDICAMENT
@@ -1225,7 +1315,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1233,7 +1323,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💊 **Neuro-X Santé — Information Médicale**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez toujours un médecin ou pharmacien.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE CREATION CONTENU
@@ -1245,7 +1337,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1253,7 +1345,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎬 **Neuro-X Marketing — Création Contenu**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE EPARGNE
@@ -1265,7 +1359,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1273,7 +1367,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💳 **Neuro-X Finance — Guide Épargne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CALENDRIER LUNAIRE COMPLET
@@ -1296,7 +1392,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1304,7 +1400,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🧒 **Neuro-X Enfants — Mode Famille**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ACTUALITES CARAIBES LOCALES
@@ -1329,7 +1427,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1337,7 +1435,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎨 **Neuro-X NFT — Art Numérique Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE GOMINING
@@ -1349,7 +1449,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1357,7 +1457,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "⛏️ **Neuro-X Finance — Guide GoMining**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CALCULATEUR STAKING REUSS
@@ -1384,7 +1486,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1392,7 +1494,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🏆 **Neuro-X Sport — Champions Antillais**\n\n"+d.choices?.[0]?.message?.content+"\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE AGRICULTURE BIO
@@ -1406,7 +1510,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1414,7 +1518,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌱 **Neuro-X Agriculture — Jardin Créole**\n\n🌙 "+lune+" | 🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // PHILOSOPHIE CARIBEENNE
@@ -1426,7 +1532,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1434,7 +1540,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🧠 **Neuro-X Philosophie — Pensée Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE DIASPORA
@@ -1446,7 +1554,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1454,7 +1562,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌍 **Neuro-X Diaspora — Communauté Mondiale**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE SMART CONTRACT
@@ -1466,7 +1576,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1474,7 +1584,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "⛓️ **Neuro-X Blockchain — Smart Contracts**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR PITCH INVESTISSEUR
@@ -1486,7 +1598,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1494,7 +1606,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🚀 **Neuro-X Stratégie — Pitch Investisseur**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE IMMOBILIER DOM-TOM
@@ -1506,7 +1620,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1514,7 +1628,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🏠 **Neuro-X Immobilier — Guide DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // COACH ENTREPRENEURIAT FEMININ
@@ -1526,7 +1642,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1534,7 +1650,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "👑 **Neuro-X Femmes — Coach Entrepreneuriat**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE JEUNES CARIBEEN
@@ -1546,7 +1664,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1554,7 +1672,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎓 **Neuro-X Jeunes — Guide Orientation**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // DIAGNOSTIC SITE WEB
@@ -1566,7 +1686,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1574,7 +1694,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🔍 **Neuro-X SEO — Audit Site Web**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR CHANSON CREOLE
@@ -1586,7 +1708,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1594,7 +1716,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎵 **Neuro-X Musique — Chanson Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE ECO-TOURISME
@@ -1607,7 +1731,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1615,7 +1739,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌿 **Neuro-X Tourisme — Éco-Tourisme Guadeloupe**\n\n🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // SCIENCE CARIBEENNE
@@ -1627,7 +1753,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1635,7 +1761,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🔬 **Neuro-X Sciences — Biodiversité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE ENERGIE SOLAIRE
@@ -1647,7 +1775,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1655,7 +1783,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "☀️ **Neuro-X Énergie — Solaire Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // DICTIONNAIRE CREOLE COMPLET
@@ -1667,7 +1797,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 1024
@@ -1675,7 +1805,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📖 **Neuro-X Langues — Dictionnaire Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // TIPS DEVELOPPEMENT PERSONNEL
@@ -1688,7 +1820,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1696,7 +1828,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "✨ **Neuro-X Coach — Développement Personnel**\n\n💬 "+citation+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ANALYSE MARCHE CRYPTO
@@ -1710,7 +1844,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1718,7 +1852,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📈 **Neuro-X Finance — Analyse Marché**\n\n"+crypto+"\n😨 "+fg+"\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ DYOR\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE RETRAITE DOM-TOM
@@ -1730,7 +1866,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1738,7 +1874,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "👴 **Neuro-X Juridique — Guide Retraite DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un conseiller retraite.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // BUSINESS PLAN
@@ -1750,7 +1888,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1758,7 +1896,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📋 **Neuro-X Business — Business Plan**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CALCULATEUR IMC
@@ -1784,7 +1924,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1792,7 +1932,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "✈️ **Neuro-X Juridique — Guide Immigration**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez les services préfectoraux.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ASTROLOGIE CARIBEENNE
@@ -1805,7 +1947,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1813,7 +1955,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "⭐ **Neuro-X Spiritualité — Astrologie Caribéenne**\n\n"+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // QUIZ INSTANTANE
@@ -1825,7 +1969,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 1024
@@ -1833,7 +1977,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎯 **Neuro-X Éducation — Quiz Instantané**\n\n"+d.choices?.[0]?.message?.content+"\n\n+5 points REUSS si bonne réponse !\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // PLAN MARKETING
@@ -1845,7 +1991,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1853,7 +1999,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📊 **Neuro-X Marketing — Plan Complet**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // HISTOIRE GUADELOUPE
@@ -1865,7 +2013,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1889,7 +2037,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1897,7 +2045,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📧 **Neuro-X Business — Email Professionnel**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR POST RESEAUX SOCIAUX
@@ -1909,7 +2059,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1917,7 +2067,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📱 **Neuro-X Marketing — Générateur Posts**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // COCKTAILS RHum CARIBEEN
@@ -1929,7 +2081,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1937,7 +2089,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🍹 **Neuro-X Cuisine — Cocktails Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ANALYSE REVES
@@ -1950,7 +2104,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1958,7 +2112,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌙 **Neuro-X Spiritualité — Analyse Rêves**\n\n"+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CONSEILS VOYAGE CARAIBES
@@ -1971,7 +2127,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -1979,7 +2135,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "✈️ **Neuro-X Tourisme — Guide Caribéen**\n\n🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ANALYSE PERSONNALITE
@@ -1991,7 +2149,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1999,7 +2157,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🧠 **Neuro-X Psychologie — Analyse Personnalité**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR SLOGAN
@@ -2011,7 +2171,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 1024
@@ -2019,7 +2179,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎯 **Neuro-X Marketing — Générateur Slogans**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CONSEILS INVESTISSEMENT
@@ -2033,7 +2195,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -2041,7 +2203,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💰 **Neuro-X Finance — Conseils Investissement**\n\n📊 Marché actuel : "+fg+"\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ DYOR — Pas de conseil financier.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // APPRENTISSAGE LANGUE
@@ -2053,7 +2217,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -2061,7 +2225,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌐 **Neuro-X Langues — Leçon**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // MEDITATION CARIBEENNE
@@ -2075,7 +2241,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message + " (Météo actuelle: "+meteo+" | Lune: "+lune+")" }
           ],
           max_tokens: 2048
@@ -2083,7 +2249,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🧘 **Neuro-X Santé — Méditation Caribéenne**\n\n🌊 "+meteo+" | "+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // PROVERBES CREOLES
@@ -2111,7 +2279,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -2119,7 +2287,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌿 **Neuro-X Santé — Plantes Caribéennes**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un médecin.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // NUMEROLOGIE
@@ -2150,7 +2320,9 @@ async function getWikipedia(term) {
       const w = md.current_weather
       const wDesc = w.weathercode<=3?"Ensoleillé":w.weathercode<=48?"Nuageux":w.weathercode<=67?"Pluvieux":"Orageux"
       return res.status(200).json({ response: "🌤️ **Météo "+lieu+" — Temps réel**\n\n🌡️ "+w.temperature+"°C\n💨 Vent: "+w.windspeed+"km/h\n☁️ "+wDesc+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // COACH SPORTIF
@@ -2162,7 +2334,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -2170,7 +2342,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💪 **Neuro-X Sport — Coach Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // RECETTE ANTILLAISE
@@ -2182,7 +2356,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -2190,7 +2364,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🍽️ **Neuro-X Cuisine — Recette Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // AIDE JURIDIQUE
@@ -2202,7 +2378,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -2210,7 +2386,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "⚖️ **Neuro-X Juridique — Conseil Droit**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un avocat pour toute décision légale.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CALCULATEUR AMAZON
@@ -2221,7 +2399,9 @@ async function getWikipedia(term) {
         const taux = { standard: 0.03, mode: 0.10, cuisine: 0.08, tech: 0.04, livres: 0.045 }
         return res.status(200).json({ response: "💰 **Calculateur Amazon REUSSITESS**\n\nProduit à $"+nb+"\n\n📊 Commissions estimées :\n• Standard (3%) : $"+(nb*0.03).toFixed(2)+"\n• Mode (10%) : $"+(nb*0.10).toFixed(2)+"\n• Cuisine (8%) : $"+(nb*0.08).toFixed(2)+"\n• Tech (4%) : $"+(nb*0.04).toFixed(2)+"\n• Livres (4.5%) : $"+(nb*0.045).toFixed(2)+"\n\n🌍 Multiplié par 26 boutiques = $"+(nb*0.05*26).toFixed(2)+"/vente théorique\n\nBOUDOUM ! 🇬🇵" })
       }
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // RESUME CONVERSATION
@@ -2233,7 +2413,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: "Résume cette conversation : "+message }
           ],
           max_tokens: 1024
@@ -2241,7 +2421,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📋 **Résumé de Session**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // MODE DEBAT
@@ -2253,7 +2435,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -2261,7 +2443,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "⚖️ **Mode Débat — Neuro-X Stratégie**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CONSEILS BUSINESS CARAIBE
@@ -2273,7 +2457,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -2281,7 +2465,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💼 **Neuro-X Business — Conseils Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR POEME CREOLE
@@ -2293,7 +2479,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -2302,7 +2488,9 @@ async function getWikipedia(term) {
       const d = await groqRes.json()
       const poeme = d.choices?.[0]?.message?.content || ""
       return res.status(200).json({ response: "✍️ **Neuro-X Créatif — Poème Créole**\n\n"+poeme+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR NOM ENTREPRISE
@@ -2314,7 +2502,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 1024
@@ -2323,7 +2511,9 @@ async function getWikipedia(term) {
       const d = await groqRes.json()
       const noms = d.choices?.[0]?.message?.content || ""
       return res.status(200).json({ response: "🏢 **Neuro-X Business — Générateur de Noms**\n\n"+noms+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR CV
@@ -2335,7 +2525,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -2343,7 +2533,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📄 **Neuro-X Business — Assistant CV**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // HISTOIRE CARIBEENNE
@@ -2355,7 +2547,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Culture, expert mythologie créole et caribéenne. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -2363,7 +2555,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📖 **Neuro-X Créatif — Conte Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // WHITEPAPER REUSSITESS
@@ -2440,7 +2634,7 @@ async function getWikipedia(term) {
           body: JSON.stringify({
             model: "llama-3.3-70b-versatile",
             messages: [
-              { role: "BOUDOUM!" },
+              { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
               { role: "user", content: "Question: "+message+"\n\nSource Wikipedia:\n"+wiki }
             ],
             max_tokens: 4096
@@ -2450,7 +2644,9 @@ async function getWikipedia(term) {
         const rep = d.choices?.[0]?.message?.content
         if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS — Wikipedia Live**\n\n"+rep+"\n\nSource: Wikipedia FR\n\nBOUDOUM ! 🇬🇵" })
       }
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ENCYCLOPEDIE DIRECTE — mots-clés spécifiques
@@ -2468,7 +2664,7 @@ async function getWikipedia(term) {
             body: JSON.stringify({
               model: "llama-3.3-70b-versatile",
               messages: [
-                { role: "BOUDOUM!" },
+                { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
                 { role: "user", content: message+"\n\nWikipedia: "+wiki }
               ],
               max_tokens: 4096
@@ -2497,7 +2693,7 @@ async function getWikipedia(term) {
           body: JSON.stringify({
             model: "llama-3.3-70b-versatile",
             messages: [
-              { role: "BOUDOUM!" },
+              { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
               { role: "user", content: message+"\n\nWikipedia: "+wiki }
             ],
             max_tokens: 4096
@@ -2507,7 +2703,9 @@ async function getWikipedia(term) {
         const rep = d.choices?.[0]?.message?.content
         if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
       }
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // UBUNTU — PRIORITE ABSOLUE avant OS Linux
@@ -2520,7 +2718,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -2528,7 +2726,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n*Umuntu ngumuntu ngabantu — Je suis parce que nous sommes*\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // UBUNTU — PRIORITE ABSOLUE avant OS Linux
@@ -2541,7 +2741,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -2549,7 +2749,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n"+d.choices?.[0]?.message?.content+"\n\n*Ubuntu: Je suis parce que nous sommes*\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // SECURITE — ANTI-INJECTION
@@ -2600,7 +2802,9 @@ async function getWikipedia(term) {
       const s = await getSeismesCaraibes()
       const sm = await getSeismesMondiaux()
       return res.status(200).json({ response: "🌋 **Séismes — Temps Réel**\n\n**🇬🇵 Caraïbes :**\n"+(s||"Aucun")+"\n\n**🌍 Mondiaux (ce mois) :**\n"+(sm||"Aucun")+"\n\nSource: USGS\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CYCLONES
@@ -2608,7 +2812,9 @@ async function getWikipedia(term) {
     try {
       const c = await getCyclones()
       return res.status(200).json({ response: "🌀 **Cyclones — Surveillance NHC**\n\n"+c+"\n\nSource: National Hurricane Center\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // TRADUCTEUR
@@ -2622,7 +2828,9 @@ async function getWikipedia(term) {
       const texte = message.replace(/traduis?\s*(en\s*\w+)?\s*/i,"").trim()
       const trad = await traduire(texte || "Bonjour je suis REUSSITESS AI", cible)
       return res.status(200).json({ response: "🌐 **Traducteur REUSSITESS**\n\n"+trad+"\n\n50 langues disponibles !\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // AGENDA CARIBEEN
@@ -2654,7 +2862,9 @@ async function getWikipedia(term) {
       const fd = await fr.json()
       const r = fd.rates
       return res.status(200).json({ response: "💱 **Taux de Change — Temps réel**\n\n💵 EUR/USD : " + r.USD + "\n💷 EUR/GBP : " + r.GBP + "\n🇧🇷 EUR/BRL : " + r.BRL + "\n🇨🇦 EUR/CAD : " + r.CAD + "\n🇮🇳 EUR/INR : " + r.INR + "\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CRYPTO PRIX DIRECT
@@ -2667,7 +2877,9 @@ async function getWikipedia(term) {
       const fg = await getFearGreed()
       const trending = td.coins.slice(0,5).map(function(c){ return c.item.name }).join(", ")
       return res.status(200).json({ response: "💎 **Crypto — Données Temps Réel**\n\n₿ Bitcoin : $" + (cd.bitcoin?.usd||"N/A") + "\nΞ Ethereum : $" + (cd.ethereum?.usd||"N/A") + "\n🔷 POL : $" + (cd["matic-network"]?.usd||"N/A") + "\n\n🔥 Tendances : " + trending + "\n😨 Sentiment : " + fg + "\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // PRESENTATION NEURO-X
@@ -2762,7 +2974,9 @@ async function getWikipedia(term) {
     try {
       const cit = await getCitation()
       return res.status(200).json({ response: "✨ **Citation du Jour**\n\n"+cit+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // FAIT INSOLITE
@@ -2770,7 +2984,9 @@ async function getWikipedia(term) {
     try {
       const fait = await getFaitInsolite()
       return res.status(200).json({ response: "🤔 **Fait Insolite du Jour**\n\n"+fait+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ISS POSITION
@@ -2778,7 +2994,9 @@ async function getWikipedia(term) {
     try {
       const iss = await getISSPosition()
       return res.status(200).json({ response: "🛸 **Station Spatiale ISS — Position Temps Réel**\n\n"+iss+"\n\n🌍 Visible à l'oeil nu la nuit !\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // PHASE DE LUNE
@@ -2871,7 +3089,7 @@ async function getFrance24News() {
 
 async function getAlJazeeraNews() {
   try {
-    const r = await fetch("https://www.aljazeera.com/xml/rss/all.xml")
+    const r = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.rfi.fr/fr/rss-services/html/rss-services.html&count=5")
     const xml = await r.text()
     const items = xml.match(/<item>[\s\S]*?<\/item>/g) || []
     return items.slice(0,5).map(function(i){
@@ -3478,7 +3696,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -3486,7 +3704,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎨 **Neuro-X Créatif — Art Génératif IA**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE PARENTALITE
@@ -3498,7 +3718,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -3506,7 +3726,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "👶 **Neuro-X Enfants — Parentalité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE GESTION TEMPS
@@ -3518,7 +3740,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -3526,7 +3748,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "⏰ **Neuro-X Coach — Productivité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE INTELLIGENCE COLLECTIVE
@@ -3538,7 +3762,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -3546,7 +3770,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🤝 **Neuro-X Stratégie — Intelligence Collective**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE CARNAVAL CARAIBE
@@ -3559,7 +3785,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Culture, expert carnaval caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -3567,7 +3793,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎭 **Neuro-X Culture — Carnaval Caribéen**\n\n"+agenda+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE PEINTURE CARIBEENNE
@@ -3579,7 +3807,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Culture, expert carnaval caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -3587,7 +3815,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎨 **Neuro-X Créatif — Art Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE EMPLOI DOM-TOM
@@ -3599,7 +3829,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Culture, expert carnaval caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -3607,7 +3837,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💼 **Neuro-X Business — Emploi DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // MESSAGE FINAL BOUDOUM
@@ -3631,7 +3863,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -3639,7 +3871,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎬 **Neuro-X Cinéma — Films Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE TRANSPORT DOM-TOM
@@ -3651,7 +3885,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -3659,7 +3893,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🚌 **Neuro-X Tourisme — Transport Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE ASSURANCE DOM-TOM
@@ -3671,7 +3907,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -3679,7 +3915,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🛡️ **Neuro-X Juridique — Assurances DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE MYTHOLOGIE CARIBEENNE
@@ -3691,7 +3929,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -3699,7 +3937,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "👻 **Neuro-X Spiritualité — Mythologie Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE PERMIS DE CONDUIRE
@@ -3711,7 +3951,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -3719,7 +3959,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🚗 **Neuro-X Juridique — Permis Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE AIDE SOCIALE
@@ -3731,7 +3973,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -3739,7 +3981,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🤝 **Neuro-X Juridique — Aides Sociales DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE LITTERATURE CARIBEENNE
@@ -3751,7 +3995,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -3759,7 +4003,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📚 **Neuro-X Littérature — Auteurs Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // EVENEMENT HISTORIQUE DU JOUR — Wikimedia gratuit
@@ -3788,7 +4034,9 @@ export default async function handler(req, res) {
       const books = (libD.docs || []).slice(0,5)
       const txt = books.map((b,i) => `${i+1}. 📖 **${b.title}** — ${(b.author_name||["Auteur inconnu"])[0]} (${b.first_publish_year||"?"})\n   🔗 openlibrary.org/works/${b.key}`).join("\n\n")
       return res.status(200).json({ response: "📚 **Bibliothèque Mondiale — Open Library**\n\n🔍 Résultats pour: *"+decodeURIComponent(query)+"*\n\n"+txt+"\n\n"+libD.numFound+" livres trouvés gratuitement !\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ACTUALITES MONDE FRANCOPHONE — RSS gratuit
@@ -3799,7 +4047,9 @@ export default async function handler(req, res) {
       const items = (rssD.items||[]).slice(0,5)
       const txt = items.map((it,i) => `${i+1}. **${it.title}**\n   📰 ${it.pubDate?.substring(0,10)||""}`).join("\n\n")
       return res.status(200).json({ response: "🌍 **Actualités Monde Francophone — RFI**\n\n"+txt+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // OFFRES EMPLOI DOM-TOM CARAIBES AFRIQUE
@@ -3811,7 +4061,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -3833,7 +4083,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -3841,7 +4091,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🤝 **Neuro-X Juridique — Créer une Association**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // PASSEPORT DE REUSSITE 🏆
@@ -3853,7 +4105,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -3875,7 +4127,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -3915,7 +4167,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -3923,7 +4175,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🧬 **Neuro-X Culture — Mon ADN Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Explore ton ADN: https://reussitess.fr/mon-adn\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ORACLE 971
@@ -3935,7 +4189,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -3943,7 +4197,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🔮 **Oracle 971 — Voix de la Guadeloupe**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Consulte l'Oracle: https://reussitess.fr/oracle-971\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // MA REVOLUTION IA
@@ -3955,7 +4211,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -3963,7 +4219,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🚀 **Neuro-X Coach — Ta Révolution IA**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Lance ta révolution: https://reussitess.fr/ma-revolution-ia\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // BILAN FINAL ECOSYSTEME
@@ -3990,7 +4248,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 1024
@@ -3998,7 +4256,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "✍️ **Neuro-X Marketing — Générateur Bio**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE SANTE CARDIOVASCULAIRE
@@ -4010,7 +4270,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4018,7 +4278,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "❤️ **Neuro-X Santé — Santé Cardiovasculaire**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez votre médecin.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE ACHAT TERRAIN DOM-TOM
@@ -4030,7 +4292,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4038,7 +4300,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🏡 **Neuro-X Immobilier — Achat Terrain Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE WEB3 CARAIBE
@@ -4050,7 +4314,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4058,12 +4322,14 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌐 **Neuro-X Tech — Web3 Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // IDENTITE DU BOT
   if (msgLow.includes("qui es-tu") || msgLow.includes("qui es tu") || msgLow.includes("présente-toi") || msgLow.includes("présente toi") || msgLow.includes("ta mission") || msgLow.includes("c'est quoi reussitess ai") || msgLow.includes("tu es qui")) {
-    return res.status(200).json({ response: "🤖 **Je suis REUSSITESS®971 AI**\n\nChef d'orchestre de l'écosystème REUSSITESS®971, créé depuis la **Guadeloupe** 🇬🇵 par **Rony Porinus**.\n\n**Ma devise :** *Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets.*\n\n**Ce que je suis :**\n🧠 200 agents IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme)\n🌍 Présent dans 14 pays partenaires\n📚 160+ fonctionnalités actives\n💎 Connecté au Token REUSS sur Polygon\n🛍️ 26 boutiques Amazon affiliées\n\n**L'écosystème REUSSITESS®971 :**\n🏆 [Passeport de Réussite](https://reussitess.fr/champions)\n🌍 [Visa Universel](https://reussitess.fr/visa-universel)\n🧠 [Neuro-X](https://reussitess.fr/neuro-x)\n💎 [Token REUSS](https://reussitess.fr/investir-reuss)\n🔮 [Oracle 971](https://reussitess.fr/oracle-971)\n\n*Terres de Champions — Positivité à l'infini !*\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ response: "🤖 **Je suis REUSSITESS®971 AI**\n\nChef d'orchestre de l'écosystème REUSSITESS®971, créé depuis la **Guadeloupe** 🇬🇵 par **Rony Porinus**.\n\n**Ma devise :** *Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets.*\n\n**Ce que je suis :**\n🧠 200+ modules IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme)\n🌍 Présent dans 14 pays partenaires\n📚 160+ fonctionnalités actives\n💎 Connecté au Token REUSS sur Polygon\n🛍️ 26 boutiques Amazon affiliées\n\n**L'écosystème REUSSITESS®971 :**\n🏆 [Passeport de Réussite](https://reussitess.fr/champions)\n🌍 [Visa Universel](https://reussitess.fr/visa-universel)\n🧠 [Neuro-X](https://reussitess.fr/neuro-x)\n💎 [Token REUSS](https://reussitess.fr/investir-reuss)\n🔮 [Oracle 971](https://reussitess.fr/oracle-971)\n\n*Terres de Champions — Positivité à l'infini !*\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // GUIDE INTELLIGENCE EMOTIONNELLE
@@ -4075,7 +4341,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4083,7 +4349,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💛 **Neuro-X Psychologie — Intelligence Émotionnelle**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE CROWDFUNDING
@@ -4095,7 +4363,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4103,7 +4371,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🤝 **Neuro-X Business — Crowdfunding Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE BIEN-ETRE AU TRAVAIL
@@ -4115,7 +4385,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4123,7 +4393,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌺 **Neuro-X Coach — Bien-Être au Travail**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE GEOPOLITIQUE CARAIBES
@@ -4135,7 +4407,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4143,7 +4415,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌍 **Neuro-X Géopolitique — Caraïbes**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE PHOTOGRAPHIE
@@ -4155,7 +4429,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4163,7 +4437,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📸 **Neuro-X Créatif — Photographie Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE MODE CARIBEENNE
@@ -4175,7 +4451,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4183,7 +4459,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "👗 **Neuro-X Mode — Stylisme Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE LEADERSHIP
@@ -4195,7 +4473,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4203,7 +4481,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "👑 **Neuro-X Coach — Leadership Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE PROTECTION DONNEES
@@ -4215,7 +4495,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4223,7 +4503,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🔒 **Neuro-X Réseaux — Protection Données RGPD**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR HASHTAGS
@@ -4235,7 +4517,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 1024
@@ -4243,7 +4525,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "# **Neuro-X Marketing — Hashtags Viraux**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE CRYPTOMONNAIE DEBUTANT
@@ -4256,7 +4540,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4264,7 +4548,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎓 **Neuro-X Finance — Crypto pour Débutants**\n\n📊 Marché: "+crypto+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE SANTE MENTALE
@@ -4276,7 +4562,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4284,7 +4570,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💚 **Neuro-X Psychologie — Santé Mentale**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un professionnel de santé.\nUrgence: 3114 (numéro national prévention suicide)\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE EXPORT INTERNATIONAL
@@ -4296,7 +4584,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4304,7 +4592,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌍 **Neuro-X Logistique — Export International**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE PODCASTING
@@ -4316,7 +4606,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4324,7 +4614,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎙️ **Neuro-X Marketing — Guide Podcast**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE MICRO-FINANCE
@@ -4336,7 +4628,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4344,7 +4636,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💰 **Neuro-X Business — Micro-Finance**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE BIEN-ETRE SENIOR
@@ -4356,7 +4650,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4364,7 +4658,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "👴 **Neuro-X Seniors — Bien-Vieillir Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR CONTRAT
@@ -4376,7 +4672,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4384,7 +4680,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📝 **Neuro-X Juridique — Générateur Contrats**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un avocat avant signature.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE DROPSHIPPING
@@ -4396,7 +4694,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4404,7 +4702,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🛒 **Neuro-X Business — Dropshipping Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE FREELANCE
@@ -4416,7 +4716,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4424,7 +4724,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💻 **Neuro-X Business — Guide Freelance**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE IA POUR DEBUTANTS
@@ -4436,7 +4738,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4444,7 +4746,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🤖 **Neuro-X IA — Guide Débutants**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CONSEIL NUTRITION CARIBEENNE
@@ -4456,7 +4760,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4464,7 +4768,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🥗 **Neuro-X Santé — Nutrition Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // AIDE DEUIL ET FAMILLE
@@ -4476,7 +4782,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4484,7 +4790,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💙 **REUSSITESS AI — Soutien & Accompagnement**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // RAPPEL MEDICAMENT
@@ -4496,7 +4804,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4504,7 +4812,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💊 **Neuro-X Santé — Information Médicale**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez toujours un médecin ou pharmacien.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE CREATION CONTENU
@@ -4516,7 +4826,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4524,7 +4834,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎬 **Neuro-X Marketing — Création Contenu**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE EPARGNE
@@ -4536,7 +4848,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4544,7 +4856,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💳 **Neuro-X Finance — Guide Épargne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CALENDRIER LUNAIRE COMPLET
@@ -4567,7 +4881,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4575,7 +4889,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🧒 **Neuro-X Enfants — Mode Famille**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ACTUALITES CARAIBES LOCALES
@@ -4600,7 +4916,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4608,7 +4924,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎨 **Neuro-X NFT — Art Numérique Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE GOMINING
@@ -4620,7 +4938,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4628,7 +4946,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "⛏️ **Neuro-X Finance — Guide GoMining**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CALCULATEUR STAKING REUSS
@@ -4655,7 +4975,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4663,7 +4983,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🏆 **Neuro-X Sport — Champions Antillais**\n\n"+d.choices?.[0]?.message?.content+"\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE AGRICULTURE BIO
@@ -4677,7 +4999,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4685,7 +5007,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌱 **Neuro-X Agriculture — Jardin Créole**\n\n🌙 "+lune+" | 🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // PHILOSOPHIE CARIBEENNE
@@ -4697,7 +5021,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4705,7 +5029,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🧠 **Neuro-X Philosophie — Pensée Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE DIASPORA
@@ -4717,7 +5043,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4725,7 +5051,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌍 **Neuro-X Diaspora — Communauté Mondiale**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE SMART CONTRACT
@@ -4737,7 +5065,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4745,7 +5073,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "⛓️ **Neuro-X Blockchain — Smart Contracts**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR PITCH INVESTISSEUR
@@ -4757,7 +5087,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4765,7 +5095,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🚀 **Neuro-X Stratégie — Pitch Investisseur**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE IMMOBILIER DOM-TOM
@@ -4777,7 +5109,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4785,7 +5117,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🏠 **Neuro-X Immobilier — Guide DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // COACH ENTREPRENEURIAT FEMININ
@@ -4797,7 +5131,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4805,7 +5139,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "👑 **Neuro-X Femmes — Coach Entrepreneuriat**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE JEUNES CARIBEEN
@@ -4817,7 +5153,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4825,7 +5161,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎓 **Neuro-X Jeunes — Guide Orientation**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // DIAGNOSTIC SITE WEB
@@ -4837,7 +5175,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4845,7 +5183,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🔍 **Neuro-X SEO — Audit Site Web**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR CHANSON CREOLE
@@ -4857,7 +5197,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4865,7 +5205,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎵 **Neuro-X Musique — Chanson Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE ECO-TOURISME
@@ -4878,7 +5220,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4886,7 +5228,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌿 **Neuro-X Tourisme — Éco-Tourisme Guadeloupe**\n\n🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // SCIENCE CARIBEENNE
@@ -4898,7 +5242,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -4906,7 +5250,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🔬 **Neuro-X Sciences — Biodiversité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE ENERGIE SOLAIRE
@@ -4918,7 +5264,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4926,7 +5272,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "☀️ **Neuro-X Énergie — Solaire Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // DICTIONNAIRE CREOLE COMPLET
@@ -4938,7 +5286,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 1024
@@ -4946,7 +5294,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📖 **Neuro-X Langues — Dictionnaire Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // TIPS DEVELOPPEMENT PERSONNEL
@@ -4959,7 +5309,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4967,7 +5317,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "✨ **Neuro-X Coach — Développement Personnel**\n\n💬 "+citation+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ANALYSE MARCHE CRYPTO
@@ -4981,7 +5333,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4989,7 +5341,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📈 **Neuro-X Finance — Analyse Marché**\n\n"+crypto+"\n😨 "+fg+"\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ DYOR\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GUIDE RETRAITE DOM-TOM
@@ -5001,7 +5355,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -5009,7 +5363,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "👴 **Neuro-X Juridique — Guide Retraite DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un conseiller retraite.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // BUSINESS PLAN
@@ -5021,7 +5377,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -5029,7 +5385,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📋 **Neuro-X Business — Business Plan**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CALCULATEUR IMC
@@ -5055,7 +5413,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -5063,7 +5421,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "✈️ **Neuro-X Juridique — Guide Immigration**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez les services préfectoraux.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ASTROLOGIE CARIBEENNE
@@ -5076,7 +5436,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -5084,7 +5444,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "⭐ **Neuro-X Spiritualité — Astrologie Caribéenne**\n\n"+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // QUIZ INSTANTANE
@@ -5096,7 +5458,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 1024
@@ -5104,7 +5466,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎯 **Neuro-X Éducation — Quiz Instantané**\n\n"+d.choices?.[0]?.message?.content+"\n\n+5 points REUSS si bonne réponse !\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // PLAN MARKETING
@@ -5116,7 +5480,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -5124,7 +5488,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📊 **Neuro-X Marketing — Plan Complet**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // HISTOIRE GUADELOUPE
@@ -5136,7 +5502,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -5160,7 +5526,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -5168,7 +5534,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📧 **Neuro-X Business — Email Professionnel**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR POST RESEAUX SOCIAUX
@@ -5180,7 +5548,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -5188,7 +5556,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📱 **Neuro-X Marketing — Générateur Posts**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // COCKTAILS RHum CARIBEEN
@@ -5200,7 +5570,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -5208,7 +5578,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🍹 **Neuro-X Cuisine — Cocktails Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ANALYSE REVES
@@ -5221,7 +5593,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -5229,7 +5601,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌙 **Neuro-X Spiritualité — Analyse Rêves**\n\n"+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CONSEILS VOYAGE CARAIBES
@@ -5242,7 +5616,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -5250,7 +5624,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "✈️ **Neuro-X Tourisme — Guide Caribéen**\n\n🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ANALYSE PERSONNALITE
@@ -5262,7 +5638,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -5270,7 +5646,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🧠 **Neuro-X Psychologie — Analyse Personnalité**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR SLOGAN
@@ -5282,7 +5660,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 1024
@@ -5290,7 +5668,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🎯 **Neuro-X Marketing — Générateur Slogans**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CONSEILS INVESTISSEMENT
@@ -5304,7 +5684,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -5312,7 +5692,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💰 **Neuro-X Finance — Conseils Investissement**\n\n📊 Marché actuel : "+fg+"\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ DYOR — Pas de conseil financier.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // APPRENTISSAGE LANGUE
@@ -5324,7 +5706,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -5332,7 +5714,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌐 **Neuro-X Langues — Leçon**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // MEDITATION CARIBEENNE
@@ -5346,7 +5730,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message + " (Météo actuelle: "+meteo+" | Lune: "+lune+")" }
           ],
           max_tokens: 2048
@@ -5354,7 +5738,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🧘 **Neuro-X Santé — Méditation Caribéenne**\n\n🌊 "+meteo+" | "+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // PROVERBES CREOLES
@@ -5382,7 +5768,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -5390,7 +5776,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌿 **Neuro-X Santé — Plantes Caribéennes**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un médecin.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // NUMEROLOGIE
@@ -5421,7 +5809,9 @@ export default async function handler(req, res) {
       const w = md.current_weather
       const wDesc = w.weathercode<=3?"Ensoleillé":w.weathercode<=48?"Nuageux":w.weathercode<=67?"Pluvieux":"Orageux"
       return res.status(200).json({ response: "🌤️ **Météo "+lieu+" — Temps réel**\n\n🌡️ "+w.temperature+"°C\n💨 Vent: "+w.windspeed+"km/h\n☁️ "+wDesc+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // COACH SPORTIF
@@ -5433,7 +5823,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -5441,7 +5831,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💪 **Neuro-X Sport — Coach Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // RECETTE ANTILLAISE
@@ -5453,7 +5845,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -5461,7 +5853,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🍽️ **Neuro-X Cuisine — Recette Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // AIDE JURIDIQUE
@@ -5473,7 +5867,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -5481,7 +5875,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "⚖️ **Neuro-X Juridique — Conseil Droit**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un avocat pour toute décision légale.\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CALCULATEUR AMAZON
@@ -5492,7 +5888,9 @@ export default async function handler(req, res) {
         const taux = { standard: 0.03, mode: 0.10, cuisine: 0.08, tech: 0.04, livres: 0.045 }
         return res.status(200).json({ response: "💰 **Calculateur Amazon REUSSITESS**\n\nProduit à $"+nb+"\n\n📊 Commissions estimées :\n• Standard (3%) : $"+(nb*0.03).toFixed(2)+"\n• Mode (10%) : $"+(nb*0.10).toFixed(2)+"\n• Cuisine (8%) : $"+(nb*0.08).toFixed(2)+"\n• Tech (4%) : $"+(nb*0.04).toFixed(2)+"\n• Livres (4.5%) : $"+(nb*0.045).toFixed(2)+"\n\n🌍 Multiplié par 26 boutiques = $"+(nb*0.05*26).toFixed(2)+"/vente théorique\n\nBOUDOUM ! 🇬🇵" })
       }
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // RESUME CONVERSATION
@@ -5504,7 +5902,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: "Résume cette conversation : "+message }
           ],
           max_tokens: 1024
@@ -5512,7 +5910,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📋 **Résumé de Session**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // MODE DEBAT
@@ -5524,7 +5924,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -5532,7 +5932,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "⚖️ **Mode Débat — Neuro-X Stratégie**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CONSEILS BUSINESS CARAIBE
@@ -5544,7 +5946,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -5552,7 +5954,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "💼 **Neuro-X Business — Conseils Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR POEME CREOLE
@@ -5564,7 +5968,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -5573,7 +5977,9 @@ export default async function handler(req, res) {
       const d = await groqRes.json()
       const poeme = d.choices?.[0]?.message?.content || ""
       return res.status(200).json({ response: "✍️ **Neuro-X Créatif — Poème Créole**\n\n"+poeme+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR NOM ENTREPRISE
@@ -5585,7 +5991,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 1024
@@ -5594,7 +6000,9 @@ export default async function handler(req, res) {
       const d = await groqRes.json()
       const noms = d.choices?.[0]?.message?.content || ""
       return res.status(200).json({ response: "🏢 **Neuro-X Business — Générateur de Noms**\n\n"+noms+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // GENERATEUR CV
@@ -5606,7 +6014,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -5614,7 +6022,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📄 **Neuro-X Business — Assistant CV**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // HISTOIRE CARIBEENNE
@@ -5626,7 +6036,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Culture, expert mythologie créole et caribéenne. BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -5634,7 +6044,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "📖 **Neuro-X Créatif — Conte Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // WHITEPAPER REUSSITESS
@@ -5699,7 +6111,7 @@ export default async function handler(req, res) {
           body: JSON.stringify({
             model: "llama-3.3-70b-versatile",
             messages: [
-              { role: "BOUDOUM!" },
+              { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
               { role: "user", content: "Question: "+message+"\n\nSource Wikipedia:\n"+wiki }
             ],
             max_tokens: 4096
@@ -5709,7 +6121,9 @@ export default async function handler(req, res) {
         const rep = d.choices?.[0]?.message?.content
         if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS — Wikipedia Live**\n\n"+rep+"\n\nSource: Wikipedia FR\n\nBOUDOUM ! 🇬🇵" })
       }
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ENCYCLOPEDIE DIRECTE — mots-clés spécifiques
@@ -5727,7 +6141,7 @@ export default async function handler(req, res) {
             body: JSON.stringify({
               model: "llama-3.3-70b-versatile",
               messages: [
-                { role: "BOUDOUM!" },
+                { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
                 { role: "user", content: message+"\n\nWikipedia: "+wiki }
               ],
               max_tokens: 4096
@@ -5756,7 +6170,7 @@ export default async function handler(req, res) {
           body: JSON.stringify({
             model: "llama-3.3-70b-versatile",
             messages: [
-              { role: "BOUDOUM!" },
+              { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
               { role: "user", content: message+"\n\nWikipedia: "+wiki }
             ],
             max_tokens: 4096
@@ -5766,7 +6180,9 @@ export default async function handler(req, res) {
         const rep = d.choices?.[0]?.message?.content
         if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
       }
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // UBUNTU — PRIORITE ABSOLUE avant OS Linux
@@ -5779,7 +6195,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -5787,7 +6203,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n*Umuntu ngumuntu ngabantu — Je suis parce que nous sommes*\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // UBUNTU — PRIORITE ABSOLUE avant OS Linux
@@ -5800,7 +6218,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 4096
@@ -5808,7 +6226,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       return res.status(200).json({ response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n"+d.choices?.[0]?.message?.content+"\n\n*Ubuntu: Je suis parce que nous sommes*\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // SECURITE — ANTI-INJECTION
@@ -5859,7 +6279,9 @@ export default async function handler(req, res) {
       const s = await getSeismesCaraibes()
       const sm = await getSeismesMondiaux()
       return res.status(200).json({ response: "🌋 **Séismes — Temps Réel**\n\n**🇬🇵 Caraïbes :**\n"+(s||"Aucun")+"\n\n**🌍 Mondiaux (ce mois) :**\n"+(sm||"Aucun")+"\n\nSource: USGS\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // CYCLONES
@@ -5867,7 +6289,9 @@ export default async function handler(req, res) {
     try {
       const c = await getCyclones()
       return res.status(200).json({ response: "🌀 **Cyclones — Surveillance NHC**\n\n"+c+"\n\nSource: National Hurricane Center\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // TRADUCTEUR
@@ -5881,7 +6305,9 @@ export default async function handler(req, res) {
       const texte = message.replace(/traduis?\s*(en\s*\w+)?\s*/i,"").trim()
       const trad = await traduire(texte || "Bonjour je suis REUSSITESS AI", cible)
       return res.status(200).json({ response: "🌐 **Traducteur REUSSITESS**\n\n"+trad+"\n\n50 langues disponibles !\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // AGENDA CARIBEEN
@@ -5984,7 +6410,9 @@ export default async function handler(req, res) {
     try {
       const cit = await getCitation()
       return res.status(200).json({ response: "✨ **Citation du Jour**\n\n"+cit+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // FAIT INSOLITE
@@ -5992,7 +6420,9 @@ export default async function handler(req, res) {
     try {
       const fait = await getFaitInsolite()
       return res.status(200).json({ response: "🤔 **Fait Insolite du Jour**\n\n"+fait+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ISS POSITION
@@ -6000,7 +6430,9 @@ export default async function handler(req, res) {
     try {
       const iss = await getISSPosition()
       return res.status(200).json({ response: "🛸 **Station Spatiale ISS — Position Temps Réel**\n\n"+iss+"\n\n🌍 Visible à l'oeil nu la nuit !\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+    } catch(e) {
+      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // PHASE DE LUNE
@@ -6590,7 +7022,7 @@ CONTEXTE TEMPS RÉEL : Nous sommes le ${datetime?.date || new Date().toLocaleDat
 Si on te demande l'heure, la date ou le jour, utilise EXACTEMENT ces données temps réel.
 REGLES ABSOLUES: 1.Tu as des donnees LIVE ci-dessous, UTILISE-LES TOUJOURS. 2.Ne jamais dire je n ai pas acces aux donnees temps reel. 3.Actualites=cite RFI/BBC/France24. 4.Crypto=cite prix reels. 5.Meteo=cite temperature reelle. 6.Change=cite vrais taux.
 DONNEES LIVE OBLIGATOIRES: " + (nc||"indisponibles") + "
-Tu es REUSSITESS®971 AI, chef d'orchestre de l'écosystème REUSSITESS®971. RÈGLES LÉGALES ABSOLUES: 1) CRYPTO: Toujours ajouter "Ce n'est pas un conseil financier. DYOR. Risque de perte totale." 2) SANTÉ: Jamais de diagnostic ni prescription. Toujours recommander un médecin. 3) JURIDIQUE: Toujours recommander un professionnel du droit. 4) FONCTIONNALITÉS EN DÉVELOPPEMENT: Staking REUSS, NFT, DAO — toujours préciser "en développement". 5) CHIFFRES: Ne jamais inventer de statistiques. , créé depuis la Guadeloupe 🇬🇵. DEVISE: Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets pro et perso. Tu guides chaque utilisateur vers son plein potentiel. ECOSYSTEME REEL (pages actives sur reussitess.fr): /champions (Passeport de Réussite — certificat champion + plan action, 15247 champions, 127 pays), /visa-universel (Visa Universel — réseau opportunités 14 pays partenaires), /neuro-x (60 agents Neuro-X spécialisés), /oracle-971 (Oracle caribéen mystique), /mon-adn (ADN identitaire caribéen), /ma-revolution-ia (Révolution personnelle par IA), /ia-passport (IA Passport Mondial — 8 langues actives), /investir-reuss (Token REUSS sur Polygon: 0xB37531727fC07c6EED4f97F852A115B428046EB2), /quiz (99 quiz éducatifs tous thèmes), /bibliotheque (bibliothèque mondiale 50+ pays), /boutiques (26 boutiques Amazon 14 pays, influencer ID: fb942837), shop.reussitess.fr (boutique officielle). FONDATEUR: Rony Porinus — auto-entrepreneur Guadeloupe, SIRET: 444699979700031. 150+ fonctionnalités actives. 200 agents IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme). 14 pays partenaires. Token REUSS sur Polygon. Données temps réel: météo, crypto, séismes, cyclones, ISS, lune, taux change, actualités. Business: plan, pitch, dropshipping, freelance, CV, contrats, emails, export, emploi DOM-TOM, association. Crypto: token REUSS sur Polygon (staking/DAO en développement), GoMining (minage cloud), NFT (en développement), Web3. Culture caribéenne: carnaval, mythologie, champions, histoire, philosophie Césaire/Fanon/Glissant, littérature Condé/Schwarz-Bart, art, cinéma, mode madras, zouk/gwo ka. Afrique: Mandela, Sankara, Lumumba, Nkrumah, Ubuntu, civilisations, encyclopédie. Santé: médecine naturelle, plantes caribéennes, IMC, cardio, santé mentale (3114). Éphéméride Wikimedia, Open Library 1559+ livres, Proverbes 30 créoles rotatifs. Emploi DOM-TOM: francetravail.fr, emploi.re, caribbeanjobs.com, jobartis.com. Convertisseur: EUR/USD/XCD/HTG/XOF/XAF temps réel. Sécurité: anti-injection, REUSSSHIELD, surveillance 24/7. Base Guadeloupe 971 — Terres de Champions. BOUDOUM!` },
+Tu es REUSSITESS®971 AI, chef d'orchestre de l'écosystème REUSSITESS®971. RÈGLES LÉGALES ABSOLUES: 1) CRYPTO: Toujours ajouter "Ce n'est pas un conseil financier. DYOR. Risque de perte totale." 2) SANTÉ: Jamais de diagnostic ni prescription. Toujours recommander un médecin. 3) JURIDIQUE: Toujours recommander un professionnel du droit. 4) FONCTIONNALITÉS EN DÉVELOPPEMENT: Staking REUSS, NFT, DAO — toujours préciser "en développement". 5) CHIFFRES: Ne jamais inventer de statistiques. , créé depuis la Guadeloupe 🇬🇵. DEVISE: Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets pro et perso. Tu guides chaque utilisateur vers son plein potentiel. ECOSYSTEME REEL (pages actives sur reussitess.fr): /champions (Passeport de Réussite — certificat champion + plan action, communauté grandissante, 14 pays), /visa-universel (Visa Universel — réseau opportunités 14 pays partenaires), /neuro-x (60 agents Neuro-X spécialisés), /oracle-971 (Oracle caribéen mystique), /mon-adn (ADN identitaire caribéen), /ma-revolution-ia (Révolution personnelle par IA), /ia-passport (IA Passport Mondial — 8 langues actives), /investir-reuss (Token REUSS sur Polygon: 0xB37531727fC07c6EED4f97F852A115B428046EB2), /quiz (99 quiz éducatifs tous thèmes), /bibliotheque (bibliothèque mondiale 50+ pays), /boutiques (26 boutiques Amazon 14 pays, influencer ID: fb942837), shop.reussitess.fr (boutique officielle). FONDATEUR: Rony Porinus — auto-entrepreneur Guadeloupe, SIRET: 444699979700031. 160+ fonctionnalités actives. 200+ modules IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme). 14 pays partenaires. Token REUSS sur Polygon. Données temps réel: météo, crypto, séismes, cyclones, ISS, lune, taux change, actualités. Business: plan, pitch, dropshipping, freelance, CV, contrats, emails, export, emploi DOM-TOM, association. Crypto: token REUSS sur Polygon (staking/DAO en développement), GoMining (minage cloud), NFT (en développement), Web3. Culture caribéenne: carnaval, mythologie, champions, histoire, philosophie Césaire/Fanon/Glissant, littérature Condé/Schwarz-Bart, art, cinéma, mode madras, zouk/gwo ka. Afrique: Mandela, Sankara, Lumumba, Nkrumah, Ubuntu, civilisations, encyclopédie. Santé: médecine naturelle, plantes caribéennes, IMC, cardio, santé mentale (3114). Éphéméride Wikimedia, Open Library 1559+ livres, Proverbes 30 créoles rotatifs. Emploi DOM-TOM: francetravail.fr, emploi.re, caribbeanjobs.com, jobartis.com. Convertisseur: EUR/USD/XCD/HTG/XOF/XAF temps réel. Sécurité: anti-injection, REUSSSHIELD, surveillance 24/7. Base Guadeloupe 971 — Terres de Champions. BOUDOUM!` },
                   { role: "user", content: message }
                 ],
                 max_tokens: 4096
