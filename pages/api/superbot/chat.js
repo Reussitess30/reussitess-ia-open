@@ -551,7 +551,40 @@ async function getWikipedia(term) {
   }
 
   // ACTUALITES MONDE FRANCOPHONE — RSS gratuit
-  if (msgLow.includes("actualité monde") || msgLow.includes("news monde") || msgLow.includes("actualité internationale") || msgLow.includes("info monde")) {
+  // JOURNAL OFFICIEL + MEDIAS DOM-TOM + EVENEMENTS CULTURELS
+  if (msgLow.includes("journal officiel") || msgLow.includes("loi nouvelle") || msgLow.includes("nouvelle loi") || msgLow.includes("decret") || msgLow.includes("décret") || msgLow.includes("legifrance") || msgLow.includes("loi parue") || msgLow.includes("texte officiel") || msgLow.includes("dom actualite") || msgLow.includes("actu dom") || msgLow.includes("media dom") || msgLow.includes("media local") || msgLow.includes("evenement guadeloupe") || msgLow.includes("événement guadeloupe") || msgLow.includes("agenda guadeloupe") || msgLow.includes("agenda martinique") || msgLow.includes("evenement culturel") || msgLow.includes("newsletter dom") || msgLow.includes("actu outremer")) {
+    let sections = []
+    // 1. Journal Officiel via legifrss.org
+    try {
+      const joRes = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://legifrss.org/latest&count=5", { signal: AbortSignal.timeout(5000) })
+      const joData = await joRes.json()
+      if (joData.items && joData.items.length > 0) {
+        const lois = joData.items.slice(0,5).map(function(it) {
+          const d = it.pubDate ? it.pubDate.substring(0,10) : ""
+          return "• [" + d + "] " + it.title
+        }).join("\n")
+        sections.push("⚖️ **Journal Officiel — Derniers textes**\n" + lois + "\n🔗 legifrance.gouv.fr | legifrss.org")
+      }
+    } catch(e1) {
+      sections.push("⚖️ **Journal Officiel**\n• legifrance.gouv.fr — Lois et décrets\n• journal-officiel.gouv.fr\n• vie-publique.fr — Analyses des lois\n• service-public.fr — Applications pratiques")
+    }
+    // 2. Médias locaux DOM-TOM
+    try {
+      const domRes = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://la1ere.francetvinfo.fr/guadeloupe/rss.xml&count=4", { signal: AbortSignal.timeout(5000) })
+      const domData = await domRes.json()
+      if (domData.items && domData.items.length > 0) {
+        const actu = domData.items.slice(0,4).map(function(it) { return "• " + it.title }).join("\n")
+        sections.push("🌴 **Guadeloupe 1ère — Actu Locale**\n" + actu)
+      }
+    } catch(e2) {}
+    // 3. Liens médias DOM-TOM complets
+    sections.push("📡 **Médias DOM-TOM — Complet**\n🇬🇵 Guadeloupe:\n• la1ere.francetvinfo.fr/guadeloupe\n• guadeloupe.franceantilles.fr\n• rci.fm/guadeloupe\n• guadeloupetv.fr\n🇲🇶 Martinique:\n• la1ere.francetvinfo.fr/martinique\n• martinique.franceantilles.fr\n• rci.fm/martinique\n🇷🇪 Réunion:\n• la1ere.francetvinfo.fr/reunion\n• clicanoo.re\n• zinfos974.com\n🇬🇫 Guyane:\n• la1ere.francetvinfo.fr/guyane\n• guyane.rci.fm\n🌍 Outre-Mer Global:\n• outremers360.com\n• la1ere.francetvinfo.fr\n• outre-mer.gouv.fr")
+    // 4. Newsletters et événements culturels
+    sections.push("🎭 **Événements Culturels Caraïbes**\n🥁 Festival Gwo Ka — Sainte-Anne, Guadeloupe (Juillet)\n🎵 Festival Jazz Martinique (Juillet-Août)\n🎭 Carnaval Guadeloupe & Martinique (Février-Mars)\n🌊 Tour Cycliste Guadeloupe (Juillet)\n🎤 Sakifo Musik Festival — La Réunion (Juin)\n🎺 Festival Biguine Jazz Martinique (Mai)\n\n📧 **Newsletters DOM-TOM**\n• outremers360.com/newsletter\n• la1ere.francetvinfo.fr/newsletters\n• gwadazap.com (Guadeloupe)\n• martinique.franceantilles.fr/newsletter\n\nBOUDOUM ! 🇬🇵")
+    return res.status(200).json({ response: sections.join("\n\n---\n\n") })
+  }
+
+    if (msgLow.includes("actualité monde") || msgLow.includes("news monde") || msgLow.includes("actualité internationale") || msgLow.includes("info monde")) {
     try {
       const rssR = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.rfi.fr/fr/rss-services/html/rss-services.html&count=5")
       const rssD = await rssR.json()
