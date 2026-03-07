@@ -679,7 +679,7 @@ const Astuces = () => {
                       inflammation
                     </p>
                     <p className="text-lg">
-                      <strong>Usage :</strong> 3-4 fois/jour jusqu'à guérison
+                      <strong>Usage :</strong> 3-4 fois/jour (consulter un professionnel de santé avant usage)
                     </p>
                   </div>
 
@@ -822,7 +822,7 @@ const Astuces = () => {
                       ❌ Femmes enceintes/allaitantes : demander avis médical
                     </li>
                     <li>
-                      ✅ Remèdes complémentaires, pas traitements principaux
+                      ⚠️ Remèdes traditionnels complémentaires uniquement — Consultez toujours un médecin pour tout traitement
                     </li>
                   </ul>
                 </div>

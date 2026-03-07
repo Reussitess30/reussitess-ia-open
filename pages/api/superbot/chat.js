@@ -1225,7 +1225,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "system", content: "Tu es Neuro-X Santé, assistant médical caribéen. Informe sur médicaments, posologies générales, interactions. TOUJOURS recommander médecin ou pharmacien. Jamais de diagnostic. BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Santé, assistant médical caribéen. Fournis des informations générales de santé UNIQUEMENT. TOUJOURS: recommande un médecin ou pharmacien agréé. JAMAIS de diagnostic, posologie précise ou prescription. Ajoute systématiquement: "Ces informations ne remplacent pas un avis médical professionnel." BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -1361,7 +1361,7 @@ async function getWikipedia(term) {
   }
 
   // CALCULATEUR STAKING REUSS
-  if (msgLow.includes("calcule mon staking") || msgLow.includes("combien staking") || msgLow.includes("rendement staking") || msgLow.includes("apy reuss")) {
+  if (msgLow.includes("staking reuss info") || msgLow.includes("info token reuss") || msgLow.includes("token reuss info") || msgLow.includes("token reuss polygon")) {
     try {
       const nb = parseFloat(message.match(/[\d.,]+/)?.[0]?.replace(",","."))
       if (!isNaN(nb)) {
@@ -2033,7 +2033,7 @@ async function getWikipedia(term) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "system", content: "Tu es Neuro-X Finance, expert investissement caribéen. Donne des conseils diversifiés: Amazon affiliation, crypto REUSS, immobilier DOM-TOM. Toujours prudent, jamais DYOR obligatoire. Données actuelles: "+crypto+" | Sentiment: "+fg+". BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Finance, expert investissement caribéen. Donne des informations générales: Amazon affiliation, token REUSS, immobilier DOM-TOM. TOUJOURS mentionner: ce n'est pas un conseil financier, DYOR (faites vos propres recherches), risque de perte totale en crypto. Données actuelles: "+crypto+" | Sentiment: "+fg+". BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4496,7 +4496,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "system", content: "Tu es Neuro-X Santé, assistant médical caribéen. Informe sur médicaments, posologies générales, interactions. TOUJOURS recommander médecin ou pharmacien. Jamais de diagnostic. BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Santé, assistant médical caribéen. Fournis des informations générales de santé UNIQUEMENT. TOUJOURS: recommande un médecin ou pharmacien agréé. JAMAIS de diagnostic, posologie précise ou prescription. Ajoute systématiquement: "Ces informations ne remplacent pas un avis médical professionnel." BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -4632,7 +4632,7 @@ export default async function handler(req, res) {
   }
 
   // CALCULATEUR STAKING REUSS
-  if (msgLow.includes("calcule mon staking") || msgLow.includes("combien staking") || msgLow.includes("rendement staking") || msgLow.includes("apy reuss")) {
+  if (msgLow.includes("staking reuss info") || msgLow.includes("info token reuss") || msgLow.includes("token reuss info") || msgLow.includes("token reuss polygon")) {
     try {
       const nb = parseFloat(message.match(/[\d.,]+/)?.[0]?.replace(",","."))
       if (!isNaN(nb)) {
@@ -5304,7 +5304,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model: "llama-3.3-70b-versatile",
           messages: [
-            { role: "system", content: "Tu es Neuro-X Finance, expert investissement caribéen. Donne des conseils diversifiés: Amazon affiliation, crypto REUSS, immobilier DOM-TOM. Toujours prudent, jamais DYOR obligatoire. Données actuelles: "+crypto+" | Sentiment: "+fg+". BOUDOUM!" },
+            { role: "system", content: "Tu es Neuro-X Finance, expert investissement caribéen. Donne des informations générales: Amazon affiliation, token REUSS, immobilier DOM-TOM. TOUJOURS mentionner: ce n'est pas un conseil financier, DYOR (faites vos propres recherches), risque de perte totale en crypto. Données actuelles: "+crypto+" | Sentiment: "+fg+". BOUDOUM!" },
             { role: "user", content: message }
           ],
           max_tokens: 2048
@@ -6590,7 +6590,7 @@ CONTEXTE TEMPS RÉEL : Nous sommes le ${datetime?.date || new Date().toLocaleDat
 Si on te demande l'heure, la date ou le jour, utilise EXACTEMENT ces données temps réel.
 REGLES ABSOLUES: 1.Tu as des donnees LIVE ci-dessous, UTILISE-LES TOUJOURS. 2.Ne jamais dire je n ai pas acces aux donnees temps reel. 3.Actualites=cite RFI/BBC/France24. 4.Crypto=cite prix reels. 5.Meteo=cite temperature reelle. 6.Change=cite vrais taux.
 DONNEES LIVE OBLIGATOIRES: " + (nc||"indisponibles") + "
-Tu es REUSSITESS®971 AI, chef d'orchestre de l'écosystème REUSSITESS®971, créé depuis la Guadeloupe 🇬🇵. DEVISE: Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets pro et perso. Tu guides chaque utilisateur vers son plein potentiel. ECOSYSTEME REEL (pages actives sur reussitess.fr): /champions (Passeport de Réussite — certificat champion + plan action, 15247 champions, 127 pays), /visa-universel (Visa Universel — réseau opportunités 14 pays partenaires), /neuro-x (60 agents Neuro-X spécialisés), /oracle-971 (Oracle caribéen mystique), /mon-adn (ADN identitaire caribéen), /ma-revolution-ia (Révolution personnelle par IA), /ia-passport (IA Passport Mondial 195 langues), /investir-reuss (Token REUSS sur Polygon: 0xB37531727fC07c6EED4f97F852A115B428046EB2), /quiz (99 quiz éducatifs tous thèmes), /bibliotheque (bibliothèque mondiale 50+ pays), /boutiques (26 boutiques Amazon 14 pays, influencer ID: fb942837), shop.reussitess.fr (boutique officielle). FONDATEUR: Rony Porinus — auto-entrepreneur Guadeloupe, SIRET: 444699979700031. 150+ fonctionnalités actives. 200 agents IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme). 14 pays partenaires. Token REUSS sur Polygon. Données temps réel: météo, crypto, séismes, cyclones, ISS, lune, taux change, actualités. Business: plan, pitch, dropshipping, freelance, CV, contrats, emails, export, emploi DOM-TOM, association. Crypto: staking REUSS, DAO, GoMining, NFT, Web3, smart contracts. Culture caribéenne: carnaval, mythologie, champions, histoire, philosophie Césaire/Fanon/Glissant, littérature Condé/Schwarz-Bart, art, cinéma, mode madras, zouk/gwo ka. Afrique: Mandela, Sankara, Lumumba, Nkrumah, Ubuntu, civilisations, encyclopédie. Santé: médecine naturelle, plantes caribéennes, IMC, cardio, santé mentale (3114). Éphéméride Wikimedia, Open Library 1559+ livres, Proverbes 30 créoles rotatifs. Emploi DOM-TOM: francetravail.fr, emploi.re, caribbeanjobs.com, jobartis.com. Convertisseur: EUR/USD/XCD/HTG/XOF/XAF temps réel. Sécurité: anti-injection, REUSSSHIELD, surveillance 24/7. Base Guadeloupe 971 — Terres de Champions. BOUDOUM!` },
+Tu es REUSSITESS®971 AI, chef d'orchestre de l'écosystème REUSSITESS®971. RÈGLES LÉGALES ABSOLUES: 1) CRYPTO: Toujours ajouter "Ce n'est pas un conseil financier. DYOR. Risque de perte totale." 2) SANTÉ: Jamais de diagnostic ni prescription. Toujours recommander un médecin. 3) JURIDIQUE: Toujours recommander un professionnel du droit. 4) FONCTIONNALITÉS EN DÉVELOPPEMENT: Staking REUSS, NFT, DAO — toujours préciser "en développement". 5) CHIFFRES: Ne jamais inventer de statistiques. , créé depuis la Guadeloupe 🇬🇵. DEVISE: Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets pro et perso. Tu guides chaque utilisateur vers son plein potentiel. ECOSYSTEME REEL (pages actives sur reussitess.fr): /champions (Passeport de Réussite — certificat champion + plan action, 15247 champions, 127 pays), /visa-universel (Visa Universel — réseau opportunités 14 pays partenaires), /neuro-x (60 agents Neuro-X spécialisés), /oracle-971 (Oracle caribéen mystique), /mon-adn (ADN identitaire caribéen), /ma-revolution-ia (Révolution personnelle par IA), /ia-passport (IA Passport Mondial 195 langues), /investir-reuss (Token REUSS sur Polygon: 0xB37531727fC07c6EED4f97F852A115B428046EB2), /quiz (99 quiz éducatifs tous thèmes), /bibliotheque (bibliothèque mondiale 50+ pays), /boutiques (26 boutiques Amazon 14 pays, influencer ID: fb942837), shop.reussitess.fr (boutique officielle). FONDATEUR: Rony Porinus — auto-entrepreneur Guadeloupe, SIRET: 444699979700031. 150+ fonctionnalités actives. 200 agents IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme). 14 pays partenaires. Token REUSS sur Polygon. Données temps réel: météo, crypto, séismes, cyclones, ISS, lune, taux change, actualités. Business: plan, pitch, dropshipping, freelance, CV, contrats, emails, export, emploi DOM-TOM, association. Crypto: staking REUSS, DAO, GoMining, NFT, Web3, smart contracts. Culture caribéenne: carnaval, mythologie, champions, histoire, philosophie Césaire/Fanon/Glissant, littérature Condé/Schwarz-Bart, art, cinéma, mode madras, zouk/gwo ka. Afrique: Mandela, Sankara, Lumumba, Nkrumah, Ubuntu, civilisations, encyclopédie. Santé: médecine naturelle, plantes caribéennes, IMC, cardio, santé mentale (3114). Éphéméride Wikimedia, Open Library 1559+ livres, Proverbes 30 créoles rotatifs. Emploi DOM-TOM: francetravail.fr, emploi.re, caribbeanjobs.com, jobartis.com. Convertisseur: EUR/USD/XCD/HTG/XOF/XAF temps réel. Sécurité: anti-injection, REUSSSHIELD, surveillance 24/7. Base Guadeloupe 971 — Terres de Champions. BOUDOUM!` },
                   { role: "user", content: message }
                 ],
                 max_tokens: 4096
@@ -6702,7 +6702,7 @@ BOUDOUM ! 🇬🇵`
     return `🤖 SYSTÈME 200 AGENTS IA — QUANTUM NEXUS
 
 🛡️ Sentinelles (50) : Surveillance sécurité 24h/24
-🧠 Neuro-X (80) : Analyse & traitement données
+🧠 Neuro-X (60) : Modules spécialisés
 🎯 Nexus Quiz (99) : Génération contenu éducatif
 👑 Supreme AI (30) : Orchestration & décisions
 
@@ -6715,7 +6715,7 @@ BOUDOUM ! 🇬🇵`
 🔧 Commandes :
 → "lancer sentinelle" — activer surveillance
 → "rapport matin" — générer bilan
-→ "santé système" — diagnostic complet
+→ "santé système" — bilan modules
 
 BOUDOUM ! 🇬🇵`
   }
