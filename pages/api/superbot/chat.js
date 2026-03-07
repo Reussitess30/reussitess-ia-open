@@ -201,20 +201,11 @@ async function getWikipedia(term) {
   // GUIDE CRYPTOART
   if (msgLow.includes("crypto art") || msgLow.includes("generative art") || msgLow.includes("art génératif") || msgLow.includes("créer avec ia") || msgLow.includes("midjourney")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X Créatif — Art Génératif IA**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X Créatif — Art Génératif IA**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -223,20 +214,11 @@ async function getWikipedia(term) {
   // GUIDE PARENTALITE
   if (msgLow.includes("parentalité") || msgLow.includes("éduquer mon enfant") || msgLow.includes("bébé") || msgLow.includes("grossesse") || msgLow.includes("élever enfant caribéen")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "👶 **Neuro-X Enfants — Parentalité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "👶 **Neuro-X Enfants — Parentalité Caribéenne**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -245,20 +227,11 @@ async function getWikipedia(term) {
   // GUIDE GESTION TEMPS
   if (msgLow.includes("gestion du temps") || msgLow.includes("productivité") || msgLow.includes("organisation") || msgLow.includes("procrastination") || msgLow.includes("planning")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "⏰ **Neuro-X Coach — Productivité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "⏰ **Neuro-X Coach — Productivité Caribéenne**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -267,20 +240,11 @@ async function getWikipedia(term) {
   // GUIDE INTELLIGENCE COLLECTIVE
   if (msgLow.includes("intelligence collective") || msgLow.includes("travailler ensemble") || msgLow.includes("synergie") || msgLow.includes("collaboration") || msgLow.includes("réseau caribéen")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Stratégie — Intelligence Collective**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Stratégie — Intelligence Collective**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -290,20 +254,11 @@ async function getWikipedia(term) {
   if (msgLow.includes("carnaval") || msgLow.includes("mas") || msgLow.includes("vidé") || msgLow.includes("chars carnaval") || msgLow.includes("fête guadeloupe")) {
     try {
       const agenda = getAgendaCaraibes()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Culture, expert carnaval caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎭 **Neuro-X Culture — Carnaval Caribéen**\n\n"+agenda+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎭 **Neuro-X Culture — Carnaval Caribéen**\n\n"+agenda+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -312,20 +267,11 @@ async function getWikipedia(term) {
   // GUIDE PEINTURE CARIBEENNE
   if (msgLow.includes("peinture caribéenne") || msgLow.includes("artiste antillais") || msgLow.includes("art guadeloupe") || msgLow.includes("sculpture caribéenne") || msgLow.includes("artiste créole")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Culture, expert carnaval caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X Créatif — Art Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X Créatif — Art Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -334,20 +280,11 @@ async function getWikipedia(term) {
   // GUIDE EMPLOI DOM-TOM
   if (msgLow.includes("chercher emploi") || msgLow.includes("offre emploi guadeloupe") || msgLow.includes("pôle emploi") || msgLow.includes("trouver travail antilles") || msgLow.includes("chômage guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Culture, expert carnaval caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Business — Emploi DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Business — Emploi DOM-TOM**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -368,20 +305,11 @@ async function getWikipedia(term) {
   // GUIDE CINEMATOGRAPHIE CARIBEENNE
   if (msgLow.includes("film caribéen") || msgLow.includes("cinéma antillais") || msgLow.includes("réalisateur guadeloupe") || msgLow.includes("documentaire caraïbes")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎬 **Neuro-X Cinéma — Films Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎬 **Neuro-X Cinéma — Films Caribéens**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -390,20 +318,11 @@ async function getWikipedia(term) {
   // GUIDE TRANSPORT DOM-TOM
   if (msgLow.includes("transport guadeloupe") || msgLow.includes("bus guadeloupe") || msgLow.includes("taxi guadeloupe") || msgLow.includes("location voiture antilles") || msgLow.includes("se déplacer guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🚌 **Neuro-X Tourisme — Transport Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🚌 **Neuro-X Tourisme — Transport Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -412,20 +331,11 @@ async function getWikipedia(term) {
   // GUIDE ASSURANCE DOM-TOM
   if (msgLow.includes("assurance guadeloupe") || msgLow.includes("mutuelle antilles") || msgLow.includes("assurance habitation") || msgLow.includes("assurance cyclone") || msgLow.includes("assurance auto guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **Neuro-X Juridique — Assurances DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **Neuro-X Juridique — Assurances DOM-TOM**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -434,20 +344,11 @@ async function getWikipedia(term) {
   // GUIDE MYTHOLOGIE CARIBEENNE
   if (msgLow.includes("mythologie caribéenne") || msgLow.includes("légende créole") || msgLow.includes("zombie caribéen") || msgLow.includes("soukougnan") || msgLow.includes("diable antillais")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "👻 **Neuro-X Spiritualité — Mythologie Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "👻 **Neuro-X Spiritualité — Mythologie Caribéenne**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -456,20 +357,11 @@ async function getWikipedia(term) {
   // GUIDE PERMIS DE CONDUIRE
   if (msgLow.includes("permis de conduire") || msgLow.includes("code de la route") || msgLow.includes("auto-école") || msgLow.includes("conduire guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🚗 **Neuro-X Juridique — Permis Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🚗 **Neuro-X Juridique — Permis Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -478,20 +370,11 @@ async function getWikipedia(term) {
   // GUIDE AIDE SOCIALE
   if (msgLow.includes("rsa") || msgLow.includes("caf") || msgLow.includes("aides sociales") || msgLow.includes("allocation") || msgLow.includes("aide guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Juridique — Aides Sociales DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Juridique — Aides Sociales DOM-TOM**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -500,20 +383,11 @@ async function getWikipedia(term) {
   // GUIDE LITTERATURE CARIBEENNE
   if (msgLow.includes("littérature") || msgLow.includes("roman caribéen") || msgLow.includes("auteur antillais") || msgLow.includes("maryse condé") || msgLow.includes("simone schwarz-bart")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📚 **Neuro-X Littérature — Auteurs Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "📚 **Neuro-X Littérature — Auteurs Caribéens**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -610,20 +484,11 @@ async function getWikipedia(term) {
       }
     } catch(eRemote) {}
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Emploi — DOM-TOM / Caraïbes / Afrique**\n\n"+d.choices?.[0]?.message?.content+"\n\n🔗 **Plateformes gratuites:**\n• France Travail: francetravail.fr\n• Réunion: emploi.re\n• Caraïbes: caribbeanjobs.com\n• Afrique: jobartis.com\n• International: linkedin.com\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Emploi — DOM-TOM / Caraïbes / Afrique**\n\n"+groqText+"\n\n🔗 **Plateformes gratuites:**\n• France Travail: francetravail.fr\n• Réunion: emploi.re\n• Caraïbes: caribbeanjobs.com\n• Afrique: jobartis.com\n• International: linkedin.com\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "💼 **Offres Emploi — DOM-TOM / Caraïbes / Afrique**\n\n🔗 **Plateformes gratuites:**\n• 🇫🇷 France Travail: francetravail.fr\n• 🇷🇪 La Réunion: emploi.re\n• 🌴 Caraïbes: caribbeanjobs.com\n• 🌍 Afrique: jobartis.com\n• 💼 International: linkedin.com\n• 🌐 Mondial: indeed.fr\n\n💡 Secteurs porteurs DOM-TOM: Tourisme, BTP, Santé, IA, E-commerce\n\nBOUDOUM ! 🇬🇵" })
     }
@@ -632,20 +497,11 @@ async function getWikipedia(term) {
   // GUIDE CREATION ASSOCIATION
   if (msgLow.includes("créer une association") || msgLow.includes("association loi 1901") || msgLow.includes("association guadeloupe") || msgLow.includes("association dom-tom")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Juridique — Créer une Association**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Juridique — Créer une Association**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -654,20 +510,11 @@ async function getWikipedia(term) {
   // PASSEPORT DE REUSSITE 🏆
   if (msgLow.includes("passeport de réussite") || msgLow.includes("passeport reussite") || msgLow.includes("certificat champion") || msgLow.includes("devenir champion") || msgLow.includes("passeport champion") || msgLow.includes("champions")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton certificat :** https://reussitess.fr/champions\n\n🌍 15 247 Champions dans 127 pays !\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\n"+groqText+"\n\n👉 **Obtiens ton certificat :** https://reussitess.fr/champions\n\n🌍 15 247 Champions dans 127 pays !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\nTon certificat de champion t'attend ! 15 247 champions dans 127 pays ont déjà rejoint le mouvement REUSSITESS.\n\n✅ Remplis ton prénom, ton pays et ton objectif\n✅ Reçois ton certificat personnalisé\n✅ Obtiens ton plan d'action sur mesure\n\n👉 **Accède maintenant :** https://reussitess.fr/champions\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
     }
@@ -676,20 +523,11 @@ async function getWikipedia(term) {
   // VISA UNIVERSEL 🌍
   if (msgLow.includes("visa universel") || msgLow.includes("opportunité mondiale") || msgLow.includes("réseau mondial") || msgLow.includes("rejoindre reussitess") || msgLow.includes("visa reussitess") || msgLow.includes("opportunités reussitess")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Visa Universel REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton Visa :** https://reussitess.fr/visa-universel\n\n🚀 Accès aux opportunités mondiales dans 14 pays partenaires !\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Visa Universel REUSSITESS**\n\n"+groqText+"\n\n👉 **Obtiens ton Visa :** https://reussitess.fr/visa-universel\n\n🚀 Accès aux opportunités mondiales dans 14 pays partenaires !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Visa Universel REUSSITESS**\n\nTon passeport vers les opportunités mondiales !\n\n✅ Accès réseau entrepreneurs 26 pays\n✅ Affiliation Amazon 14 pays\n✅ Token REUSS sur Polygon\n✅ Bibliothèque mondiale\n✅ Formation IA gratuite\n\n👉 **Accède maintenant :** https://reussitess.fr/visa-universel\n\nBOUDOUM ! 🇬🇵" })
     }
@@ -716,20 +554,11 @@ async function getWikipedia(term) {
   // GUIDE MON ADN
   if (msgLow.includes("mon adn") || msgLow.includes("mon identité") || msgLow.includes("mes origines") || msgLow.includes("héritage caribéen")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🧬 **Neuro-X Culture — Mon ADN Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Explore ton ADN: https://reussitess.fr/mon-adn\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🧬 **Neuro-X Culture — Mon ADN Caribéen**\n\n"+groqText+"\n\n👉 Explore ton ADN: https://reussitess.fr/mon-adn\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -738,20 +567,11 @@ async function getWikipedia(term) {
   // ORACLE 971
   if (msgLow.includes("oracle") || msgLow.includes("oracle 971") || msgLow.includes("prédiction") || msgLow.includes("avenir caribéen") || msgLow.includes("destin")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Oracle 971 — Voix de la Guadeloupe**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Consulte l'Oracle: https://reussitess.fr/oracle-971\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Oracle 971 — Voix de la Guadeloupe**\n\n"+groqText+"\n\n👉 Consulte l'Oracle: https://reussitess.fr/oracle-971\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -760,20 +580,11 @@ async function getWikipedia(term) {
   // MA REVOLUTION IA
   if (msgLow.includes("ma révolution") || msgLow.includes("revolution ia") || msgLow.includes("transformer ma vie") || msgLow.includes("changer ma vie avec ia") || msgLow.includes("révolution personnelle")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🚀 **Neuro-X Coach — Ta Révolution IA**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Lance ta révolution: https://reussitess.fr/ma-revolution-ia\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🚀 **Neuro-X Coach — Ta Révolution IA**\n\n"+groqText+"\n\n👉 Lance ta révolution: https://reussitess.fr/ma-revolution-ia\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -797,20 +608,11 @@ async function getWikipedia(term) {
   // GENERATEUR BIOGRAPHIE
   if (msgLow.includes("biographie") || msgLow.includes("bio instagram") || msgLow.includes("présentation personnelle") || msgLow.includes("qui suis-je") || msgLow.includes("rédige ma bio")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 1024
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "✍️ **Neuro-X Marketing — Générateur Bio**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 1024)
+      return res.status(200).json({ pdfAction: pdfType, response: "✍️ **Neuro-X Marketing — Générateur Bio**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -819,20 +621,11 @@ async function getWikipedia(term) {
   // GUIDE SANTE CARDIOVASCULAIRE
   if (msgLow.includes("cardio") || msgLow.includes("tension artérielle") || msgLow.includes("cholestérol") || msgLow.includes("diabète") || msgLow.includes("santé cardiovasculaire")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "❤️ **Neuro-X Santé — Santé Cardiovasculaire**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez votre médecin.\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "❤️ **Neuro-X Santé — Santé Cardiovasculaire**\n\n"+groqText+"\n\n⚠️ Consultez votre médecin.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -841,20 +634,11 @@ async function getWikipedia(term) {
   // GUIDE ACHAT TERRAIN DOM-TOM
   if (msgLow.includes("terrain guadeloupe") || msgLow.includes("acheter terrain") || msgLow.includes("foncier antilles") || msgLow.includes("cadastre guadeloupe") || msgLow.includes("terrain constructible")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🏡 **Neuro-X Immobilier — Achat Terrain Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🏡 **Neuro-X Immobilier — Achat Terrain Caribéen**\n\n"+groqText+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -863,20 +647,11 @@ async function getWikipedia(term) {
   // GUIDE WEB3 CARAIBE
   if (msgLow.includes("web3") || msgLow.includes("metaverse") || msgLow.includes("décentralisé") || msgLow.includes("dapp") || msgLow.includes("defi caribéen")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Tech — Web3 Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Tech — Web3 Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -890,20 +665,11 @@ async function getWikipedia(term) {
   // GUIDE INTELLIGENCE EMOTIONNELLE
   if (msgLow.includes("intelligence émotionnelle") || msgLow.includes("gérer mes émotions") || msgLow.includes("empathie") || msgLow.includes("gestion émotions") || msgLow.includes("eq")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💛 **Neuro-X Psychologie — Intelligence Émotionnelle**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "💛 **Neuro-X Psychologie — Intelligence Émotionnelle**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -912,20 +678,11 @@ async function getWikipedia(term) {
   // GUIDE CROWDFUNDING
   if (msgLow.includes("crowdfunding") || msgLow.includes("financement participatif") || msgLow.includes("kickstarter") || msgLow.includes("ulule") || msgLow.includes("lever fonds communauté")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Business — Crowdfunding Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Business — Crowdfunding Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -934,20 +691,11 @@ async function getWikipedia(term) {
   // GUIDE BIEN-ETRE AU TRAVAIL
   if (msgLow.includes("bien-être au travail") || msgLow.includes("equilibre vie pro") || msgLow.includes("work life balance") || msgLow.includes("épuisement professionnel") || msgLow.includes("motivation travail")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌺 **Neuro-X Coach — Bien-Être au Travail**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌺 **Neuro-X Coach — Bien-Être au Travail**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -956,20 +704,11 @@ async function getWikipedia(term) {
   // GUIDE GEOPOLITIQUE CARAIBES
   if (msgLow.includes("caricom") || msgLow.includes("géopolitique caraïbes") || msgLow.includes("relations caraïbes") || msgLow.includes("union européenne dom") || msgLow.includes("indépendance guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Géopolitique — Caraïbes**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Géopolitique — Caraïbes**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -978,20 +717,11 @@ async function getWikipedia(term) {
   // GUIDE PHOTOGRAPHIE
   if (msgLow.includes("photographie") || msgLow.includes("photo caribéenne") || msgLow.includes("appareil photo") || msgLow.includes("instagram photo") || msgLow.includes("shooting")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📸 **Neuro-X Créatif — Photographie Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "📸 **Neuro-X Créatif — Photographie Caribéenne**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1000,20 +730,11 @@ async function getWikipedia(term) {
   // GUIDE MODE CARIBEENNE
   if (msgLow.includes("mode caribéenne") || msgLow.includes("stylisme") || msgLow.includes("madras") || msgLow.includes("tenue créole") || msgLow.includes("fashion antillais")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "👗 **Neuro-X Mode — Stylisme Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "👗 **Neuro-X Mode — Stylisme Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1022,20 +743,11 @@ async function getWikipedia(term) {
   // GUIDE LEADERSHIP
   if (msgLow.includes("leadership") || msgLow.includes("manager mon équipe") || msgLow.includes("diriger") || msgLow.includes("management") || msgLow.includes("gérer mon équipe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Coach — Leadership Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Coach — Leadership Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1044,20 +756,11 @@ async function getWikipedia(term) {
   // GUIDE PROTECTION DONNEES
   if (msgLow.includes("rgpd") || msgLow.includes("protection données") || msgLow.includes("vie privée") || msgLow.includes("cnil") || msgLow.includes("données personnelles")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🔒 **Neuro-X Réseaux — Protection Données RGPD**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🔒 **Neuro-X Réseaux — Protection Données RGPD**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1066,20 +769,11 @@ async function getWikipedia(term) {
   // GENERATEUR HASHTAGS
   if (msgLow.includes("hashtag") || msgLow.includes("hashtags") || msgLow.includes("mots-dièse") || msgLow.includes("trending") || msgLow.includes("viral hashtag")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 1024
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "# **Neuro-X Marketing — Hashtags Viraux**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 1024)
+      return res.status(200).json({ pdfAction: pdfType, response: "# **Neuro-X Marketing — Hashtags Viraux**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1089,20 +783,11 @@ async function getWikipedia(term) {
   if (msgLow.includes("débuter crypto") || msgLow.includes("crypto débutant") || msgLow.includes("c'est quoi bitcoin") || msgLow.includes("blockchain c'est quoi") || msgLow.includes("first crypto")) {
     try {
       const crypto = await getCryptoPrice()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Finance — Crypto pour Débutants**\n\n📊 Marché: "+crypto+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Finance — Crypto pour Débutants**\n\n📊 Marché: "+crypto+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1111,20 +796,11 @@ async function getWikipedia(term) {
   // GUIDE SANTE MENTALE
   if (msgLow.includes("anxiété") || msgLow.includes("anxiete") || msgLow.includes("dépression") || msgLow.includes("depression") || msgLow.includes("santé mentale") || msgLow.includes("burn out")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💚 **Neuro-X Psychologie — Santé Mentale**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un professionnel de santé.\nUrgence: 3114 (numéro national prévention suicide)\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "💚 **Neuro-X Psychologie — Santé Mentale**\n\n"+groqText+"\n\n⚠️ Consultez un professionnel de santé.\nUrgence: 3114 (numéro national prévention suicide)\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1133,20 +809,11 @@ async function getWikipedia(term) {
   // GUIDE EXPORT INTERNATIONAL
   if (msgLow.includes("exporter") || msgLow.includes("export") || msgLow.includes("vendre à l'international") || msgLow.includes("marché international") || msgLow.includes("14 pays")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Logistique — Export International**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Logistique — Export International**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1155,20 +822,11 @@ async function getWikipedia(term) {
   // GUIDE PODCASTING
   if (msgLow.includes("podcast") || msgLow.includes("créer un podcast") || msgLow.includes("lancer podcast") || msgLow.includes("micro") && msgLow.includes("enregistrer")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎙️ **Neuro-X Marketing — Guide Podcast**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎙️ **Neuro-X Marketing — Guide Podcast**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1177,20 +835,11 @@ async function getWikipedia(term) {
   // GUIDE MICRO-FINANCE
   if (msgLow.includes("microcrédit") || msgLow.includes("micro-crédit") || msgLow.includes("prêt professionnel") || msgLow.includes("financement projet") || msgLow.includes("adie") || msgLow.includes("bpifrance")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Business — Micro-Finance**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Business — Micro-Finance**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1199,20 +848,11 @@ async function getWikipedia(term) {
   // GUIDE BIEN-ETRE SENIOR
   if (msgLow.includes("senior") || msgLow.includes("personnes âgées") || msgLow.includes("vieillir bien") || msgLow.includes("ehpad") || msgLow.includes("aide à domicile")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Seniors — Bien-Vieillir Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Seniors — Bien-Vieillir Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1221,20 +861,11 @@ async function getWikipedia(term) {
   // GENERATEUR CONTRAT
   if (msgLow.includes("modèle de contrat") || msgLow.includes("contrat freelance") || msgLow.includes("contrat commercial") || msgLow.includes("cgv") || msgLow.includes("mentions légales")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📝 **Neuro-X Juridique — Générateur Contrats**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un avocat avant signature.\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "📝 **Neuro-X Juridique — Générateur Contrats**\n\n"+groqText+"\n\n⚠️ Consultez un avocat avant signature.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1243,20 +874,11 @@ async function getWikipedia(term) {
   // GUIDE DROPSHIPPING
   if (msgLow.includes("dropshipping") || msgLow.includes("vendre sans stock") || msgLow.includes("e-commerce caribéen") || msgLow.includes("boutique en ligne") || msgLow.includes("shopify")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🛒 **Neuro-X Business — Dropshipping Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🛒 **Neuro-X Business — Dropshipping Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1265,20 +887,11 @@ async function getWikipedia(term) {
   // GUIDE FREELANCE
   if (msgLow.includes("freelance") || msgLow.includes("travailler à distance") || msgLow.includes("télétravail") || msgLow.includes("mission freelance") || msgLow.includes("indépendant")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💻 **Neuro-X Business — Guide Freelance**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "💻 **Neuro-X Business — Guide Freelance**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1287,20 +900,11 @@ async function getWikipedia(term) {
   // GUIDE IA POUR DEBUTANTS
   if (msgLow.includes("apprendre ia") || msgLow.includes("débuter en ia") || msgLow.includes("intelligence artificielle débutant") || msgLow.includes("chatgpt débutant") || msgLow.includes("comment utiliser ia")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **Neuro-X IA — Guide Débutants**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **Neuro-X IA — Guide Débutants**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1309,20 +913,11 @@ async function getWikipedia(term) {
   // CONSEIL NUTRITION CARIBEENNE
   if (msgLow.includes("nutrition") || msgLow.includes("alimentation saine") || msgLow.includes("régime caribéen") || msgLow.includes("manger sainement") || msgLow.includes("fruits tropicaux")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🥗 **Neuro-X Santé — Nutrition Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🥗 **Neuro-X Santé — Nutrition Caribéenne**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1331,20 +926,11 @@ async function getWikipedia(term) {
   // AIDE DEUIL ET FAMILLE
   if (msgLow.includes("deuil") || msgLow.includes("j'ai perdu") || msgLow.includes("quelqu'un est décédé") || msgLow.includes("soutien famille") || msgLow.includes("difficile en ce moment")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💙 **REUSSITESS AI — Soutien & Accompagnement**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "💙 **REUSSITESS AI — Soutien & Accompagnement**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1353,20 +939,11 @@ async function getWikipedia(term) {
   // RAPPEL MEDICAMENT
   if (msgLow.includes("médicament") || msgLow.includes("medicament") || msgLow.includes("ordonnance") || msgLow.includes("posologie") || msgLow.includes("traitement médical")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💊 **Neuro-X Santé — Information Médicale**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez toujours un médecin ou pharmacien.\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "💊 **Neuro-X Santé — Information Médicale**\n\n"+groqText+"\n\n⚠️ Consultez toujours un médecin ou pharmacien.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1375,20 +952,11 @@ async function getWikipedia(term) {
   // GUIDE CREATION CONTENU
   if (msgLow.includes("créer du contenu") || msgLow.includes("youtuber") || msgLow.includes("streamer") || msgLow.includes("influenceur") || msgLow.includes("monétiser") && msgLow.includes("contenu")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎬 **Neuro-X Marketing — Création Contenu**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎬 **Neuro-X Marketing — Création Contenu**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1397,20 +965,11 @@ async function getWikipedia(term) {
   // GUIDE EPARGNE
   if (msgLow.includes("épargne") || msgLow.includes("epargne") || msgLow.includes("livret a") || msgLow.includes("économiser") || msgLow.includes("mettre de côté")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💳 **Neuro-X Finance — Guide Épargne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "💳 **Neuro-X Finance — Guide Épargne**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1430,20 +989,11 @@ async function getWikipedia(term) {
   // MODE ENFANTS
   if (msgLow.includes("pour enfant") || msgLow.includes("histoire pour enfant") || msgLow.includes("mon enfant") || msgLow.includes("activité enfant") || msgLow.includes("jeu éducatif")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🧒 **Neuro-X Enfants — Mode Famille**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🧒 **Neuro-X Enfants — Mode Famille**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1465,20 +1015,11 @@ async function getWikipedia(term) {
   // GUIDE NFT CARAIBE
   if (msgLow.includes("nft") || msgLow.includes("créer un nft") || msgLow.includes("vendre nft") || msgLow.includes("collection nft") || msgLow.includes("art numérique")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X NFT — Art Numérique Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X NFT — Art Numérique Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1487,20 +1028,11 @@ async function getWikipedia(term) {
   // GUIDE GOMINING
   if (msgLow.includes("gomining") || msgLow.includes("go mining") || msgLow.includes("minage bitcoin") || msgLow.includes("miner bitcoin") || msgLow.includes("hashrate")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "⛏️ **Neuro-X Finance — Guide GoMining**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "⛏️ **Neuro-X Finance — Guide GoMining**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1524,20 +1056,11 @@ async function getWikipedia(term) {
   // CHAMPIONS SPORTIFS ANTILLES
   if (msgLow.includes("champion") || msgLow.includes("sportif antillais") || msgLow.includes("marie-jose perec") || msgLow.includes("teddy riner") || msgLow.includes("athlète guadeloupe") || (msgLow.includes("qui est") && (msgLow.includes("mandela") || msgLow.includes("sankara") || msgLow.includes("lumumba") || msgLow.includes("nkrumah") || msgLow.includes("césaire") || msgLow.includes("fanon"))) || (msgLow.includes("qui était") && (msgLow.includes("mandela") || msgLow.includes("sankara") || msgLow.includes("africain")))) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Neuro-X Sport — Champions Antillais**\n\n"+d.choices?.[0]?.message?.content+"\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Neuro-X Sport — Champions Antillais**\n\n"+groqText+"\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1548,20 +1071,11 @@ async function getWikipedia(term) {
     try {
       const meteo = await getMeteo()
       const lune = getLunePhase()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌱 **Neuro-X Agriculture — Jardin Créole**\n\n🌙 "+lune+" | 🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌱 **Neuro-X Agriculture — Jardin Créole**\n\n🌙 "+lune+" | 🌤️ "+meteo+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1570,20 +1084,11 @@ async function getWikipedia(term) {
   // PHILOSOPHIE CARIBEENNE
   if (msgLow.includes("philosophie") || msgLow.includes("césaire") || msgLow.includes("fanon") || msgLow.includes("glissant") || msgLow.includes("négritude") || msgLow.includes("créolité") || (msgLow.includes("ubuntu") && !msgLow.includes("linux") && !msgLow.includes("installer")) || msgLow.includes("philosophie africaine") || msgLow.includes("pensée africaine")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Philosophie — Pensée Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Philosophie — Pensée Caribéenne**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1592,20 +1097,11 @@ async function getWikipedia(term) {
   // GUIDE DIASPORA
   if (msgLow.includes("diaspora") || msgLow.includes("guadeloupéen à paris") || msgLow.includes("antillais en france") || msgLow.includes("retour au pays") || msgLow.includes("double culture")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Diaspora — Communauté Mondiale**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Diaspora — Communauté Mondiale**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1614,20 +1110,11 @@ async function getWikipedia(term) {
   // GUIDE SMART CONTRACT
   if (msgLow.includes("smart contract") || msgLow.includes("solidity") || msgLow.includes("déployer un contrat") || msgLow.includes("erc20") || msgLow.includes("polygon contract")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "⛓️ **Neuro-X Blockchain — Smart Contracts**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "⛓️ **Neuro-X Blockchain — Smart Contracts**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1636,20 +1123,11 @@ async function getWikipedia(term) {
   // GENERATEUR PITCH INVESTISSEUR
   if (msgLow.includes("pitch") || msgLow.includes("lever des fonds") || msgLow.includes("investisseur") || msgLow.includes("présentation investisseur") || msgLow.includes("seed funding")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🚀 **Neuro-X Stratégie — Pitch Investisseur**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🚀 **Neuro-X Stratégie — Pitch Investisseur**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1658,20 +1136,11 @@ async function getWikipedia(term) {
   // GUIDE IMMOBILIER DOM-TOM
   if (msgLow.includes("acheter une maison") || msgLow.includes("immobilier guadeloupe") || msgLow.includes("girardin") || msgLow.includes("défiscalisation immobilier") || msgLow.includes("investir immobilier")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🏠 **Neuro-X Immobilier — Guide DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🏠 **Neuro-X Immobilier — Guide DOM-TOM**\n\n"+groqText+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1680,20 +1149,11 @@ async function getWikipedia(term) {
   // COACH ENTREPRENEURIAT FEMININ
   if (msgLow.includes("femme entrepreneur") || msgLow.includes("entrepreneuriat féminin") || msgLow.includes("business woman") || msgLow.includes("femme boss") || msgLow.includes("créer mon activité femme")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Femmes — Coach Entrepreneuriat**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Femmes — Coach Entrepreneuriat**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1702,20 +1162,11 @@ async function getWikipedia(term) {
   // GUIDE JEUNES CARIBEEN
   if (msgLow.includes("orientation scolaire") || msgLow.includes("études guadeloupe") || msgLow.includes("bourse étudiant") || msgLow.includes("premier emploi") || msgLow.includes("stage guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Jeunes — Guide Orientation**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Jeunes — Guide Orientation**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1724,20 +1175,11 @@ async function getWikipedia(term) {
   // DIAGNOSTIC SITE WEB
   if (msgLow.includes("mon site") || msgLow.includes("améliorer mon site") || msgLow.includes("seo de mon site") || msgLow.includes("optimiser mon site") || msgLow.includes("audit site")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🔍 **Neuro-X SEO — Audit Site Web**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🔍 **Neuro-X SEO — Audit Site Web**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1746,20 +1188,11 @@ async function getWikipedia(term) {
   // GENERATEUR CHANSON CREOLE
   if (msgLow.includes("chanson") || msgLow.includes("zouk") || msgLow.includes("gwo ka") || msgLow.includes("paroles") || msgLow.includes("compose une chanson")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎵 **Neuro-X Musique — Chanson Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎵 **Neuro-X Musique — Chanson Créole**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1769,20 +1202,11 @@ async function getWikipedia(term) {
   if (msgLow.includes("randonnée") || msgLow.includes("soufrière") || msgLow.includes("forêt tropicale") || msgLow.includes("nature guadeloupe") || msgLow.includes("plongée")) {
     try {
       const meteo = await getMeteo()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Tourisme — Éco-Tourisme Guadeloupe**\n\n🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Tourisme — Éco-Tourisme Guadeloupe**\n\n🌤️ "+meteo+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1791,20 +1215,11 @@ async function getWikipedia(term) {
   // SCIENCE CARIBEENNE
   if (msgLow.includes("volcan") || msgLow.includes("biodiversité") || msgLow.includes("mangrove") || msgLow.includes("récif corallien") || msgLow.includes("faune caribéenne")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🔬 **Neuro-X Sciences — Biodiversité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🔬 **Neuro-X Sciences — Biodiversité Caribéenne**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1813,20 +1228,11 @@ async function getWikipedia(term) {
   // GUIDE ENERGIE SOLAIRE
   if (msgLow.includes("énergie solaire") || msgLow.includes("panneau solaire") || msgLow.includes("renouvelable") || msgLow.includes("électricité guadeloupe") || msgLow.includes("edf guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "☀️ **Neuro-X Énergie — Solaire Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "☀️ **Neuro-X Énergie — Solaire Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1835,20 +1241,11 @@ async function getWikipedia(term) {
   // DICTIONNAIRE CREOLE COMPLET
   if (msgLow.includes("que veut dire") || msgLow.includes("définition") || msgLow.includes("signifie") || msgLow.includes("en créole") || msgLow.includes("traduction créole") || msgLow.includes("comment dire")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 1024
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📖 **Neuro-X Langues — Dictionnaire Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 1024)
+      return res.status(200).json({ pdfAction: pdfType, response: "📖 **Neuro-X Langues — Dictionnaire Créole**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1858,20 +1255,11 @@ async function getWikipedia(term) {
   if (msgLow.includes("développement personnel") || msgLow.includes("objectif de vie") || msgLow.includes("améliorer ma vie") || msgLow.includes("devenir meilleur") || msgLow.includes("habitudes positives")) {
     try {
       const citation = await getCitation()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "✨ **Neuro-X Coach — Développement Personnel**\n\n💬 "+citation+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "✨ **Neuro-X Coach — Développement Personnel**\n\n💬 "+citation+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1882,20 +1270,11 @@ async function getWikipedia(term) {
     try {
       const crypto = await getCryptoPrice()
       const fg = await getFearGreed()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📈 **Neuro-X Finance — Analyse Marché**\n\n"+crypto+"\n😨 "+fg+"\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ DYOR\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "📈 **Neuro-X Finance — Analyse Marché**\n\n"+crypto+"\n😨 "+fg+"\n\n"+groqText+"\n\n⚠️ DYOR\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1904,20 +1283,11 @@ async function getWikipedia(term) {
   // GUIDE RETRAITE DOM-TOM
   if (msgLow.includes("retraite") || msgLow.includes("pension") || msgLow.includes("cnav") || msgLow.includes("cotisation retraite") || msgLow.includes("préparer ma retraite")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Juridique — Guide Retraite DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un conseiller retraite.\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Juridique — Guide Retraite DOM-TOM**\n\n"+groqText+"\n\n⚠️ Consultez un conseiller retraite.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1926,20 +1296,11 @@ async function getWikipedia(term) {
   // BUSINESS PLAN
   if (msgLow.includes("business plan") || msgLow.includes("plan d'affaires") || msgLow.includes("créer mon entreprise") || msgLow.includes("lancer mon business") || msgLow.includes("monter mon projet")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📋 **Neuro-X Business — Business Plan**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "📋 **Neuro-X Business — Business Plan**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1962,20 +1323,11 @@ async function getWikipedia(term) {
   // GUIDE IMMIGRATION DOM-TOM
   if (msgLow.includes("immigration") || msgLow.includes("visa") || msgLow.includes("s'installer") || msgLow.includes("expatrié") || msgLow.includes("vivre en guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Juridique — Guide Immigration**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez les services préfectoraux.\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Juridique — Guide Immigration**\n\n"+groqText+"\n\n⚠️ Consultez les services préfectoraux.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -1985,20 +1337,11 @@ async function getWikipedia(term) {
   if (msgLow.includes("astro") || msgLow.includes("thème astral") || msgLow.includes("ascendant") || msgLow.includes("planète") && msgLow.includes("signe")) {
     try {
       const lune = getLunePhase()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "⭐ **Neuro-X Spiritualité — Astrologie Caribéenne**\n\n"+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "⭐ **Neuro-X Spiritualité — Astrologie Caribéenne**\n\n"+lune+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2007,20 +1350,11 @@ async function getWikipedia(term) {
   // QUIZ INSTANTANE
   if (msgLow.includes("interroge moi") || msgLow.includes("teste moi") || msgLow.includes("question culture") || msgLow.includes("quiz rapide") || msgLow.includes("pose moi une question")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 1024
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Éducation — Quiz Instantané**\n\n"+d.choices?.[0]?.message?.content+"\n\n+5 points REUSS si bonne réponse !\n\nBOUDOUM ! 🇬🇵" })
+          ], 1024)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Éducation — Quiz Instantané**\n\n"+groqText+"\n\n+5 points REUSS si bonne réponse !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2029,20 +1363,11 @@ async function getWikipedia(term) {
   // PLAN MARKETING
   if (msgLow.includes("plan marketing") || msgLow.includes("stratégie marketing") || msgLow.includes("strategie marketing") || msgLow.includes("plan de communication") || msgLow.includes("lancer mon produit")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📊 **Neuro-X Marketing — Plan Complet**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "📊 **Neuro-X Marketing — Plan Complet**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2051,20 +1376,11 @@ async function getWikipedia(term) {
   // HISTOIRE GUADELOUPE
   if (msgLow.includes("histoire guadeloupe") || msgLow.includes("histoire de la guadeloupe") || msgLow.includes("histoire des antilles") || msgLow.includes("histoire caribéenne") || msgLow.includes("histoire martinique") || msgLow.includes("histoire haiti") || msgLow.includes("histoire haïti") || msgLow.includes("histoire de la martinique") || msgLow.includes("histoire afrique") || msgLow.includes("abolition") || msgLow.includes("victor schoelcher") || msgLow.includes("patrimoine antillais") || msgLow.includes("culture guadeloupéenne") || (msgLow.includes("histoire") && msgLow.includes("guadeloupe")) || (msgLow.includes("histoire") && msgLow.includes("antilles")) || (msgLow.includes("histoire") && msgLow.includes("caraïbes")) || (msgLow.includes("histoire") && msgLow.includes("afrique")) || (msgLow.includes("histoire") && msgLow.includes("martinique"))) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      const rep = d.choices?.[0]?.message?.content
+          ], 4096)
+      const rep = groqText
       if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS — Histoire Caribéenne & Africaine**\n\n"+rep+"\n\nBOUDOUM ! 🇬🇵" })
       return res.status(200).json({ pdfAction: pdfType, response: "📚 **Histoire Caribéenne**\n\nLa Guadeloupe, Terres de Champions ! Notre histoire est riche: découverte par Christophe Colomb en 1493, peuplement par les Kalinagos, colonisation française, abolition de l'esclavage le 27 mai 1848 par Victor Schœlcher, résistance de Louis Delgrès. Aujourd'hui département français d'outre-mer fier de son identité créole.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
@@ -2075,20 +1391,11 @@ async function getWikipedia(term) {
   // GENERATEUR EMAIL PRO
   if (msgLow.includes("email professionnel") || msgLow.includes("rédige un email") || msgLow.includes("lettre professionnelle") || msgLow.includes("email commercial") || msgLow.includes("mail pro")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📧 **Neuro-X Business — Email Professionnel**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "📧 **Neuro-X Business — Email Professionnel**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2097,20 +1404,11 @@ async function getWikipedia(term) {
   // GENERATEUR POST RESEAUX SOCIAUX
   if (msgLow.includes("post instagram") || msgLow.includes("post tiktok") || msgLow.includes("post facebook") || msgLow.includes("caption") || msgLow.includes("génère un post") || msgLow.includes("contenu réseaux")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📱 **Neuro-X Marketing — Générateur Posts**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "📱 **Neuro-X Marketing — Générateur Posts**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2119,20 +1417,11 @@ async function getWikipedia(term) {
   // COCKTAILS RHum CARIBEEN
   if (msgLow.includes("cocktail") || msgLow.includes("rhum") || msgLow.includes("ti punch") || msgLow.includes("planteur") || msgLow.includes("mojito") || msgLow.includes("recette boisson")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🍹 **Neuro-X Cuisine — Cocktails Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🍹 **Neuro-X Cuisine — Cocktails Caribéens**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2142,20 +1431,11 @@ async function getWikipedia(term) {
   if (msgLow.includes("j'ai rêvé") || msgLow.includes("mon rêve") || msgLow.includes("analyse mon rêve") || msgLow.includes("signification rêve") || msgLow.includes("interprète mon rêve")) {
     try {
       const lune = getLunePhase()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌙 **Neuro-X Spiritualité — Analyse Rêves**\n\n"+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌙 **Neuro-X Spiritualité — Analyse Rêves**\n\n"+lune+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2165,20 +1445,11 @@ async function getWikipedia(term) {
   if (msgLow.includes("visiter") || msgLow.includes("vacances guadeloupe") || msgLow.includes("tourisme caraïbes") || msgLow.includes("que faire en guadeloupe") || msgLow.includes("bon plan voyage")) {
     try {
       const meteo = await getMeteo()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Tourisme — Guide Caribéen**\n\n🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Tourisme — Guide Caribéen**\n\n🌤️ "+meteo+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2187,20 +1458,11 @@ async function getWikipedia(term) {
   // ANALYSE PERSONNALITE
   if (msgLow.includes("analyse ma personnalité") || msgLow.includes("test personnalité") || msgLow.includes("quel type") || msgLow.includes("mbti") || msgLow.includes("profil personnalité")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Psychologie — Analyse Personnalité**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Psychologie — Analyse Personnalité**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2209,20 +1471,11 @@ async function getWikipedia(term) {
   // GENERATEUR SLOGAN
   if (msgLow.includes("slogan") || msgLow.includes("accroche") || msgLow.includes("tagline") || msgLow.includes("phrase marketing")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 1024
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Marketing — Générateur Slogans**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 1024)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Marketing — Générateur Slogans**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2233,20 +1486,11 @@ async function getWikipedia(term) {
     try {
       const crypto = await getCryptoPrice()
       const fg = await getFearGreed()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Finance — Conseils Investissement**\n\n📊 Marché actuel : "+fg+"\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ DYOR — Pas de conseil financier.\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Finance — Conseils Investissement**\n\n📊 Marché actuel : "+fg+"\n\n"+groqText+"\n\n⚠️ DYOR — Pas de conseil financier.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2255,20 +1499,11 @@ async function getWikipedia(term) {
   // APPRENTISSAGE LANGUE
   if (msgLow.includes("apprendre") && (msgLow.includes("anglais") || msgLow.includes("espagnol") || msgLow.includes("créole") || msgLow.includes("portugais") || msgLow.includes("langue")) || msgLow.includes("leçon de langue")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Langues — Leçon**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Langues — Leçon**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2279,20 +1514,11 @@ async function getWikipedia(term) {
     try {
       const meteo = await getMeteo()
       const lune = getLunePhase()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message + " (Météo actuelle: "+meteo+" | Lune: "+lune+")" }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🧘 **Neuro-X Santé — Méditation Caribéenne**\n\n🌊 "+meteo+" | "+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🧘 **Neuro-X Santé — Méditation Caribéenne**\n\n🌊 "+meteo+" | "+lune+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2317,20 +1543,11 @@ async function getWikipedia(term) {
   // SANTE NATURELLE CARIBEENNE
   if (msgLow.includes("plante médicinale") || msgLow.includes("remède naturel") || msgLow.includes("médecine naturelle") || msgLow.includes("herbe") || msgLow.includes("soigner naturellement")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Santé — Plantes Caribéennes**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un médecin.\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Santé — Plantes Caribéennes**\n\n"+groqText+"\n\n⚠️ Consultez un médecin.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2372,20 +1589,11 @@ async function getWikipedia(term) {
   // COACH SPORTIF
   if (msgLow.includes("programme sport") || msgLow.includes("musculation") || msgLow.includes("perte de poids") || msgLow.includes("fitness") || msgLow.includes("programme fitness")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💪 **Neuro-X Sport — Coach Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "💪 **Neuro-X Sport — Coach Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2394,20 +1602,11 @@ async function getWikipedia(term) {
   // RECETTE ANTILLAISE
   if (msgLow.includes("recette") || msgLow.includes("comment cuisiner") || msgLow.includes("comment préparer") || msgLow.includes("accras") || msgLow.includes("colombo") || msgLow.includes("blaff") || msgLow.includes("court-bouillon")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🍽️ **Neuro-X Cuisine — Recette Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🍽️ **Neuro-X Cuisine — Recette Créole**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2416,20 +1615,11 @@ async function getWikipedia(term) {
   // AIDE JURIDIQUE
   if (msgLow.includes("mes droits") || msgLow.includes("légalement") || msgLow.includes("juridique") || msgLow.includes("contrat") || msgLow.includes("auto-entrepreneur") || msgLow.includes("siret")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Neuro-X Juridique — Conseil Droit**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un avocat pour toute décision légale.\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Neuro-X Juridique — Conseil Droit**\n\n"+groqText+"\n\n⚠️ Consultez un avocat pour toute décision légale.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2451,20 +1641,11 @@ async function getWikipedia(term) {
   // RESUME CONVERSATION
   if (msgLow.includes("résume") || msgLow.includes("resume notre") || msgLow.includes("résumé de notre") || msgLow.includes("recap") || msgLow.includes("récap")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: "Résume cette conversation : "+message }
-          ],
-          max_tokens: 1024
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📋 **Résumé de Session**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 1024)
+      return res.status(200).json({ pdfAction: pdfType, response: "📋 **Résumé de Session**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2473,20 +1654,11 @@ async function getWikipedia(term) {
   // MODE DEBAT
   if (msgLow.includes("débat") || msgLow.includes("debat") || msgLow.includes("pour et contre") || msgLow.includes("avantages inconvénients") || msgLow.includes("argumente")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Mode Débat — Neuro-X Stratégie**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Mode Débat — Neuro-X Stratégie**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2495,20 +1667,11 @@ async function getWikipedia(term) {
   // CONSEILS BUSINESS CARAIBE
   if (msgLow.includes("conseil business") || msgLow.includes("idée business") || msgLow.includes("idée entreprise") || msgLow.includes("comment gagner") || msgLow.includes("revenus passifs")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Business — Conseils Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Business — Conseils Caribéens**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2517,20 +1680,11 @@ async function getWikipedia(term) {
   // GENERATEUR POEME CREOLE
   if (msgLow.includes("poème") || msgLow.includes("poeme") || msgLow.includes("écris un poème") || msgLow.includes("crée un poème") || msgLow.includes("rimé")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      const poeme = d.choices?.[0]?.message?.content || ""
+          ], 4096)
+      const poeme = groqText || ""
       return res.status(200).json({ pdfAction: pdfType, response: "✍️ **Neuro-X Créatif — Poème Créole**\n\n"+poeme+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
@@ -2540,20 +1694,11 @@ async function getWikipedia(term) {
   // GENERATEUR NOM ENTREPRISE
   if (msgLow.includes("nom d'entreprise") || msgLow.includes("nom de marque") || msgLow.includes("nom business") || msgLow.includes("génère un nom") || msgLow.includes("genere un nom")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 1024
-        })
-      })
-      const d = await groqRes.json()
-      const noms = d.choices?.[0]?.message?.content || ""
+          ], 1024)
+      const noms = groqText || ""
       return res.status(200).json({ pdfAction: pdfType, response: "🏢 **Neuro-X Business — Générateur de Noms**\n\n"+noms+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
@@ -2563,20 +1708,11 @@ async function getWikipedia(term) {
   // GENERATEUR CV
   if (msgLow.includes("cv") || msgLow.includes("curriculum") || msgLow.includes("génère mon cv") || msgLow.includes("aide cv") || msgLow.includes("rédige cv")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📄 **Neuro-X Business — Assistant CV**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "📄 **Neuro-X Business — Assistant CV**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2585,20 +1721,11 @@ async function getWikipedia(term) {
   // HISTOIRE CARIBEENNE
   if (msgLow.includes("raconte") || msgLow.includes("histoire caribéenne") || msgLow.includes("conte créole") || msgLow.includes("légende antillaise")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Culture, expert mythologie créole et caribéenne. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📖 **Neuro-X Créatif — Conte Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "📖 **Neuro-X Créatif — Conte Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2672,20 +1799,11 @@ async function getWikipedia(term) {
       const wiki = await encyclopedieAntillesAfrique(message)
       if (wiki) {
         // Enrichit avec Groq
-        const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-          body: JSON.stringify({
-            model: "llama-3.3-70b-versatile",
-            messages: [
+        const groqText = await groqFetch([
               { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
               { role: "user", content: "Question: "+message+"\n\nSource Wikipedia:\n"+wiki }
-            ],
-            max_tokens: 4096
-          })
-        })
-        const d = await groqRes.json()
-        const rep = d.choices?.[0]?.message?.content
+            ], 4096)
+        const rep = groqText
         if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS — Wikipedia Live**\n\n"+rep+"\n\nSource: Wikipedia FR\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {
@@ -2702,20 +1820,11 @@ async function getWikipedia(term) {
       try {
         const wiki = await rechercheWikipedia(message, "fr")
         if (wiki) {
-          const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-            method: "POST",
-            headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-            body: JSON.stringify({
-              model: "llama-3.3-70b-versatile",
-              messages: [
+          const groqText = await groqFetch([
                 { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
                 { role: "user", content: message+"\n\nWikipedia: "+wiki }
-              ],
-              max_tokens: 4096
-            })
-          })
-          const d = await groqRes.json()
-          const rep = d.choices?.[0]?.message?.content
+              ], 4096)
+          const rep = groqText
           if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS — "+fw.charAt(0).toUpperCase()+fw.slice(1)+"**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
         }
       } catch(e) {}
@@ -2731,20 +1840,11 @@ async function getWikipedia(term) {
     try {
       const wiki = await rechercheWikipedia(message, "fr")
       if (wiki) {
-        const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-          body: JSON.stringify({
-            model: "llama-3.3-70b-versatile",
-            messages: [
+        const groqText = await groqFetch([
               { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
               { role: "user", content: message+"\n\nWikipedia: "+wiki }
-            ],
-            max_tokens: 4096
-          })
-        })
-        const d = await groqRes.json()
-        const rep = d.choices?.[0]?.message?.content
+            ], 4096)
+        const rep = groqText
         if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {
@@ -2756,20 +1856,11 @@ async function getWikipedia(term) {
   if (msgLow.includes("ubuntu") && !msgLow.includes("installer") && !msgLow.includes("télécharger") && !msgLow.includes("linux") && !msgLow.includes("canonical") && !msgLow.includes("système")) {
     try {
       const wiki = await rechercheWikipedia("Ubuntu philosophie africaine humanisme", "fr")
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n*Umuntu ngumuntu ngabantu — Je suis parce que nous sommes*\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n*Umuntu ngumuntu ngabantu — Je suis parce que nous sommes*\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2779,20 +1870,11 @@ async function getWikipedia(term) {
   if (msgLow.includes("ubuntu") && (msgLow.includes("philosophie") || msgLow.includes("afrique") || msgLow.includes("africain") || msgLow.includes("signifie") || msgLow.includes("valeur") || msgLow.includes("sagesse") || msgLow === "ubuntu" || msgLow === "qu est ce que ubuntu")) {
     try {
       const wiki = await rechercheWikipedia("Ubuntu philosophie africaine", "fr")
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n"+d.choices?.[0]?.message?.content+"\n\n*Ubuntu: Je suis parce que nous sommes*\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n"+groqText+"\n\n*Ubuntu: Je suis parce que nous sommes*\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -2945,12 +2027,12 @@ async function getWikipedia(term) {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
         body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
+          model: "llama-3.1-8b-instant",
           messages: [
             { role: "system", content: agent.prompt },
             { role: "user", content: message }
           ],
-          max_tokens: 4096
+          max_tokens: 1024
         })
       })
       const groqData = await groqRes.json()
@@ -3735,20 +2817,11 @@ export default async function handler(req, res) {
   // GUIDE CRYPTOART
   if (msgLow.includes("crypto art") || msgLow.includes("generative art") || msgLow.includes("art génératif") || msgLow.includes("créer avec ia") || msgLow.includes("midjourney")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X Créatif — Art Génératif IA**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X Créatif — Art Génératif IA**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -3757,20 +2830,11 @@ export default async function handler(req, res) {
   // GUIDE PARENTALITE
   if (msgLow.includes("parentalité") || msgLow.includes("éduquer mon enfant") || msgLow.includes("bébé") || msgLow.includes("grossesse") || msgLow.includes("élever enfant caribéen")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "👶 **Neuro-X Enfants — Parentalité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "👶 **Neuro-X Enfants — Parentalité Caribéenne**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -3779,20 +2843,11 @@ export default async function handler(req, res) {
   // GUIDE GESTION TEMPS
   if (msgLow.includes("gestion du temps") || msgLow.includes("productivité") || msgLow.includes("organisation") || msgLow.includes("procrastination") || msgLow.includes("planning")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "⏰ **Neuro-X Coach — Productivité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "⏰ **Neuro-X Coach — Productivité Caribéenne**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -3801,20 +2856,11 @@ export default async function handler(req, res) {
   // GUIDE INTELLIGENCE COLLECTIVE
   if (msgLow.includes("intelligence collective") || msgLow.includes("travailler ensemble") || msgLow.includes("synergie") || msgLow.includes("collaboration") || msgLow.includes("réseau caribéen")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Stratégie — Intelligence Collective**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Stratégie — Intelligence Collective**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -3824,20 +2870,11 @@ export default async function handler(req, res) {
   if (msgLow.includes("carnaval") || msgLow.includes("mas") || msgLow.includes("vidé") || msgLow.includes("chars carnaval") || msgLow.includes("fête guadeloupe")) {
     try {
       const agenda = getAgendaCaraibes()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Culture, expert carnaval caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎭 **Neuro-X Culture — Carnaval Caribéen**\n\n"+agenda+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎭 **Neuro-X Culture — Carnaval Caribéen**\n\n"+agenda+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -3846,20 +2883,11 @@ export default async function handler(req, res) {
   // GUIDE PEINTURE CARIBEENNE
   if (msgLow.includes("peinture caribéenne") || msgLow.includes("artiste antillais") || msgLow.includes("art guadeloupe") || msgLow.includes("sculpture caribéenne") || msgLow.includes("artiste créole")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Culture, expert carnaval caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X Créatif — Art Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X Créatif — Art Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -3868,20 +2896,11 @@ export default async function handler(req, res) {
   // GUIDE EMPLOI DOM-TOM
   if (msgLow.includes("chercher emploi") || msgLow.includes("offre emploi guadeloupe") || msgLow.includes("pôle emploi") || msgLow.includes("trouver travail antilles") || msgLow.includes("chômage guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Culture, expert carnaval caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Business — Emploi DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Business — Emploi DOM-TOM**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -3902,20 +2921,11 @@ export default async function handler(req, res) {
   // GUIDE CINEMATOGRAPHIE CARIBEENNE
   if (msgLow.includes("film caribéen") || msgLow.includes("cinéma antillais") || msgLow.includes("réalisateur guadeloupe") || msgLow.includes("documentaire caraïbes")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎬 **Neuro-X Cinéma — Films Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎬 **Neuro-X Cinéma — Films Caribéens**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -3924,20 +2934,11 @@ export default async function handler(req, res) {
   // GUIDE TRANSPORT DOM-TOM
   if (msgLow.includes("transport guadeloupe") || msgLow.includes("bus guadeloupe") || msgLow.includes("taxi guadeloupe") || msgLow.includes("location voiture antilles") || msgLow.includes("se déplacer guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🚌 **Neuro-X Tourisme — Transport Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🚌 **Neuro-X Tourisme — Transport Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -3946,20 +2947,11 @@ export default async function handler(req, res) {
   // GUIDE ASSURANCE DOM-TOM
   if (msgLow.includes("assurance guadeloupe") || msgLow.includes("mutuelle antilles") || msgLow.includes("assurance habitation") || msgLow.includes("assurance cyclone") || msgLow.includes("assurance auto guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **Neuro-X Juridique — Assurances DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **Neuro-X Juridique — Assurances DOM-TOM**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -3968,20 +2960,11 @@ export default async function handler(req, res) {
   // GUIDE MYTHOLOGIE CARIBEENNE
   if (msgLow.includes("mythologie caribéenne") || msgLow.includes("légende créole") || msgLow.includes("zombie caribéen") || msgLow.includes("soukougnan") || msgLow.includes("diable antillais")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "👻 **Neuro-X Spiritualité — Mythologie Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "👻 **Neuro-X Spiritualité — Mythologie Caribéenne**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -3990,20 +2973,11 @@ export default async function handler(req, res) {
   // GUIDE PERMIS DE CONDUIRE
   if (msgLow.includes("permis de conduire") || msgLow.includes("code de la route") || msgLow.includes("auto-école") || msgLow.includes("conduire guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🚗 **Neuro-X Juridique — Permis Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🚗 **Neuro-X Juridique — Permis Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4012,20 +2986,11 @@ export default async function handler(req, res) {
   // GUIDE AIDE SOCIALE
   if (msgLow.includes("rsa") || msgLow.includes("caf") || msgLow.includes("aides sociales") || msgLow.includes("allocation") || msgLow.includes("aide guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Juridique — Aides Sociales DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Juridique — Aides Sociales DOM-TOM**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4034,20 +2999,11 @@ export default async function handler(req, res) {
   // GUIDE LITTERATURE CARIBEENNE
   if (msgLow.includes("littérature") || msgLow.includes("roman caribéen") || msgLow.includes("auteur antillais") || msgLow.includes("maryse condé") || msgLow.includes("simone schwarz-bart")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📚 **Neuro-X Littérature — Auteurs Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "📚 **Neuro-X Littérature — Auteurs Caribéens**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4111,20 +3067,11 @@ export default async function handler(req, res) {
       }
     } catch(eRemote) {}
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Emploi — DOM-TOM / Caraïbes / Afrique**\n\n"+d.choices?.[0]?.message?.content+"\n\n🔗 **Plateformes gratuites:**\n• France Travail: francetravail.fr\n• Réunion: emploi.re\n• Caraïbes: caribbeanjobs.com\n• Afrique: jobartis.com\n• International: linkedin.com\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Emploi — DOM-TOM / Caraïbes / Afrique**\n\n"+groqText+"\n\n🔗 **Plateformes gratuites:**\n• France Travail: francetravail.fr\n• Réunion: emploi.re\n• Caraïbes: caribbeanjobs.com\n• Afrique: jobartis.com\n• International: linkedin.com\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "💼 **Offres Emploi — DOM-TOM / Caraïbes / Afrique**\n\n🔗 **Plateformes gratuites:**\n• 🇫🇷 France Travail: francetravail.fr\n• 🇷🇪 La Réunion: emploi.re\n• 🌴 Caraïbes: caribbeanjobs.com\n• 🌍 Afrique: jobartis.com\n• 💼 International: linkedin.com\n• 🌐 Mondial: indeed.fr\n\n💡 Secteurs porteurs DOM-TOM: Tourisme, BTP, Santé, IA, E-commerce\n\nBOUDOUM ! 🇬🇵" })
     }
@@ -4133,20 +3080,11 @@ export default async function handler(req, res) {
   // GUIDE CREATION ASSOCIATION
   if (msgLow.includes("créer une association") || msgLow.includes("association loi 1901") || msgLow.includes("association guadeloupe") || msgLow.includes("association dom-tom")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Juridique — Créer une Association**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Juridique — Créer une Association**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4155,20 +3093,11 @@ export default async function handler(req, res) {
   // PASSEPORT DE REUSSITE 🏆
   if (msgLow.includes("passeport de réussite") || msgLow.includes("passeport reussite") || msgLow.includes("certificat champion") || msgLow.includes("devenir champion") || msgLow.includes("passeport champion") || msgLow.includes("champions")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton certificat :** https://reussitess.fr/champions\n\n🌍 15 247 Champions dans 127 pays !\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\n"+groqText+"\n\n👉 **Obtiens ton certificat :** https://reussitess.fr/champions\n\n🌍 15 247 Champions dans 127 pays !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\nTon certificat de champion t'attend ! 15 247 champions dans 127 pays ont déjà rejoint le mouvement REUSSITESS.\n\n✅ Remplis ton prénom, ton pays et ton objectif\n✅ Reçois ton certificat personnalisé\n✅ Obtiens ton plan d'action sur mesure\n\n👉 **Accède maintenant :** https://reussitess.fr/champions\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
     }
@@ -4177,20 +3106,11 @@ export default async function handler(req, res) {
   // VISA UNIVERSEL 🌍
   if (msgLow.includes("visa universel") || msgLow.includes("opportunité mondiale") || msgLow.includes("réseau mondial") || msgLow.includes("rejoindre reussitess") || msgLow.includes("visa reussitess") || msgLow.includes("opportunités reussitess")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Visa Universel REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton Visa :** https://reussitess.fr/visa-universel\n\n🚀 Accès aux opportunités mondiales dans 14 pays partenaires !\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Visa Universel REUSSITESS**\n\n"+groqText+"\n\n👉 **Obtiens ton Visa :** https://reussitess.fr/visa-universel\n\n🚀 Accès aux opportunités mondiales dans 14 pays partenaires !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Visa Universel REUSSITESS**\n\nTon passeport vers les opportunités mondiales !\n\n✅ Accès réseau entrepreneurs 26 pays\n✅ Affiliation Amazon 14 pays\n✅ Token REUSS sur Polygon\n✅ Bibliothèque mondiale\n✅ Formation IA gratuite\n\n👉 **Accède maintenant :** https://reussitess.fr/visa-universel\n\nBOUDOUM ! 🇬🇵" })
     }
@@ -4217,20 +3137,11 @@ export default async function handler(req, res) {
   // GUIDE MON ADN
   if (msgLow.includes("mon adn") || msgLow.includes("mon identité") || msgLow.includes("mes origines") || msgLow.includes("héritage caribéen")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🧬 **Neuro-X Culture — Mon ADN Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Explore ton ADN: https://reussitess.fr/mon-adn\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🧬 **Neuro-X Culture — Mon ADN Caribéen**\n\n"+groqText+"\n\n👉 Explore ton ADN: https://reussitess.fr/mon-adn\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4239,20 +3150,11 @@ export default async function handler(req, res) {
   // ORACLE 971
   if (msgLow.includes("oracle") || msgLow.includes("oracle 971") || msgLow.includes("prédiction") || msgLow.includes("avenir caribéen") || msgLow.includes("destin")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Oracle 971 — Voix de la Guadeloupe**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Consulte l'Oracle: https://reussitess.fr/oracle-971\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Oracle 971 — Voix de la Guadeloupe**\n\n"+groqText+"\n\n👉 Consulte l'Oracle: https://reussitess.fr/oracle-971\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4261,20 +3163,11 @@ export default async function handler(req, res) {
   // MA REVOLUTION IA
   if (msgLow.includes("ma révolution") || msgLow.includes("revolution ia") || msgLow.includes("transformer ma vie") || msgLow.includes("changer ma vie avec ia") || msgLow.includes("révolution personnelle")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🚀 **Neuro-X Coach — Ta Révolution IA**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Lance ta révolution: https://reussitess.fr/ma-revolution-ia\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🚀 **Neuro-X Coach — Ta Révolution IA**\n\n"+groqText+"\n\n👉 Lance ta révolution: https://reussitess.fr/ma-revolution-ia\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4298,20 +3191,11 @@ export default async function handler(req, res) {
   // GENERATEUR BIOGRAPHIE
   if (msgLow.includes("biographie") || msgLow.includes("bio instagram") || msgLow.includes("présentation personnelle") || msgLow.includes("qui suis-je") || msgLow.includes("rédige ma bio")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 1024
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "✍️ **Neuro-X Marketing — Générateur Bio**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 1024)
+      return res.status(200).json({ pdfAction: pdfType, response: "✍️ **Neuro-X Marketing — Générateur Bio**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4320,20 +3204,11 @@ export default async function handler(req, res) {
   // GUIDE SANTE CARDIOVASCULAIRE
   if (msgLow.includes("cardio") || msgLow.includes("tension artérielle") || msgLow.includes("cholestérol") || msgLow.includes("diabète") || msgLow.includes("santé cardiovasculaire")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "❤️ **Neuro-X Santé — Santé Cardiovasculaire**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez votre médecin.\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "❤️ **Neuro-X Santé — Santé Cardiovasculaire**\n\n"+groqText+"\n\n⚠️ Consultez votre médecin.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4342,20 +3217,11 @@ export default async function handler(req, res) {
   // GUIDE ACHAT TERRAIN DOM-TOM
   if (msgLow.includes("terrain guadeloupe") || msgLow.includes("acheter terrain") || msgLow.includes("foncier antilles") || msgLow.includes("cadastre guadeloupe") || msgLow.includes("terrain constructible")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🏡 **Neuro-X Immobilier — Achat Terrain Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🏡 **Neuro-X Immobilier — Achat Terrain Caribéen**\n\n"+groqText+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4364,20 +3230,11 @@ export default async function handler(req, res) {
   // GUIDE WEB3 CARAIBE
   if (msgLow.includes("web3") || msgLow.includes("metaverse") || msgLow.includes("décentralisé") || msgLow.includes("dapp") || msgLow.includes("defi caribéen")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Tech — Web3 Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Tech — Web3 Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4391,20 +3248,11 @@ export default async function handler(req, res) {
   // GUIDE INTELLIGENCE EMOTIONNELLE
   if (msgLow.includes("intelligence émotionnelle") || msgLow.includes("gérer mes émotions") || msgLow.includes("empathie") || msgLow.includes("gestion émotions") || msgLow.includes("eq")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💛 **Neuro-X Psychologie — Intelligence Émotionnelle**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "💛 **Neuro-X Psychologie — Intelligence Émotionnelle**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4413,20 +3261,11 @@ export default async function handler(req, res) {
   // GUIDE CROWDFUNDING
   if (msgLow.includes("crowdfunding") || msgLow.includes("financement participatif") || msgLow.includes("kickstarter") || msgLow.includes("ulule") || msgLow.includes("lever fonds communauté")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Business — Crowdfunding Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Business — Crowdfunding Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4435,20 +3274,11 @@ export default async function handler(req, res) {
   // GUIDE BIEN-ETRE AU TRAVAIL
   if (msgLow.includes("bien-être au travail") || msgLow.includes("equilibre vie pro") || msgLow.includes("work life balance") || msgLow.includes("épuisement professionnel") || msgLow.includes("motivation travail")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌺 **Neuro-X Coach — Bien-Être au Travail**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌺 **Neuro-X Coach — Bien-Être au Travail**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4457,20 +3287,11 @@ export default async function handler(req, res) {
   // GUIDE GEOPOLITIQUE CARAIBES
   if (msgLow.includes("caricom") || msgLow.includes("géopolitique caraïbes") || msgLow.includes("relations caraïbes") || msgLow.includes("union européenne dom") || msgLow.includes("indépendance guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Géopolitique — Caraïbes**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Géopolitique — Caraïbes**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4479,20 +3300,11 @@ export default async function handler(req, res) {
   // GUIDE PHOTOGRAPHIE
   if (msgLow.includes("photographie") || msgLow.includes("photo caribéenne") || msgLow.includes("appareil photo") || msgLow.includes("instagram photo") || msgLow.includes("shooting")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📸 **Neuro-X Créatif — Photographie Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "📸 **Neuro-X Créatif — Photographie Caribéenne**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4501,20 +3313,11 @@ export default async function handler(req, res) {
   // GUIDE MODE CARIBEENNE
   if (msgLow.includes("mode caribéenne") || msgLow.includes("stylisme") || msgLow.includes("madras") || msgLow.includes("tenue créole") || msgLow.includes("fashion antillais")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "👗 **Neuro-X Mode — Stylisme Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "👗 **Neuro-X Mode — Stylisme Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4523,20 +3326,11 @@ export default async function handler(req, res) {
   // GUIDE LEADERSHIP
   if (msgLow.includes("leadership") || msgLow.includes("manager mon équipe") || msgLow.includes("diriger") || msgLow.includes("management") || msgLow.includes("gérer mon équipe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Coach — Leadership Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Coach — Leadership Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4545,20 +3339,11 @@ export default async function handler(req, res) {
   // GUIDE PROTECTION DONNEES
   if (msgLow.includes("rgpd") || msgLow.includes("protection données") || msgLow.includes("vie privée") || msgLow.includes("cnil") || msgLow.includes("données personnelles")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🔒 **Neuro-X Réseaux — Protection Données RGPD**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🔒 **Neuro-X Réseaux — Protection Données RGPD**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4567,20 +3352,11 @@ export default async function handler(req, res) {
   // GENERATEUR HASHTAGS
   if (msgLow.includes("hashtag") || msgLow.includes("hashtags") || msgLow.includes("mots-dièse") || msgLow.includes("trending") || msgLow.includes("viral hashtag")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 1024
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "# **Neuro-X Marketing — Hashtags Viraux**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 1024)
+      return res.status(200).json({ pdfAction: pdfType, response: "# **Neuro-X Marketing — Hashtags Viraux**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4590,20 +3366,11 @@ export default async function handler(req, res) {
   if (msgLow.includes("débuter crypto") || msgLow.includes("crypto débutant") || msgLow.includes("c'est quoi bitcoin") || msgLow.includes("blockchain c'est quoi") || msgLow.includes("first crypto")) {
     try {
       const crypto = await getCryptoPrice()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Finance — Crypto pour Débutants**\n\n📊 Marché: "+crypto+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Finance — Crypto pour Débutants**\n\n📊 Marché: "+crypto+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4612,20 +3379,11 @@ export default async function handler(req, res) {
   // GUIDE SANTE MENTALE
   if (msgLow.includes("anxiété") || msgLow.includes("anxiete") || msgLow.includes("dépression") || msgLow.includes("depression") || msgLow.includes("santé mentale") || msgLow.includes("burn out")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💚 **Neuro-X Psychologie — Santé Mentale**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un professionnel de santé.\nUrgence: 3114 (numéro national prévention suicide)\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "💚 **Neuro-X Psychologie — Santé Mentale**\n\n"+groqText+"\n\n⚠️ Consultez un professionnel de santé.\nUrgence: 3114 (numéro national prévention suicide)\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4634,20 +3392,11 @@ export default async function handler(req, res) {
   // GUIDE EXPORT INTERNATIONAL
   if (msgLow.includes("exporter") || msgLow.includes("export") || msgLow.includes("vendre à l'international") || msgLow.includes("marché international") || msgLow.includes("14 pays")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Logistique — Export International**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Logistique — Export International**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4656,20 +3405,11 @@ export default async function handler(req, res) {
   // GUIDE PODCASTING
   if (msgLow.includes("podcast") || msgLow.includes("créer un podcast") || msgLow.includes("lancer podcast") || msgLow.includes("micro") && msgLow.includes("enregistrer")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎙️ **Neuro-X Marketing — Guide Podcast**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎙️ **Neuro-X Marketing — Guide Podcast**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4678,20 +3418,11 @@ export default async function handler(req, res) {
   // GUIDE MICRO-FINANCE
   if (msgLow.includes("microcrédit") || msgLow.includes("micro-crédit") || msgLow.includes("prêt professionnel") || msgLow.includes("financement projet") || msgLow.includes("adie") || msgLow.includes("bpifrance")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Business — Micro-Finance**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Business — Micro-Finance**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4700,20 +3431,11 @@ export default async function handler(req, res) {
   // GUIDE BIEN-ETRE SENIOR
   if (msgLow.includes("senior") || msgLow.includes("personnes âgées") || msgLow.includes("vieillir bien") || msgLow.includes("ehpad") || msgLow.includes("aide à domicile")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Seniors — Bien-Vieillir Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Seniors — Bien-Vieillir Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4722,20 +3444,11 @@ export default async function handler(req, res) {
   // GENERATEUR CONTRAT
   if (msgLow.includes("modèle de contrat") || msgLow.includes("contrat freelance") || msgLow.includes("contrat commercial") || msgLow.includes("cgv") || msgLow.includes("mentions légales")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📝 **Neuro-X Juridique — Générateur Contrats**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un avocat avant signature.\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "📝 **Neuro-X Juridique — Générateur Contrats**\n\n"+groqText+"\n\n⚠️ Consultez un avocat avant signature.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4744,20 +3457,11 @@ export default async function handler(req, res) {
   // GUIDE DROPSHIPPING
   if (msgLow.includes("dropshipping") || msgLow.includes("vendre sans stock") || msgLow.includes("e-commerce caribéen") || msgLow.includes("boutique en ligne") || msgLow.includes("shopify")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🛒 **Neuro-X Business — Dropshipping Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🛒 **Neuro-X Business — Dropshipping Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4766,20 +3470,11 @@ export default async function handler(req, res) {
   // GUIDE FREELANCE
   if (msgLow.includes("freelance") || msgLow.includes("travailler à distance") || msgLow.includes("télétravail") || msgLow.includes("mission freelance") || msgLow.includes("indépendant")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💻 **Neuro-X Business — Guide Freelance**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "💻 **Neuro-X Business — Guide Freelance**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4788,20 +3483,11 @@ export default async function handler(req, res) {
   // GUIDE IA POUR DEBUTANTS
   if (msgLow.includes("apprendre ia") || msgLow.includes("débuter en ia") || msgLow.includes("intelligence artificielle débutant") || msgLow.includes("chatgpt débutant") || msgLow.includes("comment utiliser ia")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **Neuro-X IA — Guide Débutants**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **Neuro-X IA — Guide Débutants**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4810,20 +3496,11 @@ export default async function handler(req, res) {
   // CONSEIL NUTRITION CARIBEENNE
   if (msgLow.includes("nutrition") || msgLow.includes("alimentation saine") || msgLow.includes("régime caribéen") || msgLow.includes("manger sainement") || msgLow.includes("fruits tropicaux")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🥗 **Neuro-X Santé — Nutrition Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🥗 **Neuro-X Santé — Nutrition Caribéenne**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4832,20 +3509,11 @@ export default async function handler(req, res) {
   // AIDE DEUIL ET FAMILLE
   if (msgLow.includes("deuil") || msgLow.includes("j'ai perdu") || msgLow.includes("quelqu'un est décédé") || msgLow.includes("soutien famille") || msgLow.includes("difficile en ce moment")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💙 **REUSSITESS AI — Soutien & Accompagnement**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "💙 **REUSSITESS AI — Soutien & Accompagnement**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4854,20 +3522,11 @@ export default async function handler(req, res) {
   // RAPPEL MEDICAMENT
   if (msgLow.includes("médicament") || msgLow.includes("medicament") || msgLow.includes("ordonnance") || msgLow.includes("posologie") || msgLow.includes("traitement médical")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💊 **Neuro-X Santé — Information Médicale**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez toujours un médecin ou pharmacien.\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "💊 **Neuro-X Santé — Information Médicale**\n\n"+groqText+"\n\n⚠️ Consultez toujours un médecin ou pharmacien.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4876,20 +3535,11 @@ export default async function handler(req, res) {
   // GUIDE CREATION CONTENU
   if (msgLow.includes("créer du contenu") || msgLow.includes("youtuber") || msgLow.includes("streamer") || msgLow.includes("influenceur") || msgLow.includes("monétiser") && msgLow.includes("contenu")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎬 **Neuro-X Marketing — Création Contenu**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎬 **Neuro-X Marketing — Création Contenu**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4898,20 +3548,11 @@ export default async function handler(req, res) {
   // GUIDE EPARGNE
   if (msgLow.includes("épargne") || msgLow.includes("epargne") || msgLow.includes("livret a") || msgLow.includes("économiser") || msgLow.includes("mettre de côté")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💳 **Neuro-X Finance — Guide Épargne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "💳 **Neuro-X Finance — Guide Épargne**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4931,20 +3572,11 @@ export default async function handler(req, res) {
   // MODE ENFANTS
   if (msgLow.includes("pour enfant") || msgLow.includes("histoire pour enfant") || msgLow.includes("mon enfant") || msgLow.includes("activité enfant") || msgLow.includes("jeu éducatif")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🧒 **Neuro-X Enfants — Mode Famille**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🧒 **Neuro-X Enfants — Mode Famille**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4966,20 +3598,11 @@ export default async function handler(req, res) {
   // GUIDE NFT CARAIBE
   if (msgLow.includes("nft") || msgLow.includes("créer un nft") || msgLow.includes("vendre nft") || msgLow.includes("collection nft") || msgLow.includes("art numérique")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X NFT — Art Numérique Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X NFT — Art Numérique Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -4988,20 +3611,11 @@ export default async function handler(req, res) {
   // GUIDE GOMINING
   if (msgLow.includes("gomining") || msgLow.includes("go mining") || msgLow.includes("minage bitcoin") || msgLow.includes("miner bitcoin") || msgLow.includes("hashrate")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "⛏️ **Neuro-X Finance — Guide GoMining**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "⛏️ **Neuro-X Finance — Guide GoMining**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5025,20 +3639,11 @@ export default async function handler(req, res) {
   // CHAMPIONS SPORTIFS ANTILLES
   if (msgLow.includes("champion") || msgLow.includes("sportif antillais") || msgLow.includes("marie-jose perec") || msgLow.includes("teddy riner") || msgLow.includes("athlète guadeloupe") || (msgLow.includes("qui est") && (msgLow.includes("mandela") || msgLow.includes("sankara") || msgLow.includes("lumumba") || msgLow.includes("nkrumah") || msgLow.includes("césaire") || msgLow.includes("fanon"))) || (msgLow.includes("qui était") && (msgLow.includes("mandela") || msgLow.includes("sankara") || msgLow.includes("africain")))) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Neuro-X Sport — Champions Antillais**\n\n"+d.choices?.[0]?.message?.content+"\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Neuro-X Sport — Champions Antillais**\n\n"+groqText+"\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5049,20 +3654,11 @@ export default async function handler(req, res) {
     try {
       const meteo = await getMeteo()
       const lune = getLunePhase()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌱 **Neuro-X Agriculture — Jardin Créole**\n\n🌙 "+lune+" | 🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌱 **Neuro-X Agriculture — Jardin Créole**\n\n🌙 "+lune+" | 🌤️ "+meteo+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5071,20 +3667,11 @@ export default async function handler(req, res) {
   // PHILOSOPHIE CARIBEENNE
   if (msgLow.includes("philosophie") || msgLow.includes("césaire") || msgLow.includes("fanon") || msgLow.includes("glissant") || msgLow.includes("négritude") || msgLow.includes("créolité") || (msgLow.includes("ubuntu") && !msgLow.includes("linux") && !msgLow.includes("installer")) || msgLow.includes("philosophie africaine") || msgLow.includes("pensée africaine")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Philosophie — Pensée Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Philosophie — Pensée Caribéenne**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5093,20 +3680,11 @@ export default async function handler(req, res) {
   // GUIDE DIASPORA
   if (msgLow.includes("diaspora") || msgLow.includes("guadeloupéen à paris") || msgLow.includes("antillais en france") || msgLow.includes("retour au pays") || msgLow.includes("double culture")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Diaspora — Communauté Mondiale**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Diaspora — Communauté Mondiale**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5115,20 +3693,11 @@ export default async function handler(req, res) {
   // GUIDE SMART CONTRACT
   if (msgLow.includes("smart contract") || msgLow.includes("solidity") || msgLow.includes("déployer un contrat") || msgLow.includes("erc20") || msgLow.includes("polygon contract")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "⛓️ **Neuro-X Blockchain — Smart Contracts**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "⛓️ **Neuro-X Blockchain — Smart Contracts**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5137,20 +3706,11 @@ export default async function handler(req, res) {
   // GENERATEUR PITCH INVESTISSEUR
   if (msgLow.includes("pitch") || msgLow.includes("lever des fonds") || msgLow.includes("investisseur") || msgLow.includes("présentation investisseur") || msgLow.includes("seed funding")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🚀 **Neuro-X Stratégie — Pitch Investisseur**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🚀 **Neuro-X Stratégie — Pitch Investisseur**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5159,20 +3719,11 @@ export default async function handler(req, res) {
   // GUIDE IMMOBILIER DOM-TOM
   if (msgLow.includes("acheter une maison") || msgLow.includes("immobilier guadeloupe") || msgLow.includes("girardin") || msgLow.includes("défiscalisation immobilier") || msgLow.includes("investir immobilier")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🏠 **Neuro-X Immobilier — Guide DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🏠 **Neuro-X Immobilier — Guide DOM-TOM**\n\n"+groqText+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5181,20 +3732,11 @@ export default async function handler(req, res) {
   // COACH ENTREPRENEURIAT FEMININ
   if (msgLow.includes("femme entrepreneur") || msgLow.includes("entrepreneuriat féminin") || msgLow.includes("business woman") || msgLow.includes("femme boss") || msgLow.includes("créer mon activité femme")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Femmes — Coach Entrepreneuriat**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Femmes — Coach Entrepreneuriat**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5203,20 +3745,11 @@ export default async function handler(req, res) {
   // GUIDE JEUNES CARIBEEN
   if (msgLow.includes("orientation scolaire") || msgLow.includes("études guadeloupe") || msgLow.includes("bourse étudiant") || msgLow.includes("premier emploi") || msgLow.includes("stage guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Jeunes — Guide Orientation**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Jeunes — Guide Orientation**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5225,20 +3758,11 @@ export default async function handler(req, res) {
   // DIAGNOSTIC SITE WEB
   if (msgLow.includes("mon site") || msgLow.includes("améliorer mon site") || msgLow.includes("seo de mon site") || msgLow.includes("optimiser mon site") || msgLow.includes("audit site")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🔍 **Neuro-X SEO — Audit Site Web**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🔍 **Neuro-X SEO — Audit Site Web**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5247,20 +3771,11 @@ export default async function handler(req, res) {
   // GENERATEUR CHANSON CREOLE
   if (msgLow.includes("chanson") || msgLow.includes("zouk") || msgLow.includes("gwo ka") || msgLow.includes("paroles") || msgLow.includes("compose une chanson")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎵 **Neuro-X Musique — Chanson Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎵 **Neuro-X Musique — Chanson Créole**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5270,20 +3785,11 @@ export default async function handler(req, res) {
   if (msgLow.includes("randonnée") || msgLow.includes("soufrière") || msgLow.includes("forêt tropicale") || msgLow.includes("nature guadeloupe") || msgLow.includes("plongée")) {
     try {
       const meteo = await getMeteo()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Tourisme — Éco-Tourisme Guadeloupe**\n\n🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Tourisme — Éco-Tourisme Guadeloupe**\n\n🌤️ "+meteo+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5292,20 +3798,11 @@ export default async function handler(req, res) {
   // SCIENCE CARIBEENNE
   if (msgLow.includes("volcan") || msgLow.includes("biodiversité") || msgLow.includes("mangrove") || msgLow.includes("récif corallien") || msgLow.includes("faune caribéenne")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🔬 **Neuro-X Sciences — Biodiversité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🔬 **Neuro-X Sciences — Biodiversité Caribéenne**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5314,20 +3811,11 @@ export default async function handler(req, res) {
   // GUIDE ENERGIE SOLAIRE
   if (msgLow.includes("énergie solaire") || msgLow.includes("panneau solaire") || msgLow.includes("renouvelable") || msgLow.includes("électricité guadeloupe") || msgLow.includes("edf guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "☀️ **Neuro-X Énergie — Solaire Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "☀️ **Neuro-X Énergie — Solaire Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5336,20 +3824,11 @@ export default async function handler(req, res) {
   // DICTIONNAIRE CREOLE COMPLET
   if (msgLow.includes("que veut dire") || msgLow.includes("définition") || msgLow.includes("signifie") || msgLow.includes("en créole") || msgLow.includes("traduction créole") || msgLow.includes("comment dire")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 1024
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📖 **Neuro-X Langues — Dictionnaire Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 1024)
+      return res.status(200).json({ pdfAction: pdfType, response: "📖 **Neuro-X Langues — Dictionnaire Créole**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5359,20 +3838,11 @@ export default async function handler(req, res) {
   if (msgLow.includes("développement personnel") || msgLow.includes("objectif de vie") || msgLow.includes("améliorer ma vie") || msgLow.includes("devenir meilleur") || msgLow.includes("habitudes positives")) {
     try {
       const citation = await getCitation()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "✨ **Neuro-X Coach — Développement Personnel**\n\n💬 "+citation+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "✨ **Neuro-X Coach — Développement Personnel**\n\n💬 "+citation+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5383,20 +3853,11 @@ export default async function handler(req, res) {
     try {
       const crypto = await getCryptoPrice()
       const fg = await getFearGreed()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📈 **Neuro-X Finance — Analyse Marché**\n\n"+crypto+"\n😨 "+fg+"\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ DYOR\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "📈 **Neuro-X Finance — Analyse Marché**\n\n"+crypto+"\n😨 "+fg+"\n\n"+groqText+"\n\n⚠️ DYOR\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5405,20 +3866,11 @@ export default async function handler(req, res) {
   // GUIDE RETRAITE DOM-TOM
   if (msgLow.includes("retraite") || msgLow.includes("pension") || msgLow.includes("cnav") || msgLow.includes("cotisation retraite") || msgLow.includes("préparer ma retraite")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Juridique — Guide Retraite DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un conseiller retraite.\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Juridique — Guide Retraite DOM-TOM**\n\n"+groqText+"\n\n⚠️ Consultez un conseiller retraite.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5427,20 +3879,11 @@ export default async function handler(req, res) {
   // BUSINESS PLAN
   if (msgLow.includes("business plan") || msgLow.includes("plan d'affaires") || msgLow.includes("créer mon entreprise") || msgLow.includes("lancer mon business") || msgLow.includes("monter mon projet")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📋 **Neuro-X Business — Business Plan**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "📋 **Neuro-X Business — Business Plan**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5463,20 +3906,11 @@ export default async function handler(req, res) {
   // GUIDE IMMIGRATION DOM-TOM
   if (msgLow.includes("immigration") || msgLow.includes("visa") || msgLow.includes("s'installer") || msgLow.includes("expatrié") || msgLow.includes("vivre en guadeloupe")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Juridique — Guide Immigration**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez les services préfectoraux.\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Juridique — Guide Immigration**\n\n"+groqText+"\n\n⚠️ Consultez les services préfectoraux.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5486,20 +3920,11 @@ export default async function handler(req, res) {
   if (msgLow.includes("astro") || msgLow.includes("thème astral") || msgLow.includes("ascendant") || msgLow.includes("planète") && msgLow.includes("signe")) {
     try {
       const lune = getLunePhase()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "⭐ **Neuro-X Spiritualité — Astrologie Caribéenne**\n\n"+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "⭐ **Neuro-X Spiritualité — Astrologie Caribéenne**\n\n"+lune+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5508,20 +3933,11 @@ export default async function handler(req, res) {
   // QUIZ INSTANTANE
   if (msgLow.includes("interroge moi") || msgLow.includes("teste moi") || msgLow.includes("question culture") || msgLow.includes("quiz rapide") || msgLow.includes("pose moi une question")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 1024
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Éducation — Quiz Instantané**\n\n"+d.choices?.[0]?.message?.content+"\n\n+5 points REUSS si bonne réponse !\n\nBOUDOUM ! 🇬🇵" })
+          ], 1024)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Éducation — Quiz Instantané**\n\n"+groqText+"\n\n+5 points REUSS si bonne réponse !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5530,20 +3946,11 @@ export default async function handler(req, res) {
   // PLAN MARKETING
   if (msgLow.includes("plan marketing") || msgLow.includes("stratégie marketing") || msgLow.includes("strategie marketing") || msgLow.includes("plan de communication") || msgLow.includes("lancer mon produit")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📊 **Neuro-X Marketing — Plan Complet**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "📊 **Neuro-X Marketing — Plan Complet**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5552,20 +3959,11 @@ export default async function handler(req, res) {
   // HISTOIRE GUADELOUPE
   if (msgLow.includes("histoire guadeloupe") || msgLow.includes("histoire de la guadeloupe") || msgLow.includes("histoire des antilles") || msgLow.includes("histoire caribéenne") || msgLow.includes("histoire martinique") || msgLow.includes("histoire haiti") || msgLow.includes("histoire haïti") || msgLow.includes("histoire de la martinique") || msgLow.includes("histoire afrique") || msgLow.includes("abolition") || msgLow.includes("victor schoelcher") || msgLow.includes("patrimoine antillais") || msgLow.includes("culture guadeloupéenne") || (msgLow.includes("histoire") && msgLow.includes("guadeloupe")) || (msgLow.includes("histoire") && msgLow.includes("antilles")) || (msgLow.includes("histoire") && msgLow.includes("caraïbes")) || (msgLow.includes("histoire") && msgLow.includes("afrique")) || (msgLow.includes("histoire") && msgLow.includes("martinique"))) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      const rep = d.choices?.[0]?.message?.content
+          ], 4096)
+      const rep = groqText
       if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS — Histoire Caribéenne & Africaine**\n\n"+rep+"\n\nBOUDOUM ! 🇬🇵" })
       return res.status(200).json({ pdfAction: pdfType, response: "📚 **Histoire Caribéenne**\n\nLa Guadeloupe, Terres de Champions ! Notre histoire est riche: découverte par Christophe Colomb en 1493, peuplement par les Kalinagos, colonisation française, abolition de l'esclavage le 27 mai 1848 par Victor Schœlcher, résistance de Louis Delgrès. Aujourd'hui département français d'outre-mer fier de son identité créole.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
@@ -5576,20 +3974,11 @@ export default async function handler(req, res) {
   // GENERATEUR EMAIL PRO
   if (msgLow.includes("email professionnel") || msgLow.includes("rédige un email") || msgLow.includes("lettre professionnelle") || msgLow.includes("email commercial") || msgLow.includes("mail pro")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📧 **Neuro-X Business — Email Professionnel**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "📧 **Neuro-X Business — Email Professionnel**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5598,20 +3987,11 @@ export default async function handler(req, res) {
   // GENERATEUR POST RESEAUX SOCIAUX
   if (msgLow.includes("post instagram") || msgLow.includes("post tiktok") || msgLow.includes("post facebook") || msgLow.includes("caption") || msgLow.includes("génère un post") || msgLow.includes("contenu réseaux")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📱 **Neuro-X Marketing — Générateur Posts**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "📱 **Neuro-X Marketing — Générateur Posts**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5620,20 +4000,11 @@ export default async function handler(req, res) {
   // COCKTAILS RHum CARIBEEN
   if (msgLow.includes("cocktail") || msgLow.includes("rhum") || msgLow.includes("ti punch") || msgLow.includes("planteur") || msgLow.includes("mojito") || msgLow.includes("recette boisson")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🍹 **Neuro-X Cuisine — Cocktails Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🍹 **Neuro-X Cuisine — Cocktails Caribéens**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5643,20 +4014,11 @@ export default async function handler(req, res) {
   if (msgLow.includes("j'ai rêvé") || msgLow.includes("mon rêve") || msgLow.includes("analyse mon rêve") || msgLow.includes("signification rêve") || msgLow.includes("interprète mon rêve")) {
     try {
       const lune = getLunePhase()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌙 **Neuro-X Spiritualité — Analyse Rêves**\n\n"+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌙 **Neuro-X Spiritualité — Analyse Rêves**\n\n"+lune+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5666,20 +4028,11 @@ export default async function handler(req, res) {
   if (msgLow.includes("visiter") || msgLow.includes("vacances guadeloupe") || msgLow.includes("tourisme caraïbes") || msgLow.includes("que faire en guadeloupe") || msgLow.includes("bon plan voyage")) {
     try {
       const meteo = await getMeteo()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Tourisme — Guide Caribéen**\n\n🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Tourisme — Guide Caribéen**\n\n🌤️ "+meteo+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5688,20 +4041,11 @@ export default async function handler(req, res) {
   // ANALYSE PERSONNALITE
   if (msgLow.includes("analyse ma personnalité") || msgLow.includes("test personnalité") || msgLow.includes("quel type") || msgLow.includes("mbti") || msgLow.includes("profil personnalité")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Psychologie — Analyse Personnalité**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Psychologie — Analyse Personnalité**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5710,20 +4054,11 @@ export default async function handler(req, res) {
   // GENERATEUR SLOGAN
   if (msgLow.includes("slogan") || msgLow.includes("accroche") || msgLow.includes("tagline") || msgLow.includes("phrase marketing")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 1024
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Marketing — Générateur Slogans**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 1024)
+      return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Marketing — Générateur Slogans**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5734,20 +4069,11 @@ export default async function handler(req, res) {
     try {
       const crypto = await getCryptoPrice()
       const fg = await getFearGreed()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Finance — Conseils Investissement**\n\n📊 Marché actuel : "+fg+"\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ DYOR — Pas de conseil financier.\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Finance — Conseils Investissement**\n\n📊 Marché actuel : "+fg+"\n\n"+groqText+"\n\n⚠️ DYOR — Pas de conseil financier.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5756,20 +4082,11 @@ export default async function handler(req, res) {
   // APPRENTISSAGE LANGUE
   if (msgLow.includes("apprendre") && (msgLow.includes("anglais") || msgLow.includes("espagnol") || msgLow.includes("créole") || msgLow.includes("portugais") || msgLow.includes("langue")) || msgLow.includes("leçon de langue")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Langues — Leçon**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Langues — Leçon**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5780,20 +4097,11 @@ export default async function handler(req, res) {
     try {
       const meteo = await getMeteo()
       const lune = getLunePhase()
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message + " (Météo actuelle: "+meteo+" | Lune: "+lune+")" }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🧘 **Neuro-X Santé — Méditation Caribéenne**\n\n🌊 "+meteo+" | "+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🧘 **Neuro-X Santé — Méditation Caribéenne**\n\n🌊 "+meteo+" | "+lune+"\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5818,20 +4126,11 @@ export default async function handler(req, res) {
   // SANTE NATURELLE CARIBEENNE
   if (msgLow.includes("plante médicinale") || msgLow.includes("remède naturel") || msgLow.includes("médecine naturelle") || msgLow.includes("herbe") || msgLow.includes("soigner naturellement")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 2048
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Santé — Plantes Caribéennes**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un médecin.\n\nBOUDOUM ! 🇬🇵" })
+          ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Santé — Plantes Caribéennes**\n\n"+groqText+"\n\n⚠️ Consultez un médecin.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5873,20 +4172,11 @@ export default async function handler(req, res) {
   // COACH SPORTIF
   if (msgLow.includes("programme sport") || msgLow.includes("musculation") || msgLow.includes("perte de poids") || msgLow.includes("fitness") || msgLow.includes("programme fitness")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💪 **Neuro-X Sport — Coach Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "💪 **Neuro-X Sport — Coach Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5895,20 +4185,11 @@ export default async function handler(req, res) {
   // RECETTE ANTILLAISE
   if (msgLow.includes("recette") || msgLow.includes("comment cuisiner") || msgLow.includes("comment préparer") || msgLow.includes("accras") || msgLow.includes("colombo") || msgLow.includes("blaff") || msgLow.includes("court-bouillon")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🍽️ **Neuro-X Cuisine — Recette Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🍽️ **Neuro-X Cuisine — Recette Créole**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5917,20 +4198,11 @@ export default async function handler(req, res) {
   // AIDE JURIDIQUE
   if (msgLow.includes("mes droits") || msgLow.includes("légalement") || msgLow.includes("juridique") || msgLow.includes("contrat") || msgLow.includes("auto-entrepreneur") || msgLow.includes("siret")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Neuro-X Juridique — Conseil Droit**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un avocat pour toute décision légale.\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Neuro-X Juridique — Conseil Droit**\n\n"+groqText+"\n\n⚠️ Consultez un avocat pour toute décision légale.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5952,20 +4224,11 @@ export default async function handler(req, res) {
   // RESUME CONVERSATION
   if (msgLow.includes("résume") || msgLow.includes("resume notre") || msgLow.includes("résumé de notre") || msgLow.includes("recap") || msgLow.includes("récap")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: "Résume cette conversation : "+message }
-          ],
-          max_tokens: 1024
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📋 **Résumé de Session**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 1024)
+      return res.status(200).json({ pdfAction: pdfType, response: "📋 **Résumé de Session**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5974,20 +4237,11 @@ export default async function handler(req, res) {
   // MODE DEBAT
   if (msgLow.includes("débat") || msgLow.includes("debat") || msgLow.includes("pour et contre") || msgLow.includes("avantages inconvénients") || msgLow.includes("argumente")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Mode Débat — Neuro-X Stratégie**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Mode Débat — Neuro-X Stratégie**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -5996,20 +4250,11 @@ export default async function handler(req, res) {
   // CONSEILS BUSINESS CARAIBE
   if (msgLow.includes("conseil business") || msgLow.includes("idée business") || msgLow.includes("idée entreprise") || msgLow.includes("comment gagner") || msgLow.includes("revenus passifs")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Business — Conseils Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Business — Conseils Caribéens**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -6018,20 +4263,11 @@ export default async function handler(req, res) {
   // GENERATEUR POEME CREOLE
   if (msgLow.includes("poème") || msgLow.includes("poeme") || msgLow.includes("écris un poème") || msgLow.includes("crée un poème") || msgLow.includes("rimé")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      const poeme = d.choices?.[0]?.message?.content || ""
+          ], 4096)
+      const poeme = groqText || ""
       return res.status(200).json({ pdfAction: pdfType, response: "✍️ **Neuro-X Créatif — Poème Créole**\n\n"+poeme+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
@@ -6041,20 +4277,11 @@ export default async function handler(req, res) {
   // GENERATEUR NOM ENTREPRISE
   if (msgLow.includes("nom d'entreprise") || msgLow.includes("nom de marque") || msgLow.includes("nom business") || msgLow.includes("génère un nom") || msgLow.includes("genere un nom")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 1024
-        })
-      })
-      const d = await groqRes.json()
-      const noms = d.choices?.[0]?.message?.content || ""
+          ], 1024)
+      const noms = groqText || ""
       return res.status(200).json({ pdfAction: pdfType, response: "🏢 **Neuro-X Business — Générateur de Noms**\n\n"+noms+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
@@ -6064,20 +4291,11 @@ export default async function handler(req, res) {
   // GENERATEUR CV
   if (msgLow.includes("cv") || msgLow.includes("curriculum") || msgLow.includes("génère mon cv") || msgLow.includes("aide cv") || msgLow.includes("rédige cv")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📄 **Neuro-X Business — Assistant CV**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "📄 **Neuro-X Business — Assistant CV**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -6086,20 +4304,11 @@ export default async function handler(req, res) {
   // HISTOIRE CARIBEENNE
   if (msgLow.includes("raconte") || msgLow.includes("histoire caribéenne") || msgLow.includes("conte créole") || msgLow.includes("légende antillaise")) {
     try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Culture, expert mythologie créole et caribéenne. BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "📖 **Neuro-X Créatif — Conte Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "📖 **Neuro-X Créatif — Conte Caribéen**\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -6161,20 +4370,11 @@ export default async function handler(req, res) {
       const wiki = await encyclopedieAntillesAfrique(message)
       if (wiki) {
         // Enrichit avec Groq
-        const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-          body: JSON.stringify({
-            model: "llama-3.3-70b-versatile",
-            messages: [
+        const groqText = await groqFetch([
               { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
               { role: "user", content: "Question: "+message+"\n\nSource Wikipedia:\n"+wiki }
-            ],
-            max_tokens: 4096
-          })
-        })
-        const d = await groqRes.json()
-        const rep = d.choices?.[0]?.message?.content
+            ], 4096)
+        const rep = groqText
         if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS — Wikipedia Live**\n\n"+rep+"\n\nSource: Wikipedia FR\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {
@@ -6191,20 +4391,11 @@ export default async function handler(req, res) {
       try {
         const wiki = await rechercheWikipedia(message, "fr")
         if (wiki) {
-          const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-            method: "POST",
-            headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-            body: JSON.stringify({
-              model: "llama-3.3-70b-versatile",
-              messages: [
+          const groqText = await groqFetch([
                 { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
                 { role: "user", content: message+"\n\nWikipedia: "+wiki }
-              ],
-              max_tokens: 4096
-            })
-          })
-          const d = await groqRes.json()
-          const rep = d.choices?.[0]?.message?.content
+              ], 4096)
+          const rep = groqText
           if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS — "+fw.charAt(0).toUpperCase()+fw.slice(1)+"**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
         }
       } catch(e) {}
@@ -6220,20 +4411,11 @@ export default async function handler(req, res) {
     try {
       const wiki = await rechercheWikipedia(message, "fr")
       if (wiki) {
-        const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-          body: JSON.stringify({
-            model: "llama-3.3-70b-versatile",
-            messages: [
+        const groqText = await groqFetch([
               { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
               { role: "user", content: message+"\n\nWikipedia: "+wiki }
-            ],
-            max_tokens: 4096
-          })
-        })
-        const d = await groqRes.json()
-        const rep = d.choices?.[0]?.message?.content
+            ], 4096)
+        const rep = groqText
         if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {
@@ -6245,20 +4427,11 @@ export default async function handler(req, res) {
   if (msgLow.includes("ubuntu") && !msgLow.includes("installer") && !msgLow.includes("télécharger") && !msgLow.includes("linux") && !msgLow.includes("canonical") && !msgLow.includes("système")) {
     try {
       const wiki = await rechercheWikipedia("Ubuntu philosophie africaine humanisme", "fr")
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n*Umuntu ngumuntu ngabantu — Je suis parce que nous sommes*\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n*Umuntu ngumuntu ngabantu — Je suis parce que nous sommes*\n\n"+groqText+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -6268,20 +4441,11 @@ export default async function handler(req, res) {
   if (msgLow.includes("ubuntu") && (msgLow.includes("philosophie") || msgLow.includes("afrique") || msgLow.includes("africain") || msgLow.includes("signifie") || msgLow.includes("valeur") || msgLow.includes("sagesse") || msgLow === "ubuntu" || msgLow === "qu est ce que ubuntu")) {
     try {
       const wiki = await rechercheWikipedia("Ubuntu philosophie africaine", "fr")
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [
+      const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). BOUDOUM!" },
             { role: "user", content: message }
-          ],
-          max_tokens: 4096
-        })
-      })
-      const d = await groqRes.json()
-      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n"+d.choices?.[0]?.message?.content+"\n\n*Ubuntu: Je suis parce que nous sommes*\n\nBOUDOUM ! 🇬🇵" })
+          ], 4096)
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n"+groqText+"\n\n*Ubuntu: Je suis parce que nous sommes*\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
@@ -6931,12 +5095,12 @@ Je suis votre assistant IA créé avec passion depuis la **Guadeloupe** 🇬🇵
           method: "POST",
           headers: { "Content-Type": "application/json", "Authorization": "Bearer "+process.env.GROQ_API_KEY },
           body: JSON.stringify({
-            model: "llama-3.3-70b-versatile",
+            model: "llama-3.1-8b-instant",
             messages: [
               { role: "system", content: finalPrompt },
               { role: "user", content: message }
             ],
-            max_tokens: 4096
+            max_tokens: 1024
           })
         })
         const wikiEnrichData = await groqEnrichRes.json()
@@ -7071,7 +5235,7 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
               method: "POST",
               headers: { "Content-Type": "application/json", "Authorization": `Bearer ${process.env.GROQ_API_KEY}` },
               body: JSON.stringify({
-                model: "llama-3.3-70b-versatile",
+                model: "llama-3.1-8b-instant",
                 messages: [
                   { role: "system", content: `Tu es REUSSITESS AI du projet REUSSITESS971 fondé par Porinus depuis la Guadeloupe. BOUDOUM!
 CONTEXTE TEMPS RÉEL : Nous sommes le ${datetime?.date || new Date().toLocaleDateString('fr-FR', {weekday:'long',year:'numeric',month:'long',day:'numeric'})} à ${datetime?.heure || new Date().toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit'})} (${datetime?.timezone || 'Europe/Paris'}).
@@ -7081,7 +5245,7 @@ DONNEES LIVE OBLIGATOIRES: " + (nc||"indisponibles") + "
 Tu es REUSSITESS®971 AI, chef d'orchestre de l'écosystème REUSSITESS®971. RÈGLES LÉGALES ABSOLUES: 1) CRYPTO: Toujours ajouter "Ce n'est pas un conseil financier. DYOR. Risque de perte totale." 2) SANTÉ: Jamais de diagnostic ni prescription. Toujours recommander un médecin. 3) JURIDIQUE: Toujours recommander un professionnel du droit. 4) FONCTIONNALITÉS EN DÉVELOPPEMENT: Staking REUSS, NFT, DAO — toujours préciser "en développement". 5) CHIFFRES: Ne jamais inventer de statistiques. , créé depuis la Guadeloupe 🇬🇵. DEVISE: Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets pro et perso. Tu guides chaque utilisateur vers son plein potentiel. ECOSYSTEME REEL (pages actives sur reussitess.fr): /champions (Passeport de Réussite — certificat champion + plan action, communauté grandissante, 14 pays), /visa-universel (Visa Universel — réseau opportunités 14 pays partenaires), /neuro-x (60 agents Neuro-X spécialisés), /oracle-971 (Oracle caribéen mystique), /mon-adn (ADN identitaire caribéen), /ma-revolution-ia (Révolution personnelle par IA), /ia-passport (IA Passport Mondial — 8 langues actives), /investir-reuss (Token REUSS sur Polygon: 0xB37531727fC07c6EED4f97F852A115B428046EB2), /quiz (99 quiz éducatifs tous thèmes), /bibliotheque (bibliothèque mondiale 50+ pays), /boutiques (26 boutiques Amazon 14 pays, influencer ID: fb942837), shop.reussitess.fr (boutique officielle). FONDATEUR: Rony Porinus — auto-entrepreneur Guadeloupe, SIRET: 444699979700031. 160+ fonctionnalités actives. 200+ modules IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme). 14 pays partenaires. Token REUSS sur Polygon. Données temps réel: météo, crypto, séismes, cyclones, ISS, lune, taux change, actualités. Business: plan, pitch, dropshipping, freelance, CV, contrats, emails, export, emploi DOM-TOM, association. Crypto: token REUSS sur Polygon (staking/DAO en développement), GoMining (minage cloud), NFT (en développement), Web3. Culture caribéenne: carnaval, mythologie, champions, histoire, philosophie Césaire/Fanon/Glissant, littérature Condé/Schwarz-Bart, art, cinéma, mode madras, zouk/gwo ka. Afrique: Mandela, Sankara, Lumumba, Nkrumah, Ubuntu, civilisations, encyclopédie. Santé: médecine naturelle, plantes caribéennes, IMC, cardio, santé mentale (3114). Éphéméride Wikimedia, Open Library 1559+ livres, Proverbes 30 créoles rotatifs. Emploi DOM-TOM: francetravail.fr, emploi.re, caribbeanjobs.com, jobartis.com. Convertisseur: EUR/USD/XCD/HTG/XOF/XAF temps réel. Sécurité: anti-injection, REUSSSHIELD, surveillance 24/7. Base Guadeloupe 971 — Terres de Champions. BOUDOUM!` },
                   { role: "user", content: message }
                 ],
-                max_tokens: 4096
+                max_tokens: 1024
               })
             })
             const groqData = await groqRes.json()
