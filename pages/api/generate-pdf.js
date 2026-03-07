@@ -49,7 +49,7 @@ export default async function handler(req, res) {
     doc.font('Helvetica').fontSize(9).fillColor('#666').text('Fondateur REUSSITESS(R)971',120,456).text('Auto-entrepreneur Guadeloupe',120,468)
     doc.fillColor('#333').fontSize(9).font('Helvetica').text(date,380,456)
     doc.rect(100,510,395,45).fill(GRIS)
-    doc.fillColor(VERT).fontSize(13).font('Helvetica-Bold').text('"Terres de Champions - Positivite a l'infini !"',50,524,{align:'center',width:495})
+    doc.fillColor(VERT).fontSize(13).font("Helvetica-Bold").text("\"Terres de Champions - Positivite a l\x27infini !\"",50,524,{align:"center",width:495})
     drawFooter()
   }
   else if (type === 'contrat') {
