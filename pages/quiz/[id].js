@@ -14,7 +14,7 @@ export default function QuizPage() {
   const [reussEarned, setReussEarned] = useState(0);
   const [showResults, setShowResults] = useState(false);
 
-  // Sauvegarder REUSS dans localStorage quand quiz terminé
+  // Sauvegarder points quiz dans localStorage (données locales uniquement)
   const saveReussReward = (percentage, quizTitle) => {
     const reward = percentage >= 80 ? 10000 : percentage >= 60 ? 5000 : 1000;
     setReussEarned(reward);

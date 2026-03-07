@@ -166,7 +166,7 @@ export default function Home() {
             <Link href="/neuro-x" style={{ background: "linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)", color: "white", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "900", border: "2px solid rgba(255,255,255,0.3)" }}>🧠 Reussitess®NEURO-X</Link>
             <Link href="https://shop.reussitess.fr/" target="_blank" style={{ background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)", color: "white", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "bold" }}>🏪 Visitez Notre Shop</Link>
             <a href="https://gomining.com/?ref=OT3GI2U" target="_blank" rel="noopener noreferrer" style={{ background: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 50%, #5b21b6 100%)", color: "white", padding: "1rem 2rem", borderRadius: "50px", textDecoration: "none", fontWeight: "900", border: "2px solid rgba(167,139,250,0.5)", boxShadow: "0 0 20px rgba(124,58,237,0.4)" }}>⛏️ Miner du Bitcoin — GoMining</a>
-            <p style={{ fontSize: "0.8rem", color: "#c4b5fd", marginTop: "-5px", marginBottom: "10px", maxWidth: "300px" }}>NFT Mineur Bitcoin · $0.84/jour · Top 3% mondial · 130+ pays</p>
+            <p style={{ fontSize: "0.8rem", color: "#c4b5fd", marginTop: "-5px", marginBottom: "10px", maxWidth: "300px" }}>NFT Mineur Bitcoin · Revenus variables · Minage cloud · 130+ pays</p>
           </div>
         </div>
       </div>
