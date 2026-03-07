@@ -214,9 +214,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎨 **Neuro-X Créatif — Art Génératif IA**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X Créatif — Art Génératif IA**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -236,9 +236,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "👶 **Neuro-X Enfants — Parentalité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "👶 **Neuro-X Enfants — Parentalité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -258,9 +258,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "⏰ **Neuro-X Coach — Productivité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "⏰ **Neuro-X Coach — Productivité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -280,9 +280,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🤝 **Neuro-X Stratégie — Intelligence Collective**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Stratégie — Intelligence Collective**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -303,9 +303,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎭 **Neuro-X Culture — Carnaval Caribéen**\n\n"+agenda+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎭 **Neuro-X Culture — Carnaval Caribéen**\n\n"+agenda+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -325,9 +325,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎨 **Neuro-X Créatif — Art Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X Créatif — Art Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -347,9 +347,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💼 **Neuro-X Business — Emploi DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Business — Emploi DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -362,7 +362,7 @@ async function getWikipedia(term) {
       "🔥 BOUDOUM ! 200 agents IA au service de la Caraïbe ! 🤖🇬🇵",
       "⚡ BOUDOUM ! Token REUSS en route vers la lune ! 🚀💎🇬🇵"
     ]
-    return res.status(200).json({ response: msgs[Math.floor(Math.random()*msgs.length)] })
+    return res.status(200).json({ pdfAction: pdfType, response: msgs[Math.floor(Math.random()*msgs.length)] })
   }
 
   // GUIDE CINEMATOGRAPHIE CARIBEENNE
@@ -381,9 +381,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎬 **Neuro-X Cinéma — Films Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎬 **Neuro-X Cinéma — Films Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -403,9 +403,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🚌 **Neuro-X Tourisme — Transport Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🚌 **Neuro-X Tourisme — Transport Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -425,9 +425,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🛡️ **Neuro-X Juridique — Assurances DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **Neuro-X Juridique — Assurances DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -447,9 +447,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "👻 **Neuro-X Spiritualité — Mythologie Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "👻 **Neuro-X Spiritualité — Mythologie Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -469,9 +469,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🚗 **Neuro-X Juridique — Permis Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🚗 **Neuro-X Juridique — Permis Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -491,9 +491,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🤝 **Neuro-X Juridique — Aides Sociales DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Juridique — Aides Sociales DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -513,9 +513,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📚 **Neuro-X Littérature — Auteurs Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📚 **Neuro-X Littérature — Auteurs Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -530,9 +530,9 @@ async function getWikipedia(term) {
       const events = wikiD.events || []
       const picks = events.sort(() => Math.random()-0.5).slice(0,5)
       const txt = picks.map((e,i) => `${i+1}. **${e.year || ""}** — ${e.text}`).join("\n")
-      return res.status(200).json({ response: "📅 **Ce Jour dans l'Histoire — "+dd+"/"+mm+"**\n\n"+txt+"\n\nSource: Wikimedia\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📅 **Ce Jour dans l'Histoire — "+dd+"/"+mm+"**\n\n"+txt+"\n\nSource: Wikimedia\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "📅 **Éphéméride**\n\nLe 27 mai 1848 : Abolition de l'esclavage en Guadeloupe.\nLe 10 mai 2001 : Loi Taubira reconnaît l'esclavage comme crime contre l'humanité.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📅 **Éphéméride**\n\nLe 27 mai 1848 : Abolition de l'esclavage en Guadeloupe.\nLe 10 mai 2001 : Loi Taubira reconnaît l'esclavage comme crime contre l'humanité.\n\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -544,9 +544,9 @@ async function getWikipedia(term) {
       const libD = await libR.json()
       const books = (libD.docs || []).slice(0,5)
       const txt = books.map((b,i) => `${i+1}. 📖 **${b.title}** — ${(b.author_name||["Auteur inconnu"])[0]} (${b.first_publish_year||"?"})\n   🔗 openlibrary.org/works/${b.key}`).join("\n\n")
-      return res.status(200).json({ response: "📚 **Bibliothèque Mondiale — Open Library**\n\n🔍 Résultats pour: *"+decodeURIComponent(query)+"*\n\n"+txt+"\n\n"+libD.numFound+" livres trouvés gratuitement !\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📚 **Bibliothèque Mondiale — Open Library**\n\n🔍 Résultats pour: *"+decodeURIComponent(query)+"*\n\n"+txt+"\n\n"+libD.numFound+" livres trouvés gratuitement !\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -581,7 +581,7 @@ async function getWikipedia(term) {
     sections.push("📡 **Médias DOM-TOM — Complet**\n🇬🇵 Guadeloupe:\n• la1ere.francetvinfo.fr/guadeloupe\n• guadeloupe.franceantilles.fr\n• rci.fm/guadeloupe\n• guadeloupetv.fr\n🇲🇶 Martinique:\n• la1ere.francetvinfo.fr/martinique\n• martinique.franceantilles.fr\n• rci.fm/martinique\n🇷🇪 Réunion:\n• la1ere.francetvinfo.fr/reunion\n• clicanoo.re\n• zinfos974.com\n🇬🇫 Guyane:\n• la1ere.francetvinfo.fr/guyane\n• guyane.rci.fm\n🌍 Outre-Mer Global:\n• outremers360.com\n• la1ere.francetvinfo.fr\n• outre-mer.gouv.fr")
     // 4. Newsletters et événements culturels
     sections.push("🎭 **Événements Culturels Caraïbes**\n🥁 Festival Gwo Ka — Sainte-Anne, Guadeloupe (Juillet)\n🎵 Festival Jazz Martinique (Juillet-Août)\n🎭 Carnaval Guadeloupe & Martinique (Février-Mars)\n🌊 Tour Cycliste Guadeloupe (Juillet)\n🎤 Sakifo Musik Festival — La Réunion (Juin)\n🎺 Festival Biguine Jazz Martinique (Mai)\n\n📧 **Newsletters DOM-TOM**\n• outremers360.com/newsletter\n• la1ere.francetvinfo.fr/newsletters\n• gwadazap.com (Guadeloupe)\n• martinique.franceantilles.fr/newsletter\n\nBOUDOUM ! 🇬🇵")
-    return res.status(200).json({ response: sections.join("\n\n---\n\n") })
+    return res.status(200).json({ pdfAction: pdfType, response: sections.join("\n\n---\n\n") })
   }
 
     if (msgLow.includes("actualité monde") || msgLow.includes("news monde") || msgLow.includes("actualité internationale") || msgLow.includes("info monde")) {
@@ -590,9 +590,9 @@ async function getWikipedia(term) {
       const rssD = await rssR.json()
       const items = (rssD.items||[]).slice(0,5)
       const txt = items.map((it,i) => `${i+1}. **${it.title}**\n   📰 ${it.pubDate?.substring(0,10)||""}`).join("\n\n")
-      return res.status(200).json({ response: "🌍 **Actualités Monde Francophone — RFI**\n\n"+txt+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Actualités Monde Francophone — RFI**\n\n"+txt+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -606,7 +606,7 @@ async function getWikipedia(term) {
         const jobList = jobs.map(function(j) {
           return "- **" + j.position + "** — " + (j.company||"Entreprise") + "\n  Lien: " + j.url + "\n  Tags: " + (j.tags||[]).slice(0,3).join(", ")
         }).join("\n\n")
-        return res.status(200).json({ response: "Offres d'emploi REELLES - Temps reel (RemoteOK)\n\n" + jobList + "\n\nPlateformes DOM-TOM gratuites:\n- Guadeloupe: francetravail.fr\n- Reunion: emploi.re\n- Caraibes: caribbeanjobs.com\n- Afrique: jobartis.com\n- Remote: remoteok.com\n- Indeed: indeed.fr\n- LinkedIn: linkedin.com/jobs\n\nTape creer mon CV pour ton CV PDF gratuit !\n\nBOUDOUM !" })
+        return res.status(200).json({ pdfAction: pdfType, response: "Offres d'emploi REELLES - Temps reel (RemoteOK)\n\n" + jobList + "\n\nPlateformes DOM-TOM gratuites:\n- Guadeloupe: francetravail.fr\n- Reunion: emploi.re\n- Caraibes: caribbeanjobs.com\n- Afrique: jobartis.com\n- Remote: remoteok.com\n- Indeed: indeed.fr\n- LinkedIn: linkedin.com/jobs\n\nTape creer mon CV pour ton CV PDF gratuit !\n\nBOUDOUM !" })
       }
     } catch(eRemote) {}
     try {
@@ -623,9 +623,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💼 **Neuro-X Emploi — DOM-TOM / Caraïbes / Afrique**\n\n"+d.choices?.[0]?.message?.content+"\n\n🔗 **Plateformes gratuites:**\n• France Travail: francetravail.fr\n• Réunion: emploi.re\n• Caraïbes: caribbeanjobs.com\n• Afrique: jobartis.com\n• International: linkedin.com\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Emploi — DOM-TOM / Caraïbes / Afrique**\n\n"+d.choices?.[0]?.message?.content+"\n\n🔗 **Plateformes gratuites:**\n• France Travail: francetravail.fr\n• Réunion: emploi.re\n• Caraïbes: caribbeanjobs.com\n• Afrique: jobartis.com\n• International: linkedin.com\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "💼 **Offres Emploi — DOM-TOM / Caraïbes / Afrique**\n\n🔗 **Plateformes gratuites:**\n• 🇫🇷 France Travail: francetravail.fr\n• 🇷🇪 La Réunion: emploi.re\n• 🌴 Caraïbes: caribbeanjobs.com\n• 🌍 Afrique: jobartis.com\n• 💼 International: linkedin.com\n• 🌐 Mondial: indeed.fr\n\n💡 Secteurs porteurs DOM-TOM: Tourisme, BTP, Santé, IA, E-commerce\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Offres Emploi — DOM-TOM / Caraïbes / Afrique**\n\n🔗 **Plateformes gratuites:**\n• 🇫🇷 France Travail: francetravail.fr\n• 🇷🇪 La Réunion: emploi.re\n• 🌴 Caraïbes: caribbeanjobs.com\n• 🌍 Afrique: jobartis.com\n• 💼 International: linkedin.com\n• 🌐 Mondial: indeed.fr\n\n💡 Secteurs porteurs DOM-TOM: Tourisme, BTP, Santé, IA, E-commerce\n\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -645,9 +645,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🤝 **Neuro-X Juridique — Créer une Association**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Juridique — Créer une Association**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -667,9 +667,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🏆 **Passeport de Réussite REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton certificat :** https://reussitess.fr/champions\n\n🌍 15 247 Champions dans 127 pays !\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton certificat :** https://reussitess.fr/champions\n\n🌍 15 247 Champions dans 127 pays !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🏆 **Passeport de Réussite REUSSITESS**\n\nTon certificat de champion t'attend ! 15 247 champions dans 127 pays ont déjà rejoint le mouvement REUSSITESS.\n\n✅ Remplis ton prénom, ton pays et ton objectif\n✅ Reçois ton certificat personnalisé\n✅ Obtiens ton plan d'action sur mesure\n\n👉 **Accède maintenant :** https://reussitess.fr/champions\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\nTon certificat de champion t'attend ! 15 247 champions dans 127 pays ont déjà rejoint le mouvement REUSSITESS.\n\n✅ Remplis ton prénom, ton pays et ton objectif\n✅ Reçois ton certificat personnalisé\n✅ Obtiens ton plan d'action sur mesure\n\n👉 **Accède maintenant :** https://reussitess.fr/champions\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -689,15 +689,15 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌍 **Visa Universel REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton Visa :** https://reussitess.fr/visa-universel\n\n🚀 Accès aux opportunités mondiales dans 14 pays partenaires !\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Visa Universel REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton Visa :** https://reussitess.fr/visa-universel\n\n🚀 Accès aux opportunités mondiales dans 14 pays partenaires !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🌍 **Visa Universel REUSSITESS**\n\nTon passeport vers les opportunités mondiales !\n\n✅ Accès réseau entrepreneurs 26 pays\n✅ Affiliation Amazon 14 pays\n✅ Token REUSS sur Polygon\n✅ Bibliothèque mondiale\n✅ Formation IA gratuite\n\n👉 **Accède maintenant :** https://reussitess.fr/visa-universel\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Visa Universel REUSSITESS**\n\nTon passeport vers les opportunités mondiales !\n\n✅ Accès réseau entrepreneurs 26 pays\n✅ Affiliation Amazon 14 pays\n✅ Token REUSS sur Polygon\n✅ Bibliothèque mondiale\n✅ Formation IA gratuite\n\n👉 **Accède maintenant :** https://reussitess.fr/visa-universel\n\nBOUDOUM ! 🇬🇵" })
     }
   }
 
   // NAVIGATION ECOSYSTEME COMPLET
   if (msgLow.includes("écosystème") || msgLow.includes("ecosystem") || msgLow.includes("tout ce que propose") || msgLow.includes("site reussitess") || msgLow.includes("que faire sur") || msgLow.includes("navigation") || msgLow.includes("menu reussitess")) {
-    return res.status(200).json({ response: "🌐 **Écosystème REUSSITESS — Guide Complet**\n\n"
+    return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Écosystème REUSSITESS — Guide Complet**\n\n"
     +"🏆 **[Passeport de Réussite](https://reussitess.fr/champions)**\nCertificat de champion + plan d'action personnalisé\n\n"
     +"🌍 **[Visa Universel](https://reussitess.fr/visa-universel)**\nAccès réseau opportunités 14 pays\n\n"
     +"🧠 **[Neuro-X](https://reussitess.fr/neuro-x)**\n60 agents IA spécialisés\n\n"
@@ -729,9 +729,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🧬 **Neuro-X Culture — Mon ADN Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Explore ton ADN: https://reussitess.fr/mon-adn\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🧬 **Neuro-X Culture — Mon ADN Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Explore ton ADN: https://reussitess.fr/mon-adn\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -751,9 +751,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🔮 **Oracle 971 — Voix de la Guadeloupe**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Consulte l'Oracle: https://reussitess.fr/oracle-971\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Oracle 971 — Voix de la Guadeloupe**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Consulte l'Oracle: https://reussitess.fr/oracle-971\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -773,15 +773,15 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🚀 **Neuro-X Coach — Ta Révolution IA**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Lance ta révolution: https://reussitess.fr/ma-revolution-ia\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🚀 **Neuro-X Coach — Ta Révolution IA**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Lance ta révolution: https://reussitess.fr/ma-revolution-ia\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
   // BILAN FINAL ECOSYSTEME
   if (msgLow.includes("que sais-tu faire") || msgLow.includes("tes capacités") || msgLow.includes("liste tes fonctions") || msgLow.includes("tout ce que tu fais") || msgLow.includes("fonctionnalités")) {
-    return res.status(200).json({ response: "🤖 **REUSSITESS AI — 150+ Fonctionnalités**\n\n"
+    return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS AI — 150+ Fonctionnalités**\n\n"
     +"🌍 **Données Temps Réel :** Météo monde, Crypto live, Actualités, Séismes, Cyclones, ISS, Lune, Taux change\n\n"
     +"🧠 **60 Neuro-X :** Finance, Business, Culture, Coach, Tech, Santé, Droit, Voyage, Cuisine, Musique, Sport, Histoire, Agriculture, Tourisme, Astronomie, Géopolitique, SEO, DeFi, NFT, Psychologie, Langues, Énergie, Mode, Gastronomie, Enfants, Seniors, Femmes, Jeunes, Diaspora, Blockchain, Stratégie...\n\n"
     +"🛡️ **40 Sentinelles :** Surveillance 24/7 prix REUSS, site, APIs, sécurité\n\n"
@@ -810,9 +810,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "✍️ **Neuro-X Marketing — Générateur Bio**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "✍️ **Neuro-X Marketing — Générateur Bio**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -832,9 +832,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "❤️ **Neuro-X Santé — Santé Cardiovasculaire**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez votre médecin.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "❤️ **Neuro-X Santé — Santé Cardiovasculaire**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez votre médecin.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -854,9 +854,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🏡 **Neuro-X Immobilier — Achat Terrain Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🏡 **Neuro-X Immobilier — Achat Terrain Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -876,15 +876,15 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌐 **Neuro-X Tech — Web3 Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Tech — Web3 Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
   // IDENTITE DU BOT
   if (msgLow.includes("qui es-tu") || msgLow.includes("qui es tu") || msgLow.includes("présente-toi") || msgLow.includes("présente toi") || msgLow.includes("ta mission") || msgLow.includes("c'est quoi reussitess ai") || msgLow.includes("tu es qui")) {
-    return res.status(200).json({ response: "🤖 **Je suis REUSSITESS®971 AI**\n\nChef d'orchestre de l'écosystème REUSSITESS®971, créé depuis la **Guadeloupe** 🇬🇵 par **Rony Porinus**.\n\n**Ma devise :** *Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets.*\n\n**Ce que je suis :**\n🧠 200+ modules IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme)\n🌍 Présent dans 14 pays partenaires\n📚 160+ fonctionnalités actives\n💎 Connecté au Token REUSS sur Polygon\n🛍️ 26 boutiques Amazon affiliées\n\n**L'écosystème REUSSITESS®971 :**\n🏆 [Passeport de Réussite](https://reussitess.fr/champions)\n🌍 [Visa Universel](https://reussitess.fr/visa-universel)\n🧠 [Neuro-X](https://reussitess.fr/neuro-x)\n💎 [Token REUSS](https://reussitess.fr/investir-reuss)\n🔮 [Oracle 971](https://reussitess.fr/oracle-971)\n\n*Terres de Champions — Positivité à l'infini !*\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🤖 **Je suis REUSSITESS®971 AI**\n\nChef d'orchestre de l'écosystème REUSSITESS®971, créé depuis la **Guadeloupe** 🇬🇵 par **Rony Porinus**.\n\n**Ma devise :** *Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets.*\n\n**Ce que je suis :**\n🧠 200+ modules IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme)\n🌍 Présent dans 14 pays partenaires\n📚 160+ fonctionnalités actives\n💎 Connecté au Token REUSS sur Polygon\n🛍️ 26 boutiques Amazon affiliées\n\n**L'écosystème REUSSITESS®971 :**\n🏆 [Passeport de Réussite](https://reussitess.fr/champions)\n🌍 [Visa Universel](https://reussitess.fr/visa-universel)\n🧠 [Neuro-X](https://reussitess.fr/neuro-x)\n💎 [Token REUSS](https://reussitess.fr/investir-reuss)\n🔮 [Oracle 971](https://reussitess.fr/oracle-971)\n\n*Terres de Champions — Positivité à l'infini !*\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // GUIDE INTELLIGENCE EMOTIONNELLE
@@ -903,9 +903,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💛 **Neuro-X Psychologie — Intelligence Émotionnelle**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💛 **Neuro-X Psychologie — Intelligence Émotionnelle**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -925,9 +925,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🤝 **Neuro-X Business — Crowdfunding Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Business — Crowdfunding Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -947,9 +947,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌺 **Neuro-X Coach — Bien-Être au Travail**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌺 **Neuro-X Coach — Bien-Être au Travail**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -969,9 +969,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌍 **Neuro-X Géopolitique — Caraïbes**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Géopolitique — Caraïbes**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -991,9 +991,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📸 **Neuro-X Créatif — Photographie Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📸 **Neuro-X Créatif — Photographie Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1013,9 +1013,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "👗 **Neuro-X Mode — Stylisme Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "👗 **Neuro-X Mode — Stylisme Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1035,9 +1035,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "👑 **Neuro-X Coach — Leadership Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Coach — Leadership Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1057,9 +1057,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🔒 **Neuro-X Réseaux — Protection Données RGPD**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🔒 **Neuro-X Réseaux — Protection Données RGPD**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1079,9 +1079,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "# **Neuro-X Marketing — Hashtags Viraux**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "# **Neuro-X Marketing — Hashtags Viraux**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1102,9 +1102,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎓 **Neuro-X Finance — Crypto pour Débutants**\n\n📊 Marché: "+crypto+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Finance — Crypto pour Débutants**\n\n📊 Marché: "+crypto+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1124,9 +1124,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💚 **Neuro-X Psychologie — Santé Mentale**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un professionnel de santé.\nUrgence: 3114 (numéro national prévention suicide)\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💚 **Neuro-X Psychologie — Santé Mentale**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un professionnel de santé.\nUrgence: 3114 (numéro national prévention suicide)\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1146,9 +1146,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌍 **Neuro-X Logistique — Export International**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Logistique — Export International**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1168,9 +1168,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎙️ **Neuro-X Marketing — Guide Podcast**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎙️ **Neuro-X Marketing — Guide Podcast**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1190,9 +1190,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💰 **Neuro-X Business — Micro-Finance**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Business — Micro-Finance**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1212,9 +1212,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "👴 **Neuro-X Seniors — Bien-Vieillir Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Seniors — Bien-Vieillir Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1234,9 +1234,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📝 **Neuro-X Juridique — Générateur Contrats**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un avocat avant signature.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📝 **Neuro-X Juridique — Générateur Contrats**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un avocat avant signature.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1256,9 +1256,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🛒 **Neuro-X Business — Dropshipping Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🛒 **Neuro-X Business — Dropshipping Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1278,9 +1278,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💻 **Neuro-X Business — Guide Freelance**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💻 **Neuro-X Business — Guide Freelance**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1300,9 +1300,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🤖 **Neuro-X IA — Guide Débutants**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **Neuro-X IA — Guide Débutants**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1322,9 +1322,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🥗 **Neuro-X Santé — Nutrition Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🥗 **Neuro-X Santé — Nutrition Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1344,9 +1344,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💙 **REUSSITESS AI — Soutien & Accompagnement**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💙 **REUSSITESS AI — Soutien & Accompagnement**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1366,9 +1366,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💊 **Neuro-X Santé — Information Médicale**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez toujours un médecin ou pharmacien.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💊 **Neuro-X Santé — Information Médicale**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez toujours un médecin ou pharmacien.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1388,9 +1388,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎬 **Neuro-X Marketing — Création Contenu**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎬 **Neuro-X Marketing — Création Contenu**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1410,9 +1410,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💳 **Neuro-X Finance — Guide Épargne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💳 **Neuro-X Finance — Guide Épargne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1424,7 +1424,7 @@ async function getWikipedia(term) {
       lune.includes("Premier") ? "🌓 Idéal pour action, croissance, lancer des initiatives" :
       lune.includes("Pleine") ? "🌕 Idéal pour récolter, célébrer, finaliser projets" :
       "🌗 Idéal pour lâcher prise, bilan, repos"
-    return res.status(200).json({ response: "🌙 **Calendrier Lunaire Caribéen**\n\n"+lune+"\n\n"+conseil+"\n\n🌿 En agriculture créole :\n• Nouvelle lune → planter légumes-feuilles\n• Pleine lune → récolte optimale\n• Dernier quartier → tailler, élaguer\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🌙 **Calendrier Lunaire Caribéen**\n\n"+lune+"\n\n"+conseil+"\n\n🌿 En agriculture créole :\n• Nouvelle lune → planter légumes-feuilles\n• Pleine lune → récolte optimale\n• Dernier quartier → tailler, élaguer\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // MODE ENFANTS
@@ -1443,9 +1443,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🧒 **Neuro-X Enfants — Mode Famille**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🧒 **Neuro-X Enfants — Mode Famille**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1456,10 +1456,10 @@ async function getWikipedia(term) {
       const d = await r.json()
       if (d.items?.length) {
         const news = d.items.slice(0,5).map(i => "📰 "+i.title).join("\n")
-        return res.status(200).json({ response: "🇬🇵 **Actualités Guadeloupe — La 1ère**\n\n"+news+"\n\nSource: la1ere.francetvinfo.fr\n\nBOUDOUM ! 🇬🇵" })
+        return res.status(200).json({ pdfAction: pdfType, response: "🇬🇵 **Actualités Guadeloupe — La 1ère**\n\n"+news+"\n\nSource: la1ere.francetvinfo.fr\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {}
-    return res.status(200).json({ response: "🇬🇵 **Actualités Guadeloupe**\n\n📺 La 1ère: la1ere.francetvinfo.fr/guadeloupe\n📻 RCI: rci.fm\n📰 France-Antilles: france-antilles.fr\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🇬🇵 **Actualités Guadeloupe**\n\n📺 La 1ère: la1ere.francetvinfo.fr/guadeloupe\n📻 RCI: rci.fm\n📰 France-Antilles: france-antilles.fr\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // GUIDE NFT CARAIBE
@@ -1478,9 +1478,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎨 **Neuro-X NFT — Art Numérique Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X NFT — Art Numérique Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1500,9 +1500,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "⛏️ **Neuro-X Finance — Guide GoMining**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "⛏️ **Neuro-X Finance — Guide GoMining**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1515,10 +1515,10 @@ async function getWikipedia(term) {
         const niveau = nb >= 5000 ? "💠 Platinum" : nb >= 1000 ? "🥇 Gold" : nb >= 500 ? "🥈 Silver" : "🥉 Bronze"
         const annuel = (nb * apy).toFixed(0)
         const mensuel = (nb * apy / 12).toFixed(0)
-        return res.status(200).json({ response: "💎 **Calculateur Staking REUSS**\n\n"+niveau+"\n💰 "+nb+" REUSS stakés\n📈 APY : "+(apy*100)+"%\n\n✅ Gain annuel : "+annuel+" REUSS\n📅 Gain mensuel : "+mensuel+" REUSS\n\nBOUDOUM ! 🇬🇵" })
+        return res.status(200).json({ pdfAction: pdfType, response: "💎 **Calculateur Staking REUSS**\n\n"+niveau+"\n💰 "+nb+" REUSS stakés\n📈 APY : "+(apy*100)+"%\n\n✅ Gain annuel : "+annuel+" REUSS\n📅 Gain mensuel : "+mensuel+" REUSS\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {}
-    return res.status(200).json({ response: "💎 **Calculateur Staking REUSS**\n\nDonne le nombre de tokens à staker\nEx: *calcule staking 1000 REUSS*\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "💎 **Calculateur Staking REUSS**\n\nDonne le nombre de tokens à staker\nEx: *calcule staking 1000 REUSS*\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // CHAMPIONS SPORTIFS ANTILLES
@@ -1537,9 +1537,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🏆 **Neuro-X Sport — Champions Antillais**\n\n"+d.choices?.[0]?.message?.content+"\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Neuro-X Sport — Champions Antillais**\n\n"+d.choices?.[0]?.message?.content+"\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1561,9 +1561,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌱 **Neuro-X Agriculture — Jardin Créole**\n\n🌙 "+lune+" | 🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌱 **Neuro-X Agriculture — Jardin Créole**\n\n🌙 "+lune+" | 🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1583,9 +1583,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🧠 **Neuro-X Philosophie — Pensée Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Philosophie — Pensée Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1605,9 +1605,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌍 **Neuro-X Diaspora — Communauté Mondiale**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Diaspora — Communauté Mondiale**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1627,9 +1627,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "⛓️ **Neuro-X Blockchain — Smart Contracts**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "⛓️ **Neuro-X Blockchain — Smart Contracts**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1649,9 +1649,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🚀 **Neuro-X Stratégie — Pitch Investisseur**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🚀 **Neuro-X Stratégie — Pitch Investisseur**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1671,9 +1671,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🏠 **Neuro-X Immobilier — Guide DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🏠 **Neuro-X Immobilier — Guide DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1693,9 +1693,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "👑 **Neuro-X Femmes — Coach Entrepreneuriat**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Femmes — Coach Entrepreneuriat**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1715,9 +1715,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎓 **Neuro-X Jeunes — Guide Orientation**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Jeunes — Guide Orientation**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1737,9 +1737,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🔍 **Neuro-X SEO — Audit Site Web**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🔍 **Neuro-X SEO — Audit Site Web**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1759,9 +1759,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎵 **Neuro-X Musique — Chanson Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎵 **Neuro-X Musique — Chanson Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1782,9 +1782,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌿 **Neuro-X Tourisme — Éco-Tourisme Guadeloupe**\n\n🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Tourisme — Éco-Tourisme Guadeloupe**\n\n🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1804,9 +1804,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🔬 **Neuro-X Sciences — Biodiversité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🔬 **Neuro-X Sciences — Biodiversité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1826,9 +1826,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "☀️ **Neuro-X Énergie — Solaire Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "☀️ **Neuro-X Énergie — Solaire Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1848,9 +1848,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📖 **Neuro-X Langues — Dictionnaire Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📖 **Neuro-X Langues — Dictionnaire Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1871,9 +1871,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "✨ **Neuro-X Coach — Développement Personnel**\n\n💬 "+citation+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "✨ **Neuro-X Coach — Développement Personnel**\n\n💬 "+citation+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1895,9 +1895,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📈 **Neuro-X Finance — Analyse Marché**\n\n"+crypto+"\n😨 "+fg+"\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ DYOR\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📈 **Neuro-X Finance — Analyse Marché**\n\n"+crypto+"\n😨 "+fg+"\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ DYOR\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1917,9 +1917,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "👴 **Neuro-X Juridique — Guide Retraite DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un conseiller retraite.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Juridique — Guide Retraite DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un conseiller retraite.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1939,9 +1939,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📋 **Neuro-X Business — Business Plan**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📋 **Neuro-X Business — Business Plan**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1953,10 +1953,10 @@ async function getWikipedia(term) {
         const poids = nb[0], taille = nb[1] > 3 ? nb[1]/100 : nb[1]
         const imc = (poids / (taille * taille)).toFixed(1)
         const cat = imc < 18.5 ? "🔵 Insuffisance pondérale" : imc < 25 ? "🟢 Poids normal" : imc < 30 ? "🟡 Surpoids" : "🔴 Obésité"
-        return res.status(200).json({ response: "⚖️ **Calculateur IMC — Neuro-X Santé**\n\nPoids: "+poids+"kg | Taille: "+(taille*100)+"cm\n\n📊 IMC : "+imc+"\n"+cat+"\n\n💡 Conseil caribéen: Mangez équilibré, bougez au soleil !\n\nBOUDOUM ! 🇬🇵" })
+        return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Calculateur IMC — Neuro-X Santé**\n\nPoids: "+poids+"kg | Taille: "+(taille*100)+"cm\n\n📊 IMC : "+imc+"\n"+cat+"\n\n💡 Conseil caribéen: Mangez équilibré, bougez au soleil !\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {}
-    return res.status(200).json({ response: "⚖️ **Calculateur IMC**\n\nDonne ton poids (kg) et ta taille (cm)\nEx: *calcule mon IMC 70kg 175cm*\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Calculateur IMC**\n\nDonne ton poids (kg) et ta taille (cm)\nEx: *calcule mon IMC 70kg 175cm*\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // GUIDE IMMIGRATION DOM-TOM
@@ -1975,9 +1975,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "✈️ **Neuro-X Juridique — Guide Immigration**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez les services préfectoraux.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Juridique — Guide Immigration**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez les services préfectoraux.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -1998,9 +1998,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "⭐ **Neuro-X Spiritualité — Astrologie Caribéenne**\n\n"+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "⭐ **Neuro-X Spiritualité — Astrologie Caribéenne**\n\n"+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2020,9 +2020,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎯 **Neuro-X Éducation — Quiz Instantané**\n\n"+d.choices?.[0]?.message?.content+"\n\n+5 points REUSS si bonne réponse !\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Éducation — Quiz Instantané**\n\n"+d.choices?.[0]?.message?.content+"\n\n+5 points REUSS si bonne réponse !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2042,9 +2042,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📊 **Neuro-X Marketing — Plan Complet**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📊 **Neuro-X Marketing — Plan Complet**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2065,10 +2065,10 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       const rep = d.choices?.[0]?.message?.content
-      if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS — Histoire Caribéenne & Africaine**\n\n"+rep+"\n\nBOUDOUM ! 🇬🇵" })
-      return res.status(200).json({ response: "📚 **Histoire Caribéenne**\n\nLa Guadeloupe, Terres de Champions ! Notre histoire est riche: découverte par Christophe Colomb en 1493, peuplement par les Kalinagos, colonisation française, abolition de l'esclavage le 27 mai 1848 par Victor Schœlcher, résistance de Louis Delgrès. Aujourd'hui département français d'outre-mer fier de son identité créole.\n\nBOUDOUM ! 🇬🇵" })
+      if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS — Histoire Caribéenne & Africaine**\n\n"+rep+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📚 **Histoire Caribéenne**\n\nLa Guadeloupe, Terres de Champions ! Notre histoire est riche: découverte par Christophe Colomb en 1493, peuplement par les Kalinagos, colonisation française, abolition de l'esclavage le 27 mai 1848 par Victor Schœlcher, résistance de Louis Delgrès. Aujourd'hui département français d'outre-mer fier de son identité créole.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "📚 **Histoire Caribéenne & Africaine**\n\nLa Guadeloupe est une île des Caraïbes, département français d'outre-mer. Histoire marquée par: les peuples Kalinagos, la colonisation, l'esclavage et son abolition le 27 mai 1848. L'Afrique, berceau de l'humanité, a donné naissance aux grandes civilisations: Égypte ancienne, empire du Mali, royaume du Congo. Nelson Mandela, Thomas Sankara, Patrice Lumumba — des leaders qui ont changé le monde.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📚 **Histoire Caribéenne & Africaine**\n\nLa Guadeloupe est une île des Caraïbes, département français d'outre-mer. Histoire marquée par: les peuples Kalinagos, la colonisation, l'esclavage et son abolition le 27 mai 1848. L'Afrique, berceau de l'humanité, a donné naissance aux grandes civilisations: Égypte ancienne, empire du Mali, royaume du Congo. Nelson Mandela, Thomas Sankara, Patrice Lumumba — des leaders qui ont changé le monde.\n\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2088,9 +2088,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📧 **Neuro-X Business — Email Professionnel**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📧 **Neuro-X Business — Email Professionnel**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2110,9 +2110,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📱 **Neuro-X Marketing — Générateur Posts**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📱 **Neuro-X Marketing — Générateur Posts**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2132,9 +2132,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🍹 **Neuro-X Cuisine — Cocktails Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🍹 **Neuro-X Cuisine — Cocktails Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2155,9 +2155,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌙 **Neuro-X Spiritualité — Analyse Rêves**\n\n"+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌙 **Neuro-X Spiritualité — Analyse Rêves**\n\n"+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2178,9 +2178,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "✈️ **Neuro-X Tourisme — Guide Caribéen**\n\n🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Tourisme — Guide Caribéen**\n\n🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2200,9 +2200,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🧠 **Neuro-X Psychologie — Analyse Personnalité**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Psychologie — Analyse Personnalité**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2222,9 +2222,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎯 **Neuro-X Marketing — Générateur Slogans**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Marketing — Générateur Slogans**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2246,9 +2246,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💰 **Neuro-X Finance — Conseils Investissement**\n\n📊 Marché actuel : "+fg+"\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ DYOR — Pas de conseil financier.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Finance — Conseils Investissement**\n\n📊 Marché actuel : "+fg+"\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ DYOR — Pas de conseil financier.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2268,9 +2268,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌐 **Neuro-X Langues — Leçon**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Langues — Leçon**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2292,9 +2292,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🧘 **Neuro-X Santé — Méditation Caribéenne**\n\n🌊 "+meteo+" | "+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🧘 **Neuro-X Santé — Méditation Caribéenne**\n\n🌊 "+meteo+" | "+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2311,7 +2311,7 @@ async function getWikipedia(term) {
       { creole: "Péyi a ni solèy pou tout moun", fr: "Le pays a du soleil pour tout le monde" },
     ]
     const p = proverbes[Math.floor(Math.random()*proverbes.length)]
-    return res.status(200).json({ response: "🌺 **Proverbe Créole du Moment**\n\n*"+p.creole+"*\n\n📖 Traduction : "+p.fr+"\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🌺 **Proverbe Créole du Moment**\n\n*"+p.creole+"*\n\n📖 Traduction : "+p.fr+"\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // SANTE NATURELLE CARIBEENNE
@@ -2330,9 +2330,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌿 **Neuro-X Santé — Plantes Caribéennes**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un médecin.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Santé — Plantes Caribéennes**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un médecin.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2345,10 +2345,10 @@ async function getWikipedia(term) {
         let sum = digits.reduce((a,b)=>a+b,0)
         while(sum>9) sum = String(sum).split("").map(Number).reduce((a,b)=>a+b,0)
         const signifs = ["","Leader né","Diplomate","Créatif","Travailleur","Aventurier","Harmonieux","Mystique","Ambitieux","Humaniste"]
-        return res.status(200).json({ response: "🔢 **Numérologie Caribéenne**\n\nTon chiffre de vie : **"+sum+"**\n\n✨ "+signifs[sum]+"\n\nEn Guadeloupe, le "+sum+" représente la force des Terres de Champions !\n\nBOUDOUM ! 🇬🇵" })
+        return res.status(200).json({ pdfAction: pdfType, response: "🔢 **Numérologie Caribéenne**\n\nTon chiffre de vie : **"+sum+"**\n\n✨ "+signifs[sum]+"\n\nEn Guadeloupe, le "+sum+" représente la force des Terres de Champions !\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {}
-    return res.status(200).json({ response: "🔢 **Numérologie Caribéenne**\n\nDonne ta date de naissance (ex: 25/03/1990) pour calculer ton chiffre de vie !\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🔢 **Numérologie Caribéenne**\n\nDonne ta date de naissance (ex: 25/03/1990) pour calculer ton chiffre de vie !\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // METEO MONDE
@@ -2363,9 +2363,9 @@ async function getWikipedia(term) {
       const md = await mr.json()
       const w = md.current_weather
       const wDesc = w.weathercode<=3?"Ensoleillé":w.weathercode<=48?"Nuageux":w.weathercode<=67?"Pluvieux":"Orageux"
-      return res.status(200).json({ response: "🌤️ **Météo "+lieu+" — Temps réel**\n\n🌡️ "+w.temperature+"°C\n💨 Vent: "+w.windspeed+"km/h\n☁️ "+wDesc+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌤️ **Météo "+lieu+" — Temps réel**\n\n🌡️ "+w.temperature+"°C\n💨 Vent: "+w.windspeed+"km/h\n☁️ "+wDesc+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2385,9 +2385,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💪 **Neuro-X Sport — Coach Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💪 **Neuro-X Sport — Coach Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2407,9 +2407,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🍽️ **Neuro-X Cuisine — Recette Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🍽️ **Neuro-X Cuisine — Recette Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2429,9 +2429,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "⚖️ **Neuro-X Juridique — Conseil Droit**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un avocat pour toute décision légale.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Neuro-X Juridique — Conseil Droit**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un avocat pour toute décision légale.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2441,10 +2441,10 @@ async function getWikipedia(term) {
       const nb = parseFloat(message.match(/[\d.,]+/)?.[0]?.replace(",","."))
       if (!isNaN(nb)) {
         const taux = { standard: 0.03, mode: 0.10, cuisine: 0.08, tech: 0.04, livres: 0.045 }
-        return res.status(200).json({ response: "💰 **Calculateur Amazon REUSSITESS**\n\nProduit à $"+nb+"\n\n📊 Commissions estimées :\n• Standard (3%) : $"+(nb*0.03).toFixed(2)+"\n• Mode (10%) : $"+(nb*0.10).toFixed(2)+"\n• Cuisine (8%) : $"+(nb*0.08).toFixed(2)+"\n• Tech (4%) : $"+(nb*0.04).toFixed(2)+"\n• Livres (4.5%) : $"+(nb*0.045).toFixed(2)+"\n\n🌍 Multiplié par 26 boutiques = $"+(nb*0.05*26).toFixed(2)+"/vente théorique\n\nBOUDOUM ! 🇬🇵" })
+        return res.status(200).json({ pdfAction: pdfType, response: "💰 **Calculateur Amazon REUSSITESS**\n\nProduit à $"+nb+"\n\n📊 Commissions estimées :\n• Standard (3%) : $"+(nb*0.03).toFixed(2)+"\n• Mode (10%) : $"+(nb*0.10).toFixed(2)+"\n• Cuisine (8%) : $"+(nb*0.08).toFixed(2)+"\n• Tech (4%) : $"+(nb*0.04).toFixed(2)+"\n• Livres (4.5%) : $"+(nb*0.045).toFixed(2)+"\n\n🌍 Multiplié par 26 boutiques = $"+(nb*0.05*26).toFixed(2)+"/vente théorique\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2464,9 +2464,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📋 **Résumé de Session**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📋 **Résumé de Session**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2486,9 +2486,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "⚖️ **Mode Débat — Neuro-X Stratégie**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Mode Débat — Neuro-X Stratégie**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2508,9 +2508,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💼 **Neuro-X Business — Conseils Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Business — Conseils Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2531,9 +2531,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       const poeme = d.choices?.[0]?.message?.content || ""
-      return res.status(200).json({ response: "✍️ **Neuro-X Créatif — Poème Créole**\n\n"+poeme+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "✍️ **Neuro-X Créatif — Poème Créole**\n\n"+poeme+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2554,9 +2554,9 @@ async function getWikipedia(term) {
       })
       const d = await groqRes.json()
       const noms = d.choices?.[0]?.message?.content || ""
-      return res.status(200).json({ response: "🏢 **Neuro-X Business — Générateur de Noms**\n\n"+noms+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🏢 **Neuro-X Business — Générateur de Noms**\n\n"+noms+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2576,9 +2576,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📄 **Neuro-X Business — Assistant CV**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📄 **Neuro-X Business — Assistant CV**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2598,41 +2598,41 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📖 **Neuro-X Créatif — Conte Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📖 **Neuro-X Créatif — Conte Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
   // WHITEPAPER REUSSITESS
   if (msgLow.includes("whitepaper") || msgLow.includes("livre blanc") || msgLow.includes("white paper") || msgLow.includes("tokenomics")) {
-    return res.status(200).json({ response: "📄 **REUSSITESS® White Paper**\n\n🎯 Vision : IA universelle caribéenne\n🌍 Portée : 14 pays, 5 continents\n💎 Token : REUSS sur Polygon\n📊 Supply : 1 milliard REUSS\n\n**Tokenomics :**\n• 40% Communauté\n• 20% Développement\n• 15% Équipe\n• 15% Réserve\n• 10% Marketing\n\n**Utilité REUSS :**\n• Accès Neuro-X premium\n• Récompenses Quiz\n• Gouvernance DAO\n• Staking\n\n📋 White paper complet : reussitess.fr\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "📄 **REUSSITESS® White Paper**\n\n🎯 Vision : IA universelle caribéenne\n🌍 Portée : 14 pays, 5 continents\n💎 Token : REUSS sur Polygon\n📊 Supply : 1 milliard REUSS\n\n**Tokenomics :**\n• 40% Communauté\n• 20% Développement\n• 15% Équipe\n• 15% Réserve\n• 10% Marketing\n\n**Utilité REUSS :**\n• Accès Neuro-X premium\n• Récompenses Quiz\n• Gouvernance DAO\n• Staking\n\n📋 White paper complet : reussitess.fr\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // STAKING REUSS
   if (msgLow.includes("staking") || msgLow.includes("stake") || msgLow.includes("mettre en jeu") || msgLow.includes("récompense token")) {
-    return res.status(200).json({ response: "💎 **Staking REUSS — Gagne en Dormant**\n\n🥉 Bronze : 100 REUSS → 3% APY\n🥈 Silver : 500 REUSS → 8% APY\n🥇 Gold : 1000 REUSS → 15% APY\n💠 Platinum : 5000 REUSS → 20% APY\n\n📍 Contrat : 0xB37531727fC07c6EED4f97F852A115B428046EB2\n🔗 Réseau : Polygon\n\n💡 Plus tu stakes, plus tu gagnes !\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "💎 **Staking REUSS — Gagne en Dormant**\n\n🥉 Bronze : 100 REUSS → 3% APY\n🥈 Silver : 500 REUSS → 8% APY\n🥇 Gold : 1000 REUSS → 15% APY\n💠 Platinum : 5000 REUSS → 20% APY\n\n📍 Contrat : 0xB37531727fC07c6EED4f97F852A115B428046EB2\n🔗 Réseau : Polygon\n\n💡 Plus tu stakes, plus tu gagnes !\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // DAO GOUVERNANCE
   if (msgLow.includes("dao") || msgLow.includes("gouvernance") || msgLow.includes("voter") || msgLow.includes("proposition")) {
-    return res.status(200).json({ response: "🏛️ **REUSSITESS DAO — Gouvernance Décentralisée**\n\nTu as du REUSS = Tu as le pouvoir !\n\n🗳️ Droits de vote :\n• 1 REUSS = 1 vote\n• Propositions communautaires\n• Décisions sur l'écosystème\n\n📋 Prochains votes :\n• Expansion vers 5 nouveaux pays\n• Ajout 40 Neuro-X supplémentaires\n• Nouveau partenariat Amazon\n\n💡 DELTA-4 : Gouvernance DAO active\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🏛️ **REUSSITESS DAO — Gouvernance Décentralisée**\n\nTu as du REUSS = Tu as le pouvoir !\n\n🗳️ Droits de vote :\n• 1 REUSS = 1 vote\n• Propositions communautaires\n• Décisions sur l'écosystème\n\n📋 Prochains votes :\n• Expansion vers 5 nouveaux pays\n• Ajout 40 Neuro-X supplémentaires\n• Nouveau partenariat Amazon\n\n💡 DELTA-4 : Gouvernance DAO active\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // NEXUS PASSPORT
   if (msgLow.includes("passport") || msgLow.includes("passeport") || msgLow.includes("identité") || msgLow.includes("nft identité") || msgLow.includes("ia passport")) {
-    return res.status(200).json({ response: "🪪 **IA Passport Mondial REUSSITESS**\n\n🌍 Premier passeport universel IA au monde !\n\n✅ Identité NFT sur blockchain\n✅ 195 langues supportées\n✅ Reconnaissance dans 14 pays\n✅ Accès tous les Neuro-X\n✅ Historique conversations sécurisé\n✅ Récompenses REUSS automatiques\n\n🔐 Technologie : AES-256 + Polygon NFT\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🪪 **IA Passport Mondial REUSSITESS**\n\n🌍 Premier passeport universel IA au monde !\n\n✅ Identité NFT sur blockchain\n✅ 195 langues supportées\n✅ Reconnaissance dans 14 pays\n✅ Accès tous les Neuro-X\n✅ Historique conversations sécurisé\n✅ Récompenses REUSS automatiques\n\n🔐 Technologie : AES-256 + Polygon NFT\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // INVESTIR REUSS
   if (msgLow.includes("investir") || msgLow.includes("acheter reuss") || msgLow.includes("comment acheter") || msgLow.includes("où acheter") || msgLow.includes("ou acheter")) {
-    return res.status(200).json({ response: "💰 **Comment Investir dans REUSS**\n\n1️⃣ Installe MetaMask ou Trust Wallet\n2️⃣ Achète du POL (Polygon) sur Binance/Coinbase\n3️⃣ Connecte sur QuickSwap.exchange\n4️⃣ Swap POL → REUSS\n\n📍 Contrat officiel :\n0xB37531727fC07c6EED4f97F852A115B428046EB2\n\n⚠️ Réseau : Polygon uniquement\n💡 Vérifie toujours le bon contrat !\n\n📊 Prix actuel sur DexScreener\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "💰 **Comment Investir dans REUSS**\n\n1️⃣ Installe MetaMask ou Trust Wallet\n2️⃣ Achète du POL (Polygon) sur Binance/Coinbase\n3️⃣ Connecte sur QuickSwap.exchange\n4️⃣ Swap POL → REUSS\n\n📍 Contrat officiel :\n0xB37531727fC07c6EED4f97F852A115B428046EB2\n\n⚠️ Réseau : Polygon uniquement\n💡 Vérifie toujours le bon contrat !\n\n📊 Prix actuel sur DexScreener\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // POINTS REUSS
   if (msgLow.includes("mes points") || msgLow.includes("mon score") || msgLow.includes("points reuss") || msgLow.includes("combien de points")) {
     const pts = calculerPoints(message)
-    return res.status(200).json({ response: "🏆 **Système Points REUSS**\n\n💎 Points gagnés cette session : "+pts+"\n\n📊 Comment gagner plus :\n• Quiz : +5 pts\n• Neuro-X : +3 pts\n• Mention REUSS : +2 pts\n• BOUDOUM : +10 pts 🎯\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Système Points REUSS**\n\n💎 Points gagnés cette session : "+pts+"\n\n📊 Comment gagner plus :\n• Quiz : +5 pts\n• Neuro-X : +3 pts\n• Mention REUSS : +2 pts\n• BOUDOUM : +10 pts 🎯\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // COMMUNICATION 200 IA
@@ -2642,12 +2642,12 @@ async function getWikipedia(term) {
     const fg = await getFearGreed()
     const cyclone = await getCyclones()
     const lune = getLunePhase()
-    return res.status(200).json({ response: "🤖 **QUANTUM NEXUS — Communication Inter-Agents**\n\n"+"📡 Rapport temps réel des Sentinelles :\n"+"🌤️ ST-003 → Météo: "+(meteo||"N/A")+"\n"+"💎 ST-005 → Crypto: "+(crypto||"N/A")+"\n"+"😨 ST-005 → Marché: "+(fg||"N/A")+"\n"+"🌀 ST-021 → Cyclones: "+(cyclone||"N/A")+"\n"+"🌙 ST-003 → Lune: "+lune+"\n\n"+"🧠 Neuro-X en attente de commandes...\n"+"💬 Active un agent : *neuro-x finance*, *neuro-x coach*...\n\n"+"BOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🤖 **QUANTUM NEXUS — Communication Inter-Agents**\n\n"+"📡 Rapport temps réel des Sentinelles :\n"+"🌤️ ST-003 → Météo: "+(meteo||"N/A")+"\n"+"💎 ST-005 → Crypto: "+(crypto||"N/A")+"\n"+"😨 ST-005 → Marché: "+(fg||"N/A")+"\n"+"🌀 ST-021 → Cyclones: "+(cyclone||"N/A")+"\n"+"🌙 ST-003 → Lune: "+lune+"\n\n"+"🧠 Neuro-X en attente de commandes...\n"+"💬 Active un agent : *neuro-x finance*, *neuro-x coach*...\n\n"+"BOUDOUM ! 🇬🇵" })
   }
 
   // RAPPORT SECURITE
   if (msgLow.includes("sécurité") || msgLow.includes("securite") || msgLow.includes("rapport sécurité") || msgLow.includes("shield") || msgLow.includes("protection")) {
-    return res.status(200).json({ response: "🛡️ **REUSSSHIELD — Rapport Sécurité**\n\n✅ ST-016 Anti-Fraude : Actif\n✅ ST-017 MiCA Compliance : Actif\n✅ ST-026 Surveillance APIs : Actif\n✅ ST-027 Vercel Monitor : Actif\n✅ ST-028 GitHub Watch : Actif\n✅ ST-029 Polygon Network : Actif\n\n🔒 Détection injection prompt : Activée\n🔑 Chiffrement AES-256 : Actif\n🌐 Site reussitess.fr : EN LIGNE\n\n200 agents IA en surveillance continue 24/7\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **REUSSSHIELD — Rapport Sécurité**\n\n✅ ST-016 Anti-Fraude : Actif\n✅ ST-017 MiCA Compliance : Actif\n✅ ST-026 Surveillance APIs : Actif\n✅ ST-027 Vercel Monitor : Actif\n✅ ST-028 GitHub Watch : Actif\n✅ ST-029 Polygon Network : Actif\n\n🔒 Détection injection prompt : Activée\n🔑 Chiffrement AES-256 : Actif\n🌐 Site reussitess.fr : EN LIGNE\n\n200 agents IA en surveillance continue 24/7\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // CONVERTISSEUR MONNAIE TEMPS REEL
@@ -2656,9 +2656,9 @@ async function getWikipedia(term) {
       const rateR = await fetch("https://api.exchangerate-api.com/v4/latest/EUR")
       const rateD = await rateR.json()
       const rates = rateD.rates
-      return res.status(200).json({ response: "💱 **Convertisseur Caribéen Temps Réel**\n\n1 EUR = "+rates.USD?.toFixed(2)+" USD 🇺🇸\n1 EUR = "+rates.GBP?.toFixed(2)+" GBP 🇬🇧\n1 EUR = "+rates.CAD?.toFixed(2)+" CAD 🇨🇦\n1 EUR = "+rates.BRL?.toFixed(2)+" BRL 🇧🇷\n1 EUR = "+rates.XCD?.toFixed(2)+" XCD 🇧🇧 (Dollar Caraïbes)\n1 EUR = "+rates.HTG?.toFixed(2)+" HTG 🇭🇹 (Gourde Haïtienne)\n1 EUR = "+rates.MAD?.toFixed(2)+" MAD 🇲🇦\n1 EUR = "+rates.XOF?.toFixed(2)+" XOF 🌍 (Franc CFA Ouest)\n1 EUR = "+rates.XAF?.toFixed(2)+" XAF 🌍 (Franc CFA Central)\n\n📊 Source: ExchangeRate-API\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💱 **Convertisseur Caribéen Temps Réel**\n\n1 EUR = "+rates.USD?.toFixed(2)+" USD 🇺🇸\n1 EUR = "+rates.GBP?.toFixed(2)+" GBP 🇬🇧\n1 EUR = "+rates.CAD?.toFixed(2)+" CAD 🇨🇦\n1 EUR = "+rates.BRL?.toFixed(2)+" BRL 🇧🇷\n1 EUR = "+rates.XCD?.toFixed(2)+" XCD 🇧🇧 (Dollar Caraïbes)\n1 EUR = "+rates.HTG?.toFixed(2)+" HTG 🇭🇹 (Gourde Haïtienne)\n1 EUR = "+rates.MAD?.toFixed(2)+" MAD 🇲🇦\n1 EUR = "+rates.XOF?.toFixed(2)+" XOF 🌍 (Franc CFA Ouest)\n1 EUR = "+rates.XAF?.toFixed(2)+" XAF 🌍 (Franc CFA Central)\n\n📊 Source: ExchangeRate-API\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "💱 **Convertisseur Caribéen**\n\nTaux approximatifs (mars 2026):\n\n1 EUR ≈ 1.08 USD 🇺🇸\n1 EUR ≈ 0.85 GBP 🇬🇧\n1 EUR ≈ 1.48 CAD 🇨🇦\n1 EUR ≈ 5.80 BRL 🇧🇷\n1 EUR ≈ 2.93 XCD 🇧🇧 (Dollar Caraïbes)\n1 EUR ≈ 142 HTG 🇭🇹 (Gourde Haïtienne)\n1 EUR ≈ 10.7 MAD 🇲🇦\n1 EUR ≈ 655 XOF 🌍 (Franc CFA Ouest)\n1 EUR ≈ 655 XAF 🌍 (Franc CFA Central)\n\n⚠️ Vérifiez sur xe.com pour taux exacts\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💱 **Convertisseur Caribéen**\n\nTaux approximatifs (mars 2026):\n\n1 EUR ≈ 1.08 USD 🇺🇸\n1 EUR ≈ 0.85 GBP 🇬🇧\n1 EUR ≈ 1.48 CAD 🇨🇦\n1 EUR ≈ 5.80 BRL 🇧🇷\n1 EUR ≈ 2.93 XCD 🇧🇧 (Dollar Caraïbes)\n1 EUR ≈ 142 HTG 🇭🇹 (Gourde Haïtienne)\n1 EUR ≈ 10.7 MAD 🇲🇦\n1 EUR ≈ 655 XOF 🌍 (Franc CFA Ouest)\n1 EUR ≈ 655 XAF 🌍 (Franc CFA Central)\n\n⚠️ Vérifiez sur xe.com pour taux exacts\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2686,10 +2686,10 @@ async function getWikipedia(term) {
         })
         const d = await groqRes.json()
         const rep = d.choices?.[0]?.message?.content
-        if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS — Wikipedia Live**\n\n"+rep+"\n\nSource: Wikipedia FR\n\nBOUDOUM ! 🇬🇵" })
+        if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS — Wikipedia Live**\n\n"+rep+"\n\nSource: Wikipedia FR\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2716,7 +2716,7 @@ async function getWikipedia(term) {
           })
           const d = await groqRes.json()
           const rep = d.choices?.[0]?.message?.content
-          if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS — "+fw.charAt(0).toUpperCase()+fw.slice(1)+"**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
+          if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS — "+fw.charAt(0).toUpperCase()+fw.slice(1)+"**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
         }
       } catch(e) {}
     }
@@ -2745,10 +2745,10 @@ async function getWikipedia(term) {
         })
         const d = await groqRes.json()
         const rep = d.choices?.[0]?.message?.content
-        if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
+        if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2769,9 +2769,9 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n*Umuntu ngumuntu ngabantu — Je suis parce que nous sommes*\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n*Umuntu ngumuntu ngabantu — Je suis parce que nous sommes*\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2792,26 +2792,26 @@ async function getWikipedia(term) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n"+d.choices?.[0]?.message?.content+"\n\n*Ubuntu: Je suis parce que nous sommes*\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n"+d.choices?.[0]?.message?.content+"\n\n*Ubuntu: Je suis parce que nous sommes*\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
   // SECURITE — ANTI-INJECTION
   const menace = detecterMenace(message)
   if (menace) {
-    return res.status(200).json({ response: "🛡️ **ST-016 Sentinelle Sécurité — ALERTE**\n\nTentative d'injection détectée. REUSSITESS AI est protégé par 200 agents IA.\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **ST-016 Sentinelle Sécurité — ALERTE**\n\nTentative d'injection détectée. REUSSITESS AI est protégé par 200 agents IA.\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // RECOMMANDATIONS AMAZON
   if (msgLow.includes("recommande") || msgLow.includes("suggestion produit") || msgLow.includes("que acheter") || msgLow.includes("quoi acheter") || msgLow.includes("produit amazon")) {
-    return res.status(200).json({ response: "🛍️ **Recommandations Amazon REUSSITESS**\n\n🇫🇷 France → amazon.fr/shop/amourguadeloupe\n🇺🇸 USA → amazon.com/shop/influencer-fb942837\n🇩🇪 Allemagne → amazon.de/shop/influencer-fb942837\n🇬🇧 UK → amazon.co.uk/shop/influencer-fb942837\n🇨🇦 Canada → amazon.ca/shop/influencer-fb942837\n🇧🇷 Brésil → amazon.com.br/shop/influencer-fb942837\n🇦🇺 Australie → amazon.com.au/shop/influencer-fb942837\n🇮🇳 Inde → amazon.in/shop/influencer-fb942837\n\n💎 Gagne des tokens REUSS à chaque achat !\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🛍️ **Recommandations Amazon REUSSITESS**\n\n🇫🇷 France → amazon.fr/shop/amourguadeloupe\n🇺🇸 USA → amazon.com/shop/influencer-fb942837\n🇩🇪 Allemagne → amazon.de/shop/influencer-fb942837\n🇬🇧 UK → amazon.co.uk/shop/influencer-fb942837\n🇨🇦 Canada → amazon.ca/shop/influencer-fb942837\n🇧🇷 Brésil → amazon.com.br/shop/influencer-fb942837\n🇦🇺 Australie → amazon.com.au/shop/influencer-fb942837\n🇮🇳 Inde → amazon.in/shop/influencer-fb942837\n\n💎 Gagne des tokens REUSS à chaque achat !\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // CLASSEMENT FOLLOWERS
   if (msgLow.includes("classement") || msgLow.includes("leaderboard") || msgLow.includes("top followers") || msgLow.includes("meilleurs")) {
-    return res.status(200).json({ response: "🏆 **Classement REUSSITESS — Top Champions**\n\n🥇 Champion Platinum — 1000+ points REUSS\n🥈 Champion Gold — 500+ points REUSS\n🥉 Champion Silver — 200+ points REUSS\n🎖️ Champion Bronze — 50+ points REUSS\n\n💎 Gagne des points en :\n• Faisant les 99 quiz (+5 pts)\n• Activant les Neuro-X (+3 pts)\n• Partageant REUSSITESS (+10 pts)\n• Disant BOUDOUM (+10 pts) 🎯\n\n📊 Rejoins le classement sur reussitess.fr !\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Classement REUSSITESS — Top Champions**\n\n🥇 Champion Platinum — 1000+ points REUSS\n🥈 Champion Gold — 500+ points REUSS\n🥉 Champion Silver — 200+ points REUSS\n🎖️ Champion Bronze — 50+ points REUSS\n\n💎 Gagne des points en :\n• Faisant les 99 quiz (+5 pts)\n• Activant les Neuro-X (+3 pts)\n• Partageant REUSSITESS (+10 pts)\n• Disant BOUDOUM (+10 pts) 🎯\n\n📊 Rejoins le classement sur reussitess.fr !\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // GRAPHIQUE PRIX REUSS
@@ -2825,10 +2825,10 @@ async function getWikipedia(term) {
         const change = pair.priceChange?.h24 || "N/A"
         const vol = pair.volume?.h24 || "N/A"
         const liq = pair.liquidity?.usd || "N/A"
-        return res.status(200).json({ response: "📈 **Token REUSS — Analyse Temps Réel**\n\n💎 Prix : $"+prix+"\n📊 Variation 24h : "+change+"%\n💹 Volume 24h : $"+vol+"\n🌊 Liquidité : $"+liq+"\n\n🔗 DexScreener : dexscreener.com/polygon/"+pair.pairAddress+"\n\nBOUDOUM ! 🇬🇵" })
+        return res.status(200).json({ pdfAction: pdfType, response: "📈 **Token REUSS — Analyse Temps Réel**\n\n💎 Prix : $"+prix+"\n📊 Variation 24h : "+change+"%\n💹 Volume 24h : $"+vol+"\n🌊 Liquidité : $"+liq+"\n\n🔗 DexScreener : dexscreener.com/polygon/"+pair.pairAddress+"\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {}
-    return res.status(200).json({ response: "📈 Graphique REUSS disponible sur DexScreener !\nhttps://dexscreener.com/polygon/0xB37531727fC07c6EED4f97F852A115B428046EB2\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "📈 Graphique REUSS disponible sur DexScreener !\nhttps://dexscreener.com/polygon/0xB37531727fC07c6EED4f97F852A115B428046EB2\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // RAPPORT COMPLET ECOSYSTEME
@@ -2837,7 +2837,7 @@ async function getWikipedia(term) {
     const crypto = await getCryptoPrice()
     const lune = getLunePhase()
     const cyclone = await getCyclones()
-    return res.status(200).json({ response: "📊 **RAPPORT COMPLET REUSSITESS®971**\n\n🌤️ Météo Guadeloupe : "+(meteo||"N/A")+"\n🌙 Phase lune : "+lune+"\n🌀 Cyclones : "+(cyclone||"N/A")+"\n💎 Crypto : "+(crypto||"N/A")+"\n\n🤖 Agents actifs : 200\n🎯 Quiz actifs : 99\n🛍️ Boutiques : 26 (14 pays)\n🛡️ Sentinelles : 40 actives\n🌐 Site : EN LIGNE\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "📊 **RAPPORT COMPLET REUSSITESS®971**\n\n🌤️ Météo Guadeloupe : "+(meteo||"N/A")+"\n🌙 Phase lune : "+lune+"\n🌀 Cyclones : "+(cyclone||"N/A")+"\n💎 Crypto : "+(crypto||"N/A")+"\n\n🤖 Agents actifs : 200\n🎯 Quiz actifs : 99\n🛍️ Boutiques : 26 (14 pays)\n🛡️ Sentinelles : 40 actives\n🌐 Site : EN LIGNE\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // SEISMES CARAIBES
@@ -2845,9 +2845,9 @@ async function getWikipedia(term) {
     try {
       const s = await getSeismesCaraibes()
       const sm = await getSeismesMondiaux()
-      return res.status(200).json({ response: "🌋 **Séismes — Temps Réel**\n\n**🇬🇵 Caraïbes :**\n"+(s||"Aucun")+"\n\n**🌍 Mondiaux (ce mois) :**\n"+(sm||"Aucun")+"\n\nSource: USGS\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌋 **Séismes — Temps Réel**\n\n**🇬🇵 Caraïbes :**\n"+(s||"Aucun")+"\n\n**🌍 Mondiaux (ce mois) :**\n"+(sm||"Aucun")+"\n\nSource: USGS\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2855,9 +2855,9 @@ async function getWikipedia(term) {
   if (msgLow.includes("cyclone") || msgLow.includes("ouragan") || msgLow.includes("tempête") || msgLow.includes("tempete") || msgLow.includes("hurricane")) {
     try {
       const c = await getCyclones()
-      return res.status(200).json({ response: "🌀 **Cyclones — Surveillance NHC**\n\n"+c+"\n\nSource: National Hurricane Center\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌀 **Cyclones — Surveillance NHC**\n\n"+c+"\n\nSource: National Hurricane Center\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2871,16 +2871,16 @@ async function getWikipedia(term) {
       }
       const texte = message.replace(/traduis?\s*(en\s*\w+)?\s*/i,"").trim()
       const trad = await traduire(texte || "Bonjour je suis REUSSITESS AI", cible)
-      return res.status(200).json({ response: "🌐 **Traducteur REUSSITESS**\n\n"+trad+"\n\n50 langues disponibles !\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Traducteur REUSSITESS**\n\n"+trad+"\n\n50 langues disponibles !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
   // AGENDA CARIBEEN
   if (msgLow.includes("agenda") || msgLow.includes("événement") || msgLow.includes("evenement") || msgLow.includes("calendrier") || msgLow.includes("fête caribéenne") || msgLow.includes("fete caribeenne")) {
     const ag = getAgendaCaraibes()
-    return res.status(200).json({ response: "📅 **Agenda Caribéen du Mois**\n\n"+ag+"\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "📅 **Agenda Caribéen du Mois**\n\n"+ag+"\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // METEO DIRECTE
@@ -2893,9 +2893,9 @@ async function getWikipedia(term) {
       const md = await mr.json()
       const w = md.current_weather
       const wDesc = w.weathercode <= 3 ? "Ensoleillé" : w.weathercode <= 48 ? "Nuageux" : w.weathercode <= 67 ? "Pluvieux" : "Orageux"
-      return res.status(200).json({ response: "🌤️ **Météo " + lieu + " — Temps réel**\n\n🌡️ Température : " + w.temperature + "°C\n💨 Vent : " + w.windspeed + " km/h\n☁️ Conditions : " + wDesc + "\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌤️ **Météo " + lieu + " — Temps réel**\n\n🌡️ Température : " + w.temperature + "°C\n💨 Vent : " + w.windspeed + " km/h\n☁️ Conditions : " + wDesc + "\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🌤️ Service météo temporairement indisponible. Réessayez dans un instant ! BOUDOUM 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌤️ Service météo temporairement indisponible. Réessayez dans un instant ! BOUDOUM 🇬🇵" })
     }
   }
 
@@ -2905,9 +2905,9 @@ async function getWikipedia(term) {
       const fr = await fetch("https://open.er-api.com/v6/latest/EUR")
       const fd = await fr.json()
       const r = fd.rates
-      return res.status(200).json({ response: "💱 **Taux de Change — Temps réel**\n\n💵 EUR/USD : " + r.USD + "\n💷 EUR/GBP : " + r.GBP + "\n🇧🇷 EUR/BRL : " + r.BRL + "\n🇨🇦 EUR/CAD : " + r.CAD + "\n🇮🇳 EUR/INR : " + r.INR + "\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💱 **Taux de Change — Temps réel**\n\n💵 EUR/USD : " + r.USD + "\n💷 EUR/GBP : " + r.GBP + "\n🇧🇷 EUR/BRL : " + r.BRL + "\n🇨🇦 EUR/CAD : " + r.CAD + "\n🇮🇳 EUR/INR : " + r.INR + "\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -2920,20 +2920,20 @@ async function getWikipedia(term) {
       const td = await tr.json()
       const fg = await getFearGreed()
       const trending = td.coins.slice(0,5).map(function(c){ return c.item.name }).join(", ")
-      return res.status(200).json({ response: "💎 **Crypto — Données Temps Réel**\n\n₿ Bitcoin : $" + (cd.bitcoin?.usd||"N/A") + "\nΞ Ethereum : $" + (cd.ethereum?.usd||"N/A") + "\n🔷 POL : $" + (cd["matic-network"]?.usd||"N/A") + "\n\n🔥 Tendances : " + trending + "\n😨 Sentiment : " + fg + "\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Données Temps Réel**\n\n₿ Bitcoin : $" + (cd.bitcoin?.usd||"N/A") + "\nΞ Ethereum : $" + (cd.ethereum?.usd||"N/A") + "\n🔷 POL : $" + (cd["matic-network"]?.usd||"N/A") + "\n\n🔥 Tendances : " + trending + "\n😨 Sentiment : " + fg + "\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
   // PRESENTATION NEURO-X
   if (msgLow.includes("qui est neuro-x") || msgLow.includes("présente les agents") || msgLow.includes("presente les agents") || msgLow.includes("que font les agents") || msgLow.includes("rôle des agents") || msgLow.includes("role des agents")) {
-    return res.status(200).json({ response: "🤖 **QUANTUM NEXUS — Présentation des 200 Agents**\n\n"+"👑 **Supreme AI** — Orchestre tout, répond à toutes questions\n\n"+"🧠 **Neuro-X (60 agents spécialisés) :**\n"+"• NX-001 Finance — Crypto, DeFi, Token REUSS, investissement\n"+"• NX-002 Business — Amazon, affiliation, e-commerce, revenus\n"+"• NX-003 Culture — Caribéenne, créole, francophone mondiale\n"+"• NX-004 Coach — Motivation, mindset, développement personnel\n"+"• NX-005 Tech — IA, blockchain, Next.js, APIs\n"+"• NX-006 Santé — Bien-être, nutrition antillaise\n"+"• NX-007 Éducation — Quiz, pédagogie, apprentissage\n"+"• NX-008 Juridique — Droit, MiCA, RGPD, auto-entrepreneur\n"+"• NX-009 Voyage — Tourisme caribéen, destinations\n"+"• NX-010 Créatif — Poèmes créoles, histoires, slogans\n"+"• NX-011 Sport — Fitness, champions antillais\n"+"• NX-012 Histoire — Abolition, résistance, patrimoine\n"+"• NX-013 Cuisine — Recettes créoles, accras, colombo\n"+"• NX-014 Musique — Zouk, gwo ka, biguine, soca\n"+"• NX-015 Environnement — Écologie, biodiversité caribéenne\n"+"• NX-016 Immobilier — DOM-TOM, défiscalisation Girardin\n"+"• NX-017 Marketing — Réseaux sociaux, TikTok, croissance\n"+"• NX-018 DeFi — Yield farming, staking, QuickSwap\n"+"• NX-019 NFT — Art numérique, OpenSea, collections\n"+"• NX-020 Psychologie — Résilience, leadership caribéen\n"+"• ... jusqu'à NX-060 Stratégie — Plan global 5 ans REUSSITESS\n\n"+"🛡️ **Sentinelles (40 agents surveillance) :**\n"+"• ST-001 Prix REUSS — DexScreener 24/7\n"+"• ST-002 Actualités — RFI/BBC/France24 live\n"+"• ST-003 Météo — Guadeloupe temps réel\n"+"• ST-004 ISS — Position station spatiale\n"+"• ST-005 Crypto — BTC/ETH/POL live\n"+"• ST-006 Site — Surveillance reussitess.fr\n"+"• ... jusqu'à ST-040 Guardian Supreme\n\n"+"🎯 **Nexus Quiz (99 agents éducatifs)** — Actifs sur reussitess.fr\n\n"+"💬 Active un agent : *neuro-x cuisine*, *neuro-x finance*, *neuro-x coach*...\n\n"+"BOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🤖 **QUANTUM NEXUS — Présentation des 200 Agents**\n\n"+"👑 **Supreme AI** — Orchestre tout, répond à toutes questions\n\n"+"🧠 **Neuro-X (60 agents spécialisés) :**\n"+"• NX-001 Finance — Crypto, DeFi, Token REUSS, investissement\n"+"• NX-002 Business — Amazon, affiliation, e-commerce, revenus\n"+"• NX-003 Culture — Caribéenne, créole, francophone mondiale\n"+"• NX-004 Coach — Motivation, mindset, développement personnel\n"+"• NX-005 Tech — IA, blockchain, Next.js, APIs\n"+"• NX-006 Santé — Bien-être, nutrition antillaise\n"+"• NX-007 Éducation — Quiz, pédagogie, apprentissage\n"+"• NX-008 Juridique — Droit, MiCA, RGPD, auto-entrepreneur\n"+"• NX-009 Voyage — Tourisme caribéen, destinations\n"+"• NX-010 Créatif — Poèmes créoles, histoires, slogans\n"+"• NX-011 Sport — Fitness, champions antillais\n"+"• NX-012 Histoire — Abolition, résistance, patrimoine\n"+"• NX-013 Cuisine — Recettes créoles, accras, colombo\n"+"• NX-014 Musique — Zouk, gwo ka, biguine, soca\n"+"• NX-015 Environnement — Écologie, biodiversité caribéenne\n"+"• NX-016 Immobilier — DOM-TOM, défiscalisation Girardin\n"+"• NX-017 Marketing — Réseaux sociaux, TikTok, croissance\n"+"• NX-018 DeFi — Yield farming, staking, QuickSwap\n"+"• NX-019 NFT — Art numérique, OpenSea, collections\n"+"• NX-020 Psychologie — Résilience, leadership caribéen\n"+"• ... jusqu'à NX-060 Stratégie — Plan global 5 ans REUSSITESS\n\n"+"🛡️ **Sentinelles (40 agents surveillance) :**\n"+"• ST-001 Prix REUSS — DexScreener 24/7\n"+"• ST-002 Actualités — RFI/BBC/France24 live\n"+"• ST-003 Météo — Guadeloupe temps réel\n"+"• ST-004 ISS — Position station spatiale\n"+"• ST-005 Crypto — BTC/ETH/POL live\n"+"• ST-006 Site — Surveillance reussitess.fr\n"+"• ... jusqu'à ST-040 Guardian Supreme\n\n"+"🎯 **Nexus Quiz (99 agents éducatifs)** — Actifs sur reussitess.fr\n\n"+"💬 Active un agent : *neuro-x cuisine*, *neuro-x finance*, *neuro-x coach*...\n\n"+"BOUDOUM ! 🇬🇵" })
   }
 
   // DASHBOARD AGENTS
   if (msgLow.includes("200 agent") || msgLow.includes("quantum nexus") || msgLow.includes("dashboard agent") || msgLow.includes("liste agent") || msgLow.includes("agents ia")) {
-    return res.status(200).json({ response: getAgentsDashboard() })
+    return res.status(200).json({ pdfAction: pdfType, response: getAgentsDashboard() })
   }
 
   // ACTIVATION NEURO-X
@@ -2955,71 +2955,71 @@ async function getWikipedia(term) {
       })
       const groqData = await groqRes.json()
       const rep = groqData.choices?.[0]?.message?.content || "Agent indisponible"
-      return res.status(200).json({ response: "🧠 **"+agent.nom+"** ["+agent.id+"]\n\n"+rep+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🧠 **"+agent.nom+"** ["+agent.id+"]\n\n"+rep+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🧠 "+agent.nom+" temporairement indisponible. BOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🧠 "+agent.nom+" temporairement indisponible. BOUDOUM ! 🇬🇵" })
     }
   }
 
   // DETECTION PRENOM
   const prenom = detectPrenom(message)
   if (prenom) {
-    return res.status(200).json({ response: "🎉 Enchanté"+", "+prenom+" ! Je vais retenir ton prénom pour notre conversation. Bienvenue chez REUSSITESS AI — Excellence • Innovation • Succès !\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🎉 Enchanté"+", "+prenom+" ! Je vais retenir ton prénom pour notre conversation. Bienvenue chez REUSSITESS AI — Excellence • Innovation • Succès !\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // DETECTION EMOTION
   const emotion = detectEmotion(message)
   if (emotion) {
     const emoResp = getEmotionResponse(emotion)
-    if (emoResp) return res.status(200).json({ response: emoResp })
+    if (emoResp) return res.status(200).json({ pdfAction: pdfType, response: emoResp })
   }
 
   // DETECTION MODE
   const mode = detectMode(message)
   if (mode) {
     const modeResp = getModeResponse(mode, null)
-    if (modeResp) return res.status(200).json({ response: modeResp })
+    if (modeResp) return res.status(200).json({ pdfAction: pdfType, response: modeResp })
   }
 
   // SALUTATION AVEC HEURE
   if (msgLow.includes("bonjour") || msgLow.includes("bonsoir") || msgLow.includes("bonjou") || msgLow.includes("salut") || msgLow.includes("hello") || msgLow.includes("hey")) {
     const sal = getSalutation(datetime)
     const lune = getLunePhase()
-    return res.status(200).json({ response: sal+" ! Je suis REUSSITESS®971 AI, né en Guadeloupe 🇬🇵\n\n🌙 Lune : "+lune+"\n\n✨ Je peux t'aider avec :\n• 📰 Actualités temps réel\n• 💎 Prix crypto live\n• 🌤️ Météo\n• 🎓 99 Quiz\n• 🛍️ 26 Boutiques Amazon\n• 😂 Blagues caribéennes\n• 🔢 Conversions\n\nQue puis-je faire pour toi ?\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: sal+" ! Je suis REUSSITESS®971 AI, né en Guadeloupe 🇬🇵\n\n🌙 Lune : "+lune+"\n\n✨ Je peux t'aider avec :\n• 📰 Actualités temps réel\n• 💎 Prix crypto live\n• 🌤️ Météo\n• 🎓 99 Quiz\n• 🛍️ 26 Boutiques Amazon\n• 😂 Blagues caribéennes\n• 🔢 Conversions\n\nQue puis-je faire pour toi ?\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // MOT CREOLE DU JOUR
   if (msgLow === "créole" || msgLow === "creole" || msgLow.includes("mot du jour") || msgLow.includes("mot creole") || msgLow.includes("mot créole") || msgLow.includes("gwadloup") || msgLow.includes("patois") || msgLow === "langue créole" || msgLow.includes("parle creole") || msgLow.includes("parle créole")) {
     const m = getMotCreoleJour()
-    return res.status(200).json({ response: "🇬🇵 **Mot Créole du Jour**\n\n📖 **"+m.mot+"** = "+m.sens+"\n\n💬 Exemple : *"+m.phrase+"*\n\nBOUDOUM ! 🌴" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🇬🇵 **Mot Créole du Jour**\n\n📖 **"+m.mot+"** = "+m.sens+"\n\n💬 Exemple : *"+m.phrase+"*\n\nBOUDOUM ! 🌴" })
   }
 
   // BLAGUE CARIBEENNE
   if (msgLow.includes("blague") || msgLow.includes("humour") || msgLow.includes("drole") || msgLow.includes("drôle") || msgLow.includes("rire") || msgLow.includes("joke")) {
     const b = getBlague()
-    return res.status(200).json({ response: "😂 **Blague Caribéenne**\n\n"+b+"\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "😂 **Blague Caribéenne**\n\n"+b+"\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // HOROSCOPE
   if (msgLow.includes("horoscope") || msgLow.includes("signe") || msgLow.includes("astrologie") || msgLow.includes("belier") || msgLow.includes("taureau") || msgLow.includes("gemeaux") || msgLow.includes("cancer") || msgLow.includes("lion") || msgLow.includes("vierge") || msgLow.includes("balance") || msgLow.includes("scorpion") || msgLow.includes("sagittaire") || msgLow.includes("capricorne") || msgLow.includes("verseau") || msgLow.includes("poissons")) {
     const h = getHoroscope(msgLow)
-    if (h) return res.status(200).json({ response: "🔮 **Horoscope du Jour**\n\n"+h.signe+"\n\n"+h.msg+"\n\nBOUDOUM ! 🇬🇵" })
-    return res.status(200).json({ response: "🔮 **Horoscope du Jour**\n\nPrécise ton signe : Bélier, Taureau, Gémeaux, Cancer, Lion, Vierge, Balance, Scorpion, Sagittaire, Capricorne, Verseau ou Poissons ?\n\nBOUDOUM ! 🇬🇵" })
+    if (h) return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Horoscope du Jour**\n\n"+h.signe+"\n\n"+h.msg+"\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Horoscope du Jour**\n\nPrécise ton signe : Bélier, Taureau, Gémeaux, Cancer, Lion, Vierge, Balance, Scorpion, Sagittaire, Capricorne, Verseau ou Poissons ?\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // CONVERTISSEUR
   if (msgLow.includes("convertir") || msgLow.includes("convert") || (msgLow.includes("km") && msgLow.includes("mile")) || (msgLow.includes("kg") && msgLow.includes("lb")) || msgLow.includes("celsius") || msgLow.includes("fahrenheit")) {
     const conv = convertir(msgLow)
-    if (conv) return res.status(200).json({ response: "🔢 **Convertisseur**\n\n✅ "+conv+"\n\nBOUDOUM ! 🇬🇵" })
+    if (conv) return res.status(200).json({ pdfAction: pdfType, response: "🔢 **Convertisseur**\n\n✅ "+conv+"\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // CITATION DU JOUR
   if (msgLow.includes("citation") || msgLow.includes("inspire") || msgLow.includes("inspirant") || msgLow.includes("sagesse") || msgLow.includes("motivation")) {
     try {
       const cit = await getCitation()
-      return res.status(200).json({ response: "✨ **Citation du Jour**\n\n"+cit+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "✨ **Citation du Jour**\n\n"+cit+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -3027,9 +3027,9 @@ async function getWikipedia(term) {
   if (msgLow.includes("insolite") || msgLow.includes("saviez") || msgLow.includes("fait du jour") || msgLow.includes("anecdote") || msgLow.includes("surprise")) {
     try {
       const fait = await getFaitInsolite()
-      return res.status(200).json({ response: "🤔 **Fait Insolite du Jour**\n\n"+fait+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤔 **Fait Insolite du Jour**\n\n"+fait+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -3037,16 +3037,16 @@ async function getWikipedia(term) {
   if (msgLow === "iss" || msgLow.includes("station spatiale") || msgLow.includes("position iss") || msgLow.includes("où est l'iss") || msgLow.includes("iss en ce moment") || (msgLow.includes("espace") && !msgLow.includes("espace de")) || msgLow.includes("satellite")) {
     try {
       const iss = await getISSPosition()
-      return res.status(200).json({ response: "🛸 **Station Spatiale ISS — Position Temps Réel**\n\n"+iss+"\n\n🌍 Visible à l'oeil nu la nuit !\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🛸 **Station Spatiale ISS — Position Temps Réel**\n\n"+iss+"\n\n🌍 Visible à l'oeil nu la nuit !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
   // PHASE DE LUNE
   if (msgLow.includes("lune") || msgLow.includes("moon") || msgLow.includes("pleine lune") || msgLow.includes("phase")) {
     const lune = getLunePhase()
-    return res.status(200).json({ response: "🌙 **Phase de la Lune**\n\n"+lune+"\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🌙 **Phase de la Lune**\n\n"+lune+"\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // ACTUALITES DIRECTES
@@ -3055,13 +3055,13 @@ async function getWikipedia(term) {
       const rfi = await getRFINews()
       const bbc = await getBBCNews()
       const f24 = await getFrance24News()
-      return res.status(200).json({ response: "📰 **Actualités du Jour — Temps Réel**\n\n🔴 **RFI :**\n" + (rfi||"N/A") + "\n\n🌍 **BBC Afrique :**\n" + (bbc||"N/A") + "\n\n📺 **France 24 :**\n" + (f24||"N/A") + "\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📰 **Actualités du Jour — Temps Réel**\n\n🔴 **RFI :**\n" + (rfi||"N/A") + "\n\n🌍 **BBC Afrique :**\n" + (bbc||"N/A") + "\n\n📺 **France 24 :**\n" + (f24||"N/A") + "\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {}
   }
 
   if (msgLow.includes('heure') || msgLow.includes('quelle heure') || msgLow.includes('time') || msgLow.includes('jour') || msgLow.includes('date') || msgLow.includes('aujourd') || msgLow.includes('quel jour')) {
     const now = datetime || {}
-    return res.status(200).json({ response: `🕐 **Temps Réel REUSSITESS AI**
+    return res.status(200).json({ pdfAction: pdfType, response: `🕐 **Temps Réel REUSSITESS AI**
 
 📅 Date : ${now.date || new Date().toLocaleDateString('fr-FR', {weekday:'long',year:'numeric',month:'long',day:'numeric'})}
 ⏰ Heure : ${now.heure || new Date().toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit'})}
@@ -3073,7 +3073,7 @@ BOUDOUM ! 🇬🇵` })
   // ✅ NEXUS COMMANDS — priorité maximale
     const nexusResponse = await handleNexusCommand(message)
     if (nexusResponse) {
-      return res.status(200).json({ response: nexusResponse })
+      return res.status(200).json({ pdfAction: pdfType, response: nexusResponse })
     }
 
     const res = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`)
@@ -3724,6 +3724,7 @@ function getAgendaCaraibes() {
 }
 
 export default async function handler(req, res) {
+  let pdfType = null;
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
@@ -3747,9 +3748,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎨 **Neuro-X Créatif — Art Génératif IA**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X Créatif — Art Génératif IA**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -3769,9 +3770,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "👶 **Neuro-X Enfants — Parentalité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "👶 **Neuro-X Enfants — Parentalité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -3791,9 +3792,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "⏰ **Neuro-X Coach — Productivité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "⏰ **Neuro-X Coach — Productivité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -3813,9 +3814,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🤝 **Neuro-X Stratégie — Intelligence Collective**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Stratégie — Intelligence Collective**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -3836,9 +3837,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎭 **Neuro-X Culture — Carnaval Caribéen**\n\n"+agenda+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎭 **Neuro-X Culture — Carnaval Caribéen**\n\n"+agenda+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -3858,9 +3859,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎨 **Neuro-X Créatif — Art Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X Créatif — Art Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -3880,9 +3881,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💼 **Neuro-X Business — Emploi DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Business — Emploi DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -3895,7 +3896,7 @@ export default async function handler(req, res) {
       "🔥 BOUDOUM ! 200 agents IA au service de la Caraïbe ! 🤖🇬🇵",
       "⚡ BOUDOUM ! Token REUSS en route vers la lune ! 🚀💎🇬🇵"
     ]
-    return res.status(200).json({ response: msgs[Math.floor(Math.random()*msgs.length)] })
+    return res.status(200).json({ pdfAction: pdfType, response: msgs[Math.floor(Math.random()*msgs.length)] })
   }
 
   // GUIDE CINEMATOGRAPHIE CARIBEENNE
@@ -3914,9 +3915,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎬 **Neuro-X Cinéma — Films Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎬 **Neuro-X Cinéma — Films Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -3936,9 +3937,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🚌 **Neuro-X Tourisme — Transport Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🚌 **Neuro-X Tourisme — Transport Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -3958,9 +3959,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🛡️ **Neuro-X Juridique — Assurances DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **Neuro-X Juridique — Assurances DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -3980,9 +3981,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "👻 **Neuro-X Spiritualité — Mythologie Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "👻 **Neuro-X Spiritualité — Mythologie Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4002,9 +4003,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🚗 **Neuro-X Juridique — Permis Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🚗 **Neuro-X Juridique — Permis Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4024,9 +4025,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🤝 **Neuro-X Juridique — Aides Sociales DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Juridique — Aides Sociales DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4046,9 +4047,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📚 **Neuro-X Littérature — Auteurs Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📚 **Neuro-X Littérature — Auteurs Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4063,9 +4064,9 @@ export default async function handler(req, res) {
       const events = wikiD.events || []
       const picks = events.sort(() => Math.random()-0.5).slice(0,5)
       const txt = picks.map((e,i) => `${i+1}. **${e.year || ""}** — ${e.text}`).join("\n")
-      return res.status(200).json({ response: "📅 **Ce Jour dans l'Histoire — "+dd+"/"+mm+"**\n\n"+txt+"\n\nSource: Wikimedia\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📅 **Ce Jour dans l'Histoire — "+dd+"/"+mm+"**\n\n"+txt+"\n\nSource: Wikimedia\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "📅 **Éphéméride**\n\nLe 27 mai 1848 : Abolition de l'esclavage en Guadeloupe.\nLe 10 mai 2001 : Loi Taubira reconnaît l'esclavage comme crime contre l'humanité.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📅 **Éphéméride**\n\nLe 27 mai 1848 : Abolition de l'esclavage en Guadeloupe.\nLe 10 mai 2001 : Loi Taubira reconnaît l'esclavage comme crime contre l'humanité.\n\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4077,9 +4078,9 @@ export default async function handler(req, res) {
       const libD = await libR.json()
       const books = (libD.docs || []).slice(0,5)
       const txt = books.map((b,i) => `${i+1}. 📖 **${b.title}** — ${(b.author_name||["Auteur inconnu"])[0]} (${b.first_publish_year||"?"})\n   🔗 openlibrary.org/works/${b.key}`).join("\n\n")
-      return res.status(200).json({ response: "📚 **Bibliothèque Mondiale — Open Library**\n\n🔍 Résultats pour: *"+decodeURIComponent(query)+"*\n\n"+txt+"\n\n"+libD.numFound+" livres trouvés gratuitement !\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📚 **Bibliothèque Mondiale — Open Library**\n\n🔍 Résultats pour: *"+decodeURIComponent(query)+"*\n\n"+txt+"\n\n"+libD.numFound+" livres trouvés gratuitement !\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4090,9 +4091,9 @@ export default async function handler(req, res) {
       const rssD = await rssR.json()
       const items = (rssD.items||[]).slice(0,5)
       const txt = items.map((it,i) => `${i+1}. **${it.title}**\n   📰 ${it.pubDate?.substring(0,10)||""}`).join("\n\n")
-      return res.status(200).json({ response: "🌍 **Actualités Monde Francophone — RFI**\n\n"+txt+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Actualités Monde Francophone — RFI**\n\n"+txt+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4106,7 +4107,7 @@ export default async function handler(req, res) {
         const jobList = jobs.map(function(j) {
           return "- **" + j.position + "** — " + (j.company||"Entreprise") + "\n  Lien: " + j.url + "\n  Tags: " + (j.tags||[]).slice(0,3).join(", ")
         }).join("\n\n")
-        return res.status(200).json({ response: "Offres d'emploi REELLES - Temps reel (RemoteOK)\n\n" + jobList + "\n\nPlateformes DOM-TOM gratuites:\n- Guadeloupe: francetravail.fr\n- Reunion: emploi.re\n- Caraibes: caribbeanjobs.com\n- Afrique: jobartis.com\n- Remote: remoteok.com\n- Indeed: indeed.fr\n- LinkedIn: linkedin.com/jobs\n\nTape creer mon CV pour ton CV PDF gratuit !\n\nBOUDOUM !" })
+        return res.status(200).json({ pdfAction: pdfType, response: "Offres d'emploi REELLES - Temps reel (RemoteOK)\n\n" + jobList + "\n\nPlateformes DOM-TOM gratuites:\n- Guadeloupe: francetravail.fr\n- Reunion: emploi.re\n- Caraibes: caribbeanjobs.com\n- Afrique: jobartis.com\n- Remote: remoteok.com\n- Indeed: indeed.fr\n- LinkedIn: linkedin.com/jobs\n\nTape creer mon CV pour ton CV PDF gratuit !\n\nBOUDOUM !" })
       }
     } catch(eRemote) {}
     try {
@@ -4123,9 +4124,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💼 **Neuro-X Emploi — DOM-TOM / Caraïbes / Afrique**\n\n"+d.choices?.[0]?.message?.content+"\n\n🔗 **Plateformes gratuites:**\n• France Travail: francetravail.fr\n• Réunion: emploi.re\n• Caraïbes: caribbeanjobs.com\n• Afrique: jobartis.com\n• International: linkedin.com\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Emploi — DOM-TOM / Caraïbes / Afrique**\n\n"+d.choices?.[0]?.message?.content+"\n\n🔗 **Plateformes gratuites:**\n• France Travail: francetravail.fr\n• Réunion: emploi.re\n• Caraïbes: caribbeanjobs.com\n• Afrique: jobartis.com\n• International: linkedin.com\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "💼 **Offres Emploi — DOM-TOM / Caraïbes / Afrique**\n\n🔗 **Plateformes gratuites:**\n• 🇫🇷 France Travail: francetravail.fr\n• 🇷🇪 La Réunion: emploi.re\n• 🌴 Caraïbes: caribbeanjobs.com\n• 🌍 Afrique: jobartis.com\n• 💼 International: linkedin.com\n• 🌐 Mondial: indeed.fr\n\n💡 Secteurs porteurs DOM-TOM: Tourisme, BTP, Santé, IA, E-commerce\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Offres Emploi — DOM-TOM / Caraïbes / Afrique**\n\n🔗 **Plateformes gratuites:**\n• 🇫🇷 France Travail: francetravail.fr\n• 🇷🇪 La Réunion: emploi.re\n• 🌴 Caraïbes: caribbeanjobs.com\n• 🌍 Afrique: jobartis.com\n• 💼 International: linkedin.com\n• 🌐 Mondial: indeed.fr\n\n💡 Secteurs porteurs DOM-TOM: Tourisme, BTP, Santé, IA, E-commerce\n\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4145,9 +4146,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🤝 **Neuro-X Juridique — Créer une Association**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Juridique — Créer une Association**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4167,9 +4168,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🏆 **Passeport de Réussite REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton certificat :** https://reussitess.fr/champions\n\n🌍 15 247 Champions dans 127 pays !\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton certificat :** https://reussitess.fr/champions\n\n🌍 15 247 Champions dans 127 pays !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🏆 **Passeport de Réussite REUSSITESS**\n\nTon certificat de champion t'attend ! 15 247 champions dans 127 pays ont déjà rejoint le mouvement REUSSITESS.\n\n✅ Remplis ton prénom, ton pays et ton objectif\n✅ Reçois ton certificat personnalisé\n✅ Obtiens ton plan d'action sur mesure\n\n👉 **Accède maintenant :** https://reussitess.fr/champions\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\nTon certificat de champion t'attend ! 15 247 champions dans 127 pays ont déjà rejoint le mouvement REUSSITESS.\n\n✅ Remplis ton prénom, ton pays et ton objectif\n✅ Reçois ton certificat personnalisé\n✅ Obtiens ton plan d'action sur mesure\n\n👉 **Accède maintenant :** https://reussitess.fr/champions\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4189,15 +4190,15 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌍 **Visa Universel REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton Visa :** https://reussitess.fr/visa-universel\n\n🚀 Accès aux opportunités mondiales dans 14 pays partenaires !\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Visa Universel REUSSITESS**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 **Obtiens ton Visa :** https://reussitess.fr/visa-universel\n\n🚀 Accès aux opportunités mondiales dans 14 pays partenaires !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🌍 **Visa Universel REUSSITESS**\n\nTon passeport vers les opportunités mondiales !\n\n✅ Accès réseau entrepreneurs 26 pays\n✅ Affiliation Amazon 14 pays\n✅ Token REUSS sur Polygon\n✅ Bibliothèque mondiale\n✅ Formation IA gratuite\n\n👉 **Accède maintenant :** https://reussitess.fr/visa-universel\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Visa Universel REUSSITESS**\n\nTon passeport vers les opportunités mondiales !\n\n✅ Accès réseau entrepreneurs 26 pays\n✅ Affiliation Amazon 14 pays\n✅ Token REUSS sur Polygon\n✅ Bibliothèque mondiale\n✅ Formation IA gratuite\n\n👉 **Accède maintenant :** https://reussitess.fr/visa-universel\n\nBOUDOUM ! 🇬🇵" })
     }
   }
 
   // NAVIGATION ECOSYSTEME COMPLET
   if (msgLow.includes("écosystème") || msgLow.includes("ecosystem") || msgLow.includes("tout ce que propose") || msgLow.includes("site reussitess") || msgLow.includes("que faire sur") || msgLow.includes("navigation") || msgLow.includes("menu reussitess")) {
-    return res.status(200).json({ response: "🌐 **Écosystème REUSSITESS — Guide Complet**\n\n"
+    return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Écosystème REUSSITESS — Guide Complet**\n\n"
     +"🏆 **[Passeport de Réussite](https://reussitess.fr/champions)**\nCertificat de champion + plan d'action personnalisé\n\n"
     +"🌍 **[Visa Universel](https://reussitess.fr/visa-universel)**\nAccès réseau opportunités 14 pays\n\n"
     +"🧠 **[Neuro-X](https://reussitess.fr/neuro-x)**\n60 agents IA spécialisés\n\n"
@@ -4229,9 +4230,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🧬 **Neuro-X Culture — Mon ADN Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Explore ton ADN: https://reussitess.fr/mon-adn\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🧬 **Neuro-X Culture — Mon ADN Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Explore ton ADN: https://reussitess.fr/mon-adn\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4251,9 +4252,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🔮 **Oracle 971 — Voix de la Guadeloupe**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Consulte l'Oracle: https://reussitess.fr/oracle-971\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Oracle 971 — Voix de la Guadeloupe**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Consulte l'Oracle: https://reussitess.fr/oracle-971\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4273,15 +4274,15 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🚀 **Neuro-X Coach — Ta Révolution IA**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Lance ta révolution: https://reussitess.fr/ma-revolution-ia\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🚀 **Neuro-X Coach — Ta Révolution IA**\n\n"+d.choices?.[0]?.message?.content+"\n\n👉 Lance ta révolution: https://reussitess.fr/ma-revolution-ia\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
   // BILAN FINAL ECOSYSTEME
   if (msgLow.includes("que sais-tu faire") || msgLow.includes("tes capacités") || msgLow.includes("liste tes fonctions") || msgLow.includes("tout ce que tu fais") || msgLow.includes("fonctionnalités")) {
-    return res.status(200).json({ response: "🤖 **REUSSITESS AI — 150+ Fonctionnalités**\n\n"
+    return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS AI — 150+ Fonctionnalités**\n\n"
     +"🌍 **Données Temps Réel :** Météo monde, Crypto live, Actualités, Séismes, Cyclones, ISS, Lune, Taux change\n\n"
     +"🧠 **60 Neuro-X :** Finance, Business, Culture, Coach, Tech, Santé, Droit, Voyage, Cuisine, Musique, Sport, Histoire, Agriculture, Tourisme, Astronomie, Géopolitique, SEO, DeFi, NFT, Psychologie, Langues, Énergie, Mode, Gastronomie, Enfants, Seniors, Femmes, Jeunes, Diaspora, Blockchain, Stratégie...\n\n"
     +"🛡️ **40 Sentinelles :** Surveillance 24/7 prix REUSS, site, APIs, sécurité\n\n"
@@ -4310,9 +4311,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "✍️ **Neuro-X Marketing — Générateur Bio**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "✍️ **Neuro-X Marketing — Générateur Bio**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4332,9 +4333,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "❤️ **Neuro-X Santé — Santé Cardiovasculaire**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez votre médecin.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "❤️ **Neuro-X Santé — Santé Cardiovasculaire**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez votre médecin.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4354,9 +4355,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🏡 **Neuro-X Immobilier — Achat Terrain Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🏡 **Neuro-X Immobilier — Achat Terrain Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4376,15 +4377,15 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌐 **Neuro-X Tech — Web3 Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Tech — Web3 Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
   // IDENTITE DU BOT
   if (msgLow.includes("qui es-tu") || msgLow.includes("qui es tu") || msgLow.includes("présente-toi") || msgLow.includes("présente toi") || msgLow.includes("ta mission") || msgLow.includes("c'est quoi reussitess ai") || msgLow.includes("tu es qui")) {
-    return res.status(200).json({ response: "🤖 **Je suis REUSSITESS®971 AI**\n\nChef d'orchestre de l'écosystème REUSSITESS®971, créé depuis la **Guadeloupe** 🇬🇵 par **Rony Porinus**.\n\n**Ma devise :** *Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets.*\n\n**Ce que je suis :**\n🧠 200+ modules IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme)\n🌍 Présent dans 14 pays partenaires\n📚 160+ fonctionnalités actives\n💎 Connecté au Token REUSS sur Polygon\n🛍️ 26 boutiques Amazon affiliées\n\n**L'écosystème REUSSITESS®971 :**\n🏆 [Passeport de Réussite](https://reussitess.fr/champions)\n🌍 [Visa Universel](https://reussitess.fr/visa-universel)\n🧠 [Neuro-X](https://reussitess.fr/neuro-x)\n💎 [Token REUSS](https://reussitess.fr/investir-reuss)\n🔮 [Oracle 971](https://reussitess.fr/oracle-971)\n\n*Terres de Champions — Positivité à l'infini !*\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🤖 **Je suis REUSSITESS®971 AI**\n\nChef d'orchestre de l'écosystème REUSSITESS®971, créé depuis la **Guadeloupe** 🇬🇵 par **Rony Porinus**.\n\n**Ma devise :** *Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets.*\n\n**Ce que je suis :**\n🧠 200+ modules IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme)\n🌍 Présent dans 14 pays partenaires\n📚 160+ fonctionnalités actives\n💎 Connecté au Token REUSS sur Polygon\n🛍️ 26 boutiques Amazon affiliées\n\n**L'écosystème REUSSITESS®971 :**\n🏆 [Passeport de Réussite](https://reussitess.fr/champions)\n🌍 [Visa Universel](https://reussitess.fr/visa-universel)\n🧠 [Neuro-X](https://reussitess.fr/neuro-x)\n💎 [Token REUSS](https://reussitess.fr/investir-reuss)\n🔮 [Oracle 971](https://reussitess.fr/oracle-971)\n\n*Terres de Champions — Positivité à l'infini !*\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // GUIDE INTELLIGENCE EMOTIONNELLE
@@ -4403,9 +4404,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💛 **Neuro-X Psychologie — Intelligence Émotionnelle**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💛 **Neuro-X Psychologie — Intelligence Émotionnelle**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4425,9 +4426,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🤝 **Neuro-X Business — Crowdfunding Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Business — Crowdfunding Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4447,9 +4448,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌺 **Neuro-X Coach — Bien-Être au Travail**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌺 **Neuro-X Coach — Bien-Être au Travail**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4469,9 +4470,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌍 **Neuro-X Géopolitique — Caraïbes**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Géopolitique — Caraïbes**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4491,9 +4492,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📸 **Neuro-X Créatif — Photographie Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📸 **Neuro-X Créatif — Photographie Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4513,9 +4514,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "👗 **Neuro-X Mode — Stylisme Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "👗 **Neuro-X Mode — Stylisme Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4535,9 +4536,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "👑 **Neuro-X Coach — Leadership Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Coach — Leadership Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4557,9 +4558,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🔒 **Neuro-X Réseaux — Protection Données RGPD**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🔒 **Neuro-X Réseaux — Protection Données RGPD**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4579,9 +4580,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "# **Neuro-X Marketing — Hashtags Viraux**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "# **Neuro-X Marketing — Hashtags Viraux**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4602,9 +4603,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎓 **Neuro-X Finance — Crypto pour Débutants**\n\n📊 Marché: "+crypto+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Finance — Crypto pour Débutants**\n\n📊 Marché: "+crypto+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4624,9 +4625,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💚 **Neuro-X Psychologie — Santé Mentale**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un professionnel de santé.\nUrgence: 3114 (numéro national prévention suicide)\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💚 **Neuro-X Psychologie — Santé Mentale**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un professionnel de santé.\nUrgence: 3114 (numéro national prévention suicide)\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4646,9 +4647,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌍 **Neuro-X Logistique — Export International**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Logistique — Export International**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4668,9 +4669,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎙️ **Neuro-X Marketing — Guide Podcast**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎙️ **Neuro-X Marketing — Guide Podcast**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4690,9 +4691,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💰 **Neuro-X Business — Micro-Finance**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Business — Micro-Finance**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4712,9 +4713,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "👴 **Neuro-X Seniors — Bien-Vieillir Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Seniors — Bien-Vieillir Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4734,9 +4735,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📝 **Neuro-X Juridique — Générateur Contrats**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un avocat avant signature.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📝 **Neuro-X Juridique — Générateur Contrats**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un avocat avant signature.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4756,9 +4757,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🛒 **Neuro-X Business — Dropshipping Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🛒 **Neuro-X Business — Dropshipping Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4778,9 +4779,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💻 **Neuro-X Business — Guide Freelance**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💻 **Neuro-X Business — Guide Freelance**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4800,9 +4801,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🤖 **Neuro-X IA — Guide Débutants**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **Neuro-X IA — Guide Débutants**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4822,9 +4823,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🥗 **Neuro-X Santé — Nutrition Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🥗 **Neuro-X Santé — Nutrition Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4844,9 +4845,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💙 **REUSSITESS AI — Soutien & Accompagnement**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💙 **REUSSITESS AI — Soutien & Accompagnement**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4866,9 +4867,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💊 **Neuro-X Santé — Information Médicale**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez toujours un médecin ou pharmacien.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💊 **Neuro-X Santé — Information Médicale**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez toujours un médecin ou pharmacien.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4888,9 +4889,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎬 **Neuro-X Marketing — Création Contenu**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎬 **Neuro-X Marketing — Création Contenu**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4910,9 +4911,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💳 **Neuro-X Finance — Guide Épargne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💳 **Neuro-X Finance — Guide Épargne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4924,7 +4925,7 @@ export default async function handler(req, res) {
       lune.includes("Premier") ? "🌓 Idéal pour action, croissance, lancer des initiatives" :
       lune.includes("Pleine") ? "🌕 Idéal pour récolter, célébrer, finaliser projets" :
       "🌗 Idéal pour lâcher prise, bilan, repos"
-    return res.status(200).json({ response: "🌙 **Calendrier Lunaire Caribéen**\n\n"+lune+"\n\n"+conseil+"\n\n🌿 En agriculture créole :\n• Nouvelle lune → planter légumes-feuilles\n• Pleine lune → récolte optimale\n• Dernier quartier → tailler, élaguer\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🌙 **Calendrier Lunaire Caribéen**\n\n"+lune+"\n\n"+conseil+"\n\n🌿 En agriculture créole :\n• Nouvelle lune → planter légumes-feuilles\n• Pleine lune → récolte optimale\n• Dernier quartier → tailler, élaguer\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // MODE ENFANTS
@@ -4943,9 +4944,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🧒 **Neuro-X Enfants — Mode Famille**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🧒 **Neuro-X Enfants — Mode Famille**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -4956,10 +4957,10 @@ export default async function handler(req, res) {
       const d = await r.json()
       if (d.items?.length) {
         const news = d.items.slice(0,5).map(i => "📰 "+i.title).join("\n")
-        return res.status(200).json({ response: "🇬🇵 **Actualités Guadeloupe — La 1ère**\n\n"+news+"\n\nSource: la1ere.francetvinfo.fr\n\nBOUDOUM ! 🇬🇵" })
+        return res.status(200).json({ pdfAction: pdfType, response: "🇬🇵 **Actualités Guadeloupe — La 1ère**\n\n"+news+"\n\nSource: la1ere.francetvinfo.fr\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {}
-    return res.status(200).json({ response: "🇬🇵 **Actualités Guadeloupe**\n\n📺 La 1ère: la1ere.francetvinfo.fr/guadeloupe\n📻 RCI: rci.fm\n📰 France-Antilles: france-antilles.fr\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🇬🇵 **Actualités Guadeloupe**\n\n📺 La 1ère: la1ere.francetvinfo.fr/guadeloupe\n📻 RCI: rci.fm\n📰 France-Antilles: france-antilles.fr\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // GUIDE NFT CARAIBE
@@ -4978,9 +4979,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎨 **Neuro-X NFT — Art Numérique Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X NFT — Art Numérique Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5000,9 +5001,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "⛏️ **Neuro-X Finance — Guide GoMining**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "⛏️ **Neuro-X Finance — Guide GoMining**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5015,10 +5016,10 @@ export default async function handler(req, res) {
         const niveau = nb >= 5000 ? "💠 Platinum" : nb >= 1000 ? "🥇 Gold" : nb >= 500 ? "🥈 Silver" : "🥉 Bronze"
         const annuel = (nb * apy).toFixed(0)
         const mensuel = (nb * apy / 12).toFixed(0)
-        return res.status(200).json({ response: "💎 **Calculateur Staking REUSS**\n\n"+niveau+"\n💰 "+nb+" REUSS stakés\n📈 APY : "+(apy*100)+"%\n\n✅ Gain annuel : "+annuel+" REUSS\n📅 Gain mensuel : "+mensuel+" REUSS\n\nBOUDOUM ! 🇬🇵" })
+        return res.status(200).json({ pdfAction: pdfType, response: "💎 **Calculateur Staking REUSS**\n\n"+niveau+"\n💰 "+nb+" REUSS stakés\n📈 APY : "+(apy*100)+"%\n\n✅ Gain annuel : "+annuel+" REUSS\n📅 Gain mensuel : "+mensuel+" REUSS\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {}
-    return res.status(200).json({ response: "💎 **Calculateur Staking REUSS**\n\nDonne le nombre de tokens à staker\nEx: *calcule staking 1000 REUSS*\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "💎 **Calculateur Staking REUSS**\n\nDonne le nombre de tokens à staker\nEx: *calcule staking 1000 REUSS*\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // CHAMPIONS SPORTIFS ANTILLES
@@ -5037,9 +5038,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🏆 **Neuro-X Sport — Champions Antillais**\n\n"+d.choices?.[0]?.message?.content+"\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Neuro-X Sport — Champions Antillais**\n\n"+d.choices?.[0]?.message?.content+"\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5061,9 +5062,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌱 **Neuro-X Agriculture — Jardin Créole**\n\n🌙 "+lune+" | 🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌱 **Neuro-X Agriculture — Jardin Créole**\n\n🌙 "+lune+" | 🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5083,9 +5084,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🧠 **Neuro-X Philosophie — Pensée Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Philosophie — Pensée Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5105,9 +5106,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌍 **Neuro-X Diaspora — Communauté Mondiale**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Diaspora — Communauté Mondiale**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5127,9 +5128,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "⛓️ **Neuro-X Blockchain — Smart Contracts**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "⛓️ **Neuro-X Blockchain — Smart Contracts**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5149,9 +5150,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🚀 **Neuro-X Stratégie — Pitch Investisseur**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🚀 **Neuro-X Stratégie — Pitch Investisseur**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5171,9 +5172,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🏠 **Neuro-X Immobilier — Guide DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🏠 **Neuro-X Immobilier — Guide DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un notaire.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5193,9 +5194,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "👑 **Neuro-X Femmes — Coach Entrepreneuriat**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Femmes — Coach Entrepreneuriat**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5215,9 +5216,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎓 **Neuro-X Jeunes — Guide Orientation**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Jeunes — Guide Orientation**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5237,9 +5238,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🔍 **Neuro-X SEO — Audit Site Web**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🔍 **Neuro-X SEO — Audit Site Web**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5259,9 +5260,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎵 **Neuro-X Musique — Chanson Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎵 **Neuro-X Musique — Chanson Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5282,9 +5283,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌿 **Neuro-X Tourisme — Éco-Tourisme Guadeloupe**\n\n🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Tourisme — Éco-Tourisme Guadeloupe**\n\n🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5304,9 +5305,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🔬 **Neuro-X Sciences — Biodiversité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🔬 **Neuro-X Sciences — Biodiversité Caribéenne**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5326,9 +5327,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "☀️ **Neuro-X Énergie — Solaire Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "☀️ **Neuro-X Énergie — Solaire Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5348,9 +5349,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📖 **Neuro-X Langues — Dictionnaire Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📖 **Neuro-X Langues — Dictionnaire Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5371,9 +5372,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "✨ **Neuro-X Coach — Développement Personnel**\n\n💬 "+citation+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "✨ **Neuro-X Coach — Développement Personnel**\n\n💬 "+citation+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5395,9 +5396,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📈 **Neuro-X Finance — Analyse Marché**\n\n"+crypto+"\n😨 "+fg+"\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ DYOR\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📈 **Neuro-X Finance — Analyse Marché**\n\n"+crypto+"\n😨 "+fg+"\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ DYOR\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5417,9 +5418,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "👴 **Neuro-X Juridique — Guide Retraite DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un conseiller retraite.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Juridique — Guide Retraite DOM-TOM**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un conseiller retraite.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5439,9 +5440,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📋 **Neuro-X Business — Business Plan**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📋 **Neuro-X Business — Business Plan**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5453,10 +5454,10 @@ export default async function handler(req, res) {
         const poids = nb[0], taille = nb[1] > 3 ? nb[1]/100 : nb[1]
         const imc = (poids / (taille * taille)).toFixed(1)
         const cat = imc < 18.5 ? "🔵 Insuffisance pondérale" : imc < 25 ? "🟢 Poids normal" : imc < 30 ? "🟡 Surpoids" : "🔴 Obésité"
-        return res.status(200).json({ response: "⚖️ **Calculateur IMC — Neuro-X Santé**\n\nPoids: "+poids+"kg | Taille: "+(taille*100)+"cm\n\n📊 IMC : "+imc+"\n"+cat+"\n\n💡 Conseil caribéen: Mangez équilibré, bougez au soleil !\n\nBOUDOUM ! 🇬🇵" })
+        return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Calculateur IMC — Neuro-X Santé**\n\nPoids: "+poids+"kg | Taille: "+(taille*100)+"cm\n\n📊 IMC : "+imc+"\n"+cat+"\n\n💡 Conseil caribéen: Mangez équilibré, bougez au soleil !\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {}
-    return res.status(200).json({ response: "⚖️ **Calculateur IMC**\n\nDonne ton poids (kg) et ta taille (cm)\nEx: *calcule mon IMC 70kg 175cm*\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Calculateur IMC**\n\nDonne ton poids (kg) et ta taille (cm)\nEx: *calcule mon IMC 70kg 175cm*\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // GUIDE IMMIGRATION DOM-TOM
@@ -5475,9 +5476,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "✈️ **Neuro-X Juridique — Guide Immigration**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez les services préfectoraux.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Juridique — Guide Immigration**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez les services préfectoraux.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5498,9 +5499,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "⭐ **Neuro-X Spiritualité — Astrologie Caribéenne**\n\n"+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "⭐ **Neuro-X Spiritualité — Astrologie Caribéenne**\n\n"+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5520,9 +5521,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎯 **Neuro-X Éducation — Quiz Instantané**\n\n"+d.choices?.[0]?.message?.content+"\n\n+5 points REUSS si bonne réponse !\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Éducation — Quiz Instantané**\n\n"+d.choices?.[0]?.message?.content+"\n\n+5 points REUSS si bonne réponse !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5542,9 +5543,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📊 **Neuro-X Marketing — Plan Complet**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📊 **Neuro-X Marketing — Plan Complet**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5565,10 +5566,10 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       const rep = d.choices?.[0]?.message?.content
-      if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS — Histoire Caribéenne & Africaine**\n\n"+rep+"\n\nBOUDOUM ! 🇬🇵" })
-      return res.status(200).json({ response: "📚 **Histoire Caribéenne**\n\nLa Guadeloupe, Terres de Champions ! Notre histoire est riche: découverte par Christophe Colomb en 1493, peuplement par les Kalinagos, colonisation française, abolition de l'esclavage le 27 mai 1848 par Victor Schœlcher, résistance de Louis Delgrès. Aujourd'hui département français d'outre-mer fier de son identité créole.\n\nBOUDOUM ! 🇬🇵" })
+      if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS — Histoire Caribéenne & Africaine**\n\n"+rep+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📚 **Histoire Caribéenne**\n\nLa Guadeloupe, Terres de Champions ! Notre histoire est riche: découverte par Christophe Colomb en 1493, peuplement par les Kalinagos, colonisation française, abolition de l'esclavage le 27 mai 1848 par Victor Schœlcher, résistance de Louis Delgrès. Aujourd'hui département français d'outre-mer fier de son identité créole.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "📚 **Histoire Caribéenne & Africaine**\n\nLa Guadeloupe est une île des Caraïbes, département français d'outre-mer. Histoire marquée par: les peuples Kalinagos, la colonisation, l'esclavage et son abolition le 27 mai 1848. L'Afrique, berceau de l'humanité, a donné naissance aux grandes civilisations: Égypte ancienne, empire du Mali, royaume du Congo. Nelson Mandela, Thomas Sankara, Patrice Lumumba — des leaders qui ont changé le monde.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📚 **Histoire Caribéenne & Africaine**\n\nLa Guadeloupe est une île des Caraïbes, département français d'outre-mer. Histoire marquée par: les peuples Kalinagos, la colonisation, l'esclavage et son abolition le 27 mai 1848. L'Afrique, berceau de l'humanité, a donné naissance aux grandes civilisations: Égypte ancienne, empire du Mali, royaume du Congo. Nelson Mandela, Thomas Sankara, Patrice Lumumba — des leaders qui ont changé le monde.\n\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5588,9 +5589,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📧 **Neuro-X Business — Email Professionnel**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📧 **Neuro-X Business — Email Professionnel**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5610,9 +5611,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📱 **Neuro-X Marketing — Générateur Posts**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📱 **Neuro-X Marketing — Générateur Posts**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5632,9 +5633,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🍹 **Neuro-X Cuisine — Cocktails Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🍹 **Neuro-X Cuisine — Cocktails Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5655,9 +5656,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌙 **Neuro-X Spiritualité — Analyse Rêves**\n\n"+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌙 **Neuro-X Spiritualité — Analyse Rêves**\n\n"+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5678,9 +5679,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "✈️ **Neuro-X Tourisme — Guide Caribéen**\n\n🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Tourisme — Guide Caribéen**\n\n🌤️ "+meteo+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5700,9 +5701,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🧠 **Neuro-X Psychologie — Analyse Personnalité**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Psychologie — Analyse Personnalité**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5722,9 +5723,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🎯 **Neuro-X Marketing — Générateur Slogans**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Marketing — Générateur Slogans**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5746,9 +5747,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💰 **Neuro-X Finance — Conseils Investissement**\n\n📊 Marché actuel : "+fg+"\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ DYOR — Pas de conseil financier.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Finance — Conseils Investissement**\n\n📊 Marché actuel : "+fg+"\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ DYOR — Pas de conseil financier.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5768,9 +5769,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌐 **Neuro-X Langues — Leçon**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Langues — Leçon**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5792,9 +5793,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🧘 **Neuro-X Santé — Méditation Caribéenne**\n\n🌊 "+meteo+" | "+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🧘 **Neuro-X Santé — Méditation Caribéenne**\n\n🌊 "+meteo+" | "+lune+"\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5811,7 +5812,7 @@ export default async function handler(req, res) {
       { creole: "Péyi a ni solèy pou tout moun", fr: "Le pays a du soleil pour tout le monde" },
     ]
     const p = proverbes[Math.floor(Math.random()*proverbes.length)]
-    return res.status(200).json({ response: "🌺 **Proverbe Créole du Moment**\n\n*"+p.creole+"*\n\n📖 Traduction : "+p.fr+"\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🌺 **Proverbe Créole du Moment**\n\n*"+p.creole+"*\n\n📖 Traduction : "+p.fr+"\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // SANTE NATURELLE CARIBEENNE
@@ -5830,9 +5831,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌿 **Neuro-X Santé — Plantes Caribéennes**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un médecin.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Santé — Plantes Caribéennes**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un médecin.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5845,10 +5846,10 @@ export default async function handler(req, res) {
         let sum = digits.reduce((a,b)=>a+b,0)
         while(sum>9) sum = String(sum).split("").map(Number).reduce((a,b)=>a+b,0)
         const signifs = ["","Leader né","Diplomate","Créatif","Travailleur","Aventurier","Harmonieux","Mystique","Ambitieux","Humaniste"]
-        return res.status(200).json({ response: "🔢 **Numérologie Caribéenne**\n\nTon chiffre de vie : **"+sum+"**\n\n✨ "+signifs[sum]+"\n\nEn Guadeloupe, le "+sum+" représente la force des Terres de Champions !\n\nBOUDOUM ! 🇬🇵" })
+        return res.status(200).json({ pdfAction: pdfType, response: "🔢 **Numérologie Caribéenne**\n\nTon chiffre de vie : **"+sum+"**\n\n✨ "+signifs[sum]+"\n\nEn Guadeloupe, le "+sum+" représente la force des Terres de Champions !\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {}
-    return res.status(200).json({ response: "🔢 **Numérologie Caribéenne**\n\nDonne ta date de naissance (ex: 25/03/1990) pour calculer ton chiffre de vie !\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🔢 **Numérologie Caribéenne**\n\nDonne ta date de naissance (ex: 25/03/1990) pour calculer ton chiffre de vie !\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // METEO MONDE
@@ -5863,9 +5864,9 @@ export default async function handler(req, res) {
       const md = await mr.json()
       const w = md.current_weather
       const wDesc = w.weathercode<=3?"Ensoleillé":w.weathercode<=48?"Nuageux":w.weathercode<=67?"Pluvieux":"Orageux"
-      return res.status(200).json({ response: "🌤️ **Météo "+lieu+" — Temps réel**\n\n🌡️ "+w.temperature+"°C\n💨 Vent: "+w.windspeed+"km/h\n☁️ "+wDesc+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌤️ **Météo "+lieu+" — Temps réel**\n\n🌡️ "+w.temperature+"°C\n💨 Vent: "+w.windspeed+"km/h\n☁️ "+wDesc+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5885,9 +5886,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💪 **Neuro-X Sport — Coach Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💪 **Neuro-X Sport — Coach Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5907,9 +5908,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🍽️ **Neuro-X Cuisine — Recette Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🍽️ **Neuro-X Cuisine — Recette Créole**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5929,9 +5930,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "⚖️ **Neuro-X Juridique — Conseil Droit**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un avocat pour toute décision légale.\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Neuro-X Juridique — Conseil Droit**\n\n"+d.choices?.[0]?.message?.content+"\n\n⚠️ Consultez un avocat pour toute décision légale.\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5941,10 +5942,10 @@ export default async function handler(req, res) {
       const nb = parseFloat(message.match(/[\d.,]+/)?.[0]?.replace(",","."))
       if (!isNaN(nb)) {
         const taux = { standard: 0.03, mode: 0.10, cuisine: 0.08, tech: 0.04, livres: 0.045 }
-        return res.status(200).json({ response: "💰 **Calculateur Amazon REUSSITESS**\n\nProduit à $"+nb+"\n\n📊 Commissions estimées :\n• Standard (3%) : $"+(nb*0.03).toFixed(2)+"\n• Mode (10%) : $"+(nb*0.10).toFixed(2)+"\n• Cuisine (8%) : $"+(nb*0.08).toFixed(2)+"\n• Tech (4%) : $"+(nb*0.04).toFixed(2)+"\n• Livres (4.5%) : $"+(nb*0.045).toFixed(2)+"\n\n🌍 Multiplié par 26 boutiques = $"+(nb*0.05*26).toFixed(2)+"/vente théorique\n\nBOUDOUM ! 🇬🇵" })
+        return res.status(200).json({ pdfAction: pdfType, response: "💰 **Calculateur Amazon REUSSITESS**\n\nProduit à $"+nb+"\n\n📊 Commissions estimées :\n• Standard (3%) : $"+(nb*0.03).toFixed(2)+"\n• Mode (10%) : $"+(nb*0.10).toFixed(2)+"\n• Cuisine (8%) : $"+(nb*0.08).toFixed(2)+"\n• Tech (4%) : $"+(nb*0.04).toFixed(2)+"\n• Livres (4.5%) : $"+(nb*0.045).toFixed(2)+"\n\n🌍 Multiplié par 26 boutiques = $"+(nb*0.05*26).toFixed(2)+"/vente théorique\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5964,9 +5965,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📋 **Résumé de Session**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📋 **Résumé de Session**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -5986,9 +5987,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "⚖️ **Mode Débat — Neuro-X Stratégie**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Mode Débat — Neuro-X Stratégie**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -6008,9 +6009,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "💼 **Neuro-X Business — Conseils Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Business — Conseils Caribéens**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -6031,9 +6032,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       const poeme = d.choices?.[0]?.message?.content || ""
-      return res.status(200).json({ response: "✍️ **Neuro-X Créatif — Poème Créole**\n\n"+poeme+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "✍️ **Neuro-X Créatif — Poème Créole**\n\n"+poeme+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -6054,9 +6055,9 @@ export default async function handler(req, res) {
       })
       const d = await groqRes.json()
       const noms = d.choices?.[0]?.message?.content || ""
-      return res.status(200).json({ response: "🏢 **Neuro-X Business — Générateur de Noms**\n\n"+noms+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🏢 **Neuro-X Business — Générateur de Noms**\n\n"+noms+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -6076,9 +6077,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📄 **Neuro-X Business — Assistant CV**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📄 **Neuro-X Business — Assistant CV**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -6098,41 +6099,41 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "📖 **Neuro-X Créatif — Conte Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "📖 **Neuro-X Créatif — Conte Caribéen**\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
   // WHITEPAPER REUSSITESS
   if (msgLow.includes("whitepaper") || msgLow.includes("livre blanc") || msgLow.includes("white paper") || msgLow.includes("tokenomics")) {
-    return res.status(200).json({ response: "📄 **REUSSITESS® White Paper**\n\n🎯 Vision : IA universelle caribéenne\n🌍 Portée : 14 pays, 5 continents\n💎 Token : REUSS sur Polygon\n📊 Supply : 1 milliard REUSS\n\n**Tokenomics :**\n• 40% Communauté\n• 20% Développement\n• 15% Équipe\n• 15% Réserve\n• 10% Marketing\n\n**Utilité REUSS :**\n• Accès Neuro-X premium\n• Récompenses Quiz\n• Gouvernance DAO\n• Staking\n\n📋 White paper complet : reussitess.fr\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "📄 **REUSSITESS® White Paper**\n\n🎯 Vision : IA universelle caribéenne\n🌍 Portée : 14 pays, 5 continents\n💎 Token : REUSS sur Polygon\n📊 Supply : 1 milliard REUSS\n\n**Tokenomics :**\n• 40% Communauté\n• 20% Développement\n• 15% Équipe\n• 15% Réserve\n• 10% Marketing\n\n**Utilité REUSS :**\n• Accès Neuro-X premium\n• Récompenses Quiz\n• Gouvernance DAO\n• Staking\n\n📋 White paper complet : reussitess.fr\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // STAKING REUSS
   if (msgLow.includes("staking") || msgLow.includes("stake") || msgLow.includes("mettre en jeu") || msgLow.includes("récompense token")) {
-    return res.status(200).json({ response: "💎 **Staking REUSS — Gagne en Dormant**\n\n🥉 Bronze : 100 REUSS → 3% APY\n🥈 Silver : 500 REUSS → 8% APY\n🥇 Gold : 1000 REUSS → 15% APY\n💠 Platinum : 5000 REUSS → 20% APY\n\n📍 Contrat : 0xB37531727fC07c6EED4f97F852A115B428046EB2\n🔗 Réseau : Polygon\n\n💡 Plus tu stakes, plus tu gagnes !\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "💎 **Staking REUSS — Gagne en Dormant**\n\n🥉 Bronze : 100 REUSS → 3% APY\n🥈 Silver : 500 REUSS → 8% APY\n🥇 Gold : 1000 REUSS → 15% APY\n💠 Platinum : 5000 REUSS → 20% APY\n\n📍 Contrat : 0xB37531727fC07c6EED4f97F852A115B428046EB2\n🔗 Réseau : Polygon\n\n💡 Plus tu stakes, plus tu gagnes !\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // DAO GOUVERNANCE
   if (msgLow.includes("dao") || msgLow.includes("gouvernance") || msgLow.includes("voter") || msgLow.includes("proposition")) {
-    return res.status(200).json({ response: "🏛️ **REUSSITESS DAO — Gouvernance Décentralisée**\n\nTu as du REUSS = Tu as le pouvoir !\n\n🗳️ Droits de vote :\n• 1 REUSS = 1 vote\n• Propositions communautaires\n• Décisions sur l'écosystème\n\n📋 Prochains votes :\n• Expansion vers 5 nouveaux pays\n• Ajout 40 Neuro-X supplémentaires\n• Nouveau partenariat Amazon\n\n💡 DELTA-4 : Gouvernance DAO active\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🏛️ **REUSSITESS DAO — Gouvernance Décentralisée**\n\nTu as du REUSS = Tu as le pouvoir !\n\n🗳️ Droits de vote :\n• 1 REUSS = 1 vote\n• Propositions communautaires\n• Décisions sur l'écosystème\n\n📋 Prochains votes :\n• Expansion vers 5 nouveaux pays\n• Ajout 40 Neuro-X supplémentaires\n• Nouveau partenariat Amazon\n\n💡 DELTA-4 : Gouvernance DAO active\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // NEXUS PASSPORT
   if (msgLow.includes("passport") || msgLow.includes("passeport") || msgLow.includes("identité") || msgLow.includes("nft identité") || msgLow.includes("ia passport")) {
-    return res.status(200).json({ response: "🪪 **IA Passport Mondial REUSSITESS**\n\n🌍 Premier passeport universel IA au monde !\n\n✅ Identité NFT sur blockchain\n✅ 195 langues supportées\n✅ Reconnaissance dans 14 pays\n✅ Accès tous les Neuro-X\n✅ Historique conversations sécurisé\n✅ Récompenses REUSS automatiques\n\n🔐 Technologie : AES-256 + Polygon NFT\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🪪 **IA Passport Mondial REUSSITESS**\n\n🌍 Premier passeport universel IA au monde !\n\n✅ Identité NFT sur blockchain\n✅ 195 langues supportées\n✅ Reconnaissance dans 14 pays\n✅ Accès tous les Neuro-X\n✅ Historique conversations sécurisé\n✅ Récompenses REUSS automatiques\n\n🔐 Technologie : AES-256 + Polygon NFT\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // INVESTIR REUSS
   if (msgLow.includes("investir") || msgLow.includes("acheter reuss") || msgLow.includes("comment acheter") || msgLow.includes("où acheter") || msgLow.includes("ou acheter")) {
-    return res.status(200).json({ response: "💰 **Comment Investir dans REUSS**\n\n1️⃣ Installe MetaMask ou Trust Wallet\n2️⃣ Achète du POL (Polygon) sur Binance/Coinbase\n3️⃣ Connecte sur QuickSwap.exchange\n4️⃣ Swap POL → REUSS\n\n📍 Contrat officiel :\n0xB37531727fC07c6EED4f97F852A115B428046EB2\n\n⚠️ Réseau : Polygon uniquement\n💡 Vérifie toujours le bon contrat !\n\n📊 Prix actuel sur DexScreener\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "💰 **Comment Investir dans REUSS**\n\n1️⃣ Installe MetaMask ou Trust Wallet\n2️⃣ Achète du POL (Polygon) sur Binance/Coinbase\n3️⃣ Connecte sur QuickSwap.exchange\n4️⃣ Swap POL → REUSS\n\n📍 Contrat officiel :\n0xB37531727fC07c6EED4f97F852A115B428046EB2\n\n⚠️ Réseau : Polygon uniquement\n💡 Vérifie toujours le bon contrat !\n\n📊 Prix actuel sur DexScreener\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // POINTS REUSS
   if (msgLow.includes("mes points") || msgLow.includes("mon score") || msgLow.includes("points reuss") || msgLow.includes("combien de points")) {
     const pts = calculerPoints(message)
-    return res.status(200).json({ response: "🏆 **Système Points REUSS**\n\n💎 Points gagnés cette session : "+pts+"\n\n📊 Comment gagner plus :\n• Quiz : +5 pts\n• Neuro-X : +3 pts\n• Mention REUSS : +2 pts\n• BOUDOUM : +10 pts 🎯\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Système Points REUSS**\n\n💎 Points gagnés cette session : "+pts+"\n\n📊 Comment gagner plus :\n• Quiz : +5 pts\n• Neuro-X : +3 pts\n• Mention REUSS : +2 pts\n• BOUDOUM : +10 pts 🎯\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // COMMUNICATION 200 IA
@@ -6142,12 +6143,12 @@ export default async function handler(req, res) {
     const fg = await getFearGreed()
     const cyclone = await getCyclones()
     const lune = getLunePhase()
-    return res.status(200).json({ response: "🤖 **QUANTUM NEXUS — Communication Inter-Agents**\n\n"+"📡 Rapport temps réel des Sentinelles :\n"+"🌤️ ST-003 → Météo: "+(meteo||"N/A")+"\n"+"💎 ST-005 → Crypto: "+(crypto||"N/A")+"\n"+"😨 ST-005 → Marché: "+(fg||"N/A")+"\n"+"🌀 ST-021 → Cyclones: "+(cyclone||"N/A")+"\n"+"🌙 ST-003 → Lune: "+lune+"\n\n"+"🧠 Neuro-X en attente de commandes...\n"+"💬 Active un agent : *neuro-x finance*, *neuro-x coach*...\n\n"+"BOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🤖 **QUANTUM NEXUS — Communication Inter-Agents**\n\n"+"📡 Rapport temps réel des Sentinelles :\n"+"🌤️ ST-003 → Météo: "+(meteo||"N/A")+"\n"+"💎 ST-005 → Crypto: "+(crypto||"N/A")+"\n"+"😨 ST-005 → Marché: "+(fg||"N/A")+"\n"+"🌀 ST-021 → Cyclones: "+(cyclone||"N/A")+"\n"+"🌙 ST-003 → Lune: "+lune+"\n\n"+"🧠 Neuro-X en attente de commandes...\n"+"💬 Active un agent : *neuro-x finance*, *neuro-x coach*...\n\n"+"BOUDOUM ! 🇬🇵" })
   }
 
   // RAPPORT SECURITE
   if (msgLow.includes("sécurité") || msgLow.includes("securite") || msgLow.includes("rapport sécurité") || msgLow.includes("shield") || msgLow.includes("protection")) {
-    return res.status(200).json({ response: "🛡️ **REUSSSHIELD — Rapport Sécurité**\n\n✅ ST-016 Anti-Fraude : Actif\n✅ ST-017 MiCA Compliance : Actif\n✅ ST-026 Surveillance APIs : Actif\n✅ ST-027 Vercel Monitor : Actif\n✅ ST-028 GitHub Watch : Actif\n✅ ST-029 Polygon Network : Actif\n\n🔒 Détection injection prompt : Activée\n🔑 Chiffrement AES-256 : Actif\n🌐 Site reussitess.fr : EN LIGNE\n\n200 agents IA en surveillance continue 24/7\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **REUSSSHIELD — Rapport Sécurité**\n\n✅ ST-016 Anti-Fraude : Actif\n✅ ST-017 MiCA Compliance : Actif\n✅ ST-026 Surveillance APIs : Actif\n✅ ST-027 Vercel Monitor : Actif\n✅ ST-028 GitHub Watch : Actif\n✅ ST-029 Polygon Network : Actif\n\n🔒 Détection injection prompt : Activée\n🔑 Chiffrement AES-256 : Actif\n🌐 Site reussitess.fr : EN LIGNE\n\n200 agents IA en surveillance continue 24/7\n\nBOUDOUM ! 🇬🇵" })
   }
 
 
@@ -6174,10 +6175,10 @@ export default async function handler(req, res) {
         })
         const d = await groqRes.json()
         const rep = d.choices?.[0]?.message?.content
-        if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS — Wikipedia Live**\n\n"+rep+"\n\nSource: Wikipedia FR\n\nBOUDOUM ! 🇬🇵" })
+        if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS — Wikipedia Live**\n\n"+rep+"\n\nSource: Wikipedia FR\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -6204,7 +6205,7 @@ export default async function handler(req, res) {
           })
           const d = await groqRes.json()
           const rep = d.choices?.[0]?.message?.content
-          if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS — "+fw.charAt(0).toUpperCase()+fw.slice(1)+"**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
+          if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS — "+fw.charAt(0).toUpperCase()+fw.slice(1)+"**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
         }
       } catch(e) {}
     }
@@ -6233,10 +6234,10 @@ export default async function handler(req, res) {
         })
         const d = await groqRes.json()
         const rep = d.choices?.[0]?.message?.content
-        if (rep) return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
+        if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS**\n\n"+rep+"\n\nSource: Wikipedia\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -6257,9 +6258,9 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n*Umuntu ngumuntu ngabantu — Je suis parce que nous sommes*\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n*Umuntu ngumuntu ngabantu — Je suis parce que nous sommes*\n\n"+d.choices?.[0]?.message?.content+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -6280,26 +6281,26 @@ export default async function handler(req, res) {
         })
       })
       const d = await groqRes.json()
-      return res.status(200).json({ response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n"+d.choices?.[0]?.message?.content+"\n\n*Ubuntu: Je suis parce que nous sommes*\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n"+d.choices?.[0]?.message?.content+"\n\n*Ubuntu: Je suis parce que nous sommes*\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
   // SECURITE — ANTI-INJECTION
   const menace = detecterMenace(message)
   if (menace) {
-    return res.status(200).json({ response: "🛡️ **ST-016 Sentinelle Sécurité — ALERTE**\n\nTentative d'injection détectée. REUSSITESS AI est protégé par 200 agents IA.\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **ST-016 Sentinelle Sécurité — ALERTE**\n\nTentative d'injection détectée. REUSSITESS AI est protégé par 200 agents IA.\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // RECOMMANDATIONS AMAZON
   if (msgLow.includes("recommande") || msgLow.includes("suggestion produit") || msgLow.includes("que acheter") || msgLow.includes("quoi acheter") || msgLow.includes("produit amazon")) {
-    return res.status(200).json({ response: "🛍️ **Recommandations Amazon REUSSITESS**\n\n🇫🇷 France → amazon.fr/shop/amourguadeloupe\n🇺🇸 USA → amazon.com/shop/influencer-fb942837\n🇩🇪 Allemagne → amazon.de/shop/influencer-fb942837\n🇬🇧 UK → amazon.co.uk/shop/influencer-fb942837\n🇨🇦 Canada → amazon.ca/shop/influencer-fb942837\n🇧🇷 Brésil → amazon.com.br/shop/influencer-fb942837\n🇦🇺 Australie → amazon.com.au/shop/influencer-fb942837\n🇮🇳 Inde → amazon.in/shop/influencer-fb942837\n\n💎 Gagne des tokens REUSS à chaque achat !\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🛍️ **Recommandations Amazon REUSSITESS**\n\n🇫🇷 France → amazon.fr/shop/amourguadeloupe\n🇺🇸 USA → amazon.com/shop/influencer-fb942837\n🇩🇪 Allemagne → amazon.de/shop/influencer-fb942837\n🇬🇧 UK → amazon.co.uk/shop/influencer-fb942837\n🇨🇦 Canada → amazon.ca/shop/influencer-fb942837\n🇧🇷 Brésil → amazon.com.br/shop/influencer-fb942837\n🇦🇺 Australie → amazon.com.au/shop/influencer-fb942837\n🇮🇳 Inde → amazon.in/shop/influencer-fb942837\n\n💎 Gagne des tokens REUSS à chaque achat !\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // CLASSEMENT FOLLOWERS
   if (msgLow.includes("classement") || msgLow.includes("leaderboard") || msgLow.includes("top followers") || msgLow.includes("meilleurs")) {
-    return res.status(200).json({ response: "🏆 **Classement REUSSITESS — Top Champions**\n\n🥇 Champion Platinum — 1000+ points REUSS\n🥈 Champion Gold — 500+ points REUSS\n🥉 Champion Silver — 200+ points REUSS\n🎖️ Champion Bronze — 50+ points REUSS\n\n💎 Gagne des points en :\n• Faisant les 99 quiz (+5 pts)\n• Activant les Neuro-X (+3 pts)\n• Partageant REUSSITESS (+10 pts)\n• Disant BOUDOUM (+10 pts) 🎯\n\n📊 Rejoins le classement sur reussitess.fr !\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Classement REUSSITESS — Top Champions**\n\n🥇 Champion Platinum — 1000+ points REUSS\n🥈 Champion Gold — 500+ points REUSS\n🥉 Champion Silver — 200+ points REUSS\n🎖️ Champion Bronze — 50+ points REUSS\n\n💎 Gagne des points en :\n• Faisant les 99 quiz (+5 pts)\n• Activant les Neuro-X (+3 pts)\n• Partageant REUSSITESS (+10 pts)\n• Disant BOUDOUM (+10 pts) 🎯\n\n📊 Rejoins le classement sur reussitess.fr !\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // GRAPHIQUE PRIX REUSS
@@ -6313,10 +6314,10 @@ export default async function handler(req, res) {
         const change = pair.priceChange?.h24 || "N/A"
         const vol = pair.volume?.h24 || "N/A"
         const liq = pair.liquidity?.usd || "N/A"
-        return res.status(200).json({ response: "📈 **Token REUSS — Analyse Temps Réel**\n\n💎 Prix : $"+prix+"\n📊 Variation 24h : "+change+"%\n💹 Volume 24h : $"+vol+"\n🌊 Liquidité : $"+liq+"\n\n🔗 DexScreener : dexscreener.com/polygon/"+pair.pairAddress+"\n\nBOUDOUM ! 🇬🇵" })
+        return res.status(200).json({ pdfAction: pdfType, response: "📈 **Token REUSS — Analyse Temps Réel**\n\n💎 Prix : $"+prix+"\n📊 Variation 24h : "+change+"%\n💹 Volume 24h : $"+vol+"\n🌊 Liquidité : $"+liq+"\n\n🔗 DexScreener : dexscreener.com/polygon/"+pair.pairAddress+"\n\nBOUDOUM ! 🇬🇵" })
       }
     } catch(e) {}
-    return res.status(200).json({ response: "📈 Graphique REUSS disponible sur DexScreener !\nhttps://dexscreener.com/polygon/0xB37531727fC07c6EED4f97F852A115B428046EB2\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "📈 Graphique REUSS disponible sur DexScreener !\nhttps://dexscreener.com/polygon/0xB37531727fC07c6EED4f97F852A115B428046EB2\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // RAPPORT COMPLET ECOSYSTEME
@@ -6325,7 +6326,7 @@ export default async function handler(req, res) {
     const crypto = await getCryptoPrice()
     const lune = getLunePhase()
     const cyclone = await getCyclones()
-    return res.status(200).json({ response: "📊 **RAPPORT COMPLET REUSSITESS®971**\n\n🌤️ Météo Guadeloupe : "+(meteo||"N/A")+"\n🌙 Phase lune : "+lune+"\n🌀 Cyclones : "+(cyclone||"N/A")+"\n💎 Crypto : "+(crypto||"N/A")+"\n\n🤖 Agents actifs : 200\n🎯 Quiz actifs : 99\n🛍️ Boutiques : 26 (14 pays)\n🛡️ Sentinelles : 40 actives\n🌐 Site : EN LIGNE\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "📊 **RAPPORT COMPLET REUSSITESS®971**\n\n🌤️ Météo Guadeloupe : "+(meteo||"N/A")+"\n🌙 Phase lune : "+lune+"\n🌀 Cyclones : "+(cyclone||"N/A")+"\n💎 Crypto : "+(crypto||"N/A")+"\n\n🤖 Agents actifs : 200\n🎯 Quiz actifs : 99\n🛍️ Boutiques : 26 (14 pays)\n🛡️ Sentinelles : 40 actives\n🌐 Site : EN LIGNE\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // SEISMES CARAIBES
@@ -6333,9 +6334,9 @@ export default async function handler(req, res) {
     try {
       const s = await getSeismesCaraibes()
       const sm = await getSeismesMondiaux()
-      return res.status(200).json({ response: "🌋 **Séismes — Temps Réel**\n\n**🇬🇵 Caraïbes :**\n"+(s||"Aucun")+"\n\n**🌍 Mondiaux (ce mois) :**\n"+(sm||"Aucun")+"\n\nSource: USGS\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌋 **Séismes — Temps Réel**\n\n**🇬🇵 Caraïbes :**\n"+(s||"Aucun")+"\n\n**🌍 Mondiaux (ce mois) :**\n"+(sm||"Aucun")+"\n\nSource: USGS\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -6343,9 +6344,9 @@ export default async function handler(req, res) {
   if (msgLow.includes("cyclone") || msgLow.includes("ouragan") || msgLow.includes("tempête") || msgLow.includes("tempete") || msgLow.includes("hurricane")) {
     try {
       const c = await getCyclones()
-      return res.status(200).json({ response: "🌀 **Cyclones — Surveillance NHC**\n\n"+c+"\n\nSource: National Hurricane Center\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌀 **Cyclones — Surveillance NHC**\n\n"+c+"\n\nSource: National Hurricane Center\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -6359,16 +6360,16 @@ export default async function handler(req, res) {
       }
       const texte = message.replace(/traduis?\s*(en\s*\w+)?\s*/i,"").trim()
       const trad = await traduire(texte || "Bonjour je suis REUSSITESS AI", cible)
-      return res.status(200).json({ response: "🌐 **Traducteur REUSSITESS**\n\n"+trad+"\n\n50 langues disponibles !\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Traducteur REUSSITESS**\n\n"+trad+"\n\n50 langues disponibles !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
   // AGENDA CARIBEEN
   if (msgLow.includes("agenda") || msgLow.includes("événement") || msgLow.includes("evenement") || msgLow.includes("calendrier") || msgLow.includes("fête caribéenne") || msgLow.includes("fete caribeenne")) {
     const ag = getAgendaCaraibes()
-    return res.status(200).json({ response: "📅 **Agenda Caribéen du Mois**\n\n"+ag+"\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "📅 **Agenda Caribéen du Mois**\n\n"+ag+"\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // METEO DIRECTE
@@ -6381,8 +6382,8 @@ export default async function handler(req, res) {
       const md = await mr.json()
       const w = md.current_weather
       const wDesc = w.weathercode <= 3 ? "Ensoleillé" : w.weathercode <= 48 ? "Nuageux" : w.weathercode <= 67 ? "Pluvieux" : "Orageux"
-      return res.status(200).json({ response: "🌤️ **Météo "+lieu+" — Temps réel**\n\n🌡️ Température : "+w.temperature+"°C\n💨 Vent : "+w.windspeed+" km/h\n☁️ Conditions : "+wDesc+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) { return res.status(200).json({ response: "🌤️ Service météo indisponible. BOUDOUM 🇬🇵" }) }
+      return res.status(200).json({ pdfAction: pdfType, response: "🌤️ **Météo "+lieu+" — Temps réel**\n\n🌡️ Température : "+w.temperature+"°C\n💨 Vent : "+w.windspeed+" km/h\n☁️ Conditions : "+wDesc+"\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) { return res.status(200).json({ pdfAction: pdfType, response: "🌤️ Service météo indisponible. BOUDOUM 🇬🇵" }) }
   }
 
   // CRYPTO DIRECTE
@@ -6394,8 +6395,8 @@ export default async function handler(req, res) {
       const td = await tr.json()
       const fg = await getFearGreed()
       const trending = td.coins.slice(0,5).map(function(c){ return c.item.name }).join(", ")
-      return res.status(200).json({ response: "💎 **Crypto — Temps Réel**\n\n₿ Bitcoin : $"+(cd.bitcoin?.usd||"N/A")+"\nΞ Ethereum : $"+(cd.ethereum?.usd||"N/A")+"\n🔷 POL : $"+(cd["matic-network"]?.usd||"N/A")+"\n\n🔥 Tendances : "+trending+"\n😨 Sentiment : "+fg+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) { return res.status(200).json({ response: "💎 Service crypto indisponible. BOUDOUM 🇬🇵" }) }
+      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Temps Réel**\n\n₿ Bitcoin : $"+(cd.bitcoin?.usd||"N/A")+"\nΞ Ethereum : $"+(cd.ethereum?.usd||"N/A")+"\n🔷 POL : $"+(cd["matic-network"]?.usd||"N/A")+"\n\n🔥 Tendances : "+trending+"\n😨 Sentiment : "+fg+"\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) { return res.status(200).json({ pdfAction: pdfType, response: "💎 Service crypto indisponible. BOUDOUM 🇬🇵" }) }
   }
 
   // TAUX DE CHANGE DIRECT
@@ -6404,69 +6405,69 @@ export default async function handler(req, res) {
       const fr = await fetch("https://open.er-api.com/v6/latest/EUR")
       const fd = await fr.json()
       const r = fd.rates
-      return res.status(200).json({ response: "💱 **Taux de Change — Temps réel**\n\n💵 EUR/USD : "+r.USD+"\n💷 EUR/GBP : "+r.GBP+"\n🇧🇷 EUR/BRL : "+r.BRL+"\n🇨🇦 EUR/CAD : "+r.CAD+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) { return res.status(200).json({ response: "💱 Service taux indisponible. BOUDOUM 🇬🇵" }) }
+      return res.status(200).json({ pdfAction: pdfType, response: "💱 **Taux de Change — Temps réel**\n\n💵 EUR/USD : "+r.USD+"\n💷 EUR/GBP : "+r.GBP+"\n🇧🇷 EUR/BRL : "+r.BRL+"\n🇨🇦 EUR/CAD : "+r.CAD+"\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) { return res.status(200).json({ pdfAction: pdfType, response: "💱 Service taux indisponible. BOUDOUM 🇬🇵" }) }
   }
 
   // DETECTION PRENOM
   const prenom = detectPrenom(message)
   if (prenom) {
-    return res.status(200).json({ response: "🎉 Enchanté"+", "+prenom+" ! Je vais retenir ton prénom pour notre conversation. Bienvenue chez REUSSITESS AI — Excellence • Innovation • Succès !\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🎉 Enchanté"+", "+prenom+" ! Je vais retenir ton prénom pour notre conversation. Bienvenue chez REUSSITESS AI — Excellence • Innovation • Succès !\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // DETECTION EMOTION
   const emotion = detectEmotion(message)
   if (emotion) {
     const emoResp = getEmotionResponse(emotion)
-    if (emoResp) return res.status(200).json({ response: emoResp })
+    if (emoResp) return res.status(200).json({ pdfAction: pdfType, response: emoResp })
   }
 
   // DETECTION MODE
   const mode = detectMode(message)
   if (mode) {
     const modeResp = getModeResponse(mode, null)
-    if (modeResp) return res.status(200).json({ response: modeResp })
+    if (modeResp) return res.status(200).json({ pdfAction: pdfType, response: modeResp })
   }
 
   // SALUTATION AVEC HEURE
   if (msgLow.includes("bonjour") || msgLow.includes("bonsoir") || msgLow.includes("bonjou") || msgLow.includes("salut") || msgLow.includes("hello") || msgLow.includes("hey")) {
     const sal = getSalutation(datetime)
     const lune = getLunePhase()
-    return res.status(200).json({ response: sal+" ! Je suis REUSSITESS®971 AI, né en Guadeloupe 🇬🇵\n\n🌙 Lune : "+lune+"\n\n✨ Je peux t'aider avec :\n• 📰 Actualités temps réel\n• 💎 Prix crypto live\n• 🌤️ Météo\n• 🎓 99 Quiz\n• 🛍️ 26 Boutiques Amazon\n• 😂 Blagues caribéennes\n• 🔢 Conversions\n\nQue puis-je faire pour toi ?\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: sal+" ! Je suis REUSSITESS®971 AI, né en Guadeloupe 🇬🇵\n\n🌙 Lune : "+lune+"\n\n✨ Je peux t'aider avec :\n• 📰 Actualités temps réel\n• 💎 Prix crypto live\n• 🌤️ Météo\n• 🎓 99 Quiz\n• 🛍️ 26 Boutiques Amazon\n• 😂 Blagues caribéennes\n• 🔢 Conversions\n\nQue puis-je faire pour toi ?\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // MOT CREOLE DU JOUR
   if (msgLow === "créole" || msgLow === "creole" || msgLow.includes("mot du jour") || msgLow.includes("mot creole") || msgLow.includes("mot créole") || msgLow.includes("gwadloup") || msgLow.includes("patois") || msgLow === "langue créole" || msgLow.includes("parle creole") || msgLow.includes("parle créole")) {
     const m = getMotCreoleJour()
-    return res.status(200).json({ response: "🇬🇵 **Mot Créole du Jour**\n\n📖 **"+m.mot+"** = "+m.sens+"\n\n💬 Exemple : *"+m.phrase+"*\n\nBOUDOUM ! 🌴" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🇬🇵 **Mot Créole du Jour**\n\n📖 **"+m.mot+"** = "+m.sens+"\n\n💬 Exemple : *"+m.phrase+"*\n\nBOUDOUM ! 🌴" })
   }
 
   // BLAGUE CARIBEENNE
   if (msgLow.includes("blague") || msgLow.includes("humour") || msgLow.includes("drole") || msgLow.includes("drôle") || msgLow.includes("rire") || msgLow.includes("joke")) {
     const b = getBlague()
-    return res.status(200).json({ response: "😂 **Blague Caribéenne**\n\n"+b+"\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "😂 **Blague Caribéenne**\n\n"+b+"\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // HOROSCOPE
   if (msgLow.includes("horoscope") || msgLow.includes("signe") || msgLow.includes("astrologie") || msgLow.includes("belier") || msgLow.includes("taureau") || msgLow.includes("gemeaux") || msgLow.includes("cancer") || msgLow.includes("lion") || msgLow.includes("vierge") || msgLow.includes("balance") || msgLow.includes("scorpion") || msgLow.includes("sagittaire") || msgLow.includes("capricorne") || msgLow.includes("verseau") || msgLow.includes("poissons")) {
     const h = getHoroscope(msgLow)
-    if (h) return res.status(200).json({ response: "🔮 **Horoscope du Jour**\n\n"+h.signe+"\n\n"+h.msg+"\n\nBOUDOUM ! 🇬🇵" })
-    return res.status(200).json({ response: "🔮 **Horoscope du Jour**\n\nPrécise ton signe : Bélier, Taureau, Gémeaux, Cancer, Lion, Vierge, Balance, Scorpion, Sagittaire, Capricorne, Verseau ou Poissons ?\n\nBOUDOUM ! 🇬🇵" })
+    if (h) return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Horoscope du Jour**\n\n"+h.signe+"\n\n"+h.msg+"\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Horoscope du Jour**\n\nPrécise ton signe : Bélier, Taureau, Gémeaux, Cancer, Lion, Vierge, Balance, Scorpion, Sagittaire, Capricorne, Verseau ou Poissons ?\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // CONVERTISSEUR
   if (msgLow.includes("convertir") || msgLow.includes("convert") || (msgLow.includes("km") && msgLow.includes("mile")) || (msgLow.includes("kg") && msgLow.includes("lb")) || msgLow.includes("celsius") || msgLow.includes("fahrenheit")) {
     const conv = convertir(msgLow)
-    if (conv) return res.status(200).json({ response: "🔢 **Convertisseur**\n\n✅ "+conv+"\n\nBOUDOUM ! 🇬🇵" })
+    if (conv) return res.status(200).json({ pdfAction: pdfType, response: "🔢 **Convertisseur**\n\n✅ "+conv+"\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // CITATION DU JOUR
   if (msgLow.includes("citation") || msgLow.includes("inspire") || msgLow.includes("inspirant") || msgLow.includes("sagesse") || msgLow.includes("motivation")) {
     try {
       const cit = await getCitation()
-      return res.status(200).json({ response: "✨ **Citation du Jour**\n\n"+cit+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "✨ **Citation du Jour**\n\n"+cit+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -6474,9 +6475,9 @@ export default async function handler(req, res) {
   if (msgLow.includes("insolite") || msgLow.includes("saviez") || msgLow.includes("fait du jour") || msgLow.includes("anecdote") || msgLow.includes("surprise")) {
     try {
       const fait = await getFaitInsolite()
-      return res.status(200).json({ response: "🤔 **Fait Insolite du Jour**\n\n"+fait+"\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤔 **Fait Insolite du Jour**\n\n"+fait+"\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -6484,16 +6485,16 @@ export default async function handler(req, res) {
   if (msgLow === "iss" || msgLow.includes("station spatiale") || msgLow.includes("position iss") || msgLow.includes("où est l'iss") || msgLow.includes("iss en ce moment") || (msgLow.includes("espace") && !msgLow.includes("espace de")) || msgLow.includes("satellite")) {
     try {
       const iss = await getISSPosition()
-      return res.status(200).json({ response: "🛸 **Station Spatiale ISS — Position Temps Réel**\n\n"+iss+"\n\n🌍 Visible à l'oeil nu la nuit !\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🛸 **Station Spatiale ISS — Position Temps Réel**\n\n"+iss+"\n\n🌍 Visible à l'oeil nu la nuit !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBOUDOUM ! 🇬🇵" })
     }
   }
 
   // PHASE DE LUNE
   if (msgLow.includes("lune") || msgLow.includes("moon") || msgLow.includes("pleine lune") || msgLow.includes("phase")) {
     const lune = getLunePhase()
-    return res.status(200).json({ response: "🌙 **Phase de la Lune**\n\n"+lune+"\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🌙 **Phase de la Lune**\n\n"+lune+"\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // ACTUALITES DIRECTES
@@ -6502,8 +6503,8 @@ export default async function handler(req, res) {
       const rfi = await getRFINews()
       const bbc = await getBBCNews()
       const f24 = await getFrance24News()
-      return res.status(200).json({ response: "📰 **Actualités — Temps Réel**\n\n🔴 **RFI :**\n"+(rfi||"N/A")+"\n\n🌍 **BBC Afrique :**\n"+(bbc||"N/A")+"\n\n📺 **France 24 :**\n"+(f24||"N/A")+"\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) { return res.status(200).json({ response: "📰 Service actualités indisponible. BOUDOUM 🇬🇵" }) }
+      return res.status(200).json({ pdfAction: pdfType, response: "📰 **Actualités — Temps Réel**\n\n🔴 **RFI :**\n"+(rfi||"N/A")+"\n\n🌍 **BBC Afrique :**\n"+(bbc||"N/A")+"\n\n📺 **France 24 :**\n"+(f24||"N/A")+"\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) { return res.status(200).json({ pdfAction: pdfType, response: "📰 Service actualités indisponible. BOUDOUM 🇬🇵" }) }
   }
 
 
@@ -6941,7 +6942,7 @@ Je suis votre assistant IA créé avec passion depuis la **Guadeloupe** 🇬🇵
         const wikiEnrichData = await groqEnrichRes.json()
         const wikiRep = wikiEnrichData.choices?.[0]?.message?.content
         if (wikiRep) {
-          return res.status(200).json({ response: "📚 **Encyclopédie REUSSITESS — "+hasWikiKey.charAt(0).toUpperCase()+hasWikiKey.slice(1)+"**\n\n"+wikiRep+"\n\nBOUDOUM ! 🇬🇵" })
+          return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS — "+hasWikiKey.charAt(0).toUpperCase()+hasWikiKey.slice(1)+"**\n\n"+wikiRep+"\n\nBOUDOUM ! 🇬🇵" })
         }
       } catch(e) { console.error("Encyclo error:", e) }
     }
