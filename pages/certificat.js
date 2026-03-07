@@ -27,7 +27,7 @@ export default function Certificat() {
         </div>
 
         <div style={{ fontSize: '20px', lineHeight: '1.8', color: '#222', position: 'relative', zIndex: 1 }}>
-          <p>Il est certifié par la présente que l'identifiant unique :</p>
+          <p>Ce document atteste que l'identifiant unique :</p>
           <div style={{ textAlign: 'center', margin: '25px 0' }}>
             <span style={{ fontSize: '26px', background: '#f0f0f0', border: '1px solid #000', color: '#000', padding: '10px 40px', fontFamily: 'monospace', fontWeight: 'bold' }}>
               {id || 'NXS-777-ALPHA'}

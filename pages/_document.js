@@ -7,7 +7,7 @@ export default function Document() {
         {/* SEO Essentiel */}
         <meta
           name="description"
-          content="REUSSITESS® REUSSITESS®NEURO-X - Hub central de 26 boutiques Amazon dans 14 pays. E-commerce global, analytics temps réel, programme affiliation."
+          content="REUSSITESS® REUSSITESS®NEURO-X - Plateforme REUSSITESS®971 — Affiliation Amazon 14 pays, IA, Quiz, Bibliothèque mondiale. Base Guadeloupe."
         />
         <meta
           name="keywords"

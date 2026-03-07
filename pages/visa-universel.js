@@ -155,7 +155,7 @@ export default function VisaUniversel() {
         },
         {
           titre: "Coursera Financial Aid",
-          type: "Cours gratuits certifiés",
+          type: "Ressources éducatives gratuites",
           lien: "https://www.coursera.org/",
           global: true,
         },
