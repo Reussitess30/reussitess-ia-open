@@ -2956,7 +2956,7 @@ async function getWikipedia(term) {
   }
 
   // MOT CREOLE DU JOUR
-  if (msgLow.includes("creole") || msgLow.includes("créole") || msgLow.includes("mot du jour") || msgLow.includes("gwadloup") || msgLow.includes("patois")) {
+  if (msgLow === "créole" || msgLow === "creole" || msgLow.includes("mot du jour") || msgLow.includes("mot creole") || msgLow.includes("mot créole") || msgLow.includes("gwadloup") || msgLow.includes("patois") || msgLow === "langue créole" || msgLow.includes("parle creole") || msgLow.includes("parle créole")) {
     const m = getMotCreoleJour()
     return res.status(200).json({ response: "🇬🇵 **Mot Créole du Jour**\n\n📖 **"+m.mot+"** = "+m.sens+"\n\n💬 Exemple : *"+m.phrase+"*\n\nBOUDOUM ! 🌴" })
   }
@@ -6403,7 +6403,7 @@ export default async function handler(req, res) {
   }
 
   // MOT CREOLE DU JOUR
-  if (msgLow.includes("creole") || msgLow.includes("créole") || msgLow.includes("mot du jour") || msgLow.includes("gwadloup") || msgLow.includes("patois")) {
+  if (msgLow === "créole" || msgLow === "creole" || msgLow.includes("mot du jour") || msgLow.includes("mot creole") || msgLow.includes("mot créole") || msgLow.includes("gwadloup") || msgLow.includes("patois") || msgLow === "langue créole" || msgLow.includes("parle creole") || msgLow.includes("parle créole")) {
     const m = getMotCreoleJour()
     return res.status(200).json({ response: "🇬🇵 **Mot Créole du Jour**\n\n📖 **"+m.mot+"** = "+m.sens+"\n\n💬 Exemple : *"+m.phrase+"*\n\nBOUDOUM ! 🌴" })
   }
