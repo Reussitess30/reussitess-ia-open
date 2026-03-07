@@ -1,4 +1,3 @@
-
 // ============================================
 // LIVRE BLANC REUSSITESS® — DONNÉES OFFICIELLES
 // ============================================
@@ -566,18 +565,13 @@ async function getWikipedia(term) {
   // OFFRES EMPLOI DOM-TOM CARAIBES AFRIQUE
   if (msgLow.includes("offre emploi") || msgLow.includes("chercher emploi") || msgLow.includes("trouver un emploi") || msgLow.includes("job guadeloupe") || msgLow.includes("job martinique") || msgLow.includes("job réunion") || msgLow.includes("emploi dom-tom") || msgLow.includes("emploi caraïbes") || msgLow.includes("emploi afrique") || msgLow.includes("recrutement guadeloupe") || msgLow.includes("remote job") || msgLow.includes("offre de travail")) {
     try {
-      const remoteRes = await fetch("https://remoteok.com/api?limit=5", { headers: { "User-Agent": "REUSSITESS971Bot/1.0" } })
-      const remoteData = await remoteRes.json()
-      const jobs = remoteData.slice(1,6).filter(j => j && j.position)
-      if (jobs.length > 0) {
-        const jobList = jobs.map(j => "- **"+j.position+"** | "+(j.company||'Entreprise')+"\n  Lien: "+j.url+"\n  Tags: "+(j.tags||[]).slice(0,3).join(', ')).join("\n\n")
-        return res.status(200).json({ response: "Offres d'emploi REELLES - Temps reel (RemoteOK)\n\n"+jobList+"\n\nPlateformes DOM-TOM gratuites :\nGuadeloupe: francetravail.fr\nReunion: emploi.re\nCaraibes: caribbeanjobs.com\nAfrique: jobartis.com\nRemote: remoteok.com\nIndeed: indeed.fr\nLinkedIn: linkedin.com/jobs\n\nTape 'creer mon CV' pour ton CV PDF gratuit !\n\nBOUDOUM !" })
-      }
-    } catch(eR) {}
-    return res.status(200).json({ response: "Emploi DOM-TOM - Plateformes gratuites\n\nGuadeloupe: francetravail.fr\nReunion: emploi.re\nCaraibes: caribbeanjobs.com\nAfrique: jobartis.com\nRemote: remoteok.com\nIndeed: indeed.fr\nLinkedIn: linkedin.com/jobs\n\nTape 'creer mon CV' pour ton CV PDF gratuit !\n\nBOUDOUM !" })
+      const remoteRes = await fetch("https://remoteok.com/api?limit=5", { headers: { "User-Agent": "REUSSITESS971Bot/1.0" } });
+      return res.status(200).json({ response: "\ud83d\udcbc **Emploi DOM-TOM \u2014 Plateformes gratuites**\n\n\ud83c\uddec\ud83c\uddf5 **Guadeloupe :** francetravail.fr\n\ud83c\uddf7\ud83c\uddea **R\u00e9union :** emploi.re\n\ud83c\udf0a **Cara\u00efbes :** caribbeanjobs.com\n\ud83c\udf0d **Afrique :** jobartis.com\n\ud83d\udcbc **Remote :** remoteok.com\n\ud83d\udd0d **Indeed :** indeed.fr\n\ud83d\udc54 **LinkedIn :** linkedin.com/jobs\n\n\ud83d\udca1 *Tape \u0027cr\u00e9er mon CV\u0027 pour ton CV PDF gratuit !*\n\nBOUDOUM ! \ud83c\uddec\ud83c\uddf5" });
+    } catch (e) {
+      return res.status(200).json({ response: "BOUDOUM ! Erreur de connexion, mais voici les liens : francetravail.fr, remoteok.com" });
+    }
   }
-    try {
-      const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        })
-      });
-    } catch(e) {}
+}
+
+}
+
