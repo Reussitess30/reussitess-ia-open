@@ -4,24 +4,19 @@ async function groqFetch(messages, maxTokens = 512) {
   const cacheKey = JSON.stringify(messages).substring(0, 200)
   const cached = responseCache.get(cacheKey)
   if (cached && Date.now() - cached.ts < CACHE_TTL) return cached.val
-  for (let attempt = 0; attempt < GROQ_KEYS.length; attempt++) {
-    const key = getNextKey()
-    try {
-      const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
-        body: JSON.stringify({ model: "llama-3.1-8b-instant", messages, max_tokens: maxTokens }),
-        signal: AbortSignal.timeout(8000)
-      })
-      if (res.status === 429) { keyErrors[key] = Date.now(); await new Promise(r => setTimeout(r, 1000 * (attempt+1))); continue }
-      if (!res.ok) throw new Error("HTTP " + res.status)
-      const d = await res.json()
-      const text = d.choices?.[0]?.message?.content || null
-      if (text) responseCache.set(cacheKey, { val: text, ts: Date.now() })
-      return text
-    } catch(e) { keyErrors[key] = Date.now() }
-  }
-  return null
+  const key = getNextKey()
+  try {
+    const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
+      body: JSON.stringify({ model: "llama-3.1-8b-instant", messages, max_tokens: maxTokens })
+    })
+    if (!res.ok) { keyErrors[key] = Date.now(); return null }
+    const d = await res.json()
+    const text = d.choices?.[0]?.message?.content || null
+    if (text) responseCache.set(cacheKey, { val: text, ts: Date.now() })
+    return text
+  } catch(e) { console.error("groqFetch:", e.message); return null }
 }
 // ============================================
 // LIVRE BLANC REUSSITESS® — DONNÉES OFFICIELLES
@@ -5270,15 +5265,12 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
           finalResponse = `📚 **Wikipedia :** ${wikiData.substring(0, 8000)}${wikiData.length > 8000 ? "..." : ""}`
         } else {
           try {
-            const rfi = await getRFINews()
-            const bbc = await getBBCNews()
-            const crypto = await getCryptoPrice()
-            const f24 = await getFrance24News()
-            const alj = await getAlJazeeraNews()
-            const trend = await getCoinGeckoTrending()
-            const fg = await getFearGreed()
-            const meteo = await getMeteo()
-            const fx = await getExchangeRates()
+            const timeout3s = (p) => Promise.race([p, new Promise(r => setTimeout(() => r(null), 3000))])
+            const [rfi,bbc,crypto,f24,alj,trend,fg,meteo,fx] = await Promise.all([
+              timeout3s(getRFINews()), timeout3s(getBBCNews()), timeout3s(getCryptoPrice()),
+              timeout3s(getFrance24News()), timeout3s(getAlJazeeraNews()), timeout3s(getCoinGeckoTrending()),
+              timeout3s(getFearGreed()), timeout3s(getMeteo()), timeout3s(getExchangeRates())
+            ])
             const nc = (rfi?"RFI: "+rfi+" ":"")+(bbc?"BBC: "+bbc+" ":"")+(f24?"FRANCE24: "+f24+" ":"")+(alj?"ALJAZEERA: "+alj+" ":"")+(crypto?"CRYPTO PRIX: "+crypto+" ":"")+(trend?"CRYPTO TENDANCE: "+trend+" ":"")+(fg?"MARCHE CRYPTO: "+fg+" ":"")+(meteo?"METEO GUADELOUPE: "+meteo+" ":"")+(fx?"TAUX DE CHANGE: "+fx:"")
             const groqText = await groqFetch([
                   { role: "system", content: `Tu es REUSSITESS AI du projet REUSSITESS971 fondé par Porinus depuis la Guadeloupe. BOUDOUM!
