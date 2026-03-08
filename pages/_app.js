@@ -14,14 +14,20 @@ function MyApp({ Component, pageProps }) {
 
     // Désactiver sélection de texte
     const handleSelectStart = (e) => {
-      e.preventDefault();
-      return false;
+      const target = e.target
+      const isFormField = target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable
+      if (isFormField) return // Autorise dans les champs de saisie
+      e.preventDefault()
+      return false
     };
 
     // Désactiver copie
     const handleCopy = (e) => {
-      e.preventDefault();
-      return false;
+      const target = e.target
+      const isFormField = target.tagName === "INPUT" || target.tagName === "TEXTAREA" || target.isContentEditable
+      if (isFormField) return // Autorise copier dans les champs
+      e.preventDefault()
+      return false
     };
 
     // Désactiver raccourcis clavier
