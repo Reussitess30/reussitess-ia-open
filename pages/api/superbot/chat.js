@@ -1,3 +1,23 @@
+const GROQ_KEYS = [process.env.GROQ_API_KEY, process.env.GROQ_API_KEY_2, process.env.GROQ_API_KEY_3].filter(Boolean)
+let keyIndex = 0
+const keyErrors = {}
+const responseCache = new Map()
+const CACHE_TTL = 5 * 60 * 1000
+
+function getNextKey() {
+  const now = Date.now()
+  for (let i = 0; i < GROQ_KEYS.length; i++) {
+    const idx = (keyIndex + i) % GROQ_KEYS.length
+    const key = GROQ_KEYS[idx]
+    if (!keyErrors[key] || now - keyErrors[key] > 60000) {
+      keyIndex = (idx + 1) % GROQ_KEYS.length
+      return key
+    }
+  }
+  keyIndex = (keyIndex + 1) % GROQ_KEYS.length
+  return GROQ_KEYS[keyIndex]
+}
+
 
 // =======================
 async function groqFetch(messages, maxTokens = 512) {
