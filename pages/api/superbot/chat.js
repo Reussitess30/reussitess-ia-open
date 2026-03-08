@@ -2878,6 +2878,12 @@ export default async function handler(req, res) {
   const { message, personality, context, langue, datetime } = req.body
   const msgLow = message.toLowerCase()
 
+  // DETECTION PDF TRIGGERS
+  if (msgLow.includes("creer mon cv") || msgLow.includes("créer mon cv") || msgLow.includes("cv pdf") || msgLow.includes("mon cv")) pdfType = "cv"
+  else if (msgLow.includes("certificat champion") || msgLow.includes("mon certificat") || msgLow.includes("certificat pdf")) pdfType = "certificat"
+  else if (msgLow.includes("contrat freelance") || msgLow.includes("contrat pdf") || msgLow.includes("mon contrat")) pdfType = "contrat"
+  else if (msgLow.includes("business plan pdf") || msgLow.includes("business plan")) pdfType = "business-plan"
+
   // GUIDE CRYPTOART
   if (msgLow.includes("crypto art") || msgLow.includes("generative art") || msgLow.includes("art génératif") || msgLow.includes("créer avec ia") || msgLow.includes("midjourney")) {
     try {
