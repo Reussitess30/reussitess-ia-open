@@ -23,7 +23,7 @@ async function groqFetch(messages, maxTokens = 512) {
   }
   return null
 }
-=====================
+// ============================================
 // LIVRE BLANC REUSSITESS® — DONNÉES OFFICIELLES
 // ============================================
 const whitepaperData = {
