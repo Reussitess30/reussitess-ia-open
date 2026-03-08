@@ -1,5 +1,29 @@
 
-// ============================================
+// =======================
+async function groqFetch(messages, maxTokens = 512) {
+  const cacheKey = JSON.stringify(messages).substring(0, 200)
+  const cached = responseCache.get(cacheKey)
+  if (cached && Date.now() - cached.ts < CACHE_TTL) return cached.val
+  for (let attempt = 0; attempt < GROQ_KEYS.length; attempt++) {
+    const key = getNextKey()
+    try {
+      const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
+        body: JSON.stringify({ model: "llama-3.1-8b-instant", messages, max_tokens: maxTokens }),
+        signal: AbortSignal.timeout(8000)
+      })
+      if (res.status === 429) { keyErrors[key] = Date.now(); await new Promise(r => setTimeout(r, 1000 * (attempt+1))); continue }
+      if (!res.ok) throw new Error("HTTP " + res.status)
+      const d = await res.json()
+      const text = d.choices?.[0]?.message?.content || null
+      if (text) responseCache.set(cacheKey, { val: text, ts: Date.now() })
+      return text
+    } catch(e) { keyErrors[key] = Date.now() }
+  }
+  return null
+}
+=====================
 // LIVRE BLANC REUSSITESS® — DONNÉES OFFICIELLES
 // ============================================
 const whitepaperData = {
