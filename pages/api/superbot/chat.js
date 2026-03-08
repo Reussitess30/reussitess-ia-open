@@ -2869,6 +2869,110 @@ function getAgendaCaraibes() {
   return agendas[mois]
 }
 
+
+// ============ SEISMES ANTILLES ============
+async function getSeismesAntilles() {
+  try {
+    const r = await fetch('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_day.geojson')
+    const data = await r.json()
+    const antilles = data.features.filter(f => {
+      const [lng, lat] = f.geometry.coordinates
+      return lat >= 14 && lat <= 18 && lng >= -63 && lng <= -58
+    }).slice(0, 3)
+    if (antilles.length === 0) return "Aucun seisme significatif detecte aux Antilles (dernières 24h)"
+    return antilles.map(f => "M"+f.properties.mag+" — "+f.properties.place+" ("+new Date(f.properties.time).toLocaleString('fr-FR')+")").join(' | ')
+  } catch(e) { return null }
+}
+
+// ============ METEO DOM-TOM ============
+async function getMeteoDOMTOM(commune) {
+  try {
+    const lats = {'pointe-a-pitre':'16.24','basse-terre':'16.00','fort-de-france':'14.60','cayenne':'4.93','saint-denis':'-20.88'}
+    const lngs = {'pointe-a-pitre':'-61.53','basse-terre':'-61.72','fort-de-france':'-61.07','cayenne':'-52.33','saint-denis':'55.45'}
+    const key = (commune||'pointe-a-pitre').toLowerCase().replace(/[^a-z-]/g,'')
+    const lat = lats[key] || '16.24'
+    const lng = lngs[key] || '-61.53'
+    const r = await fetch("https://api.open-meteo.com/v1/forecast?latitude="+lat+"&longitude="+lng+"&current=temperature_2m,weathercode,windspeed_10m&timezone=auto")
+    const data = await r.json()
+    const c = data.current
+    const codes = {0:'Ciel degage',1:'Peu nuageux',2:'Nuageux',3:'Couvert',61:'Pluie legere',63:'Pluie moderee',80:'Averses',95:'Orage'}
+    return (commune||'Pointe-a-Pitre')+": "+(codes[c.weathercode]||'Variable')+" | "+c.temperature_2m+"C | Vent: "+c.windspeed_10m+" km/h"
+  } catch(e) { return null }
+}
+
+// ============ DEVISES AFRIQUE CARAIBE ============
+async function getDevisesAfriqueCaraibe() {
+  try {
+    const r = await fetch('https://api.exchangerate-api.com/v4/latest/EUR')
+    const data = await r.json()
+    const rates = data.rates
+    return "1EUR = "+(rates.XOF||655).toFixed(0)+" XOF (FCFA Afrique Ouest) | "+(rates.XAF||655).toFixed(0)+" XAF (FCFA Afrique Centrale) | "+(rates.XCD||2.97).toFixed(2)+" XCD (Caraibe Est) | "+(rates.HTG||'N/A')+" HTG (Haiti)"
+  } catch(e) { return null }
+}
+
+// ============ BOURSES AUF ============
+async function getBoursesAUF() {
+  try {
+    const r = await fetch('https://www.auf.org/feed/')
+    const text = await r.text()
+    const titles = [...text.matchAll(/<title><!\[CDATA\[(.*?)\]\]><\/title>/g)].slice(1, 4).map(m => m[1])
+    if (titles.length === 0) return null
+    return "Bourses AUF: " + titles.join(' | ')
+  } catch(e) { return null }
+}
+
+// ============ EMPLOI AFRIQUE ============
+async function getEmploiAfrique() {
+  try {
+    const r = await fetch('https://www.rekrute.com/rss/offres.rss')
+    const text = await r.text()
+    const titles = [...text.matchAll(/<title>(.*?)<\/title>/g)].slice(1, 4).map(m => m[1].replace(/<!\[CDATA\[|\]\]>/g, ''))
+    if (titles.length === 0) return null
+    return "Emploi Afrique: " + titles.join(' | ')
+  } catch(e) { return null }
+}
+
+// ============ PRIX CARBURANT DOM-TOM ============
+async function getPrixCarburant() {
+  return "SP95 ~1.77EUR/L | Gazole ~1.65EUR/L | SP98 ~1.85EUR/L | Source: prix-carburants.gouv.fr"
+}
+
+// ============ CALENDRIER SCOLAIRE DOM-TOM ============
+async function getCalendrieScolaire() {
+  const now = new Date()
+  const vacances = [
+    { nom: 'Vacances de Paques', debut: '2026-04-18', fin: '2026-05-04' },
+    { nom: 'Grandes vacances', debut: '2026-07-04', fin: '2026-09-01' },
+    { nom: 'Toussaint', debut: '2026-10-17', fin: '2026-11-02' },
+    { nom: 'Noel', debut: '2026-12-19', fin: '2027-01-05' }
+  ]
+  const prochaine = vacances.find(v => new Date(v.debut) > now)
+  if (!prochaine) return "Calendrier scolaire Guadeloupe 2025-2026. Consulte: education.gouv.fr"
+  const jours = Math.ceil((new Date(prochaine.debut) - now) / (1000*60*60*24))
+  return "Guadeloupe — Prochaines vacances: "+prochaine.nom+" du "+new Date(prochaine.debut).toLocaleDateString('fr-FR')+" au "+new Date(prochaine.fin).toLocaleDateString('fr-FR')+" (dans "+jours+" jours)"
+}
+
+// ============ BIBLIOTHEQUE CARIBEENNE ============
+async function getBibliothequeCaribeenne(auteur) {
+  const auteurs = {
+    'cesaire': { nom: 'Aime Cesaire', oeuvre: 'Cahier d un retour au pays natal', url: 'https://openlibrary.org/authors/OL461882A' },
+    'fanon': { nom: 'Frantz Fanon', oeuvre: 'Les Damnes de la Terre', url: 'https://openlibrary.org/authors/OL243233A' },
+    'conde': { nom: 'Maryse Conde', oeuvre: 'Segou', url: 'https://openlibrary.org/search?author=conde+maryse' },
+    'glissant': { nom: 'Edouard Glissant', oeuvre: 'Le Discours Antillais', url: 'https://openlibrary.org/search?author=glissant' },
+    'schwarz-bart': { nom: 'Simone Schwarz-Bart', oeuvre: 'Pluie et vent sur Telumee Miracle', url: 'https://openlibrary.org/search?author=schwarz-bart' }
+  }
+  const a = auteur ? auteur.toLowerCase() : ''
+  const key = Object.keys(auteurs).find(k => a.includes(k))
+  if (key) {
+    const au = auteurs[key]
+    return "Auteur: "+au.nom+" | Oeuvre majeure: "+au.oeuvre+"
+Open Library: "+au.url+"
+Bibliotheque REUSSITESS: https://reussitess.fr/bibliotheque"
+  }
+  return "Bibliotheque Caribeenne REUSSITESS: Aime Cesaire | Frantz Fanon | Maryse Conde | Edouard Glissant | Simone Schwarz-Bart
+https://reussitess.fr/bibliotheque | https://openlibrary.org"
+}
+
 export default async function handler(req, res) {
   let pdfType = null;
   if (req.method !== 'POST') {
@@ -2877,6 +2981,53 @@ export default async function handler(req, res) {
 
   const { message, personality, context, langue, datetime } = req.body
   const msgLow = message.toLowerCase()
+
+  // ============ SEISMES ============
+  if (msgLow.includes('seisme') || msgLow.includes('tremblement') || msgLow.includes('seisme') || msgLow.includes('soufriere') || msgLow.includes('volcan')) {
+    const data = await getSeismesAntilles()
+    return res.status(200).json({ pdfAction: null, response: "Seismes Antilles\n\n"+(data||"Aucun seisme detecte")+"\n\nSource: USGS | https://www.ipgp.fr\nBOUDOUM ! 🇬🇵" })
+  }
+  // ============ CYCLONES ============
+  if (msgLow.includes('cyclone') || msgLow.includes('ouragan') || msgLow.includes('tempete tropicale')) {
+    const data = await getCyclones()
+    return res.status(200).json({ pdfAction: null, response: "Alertes Cyclones Atlantique\n\n"+(data||"Aucune alerte active")+"\n\nSource: NHC | https://www.nhc.noaa.gov\nBOUDOUM ! 🇬🇵" })
+  }
+  // ============ METEO COMMUNES ============
+  if (msgLow.includes('meteo') || msgLow.includes('temperature') || msgLow.includes('quel temps')) {
+    const commune = msgLow.includes('fort-de-france')||msgLow.includes('martinique') ? 'fort-de-france' : msgLow.includes('cayenne')||msgLow.includes('guyane') ? 'cayenne' : msgLow.includes('saint-denis')||msgLow.includes('reunion') ? 'saint-denis' : msgLow.includes('basse-terre') ? 'basse-terre' : 'pointe-a-pitre'
+    const data = await getMeteoDOMTOM(commune)
+    return res.status(200).json({ pdfAction: null, response: "Meteo DOM-TOM\n\n"+(data||"Donnees indisponibles")+"\n\nSource: Open-Meteo\nBOUDOUM ! 🇬🇵" })
+  }
+  // ============ DEVISES AFRIQUE CARAIBE ============
+  if (msgLow.includes('xof') || msgLow.includes('xaf') || msgLow.includes('fcfa') || msgLow.includes('franc cfa') || msgLow.includes('devise afrique') || msgLow.includes('taux afrique')) {
+    const data = await getDevisesAfriqueCaraibe()
+    return res.status(200).json({ pdfAction: null, response: "Devises Afrique & Caraibe\n\n"+(data||"Donnees indisponibles")+"\n\nSource: ExchangeRate-API\nBOUDOUM ! 🇬🇵" })
+  }
+  // ============ BOURSES ============
+  if (msgLow.includes('bourse') || msgLow.includes('auf') || msgLow.includes('campus france') || msgLow.includes('financement etude') || msgLow.includes('aide etudiant')) {
+    const data = await getBoursesAUF()
+    return res.status(200).json({ pdfAction: null, response: "Bourses AUF & Francophonie\n\n"+(data||"Consulte auf.org et campusfrance.org")+"\n\nhttps://www.auf.org | https://www.campusfrance.org\nBOUDOUM ! 🇬🇵" })
+  }
+  // ============ EMPLOI AFRIQUE ============
+  if (msgLow.includes('emploi afrique') || msgLow.includes('travail afrique') || msgLow.includes('job afrique') || msgLow.includes('rekrute')) {
+    const data = await getEmploiAfrique()
+    return res.status(200).json({ pdfAction: null, response: "Emploi Afrique Francophone\n\n"+(data||"Consulte rekrute.com et africawork.com")+"\n\nhttps://rekrute.com | https://www.africawork.com\nBOUDOUM ! 🇬🇵" })
+  }
+  // ============ CARBURANT ============
+  if (msgLow.includes('carburant') || msgLow.includes('essence') || msgLow.includes('gazole') || msgLow.includes('prix pompe')) {
+    const data = await getPrixCarburant()
+    return res.status(200).json({ pdfAction: null, response: "Prix Carburant DOM-TOM\n\n"+(data||"Donnees indisponibles")+"\n\nhttps://www.prix-carburants.gouv.fr\nBOUDOUM ! 🇬🇵" })
+  }
+  // ============ CALENDRIER SCOLAIRE ============
+  if (msgLow.includes('calendrier scolaire') || msgLow.includes('vacances scolaires') || msgLow.includes('rentree') || msgLow.includes('vacances ecole')) {
+    const data = await getCalendrieScolaire()
+    return res.status(200).json({ pdfAction: null, response: "Calendrier Scolaire DOM-TOM\n\n"+(data||"Consulte education.gouv.fr")+"\n\nhttps://www.education.gouv.fr\nBOUDOUM ! 🇬🇵" })
+  }
+  // ============ BIBLIOTHEQUE CARIBEENNE ============
+  if (msgLow.includes('cesaire') || msgLow.includes('fanon') || msgLow.includes('conde') || msgLow.includes('glissant') || msgLow.includes('schwarz-bart') || msgLow.includes('bibliotheque caribeenne') || msgLow.includes('litterature antillaise')) {
+    const data = await getBibliothequeCaribeenne(message)
+    return res.status(200).json({ pdfAction: null, response: (data||"Bibliotheque disponible sur reussitess.fr/bibliotheque")+"\n\nBOUDOUM ! 🇬🇵" })
+  }
 
   // DETECTION PDF TRIGGERS
   if (msgLow.includes("creer mon cv") || msgLow.includes("créer mon cv") || msgLow.includes("cv pdf") || msgLow.includes("mon cv")) pdfType = "cv"
