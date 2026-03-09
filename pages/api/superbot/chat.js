@@ -290,7 +290,13 @@ async function getWikipedia(term) {
   }
 
   // GUIDE CARNAVAL CARAIBE
-  if (msgLow.includes("carnaval") || msgLow.includes("mas") || msgLow.includes("vidé") || msgLow.includes("chars carnaval") || msgLow.includes("fête guadeloupe")) {
+  // ============ CREOLE GUADELOUPEEN (PRIORITAIRE) ============
+  if (msgLow.includes('traduire creole') || msgLow.includes('parler creole') || msgLow.includes('apprendre creole') || msgLow.includes('mot creole') || msgLow.includes('kreyol') || msgLow.includes('koman ou ye') || msgLow.includes('mwen enme') || msgLow.includes('bonjou mwen') || msgLow.includes('langue creole')) {
+    const data = getCreole(message)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+    if (msgLow.includes("carnaval") || msgLow.includes("mas") || msgLow.includes("vidé") || msgLow.includes("chars carnaval") || msgLow.includes("fête guadeloupe")) {
     try {
       const agenda = getAgendaCaraibes()
       const groqText = await groqFetch([
@@ -2196,11 +2202,7 @@ async function getWikipedia(term) {
   }
 
   // ACTUALITES DIRECTES
-  // ============ CREOLE GUADELOUPEEN ============
-  if (msgLow.includes('creole') || msgLow.includes('kréyol') || msgLow.includes('kreyol') || msgLow.includes('parler creole') || msgLow.includes('traduire creole') || msgLow.includes('bonjou') || msgLow.includes('koman ou ye') || msgLow.includes('mwen enme')) {
-    const data = getCreole(message)
-    return res.status(200).json({ pdfAction: null, response: data })
-  }
+
 
   // ============ IMMOBILIER DOM-TOM ============
   if (msgLow.includes('immobilier') || msgLow.includes('appartement guadeloupe') || msgLow.includes('maison guadeloupe') || msgLow.includes('loyer') || msgLow.includes('prix immobilier') || msgLow.includes('acheter maison dom-tom') || msgLow.includes('m2 guadeloupe')) {
