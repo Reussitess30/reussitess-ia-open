@@ -12,12 +12,12 @@
   <url><loc>https://reussitess.fr/guide-complet</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://reussitess.fr/monitoring-ia</loc><priority>0.7</priority><changefreq>daily</changefreq></url>
   <!-- Bibliothèque Caraïbes -->
-  <url><loc>https://reussitess.fr/bibliotheque/caraibes/guadeloupe</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://reussitess.fr/bibliotheque/caraibes/martinique</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://reussitess.fr/bibliotheque/caraibes/haiti</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://reussitess.fr/bibliotheque/caraibes/guyane</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://reussitess.fr/bibliotheque/caraibes/reunion</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://reussitess.fr/bibliotheque/caraibes/mayotte</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/dom-tom/guadeloupe</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/dom-tom/martinique</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/dom-tom/haiti</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/dom-tom/guyane</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/dom-tom/reunion</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/dom-tom/mayotte</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <!-- Bibliothèque Afrique -->
   <url><loc>https://reussitess.fr/bibliotheque/afrique/senegal</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://reussitess.fr/bibliotheque/afrique/cameroun</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
