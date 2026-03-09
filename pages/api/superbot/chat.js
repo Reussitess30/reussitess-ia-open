@@ -2196,6 +2196,20 @@ async function getWikipedia(term) {
   }
 
   // ACTUALITES DIRECTES
+  // ============ ACTUALITES SPECIFIQUES DOM-TOM ============
+  if ((msgLow.includes('actualite') || msgLow.includes('news') || msgLow.includes('info')) && msgLow.includes('guadeloupe')) {
+    const data = await getActualitesGuadeloupe()
+    return res.status(200).json({ pdfAction: null, response: data+"BOUDOUM ! 🇬🇵" })
+  }
+  if ((msgLow.includes('actualite') || msgLow.includes('news') || msgLow.includes('info')) && msgLow.includes('martinique')) {
+    const data = await getActualitesMartinique()
+    return res.status(200).json({ pdfAction: null, response: data+"BOUDOUM ! 🇬🇵" })
+  }
+  if ((msgLow.includes('actualite') || msgLow.includes('news') || msgLow.includes('info')) && (msgLow.includes('dom-tom') || msgLow.includes('outremer') || msgLow.includes('antilles') || msgLow.includes('la 1ere'))) {
+    const data = await getActualitesDOMTOM()
+    return res.status(200).json({ pdfAction: null, response: data+"BOUDOUM ! 🇬🇵" })
+  }
+
   if (msgLow.includes('actualite') || msgLow.includes('actualité') || msgLow.includes('news') || msgLow.includes('nouvelles') || msgLow.includes('info du jour')) {
     try {
       const rfi = await getRFINews()
