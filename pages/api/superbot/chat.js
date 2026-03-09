@@ -2196,6 +2196,30 @@ async function getWikipedia(term) {
   }
 
   // ACTUALITES DIRECTES
+  // ============ CREOLE GUADELOUPEEN ============
+  if (msgLow.includes('creole') || msgLow.includes('kréyol') || msgLow.includes('kreyol') || msgLow.includes('parler creole') || msgLow.includes('traduire creole') || msgLow.includes('bonjou') || msgLow.includes('koman ou ye') || msgLow.includes('mwen enme')) {
+    const data = getCreole(message)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // ============ IMMOBILIER DOM-TOM ============
+  if (msgLow.includes('immobilier') || msgLow.includes('appartement guadeloupe') || msgLow.includes('maison guadeloupe') || msgLow.includes('loyer') || msgLow.includes('prix immobilier') || msgLow.includes('acheter maison dom-tom') || msgLow.includes('m2 guadeloupe')) {
+    const data = getImmobilierDOMTOM()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // ============ RECOMMANDATIONS AMAZON ============
+  if (msgLow.includes('recommande amazon') || msgLow.includes('boutique tech') || msgLow.includes('boutique mode') || msgLow.includes('boutique sport') || msgLow.includes('boutique maison') || msgLow.includes('boutique beaute') || msgLow.includes('produit amazon')) {
+    let domaine = 'tech'
+    if (msgLow.includes('mode') || msgLow.includes('vetement')) domaine = 'mode'
+    else if (msgLow.includes('sport') || msgLow.includes('fitness')) domaine = 'sport'
+    else if (msgLow.includes('maison') || msgLow.includes('deco')) domaine = 'maison'
+    else if (msgLow.includes('beaute') || msgLow.includes('cosmetique')) domaine = 'beaute'
+    else if (msgLow.includes('business') || msgLow.includes('entrepreneur')) domaine = 'business'
+    const data = getRecommandationsAmazon(domaine)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
   // ============ ACTUALITES SPECIFIQUES DOM-TOM ============
   if ((msgLow.includes('actualite') || msgLow.includes('news') || msgLow.includes('info')) && msgLow.includes('guadeloupe')) {
     const data = await getActualitesGuadeloupe()
@@ -5784,4 +5808,73 @@ async function getActualitesDOMTOM() {
   } catch(e) {
     return "📰 Actualités DOM-TOM :\n\n🔗 https://la1ere.francetvinfo.fr\n🔗 https://outremers360.com"
   }
+}
+
+// ===== CREOLE GUADELOUPEEN =====
+function getCreole(message) {
+  const msgL = message.toLowerCase()
+  const dico = {
+    'bonjour': { creole: 'Bonjou !', explication: 'Bonjour en créole guadeloupéen' },
+    'merci': { creole: 'Mèsi !', explication: 'Merci en créole' },
+    'comment ca va': { creole: 'Koman ou yé ?', explication: 'Comment tu vas ?' },
+    'bien': { creole: 'Byen !', explication: 'Bien/OK en créole' },
+    'au revoir': { creole: 'Aw revoir / Aw plézi !', explication: 'Au revoir avec plaisir' },
+    'je t aime': { creole: 'Mwen enmé w !', explication: 'Je t\'aime en créole' },
+    'manger': { creole: 'Manjé', explication: 'Manger en créole' },
+    'eau': { creole: 'Dlo', explication: 'Eau en créole' },
+    'maison': { creole: 'Kay', explication: 'Maison en créole' },
+    'enfant': { creole: 'Ti moun', explication: 'Enfant (petit monde)' },
+    'ami': { creole: 'Kanmarad / Zami', explication: 'Ami/Camarade' },
+    'soleil': { creole: 'Soley', explication: 'Soleil en créole' },
+    'mer': { creole: 'Lanmè', explication: 'La mer en créole' },
+    'beau': { creole: 'Bèl', explication: 'Beau/Belle en créole' },
+    'argent': { creole: 'Lajan', explication: 'Argent en créole' },
+    'travail': { creole: 'Travay', explication: 'Travail en créole' },
+    'musique': { creole: 'Mizik', explication: 'Musique en créole' },
+    'danse': { creole: 'Dansé / Gwoka', explication: 'Danser / Gwoka (danse ancestrale)' },
+    'manger creole': { creole: 'Manjé Kréyòl', explication: 'Cuisine créole traditionnelle' },
+    'courage': { creole: 'Kouraj !', explication: 'Courage ! (très utilisé en Guadeloupe)' },
+  }
+  
+  let found = []
+  for (const [key, val] of Object.entries(dico)) {
+    if (msgL.includes(key)) found.push({ mot: key, ...val })
+  }
+  
+  if (found.length > 0) {
+    let result = "🌴 **Créole Guadeloupéen — Traduction**\n\n"
+    for (const f of found) {
+      result += `🗣️ **${f.mot}** → **${f.creole}**\n💡 ${f.explication}\n\n`
+    }
+    result += "🎵 *An nou palé kréyòl !* (Parlons créole !)\n\n📚 Pour en apprendre plus : https://reussitess.fr/bibliotheque/dom-tom/guadeloupe"
+    return result
+  }
+  
+  return `🌴 **Créole Guadeloupéen — Expressions du Jour**\n\n🗣️ **Bonjou !** → Bonjour !\n🗣️ **Koman ou yé ?** → Comment tu vas ?\n🗣️ **Mèsi !** → Merci !\n🗣️ **Kouraj !** → Courage !\n🗣️ **An nou alé !** → Allons-y !\n🗣️ **Mwen enmé w !** → Je t'aime !\n🗣️ **Bèl jounen !** → Belle journée !\n\n🎵 *Positivité à l'infini — An kréyòl !*\n\n📚 https://reussitess.fr/bibliotheque/dom-tom/guadeloupe`
+}
+
+// ===== IMMOBILIER DOM-TOM =====
+function getImmobilierDOMTOM() {
+  return `🏠 **Immobilier DOM-TOM — Prix Moyens 2025**\n\n🇬🇵 **Guadeloupe**\n• Appartement : 2 500 - 4 000 €/m²\n• Maison : 200 000 - 450 000 €\n• Location : 10 - 18 €/m²/mois\n\n🇲🇶 **Martinique**\n• Appartement : 2 800 - 4 500 €/m²\n• Maison : 250 000 - 500 000 €\n• Location : 12 - 20 €/m²/mois\n\n🇬🇫 **Guyane**\n• Appartement : 1 800 - 3 000 €/m²\n• Maison : 150 000 - 350 000 €\n• Location : 8 - 15 €/m²/mois\n\n🇷🇪 **Réunion**\n• Appartement : 2 200 - 3 800 €/m²\n• Maison : 200 000 - 480 000 €\n• Location : 10 - 17 €/m²/mois\n\n💡 **Défiscalisation :** Loi Girardin, Pinel Outremer disponibles\n📞 **Notaires DOM-TOM :** notaires.fr\n\nBOUDOUM ! 🇬🇵`
+}
+
+// ===== RECOMMANDATIONS AMAZON =====
+function getRecommandationsAmazon(domaine) {
+  const catalogues = {
+    tech: { emoji: '💻', produits: ['Smartphones', 'Tablettes', 'Ordinateurs portables', 'Accessoires gaming', 'Enceintes connectées'], lien: 'https://amzn.to/tech-reussitess' },
+    maison: { emoji: '🏠', produits: ['Climatiseurs', 'Ventilateurs', 'Décorations tropicales', 'Cuisine créole équipements', 'Hamacs'], lien: 'https://reussitess.fr/boutiques' },
+    sport: { emoji: '⚽', produits: ['Équipement plongée', 'Paddle surf', 'Running tropical', 'Yoga mat', 'Fitness maison'], lien: 'https://reussitess.fr/boutiques' },
+    mode: { emoji: '👗', produits: ['Vêtements légers', 'Madras guadeloupéen', 'Robes tropicales', 'Accessoires plage', 'Lunettes soleil'], lien: 'https://reussitess.fr/boutiques' },
+    business: { emoji: '💼', produits: ['Livres entrepreneuriat', 'Matériel bureau', 'Formations en ligne', 'Outils marketing', 'Micro streaming'], lien: 'https://reussitess.fr/boutiques' },
+    beaute: { emoji: '💄', produits: ['Soins peau noire', 'Huile de coco naturelle', 'Produits cheveux afro', 'Parfums exotiques', 'Cosmétiques naturels'], lien: 'https://reussitess.fr/boutiques' },
+  }
+  
+  const cat = catalogues[domaine] || catalogues.tech
+  let result = `🛍️ **Recommandations Amazon — ${domaine.charAt(0).toUpperCase()+domaine.slice(1)}** ${cat.emoji}\n\n`
+  result += `**Top produits recommandés :**\n`
+  for (const p of cat.produits) {
+    result += `• ${p}\n`
+  }
+  result += `\n🔗 Voir toutes nos boutiques : https://reussitess.fr/boutiques\n🏷️ Tag affilié : onamzporinus-21\n\n💡 26 boutiques dans 14 pays !\n\nBOUDOUM ! 🇬🇵`
+  return result
 }
