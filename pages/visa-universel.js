@@ -323,10 +323,10 @@ export default function VisaUniversel() {
             }}
           >
             {[
-              { icon: "🎓", num: "10K+", label: "Bourses Disponibles" },
-              { icon: "💼", num: "50K+", label: "Opportunités Emploi" },
-              { icon: "🤝", num: "5K+", label: "Mentors Actifs" },
-              { icon: "💰", num: "100M+", label: "Fonds Accessibles" },
+              { icon: "🎓", num: "AUF", label: "Bourses Francophones" },
+              { icon: "💼", num: "14", label: "Pays Partenaires" },
+              { icon: "🤝", num: "200+", label: "Agents IA Actifs" },
+              { icon: "💰", num: "26", label: "Boutiques Amazon" },
             ].map((stat, i) => (
               <div
                 key={i}

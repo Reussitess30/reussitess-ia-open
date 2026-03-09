@@ -2965,12 +2965,9 @@ async function getBibliothequeCaribeenne(auteur) {
   const key = Object.keys(auteurs).find(k => a.includes(k))
   if (key) {
     const au = auteurs[key]
-    return "Auteur: "+au.nom+" | Oeuvre majeure: "+au.oeuvre+"
-Open Library: "+au.url+"
-Bibliotheque REUSSITESS: https://reussitess.fr/bibliotheque"
+    return "Auteur: "+au.nom+" | Oeuvre majeure: "+au.oeuvre+" | Open Library: "+au.url+" | https://reussitess.fr/bibliotheque"
   }
-  return "Bibliotheque Caribeenne REUSSITESS: Aime Cesaire | Frantz Fanon | Maryse Conde | Edouard Glissant | Simone Schwarz-Bart
-https://reussitess.fr/bibliotheque | https://openlibrary.org"
+  return "Bibliotheque Caribeenne: Cesaire | Fanon | Conde | Glissant | Schwarz-Bart | https://reussitess.fr/bibliotheque"
 }
 
 export default async function handler(req, res) {

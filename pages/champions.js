@@ -14,8 +14,8 @@ export default function Champions() {
   const [showCertificat, setShowCertificat] = useState(false);
   const [certificatData, setCertificatData] = useState(null);
   const [stats, setStats] = useState({
-    totalPays: 127,
-    totalChampions: 15247,
+    totalPays: 14,
+    totalChampions: null,
   });
   const [showBot, setShowBot] = useState(false);
 
@@ -803,7 +803,7 @@ export default function Champions() {
                   color: "#ffd700",
                 }}
               >
-                {stats.totalChampions.toLocaleString()}
+                {stats.totalChampions ? stats.totalChampions.toLocaleString() : "En croissance 🌱"}
               </div>
               <div
                 style={{
