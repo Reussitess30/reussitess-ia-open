@@ -1,16 +1,49 @@
 {
-  "name": "REUSSITESS AI",
+  "name": "REUSSITESS®971 AI",
   "short_name": "REUSSITESS",
-  "description": "REUSSITESS®971 — Excellence • Innovation • Succès",
+  "description": "IA née en Guadeloupe — 200 agents, 14 pays, Token REUSS, Positivité à l'infini. BOUDOUM !",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#00875A",
-  "theme_color": "#00875A",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#00a651",
+  "lang": "fr",
+  "categories": ["education", "productivity", "finance"],
   "icons": [
     {
       "src": "/icon-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Parler à l'IA",
+      "url": "/",
+      "description": "Chat avec REUSSITESS AI"
+    },
+    {
+      "name": "Token REUSS",
+      "url": "/investir-reuss",
+      "description": "Token REUSS sur Polygon"
+    },
+    {
+      "name": "Neuro-X",
+      "url": "/neuro-x",
+      "description": "60 agents IA spécialisés"
+    },
+    {
+      "name": "Champions",
+      "url": "/champions",
+      "description": "Passeport de Réussite"
     }
   ]
 }

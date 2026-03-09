@@ -37,10 +37,10 @@ export default function MonCompte() {
   const rewards = [
     { reuss: 1000, label: "5% réduction sur nos services", icon: "🛍️", available: reussPoints >= 1000 },
     { reuss: 5000, label: "Code promo exclusif 10%", icon: "🎁", available: reussPoints >= 5000 },
-    { reuss: 10000, label: "Accès contenu Premium 7 jours", icon: "⭐", available: reussPoints >= 10000 },
-    { reuss: 50000, label: "Tier Silver — Récompenses communautaires 8%", icon: "🥈", available: reussPoints >= 50000 },
-    { reuss: 100000, label: "Tier Gold — Récompenses communautaires 15%", icon: "🥇", available: reussPoints >= 100000 },
-    { reuss: 500000, label: "Tier Platinum — Récompenses communautaires 20% + Gouvernance", icon: "💎", available: reussPoints >= 500000 },
+    { reuss: 10000, label: "Tier Bronze — Membre actif REUSSITESS®971", icon: "⭐", available: reussPoints >= 10000 },
+    { reuss: 50000, label: "Tier Silver — Accès prioritaire nouvelles fonctionnalités", icon: "🥈", available: reussPoints >= 50000 },
+    { reuss: 100000, label: "Tier Gold — Statut Champion reconnu", icon: "🥇", available: reussPoints >= 100000 },
+    { reuss: 500000, label: "Tier Platinum — Gouvernance DAO (en développement)", icon: "💎", available: reussPoints >= 500000 },
   ];
 
   return (
