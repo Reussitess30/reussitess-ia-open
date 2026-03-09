@@ -291,7 +291,7 @@ async function getWikipedia(term) {
 
   // GUIDE CARNAVAL CARAIBE
   // ============ CREOLE GUADELOUPEEN (PRIORITAIRE) ============
-  if (msgLow.includes('traduire creole') || msgLow.includes('parler creole') || msgLow.includes('apprendre creole') || msgLow.includes('mot creole') || msgLow.includes('kreyol') || msgLow.includes('koman ou ye') || msgLow.includes('mwen enme') || msgLow.includes('bonjou mwen') || msgLow.includes('langue creole')) {
+  if (msgLow.includes('traduire creole') || msgLow.includes('parler creole') || msgLow.includes('apprendre creole') || msgLow.includes('mot creole') || msgLow === 'creole' || msgLow === 'kreyol' || msgLow.includes('koman ou ye') || msgLow.includes('mwen enme') || msgLow.includes('bonjou mwen') || msgLow.includes('langue creole') || msgLow.includes('expression creole') || msgLow.includes('dire creole')) {
     const data = getCreole(message)
     return res.status(200).json({ pdfAction: null, response: data })
   }
