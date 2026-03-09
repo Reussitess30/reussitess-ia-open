@@ -3026,6 +3026,38 @@ export default async function handler(req, res) {
     return res.status(200).json({ pdfAction: null, response: (data||"Bibliotheque disponible sur reussitess.fr/bibliotheque")+"\n\nBOUDOUM ! 🇬🇵" })
   }
 
+  // ============ HOPITAUX DOM-TOM ============
+  if (msgLow.includes('hopital') || msgLow.includes('hopital') || msgLow.includes('urgence') || msgLow.includes('samu') || msgLow.includes('chu guadeloupe') || msgLow.includes('chu martinique')) {
+    const data = await getHopitauxDOMTOM()
+    return res.status(200).json({ pdfAction: null, response: data+" BOUDOUM ! 🇬🇵" })
+  }
+
+  // ============ PRIX TOKEN REUSS ============
+  if (msgLow.includes('prix reuss') || msgLow.includes('cours reuss') || msgLow.includes('valeur reuss') || msgLow.includes('token reuss prix') || msgLow.includes('reuss combien') || msgLow.includes('acheter reuss')) {
+    const data = await getPrixREUSS()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // ============ VOLS CARAIBES ============
+  if (msgLow.includes('vol guadeloupe') || msgLow.includes('vol martinique') || msgLow.includes('air caraibes') || msgLow.includes('air antilles') || msgLow.includes('billet avion dom-tom') || msgLow.includes('corsair') || msgLow.includes('vols dom-tom')) {
+    const data = await getVolsCaraibes()
+    return res.status(200).json({ pdfAction: null, response: data+" BOUDOUM ! 🇬🇵" })
+  }
+
+  // ============ PLAGES DOM-TOM ============
+  if (msgLow.includes('plage guadeloupe') || msgLow.includes('plage martinique') || msgLow.includes('plage dom-tom') || msgLow.includes('qualite plage') || msgLow.includes('meilleure plage') || msgLow.includes('baignade')) {
+    const data = await getQualitePlages()
+    return res.status(200).json({ pdfAction: null, response: data+" BOUDOUM ! 🇬🇵" })
+  }
+
+  // ============ CALCULATEUR AMAZON ============
+  if (msgLow.includes('calculateur amazon') || msgLow.includes('commission amazon') || msgLow.includes('combien amazon') || msgLow.includes('calcul affiliation') || msgLow.includes('calcul commission')) {
+    const montantMatch = message.match(/\d+/)
+    const montant = montantMatch ? parseInt(montantMatch[0]) : 100
+    const data = getCalculateurAmazon(montant)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
   // DETECTION PDF TRIGGERS
   if (msgLow.includes("creer mon cv") || msgLow.includes("créer mon cv") || msgLow.includes("cv pdf") || msgLow.includes("mon cv")) pdfType = "cv"
   else if (msgLow.includes("certificat champion") || msgLow.includes("mon certificat") || msgLow.includes("certificat pdf")) pdfType = "certificat"
@@ -5583,3 +5615,90 @@ BOUDOUM ! 🇬🇵`
 }
 
 
+
+// ===== NOUVELLES FONCTIONS =====
+
+async function getHopitauxDOMTOM() {
+  const hopitaux = {
+    guadeloupe: { nom: "CHU de Guadeloupe", tel: "0590 89 10 10", urgences: "15 ou 0590 89 11 11", adresse: "Pointe-à-Pitre / Abymes" },
+    martinique: { nom: "CHU de Martinique", tel: "0596 55 20 00", urgences: "15 ou 0596 75 15 15", adresse: "Fort-de-France" },
+    guyane: { nom: "CHU de Guyane", tel: "0594 39 50 50", urgences: "15 ou 0594 39 51 51", adresse: "Cayenne" },
+    reunion: { nom: "CHU de La Réunion", tel: "0262 90 50 50", urgences: "15 ou 0262 90 61 61", adresse: "Saint-Denis / Saint-Pierre" },
+    mayotte: { nom: "CHM Mayotte", tel: "0269 61 80 00", urgences: "15", adresse: "Mamoudzou" }
+  }
+  let result = "🏥 **Hôpitaux & Urgences DOM-TOM**\n\n"
+  for (const [ile, h] of Object.entries(hopitaux)) {
+    result += `🏝️ **${h.nom}**\n📞 Standard : ${h.tel}\n🚨 Urgences : ${h.urgences}\n📍 ${h.adresse}\n\n`
+  }
+  result += "🆘 **Numéros d'urgence universels :**\n• 15 — SAMU\n• 17 — Police\n• 18 — Pompiers\n• 112 — Urgences Europe"
+  return result
+}
+
+async function getPrixREUSS() {
+  try {
+    const r = await fetch('https://api.coingecko.com/api/v3/simple/token_price/polygon-pos?contract_addresses=0xB37531727fC07c6EED4f97F852A115B428046EB2&vs_currencies=eur,usd&include_24hr_change=true', { headers: { 'Accept': 'application/json' } })
+    const d = await r.json()
+    const token = d['0xb37531727fc07c6eed4f97f852a115b428046eb2']
+    if (token) {
+      const eur = token.eur || '?'
+      const usd = token.usd || '?'
+      const change = token.eur_24h_change ? token.eur_24h_change.toFixed(2) : '?'
+      const trend = change > 0 ? '📈' : '📉'
+      return `💎 **Token REUSS — Prix Temps Réel**\n\n💶 Prix EUR : ${eur}€\n💵 Prix USD : $${usd}\n${trend} 24h : ${change}%\n\n📍 Contrat : 0xB375...EB2\n🔗 Réseau : Polygon\n\n👉 Acheter/Vendre : https://quickswap.exchange\n\nBOUDOUM ! 🇬🇵`
+    }
+    return `💎 **Token REUSS sur Polygon**\n\n📍 Contrat : 0xB37531727fC07c6EED4f97F852A115B428046EB2\n🔗 Réseau : Polygon\n\n👉 https://quickswap.exchange\n👉 https://polygonscan.com/token/0xB37531727fC07c6EED4f97F852A115B428046EB2\n\nBOUDOUM ! 🇬🇵`
+  } catch(e) {
+    return `💎 **Token REUSS sur Polygon**\n\n📍 Contrat : 0xB37531727fC07c6EED4f97F852A115B428046EB2\n🔗 Réseau : Polygon\n\n👉 QuickSwap : https://quickswap.exchange\n👉 PolygonScan : https://polygonscan.com/token/0xB37531727fC07c6EED4f97F852A115B428046EB2\n\nBOUDOUM ! 🇬🇵`
+  }
+}
+
+async function getVolsCaraibes() {
+  const compagnies = [
+    { nom: "Air Caraïbes", url: "https://www.aircaraibes.com", routes: "Paris ↔ Guadeloupe, Martinique, Guyane, St-Martin, St-Barth" },
+    { nom: "Air Antilles", url: "https://www.airantilles.com", routes: "Liaisons inter-îles Caraïbes" },
+    { nom: "Corsair", url: "https://www.corsair.fr", routes: "Paris ↔ DOM-TOM" },
+    { nom: "Air France", url: "https://www.airfrance.fr", routes: "Paris ↔ Tous DOM-TOM" },
+    { nom: "French Bee", url: "https://www.frenchbee.com", routes: "Paris Orly ↔ Réunion, Tahiti" }
+  ]
+  let result = "✈️ **Compagnies Aériennes DOM-TOM**\n\n"
+  for (const c of compagnies) {
+    result += `🛫 **${c.nom}**\n📍 ${c.routes}\n🔗 ${c.url}\n\n`
+  }
+  result += "💡 Pour les meilleurs prix : comparez sur Google Flights ou Skyscanner !"
+  return result
+}
+
+async function getQualitePlages() {
+  const plages = {
+    guadeloupe: [
+      { nom: "Grande Anse (Deshaies)", qualite: "🟢 Excellente", eau: "29°C", info: "Eau turquoise, sable doré" },
+      { nom: "Plage de Sainte-Anne", qualite: "🟢 Excellente", eau: "28°C", info: "Lagon protégé, idéal famille" },
+      { nom: "Plage du Gosier", qualite: "🟡 Bonne", eau: "28°C", info: "Proche ville, animée" },
+    ],
+    martinique: [
+      { nom: "Les Salines", qualite: "🟢 Excellente", eau: "28°C", info: "Plus belle plage de Martinique" },
+      { nom: "Anse Noire", qualite: "🟢 Excellente", eau: "27°C", info: "Sable noir volcanique unique" },
+    ]
+  }
+  let result = "🌊 **Plages DOM-TOM — Guide**\n\n"
+  for (const [ile, ps] of Object.entries(plages)) {
+    result += `🏝️ **${ile.charAt(0).toUpperCase()+ile.slice(1)}**\n`
+    for (const p of ps) {
+      result += `• **${p.nom}** ${p.qualite} | 🌡️ ${p.eau} | ${p.info}\n`
+    }
+    result += "\n"
+  }
+  result += "⚠️ Vérifiez toujours les alertes locales avant de nager. Numéro urgence mer : **196**"
+  return result
+}
+
+function getCalculateurAmazon(montant) {
+  const taux = { standard: 0.03, mode: 0.04, electronique: 0.025, maison: 0.04, sport: 0.045, beaute: 0.06 }
+  let result = `💰 **Calculateur Commission Amazon**\n\nMontant achat : ${montant}€\n\n`
+  for (const [cat, t] of Object.entries(taux)) {
+    const commission = (montant * t).toFixed(2)
+    result += `• ${cat.charAt(0).toUpperCase()+cat.slice(1)} (${(t*100)}%) → **${commission}€**\n`
+  }
+  result += `\n🛍️ Tag affilié : onamzporinus-21\n👉 Boutiques : https://reussitess.fr/boutiques\n\nBOUDOUM ! 🇬🇵`
+  return result
+}
