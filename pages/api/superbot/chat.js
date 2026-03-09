@@ -5875,6 +5875,9 @@ function getRecommandationsAmazon(domaine) {
   for (const p of cat.produits) {
     result += `• ${p}\n`
   }
-  result += `\n🔗 Voir toutes nos boutiques : https://reussitess.fr/boutiques\n🏷️ Tag affilié : onamzporinus-21\n\n💡 26 boutiques dans 14 pays !\n\nBOUDOUM ! 🇬🇵`
+  result += `\n🔗 Voir toutes nos boutiques : https://reussitess.fr/boutiques\n🏷️ Tags affiliés actifs :
+onamzporinus-21 | porinus00-21 | porinus01-21 | porinus09-21
+porinus-21 | porinus0f-21 | porinus04-21 | porinus058-21
+porinusrony-20 | ronyrogerpori-22 | porinus-22 | porinus03-21 | porinus07-21 | porinus08-21\n\n💡 26 boutiques dans 14 pays !\n\nBOUDOUM ! 🇬🇵`
   return result
 }
