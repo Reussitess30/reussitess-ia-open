@@ -154,7 +154,8 @@ export default function SuperBotAssistant() {
       })
       const data = await response.json()
       const botResponse = data.response || "Désolé, une erreur s'est produite. Réessayez ! 🔄"
-      setMessages(prev => [...prev, { role: 'assistant', content: botResponse }])
+      const botPdfAction = data.pdfAction || null
+      setMessages(prev => [...prev, { role: 'assistant', content: botResponse, pdfAction: botPdfAction }])
       if (audioEnabled) speakResponse(botResponse, LANGUES[langue].voice)
     } catch {
       setMessages(prev => [...prev, { role: 'assistant', content: "⚠️ Connexion temporairement indisponible. Réessayez dans un instant. 💪" }])
@@ -445,6 +446,18 @@ export default function SuperBotAssistant() {
                 }}>
                   {msg.content}
                 </div>
+                {msg.role==='assistant' && msg.pdfAction && (
+                  <div style={{display:'flex',gap:'0.5rem',marginTop:'0.5rem',flexWrap:'wrap'}}>
+                    <button onClick={() => window.open('/api/generate-pdf?type='+msg.pdfAction,'_blank')}
+                      style={{padding:'0.3rem 0.7rem',background:'rgba(16,185,129,0.2)',border:'1px solid #10b981',borderRadius:'15px',color:'#10b981',fontSize:'0.72rem',cursor:'pointer',fontWeight:'bold'}}>
+                      📄 Télécharger PDF
+                    </button>
+                    <button onClick={() => {const w=window.open('');w.document.write('<pre>'+msg.content+'</pre>');w.print();}}
+                      style={{padding:'0.3rem 0.7rem',background:'rgba(16,185,129,0.2)',border:'1px solid #10b981',borderRadius:'15px',color:'#10b981',fontSize:'0.72rem',cursor:'pointer',fontWeight:'bold'}}>
+                      🖨️ Imprimer
+                    </button>
+                  </div>
+                )}
                 {msg.role==='assistant' && audioEnabled && (
                   <button onClick={() => speakResponse(msg.content, LANGUES[langue].voice)}
                     style={{background:'none',border:'none',cursor:'pointer',fontSize:'0.75rem',color:'#10b981',padding:'0.2rem 0.5rem',marginTop:'0.2rem'}}>
