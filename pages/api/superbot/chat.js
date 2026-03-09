@@ -2022,7 +2022,7 @@ async function getWikipedia(term) {
   }
 
   // TRADUCTEUR
-  if (msgLow.includes("traduis") || msgLow.includes("traduire") || msgLow.includes("translate") || msgLow.includes("traduction")) {
+  if ((msgLow.includes("traduis") || msgLow.includes("traduire") || msgLow.includes("translate") || msgLow.includes("traduction")) && !msgLow.includes("creole") && !msgLow.includes("kreyol")) {
     try {
       const langues = { "anglais":"en","espagnol":"es","portugais":"pt","allemand":"de","italien":"it","créole":"ht","arabe":"ar","chinois":"zh","japonais":"ja","russe":"ru" }
       let cible = "en"
@@ -4829,7 +4829,7 @@ export default async function handler(req, res) {
   }
 
   // TRADUCTEUR
-  if (msgLow.includes("traduis") || msgLow.includes("traduire") || msgLow.includes("translate") || msgLow.includes("traduction")) {
+  if ((msgLow.includes("traduis") || msgLow.includes("traduire") || msgLow.includes("translate") || msgLow.includes("traduction")) && !msgLow.includes("creole") && !msgLow.includes("kreyol")) {
     try {
       const langues = { "anglais":"en","espagnol":"es","portugais":"pt","allemand":"de","italien":"it","créole":"ht","arabe":"ar","chinois":"zh","japonais":"ja","russe":"ru" }
       let cible = "en"
