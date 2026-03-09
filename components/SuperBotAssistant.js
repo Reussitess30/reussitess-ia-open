@@ -468,7 +468,7 @@ export default function SuperBotAssistant() {
             ))}
             {messages.length === 1 && !isLoading && (
               <div style={{display:'flex',flexWrap:'wrap',gap:'0.4rem',marginTop:'0.3rem'}}>
-                {['💎 Token REUSS','🌋 Séismes Antilles','🌀 Cyclones','🌤️ Météo DOM-TOM','💱 Devises XOF/XAF','📄 Créer mon CV','⛽ Carburant DOM-TOM','📚 Lancer Quiz'].map(s => (
+                {['🌋 Séismes Antilles','🌀 Cyclones','🌤️ Météo DOM-TOM','💱 Devises XOF/XAF','⛽ Carburant DOM-TOM','🏥 Urgences DOM-TOM','💎 Prix REUSS','✈️ Vols Caraïbes','🌊 Plages DOM-TOM','🌴 Traduire créole','🏠 Immobilier DOM-TOM','📰 Actualités Guadeloupe','💰 Calculateur Amazon','📄 Créer mon CV'].map(s => (
                   <button key={s} onClick={() => submitMessage(s)}
                     style={{padding:'0.4rem 0.7rem',background:'rgba(16,185,129,0.15)',border:'1px solid rgba(16,185,129,0.3)',borderRadius:'20px',color:'#10b981',fontSize:'0.72rem',cursor:'pointer',fontWeight:'bold',whiteSpace:'nowrap'}}>
                     {s}
