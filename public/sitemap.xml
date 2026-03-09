@@ -40,4 +40,20 @@
   <url><loc>https://reussitess.fr/bibliotheque/maghreb/liban</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <!-- Bibliothèque Asie -->
   <url><loc>https://reussitess.fr/bibliotheque/asie/vietnam</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/oracle-971</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://reussitess.fr/ma-revolution-ia</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://reussitess.fr/mon-compte</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://reussitess.fr/agents-dashboard</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://reussitess.fr/hub-central</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://reussitess.fr/hub-international</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://reussitess.fr/passe-port-mondial</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://reussitess.fr/certificat</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/affiliation</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://reussitess.fr/booster-reussitess-amazon</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://reussitess.fr/a-propos</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/dom-tom/saint-martin</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/dom-tom/saint-barth</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/afrique/maroc</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/afrique/algerie</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://reussitess.fr/bibliotheque/afrique/tunisie</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
 </urlset>
