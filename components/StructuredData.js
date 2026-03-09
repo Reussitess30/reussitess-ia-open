@@ -8,7 +8,7 @@ export default function StructuredData() {
     "alternateName": "REUSSITESS® Global Nexus",
     "url": "https://reussitess.fr",
     "logo": "https://reussitess.fr/icon-512x512.webp",
-    "description": "Réseau mondial de 26 boutiques Amazon, Passeport de Réussite, VISA Universel donnant accès à 10,000+ bourses et 50,000+ emplois internationaux",
+    "description": "Plateforme IA née en Guadeloupe — 200 agents Neuro-X, 26 boutiques Amazon, 14 pays, Token REUSS sur Polygon",
     "foundingDate": "2022",
     "foundingLocation": {
       "@type": "Place",

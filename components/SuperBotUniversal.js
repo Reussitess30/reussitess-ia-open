@@ -317,7 +317,7 @@ Tape 'formation' pour plus d'infos !`
     
     // VISA
     if (q.includes('visa')) {
-      return "🌍 VISA UNIVERSEL DE RÉUSSITE !\n\n✅ 10,000+ bourses internationales\n✅ 50,000+ opportunités d'emploi\n✅ 5,000+ mentors actifs\n✅ 100M€+ de fonds accessibles\n\nObtiens ton VISA sur /visa-universel ! 🎯"
+      return "🌍 VISA UNIVERSEL DE RÉUSSITE !\n\n✅ Bourses AUF et Campus France\n✅ Emplois Afrique et DOM-TOM\n✅ 200 agents Neuro-X spécialisés\n✅ 26 boutiques Amazon dans 14 pays\n\nObtiens ton VISA sur /visa-universel ! 🎯"
     }
     
     return `🤔 Je peux t'aider avec :\n\n🎓 Quiz interactifs (tape 'quiz')\n🇬🇵 Guadeloupe & DOM-TOM\n🚀 Vision IA 2030\n😄 Blagues antillaises\n🛍️ Boutiques Amazon\n🏆 Passeport de Réussite\n🌍 VISA Universel\n💥 Easter Egg BOUDOUM\n\nQue veux-tu découvrir ? Score actuel : ${userScore} points`
