@@ -3026,6 +3026,24 @@ export default async function handler(req, res) {
     return res.status(200).json({ pdfAction: null, response: (data||"Bibliotheque disponible sur reussitess.fr/bibliotheque")+"\n\nBOUDOUM ! 🇬🇵" })
   }
 
+  // ============ ACTUALITES GUADELOUPE ============
+  if (msgLow.includes('actualite guadeloupe') || msgLow.includes('actualités guadeloupe') || msgLow.includes('news guadeloupe') || msgLow.includes('info guadeloupe')) {
+    const data = await getActualitesGuadeloupe()
+    return res.status(200).json({ pdfAction: null, response: data+"BOUDOUM ! 🇬🇵" })
+  }
+
+  // ============ ACTUALITES MARTINIQUE ============
+  if (msgLow.includes('actualite martinique') || msgLow.includes('actualités martinique') || msgLow.includes('news martinique') || msgLow.includes('info martinique')) {
+    const data = await getActualitesMartinique()
+    return res.status(200).json({ pdfAction: null, response: data+"BOUDOUM ! 🇬🇵" })
+  }
+
+  // ============ ACTUALITES DOM-TOM ============
+  if (msgLow.includes('actualite dom-tom') || msgLow.includes('actualités dom-tom') || msgLow.includes('news dom-tom') || msgLow.includes('info dom-tom') || msgLow.includes('la 1ere')) {
+    const data = await getActualitesDOMTOM()
+    return res.status(200).json({ pdfAction: null, response: data+"BOUDOUM ! 🇬🇵" })
+  }
+
   // ============ HOPITAUX DOM-TOM ============
   if (msgLow.includes('hopital') || msgLow.includes('hopital') || msgLow.includes('urgence') || msgLow.includes('samu') || msgLow.includes('chu guadeloupe') || msgLow.includes('chu martinique')) {
     const data = await getHopitauxDOMTOM()
@@ -5701,4 +5719,55 @@ function getCalculateurAmazon(montant) {
   }
   result += `\n🛍️ Tag affilié : onamzporinus-21\n👉 Boutiques : https://reussitess.fr/boutiques\n\nBOUDOUM ! 🇬🇵`
   return result
+}
+
+async function getActualitesGuadeloupe() {
+  try {
+    const r = await fetch('https://la1ere.francetvinfo.fr/guadeloupe/feed', { headers: { 'User-Agent': 'Mozilla/5.0' } })
+    const xml = await r.text()
+    const items = xml.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0,5) || []
+    let result = "📰 **Actualités Guadeloupe — La 1ère**\n\n"
+    for (const item of items) {
+      const title = item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || item.match(/<title>(.*?)<\/title>/)?.[1] || ''
+      const link = item.match(/<link>(.*?)<\/link>/)?.[1] || ''
+      if (title) result += `• ${title}\n${link ? '🔗 '+link : ''}\n\n`
+    }
+    return result || "Consulte https://la1ere.francetvinfo.fr/guadeloupe"
+  } catch(e) {
+    return "📰 Actualités Guadeloupe :\n\n🔗 https://la1ere.francetvinfo.fr/guadeloupe\n🔗 https://guadeloupe.orange.fr/actualites\n🔗 https://www.guadeloupe.franceantilles.fr"
+  }
+}
+
+async function getActualitesMartinique() {
+  try {
+    const r = await fetch('https://la1ere.francetvinfo.fr/martinique/feed', { headers: { 'User-Agent': 'Mozilla/5.0' } })
+    const xml = await r.text()
+    const items = xml.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0,5) || []
+    let result = "📰 **Actualités Martinique — La 1ère**\n\n"
+    for (const item of items) {
+      const title = item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || item.match(/<title>(.*?)<\/title>/)?.[1] || ''
+      const link = item.match(/<link>(.*?)<\/link>/)?.[1] || ''
+      if (title) result += `• ${title}\n${link ? '🔗 '+link : ''}\n\n`
+    }
+    return result || "Consulte https://la1ere.francetvinfo.fr/martinique"
+  } catch(e) {
+    return "📰 Actualités Martinique :\n\n🔗 https://la1ere.francetvinfo.fr/martinique\n🔗 https://www.martinique.franceantilles.fr"
+  }
+}
+
+async function getActualitesDOMTOM() {
+  try {
+    const r = await fetch('https://la1ere.francetvinfo.fr/feed', { headers: { 'User-Agent': 'Mozilla/5.0' } })
+    const xml = await r.text()
+    const items = xml.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0,6) || []
+    let result = "📰 **Actualités DOM-TOM — La 1ère**\n\n"
+    for (const item of items) {
+      const title = item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || item.match(/<title>(.*?)<\/title>/)?.[1] || ''
+      if (title) result += `• ${title}\n\n`
+    }
+    result += "🔗 https://la1ere.francetvinfo.fr"
+    return result
+  } catch(e) {
+    return "📰 Actualités DOM-TOM :\n\n🔗 https://la1ere.francetvinfo.fr\n🔗 https://outremers360.com"
+  }
 }
