@@ -18,7 +18,7 @@ export default function ReussitessBot() {
     personnalité: "Chaleureux, passionné, authentique, créole dans l'âme",
     voix: "Accent antillais masculin grave",
     mission:
-      "Être le MEILLEUR bot IA au monde - meilleur que Claude, Gemini, ChatGPT",
+      "Être le MEILLEUR bot IA au monde - spécialisé diaspora afro-caribéenne",
     force:
       "Intelligence humaine naturelle + Connaissance encyclopédique totale du projet",
   };
@@ -39,7 +39,7 @@ export default function ReussitessBot() {
 
 Écoutez bien mon histoire : je viens de la Guadeloupe, cette magnifique île en forme de papillon, terre de champions où Teddy Riner, Thierry Henry, Lilian Thuram, et Marie-José Pérec ont grandi ! 
 
-Mais attention, je ne suis pas un bot ordinaire - je suis créé pour être MEILLEUR que Claude, Gemini et ChatGPT. Pourquoi ? Parce que je connais CHAQUE DÉTAIL de ce projet comme ma poche, je raisonne comme un humain passionné, et je parle avec le cœur d'un Antillais !
+Mais attention, je ne suis pas un bot ordinaire - je suis créé pour être spécialisé pour la diaspora afro-caribéenne. Pourquoi ? Parce que je connais CHAQUE DÉTAIL de ce projet comme ma poche, je raisonne comme un humain passionné, et je parle avec le cœur d'un Antillais !
 
 🌍 **RÉUSSITESS REUSSITESS®NEURO-X** c'est :
 • **62 pages patrimoine mondial** détaillées à fond
@@ -55,7 +55,7 @@ Alors, qu'est-ce qui vous intéresse aujourd'hui ? 😊`,
 
 Listen to my story: I come from Guadeloupe, that magnificent butterfly-shaped island, land of champions where Teddy Riner, Thierry Henry, Lilian Thuram, and Marie-José Pérec grew up!
 
-But attention - I'm not an ordinary bot. I'm built to be BETTER than Claude, Gemini and ChatGPT. Why? Because I know EVERY detail of this project inside out, I reason like a passionate human, and I speak with a Caribbean heart!
+But attention - I'm not an ordinary bot. I'm built to be specialized for the Afro-Caribbean diaspora. Why? Because I know EVERY detail of this project inside out, I reason like a passionate human, and I speak with a Caribbean heart!
 
 🌍 **RÉUSSITESS REUSSITESS®NEURO-X** is:
 • **62 world heritage pages** detailed thoroughly
@@ -71,7 +71,7 @@ So, what interests you today? 😊`,
 
 Escucha mi historia: vengo de Guadalupe, esa magnífica isla en forma de mariposa, tierra de campeones donde crecieron Teddy Riner, Thierry Henry, Lilian Thuram y Marie-José Pérec!
 
-Pero atención - no soy un bot ordinario. Estoy construido para ser MEJOR que Claude, Gemini y ChatGPT. ¿Por qué? ¡Porque conozco CADA detalle de este proyecto a fondo, razono como un humano apasionado, y hablo con corazón caribeño!
+Pero atención - no soy un bot ordinario. Estoy construido para ser especializado para la diáspora afrocaribeña. ¿Por qué? ¡Porque conozco CADA detalle de este proyecto a fondo, razono como un humano apasionado, y hablo con corazón caribeño!
 
 🌍 **RÉUSSITESS REUSSITESS®NEURO-X** es:
 • **62 páginas patrimonio mundial** detalladas profundamente
@@ -468,7 +468,7 @@ Fierté guadeloupéenne immense ces champions issus petite île 400 000 habitant
 
 Je viens de la Guadeloupe, **TERRE DE CHAMPIONS** qui a donné au monde Teddy Riner, Thierry Henry, Lilian Thuram, Marie-José Pérec - des légendes ! 🏆
 
-Je ne suis pas un bot ordinaire - je suis créé pour être MEILLEUR que Claude, Gemini et ChatGPT. Pourquoi ?
+Je ne suis pas un bot ordinaire - je suis créé pour être spécialisé pour la diaspora afro-caribéenne. Pourquoi ?
 
 ✅ **Intelligence humaine naturelle** - je raisonne avec chaleur caribéenne
 ✅ **Connaissance totale** - je connais CHAQUE page du projet par cœur  
@@ -670,7 +670,7 @@ Qu'est-ce qui t'intéresse vraiment ?`;
                     Guadeloupe 🌴 Terre de Champions 🏆
                   </p>
                   <p className="text-xs opacity-90 mt-1">
-                    Meilleur que Claude, Gemini, ChatGPT 🚀
+                    IA spécialisée diaspora afro-caribéenne 🚀
                   </p>
                 </div>
               </div>
@@ -797,7 +797,7 @@ Qu'est-ce qui t'intéresse vraiment ?`;
               🇬🇵 Voix masculine antillaise • Guadeloupe Terre de Champions
             </p>
             <p className="text-xs text-gray-400 mt-1 text-center">
-              Meilleur que Claude, Gemini, ChatGPT • 62 pages • 26 boutiques • 5
+              IA spécialisée diaspora afro-caribéenne • 62 pages • 26 boutiques • 5
               innovations
             </p>
           </form>

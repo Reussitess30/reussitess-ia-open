@@ -6,7 +6,7 @@ export default function BlockchainNotif() {
 
   const movements = [
     "🚀 NOUVEAU SWAP : 858 REUSS via Velora v5",
-    "💎 TRANSFERT RÉSERVE : +12,708,649 REUSS (Quantum Vault)",
+    "💎 REUSS Token actif sur Polygon",
     "🔐 DÉLÉGATION SÉCURISÉE : 1,503,674 REUSS par Fondateur",
     "⚛️ POOL LIQUIDITÉ : Ajustement automatique par IA #42",
     "🌍 EXPANSION : Connexion Bridge établie via LiFi Diamond"

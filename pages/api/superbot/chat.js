@@ -168,7 +168,7 @@ Fondateur : Rony Porinus • Guadeloupe 🇬🇵 • BOUDOUM !
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 📊 **VECTEURS ÉCONOMIQUES**
-• ALPHA-1 : Staking (APY 10-20%)
+• ALPHA-1 : Staking (en développement)
 • BETA-2 : Quiz Learn-to-Earn
 • GAMMA-1 : Cashback Amazon
 • DELTA-4 : Gouvernance DAO
@@ -614,7 +614,7 @@ async function getWikipedia(term) {
     +"🔮 **[Oracle 971](https://reussitess.fr/oracle-971)**\nOracle caribéen\n\n"
     +"🧬 **[Mon ADN](https://reussitess.fr/mon-adn)**\nIdentité & héritage\n\n"
     +"🚀 **[Ma Révolution IA](https://reussitess.fr/ma-revolution-ia)**\nTA révolution personnelle\n\n"
-    +"🌍 **[IA Passport Mondial](https://reussitess.fr/ia-passport)**\n195 langues, identité mondiale\n\n"
+    +"🌍 **[IA Passport Mondial](https://reussitess.fr/ia-passport)**\n8 langues actives, identité mondiale\n\n"
     +"💎 **[Investir REUSS](https://reussitess.fr/investir-reuss)**\nToken REUSS sur Polygon\n\n"
     +"🎯 **[99 Quiz](https://reussitess.fr/quiz)**\nQuiz éducatifs tous thèmes\n\n"
     +"📚 **[Bibliothèque](https://reussitess.fr/bibliotheque)**\n50+ pays francophones\n\n"
@@ -1820,7 +1820,7 @@ async function getWikipedia(term) {
 
   // NEXUS PASSPORT
   if (msgLow.includes("passport") || msgLow.includes("passeport") || msgLow.includes("identité") || msgLow.includes("nft identité") || msgLow.includes("ia passport")) {
-    return res.status(200).json({ pdfAction: pdfType, response: "🪪 **IA Passport Mondial REUSSITESS**\n\n🌍 Premier passeport universel IA au monde !\n\n✅ Identité NFT sur blockchain\n✅ 195 langues supportées\n✅ Reconnaissance dans 14 pays\n✅ Accès tous les Neuro-X\n✅ Historique conversations sécurisé\n✅ Récompenses REUSS automatiques\n\n🔐 Technologie : AES-256 + Polygon NFT\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🪪 **IA Passport Mondial REUSSITESS**\n\n🌍 Premier passeport universel IA au monde !\n\n✅ Identité NFT sur blockchain\n✅ 8 langues actives\n✅ Reconnaissance dans 14 pays\n✅ Accès tous les Neuro-X\n✅ Historique conversations sécurisé\n✅ Récompenses REUSS automatiques\n\n🔐 Technologie : AES-256 + Polygon NFT\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // INVESTIR REUSS
@@ -1846,7 +1846,7 @@ async function getWikipedia(term) {
 
   // RAPPORT SECURITE
   if (msgLow.includes("sécurité") || msgLow.includes("securite") || msgLow.includes("rapport sécurité") || msgLow.includes("shield") || msgLow.includes("protection")) {
-    return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **REUSSSHIELD — Rapport Sécurité**\n\n✅ ST-016 Anti-Fraude : Actif\n✅ ST-017 MiCA Compliance : Actif\n✅ ST-026 Surveillance APIs : Actif\n✅ ST-027 Vercel Monitor : Actif\n✅ ST-028 GitHub Watch : Actif\n✅ ST-029 Polygon Network : Actif\n\n🔒 Détection injection prompt : Activée\n🔑 Chiffrement AES-256 : Actif\n🌐 Site reussitess.fr : EN LIGNE\n\n200 agents IA en surveillance continue 24/7\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **REUSSSHIELD — Rapport Sécurité**\n\n✅ ST-016 Anti-Fraude : Actif\n✅ ST-017 MiCA Compliance : Actif\n✅ ST-026 Surveillance APIs : Actif\n✅ ST-027 Vercel Monitor : Actif\n✅ ST-028 GitHub Watch : Actif\n✅ ST-029 Polygon Network : Actif\n\n🔒 Détection injection prompt : Activée\n🔑 HTTPS + headers sécurisés : Actif\n🌐 Site reussitess.fr : EN LIGNE\n\n200 agents IA en surveillance continue 24/7\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // CONVERTISSEUR MONNAIE TEMPS REEL
@@ -3343,7 +3343,7 @@ export default async function handler(req, res) {
     +"🔮 **[Oracle 971](https://reussitess.fr/oracle-971)**\nOracle caribéen\n\n"
     +"🧬 **[Mon ADN](https://reussitess.fr/mon-adn)**\nIdentité & héritage\n\n"
     +"🚀 **[Ma Révolution IA](https://reussitess.fr/ma-revolution-ia)**\nTA révolution personnelle\n\n"
-    +"🌍 **[IA Passport Mondial](https://reussitess.fr/ia-passport)**\n195 langues, identité mondiale\n\n"
+    +"🌍 **[IA Passport Mondial](https://reussitess.fr/ia-passport)**\n8 langues actives, identité mondiale\n\n"
     +"💎 **[Investir REUSS](https://reussitess.fr/investir-reuss)**\nToken REUSS sur Polygon\n\n"
     +"🎯 **[99 Quiz](https://reussitess.fr/quiz)**\nQuiz éducatifs tous thèmes\n\n"
     +"📚 **[Bibliothèque](https://reussitess.fr/bibliotheque)**\n50+ pays francophones\n\n"
@@ -4549,7 +4549,7 @@ export default async function handler(req, res) {
 
   // NEXUS PASSPORT
   if (msgLow.includes("passport") || msgLow.includes("passeport") || msgLow.includes("identité") || msgLow.includes("nft identité") || msgLow.includes("ia passport")) {
-    return res.status(200).json({ pdfAction: pdfType, response: "🪪 **IA Passport Mondial REUSSITESS**\n\n🌍 Premier passeport universel IA au monde !\n\n✅ Identité NFT sur blockchain\n✅ 195 langues supportées\n✅ Reconnaissance dans 14 pays\n✅ Accès tous les Neuro-X\n✅ Historique conversations sécurisé\n✅ Récompenses REUSS automatiques\n\n🔐 Technologie : AES-256 + Polygon NFT\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🪪 **IA Passport Mondial REUSSITESS**\n\n🌍 Premier passeport universel IA au monde !\n\n✅ Identité NFT sur blockchain\n✅ 8 langues actives\n✅ Reconnaissance dans 14 pays\n✅ Accès tous les Neuro-X\n✅ Historique conversations sécurisé\n✅ Récompenses REUSS automatiques\n\n🔐 Technologie : AES-256 + Polygon NFT\n\nBOUDOUM ! 🇬🇵" })
   }
 
   // INVESTIR REUSS
@@ -4575,7 +4575,7 @@ export default async function handler(req, res) {
 
   // RAPPORT SECURITE
   if (msgLow.includes("sécurité") || msgLow.includes("securite") || msgLow.includes("rapport sécurité") || msgLow.includes("shield") || msgLow.includes("protection")) {
-    return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **REUSSSHIELD — Rapport Sécurité**\n\n✅ ST-016 Anti-Fraude : Actif\n✅ ST-017 MiCA Compliance : Actif\n✅ ST-026 Surveillance APIs : Actif\n✅ ST-027 Vercel Monitor : Actif\n✅ ST-028 GitHub Watch : Actif\n✅ ST-029 Polygon Network : Actif\n\n🔒 Détection injection prompt : Activée\n🔑 Chiffrement AES-256 : Actif\n🌐 Site reussitess.fr : EN LIGNE\n\n200 agents IA en surveillance continue 24/7\n\nBOUDOUM ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **REUSSSHIELD — Rapport Sécurité**\n\n✅ ST-016 Anti-Fraude : Actif\n✅ ST-017 MiCA Compliance : Actif\n✅ ST-026 Surveillance APIs : Actif\n✅ ST-027 Vercel Monitor : Actif\n✅ ST-028 GitHub Watch : Actif\n✅ ST-029 Polygon Network : Actif\n\n🔒 Détection injection prompt : Activée\n🔑 HTTPS + headers sécurisés : Actif\n🌐 Site reussitess.fr : EN LIGNE\n\n200 agents IA en surveillance continue 24/7\n\nBOUDOUM ! 🇬🇵" })
   }
 
 
@@ -4903,22 +4903,22 @@ export default async function handler(req, res) {
     
     iaPassport: {
       concept: "Premier Passeport Universel IA au monde",
-      models: "100+ IA connectées (ChatGPT, Claude, Gemini, Perplexity, Midjourney, DALL-E, GitHub Copilot, DeepSeek, Grok)",
+      models: "IA propulsée par Groq LLaMA 3.3 70B",
       realData: {
         platforms: ["TypingMind (50K users)", "Magai (80K users)", "Alle-AI", "MultipleChat"],
-        pricing: "ChatGPT Plus $20, Claude Pro $20, Gemini $19.99 → REUSSITESS économie 75%",
+        pricing: "ChatGPT Plus $20, Claude Pro $20, Gemini $19.99 → REUSSITESS AI gratuit sur reussitess.fr",
         users: "4M+ utilisateurs mondiaux des technologies similaires"
       }
     },
     
     translation: {
-      languages: "195 langues supportées",
+      languages: "8 langues actives",
       technology: "Wordly (4M users, 400M minutes), Interprefy (6000+ pairs), Google Cloud Translation",
       features: "Temps réel, traduction vocale, préservation contexte culturel"
     },
     
     blockchain: {
-      security: "NFT Digital Identity, AES-256 encryption",
+      security: "HTTPS Vercel, headers A+ SecurityHeaders.com",
       platforms: "Polygon ID, Worldcoin, ENS, Space ID",
       features: "Zero-Knowledge Proofs, biometric auth, anti-deepfake, RGPD compliant"
     },
@@ -4948,7 +4948,7 @@ export default async function handler(req, res) {
 Excellent question sur l'intelligence artificielle ! Laissez-moi vous éclairer avec des **données réelles et vérifiées** :
 
 **IA PASSPORT - Notre Révolution :**
-• **100+ modèles IA** connectés (ChatGPT GPT-4o, Claude 4, Gemini 2.5, Perplexity, Midjourney, DALL-E 3)
+• **IA propulsée par Groq** (LLaMA 3.3 70B) — open-source, rapide, 3 clés rotation anti-429
 • **Inspiré des leaders** : TypingMind (50,000 users), Magai (80,000 users), Alle-AI
 • **Économie massive** : Au lieu de $110/mois pour 5 abonnements séparés → accès unifié 75% moins cher
 
@@ -4958,9 +4958,9 @@ Excellent question sur l'intelligence artificielle ! Laissez-moi vous éclairer 
 ✨ Workflows automatisés : GPT écrit → DALL-E illustre → Synthesia présente
 
 **Données benchmark réelles (2024-2025) :**
-• Gemini 2.5 Flash : 370 tokens/seconde
-• GPT-4o : 88%+ sur tests MMLU
-• Claude 4 : Contexte 200K tokens (500 pages)
+• Groq LLaMA 3.3 70B : ultra-rapide, open-source
+• 3 clés API rotation automatique anti-429
+• 200 agents Neuro-X spécialisés (Emploi, Crypto, Éducation...)
 
 **Made in Guadeloupe** 🇬🇵 avec standards UE !
 
@@ -4976,11 +4976,11 @@ Parlons communication mondiale ! Voici les **faits concrets** :
 • **Wordly AI** - 4 millions d'utilisateurs, 400M minutes traduites, 3000+ paires de langues
 • **Interprefy** - 6000+ combinaisons, niveau entreprise (utilisé par l'ONU, Microsoft, Google)
 • **Talo AI** - Traduction vocale temps réel Zoom/Teams/Meet en 60 langues
-• **Google Cloud Translation** - 189 langues, Gemini 2.5 intégré
+• **Traduction** : 8 langues actives (FR/EN/ES/DE/IT/PT/ZH/AR)
 
 **Applications Réelles :**
 🎤 Meetings internationaux : parlez français → collègue entend japonais instantanément
-📞 Support client : 1 agent anglophone sert 195 langues
+📞 Support : IA multilingue 8 langues
 📹 Webinaires : diffusez en 1 langue, tous reçoivent dans la leur
 📚 Recherche : consultez articles chinois/russe/arabe traduits instantanément
 
@@ -4990,7 +4990,7 @@ Parlons communication mondiale ! Voici les **faits concrets** :
 ✅ Synthèse vocale naturelle (ElevenLabs)
 ✅ Zero-Knowledge Proofs pour confidentialité
 
-**195 langues** incluant créole guadeloupéen, wolof, quechua ! 🇬🇵
+**8 langues actives** (FR/EN/ES/DE/IT/PT/ZH/AR) 🇬🇵
 
 Des questions sur une langue spécifique ?`
     }
@@ -5008,7 +5008,7 @@ La sécurité n'est PAS négociable ! Voici notre technologie **éprouvée** :
 
 **Notre Stack Sécurité :**
 🛡️ **NFT Identity** - Passeport digital unique inviolable
-🔒 **AES-256 Encryption** - Standard militaire américain  
+🔒 **Sécurité HTTPS + headers A+ SecurityHeaders.com  
 🔗 **Blockchain décentralisée** - 0 point de défaillance unique
 👁️ **Biométrie optionnelle** - Face ID, empreinte, reconnaissance palmaire
 🚫 **Anti-Deepfake** - Prouvez que c'est VRAIMENT vous
@@ -5033,8 +5033,8 @@ Parlons finances avec **transparence totale** !
 
 **Tarifs Marché Actuel (2024-2025) :**
 • ChatGPT Plus : $20/mois
-• Claude Pro : $20/mois
-• Gemini Advanced : $19.99/mois  
+• Claude Pro : $20/mois (externe — non affilié)
+• Gemini Advanced : $19.99/mois (externe — non affilié)  
 • Perplexity Pro : $20/mois
 • Midjourney : $30/mois
 **TOTAL : $110/mois pour 5 services !**
@@ -5047,7 +5047,7 @@ Parlons finances avec **transparence totale** !
 **1 TOKEN = QUOI CONCRÈTEMENT ?**
 • 1 heure utilisation IA toutes plateformes
 • 50 images Midjourney/DALL-E professionnelles
-• 100,000 tokens GPT-4 (≈75,000 mots)
+• REUSSITESS AI : gratuit sur reussitess.fr
 • 1 vidéo Synthesia 30 secondes
 • 10 traductions vocales complètes
 
@@ -5265,7 +5265,7 @@ La plus grande collection culturelle francophone digitale !
 ✨ Recherche multilingue intelligente
 ✨ Recommandations personnalisées
 ✨ Audio-livres et podcasts culturels
-✨ Traduction contextuelle 195 langues
+✨ Traduction contextuelle 8 langues actives
 ✨ Annotations collaboratives
 ✨ Préservation numérique patrimoine
 
@@ -5286,7 +5286,7 @@ Je suis votre assistant IA créé avec passion depuis la **Guadeloupe** 🇬🇵
 
 **Mes expertises :**
 🤖 **Intelligence Artificielle** (100+ modèles)
-🌐 **Traduction Universelle** (195 langues)
+🌐 **Traduction (8 langues actives))
 🔐 **Blockchain & Sécurité**
 🎯 **Quiz Éducatifs** (25 thèmes)
 📚 **Bibliothèque Mondiale** (26 pays)
@@ -5549,7 +5549,7 @@ BOUDOUM ! 🇬🇵`
 🦅 Birdeye : birdeye.so
 
 💼 Vecteurs économiques :
-• ALPHA-1 : Staking (APY variable)
+• ALPHA-1 : Staking (en développement)
 • BETA-2 : Quiz Learn-to-Earn
 • GAMMA-1 : Cashback Amazon
 • DELTA-4 : Gouvernance DAO

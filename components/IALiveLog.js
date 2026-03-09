@@ -12,7 +12,7 @@ export default function IALiveLog() {
   const agents = Array.from({ length: 200 }, (_, i) => i + 1)
   const tasks = [
     "Vérification conformité EU AI Act",
-    "Optimisation du Yield Quantum",
+    "Surveillance APIs DOM-TOM en cours",
     "Scan sécurité anti-hack",
     "Synchronisation Token GAMMA",
     "Analyse sentiment marché",

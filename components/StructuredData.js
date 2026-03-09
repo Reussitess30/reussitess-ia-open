@@ -59,7 +59,7 @@ export default function StructuredData() {
     "url": "https://reussitess.fr",
     "logo": "https://reussitess.fr/icon-512x512.webp",
     "description": "Bibliothèque mondiale de 55+ pages, 99 quiz gratuits, formations IA en 6 langues",
-    "numberOfStudents": 15247,
+    "numberOfStudents": 0,
     "areaServed": "Worldwide",
     "educationalCredentialAwarded": "Passeport de Réussite REUSSITESS®"
   }
@@ -69,7 +69,7 @@ export default function StructuredData() {
     "@type": "Product",
     "name": "VISA Universel de Réussite",
     "image": "https://reussitess.fr/icon-512x512.webp",
-    "description": "Accès à 10,000+ bourses internationales, 50,000+ emplois, 5,000+ mentors, 100M€+ de fonds",
+    "description": "Plateforme IA née en Guadeloupe — 200 agents Neuro-X, 26 boutiques Amazon, 14 pays, Token REUSS sur Polygon",
     "brand": {
       "@type": "Brand",
       "name": "REUSSITESS®971"

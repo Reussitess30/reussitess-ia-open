@@ -40,7 +40,7 @@ export default function Certificat() {
         <div style={{ marginTop: '50px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', position: 'relative', zIndex: 1 }}>
           <div style={{ fontSize: '14px' }}>
             <strong>Émission :</strong> {date}<br />
-            <strong>Authentification :</strong> 2FA-Quantum-Safe<br />
+            <strong>Authentification :</strong> HTTPS Vercel + Signature numérique<br />
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://reussitess.fr" alt="QR Verify" style={{ marginTop: '15px', border: '1px solid #eee' }} />
           </div>
 
