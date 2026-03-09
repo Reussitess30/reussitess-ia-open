@@ -76,7 +76,7 @@ export default function APropos() {
             </h2>
             <p>
               Nous développons <strong>IA PASSPORT MONDIAL</strong>, le premier passeport universel connectant 100+ 
-              intelligences artificielles avec traduction en 195 langues et sécurité blockchain.
+              intelligences artificielles en 8 langues actives avec sécurité blockchain.
             </p>
 
             <h2 style={{ fontSize: '2rem', fontWeight: '700', marginTop: '2rem', color: '#1e293b' }}>

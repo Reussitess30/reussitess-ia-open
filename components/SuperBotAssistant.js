@@ -32,7 +32,7 @@ export default function SuperBotAssistant() {
   const botPersonality = {
     name: "REUSSITESS AI", origin: "Guadeloupe 🇬🇵",
     motto: "EXCELLENCE • INNOVATION • SUCCÈS", signature: "BOUDOUM",
-    expertise: ["Expert mondial IA","Blockchain Polygon","195 langues","Entrepreneuriat caribéen"]
+    expertise: ["Expert mondial IA","Blockchain Polygon","8 langues actives","Entrepreneuriat caribéen"]
   }
 
   const scrollToBottom = () => { messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' }) }
@@ -455,7 +455,7 @@ export default function SuperBotAssistant() {
             ))}
             {messages.length === 1 && !isLoading && (
               <div style={{display:'flex',flexWrap:'wrap',gap:'0.4rem',marginTop:'0.3rem'}}>
-                {['💎 Token REUSS','🛍️ Boutiques','🤖 Agents IA','📊 Stats Nexus','📚 Lancer Quiz','🇬🇵 Guadeloupe'].map(s => (
+                {['💎 Token REUSS','🌋 Séismes Antilles','🌀 Cyclones','🌤️ Météo DOM-TOM','💱 Devises XOF/XAF','📄 Créer mon CV','⛽ Carburant DOM-TOM','📚 Lancer Quiz'].map(s => (
                   <button key={s} onClick={() => submitMessage(s)}
                     style={{padding:'0.4rem 0.7rem',background:'rgba(16,185,129,0.15)',border:'1px solid rgba(16,185,129,0.3)',borderRadius:'20px',color:'#10b981',fontSize:'0.72rem',cursor:'pointer',fontWeight:'bold',whiteSpace:'nowrap'}}>
                     {s}

@@ -14,7 +14,7 @@ function readData() {
         passeports: [],
         stats: {
           totalPays: 127,
-          totalChampions: 15247,
+          totalChampions: 0,
           parPays: {},
           parObjectif: {},
           recentChampions: [],
@@ -29,7 +29,7 @@ function readData() {
       passeports: [],
       stats: {
         totalPays: 127,
-        totalChampions: 15247,
+        totalChampions: 0,
         parPays: {},
         parObjectif: {},
         recentChampions: [],
@@ -75,7 +75,7 @@ export default async function handler(req, res) {
 
       const response = {
         totalPays: data.stats.totalPays || 127,
-        totalChampions: data.stats.totalChampions || 15247,
+        totalChampions: data.stats.totalChampions || 0,
         recentChampions,
         topPays,
         topObjectifs,

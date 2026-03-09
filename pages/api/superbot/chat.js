@@ -586,9 +586,9 @@ async function getWikipedia(term) {
             { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
           ], 2048)
-      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\n"+groqText+"\n\n👉 **Obtiens ton certificat :** https://reussitess.fr/champions\n\n🌍 15 247 Champions dans 127 pays !\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\n"+groqText+"\n\n👉 **Obtiens ton certificat :** https://reussitess.fr/champions\n\n🌍 Communauté en pleine croissance !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\nTon certificat de champion t'attend ! 15 247 champions dans 127 pays ont déjà rejoint le mouvement REUSSITESS.\n\n✅ Remplis ton prénom, ton pays et ton objectif\n✅ Reçois ton certificat personnalisé\n✅ Obtiens ton plan d'action sur mesure\n\n👉 **Accède maintenant :** https://reussitess.fr/champions\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\nTon certificat de champion t'attend ! Des champions du monde entier ont déjà rejoint le mouvement REUSSITESS.\n\n✅ Remplis ton prénom, ton pays et ton objectif\n✅ Reçois ton certificat personnalisé\n✅ Obtiens ton plan d'action sur mesure\n\n👉 **Accède maintenant :** https://reussitess.fr/champions\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
     }
   }
 
@@ -3315,9 +3315,9 @@ export default async function handler(req, res) {
             { role: "system", content: "Tu es Neuro-X Business, expert emploi DOM-TOM. Guide vers francetravail.fr, caribbeanjobs.com. BOUDOUM!" },
             { role: "user", content: message }
           ], 2048)
-      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\n"+groqText+"\n\n👉 **Obtiens ton certificat :** https://reussitess.fr/champions\n\n🌍 15 247 Champions dans 127 pays !\n\nBOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\n"+groqText+"\n\n👉 **Obtiens ton certificat :** https://reussitess.fr/champions\n\n🌍 Communauté en pleine croissance !\n\nBOUDOUM ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\nTon certificat de champion t'attend ! 15 247 champions dans 127 pays ont déjà rejoint le mouvement REUSSITESS.\n\n✅ Remplis ton prénom, ton pays et ton objectif\n✅ Reçois ton certificat personnalisé\n✅ Obtiens ton plan d'action sur mesure\n\n👉 **Accède maintenant :** https://reussitess.fr/champions\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\nTon certificat de champion t'attend ! Des champions du monde entier ont déjà rejoint le mouvement REUSSITESS.\n\n✅ Remplis ton prénom, ton pays et ton objectif\n✅ Reçois ton certificat personnalisé\n✅ Obtiens ton plan d'action sur mesure\n\n👉 **Accède maintenant :** https://reussitess.fr/champions\n\nTerres de Champions ! BOUDOUM ! 🇬🇵" })
     }
   }
 

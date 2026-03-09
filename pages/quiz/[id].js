@@ -16,7 +16,7 @@ export default function QuizPage() {
 
   // Sauvegarder points quiz dans localStorage (données locales uniquement)
   const saveReussReward = (percentage, quizTitle) => {
-    const reward = percentage >= 80 ? 10000 : percentage >= 60 ? 5000 : 1000;
+    const reward = 0; // Tokens REUSS en développement
     setReussEarned(reward);
     const current = parseInt(localStorage.getItem("reuss_points") || "0");
     localStorage.setItem("reuss_points", current + reward);
