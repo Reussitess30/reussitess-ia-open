@@ -3041,6 +3041,40 @@ export default async function handler(req, res) {
   const msgLow = message.toLowerCase()
 
   // ============ CALCUL JOUR DATE ============
+  // ===== TRIGGERS PRIORITAIRES (avant Wikipedia/Encyclopédie) =====
+
+  // POLITIQUE GUADELOUPE
+  if (msgLow.includes('president') && (msgLow.includes('regional') || msgLow.includes('région') || msgLow.includes('region') || msgLow.includes('conseil regional'))) {
+    return res.status(200).json({ pdfAction: null, response: "🏛️ **Président du Conseil Régional de Guadeloupe**\n\n👤 **Ary Chalus**\n\n🔗 https://www.regionguadeloupe.fr\n\nBOUDOUM ! 🇬🇵" })
+  }
+  if (msgLow.includes('president') && (msgLow.includes('departemental') || msgLow.includes('département') || msgLow.includes('departement') || msgLow.includes('conseil departemental'))) {
+    return res.status(200).json({ pdfAction: null, response: "🏛️ **Président du Conseil Départemental de Guadeloupe**\n\n👤 **Guy Losbar**\n\n🔗 https://www.cg971.fr\n\nBOUDOUM ! 🇬🇵" })
+  }
+
+  // ACTUALITES GUADELOUPE/MARTINIQUE
+  if ((msgLow.includes('actualite') || msgLow.includes('actu') || msgLow.includes('news') || msgLow.includes('info')) && msgLow.includes('guadeloupe')) {
+    const data = await getActualitesGuadeloupe()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+  if ((msgLow.includes('actualite') || msgLow.includes('actu') || msgLow.includes('news') || msgLow.includes('info')) && msgLow.includes('martinique')) {
+    const data = await getActualitesMartinique()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // CREOLE
+  if (msgLow.includes('traduire creole') || msgLow.includes('parler creole') || msgLow.includes('apprendre creole') || msgLow.includes('expression creole') || msgLow.includes('mot creole') || msgLow === 'creole' || msgLow === 'kreyol' || msgLow.includes('dire creole') || msgLow.includes('langue creole')) {
+    const data = getCreole(message)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // IMMOBILIER
+  if ((msgLow.includes('immobilier') || msgLow.includes('prix m2') || msgLow.includes('loyer')) && !msgLow.includes('neuro-x') && !msgLow.includes('agent')) {
+    const data = await getImmobilierTempsReel()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // ===== FIN TRIGGERS PRIORITAIRES =====
+
   // CALCUL JOUR DATE
   const dateMatch = message.match(/(\d+|premier|première|premiere|deuxième|deuxieme|troisième|troisieme)(?:er|ème)?\s+(janvier|f[ée]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre)\s+(\d{4})/i)
   if (dateMatch && (msgLow.includes('quel jour') || msgLow.includes('jour sera') || msgLow.includes('tombe') || msgLow.includes('quel est le jour'))) {
