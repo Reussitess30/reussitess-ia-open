@@ -452,7 +452,19 @@ export default function SuperBotAssistant() {
                 </div>
                 {msg.role==='assistant' && msg.pdfAction && (
                   <div style={{display:'flex',gap:'0.5rem',marginTop:'0.5rem',flexWrap:'wrap'}}>
-                    <button onClick={() => window.open('/api/generate-pdf?type='+msg.pdfAction,'_blank')}
+                    <button onClick={async () => {
+                      try {
+                        const r = await fetch('/api/generate-pdf', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({type: msg.pdfAction}) })
+                        if (!r.ok) throw new Error('erreur')
+                        const blob = await r.blob()
+                        const url = URL.createObjectURL(blob)
+                        const a = document.createElement('a')
+                        a.href = url
+                        a.download = msg.pdfAction+'.pdf'
+                        a.click()
+                        URL.revokeObjectURL(url)
+                      } catch(e) { alert('Erreur génération PDF. Réessayez !') }
+                    }}
                       style={{padding:'0.3rem 0.7rem',background:'rgba(16,185,129,0.2)',border:'1px solid #10b981',borderRadius:'15px',color:'#10b981',fontSize:'0.72rem',cursor:'pointer',fontWeight:'bold'}}>
                       📄 Télécharger PDF
                     </button>
