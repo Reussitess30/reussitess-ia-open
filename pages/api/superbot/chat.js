@@ -290,11 +290,7 @@ async function getWikipedia(term) {
   }
 
   // GUIDE CARNAVAL CARAIBE
-  // ============ CREOLE GUADELOUPEEN (PRIORITAIRE) ============
-  if (msgLow.includes('traduire creole') || msgLow.includes('parler creole') || msgLow.includes('apprendre creole') || msgLow.includes('mot creole') || msgLow === 'creole' || msgLow === 'kreyol' || msgLow.includes('koman ou ye') || msgLow.includes('mwen enme') || msgLow.includes('bonjou mwen') || msgLow.includes('langue creole') || msgLow.includes('expression creole') || msgLow.includes('dire creole')) {
-    const data = getCreole(message)
-    return res.status(200).json({ pdfAction: null, response: data })
-  }
+
 
     if (msgLow.includes("carnaval") || msgLow.includes("mas") || msgLow.includes("vidé") || msgLow.includes("chars carnaval") || msgLow.includes("fête guadeloupe")) {
     try {
@@ -2222,6 +2218,12 @@ async function getWikipedia(term) {
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
+  // ============ CREOLE GUADELOUPEEN (PRIORITAIRE) ============
+  if (msgLow.includes('traduire creole') || msgLow.includes('parler creole') || msgLow.includes('apprendre creole') || msgLow.includes('mot creole') || msgLow === 'creole' || msgLow === 'kreyol' || msgLow.includes('koman ou ye') || msgLow.includes('mwen enme') || msgLow.includes('bonjou mwen') || msgLow.includes('langue creole') || msgLow.includes('expression creole') || msgLow.includes('dire creole')) {
+    const data = getCreole(message)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
   // ============ ACTUALITES SPECIFIQUES DOM-TOM ============
   if ((msgLow.includes('actualite') || msgLow.includes('news') || msgLow.includes('info')) && msgLow.includes('guadeloupe')) {
     const data = await getActualitesGuadeloupe()
@@ -2718,19 +2720,19 @@ function detectNeurox(msg) {
   if (m.includes("neuro-x éducation") || m.includes("neuro-x education") || m.includes("agent education")) return "education"
   if (m.includes("neuro-x juridique") || m.includes("agent juridique") || (m.includes("expert") && m.includes("droit"))) return "juridique"
   if (m.includes("neuro-x voyage") || m.includes("agent voyage") || (m.includes("expert") && m.includes("voyage"))) return "voyage"
-  if (m.includes("neuro-x créatif") || m.includes("neuro-x creatif") || m.includes("agent créatif") || m.includes("poème") || m.includes("poeme") || m.includes("histoire caribéenne")) return "creative"
-  if (m.includes("neuro-x sport") || m.includes("agent sport") || (m.includes("expert") && m.includes("sport"))) return "sport"
-  if (m.includes("neuro-x histoire") || m.includes("agent histoire") || (m.includes("expert") && m.includes("histoire"))) return "histoire"
-  if (m.includes("neuro-x cuisine") || m.includes("agent cuisine") || m.includes("recette") || m.includes("accras") || m.includes("colombo")) return "cuisine"
-  if (m.includes("neuro-x musique") || m.includes("agent musique") || (m.includes("expert") && m.includes("zouk"))) return "musique"
-  if (m.includes("neuro-x environnement") || m.includes("agent environnement") || m.includes("écologie")) return "environnement"
-  if (m.includes("neuro-x immobilier") || m.includes("agent immobilier") || m.includes("girardin")) return "immobilier"
-  if (m.includes("neuro-x marketing") || m.includes("agent marketing") || m.includes("tiktok") && m.includes("stratégie")) return "marketing"
+  if (m.includes("neuro-x créatif") || m.includes("neuro-x creatif") || m.includes("agent créatif")) return "creative"
+  if (m.includes("neuro-x sport") || m.includes("agent sport")) return "sport"
+  if (m.includes("neuro-x histoire") || m.includes("agent histoire")) return "histoire"
+  if (m.includes("neuro-x cuisine") || m.includes("agent cuisine")) return "cuisine"
+  if (m.includes("neuro-x musique") || m.includes("agent musique")) return "musique"
+  if (m.includes("neuro-x environnement") || m.includes("agent environnement")) return "environnement"
+  if (m.includes("neuro-x immobilier") || m.includes("agent immobilier")) return "immobilier"
+  if (m.includes("neuro-x marketing") || m.includes("agent marketing")) return "marketing"
   if (m.includes("neuro-x defi") || m.includes("agent defi") || m.includes("yield farming") || m.includes("liquidity pool")) return "crypto2"
   if (m.includes("neuro-x nft") || m.includes("agent nft") || m.includes("opensea")) return "nft"
-  if (m.includes("neuro-x psychologie") || m.includes("agent psychologie") || m.includes("résilience caribéenne")) return "psychologie"
-  if (m.includes("neuro-x langue") || m.includes("neuro-x langues") || m.includes("agent langue") || m.includes("traduction créole")) return "langue"
-  if (m.includes("neuro-x agriculture") || m.includes("agent agriculture") || m.includes("banane") && m.includes("canne")) return "agriculture"
+  if (m.includes("neuro-x psychologie") || m.includes("agent psychologie")) return "psychologie"
+  if (m.includes("neuro-x langue") || m.includes("neuro-x langues") || m.includes("agent langue")) return "langue"
+  if (m.includes("neuro-x agriculture") || m.includes("agent agriculture")) return "agriculture"
   if (m.includes("neuro-x tourisme") || m.includes("agent tourisme") || m.includes("soufrière") || m.includes("marie-galante")) return "tourisme"
   if (m.includes("neuro-x astronomie") || m.includes("agent astronomie") || m.includes("planète") && m.includes("étoile")) return "astronomie"
   if (m.includes("neuro-x géopolitique") || m.includes("neuro-x geopolitique") || m.includes("caricom")) return "geopolitique"
@@ -3010,6 +3012,19 @@ async function getBibliothequeCaribeenne(auteur) {
   return "Bibliotheque Caribeenne: Cesaire | Fanon | Conde | Glissant | Schwarz-Bart | https://reussitess.fr/bibliotheque"
 }
 
+function calculerJourDate(dateStr) {
+  try {
+    const months = { 'janvier':0,'février':1,'fevrier':1,'mars':2,'avril':3,'mai':4,'juin':5,'juillet':6,'août':7,'aout':7,'septembre':8,'octobre':9,'novembre':10,'décembre':11,'decembre':11 }
+    const jours = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi']
+    const parts = dateStr.toLowerCase().match(/(\d+)(?:er)?\s+(\w+)\s+(\d{4})/)
+    if (!parts) return null
+    const day = parseInt(parts[1]), month = months[parts[2]], year = parseInt(parts[3])
+    if (month === undefined) return null
+    const d = new Date(year, month, day)
+    return `📅 Le ${day} ${parts[2]} ${year} sera un **${jours[d.getDay()]}**. ✅`
+  } catch(e) { return null }
+}
+
 export default async function handler(req, res) {
   let pdfType = null;
   if (req.method !== 'POST') {
@@ -3018,6 +3033,13 @@ export default async function handler(req, res) {
 
   const { message, personality, context, langue, datetime } = req.body
   const msgLow = message.toLowerCase()
+
+  // ============ CALCUL JOUR DATE ============
+  const dateMatch = message.match(/(\d+)(?:er)?\s+(janvier|février|fevrier|mars|avril|mai|juin|juillet|août|aout|septembre|octobre|novembre|décembre|decembre)\s+(\d{4})/i)
+  if (dateMatch && (msgLow.includes('quel jour') || msgLow.includes('jour sera') || msgLow.includes('quel est le jour') || msgLow.includes('premier') || msgLow.includes('tombe'))) {
+    const result = calculerJourDate(message)
+    if (result) return res.status(200).json({ pdfAction: null, response: result + '\n\nBOUDOUM ! 🇬🇵' })
+  }
 
   // ============ SEISMES ============
   if (msgLow.includes('seisme') || msgLow.includes('tremblement') || msgLow.includes('seisme') || msgLow.includes('soufriere') || msgLow.includes('volcan')) {
@@ -5906,4 +5928,51 @@ async function getQualiteEauBaignade() {
   }
   result += "🆘 Urgence mer : **196**\n📋 Source : ARS DOM-TOM\n🔗 https://www.ars.sante.fr\n\nBOUDOUM ! 🇬🇵"
   return result
+}
+
+async function getActusPolitiquesGuadeloupe() {
+  try {
+    // RSS France-Antilles Guadeloupe
+    const r = await fetch('https://www.guadeloupe.franceantilles.fr/rss.xml', { headers: { 'User-Agent': 'Mozilla/5.0' } })
+    const xml = await r.text()
+    const items = xml.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0,5) || []
+    let result = "🗳️ **Actualités Politiques Guadeloupe — France-Antilles**\n\n"
+    for (const item of items) {
+      const title = item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || item.match(/<title>(.*?)<\/title>/)?.[1] || ''
+      const link = item.match(/<link>(.*?)<\/link>/)?.[1] || ''
+      if (title) result += `• ${title}\n${link ? '🔗 '+link : ''}\n\n`
+    }
+    if (items.length > 0) return result
+    throw new Error('no items')
+  } catch(e) {
+    try {
+      // Fallback La 1ère Guadeloupe
+      const r2 = await fetch('https://la1ere.francetvinfo.fr/guadeloupe/feed', { headers: { 'User-Agent': 'Mozilla/5.0' } })
+      const xml2 = await r2.text()
+      const items2 = xml2.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0,5) || []
+      let result2 = "🗳️ **Actualités Guadeloupe — La 1ère**\n\n"
+      for (const item of items2) {
+        const title = item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || item.match(/<title>(.*?)<\/title>/)?.[1] || ''
+        const link = item.match(/<link>(.*?)<\/link>/)?.[1] || ''
+        if (title) result2 += `• ${title}\n${link ? '🔗 '+link : ''}\n\n`
+      }
+      if (items2.length > 0) return result2
+    } catch(e2) {}
+    return getPolitiquesGuadeloupe()
+  }
+}
+
+async function getElusOfficielGuadeloupe() {
+  try {
+    // Scrape assemblee-nationale.fr pour les députés 971
+    const r = await fetch('https://www.assemblee-nationale.fr/dyn/recherche/fonctions?departement=971', { headers: { 'User-Agent': 'Mozilla/5.0' } })
+    const html = await r.text()
+    const noms = html.match(/class="h6">([^<]+)<\/a>/g)?.slice(0,4).map(n => n.replace(/<[^>]+>/g,'')) || []
+    if (noms.length > 0) {
+      return `🇫🇷 **Députés Guadeloupe (Assemblée Nationale — Temps Réel)**\n\n${noms.map((n,i) => `• ${i+1}ère circ. : **${n.trim()}**`).join('\n')}\n\n🔗 https://www.assemblee-nationale.fr`
+    }
+    throw new Error('no data')
+  } catch(e) {
+    return getPolitiquesGuadeloupe()
+  }
 }
