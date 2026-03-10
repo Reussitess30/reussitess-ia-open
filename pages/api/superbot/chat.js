@@ -3041,6 +3041,27 @@ export default async function handler(req, res) {
   const msgLow = message.toLowerCase()
 
   // ============ CALCUL JOUR DATE ============
+  // ===== TRIGGERS ULTRA PRIORITAIRES =====
+
+  // CV PDF — avant Neuro-X
+  if (msgLow.includes('creer mon cv') || msgLow.includes('créer mon cv') || msgLow.includes('cv pdf') || msgLow.includes('mon cv') || msgLow.includes('faire mon cv')) {
+    return res.status(200).json({ pdfAction: 'cv', response: "📄 Génération de votre CV en cours...\n\nCliquez sur **Télécharger PDF** ci-dessous pour obtenir votre CV professionnel !\n\nBOUDOUM ! 🇬🇵" })
+  }
+
+  // POLITIQUE GUADELOUPE
+  if (msgLow.includes('ary chalus') || (msgLow.includes('president') && msgLow.includes('regional') && msgLow.includes('guadeloupe')) || (msgLow.includes('président') && msgLow.includes('région') && msgLow.includes('guadeloupe'))) {
+    return res.status(200).json({ pdfAction: null, response: "🏛️ **Président du Conseil Régional de Guadeloupe**\n\n👤 **Ary Chalus**\n🗓️ En poste depuis 2017\n\n🔗 https://www.regionguadeloupe.fr\n\nBOUDOUM ! 🇬🇵" })
+  }
+  if (msgLow.includes('guy losbar') || (msgLow.includes('president') && msgLow.includes('departemental') && msgLow.includes('guadeloupe')) || (msgLow.includes('président') && msgLow.includes('département') && msgLow.includes('guadeloupe'))) {
+    return res.status(200).json({ pdfAction: null, response: "🏛️ **Président du Conseil Départemental de Guadeloupe**\n\n👤 **Guy Losbar**\n🗓️ En poste depuis 2021\n\n🔗 https://www.cg971.fr\n\nBOUDOUM ! 🇬🇵" })
+  }
+  if (msgLow.includes('harry durimel') || (msgLow.includes('maire') && msgLow.includes('pointe-a-pitre')) || (msgLow.includes('maire') && msgLow.includes('pointe à pitre'))) {
+    return res.status(200).json({ pdfAction: null, response: "🏙️ **Maire de Pointe-à-Pitre**\n\n👤 **Harry Durimel**\n🗓️ Élu en 2020\n🌿 Parti : EELV (Europe Écologie Les Verts)\n\n🔗 https://www.pointeapitre.fr\n\nBOUDOUM ! 🇬🇵" })
+  }
+  if (msgLow.includes('politique guadeloupe') || msgLow.includes('elus guadeloupe') || msgLow.includes('élus guadeloupe') || msgLow.includes('depute guadeloupe') || msgLow.includes('député guadeloupe') || msgLow.includes('senateur guadeloupe') || msgLow.includes('sénateur guadeloupe')) {
+    return res.status(200).json({ pdfAction: null, response: getPolitiquesGuadeloupe() })
+  }
+
   // ===== TRIGGERS PRIORITAIRES (avant Wikipedia/Encyclopédie) =====
 
   // POLITIQUE GUADELOUPE
@@ -3077,7 +3098,7 @@ export default async function handler(req, res) {
 
   // CALCUL JOUR DATE
   const dateMatch = message.match(/(\d+|premier|première|premiere|deuxième|deuxieme|troisième|troisieme)(?:er|ème)?\s+(janvier|f[ée]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre)\s+(\d{4})/i)
-  if (dateMatch && (msgLow.includes('quel jour') || msgLow.includes('jour sera') || msgLow.includes('tombe') || msgLow.includes('quel est le jour'))) {
+  if (dateMatch && (msgLow.includes('quel jour') || msgLow.includes('jour sera') || msgLow.includes('tombe') || msgLow.includes('quel est le jour') || msgLow.includes('etait quel') || msgLow.includes('était quel') || msgLow.includes('sera quel') || msgLow.includes('correspond'))) {
     const motsChiffres = { 'premier':1,'première':1,'premiere':1,'deuxième':2,'deuxieme':2,'troisième':3,'troisieme':3 }
     const rawDay = dateMatch[1].toLowerCase()
     const day = motsChiffres[rawDay] || parseInt(rawDay)
