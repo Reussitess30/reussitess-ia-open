@@ -1,3 +1,41 @@
+function getPolitiquesGuadeloupe() {
+  return `🏛️ **Élus Officiels de Guadeloupe (2025-2026)**
+
+🌴 **CONSEIL RÉGIONAL**
+👤 **Ary Chalus** — Président depuis le 18 décembre 2015
+🏢 Avenue Paul Lacavé, Basse-Terre
+🔗 regionguadeloupe.fr
+ℹ️ Réélu, préside les Régions Ultra-Périphériques (RUP) depuis avril 2025
+
+🏛️ **CONSEIL DÉPARTEMENTAL**
+👤 **Guy Losbar** — Président depuis le 1er juillet 2021
+🏢 Hôtel du Département, Bld Félix Eboué, Basse-Terre
+🔗 cg971.fr
+ℹ️ Chef de file du GUSR (Guadeloupe Unie Solidaire et Responsable)
+
+🏙️ **MAIRIE DE POINTE-À-PITRE**
+👤 **Harry Durimel** — Maire depuis le 4 juillet 2020
+📞 +590 5 90 93 85 85
+🌿 Candidat à sa réélection en mars 2026
+ℹ️ Premier maire hors dynastie Bangou depuis 50 ans
+
+🗳️ **DÉPUTÉS ASSEMBLÉE NATIONALE (élus juillet 2024)**
+• **1ère circ.** : **Olivier Serva** (DVG/LIOT) — 77,59%
+• **2ème circ.** : **Christian Baptiste** (DVG/NFP) — 72,38%
+• **3ème circ.** : **Max Mathiasin** (DVG/LIOT) — 69,15%
+• **4ème circ.** : **Élie Califer** (PS) — 71,09%
+
+🏛️ **SÉNATEURS (élus septembre 2023)**
+• **Dominique Théophile** — Guadeloupe Solidaire (GUSR)
+• **Solanges Nadille** — Guadeloupe Solidaire (GUSR)
+• **Victorin Lurel** — Ensemble, Nou Tout (PS)
+
+🗓️ **Prochaines élections :** Municipales 15 et 22 mars 2026
+
+🔗 Sources : regionguadeloupe.fr | cg971.fr | assemblee-nationale.fr
+
+BOUDOUM ! 🇬🇵`
+}
 const GROQ_KEYS = [process.env.GROQ_API_KEY, process.env.GROQ_API_KEY_2, process.env.GROQ_API_KEY_3].filter(Boolean)
 let keyIndex = 0
 const keyErrors = {}
@@ -3395,6 +3433,31 @@ BOUDOUM ! 🇬🇵` })
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
+  // ============ POLITIQUE MARTINIQUE ============
+  if (msgLow.includes('politique martinique') || msgLow.includes('elu martinique') || msgLow.includes('élu martinique') || msgLow.includes('serge letchimy') || msgLow.includes('letchimy') || msgLow.includes('ctm martinique') || msgLow.includes('president martinique') || msgLow.includes('député martinique') || msgLow.includes('senateur martinique')) {
+    return res.status(200).json({ pdfAction: null, response: getPolitiquesMartinique() })
+  }
+
+  // ============ POLITIQUE GUYANE ============
+  if (msgLow.includes('politique guyane') || msgLow.includes('elu guyane') || msgLow.includes('élu guyane') || msgLow.includes('gabriel serville') || msgLow.includes('serville') || msgLow.includes('ctg guyane') || msgLow.includes('president guyane') || msgLow.includes('député guyane') || msgLow.includes('senateur guyane')) {
+    return res.status(200).json({ pdfAction: null, response: getPolitiquesGuyane() })
+  }
+
+  // ============ POLITIQUE REUNION ============
+  if (msgLow.includes('politique reunion') || msgLow.includes('politique réunion') || msgLow.includes('elu reunion') || msgLow.includes('huguette bello') || msgLow.includes('bello') || msgLow.includes('cyrille melchior') || msgLow.includes('melchior') || msgLow.includes('president reunion') || msgLow.includes('député reunion') || msgLow.includes('senateur reunion')) {
+    return res.status(200).json({ pdfAction: null, response: getPolitiquesReunion() })
+  }
+
+  // ============ POLITIQUE MAYOTTE ============
+  if (msgLow.includes('politique mayotte') || msgLow.includes('elu mayotte') || msgLow.includes('ben issa ousseni') || msgLow.includes('ousseni') || msgLow.includes('president mayotte') || msgLow.includes('député mayotte') || msgLow.includes('chido') || msgLow.includes('senateur mayotte')) {
+    return res.status(200).json({ pdfAction: null, response: getPolitiquesMayotte() })
+  }
+
+  // ============ POLITIQUE NOUVELLE-CALEDONIE ============
+  if (msgLow.includes('nouvelle-caledonie') || msgLow.includes('nouvelle caledonie') || msgLow.includes('alcide ponga') || msgLow.includes('ponga') || msgLow.includes('politique caledonie') || msgLow.includes('gouvernement caledonie') || msgLow.includes('noumea politique') || msgLow.includes('kanaky')) {
+    return res.status(200).json({ pdfAction: null, response: getPolitiquesNouvelleCaledonie() })
+  }
+
   // ============ KARUDATA OPEN DATA ============
   if (msgLow.includes('karudata') || msgLow.includes('open data guadeloupe') || msgLow.includes('donnees ouvertes guadeloupe') || msgLow.includes('karugeo') || msgLow.includes('carte guadeloupe')) {
     const data = await getKaruData()
@@ -6359,7 +6422,155 @@ async function getQualiteEauBaignade() {
   return result
 }
 
-async function getActusPolitiquesGuadeloupe() {
+async function getPolitiquesMartinique() {
+  return `🏛️ **Élus Officiels de Martinique (2025-2026)**
+
+🌴 **COLLECTIVITÉ TERRITORIALE DE MARTINIQUE (CTM)**
+*(fusion Région + Département depuis 2016)*
+
+👤 **Serge Letchimy** — Président du Conseil Exécutif depuis 2021
+🏢 Collectivité Territoriale de Martinique, Fort-de-France
+🔗 collectivitedemartinique.mq
+ℹ️ Fondateur du PPM (Parti Progressiste Martiniquais), anciennement président du Conseil Régional (2010-2015) et député. Artisan de la CTM, il milite pour une Martinique autonome. En 2025, la Martinique adhère à la CARICOM.
+
+👤 **Lucien Saliber** — Président de l'Assemblée de Martinique depuis 2021
+ℹ️ Préside les 51 conseillers de l'Assemblée délibérante.
+
+🗳️ **DÉPUTÉS ASSEMBLÉE NATIONALE (élus juillet 2024)**
+• **1ère circ.** (Fort-de-France Nord) : **Johnny Hajjar** (PS/NFP)
+• **2ème circ.** (Fort-de-France Sud, Schoelcher) : **Marcellin Nadeau** (Modemas/NFP)
+• **3ème circ.** (Centre/Nord Atlantique) : **Jiovanny William** (DVG/NFP)
+• **4ème circ.** (Sud Martinique) : **Steve Chérubin** (DVG/NFP)
+
+🏛️ **SÉNATEURS**
+• **Catherine Conconne** — PS
+• **Maurice Antiste** — PS
+
+🗓️ **Prochaines élections :** Municipales mars 2026
+
+🔗 Sources : collectivitedemartinique.mq | assemblee-nationale.fr
+
+BOUDOUM ! 🇫🇷🌴`
+}
+
+function getPolitiquesGuyane() {
+  return `🏛️ **Élus Officiels de Guyane (2025-2026)**
+
+🌿 **COLLECTIVITÉ TERRITORIALE DE GUYANE (CTG)**
+*(fusion Région + Département depuis 2015)*
+
+👤 **Gabriel Serville** — Président depuis le 28 juin 2021
+🏢 CTG, Cayenne
+🔗 ctguyane.fr
+🗓️ Né en 1960. Ancien député (2012-2021), ancien maire de Matoury. Enseignant de carrière. Élu avec 54,83% des voix face à Rodolphe Alexandre.
+ℹ️ En 2025 : convalescence médicale prolongée (nov 2024-juil 2025). Milite pour l'autonomie institutionnelle de la Guyane. Rencontré Emmanuel Macron à l'Élysée en sept 2025 sur l'évolution statutaire.
+
+👤 **Jean-Paul Fereira** — 1er Vice-Président (assuré l'intérim 2024-2025)
+
+🗳️ **DÉPUTÉS ASSEMBLÉE NATIONALE (élus juillet 2024)**
+• **1ère circ.** (Cayenne) : **Davy Rimane** (DVG/NFP)
+• **2ème circ.** (Ouest Guyane) : **Lénaïck Adam** (DVG)
+
+🏛️ **SÉNATEURS**
+• **Marie-Laure Phinera-Horth** — RDPI (Renaissance)
+• **Georges Patient** — RDPI (Renaissance)
+
+🗓️ **Prochaines élections :** Territoriales mars 2028
+
+🔗 Sources : ctguyane.fr | assemblee-nationale.fr
+
+BOUDOUM ! 🇫🇷🌿`
+}
+
+function getPolitiquesReunion() {
+  return `🏛️ **Élus Officiels de La Réunion (2025-2026)**
+
+🌺 **CONSEIL RÉGIONAL**
+👤 **Huguette Bello** — Présidente depuis le 2 juillet 2021
+🏢 Hôtel de Région Pierre-Lagourgue, Saint-Denis
+🔗 regionreunion.com
+🗓️ Née le 24 août 1950 à Saint-Pierre. Militante PLR (Pour La Réunion), ancienne membre du PCR (1974-2012). Ancienne députée (1997-2020), ancienne maire de Saint-Paul. Élue avec 29 voix sur 35.
+
+🏛️ **CONSEIL DÉPARTEMENTAL**
+👤 **Cyrille Melchior** — Président depuis le 18 décembre 2017
+🏢 Palais de la Source, Saint-Denis
+🔗 departement974.fr
+🗓️ Né le 6 septembre 1961 à Saint-Paul. LR. En juin 2025, il crée "Nouvel R'" pour fédérer la droite réunionnaise. Candidat aux municipales 2026 à Saint-Paul.
+
+🗳️ **DÉPUTÉS ASSEMBLÉE NATIONALE (élus juillet 2024)**
+• **1ère circ.** : **Emeline K/Bidi** (PCR/NFP)
+• **2ème circ.** : **Joseph Rivière** (DVD)
+• **3ème circ.** : **Karine Lebon** (PCR/NFP)
+• **4ème circ.** : **Frédéric Maillot** (PLR/NFP)
+• **5ème circ.** : **Philippe Naillet** (PS/NFP)
+• **6ème circ.** : **Perceval Gaillard** (DVG/NFP)
+• **7ème circ.** : **Jean-Hugues Ratenon** (LFI/NFP)
+
+🏛️ **SÉNATEURS**
+• **Viviane Malet** — LR
+• **Audrey Belim** — PS
+
+🗓️ **Prochaines élections :** Municipales mars 2026
+
+🔗 Sources : regionreunion.com | departement974.fr | assemblee-nationale.fr
+
+BOUDOUM ! 🇫🇷🌺`
+}
+
+function getPolitiquesMayotte() {
+  return `🏛️ **Élus Officiels de Mayotte (2025-2026)**
+
+🌊 **ASSEMBLÉE DE MAYOTTE (ex-Conseil Départemental 976)**
+👤 **Ben Issa Ousseni** — Président depuis le 1er juillet 2021
+🏢 Conseil Départemental, Mamoudzou
+🔗 mayotte.fr
+🗓️ Né le 11 juillet 1973 à Mamoudzou. LR. DUT Finance/Comptabilité. Ancien comptable, fondateur d'entreprise en 2011. Élu au conseil depuis 2011. En 2024 : lance un programme infrastructures pour les Jeux des Îles 2036. Après le cyclone Chido (décembre 2024), il réclame l'état d'urgence et se bat pour la reconstruction de l'île.
+ℹ️ 1er vice-président : Salime Mdéré. Depuis 2026 : le conseil est rebaptisé "Assemblée de Mayotte" suite à la loi de refondation.
+
+🗳️ **DEPUTÉS ASSEMBLÉE NATIONALE (élus juillet 2024)**
+• **1ère circ.** : **Anchya Bamana** (DVG)
+• **2ème circ.** : **Mansour Kamardine** (LR)
+
+🏛️ **SÉNATEURS**
+• **Saïd Omar Oili** — LR
+• **Thani Mohamed Soilihi** — RDPI
+
+🔥 **Contexte 2025 :** Mayotte dévastée par le cyclone Chido (14 décembre 2024). Reconstruction majeure en cours. Loi programme Mayotte adoptée août 2025. Jeux des Îles 2036.
+
+🗓️ **Prochaines élections :** Municipales mars 2026
+
+🔗 Sources : mayotte.fr | assemblee-nationale.fr
+
+BOUDOUM ! 🇫🇷🌊`
+}
+
+function getPolitiquesNouvelleCaledonie() {
+  return `🏛️ **Élus Officiels de Nouvelle-Calédonie (2025-2026)**
+
+🌏 **GOUVERNEMENT DE LA NOUVELLE-CALÉDONIE**
+👤 **Alcide Ponga** — Président du 18e Gouvernement depuis le 8 janvier 2025
+🏢 Hôtel du Gouvernement, Nouméa
+🔗 gouv.nc
+🗓️ Né le 23 mai 1975 à Kouaoua. Kanak non-indépendantiste. Diplômé Sciences Politiques + Droit Public. Cadre dirigeant dans le secteur du nickel (SLN puis KNS). Maire de Kouaoua depuis 2014. 1er Kanak à présider Le Rassemblement-LR (depuis avril 2024).
+ℹ️ Élu avec 6 voix sur 11 membres du gouvernement. Contexte : crises politiques et économiques post-émeutes de mai 2024 (14 morts, 2 milliards € de dégâts). Négocie avec Paris pour l'avenir institutionnel de la Nouvelle-Calédonie.
+⚠️ Fin 2025 : "2026 sera aussi compliquée que 2025, voire plus" — problèmes nickel, finances, avenir institutionnel.
+
+🗳️ **DEPUTÉS ASSEMBLÉE NATIONALE**
+• **1ère circ.** : **Nicolas Metzdorf** (Renaissance)
+• **2ème circ.** : **Emmanuel Tjibaou** (FLNKS/indépendantiste)
+
+🏛️ **SÉNATEURS**
+• **Robert Xowie** — FLNKS/indépendantiste
+• **Georges Naturel** — LR
+
+🗓️ **Prochaines élections :** Provinciales 2025 (date à confirmer)
+
+🔗 Sources : gouv.nc | congres.nc | assemblee-nationale.fr
+
+BOUDOUM ! 🇫🇷🌏`
+}
+
+function getActusPolitiquesGuadeloupe() {
   try {
     // RSS France-Antilles Guadeloupe
     const r = await fetch('https://www.guadeloupe.franceantilles.fr/rss.xml', { headers: { 'User-Agent': 'Mozilla/5.0' } })
