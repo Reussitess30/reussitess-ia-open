@@ -3097,6 +3097,25 @@ Finance, Business, Cuisine, Santé, Droit, Voyage, Sport, Histoire, Musique...
 • 📻 RCI FM Guadeloupe actualités
 • Open Data KaruData/KaruGéo
 
+🏛️ **Politique Guadeloupe :**
+• Président Région : Ary Chalus
+• Président Département : Guy Losbar
+• Maire Pointe-à-Pitre : Harry Durimel
+• Tous les élus, députés, sénateurs
+
+🎓 **Éducation & Emploi :**
+• BAC/BTS résultats & calendrier
+• Offres emploi DOM-TOM temps réel
+• Bourses AUF
+• Rectorat Guadeloupe
+
+🌊 **Environnement & Sécurité :**
+• Qualité eau baignade
+• Alertes EDF coupures
+• Risques naturels KaruGéo
+
+📅 **Calcul de dates exact (1900-2100)**
+
 📚 **Bibliothèque mondiale 50+ pays**
 🔮 **Oracle 971** — Conseils mystiques caribéens
 
