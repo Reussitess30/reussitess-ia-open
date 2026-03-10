@@ -536,7 +536,14 @@ export default function SuperBotAssistant() {
                 ➤
               </button>
             </div>
-            <p style={{color:'#475569',fontSize:'0.7rem',textAlign:'center',marginTop:'0.5rem',marginBottom:0}}>
+            {imagePreview && (
+                <div style={{display:'flex',alignItems:'center',gap:'0.5rem',marginTop:'0.5rem',background:'rgba(245,158,11,0.1)',padding:'0.5rem',borderRadius:'10px'}}>
+                  <img src={imagePreview} style={{width:'40px',height:'40px',objectFit:'cover',borderRadius:'8px'}} />
+                  <span style={{color:'#f59e0b',fontSize:'0.8rem'}}>Image prête à envoyer</span>
+                  <button onClick={() => {setSelectedImage(null);setImagePreview(null)}} style={{marginLeft:'auto',background:'none',border:'none',color:'#ef4444',cursor:'pointer',fontSize:'1rem'}}>✕</button>
+                </div>
+              )}
+              <p style={{color:'#475569',fontSize:'0.7rem',textAlign:'center',marginTop:'0.5rem',marginBottom:0}}>
               🎤 Micro • 📷 Image • 🔊 Audio • 🌐 8 langues • 🇬🇵 BOUDOUM
             </p>
           </form>
