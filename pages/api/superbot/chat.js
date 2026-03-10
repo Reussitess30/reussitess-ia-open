@@ -3043,6 +3043,60 @@ export default async function handler(req, res) {
   // ============ CALCUL JOUR DATE ============
   // ===== TRIGGERS ULTRA PRIORITAIRES =====
 
+  // TU SAIS FAIRE QUOI
+  if (msgLow.includes('tu sais faire quoi') || msgLow.includes('que sais-tu faire') || msgLow.includes('tes capacites') || msgLow.includes('tes capacités') || msgLow.includes('ce que tu sais') || msgLow.includes('tu peux faire quoi') || msgLow.includes('fonctionnalites') || msgLow.includes('fonctionnalités du bot')) {
+    return res.status(200).json({ pdfAction: null, response: `🤖 **REUSSITESS AI — Mes Capacités**
+
+📡 **Données Temps Réel :**
+• 🌋 Séismes Antilles (USGS)
+• 🌀 Cyclones Atlantique (NHC)
+• 🌤️ Météo DOM-TOM par commune
+• 💱 Devises XOF/XAF/XCD/HTG
+• ⛽ Prix carburant DOM-TOM
+• 💎 Prix Token REUSS (Polygon)
+• ₿ Crypto (BTC/ETH/POL)
+• 📰 Actualités Guadeloupe/Martinique/DOM-TOM
+
+🏝️ **Spécial Guadeloupe :**
+• 🏛️ Élus politiques & maires
+• 🏥 Hôpitaux & urgences
+• 🚌 Transports & bus GTI
+• ⚡ Coupures EDF
+• 🌊 Qualité eau baignade
+• 🎓 BAC/BTS résultats
+• 💼 Offres emploi
+• 🏠 Immobilier prix
+
+🌴 **Culture Caribéenne :**
+• Créole guadeloupéen
+• Zouk, Soca, Gwo Ka
+• Littérature (Césaire, Fanon, Condé...)
+• Histoire & philosophie antillaise
+
+💼 **Business & Documents PDF :**
+• 📄 CV professionnel
+• 📝 Contrat freelance
+• 📊 Business Plan
+• 🏆 Certificat Champion
+
+✈️ **Services Pratiques :**
+• Vols Caraïbes
+• Plages DOM-TOM
+• Calendrier scolaire
+• Calculateur commission Amazon
+• 26 boutiques Amazon 14 pays
+
+🧠 **60 Agents Neuro-X spécialisés :**
+Finance, Business, Cuisine, Santé, Droit, Voyage, Sport, Histoire, Musique...
+
+📚 **Bibliothèque mondiale 50+ pays**
+🔮 **Oracle 971** — Conseils mystiques caribéens
+
+BOUDOUM ! 🇬🇵` })
+  }
+
+
+
   // CV PDF — avant Neuro-X
   if (msgLow.includes('creer mon cv') || msgLow.includes('créer mon cv') || msgLow.includes('cv pdf') || msgLow.includes('mon cv') || msgLow.includes('faire mon cv')) {
     return res.status(200).json({ pdfAction: 'cv', response: "📄 Génération de votre CV en cours...\n\nCliquez sur **Télécharger PDF** ci-dessous pour obtenir votre CV professionnel !\n\nBOUDOUM ! 🇬🇵" })
