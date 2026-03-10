@@ -6570,7 +6570,7 @@ function getPolitiquesNouvelleCaledonie() {
 BOUDOUM ! 🇫🇷🌏`
 }
 
-function getActusPolitiquesGuadeloupe() {
+async function getActusPolitiquesGuadeloupe() {
   try {
     // RSS France-Antilles Guadeloupe
     const r = await fetch('https://www.guadeloupe.franceantilles.fr/rss.xml', { headers: { 'User-Agent': 'Mozilla/5.0' } })
