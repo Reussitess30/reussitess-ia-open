@@ -3112,6 +3112,42 @@ export default async function handler(req, res) {
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
+  // ============ IMMOBILIER TEMPS REEL ============
+  if (msgLow.includes('prix immobilier') || msgLow.includes('transaction immobilier') || msgLow.includes('dvf') || msgLow.includes('vente immobilier guadeloupe')) {
+    const data = await getImmobilierTempsReel()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // ============ BUS GUADELOUPE ============
+  if (msgLow.includes('bus guadeloupe') || msgLow.includes('transport guadeloupe') || msgLow.includes('taxi collectif') || msgLow.includes('horaire bus') || msgLow.includes('gti guadeloupe') || msgLow.includes('ferry guadeloupe') || msgLow.includes('ilevia')) {
+    const data = getHorairesBusGuadeloupe()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // ============ COUPURES EDF ============
+  if (msgLow.includes('coupure edf') || msgLow.includes('coupure electricite') || msgLow.includes('panne electricite') || msgLow.includes('edf guadeloupe') || msgLow.includes('edf martinique') || msgLow.includes('electricite dom-tom')) {
+    const data = await getCoupuresEDF()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // ============ ZOUK SOCA ============
+  if (msgLow.includes('zouk') || msgLow.includes('soca') || msgLow.includes('classement musique') || msgLow.includes('musique caraibe') || msgLow.includes('artiste guadeloupe') || msgLow.includes('kassav') || msgLow.includes('gwo ka') || msgLow.includes('biguine')) {
+    const data = await getClassementZoukSoca()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // ============ OFFRES EMPLOI DOM-TOM ============
+  if (msgLow.includes('offre emploi') || msgLow.includes('chercher emploi dom-tom') || msgLow.includes('job guadeloupe') || msgLow.includes('travail guadeloupe') || msgLow.includes('recrutement guadeloupe') || msgLow.includes('france travail guadeloupe')) {
+    const data = await getOffresEmploiDOMTOM()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // ============ BAC BTS GUADELOUPE ============
+  if (msgLow.includes('resultat bac') || msgLow.includes('resultat bts') || msgLow.includes('bac guadeloupe') || msgLow.includes('bts guadeloupe') || msgLow.includes('cyclades') || msgLow.includes('examen guadeloupe') || msgLow.includes('rectorat guadeloupe')) {
+    const data = getResultatsBAC()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
   // ============ HOPITAUX DOM-TOM ============
   if (msgLow.includes('hopital') || msgLow.includes('hopital') || msgLow.includes('urgence') || msgLow.includes('samu') || msgLow.includes('chu guadeloupe') || msgLow.includes('chu martinique')) {
     const data = await getHopitauxDOMTOM()
@@ -5975,4 +6011,198 @@ async function getElusOfficielGuadeloupe() {
   } catch(e) {
     return getPolitiquesGuadeloupe()
   }
+}
+
+// ===== IMMOBILIER TEMPS REEL =====
+async function getImmobilierTempsReel() {
+  try {
+    const r = await fetch('https://api.dvf.etalab.gouv.fr/dvf/mutations/?code_departement=971&fields=valeur_fonciere,surface_reelle_bati,type_local&per_page=5', { headers: { 'Accept': 'application/json' } })
+    const d = await r.json()
+    if (d.results?.length > 0) {
+      let result = "🏠 **Immobilier Guadeloupe — Transactions Récentes (DVF Officiel)**\n\n"
+      for (const item of d.results.slice(0,4)) {
+        if (item.valeur_fonciere && item.surface_reelle_bati) {
+          const prixm2 = Math.round(item.valeur_fonciere / item.surface_reelle_bati)
+          result += `• ${item.type_local || 'Bien'} — ${item.surface_reelle_bati}m² — ${item.valeur_fonciere.toLocaleString('fr-FR')}€ (${prixm2}€/m²)\n`
+        }
+      }
+      result += "\n📊 Source : DVF Etalab (données officielles)\n🔗 https://app.dvf.etalab.gouv.fr\n\nBOUDOUM ! 🇬🇵"
+      return result
+    }
+    throw new Error('no data')
+  } catch(e) {
+    return getImmobilierDOMTOM()
+  }
+}
+
+// ===== HORAIRES BUS GUADELOUPE =====
+function getHorairesBusGuadeloupe() {
+  return `🚌 **Transports en Commun Guadeloupe**
+
+🚌 **Guadeloupe Transport (GTI)**
+• Réseau bus inter-urbain Guadeloupe
+• 🔗 https://www.ilevia.fr (app mobile)
+• 📞 0590 83 32 00
+
+🚌 **Lignes principales :**
+• Ligne 1 : Pointe-à-Pitre ↔ Les Abymes
+• Ligne 2 : Pointe-à-Pitre ↔ Gosier
+• Ligne 3 : Pointe-à-Pitre ↔ Baie-Mahault
+• Ligne 4 : Pointe-à-Pitre ↔ Sainte-Anne
+• Ligne 5 : Pointe-à-Pitre ↔ Saint-François
+• Ligne 10 : Pointe-à-Pitre ↔ Basse-Terre
+
+🚗 **Taxis collectifs (TC) :**
+• Départ : Gare routière de Bergevin (Pointe-à-Pitre)
+• Horaires : 5h30 — 19h00
+• Prix : 1.50€ — 8€ selon destination
+
+⛴️ **Ferry inter-îles :**
+• L'Express des Îles : Guadeloupe ↔ Martinique ↔ Dominique
+• 🔗 https://www.express-des-iles.com
+• CTM Deher : Pointe-à-Pitre ↔ Marie-Galante ↔ Les Saintes
+
+📱 **App recommandée :** Google Maps (lignes GTI intégrées)
+
+BOUDOUM ! 🇬🇵`
+}
+
+// ===== COUPURES EDF DOM-TOM =====
+async function getCoupuresEDF() {
+  try {
+    const r = await fetch('https://www.edf-dom.fr/wp-json/wp/v2/posts?per_page=5&categories=coupures', { headers: { 'User-Agent': 'Mozilla/5.0' } })
+    const d = await r.json()
+    if (d?.length > 0) {
+      let result = "⚡ **Coupures EDF DOM-TOM — Alertes Récentes**\n\n"
+      for (const post of d.slice(0,3)) {
+        result += `• ${post.title?.rendered || 'Alerte'}\n`
+      }
+      result += "\n🔗 https://www.edf-dom.fr\n📞 EDF Guadeloupe : 0590 82 40 00\nBOUDOUM ! 🇬🇵"
+      return result
+    }
+    throw new Error('no data')
+  } catch(e) {
+    return `⚡ **Coupures EDF DOM-TOM**
+
+🔦 **En cas de coupure :**
+• EDF Guadeloupe : **0590 82 40 00**
+• EDF Martinique : **0596 59 20 00**
+• EDF Guyane : **0594 39 64 00**
+• EDF Réunion : **0262 90 90 90**
+• EDF Mayotte : **0269 64 90 00**
+
+📱 **Signaler une coupure :**
+🔗 https://www.edf-dom.fr
+🔗 Application EDF & MOI
+
+⏰ **Interventions urgentes 24h/24**
+
+BOUDOUM ! 🇬🇵`
+  }
+}
+
+// ===== CLASSEMENT ZOUK/SOCA =====
+async function getClassementZoukSoca() {
+  try {
+    const r = await fetch('https://la1ere.francetvinfo.fr/guadeloupe/feed', { headers: { 'User-Agent': 'Mozilla/5.0' } })
+    const xml = await r.text()
+    const items = xml.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0,3) || []
+    let musique = items.map(item => item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || '').filter(t => t && (t.toLowerCase().includes('musik') || t.toLowerCase().includes('musique') || t.toLowerCase().includes('artiste') || t.toLowerCase().includes('zouk') || t.toLowerCase().includes('soca')))
+    if (musique.length > 0) {
+      return `🎵 **Musique Caribéenne — Actualités**\n\n${musique.map(t => '• '+t).join('\n')}\n\n🔗 https://la1ere.francetvinfo.fr/guadeloupe\nBOUDOUM ! 🇬🇵`
+    }
+    throw new Error('no music news')
+  } catch(e) {
+    return `🎵 **Classement Zouk & Soca Caraïbes**
+
+🏆 **Artistes incontournables :**
+• **Jacob Desvarieux** — Légende Kassav / Zouk
+• **Kalash** — Rappeur Martiniquais international
+• **Fanny J** — R&B Guadeloupéen
+• **Admiral T** — Gwo Ka moderne
+• **Dj Lewis** — Zouk électronique
+• **Kevin Lyttle** — Soca international
+• **Machel Montano** — Roi du Soca Trinidad
+• **Bunji Garlin** — Soca Trinidad
+
+📻 **Radios locales :**
+• RCI Guadeloupe — 104.3 FM
+• Outremer 1ère — 89.3 FM
+• NRJ Guadeloupe — 92.7 FM
+• Radyo Tanbou — Gwoka & traditions
+
+🔗 Actualités musique : https://la1ere.francetvinfo.fr/guadeloupe
+
+BOUDOUM ! 🇬🇵`
+  }
+}
+
+// ===== OFFRES EMPLOI DOM-TOM =====
+async function getOffresEmploiDOMTOM() {
+  try {
+    const r = await fetch('https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search?departement=971&range=0-4', {
+      headers: { 'Accept': 'application/json', 'Authorization': 'Bearer public' }
+    })
+    if (!r.ok) throw new Error('api')
+    const d = await r.json()
+    if (d.resultats?.length > 0) {
+      let result = "💼 **Offres Emploi Guadeloupe — France Travail**\n\n"
+      for (const o of d.resultats.slice(0,4)) {
+        result += `• **${o.intitule}** — ${o.entreprise?.nom || 'Entreprise'}\n  📍 ${o.lieuTravail?.libelle || 'Guadeloupe'} | 💰 ${o.salaire?.libelle || 'Selon profil'}\n\n`
+      }
+      result += "🔗 Toutes les offres : https://www.francetravail.fr\nBOUDOUM ! 🇬🇵"
+      return result
+    }
+    throw new Error('no results')
+  } catch(e) {
+    return `💼 **Offres Emploi DOM-TOM — Plateformes**
+
+🇬🇵 **Guadeloupe**
+• 🔗 https://www.francetravail.fr (Pôle Emploi)
+• 🔗 https://www.regionguadeloupe.fr/emploi
+• 🔗 https://www.guadeloupe.cci.fr
+
+🇲🇶 **Martinique**
+• 🔗 https://www.francetravail.fr
+• 🔗 https://www.caraibe-emploi.com
+
+🌍 **International DOM-TOM**
+• 🔗 https://caribbeanjobs.com
+• 🔗 https://www.jobartis.com
+• 🔗 https://emploi.re (Réunion)
+
+📞 France Travail Guadeloupe : 3949
+
+BOUDOUM ! 🇬🇵`
+  }
+}
+
+// ===== RESULTATS BAC/BTS GUADELOUPE =====
+function getResultatsBAC() {
+  const annee = new Date().getFullYear()
+  return `🎓 **Résultats BAC & BTS Guadeloupe ${annee}**
+
+📅 **Calendrier officiel :**
+• Épreuves BAC : Juin ${annee}
+• Résultats BAC : Début juillet ${annee}
+• Résultats BTS : Juillet ${annee}
+
+🔗 **Consulter ses résultats :**
+• 🎓 https://www.education.gouv.fr/bac
+• 📱 Application Cyclades
+• 🔗 https://cyclades.education.fr
+
+📊 **Taux de réussite historique Guadeloupe :**
+• BAC Général : ~88%
+• BAC Technologique : ~82%
+• BAC Professionnel : ~78%
+• BTS : ~72%
+
+🏫 **Rectorat de Guadeloupe :**
+• 📞 0590 21 13 00
+• 🔗 https://www.ac-guadeloupe.fr
+
+💡 En cas de doute sur tes résultats, contacte ton lycée directement.
+
+BOUDOUM ! 🇬🇵`
 }
