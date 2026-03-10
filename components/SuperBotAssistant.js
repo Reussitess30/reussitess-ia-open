@@ -22,6 +22,8 @@ export default function SuperBotAssistant() {
   const [langue, setLangue] = useState('fr')
   const [showLangMenu, setShowLangMenu] = useState(false)
   const [audioEnabled, setAudioEnabled] = useState(true)
+  const [selectedImage, setSelectedImage] = useState(null)
+  const [imagePreview, setImagePreview] = useState(null)
   const [activeTab, setActiveTab] = useState('chat')
   const [nexusStats, setNexusStats] = useState(null)
   const [nexusLoading, setNexusLoading] = useState(false)
@@ -134,7 +136,9 @@ export default function SuperBotAssistant() {
     const userMessage = (msgText || input).trim()
     if (!userMessage || isLoading) return
     setInput('')
-    setMessages(prev => [...prev, { role: 'user', content: userMessage }])
+    setSelectedImage(null)
+    setImagePreview(null)
+    setMessages(prev => [...prev, { role: 'user', content: userMessage + (selectedImage ? ' 📷' : '') }])
     setIsLoading(true)
     try {
       const response = await fetch('/api/superbot/chat', {
@@ -503,6 +507,23 @@ export default function SuperBotAssistant() {
           {/* INPUT */}
           <form onSubmit={handleSubmit} style={{padding:'1rem 1.5rem',borderTop:'1px solid rgba(255,255,255,0.1)'}}>
             <div style={{display:'flex',gap:'0.5rem',alignItems:'center'}}>
+              <input type="file" id="img-upload" accept="image/*" style={{display:'none'}} onChange={e => {
+                const file = e.target.files[0]
+                if (file) {
+                  const reader = new FileReader()
+                  reader.onload = () => {
+                    const base64 = reader.result.split(',')[1]
+                    setSelectedImage(base64)
+                    setImagePreview(reader.result)
+                  }
+                  reader.readAsDataURL(file)
+                }
+              }} />
+              <button type="button" onClick={() => document.getElementById('img-upload').click()} disabled={isLoading}
+                style={btnStyle(selectedImage ? 'linear-gradient(135deg,#f59e0b,#d97706)' : 'linear-gradient(135deg,#374151,#1f2937)', isLoading)}
+                title="Envoyer une image">
+                📷
+              </button>
               <button type="button" onClick={isListening ? stopListening : startListening} disabled={isLoading}
                 style={btnStyle(isListening?'linear-gradient(135deg,#ef4444,#dc2626)':'linear-gradient(135deg,#7c3aed,#5b21b6)', isLoading)}>
                 {isListening ? '⏹' : '🎤'}
@@ -516,7 +537,7 @@ export default function SuperBotAssistant() {
               </button>
             </div>
             <p style={{color:'#475569',fontSize:'0.7rem',textAlign:'center',marginTop:'0.5rem',marginBottom:0}}>
-              🎤 Micro • 🔊 Audio • 🌐 8 langues • 🇬🇵 BOUDOUM
+              🎤 Micro • 📷 Image • 🔊 Audio • 🌐 8 langues • 🇬🇵 BOUDOUM
             </p>
           </form>
           </> }
