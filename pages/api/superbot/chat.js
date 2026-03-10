@@ -3140,7 +3140,12 @@ BOUDOUM ! 🇬🇵` })
     return res.status(200).json({ pdfAction: null, response: "🏙️ **Maire de Pointe-à-Pitre**\n\n👤 **Harry Durimel**\n🗓️ Élu en 2020\n🌿 Parti : EELV (Europe Écologie Les Verts)\n\n🔗 https://www.pointeapitre.fr\n\nBOUDOUM ! 🇬🇵" })
   }
   if (msgLow.includes('politique guadeloupe') || msgLow.includes('elus guadeloupe') || msgLow.includes('élus guadeloupe') || msgLow.includes('depute guadeloupe') || msgLow.includes('député guadeloupe') || msgLow.includes('senateur guadeloupe') || msgLow.includes('sénateur guadeloupe')) {
-    return res.status(200).json({ pdfAction: null, response: getPolitiquesGuadeloupe() })
+    try {
+      const data = getPolitiquesGuadeloupe()
+      return res.status(200).json({ pdfAction: null, response: data })
+    } catch(e) {
+      return res.status(200).json({ pdfAction: null, response: "🗳️ Consultez https://www.guadeloupe.gouv.fr\n\nBOUDOUM ! 🇬🇵" })
+    }
   }
 
   // ===== TRIGGERS PRIORITAIRES (avant Wikipedia/Encyclopédie) =====
@@ -3197,6 +3202,12 @@ BOUDOUM ! 🇬🇵` })
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
+  // ============ RCI GUADELOUPE (PRIORITAIRE) ============
+  if (msgLow.includes('rci') || msgLow.includes('rci fm') || msgLow.includes('radio guadeloupe') || msgLow.includes('104.3')) {
+    const data = await getRCIGuadeloupe()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
   // ============ RCI GUADELOUPE ============
   if (msgLow.includes('rci guadeloupe') || msgLow.includes('rci fm') || msgLow.includes('radio guadeloupe') || msgLow.includes('infos rci')) {
     const data = await getRCIGuadeloupe()
@@ -3213,7 +3224,7 @@ BOUDOUM ! 🇬🇵` })
 
   // CALCUL JOUR DATE
   const dateMatch = message.match(/(\d+|premier|première|premiere|deuxième|deuxieme|troisième|troisieme)(?:er|ème)?\s+(janvier|f[ée]vrier|mars|avril|mai|juin|juillet|ao[uû]t|septembre|octobre|novembre|d[eé]cembre)\s+(\d{4})/i)
-  if (dateMatch && (msgLow.includes('quel jour') || msgLow.includes('jour sera') || msgLow.includes('tombe') || msgLow.includes('quel est le jour') || msgLow.includes('etait quel') || msgLow.includes('était quel') || msgLow.includes('sera quel') || msgLow.includes('correspond'))) {
+  if (dateMatch && (msgLow.includes('quel jour') || msgLow.includes('jour sera') || msgLow.includes('tombe') || msgLow.includes('quel est le jour') || msgLow.includes('etait quel') || msgLow.includes('était quel') || msgLow.includes('sera quel') || msgLow.includes('correspond') || msgLow.includes('quel jour') || msgLow.includes('c est quel') || msgLow.includes('c\'est quel'))) {
     const motsChiffres = { 'premier':1,'première':1,'premiere':1,'deuxième':2,'deuxieme':2,'troisième':3,'troisieme':3 }
     const rawDay = dateMatch[1].toLowerCase()
     const day = motsChiffres[rawDay] || parseInt(rawDay)
