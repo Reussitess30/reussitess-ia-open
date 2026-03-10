@@ -3014,14 +3014,20 @@ async function getBibliothequeCaribeenne(auteur) {
 
 function calculerJourDate(dateStr) {
   try {
-    const months = { 'janvier':0,'février':1,'fevrier':1,'mars':2,'avril':3,'mai':4,'juin':5,'juillet':6,'août':7,'aout':7,'septembre':8,'octobre':9,'novembre':10,'décembre':11,'decembre':11 }
+    const months = { 'janvier':1,'février':2,'fevrier':2,'mars':3,'avril':4,'mai':5,'juin':6,'juillet':7,'août':8,'aout':8,'septembre':9,'octobre':10,'novembre':11,'décembre':12,'decembre':12 }
     const jours = ['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi']
     const parts = dateStr.toLowerCase().match(/(\d+)(?:er)?\s+(\w+)\s+(\d{4})/)
     if (!parts) return null
-    const day = parseInt(parts[1]), month = months[parts[2]], year = parseInt(parts[3])
-    if (month === undefined) return null
-    const d = new Date(year, month, day)
-    return `📅 Le ${day} ${parts[2]} ${year} sera un **${jours[d.getDay()]}**. ✅`
+    let day = parseInt(parts[1]), month = months[parts[2]], year = parseInt(parts[3])
+    if (!month || year < 1900 || year > 2100) return null
+    // Algorithme Tomohiko Sakamoto — exact de 1900 à 2100
+    const t = [0,3,2,5,0,3,5,1,4,6,2,4]
+    if (month < 3) year--
+    const dayOfWeek = (year + Math.floor(year/4) - Math.floor(year/100) + Math.floor(year/400) + t[month-1] + day) % 7
+    const annee = parseInt(parts[3])
+    const futur = annee >= new Date().getFullYear()
+    const verbe = futur ? 'sera' : 'était'
+    return `📅 Le ${day} ${parts[2]} ${annee} ${verbe} un **${jours[dayOfWeek]}**. ✅`
   } catch(e) { return null }
 }
 
