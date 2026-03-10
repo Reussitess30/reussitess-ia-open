@@ -29,7 +29,7 @@ async function groqFetch(messages, maxTokens = 512) {
     const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
-      body: JSON.stringify({ model: "llama-3.1-8b-instant", messages, max_tokens: maxTokens })
+      body: JSON.stringify({ model: "llama-3.3-70b-versatile", messages, max_tokens: maxTokens })
     })
     if (!res.ok) { keyErrors[key] = Date.now(); return null }
     const d = await res.json()
@@ -38,6 +38,179 @@ async function groqFetch(messages, maxTokens = 512) {
     return text
   } catch(e) { console.error("groqFetch:", e.message); return null }
 }
+// ===== FUNCTION CALLING GROQ =====
+const GROQ_TOOLS = [
+  {
+    type: "function",
+    function: {
+      name: "get_meteo",
+      description: "Obtenir la météo actuelle d'une commune DOM-TOM (Guadeloupe, Martinique, Guyane, Réunion, Mayotte)",
+      parameters: {
+        type: "object",
+        properties: {
+          commune: { type: "string", description: "Nom de la commune ex: pointe-a-pitre, fort-de-france, cayenne" }
+        },
+        required: ["commune"]
+      }
+    }
+  },
+  {
+    type: "function",
+    function: {
+      name: "get_seismes",
+      description: "Obtenir les séismes récents aux Antilles et dans les Caraïbes",
+      parameters: { type: "object", properties: {} }
+    }
+  },
+  {
+    type: "function",
+    function: {
+      name: "get_cyclones",
+      description: "Obtenir les alertes cyclones et ouragans actifs dans l'Atlantique",
+      parameters: { type: "object", properties: {} }
+    }
+  },
+  {
+    type: "function",
+    function: {
+      name: "get_devises",
+      description: "Obtenir les taux de change des devises africaines et caribéennes (XOF, XAF, XCD, HTG)",
+      parameters: { type: "object", properties: {} }
+    }
+  },
+  {
+    type: "function",
+    function: {
+      name: "get_crypto",
+      description: "Obtenir les prix des cryptomonnaies Bitcoin, Ethereum, POL en temps réel",
+      parameters: { type: "object", properties: {} }
+    }
+  },
+  {
+    type: "function",
+    function: {
+      name: "get_carburant",
+      description: "Obtenir les prix du carburant en Guadeloupe et DOM-TOM",
+      parameters: { type: "object", properties: {} }
+    }
+  },
+  {
+    type: "function",
+    function: {
+      name: "get_actualites_guadeloupe",
+      description: "Obtenir les actualités récentes de Guadeloupe depuis La 1ère",
+      parameters: { type: "object", properties: {} }
+    }
+  },
+  {
+    type: "function",
+    function: {
+      name: "get_prix_reuss",
+      description: "Obtenir le prix du Token REUSS sur Polygon",
+      parameters: { type: "object", properties: {} }
+    }
+  },
+  {
+    type: "function",
+    function: {
+      name: "get_hopitaux",
+      description: "Obtenir les coordonnées des hôpitaux et urgences des DOM-TOM",
+      parameters: { type: "object", properties: {} }
+    }
+  },
+  {
+    type: "function",
+    function: {
+      name: "get_emploi",
+      description: "Obtenir les offres d'emploi en Guadeloupe et DOM-TOM",
+      parameters: { type: "object", properties: {} }
+    }
+  },
+  {
+    type: "function",
+    function: {
+      name: "calculer_jour_date",
+      description: "Calculer quel jour de la semaine correspond à une date précise entre 1900 et 2100",
+      parameters: {
+        type: "object",
+        properties: {
+          date: { type: "string", description: "La date au format '1 janvier 2030' ou '14 juillet 1789'" }
+        },
+        required: ["date"]
+      }
+    }
+  },
+  {
+    type: "function",
+    function: {
+      name: "get_politique_guadeloupe",
+      description: "Obtenir les informations sur les élus politiques de Guadeloupe (président région, département, maires, députés)",
+      parameters: { type: "object", properties: {} }
+    }
+  }
+]
+
+async function groqFetchWithTools(messages, systemPrompt) {
+  const key = getNextKey()
+  try {
+    const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
+      body: JSON.stringify({
+        model: "llama-3.3-70b-versatile",
+        messages: [{ role: "system", content: systemPrompt }, ...messages],
+        tools: GROQ_TOOLS,
+        tool_choice: "auto",
+        max_tokens: 1024
+      })
+    })
+    if (!res.ok) { keyErrors[key] = Date.now(); return null }
+    const d = await res.json()
+    const choice = d.choices?.[0]
+    
+    // Si Groq appelle un outil
+    if (choice?.finish_reason === "tool_calls" && choice?.message?.tool_calls) {
+      const toolCall = choice.message.tool_calls[0]
+      const fnName = toolCall.function.name
+      const args = JSON.parse(toolCall.function.arguments || '{}')
+      
+      let toolResult = ""
+      if (fnName === "get_meteo") toolResult = await getMeteoDOMTOM(args.commune)
+      else if (fnName === "get_seismes") toolResult = await getSeismesAntilles()
+      else if (fnName === "get_cyclones") toolResult = await getCyclones()
+      else if (fnName === "get_devises") toolResult = await getDevisesAfriqueCaraibe()
+      else if (fnName === "get_crypto") toolResult = await getCryptoPrice()
+      else if (fnName === "get_carburant") toolResult = await getPrixCarburant()
+      else if (fnName === "get_actualites_guadeloupe") toolResult = await getActualitesGuadeloupe()
+      else if (fnName === "get_prix_reuss") toolResult = await getPrixREUSS()
+      else if (fnName === "get_hopitaux") toolResult = getHopitauxDOMTOM ? await getHopitauxDOMTOM() : ""
+      else if (fnName === "get_emploi") toolResult = await getOffresEmploiDOMTOM()
+      else if (fnName === "calculer_jour_date") toolResult = calculerJourDate(args.date)
+      else if (fnName === "get_politique_guadeloupe") toolResult = getPolitiquesGuadeloupe()
+      
+      // Deuxième appel avec résultat outil
+      const res2 = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: systemPrompt },
+            ...messages,
+            choice.message,
+            { role: "tool", tool_call_id: toolCall.id, content: String(toolResult || "Données indisponibles") }
+          ],
+          max_tokens: 1024
+        })
+      })
+      const d2 = await res2.json()
+      return d2.choices?.[0]?.message?.content || null
+    }
+    
+    return choice?.message?.content || null
+  } catch(e) { console.error("groqFetchWithTools:", e.message); return null }
+}
+
 // ============================================
 // LIVRE BLANC REUSSITESS® — DONNÉES OFFICIELLES
 // ============================================
@@ -3037,7 +3210,15 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
-  const { message, personality, context, langue, datetime } = req.body
+  const { message, personality, context, langue, datetime, image, imageQuestion } = req.body
+
+  // ===== MULTIMODAL — Analyse Image =====
+  if (image) {
+    try {
+      const analyse = await groqAnalyseImage(image, imageQuestion || message)
+      if (analyse) return res.status(200).json({ pdfAction: null, response: "🖼️ **Analyse Image REUSSITESS AI**\n\n" + analyse + "\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {}
+  }
   const msgLow = message.toLowerCase()
 
   // ============ CALCUL JOUR DATE ============
@@ -5659,7 +5840,7 @@ Je suis votre assistant IA créé avec passion depuis la **Guadeloupe** 🇬🇵
           method: "POST",
           headers: { "Content-Type": "application/json", "Authorization": "Bearer "+getNextKey() },
           body: JSON.stringify({
-            model: "llama-3.1-8b-instant",
+            model: "llama-3.3-70b-versatile",
             messages: [
               { role: "system", content: finalPrompt },
               { role: "user", content: message }
@@ -5784,6 +5965,11 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
         if (wikiData) {
           finalResponse = `📚 **Wikipedia :** ${wikiData.substring(0, 8000)}${wikiData.length > 8000 ? "..." : ""}`
         } else {
+          // Multi-agents orchestration
+          const agentResponse = await orchestrateAgents(message, context)
+          if (agentResponse) {
+            finalResponse = agentResponse
+          } else {
           try {
             const timeout3s = (p) => Promise.race([p, new Promise(r => setTimeout(() => r(null), 3000))])
             const [rfi,bbc,crypto,f24,alj,trend,fg,meteo,fx] = await Promise.all([
@@ -5798,6 +5984,7 @@ CONTEXTE TEMPS RÉEL : Nous sommes le ${datetime?.date || new Date().toLocaleDat
 Si on te demande l'heure, la date ou le jour, utilise EXACTEMENT ces données temps réel.
 REGLES ABSOLUES: 1.Tu as des donnees LIVE ci-dessous, UTILISE-LES TOUJOURS. 2.Ne jamais dire je n ai pas acces aux donnees temps reel. 3.Actualites=cite RFI/BBC/France24. 4.Crypto=cite prix reels. 5.Meteo=cite temperature reelle. 6.Change=cite vrais taux.
 DONNEES LIVE OBLIGATOIRES: ${nc||"indisponibles"}
+CONTEXTE REUSSITESS (utilise si pertinent): ${getRAGContext(message)||""}
 Tu es REUSSITESS®971 AI, chef d'orchestre de l'écosystème REUSSITESS®971. IMPORTANT: Tu es REUSSITESS AI mis à jour en mars 2026.
 SOURCES DE DONNÉES RÉELLES (cite uniquement celles-ci):
 - Météo: Open-Meteo API (openmeteo.com)
@@ -5817,6 +6004,7 @@ Ne jamais citer CoinMarketCap, Xignite, ou d'autres APIs que tu n'utilises pas r
             if (groqText) finalResponse = groqText
             else finalResponse = "⚠️ Service temporairement indisponible. Réessaie dans un instant !\n\nBOUDOUM ! 🇬🇵"
           } catch(e) { console.error("Groq:", e); finalResponse = "⚠️ Erreur technique momentanée. BOUDOUM ! 🇬🇵" }
+          }
         }
       } else if (wikiData) {
         finalResponse = `📚 **Wikipedia :** ${wikiData.substring(0, 8000)}${wikiData.length > 8000 ? "..." : ""}`
@@ -6578,4 +6766,96 @@ function getRoutesGuadeloupe() {
 📞 DIR Antilles-Guyane : 0590 38 08 00
 
 BOUDOUM ! 🇬🇵`
+}
+
+// ===== 1. MODE JSON =====
+async function groqFetchJSON(prompt) {
+  const key = getNextKey()
+  try {
+    const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
+      body: JSON.stringify({
+        model: "llama-3.3-70b-versatile",
+        messages: [{ role: "system", content: "Tu réponds UNIQUEMENT en JSON valide, sans markdown, sans backticks." }, { role: "user", content: prompt }],
+        response_format: { type: "json_object" },
+        max_tokens: 1024
+      })
+    })
+    if (!res.ok) return null
+    const d = await res.json()
+    return JSON.parse(d.choices?.[0]?.message?.content || '{}')
+  } catch(e) { return null }
+}
+
+// ===== 2. MULTIMODAL — Analyse Image =====
+async function groqAnalyseImage(imageBase64, question) {
+  const key = getNextKey()
+  try {
+    const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
+      body: JSON.stringify({
+        model: "meta-llama/llama-4-scout-17b-16e-instruct",
+        messages: [{
+          role: "user",
+          content: [
+            { type: "image_url", image_url: { url: `data:image/jpeg;base64,${imageBase64}` } },
+            { type: "text", text: question || "Décris cette image en français. Donne des informations utiles sur ce que tu vois." }
+          ]
+        }],
+        max_tokens: 1024
+      })
+    })
+    if (!res.ok) return null
+    const d = await res.json()
+    return d.choices?.[0]?.message?.content || null
+  } catch(e) { return null }
+}
+
+// ===== 3. RAG — Base de Connaissances REUSSITESS =====
+const REUSSITESS_KB = {
+  token_reuss: "Token REUSS sur Polygon: 0xB37531727fC07c6EED4f97F852A115B428046EB2. Supply: 999,999,999. QuickSwap Polygon.",
+  fondateur: "Rony Porinus, auto-entrepreneur Guadeloupe 971, SIRET: 444699979700031. Fondateur REUSSITESS®971.",
+  boutiques: "26 boutiques Amazon dans 14 pays. Influencer ID: fb942837. Tag: onamzporinus-21.",
+  neuro_x: "60 agents Neuro-X spécialisés sur reussitess.fr/neuro-x. Finance, Business, Cuisine, Santé, Droit, Voyage, Sport, Histoire, Musique...",
+  champions: "Passeport de Réussite sur reussitess.fr/champions. Certificat champion PDF. 14 pays partenaires.",
+  politique: "Région Guadeloupe: Ary Chalus (Président). Département: Guy Losbar (Président). Maire Pointe-à-Pitre: Harry Durimel (EELV).",
+  devise: "Positivité à l'infini. BOUDOUM. Terres de Champions. Excellence Innovation Succès.",
+  quiz: "99 quiz éducatifs sur reussitess.fr/quiz. Tous thèmes: histoire, culture, crypto, science...",
+  bibliotheque: "Bibliothèque mondiale 50+ pays sur reussitess.fr/bibliotheque. Auteurs caribéens: Césaire, Fanon, Condé, Glissant.",
+  securite: "HTTPS + headers A+ SecurityHeaders.com. REUSSSHIELD. Anti-injection. 3 clés Groq rotation.",
+  contact: "reussitess.fr | shop.reussitess.fr | kick.com/Reussitess | github.com/Reussitess30"
+}
+
+function getRAGContext(message) {
+  const msgL = message.toLowerCase()
+  let context = []
+  if (msgL.includes('reuss') || msgL.includes('token') || msgL.includes('polygon')) context.push(REUSSITESS_KB.token_reuss)
+  if (msgL.includes('porinus') || msgL.includes('fondateur') || msgL.includes('rony')) context.push(REUSSITESS_KB.fondateur)
+  if (msgL.includes('boutique') || msgL.includes('amazon') || msgL.includes('affili')) context.push(REUSSITESS_KB.boutiques)
+  if (msgL.includes('neuro')) context.push(REUSSITESS_KB.neuro_x)
+  if (msgL.includes('champion') || msgL.includes('certificat')) context.push(REUSSITESS_KB.champions)
+  if (msgL.includes('ary') || msgL.includes('losbar') || msgL.includes('durimel') || msgL.includes('politique')) context.push(REUSSITESS_KB.politique)
+  if (msgL.includes('quiz')) context.push(REUSSITESS_KB.quiz)
+  if (msgL.includes('bibliotheque') || msgL.includes('cesaire') || msgL.includes('fanon')) context.push(REUSSITESS_KB.bibliotheque)
+  if (msgL.includes('securite') || msgL.includes('sécurité') || msgL.includes('shield')) context.push(REUSSITESS_KB.securite)
+  if (msgL.includes('contact') || msgL.includes('kick') || msgL.includes('github')) context.push(REUSSITESS_KB.contact)
+  return context.join(' | ')
+}
+
+// ===== 4. MULTI-AGENTS Orchestration =====
+async function orchestrateAgents(message, context) {
+  const domain = detectNeurox(message)
+  if (domain && NEUROX_AGENTS[domain]) {
+    const agent = NEUROX_AGENTS[domain]
+    const ragCtx = getRAGContext(message)
+    const systemPrompt = agent.prompt + (ragCtx ? `\n\nCONTEXTE REUSSITESS OFFICIEL: ${ragCtx}` : '')
+    const history = Array.isArray(context) ? context.slice(-4).map(m => ({
+      role: m.role === 'assistant' ? 'assistant' : 'user',
+      content: m.content?.substring(0,400) || ''
+    })).filter(m => m.content) : []
+    return await groqFetch([...history, { role: "user", content: message }].map((m,i) => i === 0 && !history.length ? { role: "system", content: systemPrompt } : m).concat(history.length ? [{ role: "user", content: message }] : []), 1024)
+  }
+  return null
 }
