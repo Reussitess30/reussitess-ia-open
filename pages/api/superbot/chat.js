@@ -3089,6 +3089,14 @@ export default async function handler(req, res) {
 🧠 **60 Agents Neuro-X spécialisés :**
 Finance, Business, Cuisine, Santé, Droit, Voyage, Sport, Histoire, Musique...
 
+🚗 **Vie Quotidienne Guadeloupe :**
+• Covoiturage (Karos, BlaBlaCar)
+• Trafic & routes (RN1, RN4, pont Gabarre)
+• Bons plans & marchés locaux
+• Mix électrique EDF temps réel
+• 📻 RCI FM Guadeloupe actualités
+• Open Data KaruData/KaruGéo
+
 📚 **Bibliothèque mondiale 50+ pays**
 🔮 **Oracle 971** — Conseils mystiques caribéens
 
@@ -3145,6 +3153,40 @@ BOUDOUM ! 🇬🇵` })
   // IMMOBILIER
   if ((msgLow.includes('immobilier') || msgLow.includes('prix m2') || msgLow.includes('loyer')) && !msgLow.includes('neuro-x') && !msgLow.includes('agent')) {
     const data = await getImmobilierTempsReel()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // ============ COVOITURAGE GUADELOUPE ============
+  if (msgLow.includes('covoiturage') || msgLow.includes('covoiturer') || msgLow.includes('karos') || msgLow.includes('partager trajet') || msgLow.includes('covoit')) {
+    return res.status(200).json({ pdfAction: null, response: getCovoiturageGuadeloupe() })
+  }
+
+  // ============ BONS PLANS GUADELOUPE ============
+  if (msgLow.includes('bon plan') || msgLow.includes('bons plans') || msgLow.includes('gratuit guadeloupe') || msgLow.includes('marche local') || msgLow.includes('marché local') || msgLow.includes('sortie gratuite')) {
+    const data = await getBonsPlansGuadeloupe()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // ============ ROUTES TRAFIC GUADELOUPE ============
+  if (msgLow.includes('trafic guadeloupe') || msgLow.includes('route guadeloupe') || msgLow.includes('embouteillage') || msgLow.includes('rn1') || msgLow.includes('rn4') || msgLow.includes('pont gabarre') || msgLow.includes('circulation guadeloupe')) {
+    return res.status(200).json({ pdfAction: null, response: getRoutesGuadeloupe() })
+  }
+
+  // ============ MIX ELECTRIQUE EDF ============
+  if (msgLow.includes('mix electrique') || msgLow.includes('production electrique') || msgLow.includes('energie guadeloupe') || msgLow.includes('solaire guadeloupe') || msgLow.includes('eolien guadeloupe') || msgLow.includes('opendata edf')) {
+    const data = await getMixElectriqueGuadeloupe()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // ============ RCI GUADELOUPE ============
+  if (msgLow.includes('rci guadeloupe') || msgLow.includes('rci fm') || msgLow.includes('radio guadeloupe') || msgLow.includes('infos rci')) {
+    const data = await getRCIGuadeloupe()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // ============ KARUDATA OPEN DATA ============
+  if (msgLow.includes('karudata') || msgLow.includes('open data guadeloupe') || msgLow.includes('donnees ouvertes guadeloupe') || msgLow.includes('karugeo') || msgLow.includes('carte guadeloupe')) {
+    const data = await getKaruData()
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
@@ -6336,6 +6378,174 @@ function getResultatsBAC() {
 • 🔗 https://www.ac-guadeloupe.fr
 
 💡 En cas de doute sur tes résultats, contacte ton lycée directement.
+
+BOUDOUM ! 🇬🇵`
+}
+
+// ===== KARUDATA OPEN DATA REGION GUADELOUPE =====
+async function getKaruData() {
+  try {
+    const r = await fetch('https://regionguadeloupe.opendatasoft.com/api/explore/v2.1/catalog/datasets?limit=5', { headers: { 'Accept': 'application/json' } })
+    const d = await r.json()
+    let result = "📊 **KaruData — Open Data Région Guadeloupe**\n\n"
+    if (d.results?.length > 0) {
+      for (const ds of d.results.slice(0,4)) {
+        result += `• **${ds.dataset_id}** — ${ds.metas?.default?.title || ds.dataset_id}\n`
+      }
+    }
+    result += "\n🔗 https://regionguadeloupe.opendatasoft.com\n\nBOUDOUM ! 🇬🇵"
+    return result
+  } catch(e) {
+    return `📊 **KaruData — Open Data Guadeloupe**\n\n🔗 https://regionguadeloupe.opendatasoft.com\n\nDonnées officielles Région Guadeloupe :\n• Transports\n• Équipements publics\n• Environnement\n• Économie\n\nBOUDOUM ! 🇬🇵`
+  }
+}
+
+// ===== KARUGEO CARTES GUADELOUPE =====
+function getKaruGeo() {
+  return `🗺️ **KaruGéo — Cartographie Guadeloupe**
+
+🌋 **Risques Naturels :**
+• Séismes : Zone sismique 5 (très forte)
+• Volcans : La Soufrière (Saint-Claude)
+• Tsunamis : Côtes exposées Est/Sud
+• Cyclones : Saison juin-novembre
+
+🛣️ **Routes principales :**
+• N1 : Pointe-à-Pitre → Basse-Terre (Grande-Terre)
+• N2 : Pointe-à-Pitre → Le Moule
+• N4 : Basse-Terre → Pointe-à-Pitre (Basse-Terre)
+• Route de la Traversée : N2 → Côte Sous-le-Vent
+
+🏝️ **Îles de Guadeloupe :**
+• Grande-Terre, Basse-Terre, Marie-Galante
+• Les Saintes (Terre-de-Haut, Terre-de-Bas)
+• La Désirade, Saint-Martin, Saint-Barthélemy
+
+🔗 https://www.karugeo.fr
+🔗 https://www.ign.fr/cartes-guadeloupe
+
+BOUDOUM ! 🇬🇵`
+}
+
+// ===== COVOITURAGE GUADELOUPE =====
+function getCovoiturageGuadeloupe() {
+  return `🚗 **Covoiturage Guadeloupe**
+
+🤝 **Plateformes actives :**
+• **KAROS** — Covoiturage officiel (DEAL Guadeloupe)
+  🔗 https://www.karos.fr
+  💰 Gratuit ou remboursé par employeur
+
+• **BlaBlaCar** — Trajets inter-îles
+  🔗 https://www.blablacar.fr
+  
+• **Covoiturage-libre.fr** — Gratuit entre particuliers
+  🔗 https://www.covoiturage-libre.fr
+
+🏙️ **Zones de covoiturage :**
+• Parking Jabrun (Les Abymes) → Pointe-à-Pitre
+• Parking Carrefour Milenis → Centre-ville
+• Rond-point de Perrin → Grand-Camp
+
+💡 **Bon à savoir :**
+• Remboursement employeur jusqu'à 600€/an
+• Application Mobility+ pour Guadeloupe
+• Forfait mobilités durables entreprises
+
+📞 DEAL Guadeloupe : 0590 99 09 00
+
+BOUDOUM ! 🇬🇵`
+}
+
+// ===== BONS PLANS GUADELOUPE =====
+async function getBonsPlansGuadeloupe() {
+  try {
+    const r = await fetch('https://la1ere.francetvinfo.fr/guadeloupe/feed', { headers: { 'User-Agent': 'Mozilla/5.0' } })
+    const xml = await r.text()
+    const items = xml.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0,4) || []
+    let bonsplans = items.map(item => ({
+      title: item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || '',
+      link: item.match(/<link>(.*?)<\/link>/)?.[1] || ''
+    })).filter(i => i.title)
+    
+    let result = `💡 **Bons Plans Guadeloupe**\n\n`
+    result += `🛒 **Marchés locaux :**\n`
+    result += `• Marché de Pointe-à-Pitre — Tous les jours 6h-13h\n`
+    result += `• Marché de Basse-Terre — Mercredi & Samedi\n`
+    result += `• Marché de Saint-François — Dimanche matin\n`
+    result += `• Marché de Sainte-Anne — Vendredi & Samedi\n\n`
+    result += `🎟️ **Sorties gratuites :**\n`
+    result += `• Musée Edgar Clerc (Le Moule) — gratuit le dimanche\n`
+    result += `• Chutes du Carbet — accès libre\n`
+    result += `• Plages publiques — toutes gratuites\n`
+    result += `• Jardin botanique de Deshaies\n\n`
+    result += `🌐 **Sites bon plans :**\n`
+    result += `• 🔗 https://www.guadeloupe-islands.com\n`
+    result += `• 🔗 https://www.tourisme-guadeloupe.com\n`
+    result += `• Groupe Facebook : "Bons Plans Guadeloupe"\n\n`
+    result += `BOUDOUM ! 🇬🇵`
+    return result
+  } catch(e) {
+    return `💡 **Bons Plans Guadeloupe**\n\n🛒 Marchés locaux : Pointe-à-Pitre, Basse-Terre, Saint-François\n🎟️ Sorties gratuites : Chutes du Carbet, plages, Musée Clerc\n🔗 https://www.tourisme-guadeloupe.com\n\nBOUDOUM ! 🇬🇵`
+  }
+}
+
+// ===== MIX ELECTRIQUE EDF GUADELOUPE =====
+async function getMixElectriqueGuadeloupe() {
+  try {
+    const r = await fetch('https://opendata.edf-dom.fr/api/explore/v2.1/catalog/datasets/mix-electrique-guadeloupe/records?limit=1&order_by=timestamp%20desc', { headers: { 'Accept': 'application/json' } })
+    const d = await r.json()
+    if (d.results?.[0]) {
+      const rec = d.results[0]
+      return `⚡ **Mix Électrique Guadeloupe — Temps Réel**\n\n🔋 Thermique : ${rec.thermique || 'N/A'} MW\n☀️ Solaire : ${rec.solaire || 'N/A'} MW\n💨 Éolien : ${rec.eolien || 'N/A'} MW\n🌿 Biomasse : ${rec.biomasse || 'N/A'} MW\n💧 Hydraulique : ${rec.hydraulique || 'N/A'} MW\n\n📊 Source : EDF DOM Open Data\n🔗 https://opendata.edf-dom.fr\n\nBOUDOUM ! 🇬🇵`
+    }
+    throw new Error('no data')
+  } catch(e) {
+    return `⚡ **Mix Électrique Guadeloupe**\n\n🔗 https://opendata.edf-dom.fr\n\n📊 Production électrique Guadeloupe :\n☀️ Solaire en développement fort\n🌿 Bagasse (canne à sucre) — source locale\n💨 Éolien — côtes exposées\n🔋 Thermique — base production\n\n📞 EDF Guadeloupe : 0590 82 40 00\n\nBOUDOUM ! 🇬🇵`
+  }
+}
+
+// ===== RCI GUADELOUPE NEWS =====
+async function getRCIGuadeloupe() {
+  try {
+    const r = await fetch('https://www.rci.fm/guadeloupe/infos/feed', { headers: { 'User-Agent': 'Mozilla/5.0' } })
+    const xml = await r.text()
+    const items = xml.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0,5) || []
+    let result = "📻 **RCI Guadeloupe — Infos du Jour**\n\n"
+    for (const item of items) {
+      const title = item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || item.match(/<title>(.*?)<\/title>/)?.[1] || ''
+      if (title) result += `• ${title}\n`
+    }
+    result += "\n📻 RCI FM : 104.3 MHz\n🔗 https://www.rci.fm/guadeloupe\n\nBOUDOUM ! 🇬🇵"
+    return result
+  } catch(e) {
+    return `📻 **RCI Guadeloupe**\n\n📻 Fréquence : 104.3 FM\n🔗 https://www.rci.fm/guadeloupe\n📱 App RCI disponible\n\nActualités, météo, sport et musique caribéenne 24h/24 !\n\nBOUDOUM ! 🇬🇵`
+  }
+}
+
+// ===== ROUTES GUADELOUPE TRAFIC =====
+function getRoutesGuadeloupe() {
+  return `🛣️ **Routes & Trafic Guadeloupe**
+
+🚦 **Axes principaux :**
+• **RN1** : Pointe-à-Pitre ↔ Gosier ↔ Sainte-Anne (Grande-Terre)
+• **RN2** : Pointe-à-Pitre ↔ Le Moule ↔ Saint-François
+• **RN4** : Pointe-à-Pitre ↔ Basse-Terre (via côte sous-le-vent)
+• **RN5** : Route de la Traversée (forêt tropicale)
+
+⚠️ **Points de congestion habituels :**
+• 7h-9h & 16h-19h : Entrée Pointe-à-Pitre
+• Rond-point de Perrin (Les Abymes)
+• RN1 vers Gosier le matin
+• Pont de la Gabarre (Basse-Terre/Grande-Terre)
+
+🌧️ **Alertes météo-route :**
+• Pluies fortes → glissements RN4 (Basse-Terre)
+• Cyclone → fermeture préfectorale routes
+
+🔗 Infos trafic : https://www.vitimap.com/guadeloupe
+🔗 Waze Guadeloupe (communauté active)
+📞 DIR Antilles-Guyane : 0590 38 08 00
 
 BOUDOUM ! 🇬🇵`
 }
