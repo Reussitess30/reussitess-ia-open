@@ -2476,7 +2476,11 @@ BOUDOUM ! 🇬🇵` })
     }
 
     const res = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`)
-    if (!res.ok) return null
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}))
+      console.error("Vision error:", err?.error?.message || res.status)
+      return null
+    }
     const data = await res.json()
     return data.extract || null
   } catch (e) { return null }
@@ -3255,7 +3259,10 @@ export default async function handler(req, res) {
     try {
       const analyse = await groqAnalyseImage(image, imageQuestion || message)
       if (analyse) return res.status(200).json({ pdfAction: null, response: "🖼️ **Analyse Image REUSSITESS AI**\n\n" + analyse + "\n\nBOUDOUM ! 🇬🇵" })
-    } catch(e) {}
+      else return res.status(200).json({ pdfAction: null, response: "⚠️ Analyse image indisponible momentanément. Le modèle vision est en cours d'activation.\n\nRéessayez dans quelques instants.\n\nBOUDOUM ! 🇬🇵" })
+    } catch(e) {
+      return res.status(200).json({ pdfAction: null, response: "⚠️ Erreur analyse image : " + e.message + "\n\nBOUDOUM ! 🇬🇵" })
+    }
   }
   const msgLow = message.toLowerCase()
 
@@ -7036,7 +7043,7 @@ async function groqAnalyseImage(imageBase64, question) {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
       body: JSON.stringify({
-        model: "meta-llama/llama-4-scout-17b-16e-instruct",
+        model: "llama-3.2-11b-vision-preview",
         messages: [{
           role: "user",
           content: [
