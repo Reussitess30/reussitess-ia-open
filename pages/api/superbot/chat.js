@@ -3367,7 +3367,7 @@ export default async function handler(req, res) {
 
 **Total : 90+ fonctionnalités actives** 🎯
 
-BOUDOUM ! 🇬🇵`)
+BOUDOUM ! 🇬🇵`})
   }
 
 
