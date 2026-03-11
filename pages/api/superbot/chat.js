@@ -3269,6 +3269,12 @@ export default async function handler(req, res) {
   // ============ CALCUL JOUR DATE ============
   // ===== TRIGGERS ULTRA PRIORITAIRES =====
 
+  // PLAGES DOM-TOM
+  if (msgLow.includes('plage') || msgLow.includes('baignade') || msgLow.includes('plages dom')) {
+    const data = await getQualitePlages()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
   // TU SAIS FAIRE QUOI
   if (msgLow.includes('tu sais faire quoi') || msgLow.includes('que sais-tu faire') || msgLow.includes('tes capacites') || msgLow.includes('tes capacités') || msgLow.includes('ce que tu sais') || msgLow.includes('tu peux faire quoi') || msgLow.includes('fonctionnalites') || msgLow.includes('fonctionnalités du bot')) {
     return res.status(200).json({ pdfAction: null, response: `🤖 **REUSSITESS AI — Mes Capacités**
