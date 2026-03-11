@@ -63,9 +63,46 @@ export default function SuperBotAssistant() {
     }
   }, [])
 
-  const startListening = () => {
+  const startListening = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      const recorder = new MediaRecorder(stream)
+      const chunks = []
+      recorder.ondataavailable = e => chunks.push(e.data)
+      recorder.onstop = async () => {
+        stream.getTracks().forEach(t => t.stop())
+        const blob = new Blob(chunks, { type: 'audio/webm' })
+        const reader = new FileReader()
+        reader.onload = async () => {
+          const base64 = reader.result.split(',')[1]
+          setIsListening(false)
+          try {
+            const res = await fetch('/api/superbot/whisper', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ audio: base64, langue: LANGUES[langue].code.split('-')[0] })
+            })
+            const data = await res.json()
+            if (data.text) {
+              setInput(data.text)
+              setTimeout(() => submitMessage(data.text), 300)
+            }
+          } catch(e) { console.error('Whisper error:', e) }
+        }
+        reader.readAsDataURL(blob)
+      }
+      recognitionRef.current = recorder
+      recorder.start()
+      setIsListening(true)
+      setTimeout(() => { if (recorder.state === 'recording') recorder.stop() }, 5000)
+    } catch(e) {
+      if (e.name === 'NotAllowedError') alert('Autorisez le microphone dans Chrome.')
+    }
+  }
+
+  const _unused = () => {
     const SR = window.SpeechRecognition || window.webkitSpeechRecognition
-    if (!SR) { alert('Utilisez Chrome pour la reconnaissance vocale.'); return }
+    if (!SR) return
     const recognition = new SR()
     recognitionRef.current = recognition
     recognition.lang = LANGUES[langue].code
