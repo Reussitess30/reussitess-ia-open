@@ -58,17 +58,6 @@ export default function SuperBotAssistant() {
   }, [])
 
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem('reussitess_chat_v2')
-      if (saved) { const p = JSON.parse(saved); if (p && p.length > 0) setMessages(p) }
-    } catch(e) {}
-  }, [])
-
-  useEffect(() => {
-    fetch('/api/visitors').then(r=>r.json()).then(d=>{ if(d.count) setVisitorCount(d.count) }).catch(()=>{})
-  }, [])
-
-  useEffect(() => {
     if (messages.length === 0) {
       setMessages([{ role: 'assistant', content: `🌍 **Salutations du monde !**\n\nJe suis **REUSSITESS AI**, votre assistant révolutionnaire né en **Guadeloupe** 🇬🇵 - Terres de Champions !\n\n✨ IA Universelle • 🌐 8 langues actives • 🔐 Blockchain • 💎 Token REUSS\n\n🎤 **NOUVEAU** — Parlez-moi ! Cliquez sur le micro et je vous réponds en audio dans votre langue !\n\nChoisissez votre langue en haut à droite, puis cliquez sur 🎤\n\n**BOUDOUM** 🎯` }])
     }
