@@ -3276,76 +3276,98 @@ export default async function handler(req, res) {
 📡 **Données Temps Réel :**
 • 🌋 Séismes Antilles (USGS)
 • 🌀 Cyclones Atlantique (NHC)
-• 🌤️ Météo DOM-TOM par commune
-• 💱 Devises XOF/XAF/XCD/HTG
+• 🌤️ Météo DOM-TOM par commune (Open-Meteo)
+• 💱 Devises XOF/XAF/XCD/HTG temps réel
 • ⛽ Prix carburant DOM-TOM
-• 💎 Prix Token REUSS (Polygon)
-• ₿ Crypto (BTC/ETH/POL)
+• 💎 Prix Token REUSS (CoinGecko Polygon)
+• ₿ Crypto BTC/ETH/POL temps réel
 • 📰 Actualités Guadeloupe/Martinique/DOM-TOM
+• 📻 RCI FM Guadeloupe 104.3
+• 📰 RFI/BBC/France24/Al Jazeera monde
 
-🏝️ **Spécial Guadeloupe :**
-• 🏛️ Élus politiques & maires
-• 🏥 Hôpitaux & urgences
-• 🚌 Transports & bus GTI
-• ⚡ Coupures EDF
-• 🌊 Qualité eau baignade
-• 🎓 BAC/BTS résultats
-• 💼 Offres emploi
-• 🏠 Immobilier prix
+🏝️ **Vie Quotidienne Guadeloupe :**
+• 🚗 Covoiturage (Karos, BlaBlaCar)
+• 🛣️ Routes & trafic (RN1, RN4, pont Gabarre)
+• 💡 Bons plans & marchés locaux
+• ⚡ Coupures EDF + numéros urgence
+• ⚡ Mix électrique EDF temps réel
+• 🚌 Bus GTI + taxis collectifs
+• ✈️ Vols Caraïbes (Air Caraïbes, Corsair, Air France)
+• 🌊 Qualité eau baignade DOM-TOM
+• 🏥 Hôpitaux & Urgences DOM-TOM
+• 📊 KaruData Open Data Région Guadeloupe
 
-🌴 **Culture Caribéenne :**
-• Créole guadeloupéen
-• Zouk, Soca, Gwo Ka
-• Littérature (Césaire, Fanon, Condé...)
-• Histoire & philosophie antillaise
-
-💼 **Business & Documents PDF :**
-• 📄 CV professionnel
-• 📝 Contrat freelance
-• 📊 Business Plan
-• 🏆 Certificat Champion
-
-✈️ **Services Pratiques :**
-• Vols Caraïbes
-• Plages DOM-TOM
-• Calendrier scolaire
-• Calculateur commission Amazon
-• 26 boutiques Amazon 14 pays
-
-🧠 **60 Agents Neuro-X spécialisés :**
-Finance, Business, Cuisine, Santé, Droit, Voyage, Sport, Histoire, Musique...
-
-🚗 **Vie Quotidienne Guadeloupe :**
-• Covoiturage (Karos, BlaBlaCar)
-• Trafic & routes (RN1, RN4, pont Gabarre)
-• Bons plans & marchés locaux
-• Mix électrique EDF temps réel
-• 📻 RCI FM Guadeloupe actualités
-• Open Data KaruData/KaruGéo
-
-🏛️ **Politique Guadeloupe :**
-• Président Région : Ary Chalus
-• Président Département : Guy Losbar
-• Maire Pointe-à-Pitre : Harry Durimel
-• Tous les élus, députés, sénateurs
+🏛️ **Politique DOM-TOM (données vérifiées 2025-2026) :**
+• 🇬🇵 Guadeloupe : Ary Chalus, Guy Losbar, Harry Durimel + 4 députés + 3 sénateurs
+• 🇲🇶 Martinique : Serge Letchimy (CTM) + 4 députés + 2 sénateurs
+• 🇬🇫 Guyane : Gabriel Serville (CTG) + 2 députés + 2 sénateurs
+• 🇷🇪 Réunion : Huguette Bello, Cyrille Melchior + 7 députés + 2 sénateurs
+• 🇾🇹 Mayotte : Ben Issa Ousseni + cyclone Chido 2024
+• 🇳🇨 Nouvelle-Calédonie : Alcide Ponga + crises 2024-2025
 
 🎓 **Éducation & Emploi :**
-• BAC/BTS résultats & calendrier
-• Offres emploi DOM-TOM temps réel
-• Bourses AUF
-• Rectorat Guadeloupe
+• 🎓 BAC/BTS résultats & calendrier
+• 💼 Offres emploi DOM-TOM (France Travail)
+• 📚 Bourses AUF
+• 🎓 Rectorat Guadeloupe
 
-🌊 **Environnement & Sécurité :**
-• Qualité eau baignade
-• Alertes EDF coupures
-• Risques naturels KaruGéo
+🌴 **Culture Caribéenne :**
+• Créole guadeloupéen (20+ expressions)
+• 🎵 Zouk, Soca, Gwo Ka, Biguine
+• 📚 Césaire, Fanon, Condé, Glissant
+• 🏺 Histoire & Philosophie antillaise
+• 🌿 Bibliothèque caribéenne (26 pays)
 
-📅 **Calcul de dates exact (1900-2100)**
+💼 **Business & Documents PDF :**
+• 📄 CV professionnel PDF
+• 📝 Contrat Freelance PDF
+• 📊 Business Plan PDF
+• 🏆 Certificat Champion REUSSITESS PDF
+• 💰 Calculateur commission Amazon
+• 🛍️ 26 boutiques Amazon 14 pays
 
-📚 **Bibliothèque mondiale 50+ pays**
-🔮 **Oracle 971** — Conseils mystiques caribéens
+💎 **Blockchain & Crypto :**
+• Prix REUSS Token Polygon (CoinGecko)
+• Lien direct QuickSwap
+• GoMining suivi
+• NFT & Staking (en développement)
 
-BOUDOUM ! 🇬🇵` })
+🧠 **Intelligence Artificielle Avancée :**
+• 60 agents Neuro-X spécialisés
+• 📷 Analyse d'images (Groq Vision)
+• 🔧 Function Calling automatique
+• 📚 RAG base de connaissances REUSSITESS
+• 🤖 Multi-agents orchestrés
+• 🌐 8 langues actives
+• 🎤 Micro + synthèse vocale
+
+📅 **Calcul & Logique :**
+• Calcul jour/date exact 1900-2100
+• Heure & date temps réel
+• Calculs mathématiques
+
+🌍 **Encyclopédie Mondiale :**
+• Wikipedia FR temps réel
+• Open Library 1500+ livres
+• Afrique (Mandela, Sankara, Ubuntu)
+• Maghreb, Asie, Europe francophone
+
+🔮 **Fonctionnalités Spéciales :**
+• Oracle 971 caribéen mystique
+• Horoscope & phase de la lune
+• Position ISS temps réel
+• Blagues & proverbes créoles rotatifs
+• Mot créole du jour
+
+🛡️ **Infrastructure :**
+• 3 clés Groq rotation anti-429
+• HTTPS + headers sécurisés A+
+• PWA installable
+• Mémoire conversation
+
+**Total : 90+ fonctionnalités actives** 🎯
+
+BOUDOUM ! 🇬🇵)
   }
 
 
