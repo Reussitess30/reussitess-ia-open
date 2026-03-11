@@ -92,7 +92,7 @@ export default function SuperBotAssistant() {
         reader.readAsDataURL(blob)
       }
       recognitionRef.current = recorder
-      recorder.start()
+      recorder.start(250)
       setIsListening(true)
       setTimeout(() => { if (recorder.state === 'recording') recorder.stop() }, 5000)
     } catch(e) {
