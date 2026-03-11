@@ -54,11 +54,7 @@ export default function SuperBotAssistant() {
   }, [])
 
   useEffect(() => {
-    try {
-      const vRes = await fetch('/api/visitors').then(r=>r.json()).catch(()=>({count:null}))
-      const v = vRes.count || 0
-      setVisitorCount(v)
-    } catch(e) {}
+    fetch('/api/visitors').then(r=>r.json()).then(d=>{ if(d.count) setVisitorCount(d.count) }).catch(()=>{})
   }, [])
 
   useEffect(() => {
@@ -69,11 +65,7 @@ export default function SuperBotAssistant() {
   }, [])
 
   useEffect(() => {
-    try {
-      const vRes = await fetch('/api/visitors').then(r=>r.json()).catch(()=>({count:null}))
-      const v = vRes.count || 0
-      setVisitorCount(v)
-    } catch(e) {}
+    fetch('/api/visitors').then(r=>r.json()).then(d=>{ if(d.count) setVisitorCount(d.count) }).catch(()=>{})
   }, [])
 
   useEffect(() => {
