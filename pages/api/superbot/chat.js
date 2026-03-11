@@ -3334,6 +3334,12 @@ export default async function handler(req, res) {
   // ============ CALCUL JOUR DATE ============
   // ===== TRIGGERS ULTRA PRIORITAIRES =====
 
+  // METEO DOM-TOM PRIORITAIRE
+  if (msgLow.includes('meteo') || msgLow.includes('météo') || msgLow.includes('température') || msgLow.includes('temperature') || msgLow.includes('quel temps') || msgLow.includes('climat')) {
+    const data = await getMeteoDOM()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
   // ===== GUARDRAILS SECURITE =====
   const guardrailResponse = checkGuardrails(message)
   if (guardrailResponse) {
