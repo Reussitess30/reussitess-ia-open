@@ -1,4 +1,5 @@
 import StructuredData from '../components/StructuredData'
+import VisitorCounter from '../components/VisitorCounter'
 import { useEffect } from "react";
 import BotAssistant from "../components/BotAssistant";
 import SuperBotUniversal from "../components/SuperBotUniversal";
@@ -86,6 +87,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <>
+      <VisitorCounter />
         <>
         <>
         <StructuredData />
