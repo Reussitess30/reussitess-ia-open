@@ -55,8 +55,8 @@ export default function SuperBotAssistant() {
 
   useEffect(() => {
     try {
-      const v = parseInt(localStorage.getItem('reussitess_visits') || '0') + 1
-      localStorage.setItem('reussitess_visits', String(v))
+      const vRes = await fetch('/api/visitors').then(r=>r.json()).catch(()=>({count:null}))
+      const v = vRes.count || 0
       setVisitorCount(v)
     } catch(e) {}
   }, [])
@@ -70,8 +70,8 @@ export default function SuperBotAssistant() {
 
   useEffect(() => {
     try {
-      const v = parseInt(localStorage.getItem('reussitess_visits') || '0') + 1
-      localStorage.setItem('reussitess_visits', String(v))
+      const vRes = await fetch('/api/visitors').then(r=>r.json()).catch(()=>({count:null}))
+      const v = vRes.count || 0
       setVisitorCount(v)
     } catch(e) {}
   }, [])
