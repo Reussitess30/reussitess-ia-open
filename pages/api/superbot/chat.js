@@ -3246,6 +3246,8 @@ function calculerJourDate(dateStr) {
   } catch(e) { return null }
 }
 
+import { langchainChat } from './langchain.js'
+
 export default async function handler(req, res) {
   let pdfType = null;
   if (req.method !== 'POST') {
@@ -6119,6 +6121,13 @@ Ne jamais citer CoinMarketCap, Xignite, ou d'autres APIs que tu n'utilises pas r
             if (groqText) finalResponse = groqText
             else finalResponse = "⚠️ Service temporairement indisponible. Réessaie dans un instant !\n\nBOUDOUM ! 🇬🇵"
           } catch(e) { console.error("Groq:", e); finalResponse = "⚠️ Erreur technique momentanée. BOUDOUM ! 🇬🇵" }
+          }
+          // LangChain fallback si Groq échoue
+          if (!finalResponse || finalResponse === "⚠️ Erreur technique momentanée. BOUDOUM ! 🇬🇵") {
+            try {
+              const lcText = await langchainChat(message, context || [], systemPrompt)
+              if (lcText) finalResponse = lcText
+            } catch(e) { console.error("LangChain fallback:", e.message) }
           }
         }
       } else if (wikiData) {
