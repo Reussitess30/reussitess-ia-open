@@ -145,6 +145,8 @@ export default function SuperBotAssistant() {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           message: userMessage,
+          image: selectedImage || undefined,
+          imageQuestion: selectedImage ? userMessage : undefined,
           personality: botPersonality,
           context: messages,
           langue,
@@ -228,12 +230,12 @@ export default function SuperBotAssistant() {
                 </div>
               </div>
               <div style={{display:'flex',gap:'0.5rem',alignItems:'center'}}>
-                <button onClick={() => { setAudioEnabled(!audioEnabled); if(!audioEnabled) stopSpeaking() }}
+                <button aria-label="Activer/désactiver audio" onClick={() => { setAudioEnabled(!audioEnabled); if(!audioEnabled) stopSpeaking() }}
                   style={{background: audioEnabled?'rgba(255,255,255,0.3)':'rgba(0,0,0,0.3)', border:'none', borderRadius:'8px', padding:'0.4rem 0.6rem', cursor:'pointer', fontSize:'1rem', color:'white'}}>
                   {audioEnabled ? '🔊' : '🔇'}
                 </button>
                 <div style={{position:'relative'}}>
-                  <button onClick={() => setShowLangMenu(!showLangMenu)}
+                  <button aria-label="Choisir la langue" onClick={() => setShowLangMenu(!showLangMenu)}
                     style={{background:'rgba(255,255,255,0.2)', border:'none', borderRadius:'8px', padding:'0.4rem 0.6rem', cursor:'pointer', fontSize:'0.8rem', color:'white', fontWeight:'bold'}}>
                     {LANGUES[langue].label.split(' ')[0]} ▾
                   </button>
@@ -309,7 +311,7 @@ export default function SuperBotAssistant() {
                       <p style={{color:'white',fontWeight:'bold',fontSize:'1.1rem',margin:'0.2rem 0 0'}}>99</p>
                     </div>
                   </div>
-                                    <button onClick={fetchNexusStats} style={{background:'linear-gradient(135deg,#10b981,#3b82f6)',border:'none',color:'white',padding:'0.8rem',borderRadius:'12px',cursor:'pointer',fontWeight:'bold'}}>
+                                    <button aria-label="Rafraîchir statistiques Nexus" onClick={fetchNexusStats} style={{background:'linear-gradient(135deg,#10b981,#3b82f6)',border:'none',color:'white',padding:'0.8rem',borderRadius:'12px',cursor:'pointer',fontWeight:'bold'}}>
                     🔄 Actualiser les données
                   </button>
                 </div>
@@ -468,14 +470,14 @@ export default function SuperBotAssistant() {
                       style={{padding:'0.3rem 0.7rem',background:'rgba(16,185,129,0.2)',border:'1px solid #10b981',borderRadius:'15px',color:'#10b981',fontSize:'0.72rem',cursor:'pointer',fontWeight:'bold'}}>
                       📄 Télécharger PDF
                     </button>
-                    <button onClick={() => {const w=window.open('');w.document.write('<pre>'+msg.content+'</pre>');w.print();}}
+                    <button aria-label="Imprimer ce message" onClick={() => {const w=window.open('');w.document.write('<pre>'+msg.content+'</pre>');w.print();}}
                       style={{padding:'0.3rem 0.7rem',background:'rgba(16,185,129,0.2)',border:'1px solid #10b981',borderRadius:'15px',color:'#10b981',fontSize:'0.72rem',cursor:'pointer',fontWeight:'bold'}}>
                       🖨️ Imprimer
                     </button>
                   </div>
                 )}
                 {msg.role==='assistant' && audioEnabled && (
-                  <button onClick={() => speakResponse(msg.content, LANGUES[langue].voice)}
+                  <button aria-label="Lire à voix haute" onClick={() => speakResponse(msg.content, LANGUES[langue].voice)}
                     style={{background:'none',border:'none',cursor:'pointer',fontSize:'0.75rem',color:'#10b981',padding:'0.2rem 0.5rem',marginTop:'0.2rem'}}>
                     🔊 Écouter
                   </button>
@@ -504,7 +506,7 @@ export default function SuperBotAssistant() {
           {isSpeaking && (
             <div style={{padding:'0.5rem 1.5rem',background:'rgba(16,185,129,0.2)',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
               <span style={{color:'#10b981',fontSize:'0.85rem'}}>🔊 Audio... ({LANGUES[langue].label})</span>
-              <button onClick={stopSpeaking} style={{background:'#ef4444',color:'white',border:'none',padding:'0.3rem 0.8rem',borderRadius:'10px',cursor:'pointer',fontSize:'0.8rem'}}>⏹ Stop</button>
+              <button aria-label="Arrêter la lecture" onClick={stopSpeaking} style={{background:'#ef4444',color:'white',border:'none',padding:'0.3rem 0.8rem',borderRadius:'10px',cursor:'pointer',fontSize:'0.8rem'}}>⏹ Stop</button>
             </div>
           )}
 
@@ -550,7 +552,7 @@ export default function SuperBotAssistant() {
             </div>
             {imagePreview && (
                 <div style={{display:'flex',alignItems:'center',gap:'0.5rem',marginTop:'0.5rem',background:'rgba(245,158,11,0.1)',padding:'0.5rem',borderRadius:'10px'}}>
-                  <img src={imagePreview} style={{width:'40px',height:'40px',objectFit:'cover',borderRadius:'8px'}} />
+                  <img src={imagePreview} alt="Aperçu image à envoyer" style={{width:'40px',height:'40px',objectFit:'cover',borderRadius:'8px'}} />
                   <span style={{color:'#f59e0b',fontSize:'0.8rem'}}>Image prête à envoyer</span>
                   <button onClick={() => {setSelectedImage(null);setImagePreview(null)}} style={{marginLeft:'auto',background:'none',border:'none',color:'#ef4444',cursor:'pointer',fontSize:'1rem'}}>✕</button>
                 </div>

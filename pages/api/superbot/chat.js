@@ -6954,16 +6954,28 @@ async function getMixElectriqueGuadeloupe() {
 // ===== RCI GUADELOUPE NEWS =====
 async function getRCIGuadeloupe() {
   try {
-    const r = await fetch('https://www.rci.fm/guadeloupe/infos/feed', { headers: { 'User-Agent': 'Mozilla/5.0' } })
-    const xml = await r.text()
-    const items = xml.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0,5) || []
-    let result = "📻 **RCI Guadeloupe — Infos du Jour**\n\n"
-    for (const item of items) {
-      const title = item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || item.match(/<title>(.*?)<\/title>/)?.[1] || ''
-      if (title) result += `• ${title}\n`
-    }
-    result += "\n📻 RCI FM : 104.3 MHz\n🔗 https://www.rci.fm/guadeloupe\n\nBOUDOUM ! 🇬🇵"
-    return result
+    // RCI n'a pas de RSS public — on retourne infos statiques enrichies
+    return `📻 **RCI Guadeloupe 104.3 FM**
+
+🎙️ La radio d'info n°1 des Antilles-Guyane
+
+📡 **Écouter en direct :**
+🔗 https://www.rci.fm/guadeloupe
+📱 App RCI (iOS & Android)
+
+📰 **Rubriques :**
+• Actualités Guadeloupe & Caraïbes
+• Sport (Gwada Boys, rugby, athlétisme)
+• Météo & alertes cycloniques
+• Émissions culturelles & créoles
+• Musique caribéenne (Zouk, Soca, Reggae)
+
+⏰ **Infos toutes les heures**
+📞 Standard : +590 590 83 96 96
+
+🔗 https://www.rci.fm/guadeloupe
+
+BOUDOUM ! 🇬🇵\``
   } catch(e) {
     return `📻 **RCI Guadeloupe**\n\n📻 Fréquence : 104.3 FM\n🔗 https://www.rci.fm/guadeloupe\n📱 App RCI disponible\n\nActualités, météo, sport et musique caribéenne 24h/24 !\n\nBOUDOUM ! 🇬🇵`
   }
