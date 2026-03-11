@@ -13,14 +13,9 @@ export default function VisitorCounter() {
   }, []);
 
   return (
-    <div style={{ position: "fixed", bottom: "20px", left: "20px", background: "rgba(255,255,255,0.95)", backdropFilter: "blur(10px)", border: "2px solid #667eea", borderRadius: "15px", padding: "15px 25px", boxShadow: "0 8px 32px rgba(102,126,234,0.3)", zIndex: 999, display: "flex", alignItems: "center", gap: "12px", cursor: "default" }}>
-      <div style={{ fontSize: "2rem" }}>👥</div>
-      <div>
-        <div style={{ fontSize: "0.75rem", color: "#64748b", fontWeight: "600", textTransform: "uppercase", letterSpacing: "0.5px", marginBottom: "2px" }}>Visiteurs</div>
-        <div style={{ fontSize: "1.5rem", fontWeight: "800", background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", lineHeight: "1" }}>
-          {visitorCount}
-        </div>
-      </div>
+    <div style={{ position: "fixed", top: "70px", right: "10px", background: "rgba(0,0,0,0.6)", backdropFilter: "blur(10px)", border: "1px solid #667eea", borderRadius: "20px", padding: "4px 10px", zIndex: 998, display: "flex", alignItems: "center", gap: "5px", cursor: "default" }}>
+      <span style={{ fontSize: "0.75rem" }}>👥</span>
+      <span style={{ fontSize: "0.75rem", fontWeight: "700", color: "#a78bfa" }}>{visitorCount}</span>
     </div>
   );
 }
