@@ -76,6 +76,69 @@ async function groqFetch(messages, maxTokens = 512) {
     return text
   } catch(e) { console.error("groqFetch:", e.message); return null }
 }
+// ===== STREAMING GROQ =====
+export async function groqStream(messages, systemPrompt, res) {
+  const key = getNextKey()
+  try {
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
+      body: JSON.stringify({
+        model: "llama-3.3-70b-versatile",
+        messages: [{ role: "system", content: systemPrompt }, ...messages],
+        max_tokens: 1024,
+        stream: true
+      })
+    })
+    if (!response.ok) return null
+    res.writeHead(200, {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
+      'Connection': 'keep-alive',
+    })
+    const reader = response.body.getReader()
+    const decoder = new TextDecoder()
+    let fullText = ""
+    while (true) {
+      const { done, value } = await reader.read()
+      if (done) break
+      const chunk = decoder.decode(value)
+      const lines = chunk.split('\n').filter(l => l.startsWith('data: '))
+      for (const line of lines) {
+        const data = line.slice(6)
+        if (data === '[DONE]') continue
+        try {
+          const parsed = JSON.parse(data)
+          const token = parsed.choices?.[0]?.delta?.content || ''
+          if (token) {
+            fullText += token
+            res.write(`data: ${JSON.stringify({ token })}\n\n`)
+          }
+        } catch(e) {}
+      }
+    }
+    res.write('data: [DONE]\n\n')
+    res.end()
+    return fullText
+  } catch(e) { console.error("Stream error:", e.message); return null }
+}
+
+// ===== GUARDRAILS SECURITE =====
+function checkGuardrails(message) {
+  const msgL = message.toLowerCase()
+  const blocked = [
+    'fabrique.*bombe', 'comment.*tuer', 'drogue.*fabriquer',
+    'hack.*système', 'virus.*créer', 'arnaque.*faire',
+    'blanchiment.*argent', 'document.*faux'
+  ]
+  for (const pattern of blocked) {
+    if (new RegExp(pattern).test(msgL)) {
+      return "🛡️ Cette demande ne peut pas être traitée. REUSSITESS AI est là pour t'aider à réussir, pas à nuire. BOUDOUM ! 🇬🇵"
+    }
+  }
+  return null
+}
+
 // ===== FUNCTION CALLING GROQ =====
 const GROQ_TOOLS = [
   {
@@ -3270,6 +3333,12 @@ export default async function handler(req, res) {
 
   // ============ CALCUL JOUR DATE ============
   // ===== TRIGGERS ULTRA PRIORITAIRES =====
+
+  // ===== GUARDRAILS SECURITE =====
+  const guardrailResponse = checkGuardrails(message)
+  if (guardrailResponse) {
+    return res.status(200).json({ pdfAction: null, response: guardrailResponse })
+  }
 
   // PLAGES DOM-TOM
   if (msgLow.includes('plage') || msgLow.includes('baignade') || msgLow.includes('plages dom')) {
