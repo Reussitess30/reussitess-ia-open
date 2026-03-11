@@ -1,14 +1,16 @@
+import { createClient } from 'redis'
+
 export default async function handler(req, res) {
+  let client
   try {
-    if (process.env.KV_REST_API_URL && process.env.KV_REST_API_TOKEN) {
-      const response = await fetch(`${process.env.KV_REST_API_URL}/incr/reussitess_visitors`, {
-        headers: { Authorization: `Bearer ${process.env.KV_REST_API_TOKEN}` }
-      })
-      const data = await response.json()
-      return res.status(200).json({ count: data.result })
-    }
-    return res.status(200).json({ count: null })
+    client = createClient({ url: process.env.REDIS_URL })
+    await client.connect()
+    const count = await client.incr('reussitess_visitors')
+    await client.disconnect()
+    return res.status(200).json({ count })
   } catch(e) {
+    if (client) await client.disconnect().catch(() => {})
+    console.error('Redis error:', e.message)
     return res.status(200).json({ count: null })
   }
 }
