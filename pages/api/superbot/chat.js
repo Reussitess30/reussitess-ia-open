@@ -3435,7 +3435,8 @@ BOUDOUM ! 🇬🇵` })
 
   // ============ POLITIQUE MARTINIQUE ============
   if (msgLow.includes('politique martinique') || msgLow.includes('elu martinique') || msgLow.includes('élu martinique') || msgLow.includes('serge letchimy') || msgLow.includes('letchimy') || msgLow.includes('ctm martinique') || msgLow.includes('president martinique') || msgLow.includes('député martinique') || msgLow.includes('senateur martinique')) {
-    return res.status(200).json({ pdfAction: null, response: getPolitiquesMartinique() })
+    const dataMart = getPolitiquesMartinique()
+    return res.status(200).json({ pdfAction: null, response: dataMart })
   }
 
   // ============ POLITIQUE GUYANE ============
@@ -6438,7 +6439,7 @@ async function getQualiteEauBaignade() {
   return result
 }
 
-async function getPolitiquesMartinique() {
+function getPolitiquesMartinique() {
   return `🏛️ **Élus Officiels de Martinique (2025-2026)**
 
 🌴 **COLLECTIVITÉ TERRITORIALE DE MARTINIQUE (CTM)**
