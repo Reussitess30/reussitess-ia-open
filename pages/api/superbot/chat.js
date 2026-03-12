@@ -3212,7 +3212,7 @@ async function getSeismesAntilles() {
 async function getActualitesCurrents(query = "Guadeloupe", langue = "fr") {
   try {
     const feeds = {
-      guadeloupe: "https://la1ere.francetvinfo.fr/guadeloupe/rss.xml",
+      guadeloupe: "https://www.rfi.fr/fr/rss",
       martinique: "https://la1ere.francetvinfo.fr/martinique/rss.xml",
       france: "https://www.rfi.fr/fr/rss",
       afrique: "https://www.rfi.fr/fr/afrique/rss",
