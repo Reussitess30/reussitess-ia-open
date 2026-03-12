@@ -3220,7 +3220,7 @@ async function getActualitesCurrents(query = "Guadeloupe", langue = "fr") {
       `${i+1}. **${a.title}**\n   📰 ${a.published?.substring(0,10)} — ${a.url}`
     ).join("\n\n")
     return `📰 **Actualités — "${query}"**\n\n${articles}\n\nBOUDOUM ! 🇬🇵`
-  } catch(e) { return "⚠️ Actualités indisponibles." }
+  } catch(e) { console.error('CurrentsAPI ERR:', e.message); return `⚠️ Actualités indisponibles. (${e.message})` }
 }
 
 // ===== FDA — Médicaments USA =====
