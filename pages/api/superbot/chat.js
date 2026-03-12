@@ -3205,6 +3205,130 @@ async function getSeismesAntilles() {
 }
 
 // ============ METEO DOM-TOM ============
+
+
+// ===== FDA — Médicaments USA =====
+async function getMedicament(drug = "aspirin") {
+  try {
+    const res = await fetch(`https://api.fda.gov/drug/label.json?search=openfda.brand_name:${encodeURIComponent(drug)}&limit=1`)
+    const d = await res.json()
+    if (!d.results?.length) return `❌ Médicament "${drug}" non trouvé.`
+    const m = d.results[0]
+    const indications = m.indications_and_usage?.[0]?.substring(0, 300) || "N/A"
+    const warnings = m.warnings?.[0]?.substring(0, 200) || "N/A"
+    return `💊 **Médicament — ${drug.toUpperCase()}**\n\n📋 Indications: ${indications}...\n\n⚠️ Avertissements: ${warnings}...\n\n⚠️ Consultez toujours un médecin.\nBOUDOUM ! 🇬🇵`
+  } catch(e) { return "⚠️ Données médicament indisponibles." }
+}
+
+// ===== OPENRAILWAYMAP — Trains Europe =====
+async function getTrainsEurope(ville = "Paris") {
+  try {
+    const geo = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(ville)}&format=json&limit=1`, { headers: {"User-Agent":"REUSSITESS-AI/1.0"} })
+    const gd = await geo.json()
+    if (!gd?.length) return `❌ Ville "${ville}" non trouvée.`
+    const lat = parseFloat(gd[0].lat).toFixed(4)
+    const lon = parseFloat(gd[0].lon).toFixed(4)
+    return `🚂 **Trains Europe — ${ville}**\n\n📍 Position: ${lat}, ${lon}\n🗺️ Carte ferroviaire: https://www.openrailwaymap.org/?lat=${lat}&lon=${lon}&zoom=12\n\n🔗 Cliquez le lien pour voir les voies ferrées autour de ${ville} !\n\nBOUDOUM ! 🇬🇵`
+  } catch(e) { return "⚠️ Données trains indisponibles." }
+}
+
+// ===== OPEN-METEO — Météo illimitée gratuite =====
+async function getOpenMeteo(ville = "Pointe-à-Pitre", lat = 16.24, lon = -61.53) {
+  try {
+    const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&timezone=auto`)
+    const d = await res.json()
+    const c = d.current
+    const codes = {0:"Ciel dégagé ☀️",1:"Peu nuageux 🌤️",2:"Partiellement nuageux ⛅",3:"Couvert ☁️",45:"Brouillard 🌫️",61:"Pluie légère 🌦️",63:"Pluie modérée 🌧️",80:"Averses 🌧️",95:"Orage ⛈️"}
+    const desc = codes[c.weather_code] || "Variable"
+    return `🌦️ **Météo ${ville} (Open-Meteo)**\n\n🌡️ Température: ${c.temperature_2m}°C\n💧 Humidité: ${c.relative_humidity_2m}%\n💨 Vent: ${c.wind_speed_10m} km/h\n🌤️ Conditions: ${desc}\n\nBOUDOUM ! 🇬🇵`
+  } catch(e) { return "⚠️ Météo indisponible momentanément." }
+}
+
+// ===== COINGECKO — Crypto temps réel gratuit =====
+async function getCryptoCoingecko(coin = "bitcoin") {
+  try {
+    const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coin}&vs_currencies=eur,usd&include_24hr_change=true`)
+    const d = await res.json()
+    const data = d[coin]
+    if (!data) return `❌ Crypto "${coin}" non trouvée.`
+    const change = data.eur_24h_change?.toFixed(2)
+    const arrow = change > 0 ? "📈" : "📉"
+    return `💎 **${coin.toUpperCase()} (CoinGecko)**\n\n💶 EUR: €${data.eur?.toLocaleString("fr-FR")}\n💵 USD: $${data.usd?.toLocaleString("en-US")}\n${arrow} 24h: ${change}%\n\nBOUDOUM ! 🇬🇵`
+  } catch(e) { return "⚠️ Données crypto indisponibles." }
+}
+
+// ===== EXCHANGERATE — Devises temps réel =====
+async function getExchangeRate(from = "EUR", to = "XCD") {
+  try {
+    const res = await fetch(`https://open.er-api.com/v6/latest/${from}`)
+    const d = await res.json()
+    const rate = d.rates[to]
+    if (!rate) return `❌ Devise ${to} non trouvée.`
+    return `💱 **Taux de change (ExchangeRate)**\n\n1 ${from} = ${rate.toFixed(4)} ${to}\n\n🌍 Principales devises:\n• EUR → USD: ${d.rates.USD?.toFixed(4)}\n• EUR → XOF: ${d.rates.XOF?.toFixed(0)} (FCFA)\n• EUR → XCD: ${d.rates.XCD?.toFixed(4)} (Dollar Caraïbes)\n• EUR → HTG: ${d.rates.HTG?.toFixed(2)} (Gourde Haïti)\n\nBOUDOUM ! 🇬🇵`
+  } catch(e) { return "⚠️ Taux de change indisponibles." }
+}
+
+// ===== RESTCOUNTRIES — Infos pays =====
+async function getCountryInfo(pays = "Guadeloupe") {
+  try {
+    const res = await fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(pays)}`)
+    const d = await res.json()
+    if (!d || d.status === 404) return `❌ Pays "${pays}" non trouvé.`
+    const p = d[0]
+    const pop = p.population?.toLocaleString("fr-FR")
+    const capital = p.capital?.[0] || "N/A"
+    const region = p.region || "N/A"
+    const langs = Object.values(p.languages || {}).join(", ")
+    const currency = Object.values(p.currencies || {}).map(c => `${c.name} (${c.symbol})`).join(", ")
+    return `🌍 **${p.name?.common || pays}**\n\n🏙️ Capitale: ${capital}\n👥 Population: ${pop}\n🌐 Région: ${region}\n🗣️ Langue(s): ${langs}\n💰 Monnaie: ${currency}\n🗺️ Superficie: ${p.area?.toLocaleString("fr-FR")} km²\n\nBOUDOUM ! 🇬🇵`
+  } catch(e) { return "⚠️ Infos pays indisponibles." }
+}
+
+// ===== DISEASE.SH — Santé mondiale =====
+async function getSanteMondale() {
+  try {
+    const res = await fetch("https://disease.sh/v3/covid-19/all")
+    const d = await res.json()
+    return `🏥 **Santé Mondiale (Disease.sh)**\n\n🦠 COVID-19 Global:\n• Cas totaux: ${d.cases?.toLocaleString("fr-FR")}\n• Décès: ${d.deaths?.toLocaleString("fr-FR")}\n• Guéris: ${d.recovered?.toLocaleString("fr-FR")}\n• Actifs: ${d.active?.toLocaleString("fr-FR")}\n\nBOUDOUM ! 🇬🇵`
+  } catch(e) { return "⚠️ Données santé indisponibles." }
+}
+
+// ===== OPENLIBRARY — Livres gratuits =====
+async function getOpenLibrary(query = "Aimé Césaire") {
+  try {
+    const res = await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(query)}&limit=5`)
+    const d = await res.json()
+    if (!d.docs?.length) return `❌ Aucun livre trouvé pour "${query}".`
+    const livres = d.docs.slice(0, 5).map((b, i) => `${i+1}. **${b.title}** — ${b.author_name?.[0] || "Auteur inconnu"} (${b.first_publish_year || "?"})`)
+    return `📚 **Open Library — "${query}"**\n\n${livres.join("\n")}\n\n🔗 openlibrary.org\n\nBOUDOUM ! 🇬🇵`
+  } catch(e) { return "⚠️ Bibliothèque indisponible." }
+}
+
+// ===== DICTIONARY API — Définitions multilingues =====
+async function getDictionary(mot, lang = "fr") {
+  try {
+    const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/${lang}/${encodeURIComponent(mot)}`)
+    const d = await res.json()
+    if (!d || d.title === "No Definitions Found") return `❌ Définition de "${mot}" non trouvée.`
+    const entry = d[0]
+    const meanings = entry.meanings?.slice(0, 2).map(m => `• ${m.partOfSpeech}: ${m.definitions?.[0]?.definition}`).join("\n")
+    return `📖 **Dictionnaire — "${mot}"**\n\n${meanings}\n\nBOUDOUM ! 🇬🇵`
+  } catch(e) { return "⚠️ Dictionnaire indisponible." }
+}
+
+// ===== NOMINATIM — Géolocalisation gratuite =====
+async function getGeoLocation(lieu) {
+  try {
+    const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(lieu)}&format=json&limit=1`, {
+      headers: { "User-Agent": "REUSSITESS-AI/1.0" }
+    })
+    const d = await res.json()
+    if (!d?.length) return `❌ Lieu "${lieu}" non trouvé.`
+    const loc = d[0]
+    return `📍 **Géolocalisation — "${lieu}"**\n\n🌐 Latitude: ${parseFloat(loc.lat).toFixed(4)}\n🌐 Longitude: ${parseFloat(loc.lon).toFixed(4)}\n📌 Adresse: ${loc.display_name}\n\nBOUDOUM ! 🇬🇵`
+  } catch(e) { return "⚠️ Géolocalisation indisponible." }
+}
+
 async function getMeteoDOMTOM(commune) {
   try {
     const lats = {'pointe-a-pitre':'16.24','basse-terre':'16.00','fort-de-france':'14.60','cayenne':'4.93','saint-denis':'-20.88'}
@@ -3337,6 +3461,20 @@ export default async function handler(req, res) {
   // METEO DOM-TOM PRIORITAIRE
   if (msgLow.includes('meteo') || msgLow.includes('météo') || msgLow.includes('température') || msgLow.includes('temperature') || msgLow.includes('quel temps') || msgLow.includes('climat')) {
     const data = await getMeteoDOM()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // FDA MEDICAMENTS
+  if (msgLow.includes('médicament') || msgLow.includes('medicament') || msgLow.includes('aspirine') || msgLow.includes('ibuprofène') || msgLow.includes('doliprane') || msgLow.includes('comprimé')) {
+    const drug = message.replace(/médicament|medicament|comprimé|cherche|trouve|info/gi,'').trim().split(' ')[0] || 'aspirin'
+    const data = await getMedicament(drug)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // TRAINS EUROPE
+  if (msgLow.includes('train') || msgLow.includes('sncf') || msgLow.includes('gare') || msgLow.includes('ferroviaire') || msgLow.includes('rail')) {
+    const ville = message.replace(/train|sncf|gare|ferroviaire|rail|à|de|du/gi,'').trim() || 'Paris'
+    const data = await getTrainsEurope(ville)
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
