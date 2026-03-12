@@ -3498,7 +3498,7 @@ export default async function handler(req, res) {
 
   // CURRENTSAPI ACTUALITES
   if (msgLow.includes('actualité') || msgLow.includes('actualites') || msgLow.includes('news') || msgLow.includes('dernières nouvelles') || msgLow.includes('information du jour')) {
-    const query = message.replace(/actualité|actualites|news|dernières nouvelles|information du jour/gi,'').trim() || 'Guadeloupe'
+    const query = message.replace(/^\s*actualit[ée]s?\s*|^\s*news\s*|^\s*derni[eè]res?\s*nouvelles?\s*|^\s*information\s*du\s*jour\s*/gi,'').trim() || 'Guadeloupe'
     const data = await getActualitesCurrents(query)
     return res.status(200).json({ pdfAction: null, response: data })
   }
