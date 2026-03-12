@@ -3207,6 +3207,22 @@ async function getSeismesAntilles() {
 // ============ METEO DOM-TOM ============
 
 
+
+// ===== CURRENTSAPI — Actualités mondiales =====
+async function getActualitesCurrents(query = "Guadeloupe", langue = "fr") {
+  try {
+    const key = process.env.CURRENTSAPI_KEY
+    if (!key) return "⚠️ CurrentsAPI non configurée."
+    const res = await fetch(`https://api.currentsapi.services/v1/search?keywords=${encodeURIComponent(query)}&language=${langue}&apiKey=${key}&limit=5`)
+    const d = await res.json()
+    if (!d.news?.length) return `❌ Aucune actualité trouvée pour "${query}".`
+    const articles = d.news.slice(0, 5).map((a, i) => 
+      `${i+1}. **${a.title}**\n   📰 ${a.published?.substring(0,10)} — ${a.url}`
+    ).join("\n\n")
+    return `📰 **Actualités — "${query}"**\n\n${articles}\n\nBOUDOUM ! 🇬🇵`
+  } catch(e) { return "⚠️ Actualités indisponibles." }
+}
+
 // ===== FDA — Médicaments USA =====
 async function getMedicament(drug = "aspirin") {
   try {
@@ -3461,6 +3477,13 @@ export default async function handler(req, res) {
   // METEO DOM-TOM PRIORITAIRE
   if (msgLow.includes('meteo') || msgLow.includes('météo') || msgLow.includes('température') || msgLow.includes('temperature') || msgLow.includes('quel temps') || msgLow.includes('climat')) {
     const data = await getMeteoDOM()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // CURRENTSAPI ACTUALITES
+  if (msgLow.includes('actualité') || msgLow.includes('actualites') || msgLow.includes('news') || msgLow.includes('dernières nouvelles') || msgLow.includes('information du jour')) {
+    const query = message.replace(/actualité|actualites|news|dernières nouvelles|information du jour/gi,'').trim() || 'Guadeloupe'
+    const data = await getActualitesCurrents(query)
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
