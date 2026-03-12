@@ -3223,11 +3223,17 @@ async function getActualitesCurrents(query = "Guadeloupe", langue = "fr") {
                     q.includes('martinique') ? feeds.martinique :
                     q.includes('afrique') ? feeds.afrique :
                     q.includes('monde') || q.includes('international') ? feeds.monde : feeds.france
-    const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}&count=5`)
-    const d = await res.json()
-    if (!d.items?.length) return `❌ Aucune actualité trouvée pour "${query}".`
-    const articles = d.items.slice(0, 5).map((a, i) =>
-      `${i+1}. **${a.title}**\n   📰 ${a.pubDate?.substring(0,10)} — ${a.link}`
+    const res = await fetch(feedUrl, { signal: AbortSignal.timeout(5000) })
+    const xml = await res.text()
+    const items = [...xml.matchAll(/<item>[\s\S]*?<title><!\[CDATA\[(.*?)\]\]><\/title>[\s\S]*?<link>(.*?)<\/link>[\s\S]*?<pubDate>(.*?)<\/pubDate>[\s\S]*?<\/item>/g)]
+    if (!items.length) {
+      const items2 = [...xml.matchAll(/<title>(.*?)<\/title>[\s\S]*?<link>(.*?)<\/link>/g)].slice(1,6)
+      if (!items2.length) return "❌ Aucune actualité trouvée."
+      const articles2 = items2.map((m,i) => `${i+1}. **${m[1]}**\n   🔗 ${m[2]}`).join("\n\n")
+      return `📰 **Actualités — "${query}"**\n\n${articles2}\n\nBOUDOUM ! 🇬🇵`
+    }
+    const articles = items.slice(0,5).map((m,i) =>
+      `${i+1}. **${m[1]}**\n   📰 ${m[3]?.substring(0,16)} — ${m[2]}`
     ).join("\n\n")
     return `📰 **Actualités — "${query}"**\n\n${articles}\n\nBOUDOUM ! 🇬🇵`
   } catch(e) { return `⚠️ Actualités indisponibles. (${e.message})` }
