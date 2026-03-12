@@ -3211,16 +3211,26 @@ async function getSeismesAntilles() {
 // ===== CURRENTSAPI — Actualités mondiales =====
 async function getActualitesCurrents(query = "Guadeloupe", langue = "fr") {
   try {
-    const key = process.env.CURRENTSAPI_KEY
-    if (!key) return "⚠️ CurrentsAPI non configurée."
-    const res = await fetch(`https://api.currentsapi.services/v1/search?keywords=${encodeURIComponent(query)}&language=${langue}&apiKey=${key}&limit=5`)
+    const feeds = {
+      guadeloupe: "https://la1ere.francetvinfo.fr/guadeloupe/rss.xml",
+      martinique: "https://la1ere.francetvinfo.fr/martinique/rss.xml",
+      france: "https://www.rfi.fr/fr/rss",
+      afrique: "https://www.rfi.fr/fr/afrique/rss",
+      monde: "https://www.france24.com/fr/rss",
+    }
+    const q = query.toLowerCase()
+    const feedUrl = q.includes('guadeloupe') ? feeds.guadeloupe :
+                    q.includes('martinique') ? feeds.martinique :
+                    q.includes('afrique') ? feeds.afrique :
+                    q.includes('monde') || q.includes('international') ? feeds.monde : feeds.france
+    const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}&count=5`)
     const d = await res.json()
-    if (!d.news?.length) return `❌ Aucune actualité trouvée pour "${query}".`
-    const articles = d.news.slice(0, 5).map((a, i) => 
-      `${i+1}. **${a.title}**\n   📰 ${a.published?.substring(0,10)} — ${a.url}`
+    if (!d.items?.length) return `❌ Aucune actualité trouvée pour "${query}".`
+    const articles = d.items.slice(0, 5).map((a, i) =>
+      `${i+1}. **${a.title}**\n   📰 ${a.pubDate?.substring(0,10)} — ${a.link}`
     ).join("\n\n")
     return `📰 **Actualités — "${query}"**\n\n${articles}\n\nBOUDOUM ! 🇬🇵`
-  } catch(e) { console.error('CurrentsAPI ERR:', e.message); return `⚠️ Actualités indisponibles. (${e.message})` }
+  } catch(e) { return `⚠️ Actualités indisponibles. (${e.message})` }
 }
 
 // ===== FDA — Médicaments USA =====
