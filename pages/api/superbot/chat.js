@@ -3209,10 +3209,40 @@ async function getSeismesAntilles() {
 
 
 
+// ===== OPENFOODFACTS — Nutrition =====
+async function getAlimentNutrition(query = "banane") {
+  try {
+    const res = await fetch(`https://world.openfoodfacts.org/cgi/search.pl?search_terms=${encodeURIComponent(query)}&search_simple=1&action=process&json=1&page_size=3&lc=fr`)
+    const d = await res.json()
+    if (!d.products?.length) return `❌ Aliment "${query}" non trouvé.`
+    let result = `🥗 **Nutrition — "${query}"**\n\n`
+    for (const p of d.products.slice(0,3)) {
+      const n = p.nutriments || {}
+      result += `• **${p.product_name || query}**\n  🔥 ${n['energy-kcal_100g'] || 'N/A'} kcal/100g | 🥩 Protéines: ${n.proteins_100g || 'N/A'}g | 🍬 Sucres: ${n.sugars_100g || 'N/A'}g\n\n`
+    }
+    return result + "Source: OpenFoodFacts\nBoudoum ! 🇬🇵"
+  } catch(e) { return "⚠️ Données nutrition indisponibles." }
+}
+
+// ===== NOAA TIDES — Marées =====
+async function getMareesGuadeloupe() {
+  try {
+    const res = await fetch('https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=9759110&product=predictions&datum=MLLW&time_zone=GMT&units=metric&application=reussitess&format=json&range=24&interval=hilo')
+    const d = await res.json()
+    if (!d.predictions?.length) return "❌ Données marées indisponibles."
+    let result = "🌊 **Marées — Guadeloupe (24h)**\n\n"
+    for (const m of d.predictions.slice(0,6)) {
+      const type = m.type === 'H' ? '🔺 Haute mer' : '🔻 Basse mer'
+      result += `${type} : **${m.v}m** à ${m.t}\n`
+    }
+    return result + "\nSource: NOAA\nBoudoum ! 🇬🇵"
+  } catch(e) { return "⚠️ Données marées indisponibles." }
+}
+
 // ===== WORLD BANK — PIB & Chômage =====
 async function getWorldBank(pays = "GP", indicateur = "NY.GDP.MKTP.CD") {
   try {
-    const res = await fetch(`https://api.worldbank.org/v2/country/${pays}/indicator/${indicateur}?format=json&mrv=1`)
+    const res = await fetch(`https://api.worldbank.org/v2/country/${pays}/indicator/${indicateur}?format=json&mrv=3`)
     const d = await res.json()
     const val = d[1]?.[0]
     if (!val) return "❌ Données indisponibles."
@@ -3554,8 +3584,21 @@ export default async function handler(req, res) {
   // WORLD BANK PIB CHOMAGE
   if (msgLow.includes('pib') || msgLow.includes('chomage') || msgLow.includes('chômage') || msgLow.includes('economie') || msgLow.includes('économie') && msgLow.includes('guadeloupe')) {
     const indic = msgLow.includes('chomage') || msgLow.includes('chômage') ? 'SL.UEM.TOTL.ZS' : msgLow.includes('population') ? 'SP.POP.TOTL' : 'NY.GDP.MKTP.CD'
-    const pays = msgLow.includes('martinique') ? 'MQ' : msgLow.includes('guyane') ? 'GF' : msgLow.includes('reunion') ? 'RE' : 'GP'
+    const pays = msgLow.includes('martinique') ? 'MQ' : msgLow.includes('guyane') ? 'GF' : msgLow.includes('reunion') ? 'RE' : 'GLP'
     const data = await getWorldBank(pays, indic)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // OPENFOODFACTS NUTRITION
+  if (msgLow.includes('nutrition') || msgLow.includes('calories') || msgLow.includes('aliment') || msgLow.includes('composition')) {
+    const query = message.replace(/nutrition|calories|aliment|composition|de|du|d/gi,'').trim() || 'banane'
+    const data = await getAlimentNutrition(query)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // NOAA MAREES
+  if (msgLow.includes('marée') || msgLow.includes('maree') || msgLow.includes('haute mer') || msgLow.includes('basse mer')) {
+    const data = await getMareesGuadeloupe()
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
