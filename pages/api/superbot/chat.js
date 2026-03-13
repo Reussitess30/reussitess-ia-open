@@ -7101,7 +7101,6 @@ BOUDOUM ! 🇬🇵`
 // ===== OFFRES EMPLOI DOM-TOM =====
 async function getOffresEmploiDOMTOM(query = "emploi", zone = "971") {
   try {
-    // 1. OAuth token
     const clientId = process.env.FRANCE_TRAVAIL_CLIENT_ID
     const secret = process.env.FRANCE_TRAVAIL_SECRET
     const tokenRes = await fetch('https://entreprise.francetravail.fr/connexion/oauth2/access_token?realm=%2Fpartenaire', {
@@ -7113,38 +7112,55 @@ async function getOffresEmploiDOMTOM(query = "emploi", zone = "971") {
     const token = tokenData.access_token
     if (!token) throw new Error('token failed')
 
-    // 2. Recherche offres
-    const dept = zone.includes('971') ? '971' : zone.includes('972') ? '972' : zone.includes('973') ? '973' : zone.includes('974') ? '974' : '971'
-    const q = encodeURIComponent(query.replace(/emploi|offre|liste|guadeloupe|martinique|guyane|reunion/gi,'').trim() || '')
-    const url = `https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search?departement=${dept}&range=0-9${q ? '&motsCles='+q : ''}`
+    const q = encodeURIComponent(query.replace(/liste|emploi|offre|guadeloupe|martinique|guyane|reunion|prevention/gi,'').trim())
+    const url = `https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search?departement=${zone}&range=0-4${q ? '&motsCles='+q : ''}`
     const r = await fetch(url, { headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/json' } })
     const d = await r.json()
 
-    if (!d.resultats?.length) return `❌ Aucune offre trouvée pour "${query}" en Guadeloupe.
+    const zoneName = zone === '972' ? 'Martinique' : zone === '973' ? 'Guyane' : zone === '974' ? 'Réunion' : 'Guadeloupe'
+    let result = `💼 **Offres Emploi — ${zoneName}**
 
-🔗 https://www.francetravail.fr
-Boudoum ! 🇬🇵`
-
-    let result = `💼 **Offres Emploi — ${query} (Guadeloupe)**
-
+🏛️ **France Travail (Temps Réel)**
 `
-    for (const o of d.resultats.slice(0,5)) {
-      result += `• **${o.intitule}**
-  🏢 ${o.entreprise?.nom || 'Entreprise'} | 📍 ${o.lieuTravail?.libelle || 'Guadeloupe'}
+
+    if (d.resultats?.length) {
+      for (const o of d.resultats.slice(0,4)) {
+        result += `• **${o.intitule}**
+  🏢 ${o.entreprise?.nom || 'Entreprise'} | 📍 ${o.lieuTravail?.libelle || zoneName}
   💰 ${o.salaire?.libelle || 'Selon profil'} | 📄 ${o.typeContrat || 'CDI'}
   🔗 https://candidater.francetravail.fr/offre/${o.id}
 
 `
+      }
+    } else {
+      result += `• Aucune offre trouvée — essayez sur francetravail.fr
+
+`
     }
-    result += `🔗 Toutes les offres : https://www.francetravail.fr
+
+    result += `🌴 **Autres Plateformes DOM-TOM**
+`
+    result += `• CaribbeaJobs : https://caribbeanjobs.com
+`
+    result += `• Indeed Guadeloupe : https://fr.indeed.com/jobs?l=Guadeloupe
+`
+    result += `• LinkedIn : https://www.linkedin.com/jobs
+`
+    result += `• Caraibe Emploi : https://www.caraibe-emploi.com
+`
+    result += `• Jobartis Antilles : https://www.jobartis.com
+
+`
+    result += `📞 France Travail : 3949
 Boudoum ! 🇬🇵`
     return result
   } catch(e) {
-    console.error('FT ERR:', e.message, e.stack?.substring(0,200))
-    return `💼 **Offres Emploi DOM-TOM [${e.message}]**
+    return `💼 **Offres Emploi DOM-TOM**
 
 🇬🇵 https://www.francetravail.fr
 🌴 https://caribbeanjobs.com
+💼 https://fr.indeed.com/jobs?l=Guadeloupe
+🔗 https://www.caraibe-emploi.com
 
 Boudoum ! 🇬🇵`
   }
