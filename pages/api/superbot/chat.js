@@ -7092,42 +7092,46 @@ BOUDOUM ! 🇬🇵`
 }
 
 // ===== OFFRES EMPLOI DOM-TOM =====
-async function getOffresEmploiDOMTOM() {
+async function getOffresEmploiDOMTOM(query = "emploi", zone = "Guadeloupe") {
   try {
-    const r = await fetch('https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search?departement=971&range=0-4', {
-      headers: { 'Accept': 'application/json', 'Authorization': 'Bearer public' }
-    })
-    if (!r.ok) throw new Error('api')
-    const d = await r.json()
-    if (d.resultats?.length > 0) {
-      let result = "💼 **Offres Emploi Guadeloupe — France Travail**\n\n"
-      for (const o of d.resultats.slice(0,4)) {
-        result += `• **${o.intitule}** — ${o.entreprise?.nom || 'Entreprise'}\n  📍 ${o.lieuTravail?.libelle || 'Guadeloupe'} | 💰 ${o.salaire?.libelle || 'Selon profil'}\n\n`
-      }
-      result += "🔗 Toutes les offres : https://www.francetravail.fr\nBOUDOUM ! 🇬🇵"
-      return result
+    const q = encodeURIComponent(query)
+    const l = encodeURIComponent(zone)
+    const url = `https://fr.indeed.com/rss?q=${q}&l=${l}&sort=date`
+    const res = await fetch(url, { signal: AbortSignal.timeout(5000), headers: { 'User-Agent': 'Mozilla/5.0' } })
+    const xml = await res.text()
+    const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)]
+    if (!items.length) throw new Error('no results')
+    const decode = s => s.replace(/<!\[CDATA\[(.*?)\]\]>/g,'$1').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').trim()
+    let result = `💼 **Offres Emploi — ${zone}**
+
+`
+    for (const item of items.slice(0,5)) {
+      const title = decode(item[1].match(/<title>([\s\S]*?)<\/title>/)?.[1] || '')
+      const link = decode(item[1].match(/<link>([\s\S]*?)<\/link>/)?.[1] || '')
+      const desc = decode(item[1].match(/<description>([\s\S]*?)<\/description>/)?.[1] || '').substring(0,100)
+      result += `• **${title}**
+  📍 ${zone} | ${desc}...
+  🔗 ${link}
+
+`
     }
-    throw new Error('no results')
+    result += `🔗 Toutes les offres : https://www.francetravail.fr
+Boudoum ! 🇬🇵`
+    return result
   } catch(e) {
     return `💼 **Offres Emploi DOM-TOM — Plateformes**
 
 🇬🇵 **Guadeloupe**
-• 🔗 https://www.francetravail.fr (Pôle Emploi)
+• 🔗 https://www.francetravail.fr
 • 🔗 https://www.regionguadeloupe.fr/emploi
-• 🔗 https://www.guadeloupe.cci.fr
 
 🇲🇶 **Martinique**
 • 🔗 https://www.francetravail.fr
-• 🔗 https://www.caraibe-emploi.com
 
-🌍 **International DOM-TOM**
+🌍 **Caraïbes**
 • 🔗 https://caribbeanjobs.com
-• 🔗 https://www.jobartis.com
-• 🔗 https://emploi.re (Réunion)
 
-📞 France Travail Guadeloupe : 3949
-
-BOUDOUM ! 🇬🇵`
+Boudoum ! 🇬🇵`
   }
 }
 
