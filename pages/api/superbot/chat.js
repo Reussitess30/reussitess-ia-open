@@ -7140,7 +7140,8 @@ Boudoum ! 🇬🇵`
 Boudoum ! 🇬🇵`
     return result
   } catch(e) {
-    return `💼 **Offres Emploi DOM-TOM**
+    console.error('FT ERR:', e.message, e.stack?.substring(0,200))
+    return `💼 **Offres Emploi DOM-TOM [${e.message}]**
 
 🇬🇵 https://www.francetravail.fr
 🌴 https://caribbeanjobs.com
