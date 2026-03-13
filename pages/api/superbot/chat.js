@@ -941,12 +941,14 @@ async function getWikipedia(term) {
   // BILAN FINAL ECOSYSTEME
   if (msgLow.includes("que sais-tu faire") || msgLow.includes("tes capacités") || msgLow.includes("liste tes fonctions") || msgLow.includes("tout ce que tu fais") || msgLow.includes("fonctionnalités")) {
     return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS AI — 150+ Fonctionnalités**\n\n"
-    +"🌍 **Données Temps Réel :** Météo monde, Crypto live, Actualités, Séismes, Cyclones, ISS, Lune, Taux change\n\n"
+    +"🌍 **Données Temps Réel :** Météo monde, Crypto live, Actualités Bondamanjak/RFI/France24, Séismes USGS, Cyclones NHC, ISS, Lune, Taux change, Marées NOAA, PIB World Bank, Nutrition OpenFoodFacts, Communes INSEE, Open Data gouv.fr\n\n"
     +"🧠 **60 Neuro-X :** Finance, Business, Culture, Coach, Tech, Santé, Droit, Voyage, Cuisine, Musique, Sport, Histoire, Agriculture, Tourisme, Astronomie, Géopolitique, SEO, DeFi, NFT, Psychologie, Langues, Énergie, Mode, Gastronomie, Enfants, Seniors, Femmes, Jeunes, Diaspora, Blockchain, Stratégie...\n\n"
     +"🛡️ **40 Sentinelles :** Surveillance 24/7 prix REUSS, site, APIs, sécurité\n\n"
     +"🎯 **99 Quiz :** Tous thèmes caribéens et mondiaux\n\n"
     +"✨ **Créatif :** Poèmes créoles, Chansons zouk, Contes, Slogans, Posts réseaux, Hashtags, Bio\n\n"
     +"💼 **Business :** CV, Contrats, Emails, Business Plan, Pitch, Dropshipping, Freelance, Export\n\n"
++"💼 **Emploi DOM-TOM :** France Travail temps réel (Guadeloupe/Martinique/Guyane/Réunion), CaribbeaJobs, Indeed, LinkedIn, Caraibe-emploi\n\n"
++"🌴 **Actualités DOM-TOM :** Bondamanjak (Guadeloupe/Martinique/Guyane/Mayotte), Mayotte Hebdo, RFI Afrique, France24 Monde\n\n"
     +"💎 **Crypto :** Analyse marché, Staking REUSS, DAO, Whitepaper, GoMining, Web3\n\n"
     +"🇬🇵 **Caribéen :** Proverbes, Mots créoles, Blagues, Agenda, Cocktails, Recettes, Champions, Histoire\n\n"
     +"💬 Active : *neuro-x [domaine]* | *agents ia* | *rapport complet*\n\n"
