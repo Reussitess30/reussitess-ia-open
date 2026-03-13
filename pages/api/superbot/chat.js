@@ -3681,7 +3681,12 @@ export default async function handler(req, res) {
 • ⛽ Prix carburant DOM-TOM
 • 💎 Prix Token REUSS (CoinGecko Polygon)
 • ₿ Crypto BTC/ETH/POL temps réel
-• 📰 Actualités Guadeloupe/Martinique/DOM-TOM
+• 📰 Actualités Bondamanjak (Guadeloupe/Martinique/Guyane/Mayotte) + RFI + France24
+• 🌊 Marées Guadeloupe temps réel (NOAA)
+• 🥗 Nutrition aliments (OpenFoodFacts)
+• 📊 PIB/Chômage DOM-TOM (World Bank)
+• 🏘️ Communes & population (INSEE)
+• 📂 Open Data officiel (data.gouv.fr)
 • 📻 RCI FM Guadeloupe 104.3
 • 📰 RFI/BBC/France24/Al Jazeera monde
 
@@ -3707,7 +3712,8 @@ export default async function handler(req, res) {
 
 🎓 **Éducation & Emploi :**
 • 🎓 BAC/BTS résultats & calendrier
-• 💼 Offres emploi DOM-TOM (France Travail)
+• 💼 Offres emploi temps réel France Travail OAuth (Guadeloupe/Martinique/Guyane/Réunion)
+• 💼 CaribbeaJobs, Indeed, LinkedIn, Caraibe-emploi
 • 📚 Bourses AUF
 • 🎓 Rectorat Guadeloupe
 
