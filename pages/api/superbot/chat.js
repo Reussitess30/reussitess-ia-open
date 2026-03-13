@@ -3484,6 +3484,24 @@ export default async function handler(req, res) {
   // ============ CALCUL JOUR DATE ============
   // ===== TRIGGERS ULTRA PRIORITAIRES =====
 
+  // EMPLOI DOM-TOM
+  if (msgLow.includes('emploi') || msgLow.includes('offre') && msgLow.includes('travail') || msgLow.includes('recrutement') || msgLow.includes('france travail')) {
+    const data = await getOffresEmploiDOMTOM()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // VOLS CARAIBES
+  if ((msgLow.includes('vol') || msgLow.includes('avion') || msgLow.includes('aéroport') || msgLow.includes('aeroport')) && (msgLow.includes('caraïbes') || msgLow.includes('caraibes') || msgLow.includes('guadeloupe') || msgLow.includes('martinique') || msgLow.includes('antilles'))) {
+    const data = await getVolsCaraibes()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // HOPITAUX DOM-TOM
+  if (msgLow.includes('hopital') || msgLow.includes('hôpital') || msgLow.includes('chu') || msgLow.includes('urgences') || msgLow.includes('clinique')) {
+    const data = await getHopitauxDOMTOM()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
   // METEO DOM-TOM PRIORITAIRE
   if (msgLow.includes('meteo') || msgLow.includes('météo') || msgLow.includes('température') || msgLow.includes('temperature') || msgLow.includes('quel temps') || msgLow.includes('climat')) {
     const data = await getMeteoDOM()
