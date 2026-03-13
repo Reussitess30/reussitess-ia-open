@@ -7237,23 +7237,38 @@ async function getOffresEmploiDOMTOM(query = "emploi", zone = "971") {
     const token = tokenData.access_token
     if (!token) throw new Error('token failed')
 
-    const q = encodeURIComponent(query.replace(/liste|emploi|offre|guadeloupe|martinique|guyane|reunion|prevention/gi,'').trim())
-    const url = `https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search?departement=${zone}&range=0-4${q ? '&motsCles='+q : ''}`
+    const q = encodeURIComponent(query.replace(/liste|emploi|offre|guadeloupe|martinique|guyane|reunion|prevention|travail/gi,'').trim())
+    const contrat = query.toLowerCase().includes('cdi') ? '&typeContrat=CDI' :
+                    query.toLowerCase().includes('cdd') ? '&typeContrat=CDD' :
+                    query.toLowerCase().includes('interim') || query.toLowerCase().includes('intérim') ? '&typeContrat=MIS' : ''
+    const url = `https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search?departement=${zone}&range=0-9${q ? '&motsCles='+q : ''}${contrat}`
     const r = await fetch(url, { headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/json' } })
     const d = await r.json()
 
     const zoneName = zone === '972' ? 'Martinique' : zone === '973' ? 'Guyane' : zone === '974' ? 'Réunion' : 'Guadeloupe'
-    let result = `💼 **Offres Emploi — ${zoneName}**
+    const total = d.Content_Range?.split('/')?.[1] || d.resultats?.length || 0
 
-🏛️ **France Travail (Temps Réel)**
+    let result = `💼 **Offres Emploi — ${zoneName}** (${total} offres)
+
+`
+    result += `🏛️ **France Travail — Temps Réel**
+
 `
 
     if (d.resultats?.length) {
-      for (const o of d.resultats.slice(0,4)) {
+      for (const o of d.resultats.slice(0,5)) {
+        const contratIcon = o.typeContrat === 'CDI' ? '♾️' : o.typeContrat === 'CDD' ? '📅' : o.typeContrat === 'MIS' ? '⏱️' : '📄'
+        const salaire = o.salaire?.libelle || 'Salaire selon profil'
+        const duree = o.dureeTravailLibelleConverti || o.dureeTravailLibelle || 'Temps plein'
         result += `• **${o.intitule}**
-  🏢 ${o.entreprise?.nom || 'Entreprise'} | 📍 ${o.lieuTravail?.libelle || zoneName}
-  💰 ${o.salaire?.libelle || 'Selon profil'} | 📄 ${o.typeContrat || 'CDI'}
-  🔗 https://candidater.francetravail.fr/offre/${o.id}
+`
+        result += `  🏢 ${o.entreprise?.nom || 'Entreprise confidentielle'}
+`
+        result += `  📍 ${o.lieuTravail?.libelle || zoneName} | ${contratIcon} ${o.typeContrat || 'CDI'} | ⏰ ${duree}
+`
+        result += `  💰 ${salaire}
+`
+        result += `  🔗 https://candidater.francetravail.fr/offre/${o.id}
 
 `
       }
@@ -7263,20 +7278,22 @@ async function getOffresEmploiDOMTOM(query = "emploi", zone = "971") {
 `
     }
 
+    result += `━━━━━━━━━━━━━━━━
+`
     result += `🌴 **Autres Plateformes DOM-TOM**
 `
-    result += `• CaribbeaJobs : https://caribbeanjobs.com
+    result += `• 🌐 CaribbeaJobs : https://caribbeanjobs.com
 `
-    result += `• Indeed Guadeloupe : https://fr.indeed.com/jobs?l=Guadeloupe
+    result += `• 🔍 Indeed : https://fr.indeed.com/jobs?l=${encodeURIComponent(zoneName)}
 `
-    result += `• LinkedIn : https://www.linkedin.com/jobs
+    result += `• 💼 LinkedIn : https://www.linkedin.com/jobs/search/?location=${encodeURIComponent(zoneName)}
 `
-    result += `• Caraibe Emploi : https://www.caraibe-emploi.com
+    result += `• 🌴 Caraibe Emploi : https://www.caraibe-emploi.com
 `
-    result += `• Jobartis Antilles : https://www.jobartis.com
+    result += `• 🌍 Jobartis : https://www.jobartis.com
 
 `
-    result += `📞 France Travail : 3949
+    result += `📞 France Travail : **3949**
 Boudoum ! 🇬🇵`
     return result
   } catch(e) {
@@ -7285,7 +7302,6 @@ Boudoum ! 🇬🇵`
 🇬🇵 https://www.francetravail.fr
 🌴 https://caribbeanjobs.com
 💼 https://fr.indeed.com/jobs?l=Guadeloupe
-🔗 https://www.caraibe-emploi.com
 
 Boudoum ! 🇬🇵`
   }
