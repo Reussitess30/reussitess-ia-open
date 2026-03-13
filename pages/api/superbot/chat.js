@@ -3211,29 +3211,23 @@ async function getSeismesAntilles() {
 // ===== CURRENTSAPI — Actualités mondiales =====
 async function getActualitesCurrents(query = "Guadeloupe", langue = "fr") {
   try {
-    const feeds = {
-      guadeloupe: "https://www.rfi.fr/fr/rss",
-      martinique: "https://la1ere.francetvinfo.fr/martinique/rss.xml",
-      france: "https://www.rfi.fr/fr/rss",
-      afrique: "https://www.rfi.fr/fr/afrique/rss",
-      monde: "https://www.france24.com/fr/rss",
-    }
     const q = query.toLowerCase()
-    const feedUrl = q.includes('guadeloupe') ? feeds.guadeloupe :
-                    q.includes('martinique') ? feeds.martinique :
-                    q.includes('afrique') ? feeds.afrique :
-                    q.includes('monde') || q.includes('international') ? feeds.monde : feeds.france
+    const feedUrl = q.includes('guadeloupe') ? "https://www.bondamanjak.com/category/guadeloupe/feed/" :
+                    q.includes('martinique') ? "https://www.bondamanjak.com/category/martinique/feed/" :
+                    q.includes('guyane') ? "https://www.bondamanjak.com/category/guyane/feed/" :
+                    q.includes('mayotte') ? "https://www.mayottehebdo.com/feed/" :
+                    q.includes('reunion') || q.includes('réunion') ? "https://www.bondamanjak.com/feed/" :
+                    q.includes('outremer') || q.includes('outre-mer') || q.includes('dom') || q.includes('antilles') ? "https://www.bondamanjak.com/feed/" :
+                    q.includes('afrique') ? "https://www.rfi.fr/fr/afrique/rss" :
+                    q.includes('monde') || q.includes('international') ? "https://www.france24.com/fr/rss" :
+                    "https://www.rfi.fr/fr/rss"
     const res = await fetch(feedUrl, { signal: AbortSignal.timeout(5000) })
     const xml = await res.text()
-    const items = [...xml.matchAll(/<item>[\s\S]*?<title><!\[CDATA\[(.*?)\]\]><\/title>[\s\S]*?<link>(.*?)<\/link>[\s\S]*?<pubDate>(.*?)<\/pubDate>[\s\S]*?<\/item>/g)]
-    if (!items.length) {
-      const items2 = [...xml.matchAll(/<title>(.*?)<\/title>[\s\S]*?<link>(.*?)<\/link>/g)].slice(1,6)
-      if (!items2.length) return "❌ Aucune actualité trouvée."
-      const articles2 = items2.map((m,i) => `${i+1}. **${m[1]}**\n   🔗 ${m[2]}`).join("\n\n")
-      return `📰 **Actualités — "${query}"**\n\n${articles2}\n\nBOUDOUM ! 🇬🇵`
-    }
+    const items = [...xml.matchAll(/<item>[\s\S]*?<title>([\s\S]*?)<\/title>[\s\S]*?<link>([\s\S]*?)<\/link>[\s\S]*?<\/item>/g)]
+    if (!items.length) return "❌ Aucune actualité trouvée."
+    const decode = s => s.replace(/<!\[CDATA\[(.*?)\]\]>/g,'$1').replace(/&#(\d+);/g,(_,n)=>String.fromCharCode(n)).replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').trim()
     const articles = items.slice(0,5).map((m,i) =>
-      `${i+1}. **${m[1]}**\n   📰 ${m[3]?.substring(0,16)} — ${m[2]}`
+      `${i+1}. **${decode(m[1])}**\n   🔗 ${decode(m[2]).trim()}`
     ).join("\n\n")
     return `📰 **Actualités — "${query}"**\n\n${articles}\n\nBOUDOUM ! 🇬🇵`
   } catch(e) { return `⚠️ Actualités indisponibles. (${e.message})` }
