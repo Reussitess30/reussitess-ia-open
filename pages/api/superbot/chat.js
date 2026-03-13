@@ -3765,7 +3765,7 @@ export default async function handler(req, res) {
 • PWA installable
 • Mémoire conversation
 
-**Total : 90+ fonctionnalités actives** 🎯
+**Total : 100+ fonctionnalités actives** 🎯
 
 Boudoum ! 🇬🇵`})
   }
