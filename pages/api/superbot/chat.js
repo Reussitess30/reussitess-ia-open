@@ -3208,6 +3208,66 @@ async function getSeismesAntilles() {
 
 
 
+
+// ===== WORLD BANK — PIB & Chômage =====
+async function getWorldBank(pays = "GP", indicateur = "NY.GDP.MKTP.CD") {
+  try {
+    const res = await fetch(`https://api.worldbank.org/v2/country/${pays}/indicator/${indicateur}?format=json&mrv=1`)
+    const d = await res.json()
+    const val = d[1]?.[0]
+    if (!val) return "❌ Données indisponibles."
+    const noms = {
+      "NY.GDP.MKTP.CD": "PIB",
+      "SL.UEM.TOTL.ZS": "Taux de chômage",
+      "SP.POP.TOTL": "Population"
+    }
+    const nom = noms[indicateur] || indicateur
+    const valeur = val.value ? (val.value > 1e9 ? (val.value/1e9).toFixed(2)+"B$" : val.value.toFixed(2)) : "N/A"
+    return `📊 **${nom} — ${val.country?.value}**\n\n💰 ${valeur} (${val.date})\n\nSource: World Bank\nBoudoum ! 🇬🇵`
+  } catch(e) { return "⚠️ World Bank indisponible." }
+}
+
+// ===== INSEE — Communes DOM-TOM =====
+async function getINSEECommunes(region = "01") {
+  try {
+    const res = await fetch(`https://geo.api.gouv.fr/communes?codeRegion=${region}&fields=nom,population&limit=10`)
+    const d = await res.json()
+    if (!d.length) return "❌ Communes non trouvées."
+    const noms = { "01": "Guadeloupe", "02": "Martinique", "03": "Guyane", "04": "La Réunion", "06": "Mayotte" }
+    let result = `🏘️ **Communes — ${noms[region] || 'DOM-TOM'}**\n\n`
+    for (const c of d.slice(0,8)) {
+      result += `• **${c.nom}** — ${c.population?.toLocaleString() || 'N/A'} habitants\n`
+    }
+    return result + "\nSource: INSEE\nBoudoum ! 🇬🇵"
+  } catch(e) { return "⚠️ INSEE indisponible." }
+}
+
+// ===== DATA.GOUV.FR — Open Data =====
+async function getDataGouv(query = "guadeloupe") {
+  try {
+    const res = await fetch(`https://www.data.gouv.fr/api/1/datasets/?q=${encodeURIComponent(query)}&page_size=5`)
+    const d = await res.json()
+    if (!d.data?.length) return "❌ Aucune donnée trouvée."
+    let result = `📂 **Open Data — "${query}"**\n\n`
+    for (const ds of d.data.slice(0,5)) {
+      result += `• **${ds.title}**\n  🔗 https://www.data.gouv.fr/fr/datasets/${ds.id}\n\n`
+    }
+    return result + "Source: data.gouv.fr\nBoudoum ! 🇬🇵"
+  } catch(e) { return "⚠️ data.gouv.fr indisponible." }
+}
+
+// ===== COUNTRIESNOW — Villes =====
+async function getVillesPays(pays = "Guadeloupe") {
+  try {
+    const res = await fetch(`https://countriesnow.space/api/v0.1/countries/cities/q?country=${encodeURIComponent(pays)}`)
+    const d = await res.json()
+    if (!d.data?.length) return "❌ Villes non trouvées."
+    let result = `🏙️ **Villes — ${pays}**\n\n`
+    result += d.data.slice(0,10).map(v => `• ${v}`).join("\n")
+    return result + "\n\nBoudoum ! 🇬🇵"
+  } catch(e) { return "⚠️ Données villes indisponibles." }
+}
+
 // ===== CURRENTSAPI — Actualités mondiales =====
 async function getActualitesCurrents(query = "Guadeloupe", langue = "fr") {
   try {
@@ -3488,6 +3548,28 @@ export default async function handler(req, res) {
   if (msgLow.includes('emploi') || msgLow.includes('offre') || msgLow.includes('recrutement') || msgLow.includes('liste') && msgLow.includes('travail')) {
     const zone = msgLow.includes('martinique') ? '972' : msgLow.includes('guyane') ? '973' : msgLow.includes('reunion') ? '974' : '971'
     const data = await getOffresEmploiDOMTOM(message, zone)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // WORLD BANK PIB CHOMAGE
+  if (msgLow.includes('pib') || msgLow.includes('chomage') || msgLow.includes('chômage') || msgLow.includes('economie') || msgLow.includes('économie') && msgLow.includes('guadeloupe')) {
+    const indic = msgLow.includes('chomage') || msgLow.includes('chômage') ? 'SL.UEM.TOTL.ZS' : msgLow.includes('population') ? 'SP.POP.TOTL' : 'NY.GDP.MKTP.CD'
+    const pays = msgLow.includes('martinique') ? 'MQ' : msgLow.includes('guyane') ? 'GF' : msgLow.includes('reunion') ? 'RE' : 'GP'
+    const data = await getWorldBank(pays, indic)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // INSEE COMMUNES
+  if (msgLow.includes('communes') || msgLow.includes('villes') && (msgLow.includes('guadeloupe') || msgLow.includes('martinique') || msgLow.includes('dom-tom'))) {
+    const region = msgLow.includes('martinique') ? '02' : msgLow.includes('guyane') ? '03' : msgLow.includes('reunion') ? '04' : msgLow.includes('mayotte') ? '06' : '01'
+    const data = await getINSEECommunes(region)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // DATA GOUV OPEN DATA
+  if (msgLow.includes('open data') || msgLow.includes('données publiques') || msgLow.includes('statistiques guadeloupe')) {
+    const query = message.replace(/open data|données publiques|statistiques/gi,'').trim() || 'guadeloupe'
+    const data = await getDataGouv(query)
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
