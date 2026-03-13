@@ -7107,7 +7107,7 @@ async function getOffresEmploiDOMTOM(query = "emploi", zone = "971") {
     const tokenRes = await fetch('https://entreprise.francetravail.fr/connexion/oauth2/access_token?realm=%2Fpartenaire', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${secret}&scope=api_offresdemploiv2`
+      body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${secret}&scope=api_offresdemploiv2%20o2dsoffre`
     })
     const tokenData = await tokenRes.json()
     const token = tokenData.access_token
