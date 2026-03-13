@@ -468,7 +468,17 @@ export default function SuperBotAssistant() {
                   border: msg.role==='assistant'?'1px solid rgba(16,185,129,0.3)':'none',
                   whiteSpace:'pre-wrap'
                 }}>
-                  {msg.content}
+                  {msg.role==='assistant' ? (
+                    <span dangerouslySetInnerHTML={{__html: msg.content
+                      .replace(/BOUDOUM/g, 'Boudoum')
+                      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+                      .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+                      .replace(/\*(.+?)\*/g,'<em>$1</em>')
+                      .replace(/(https?:\/\/[^\s<>"]+)/g,'<a href="$1" target="_blank" rel="noopener noreferrer" style="color:#10b981;text-decoration:underline;word-break:break-all;">$1</a>')
+                      .replace(/
+/g,'<br/>')
+                    }} />
+                  ) : msg.content}
                 </div>
                 {msg.role==='assistant' && msg.pdfAction && (
                   <div style={{display:'flex',gap:'0.5rem',marginTop:'0.5rem',flexWrap:'wrap'}}>
