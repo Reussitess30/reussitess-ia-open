@@ -3484,13 +3484,6 @@ export default async function handler(req, res) {
   // ============ CALCUL JOUR DATE ============
   // ===== TRIGGERS ULTRA PRIORITAIRES =====
 
-  // EMPLOI DOM-TOM
-  if (msgLow.includes('emploi') || msgLow.includes('offre') || msgLow.includes('recrutement') || msgLow.includes('poste') && msgLow.includes('travail')) {
-    const zone = msgLow.includes('martinique') ? '972' : msgLow.includes('guyane') ? '973' : msgLow.includes('reunion') ? '974' : '971'
-    const data = await getOffresEmploiDOMTOM(message, zone)
-    return res.status(200).json({ pdfAction: null, response: data })
-  }
-
   // VOLS CARAIBES
   if ((msgLow.includes('vol') || msgLow.includes('avion') || msgLow.includes('aéroport') || msgLow.includes('aeroport')) && (msgLow.includes('caraïbes') || msgLow.includes('caraibes') || msgLow.includes('guadeloupe') || msgLow.includes('martinique') || msgLow.includes('antilles'))) {
     const data = await getVolsCaraibes()
