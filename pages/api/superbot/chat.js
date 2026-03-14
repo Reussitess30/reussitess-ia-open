@@ -3247,49 +3247,42 @@ async function getMareesGuadeloupe() {
 
 // ===== 14 PAYS AMAZON REUSSITESS =====
 const PAYS_AMAZON = {
-  'france': { code: 'FR', flag: '🇫🇷', amazon: 'amazon.fr', langue: 'fr' },
-  'usa': { code: 'US', flag: '🇺🇸', amazon: 'amazon.com', langue: 'en' },
-  'suede': { code: 'SE', flag: '🇸🇪', amazon: 'amazon.se', langue: 'sv' },
-  'belgique': { code: 'BE', flag: '🇧🇪', amazon: 'amazon.com.be', langue: 'fr' },
-  'singapour': { code: 'SG', flag: '🇸🇬', amazon: 'amazon.sg', langue: 'en' },
-  'australie': { code: 'AU', flag: '🇦🇺', amazon: 'amazon.com.au', langue: 'en' },
-  'angleterre': { code: 'GB', flag: '🇬🇧', amazon: 'amazon.co.uk', langue: 'en' },
-  'italie': { code: 'IT', flag: '🇮🇹', amazon: 'amazon.it', langue: 'it' },
-  'espagne': { code: 'ES', flag: '🇪🇸', amazon: 'amazon.es', langue: 'es' },
-  'allemagne': { code: 'DE', flag: '🇩🇪', amazon: 'amazon.de', langue: 'de' },
-  'bresil': { code: 'BR', flag: '🇧🇷', amazon: 'amazon.com.br', langue: 'pt' },
-  'inde': { code: 'IN', flag: '🇮🇳', amazon: 'amazon.in', langue: 'hi' },
-  'canada': { code: 'CA', flag: '🇨🇦', amazon: 'amazon.ca', langue: 'fr' },
-  'nouvelle-zelande': { code: 'NZ', flag: '🇳🇿', amazon: 'amazon.com', langue: 'en' },
+  'france': { code: 'FR', flag: '🇫🇷', nom: 'France', capitale: 'Paris', pop: '68M', langue: 'Français', monnaie: 'EUR', lat: 48.85, lon: 2.35, b1: 'https://www.amazon.fr/shop/amourguadeloupe', b2: null },
+  'usa': { code: 'US', flag: '🇺🇸', nom: 'États-Unis', capitale: 'Washington', pop: '335M', langue: 'Anglais', monnaie: 'USD', lat: 38.89, lon: -77.03, b1: 'https://www.amazon.com/shop/amourguadeloupe', b2: 'https://www.amazon.com/shop/influencer-fb942837' },
+  'suede': { code: 'SE', flag: '🇸🇪', nom: 'Suède', capitale: 'Stockholm', pop: '10M', langue: 'Suédois', monnaie: 'SEK', lat: 59.33, lon: 18.06, b1: 'https://www.amazon.se/shop/amourguadeloupe', b2: 'https://www.amazon.se/shop/influencer-fb942837' },
+  'belgique': { code: 'BE', flag: '🇧🇪', nom: 'Belgique', capitale: 'Bruxelles', pop: '11M', langue: 'Français/Néerlandais', monnaie: 'EUR', lat: 50.85, lon: 4.35, b1: 'https://www.amazon.com.be/shop/amourguadeloupe', b2: 'https://www.amazon.com.be/shop/influencer-fb942837' },
+  'singapour': { code: 'SG', flag: '🇸🇬', nom: 'Singapour', capitale: 'Singapour', pop: '5.9M', langue: 'Anglais', monnaie: 'SGD', lat: 1.35, lon: 103.81, b1: 'https://www.amazon.sg/shop/amourguadeloupe', b2: 'https://www.amazon.sg/shop/influencer-fb942837' },
+  'australie': { code: 'AU', flag: '🇦🇺', nom: 'Australie', capitale: 'Canberra', pop: '26M', langue: 'Anglais', monnaie: 'AUD', lat: -35.28, lon: 149.12, b1: 'https://www.amazon.com.au/shop/amourguadeloupe', b2: 'https://www.amazon.com.au/shop/influencer-fb942837' },
+  'angleterre': { code: 'GB', flag: '🇬🇧', nom: 'Royaume-Uni', capitale: 'Londres', pop: '67M', langue: 'Anglais', monnaie: 'GBP', lat: 51.50, lon: -0.12, b1: 'https://www.amazon.co.uk/shop/amourguadeloupe', b2: 'https://www.amazon.co.uk/shop/influencer-fb942837' },
+  'italie': { code: 'IT', flag: '🇮🇹', nom: 'Italie', capitale: 'Rome', pop: '59M', langue: 'Italien', monnaie: 'EUR', lat: 41.90, lon: 12.49, b1: 'https://www.amazon.it/shop/amourguadeloupe', b2: 'https://www.amazon.it/shop/influencer-fb942837' },
+  'espagne': { code: 'ES', flag: '🇪🇸', nom: 'Espagne', capitale: 'Madrid', pop: '47M', langue: 'Espagnol', monnaie: 'EUR', lat: 40.41, lon: -3.70, b1: 'https://www.amazon.es/shop/amourguadeloupe', b2: 'https://www.amazon.es/shop/influencer-fb942837' },
+  'allemagne': { code: 'DE', flag: '🇩🇪', nom: 'Allemagne', capitale: 'Berlin', pop: '84M', langue: 'Allemand', monnaie: 'EUR', lat: 52.52, lon: 13.40, b1: 'https://www.amazon.de/shop/amourguadeloupe', b2: 'https://www.amazon.de/shop/influencer-fb942837' },
+  'bresil': { code: 'BR', flag: '🇧🇷', nom: 'Brésil', capitale: 'Brasilia', pop: '215M', langue: 'Portugais', monnaie: 'BRL', lat: -15.77, lon: -47.92, b1: 'https://www.amazon.com.br/shop/amourguadeloupe', b2: null },
+  'inde': { code: 'IN', flag: '🇮🇳', nom: 'Inde', capitale: 'New Delhi', pop: '1.4B', langue: 'Hindi', monnaie: 'INR', lat: 28.61, lon: 77.20, b1: 'https://www.amazon.in/shop/amourguadeloupe', b2: 'https://www.amazon.in/shop/influencer-fb942837' },
+  'canada': { code: 'CA', flag: '🇨🇦', nom: 'Canada', capitale: 'Ottawa', pop: '38M', langue: 'Français/Anglais', monnaie: 'CAD', lat: 45.42, lon: -75.69, b1: 'https://www.amazon.ca/shop/amourguadeloupe', b2: 'https://www.amazon.ca/shop/influencer-fb942837' },
+  'pays-bas': { code: 'NL', flag: '🇳🇱', nom: 'Pays-Bas', capitale: 'Amsterdam', pop: '17M', langue: 'Néerlandais', monnaie: 'EUR', lat: 52.37, lon: 4.89, b1: 'https://www.amazon.nl/shop/amourguadeloupe', b2: 'https://www.amazon.nl/shop/influencer-fb942837' },
 }
 
 async function getInfoPaysAmazon(paysQuery = "france") {
   try {
-    const q = paysQuery.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"")
-    const pays = Object.entries(PAYS_AMAZON).find(([k]) => q.includes(k))?.[1] || PAYS_AMAZON['france']
-    
-    // RestCountries
-    const res = await fetch(`https://restcountries.com/v3.1/alpha/${pays.code}`)
-    const d = (await res.json())[0]
-    const pop = d.population?.toLocaleString() || 'N/A'
-    const capital = d.capital?.[0] || 'N/A'
-    const langue = Object.values(d.languages||{})[0] || 'N/A'
-    const monnaie = Object.keys(d.currencies||{})[0] || 'N/A'
-    const region = d.subregion || d.region || 'N/A'
+    const q = paysQuery.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+    const entry = Object.entries(PAYS_AMAZON).find(([k]) => q.includes(k))
+    const [, pays] = entry || ['france', PAYS_AMAZON['france']]
 
     // Météo capitale
-    const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(capital)}&format=json&limit=1`)
-    const geo = (await geoRes.json())[0]
     let meteo = ''
-    if (geo) {
-      const mRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${geo.lat}&longitude=${geo.lon}&current_weather=true`)
+    try {
+      const mRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${pays.lat}&longitude=${pays.lon}&current_weather=true`, { signal: AbortSignal.timeout(4000) })
       const mData = await mRes.json()
-      meteo = `🌡️ ${mData.current_weather?.temperature}°C à ${capital}`
-    }
+      const temp = mData.current_weather?.temperature
+      meteo = temp ? `🌡️ Météo ${pays.capitale}: ${temp}°C\n` : ''
+    } catch(e) {}
 
-    return `${pays.flag} **${d.name?.common}** — Boutique REUSSITESS\n\n📍 Capitale: ${capital}\n👥 Population: ${pop}\n🗣️ Langue: ${langue}\n💰 Monnaie: ${monnaie}\n🌍 Région: ${region}\n${meteo ? meteo+'\n' : ''}\n🛍️ **Boutique Amazon:** https://${pays.amazon}\n💎 **Affilié REUSSITESS:** https://reussitess.fr/boutique\n\nBoudoum ! 🇬🇵`
+    const boutiques = `🛍️ **Boutique 1:** ${pays.b1}${pays.b2 ? '\n🛍️ **Boutique 2:** '+pays.b2 : ''}`
+    return `${pays.flag} **${pays.nom}** — Boutiques REUSSITESS\n\n📍 Capitale: ${pays.capitale}\n👥 Population: ${pays.pop}\n🗣️ Langue: ${pays.langue}\n💰 Monnaie: ${pays.monnaie}\n${meteo}\n${boutiques}\n\n🌐 Toutes boutiques: https://reussitess.fr/boutiques\nBoudoum ! 🇬🇵`
   } catch(e) { return `⚠️ Infos pays indisponibles. (${e.message})` }
 }
+
 
 // ===== WORLD BANK — PIB & Chômage =====
 async function getWorldBank(pays = "GP", indicateur = "NY.GDP.MKTP.CD") {
