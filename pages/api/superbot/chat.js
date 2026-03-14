@@ -3241,6 +3241,72 @@ async function getMareesGuadeloupe() {
   } catch(e) { return "⚠️ Données marées indisponibles." }
 }
 
+// ===== AMAZON RECHERCHE + RECOMMANDATIONS + COMMISSIONS =====
+async function getAmazonInfo(query = "", type = "search", pays = "france") {
+  const BOUTIQUES = {
+    'france': { flag: '🇫🇷', url: 'amazon.fr', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.fr/shop/amourguadeloupe' },
+    'usa': { flag: '🇺🇸', url: 'amazon.com', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.com/shop/amourguadeloupe', b2: 'https://www.amazon.com/shop/influencer-fb942837' },
+    'canada': { flag: '🇨🇦', url: 'amazon.ca', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.ca/shop/amourguadeloupe', b2: 'https://www.amazon.ca/shop/influencer-fb942837' },
+    'allemagne': { flag: '🇩🇪', url: 'amazon.de', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.de/shop/amourguadeloupe', b2: 'https://www.amazon.de/shop/influencer-fb942837' },
+    'espagne': { flag: '🇪🇸', url: 'amazon.es', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.es/shop/amourguadeloupe', b2: 'https://www.amazon.es/shop/influencer-fb942837' },
+    'italie': { flag: '🇮🇹', url: 'amazon.it', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.it/shop/amourguadeloupe', b2: 'https://www.amazon.it/shop/influencer-fb942837' },
+    'angleterre': { flag: '🇬🇧', url: 'amazon.co.uk', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.co.uk/shop/amourguadeloupe', b2: 'https://www.amazon.co.uk/shop/influencer-fb942837' },
+    'australie': { flag: '🇦🇺', url: 'amazon.com.au', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.com.au/shop/amourguadeloupe', b2: 'https://www.amazon.com.au/shop/influencer-fb942837' },
+    'inde': { flag: '🇮🇳', url: 'amazon.in', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.in/shop/amourguadeloupe', b2: 'https://www.amazon.in/shop/influencer-fb942837' },
+    'bresil': { flag: '🇧🇷', url: 'amazon.com.br', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.com.br/shop/amourguadeloupe' },
+    'singapour': { flag: '🇸🇬', url: 'amazon.sg', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.sg/shop/amourguadeloupe', b2: 'https://www.amazon.sg/shop/influencer-fb942837' },
+    'suede': { flag: '🇸🇪', url: 'amazon.se', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.se/shop/amourguadeloupe', b2: 'https://www.amazon.se/shop/influencer-fb942837' },
+    'belgique': { flag: '🇧🇪', url: 'amazon.com.be', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.com.be/shop/amourguadeloupe', b2: 'https://www.amazon.com.be/shop/influencer-fb942837' },
+    'pays-bas': { flag: '🇳🇱', url: 'amazon.nl', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.nl/shop/amourguadeloupe', b2: 'https://www.amazon.nl/shop/influencer-fb942837' },
+  }
+
+  const p = BOUTIQUES[pays] || BOUTIQUES['france']
+  const q = encodeURIComponent(query)
+
+  if (type === 'search') {
+    // Recherche produit
+    const searchUrl = `https://www.${p.url}/s?k=${q}&tag=${p.tag}`
+    return `🛍️ **Recherche Amazon — "${query}"** ${p.flag}\n\n🔍 Résultats : ${searchUrl}\n\n🏪 **Boutique REUSSITESS ${p.flag}:**\n• ${p.b1}${p.b2 ? '\n• '+p.b2 : ''}\n\n💡 En achetant via nos boutiques vous soutenez REUSSITESS®971 !\nBoudoum ! 🇬🇵`
+  }
+
+  if (type === 'recommandations') {
+    // Catégories populaires
+    const cats = [
+      { nom: '📱 High-Tech', url: `https://www.${p.url}/s?k=high+tech&tag=${p.tag}` },
+      { nom: '👗 Mode', url: `https://www.${p.url}/s?k=mode+tendance&tag=${p.tag}` },
+      { nom: '🏠 Maison', url: `https://www.${p.url}/s?k=decoration+maison&tag=${p.tag}` },
+      { nom: '📚 Livres', url: `https://www.${p.url}/s?k=livres+bestsellers&tag=${p.tag}` },
+      { nom: '🎮 Jeux', url: `https://www.${p.url}/s?k=jeux+video&tag=${p.tag}` },
+      { nom: '🌿 Bien-être', url: `https://www.${p.url}/s?k=bien+etre+sante&tag=${p.tag}` },
+    ]
+    let result = `⭐ **Meilleurs Produits Amazon** ${p.flag}\n\n`
+    for (const cat of cats) {
+      result += `${cat.nom}: ${cat.url}\n`
+    }
+    result += `\n🏪 **Boutique officielle REUSSITESS:**\n• ${p.b1}${p.b2 ? '\n• '+p.b2 : ''}\n\nBoudoum ! 🇬🇵`
+    return result
+  }
+
+  if (type === 'commission') {
+    // Calcul commission
+    const prix = parseFloat(query) || 100
+    const taux = { electronique: 3, mode: 10, maison: 8, livre: 4.5, sport: 6, beaute: 10, default: 5 }
+    let result = `💰 **Calculateur Commission Amazon** ${p.flag}\n\n`
+    result += `💵 Prix produit: **${prix}€**\n\n`
+    result += `📊 **Commissions estimées:**\n`
+    for (const [cat, t] of Object.entries(taux)) {
+      if (cat === 'default') continue
+      const comm = (prix * t / 100).toFixed(2)
+      result += `• ${cat.charAt(0).toUpperCase()+cat.slice(1)}: **${comm}€** (${t}%)\n`
+    }
+    result += `\n🔗 Tag affilié: \`${p.tag}\`\n`
+    result += `🏪 Boutique: ${p.b1}\n\nBoudoum ! 🇬🇵`
+    return result
+  }
+
+  return `🛍️ Boutique REUSSITESS ${p.flag}: ${p.b1}\nBoudoum ! 🇬🇵`
+}
+
 // ===== 14 PAYS AMAZON REUSSITESS =====
 
 
@@ -3623,6 +3689,28 @@ export default async function handler(req, res) {
   if (msgLow.includes('emploi') || msgLow.includes('offre') || msgLow.includes('recrutement') || msgLow.includes('liste') && msgLow.includes('travail')) {
     const zone = msgLow.includes('martinique') ? '972' : msgLow.includes('guyane') ? '973' : msgLow.includes('reunion') ? '974' : '971'
     const data = await getOffresEmploiDOMTOM(message, zone)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // AMAZON RECHERCHE
+  if ((msgLow.includes('cherche') || msgLow.includes('trouve') || msgLow.includes('recherche')) && msgLow.includes('amazon')) {
+    const pays = msgLow.includes('usa') ? 'usa' : msgLow.includes('canada') ? 'canada' : msgLow.includes('allemagne') ? 'allemagne' : msgLow.includes('espagne') ? 'espagne' : msgLow.includes('italie') ? 'italie' : msgLow.includes('angleterre') ? 'angleterre' : msgLow.includes('australie') ? 'australie' : msgLow.includes('inde') ? 'inde' : msgLow.includes('bresil') ? 'bresil' : 'france'
+    const query = message.replace(/cherche|trouve|recherche|amazon|sur|dans|en/gi,'').trim()
+    const data = await getAmazonInfo(query, 'search', pays)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // AMAZON RECOMMANDATIONS
+  if ((msgLow.includes('meilleur') || msgLow.includes('top') || msgLow.includes('populaire') || msgLow.includes('tendance')) && msgLow.includes('amazon')) {
+    const pays = msgLow.includes('usa') ? 'usa' : msgLow.includes('canada') ? 'canada' : 'france'
+    const data = await getAmazonInfo('', 'recommandations', pays)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // AMAZON COMMISSION
+  if ((msgLow.includes('commission') || msgLow.includes('gagner') || msgLow.includes('revenu')) && msgLow.includes('amazon')) {
+    const prix = message.match(/\d+/)?.[0] || '100'
+    const data = await getAmazonInfo(prix, 'commission', 'france')
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
