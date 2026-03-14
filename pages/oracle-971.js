@@ -154,7 +154,7 @@ export default function Oracle971() {
             <p style={{ color: '#7c3aed', fontSize: '0.75rem', marginTop: '0.5rem' }}>— {citation.author}</p>
           </div>
         )}
-        <p style={{ color: '#475569', fontSize: '0.75rem', marginTop: '1.5rem' }}>REUSSITESS®971 — Guadeloupe 🇬🇵 BOUDOUM !</p>
+        <p style={{ color: '#475569', fontSize: '0.75rem', marginTop: '1.5rem' }}>REUSSITESS®971 — Guadeloupe 🇬🇵 Boudoum !</p>
       </div>
     </div>
   )
