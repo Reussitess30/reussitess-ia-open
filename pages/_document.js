@@ -56,44 +56,7 @@ export default function Document() {
             "addressCountry": "FR"
           }
         })}} />
-              {/* Schema.org JSON-LD — Produits Amazon REUSSITESS */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "REUSSITESS®971",
-          "url": "https://reussitess.fr",
-          "logo": "https://reussitess.fr/icon-512x512.png",
-          "description": "Assistant IA caribéen né en Guadeloupe — 110+ fonctionnalités, 26 boutiques Amazon 14 pays, Token REUSS sur Polygon",
-          "foundingLocation": "Guadeloupe, France",
-          "sameAs": ["https://kick.com/Reussitess"],
-          "offers": {
-            "@type": "AggregateOffer",
-            "priceCurrency": "EUR",
-            "hasMerchantReturnPolicy": {
-              "@type": "MerchantReturnPolicy",
-              "applicableCountry": "FR",
-              "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-              "merchantReturnDays": 30,
-              "returnMethod": "https://schema.org/ReturnByMail",
-              "returnFees": "https://schema.org/FreeReturn"
-            },
-            "shippingDetails": {
-              "@type": "OfferShippingDetails",
-              "shippingRate": {
-                "@type": "MonetaryAmount",
-                "value": "0",
-                "currency": "EUR"
-              },
-              "deliveryTime": {
-                "@type": "ShippingDeliveryTime",
-                "handlingTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 3, "unitCode": "DAY" },
-                "transitTime": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 7, "unitCode": "DAY" }
-              },
-              "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "FR" }
-            }
-          }
-        })}} />
-      </Head>
+              </Head>
       <body>
         <Main />
         <NextScript />
