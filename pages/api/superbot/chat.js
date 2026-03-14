@@ -3364,13 +3364,13 @@ async function searchAmazonProducts(query = "smartphone", marketplace = "www.ama
   try {
     const accessKey = process.env.AMAZON_ACCESS_KEY
     const secretKey = process.env.AMAZON_SECRET_KEY
-    const tag = process.env.AMAZON_ASSOCIATE_TAG || 'ronyporinu0ac-21'
+    const tag = process.env.AMAZON_PARTNER_TAG || process.env.AMAZON_ASSOCIATE_TAG || 'ronyporinu0ac-21'
     if (!accessKey || !secretKey) throw new Error('clés manquantes')
 
     const host = marketplace
     const region = marketplace.includes('.fr') || marketplace.includes('.de') || marketplace.includes('.it') || marketplace.includes('.es') || marketplace.includes('.com.be') ? 'eu-west-1' :
                    marketplace.includes('.co.uk') ? 'eu-west-1' :
-                   marketplace.includes('.co.jp') ? 'us-east-1' : 'us-east-1'
+                   marketplace.includes('.co.jp') ? 'us-east-1' : process.env.AMAZON_REGION || 'eu-west-1'
     const endpoint = `https://${host}/paapi5/searchitems`
 
     const payload = JSON.stringify({
