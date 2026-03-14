@@ -30,6 +30,7 @@
     "node-cron": "^4.2.1",
     "node-fetch": "^2.7.0",
     "p-limit": "^7.2.0",
+    "paapi5-nodejs-sdk": "^1.1.0",
     "pdfkit": "^0.17.2",
     "prisma": "^7.1.0",
     "react": "^19.2.1",
