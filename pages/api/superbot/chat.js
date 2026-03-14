@@ -3359,6 +3359,32 @@ async function getInfoPaysAmazon(paysQuery = "france") {
 }
 
 
+// ===== ALCHEMY — Token REUSS Polygon Blockchain =====
+async function getReussTokenBlockchain() {
+  try {
+    const RPC = process.env.RPC_URL || 'https://polygon-mainnet.g.alchemy.com/v2/3pTz5vSd3WrsST8MhLEUC'
+    const CONTRACT = '0xB37531727fC07c6EED4f97F852A115B428046EB2'
+
+    // Total supply
+    const supplyRes = await fetch(RPC, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({jsonrpc:'2.0',method:'eth_call',params:[{to:CONTRACT,data:'0x18160ddd'},'latest'],id:1})
+    })
+    const supplyData = await supplyRes.json()
+    const supply = parseInt(supplyData.result, 16) / 1e18
+
+    // Dernier block
+    const blockRes = await fetch(RPC, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({jsonrpc:'2.0',method:'eth_blockNumber',params:[],id:2})
+    })
+    const blockData = await blockRes.json()
+    const block = parseInt(blockData.result, 16)
+
+    return `💎 **Token REUSS — Données Blockchain Temps Réel**\n\n🔗 Contrat: \`${CONTRACT}\`\n🌐 Réseau: Polygon (MATIC)\n📊 Supply Total: **${supply.toLocaleString()} REUSS**\n⛓️ Block Actuel: **${block.toLocaleString()}**\n\n🔍 Explorer: https://polygonscan.com/token/${CONTRACT}\n💱 Acheter: https://quickswap.exchange/#/swap?outputCurrency=${CONTRACT}\n📈 Chart: https://dexscreener.com/polygon/${CONTRACT}\n\nBoudoum ! 🇬🇵`
+  } catch(e) { return `⚠️ Données blockchain indisponibles. (${e.message})` }
+}
+
 // ===== WORLD BANK — PIB & Chômage =====
 async function getWorldBank(pays = "GP", indicateur = "NY.GDP.MKTP.CD") {
   try {
@@ -3732,6 +3758,12 @@ export default async function handler(req, res) {
   // 14 PAYS AMAZON REUSSITESS
   if (msgLow.includes('boutique') && (msgLow.includes('france') || msgLow.includes('usa') || msgLow.includes('canada') || msgLow.includes('australie') || msgLow.includes('inde') || msgLow.includes('allemagne') || msgLow.includes('espagne') || msgLow.includes('italie') || msgLow.includes('bresil') || msgLow.includes('singapour') || msgLow.includes('suede') || msgLow.includes('belgique') || msgLow.includes('angleterre') || msgLow.includes('zelande'))) {
     const data = await getInfoPaysAmazon(message)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // REUSS TOKEN BLOCKCHAIN
+  if ((msgLow.includes('reuss') || msgLow.includes('token')) && (msgLow.includes('blockchain') || msgLow.includes('supply') || msgLow.includes('contrat') || msgLow.includes('polygon') || msgLow.includes('solde') || msgLow.includes('holders'))) {
+    const data = await getReussTokenBlockchain()
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
