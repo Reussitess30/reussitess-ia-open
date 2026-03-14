@@ -3242,51 +3242,8 @@ async function getMareesGuadeloupe() {
 }
 
 // ===== 14 PAYS AMAZON REUSSITESS =====
-const PAYS_AMAZON = {
-  'france': { code: 'FR', flag: '🇫🇷', b1: 'https://www.amazon.fr/shop/amourguadeloupe', b2: null },
-  'usa': { code: 'US', flag: '🇺🇸', b1: 'https://www.amazon.com/shop/amourguadeloupe', b2: 'https://www.amazon.com/shop/influencer-fb942837' },
-  'suede': { code: 'SE', flag: '🇸🇪', b1: 'https://www.amazon.se/shop/amourguadeloupe', b2: 'https://www.amazon.se/shop/influencer-fb942837' },
-  'belgique': { code: 'BE', flag: '🇧🇪', b1: 'https://www.amazon.com.be/shop/amourguadeloupe', b2: 'https://www.amazon.com.be/shop/influencer-fb942837' },
-  'singapour': { code: 'SG', flag: '🇸🇬', b1: 'https://www.amazon.sg/shop/amourguadeloupe', b2: 'https://www.amazon.sg/shop/influencer-fb942837' },
-  'australie': { code: 'AU', flag: '🇦🇺', b1: 'https://www.amazon.com.au/shop/amourguadeloupe', b2: 'https://www.amazon.com.au/shop/influencer-fb942837' },
-  'angleterre': { code: 'GB', flag: '🇬🇧', b1: 'https://www.amazon.co.uk/shop/amourguadeloupe', b2: 'https://www.amazon.co.uk/shop/influencer-fb942837' },
-  'italie': { code: 'IT', flag: '🇮🇹', b1: 'https://www.amazon.it/shop/amourguadeloupe', b2: 'https://www.amazon.it/shop/influencer-fb942837' },
-  'espagne': { code: 'ES', flag: '🇪🇸', b1: 'https://www.amazon.es/shop/amourguadeloupe', b2: 'https://www.amazon.es/shop/influencer-fb942837' },
-  'allemagne': { code: 'DE', flag: '🇩🇪', b1: 'https://www.amazon.de/shop/amourguadeloupe', b2: 'https://www.amazon.de/shop/influencer-fb942837' },
-  'bresil': { code: 'BR', flag: '🇧🇷', b1: 'https://www.amazon.com.br/shop/amourguadeloupe', b2: null },
-  'inde': { code: 'IN', flag: '🇮🇳', b1: 'https://www.amazon.in/shop/amourguadeloupe', b2: 'https://www.amazon.in/shop/influencer-fb942837' },
-  'canada': { code: 'CA', flag: '🇨🇦', b1: 'https://www.amazon.ca/shop/amourguadeloupe', b2: 'https://www.amazon.ca/shop/influencer-fb942837' },
-  'pays-bas': { code: 'NL', flag: '🇳🇱', b1: 'https://www.amazon.nl/shop/amourguadeloupe', b2: 'https://www.amazon.nl/shop/influencer-fb942837' },
-}
 
-async function getInfoPaysAmazon(paysQuery = "france") {
-  try {
-    const q = paysQuery.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"")
-    const pays = Object.entries(PAYS_AMAZON).find(([k]) => q.includes(k))?.[1] || PAYS_AMAZON['france']
-    
-    // RestCountries
-    const res = await fetch(`https://restcountries.com/v3.1/alpha/${pays.code}`)
-    const d = (await res.json())[0]
-    const pop = d.population?.toLocaleString() || 'N/A'
-    const capital = d.capital?.[0] || 'N/A'
-    const langue = Object.values(d.languages||{})[0] || 'N/A'
-    const monnaie = Object.keys(d.currencies||{})[0] || 'N/A'
-    const region = d.subregion || d.region || 'N/A'
 
-    // Météo capitale
-    const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(capital)}&format=json&limit=1`)
-    const geo = (await geoRes.json())[0]
-    let meteo = ''
-    if (geo) {
-      const mRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${geo.lat}&longitude=${geo.lon}&current_weather=true`)
-      const mData = await mRes.json()
-      meteo = `🌡️ ${mData.current_weather?.temperature}°C à ${capital}`
-    }
-
-    const boutiques = `🛍️ **Boutique 1:** ${pays.b1}${pays.b2 ? '\n🛍️ **Boutique 2:** '+pays.b2 : ''}`
-    return `${pays.flag} **${d.name?.common}** — Boutiques REUSSITESS\n\n📍 Capitale: ${capital}\n👥 Population: ${pop}\n🗣️ Langue: ${langue}\n💰 Monnaie: ${monnaie}\n🌍 Région: ${region}\n${meteo ? meteo+'\n' : ''}\n${boutiques}\n\n🌐 Toutes boutiques: https://reussitess.fr/boutiques\nBoudoum ! 🇬🇵`
-  } catch(e) { return `⚠️ Infos pays indisponibles. (${e.message})` }
-}
 
 // ===== 14 PAYS AMAZON REUSSITESS =====
 const PAYS_AMAZON = {
