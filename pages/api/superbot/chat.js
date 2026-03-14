@@ -3426,7 +3426,7 @@ async function searchAmazonProducts(query = "smartphone", marketplace = "www.ama
     result += `Boudoum ! 🇬🇵`
     return result
   } catch(e) {
-    return `🛍️ Recherche Amazon "${query}" — Voir nos boutiques:\n• 🇫🇷 https://www.amazon.fr/shop/amourguadeloupe\n• 🇺🇸 https://www.amazon.com/shop/amourguadeloupe\n\nBoudoum ! 🇬🇵`
+    return `🛍️ Recherche Amazon [ERR:${e.message}] "${query}" — Voir nos boutiques:\n• 🇫🇷 https://www.amazon.fr/shop/amourguadeloupe\n• 🇺🇸 https://www.amazon.com/shop/amourguadeloupe\n\nBoudoum ! 🇬🇵`
   }
 }
 
