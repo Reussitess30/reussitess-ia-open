@@ -7331,7 +7331,7 @@ async function getOffresEmploiDOMTOM(query = "emploi", zone = "971") {
 `
         result += `  💰 ${salaire}
 `
-        result += `  🔗 https://candidater.francetravail.fr/offre/${o.id}
+        result += `  🔗 https://candidat.francetravail.fr/offres/recherche/detail/${o.id}
 
 `
       }
