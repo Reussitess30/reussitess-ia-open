@@ -3365,23 +3365,22 @@ async function getReussTokenBlockchain() {
     const RPC = process.env.RPC_URL || 'https://polygon-mainnet.g.alchemy.com/v2/3pTz5vSd3WrsST8MhLEUC'
     const CONTRACT = '0xB37531727fC07c6EED4f97F852A115B428046EB2'
 
-    // Total supply
-    const supplyRes = await fetch(RPC, {
-      method: 'POST', headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({jsonrpc:'2.0',method:'eth_call',params:[{to:CONTRACT,data:'0x18160ddd'},'latest'],id:1})
-    })
-    const supplyData = await supplyRes.json()
-    const supply = parseInt(supplyData.result, 16) / 1e18
+    const [supplyRes, blockRes, metaRes] = await Promise.all([
+      fetch(RPC, { method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({jsonrpc:'2.0',method:'eth_call',params:[{to:CONTRACT,data:'0x18160ddd'},'latest'],id:1}) }),
+      fetch(RPC, { method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({jsonrpc:'2.0',method:'eth_blockNumber',params:[],id:2}) }),
+      fetch(RPC, { method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({jsonrpc:'2.0',method:'alchemy_getTokenMetadata',params:[CONTRACT],id:3}) })
+    ])
 
-    // Dernier block
-    const blockRes = await fetch(RPC, {
-      method: 'POST', headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({jsonrpc:'2.0',method:'eth_blockNumber',params:[],id:2})
-    })
-    const blockData = await blockRes.json()
-    const block = parseInt(blockData.result, 16)
+    const [supplyData, blockData, metaData] = await Promise.all([supplyRes.json(), blockRes.json(), metaRes.json()])
 
-    return `💎 **Token REUSS — Données Blockchain Temps Réel**\n\n🔗 Contrat: \`${CONTRACT}\`\n🌐 Réseau: Polygon (MATIC)\n📊 Supply Total: **${supply.toLocaleString()} REUSS**\n⛓️ Block Actuel: **${block.toLocaleString()}**\n\n🔍 Explorer: https://polygonscan.com/token/${CONTRACT}\n💱 Acheter: https://quickswap.exchange/#/swap?outputCurrency=${CONTRACT}\n📈 Chart: https://dexscreener.com/polygon/${CONTRACT}\n\nBoudoum ! 🇬🇵`
+    const supply = (parseInt(supplyData.result, 16) / 1e18).toLocaleString()
+    const block = parseInt(blockData.result, 16).toLocaleString()
+    const meta = metaData.result || {}
+
+    return `💎 **${meta.name || 'REUSSITESS Token'} ($${meta.symbol || 'REUSS'}) — Blockchain Temps Réel**\n\n🔗 Contrat: ${CONTRACT}\n🌐 Réseau: Polygon (MATIC)\n📊 Supply Total: **${supply} REUSS**\n🔢 Décimales: ${meta.decimals || 18}\n⛓️ Block Actuel: **${block}**\n\n📈 **Liens directs:**\n🔍 PolygonScan: https://polygonscan.com/token/${CONTRACT}\n💱 Acheter sur QuickSwap: https://quickswap.exchange/#/swap?outputCurrency=${CONTRACT}\n📊 DexScreener: https://dexscreener.com/polygon/${CONTRACT}\n🦅 Birdeye: https://birdeye.so/token/${CONTRACT}\n\n⚠️ Ce n'est pas un conseil financier. DYOR. Risque de perte totale.\nBoudoum ! 🇬🇵`
   } catch(e) { return `⚠️ Données blockchain indisponibles. (${e.message})` }
 }
 
