@@ -584,6 +584,20 @@ export default function SuperBotAssistant() {
                 style={btnStyle(isListening?'linear-gradient(135deg,#ef4444,#dc2626)':'linear-gradient(135deg,#7c3aed,#5b21b6)', isLoading)}>
                 {isListening ? '⏹' : '🎤'}
               </button>
+              <div style={{display:'flex',flexWrap:'wrap',gap:'0.4rem',marginBottom:'0.5rem'}}>
+                {[
+                  '🌋 Séismes Antilles','🌀 Cyclones','🌤️ Météo Guadeloupe',
+                  '₿ Prix Bitcoin','💱 Taux de change','💼 Emploi Guadeloupe',
+                  '📰 Actualités Guadeloupe','📰 Actualités Afrique','🌊 Marées Guadeloupe',
+                  '🛍️ Boutique France','🔮 Oracle 971','🥗 Nutrition banane',
+                  '📊 PIB Guadeloupe','🏘️ Communes Guadeloupe','tu sais faire quoi'
+                ].map(s => (
+                  <button key={s} onClick={() => { setInput(s); setTimeout(() => document.querySelector('form button[type=submit]')?.click(), 100) }}
+                    style={{padding:'0.3rem 0.7rem',borderRadius:'20px',border:'1px solid rgba(16,185,129,0.4)',background:'rgba(16,185,129,0.1)',color:'#10b981',fontSize:'0.72rem',cursor:'pointer',whiteSpace:'nowrap'}}>
+                    {s}
+                  </button>
+                ))}
+              </div>
               <input type="text" value={input} onChange={e => setInput(e.target.value)}
                 placeholder={`Parlez ou écrivez en ${LANGUES[langue].label.split(' ')[1]}...`}
                 disabled={isLoading || isListening}
