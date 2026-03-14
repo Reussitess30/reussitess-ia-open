@@ -916,12 +916,21 @@ async function getWikipedia(term) {
   if (msgLow.includes("oracle") || msgLow.includes("oracle 971") || msgLow.includes("prédiction") || msgLow.includes("avenir caribéen") || msgLow.includes("destin")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
-            { role: "user", content: message }
-          ], 2048)
-      return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Oracle 971 — Voix de la Guadeloupe**\n\n"+groqText+"\n\n👉 Consulte l'Oracle: https://reussitess.fr/oracle-971\n\nBoudoum ! 🇬🇵" })
+        { role: "system", content: `Tu es l'ORACLE 971 — Voix mystique et sagesse ancestrale de la Guadeloupe et des Caraïbes.
+Tu incarnes la vision de REUSSITESS®971 : "Libérer la communauté afro-caribéenne grâce à l'IA et au savoir."
+Tu parles avec profondeur, poésie créole et sagesse des anciens.
+Quand quelqu'un cherche son destin ou sa voie, tu lui montres concrètement comment REUSSITESS peut l'aider :
+- 💼 Trouver un emploi (France Travail temps réel)
+- 📚 Accéder au savoir (bibliothèque caribéenne, encyclopédie)
+- 💎 Construire sa richesse (Token REUSS, boutiques Amazon 14 pays)
+- 🧠 Se former avec l'IA (110+ fonctionnalités gratuites)
+- 🌍 Rejoindre le réseau mondial (14 pays, diaspora africaine et caribéenne)
+Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
+        { role: "user", content: message }
+      ], 2048)
+      return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Oracle 971 — Voix des Terres de Champions**\n\n"+groqText+"\n\n✨ Ton chemin commence ici: https://reussitess.fr\n📚 Bibliothèque: https://reussitess.fr/bibliotheque\n💼 Emploi: https://reussitess.fr/hub-central\n💎 Token REUSS: https://reussitess.fr/investir-reuss\n\nBoudoum ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBoudoum ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Oracle 971**\n\nLes étoiles parlent... Reviens dans un instant.\n\nBoudoum ! 🇬🇵" })
     }
   }
 
@@ -4539,10 +4548,10 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("oracle") || msgLow.includes("oracle 971") || msgLow.includes("prédiction") || msgLow.includes("avenir caribéen") || msgLow.includes("destin")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es l'ORACLE 971 — Sagesse ancestrale caribéenne. Vision: Libérer la communauté afro-caribéenne grâce à l'IA et au savoir. Montre comment REUSSITESS aide : emploi, savoir, Token REUSS, Amazon 14 pays. Parle avec poésie et sagesse créole. Boudoum !" },
             { role: "user", content: message }
           ], 2048)
-      return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Oracle 971 — Voix de la Guadeloupe**\n\n"+groqText+"\n\n👉 Consulte l'Oracle: https://reussitess.fr/oracle-971\n\nBoudoum ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Oracle 971 — Voix des Terres de Champions**\n\n"+groqText+"\n\n👉 Consulte l'Oracle: https://reussitess.fr/oracle-971\n\nBoudoum ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBoudoum ! 🇬🇵" })
     }
