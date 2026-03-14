@@ -3362,49 +3362,77 @@ async function getInfoPaysAmazon(paysQuery = "france") {
 // ===== AMAZON PAAPI — Recherche produits réels =====
 async function searchAmazonProducts(query = "smartphone", marketplace = "www.amazon.fr") {
   try {
-    const ProductAdvertisingAPIv1 = require('paapi5-nodejs-sdk')
-    const defaultClient = ProductAdvertisingAPIv1.ApiClient.instance
-    defaultClient.accessKey = process.env.AMAZON_ACCESS_KEY
-    defaultClient.secretKey = process.env.AMAZON_SECRET_KEY
-    defaultClient.host = marketplace
-    defaultClient.region = process.env.AMAZON_REGION || 'eu-west-1'
+    const accessKey = process.env.AMAZON_ACCESS_KEY
+    const secretKey = process.env.AMAZON_SECRET_KEY
+    const tag = process.env.AMAZON_PARTNER_TAG || 'ronyporinu0ac-21'
+    if (!accessKey || !secretKey) throw new Error('clés manquantes')
 
-    const api = new ProductAdvertisingAPIv1.DefaultApi()
-    const searchRequest = new ProductAdvertisingAPIv1.SearchItemsRequest()
-    searchRequest.PartnerTag = process.env.AMAZON_PARTNER_TAG || 'ronyporinu0ac-21'
-    searchRequest.PartnerType = 'Associates'
-    searchRequest.Keywords = query
-    searchRequest.SearchIndex = 'All'
-    searchRequest.ItemCount = 5
-    searchRequest.Resources = [
-      'ItemInfo.Title',
-      'Offers.Listings.Price',
-      'Images.Primary.Medium',
-      'DetailPageURL'
-    ]
+    const crypto = require('crypto')
+    const region = marketplace.includes('.co.uk') || marketplace.includes('.fr') || marketplace.includes('.de') || marketplace.includes('.it') || marketplace.includes('.es') || marketplace.includes('.com.be') || marketplace.includes('.se') || marketplace.includes('.nl') ? 'eu-west-1' :
+                   marketplace.includes('.co.jp') ? 'us-east-1' :
+                   marketplace.includes('.com.au') || marketplace.includes('.sg') || marketplace.includes('.in') ? 'us-east-1' : 'us-east-1'
 
-    const data = await new Promise((resolve, reject) => {
-      api.searchItems(searchRequest, (error, data) => {
-        if (error) reject(error)
-        else resolve(data)
-      })
+    const host = marketplace
+    const path_url = '/paapi5/searchitems'
+    const payload = JSON.stringify({
+      Keywords: query,
+      Resources: ['ItemInfo.Title','Offers.Listings.Price','DetailPageURL'],
+      PartnerTag: tag,
+      PartnerType: 'Associates',
+      Marketplace: marketplace.replace('www.',''),
+      ItemCount: 5,
+      SearchIndex: 'All'
     })
 
-    if (!data?.SearchResult?.Items?.length) throw new Error('aucun résultat')
+    const now = new Date()
+    const amzDate = now.toISOString().replace(/[:\-]|\.\d{3}/g,'').replace('T','T').substring(0,15)+'00Z'
+    const dateStamp = amzDate.substring(0,8)
+    const service = 'ProductAdvertisingAPI'
+    const target = 'com.amazon.paapi5.v1.ProductAdvertisingAPIv1.SearchItems'
+
+    const payloadHash = crypto.createHash('sha256').update(payload,'utf8').digest('hex')
+    const canonicalHeaders = `content-encoding:amz-1.0\ncontent-type:application/json; charset=utf-8\nhost:${host}\nx-amz-date:${amzDate}\nx-amz-target:${target}\n`
+    const signedHeaders = 'content-encoding;content-type;host;x-amz-date;x-amz-target'
+    const canonicalRequest = ['POST', path_url, '', canonicalHeaders, signedHeaders, payloadHash].join('\n')
+    const credScope = `${dateStamp}/${region}/${service}/aws4_request`
+    const stringToSign = ['AWS4-HMAC-SHA256', amzDate, credScope, crypto.createHash('sha256').update(canonicalRequest).digest('hex')].join('\n')
+
+    const hmac = (key, data, enc) => crypto.createHmac('sha256', key).update(data, 'utf8').digest(enc)
+    const sigKey = hmac(hmac(hmac(hmac('AWS4'+secretKey, dateStamp), region), service), 'aws4_request')
+    const signature = hmac(sigKey, stringToSign, 'hex')
+
+    const authorization = `AWS4-HMAC-SHA256 Credential=${accessKey}/${credScope}, SignedHeaders=${signedHeaders}, Signature=${signature}`
+
+    const res = await fetch(`https://${host}${path_url}`, {
+      method: 'POST',
+      headers: {
+        'Content-Encoding': 'amz-1.0',
+        'Content-Type': 'application/json; charset=utf-8',
+        'Host': host,
+        'X-Amz-Date': amzDate,
+        'X-Amz-Target': target,
+        'Authorization': authorization
+      },
+      body: payload
+    })
+
+    const text = await res.text()
+    const d = JSON.parse(text)
+    if (!d.SearchResult?.Items?.length) throw new Error(d.Errors?.[0]?.Message || 'aucun résultat')
 
     const flag = marketplace.includes('.fr') ? '🇫🇷' : marketplace.includes('.com.au') ? '🇦🇺' : marketplace.includes('.co.uk') ? '🇬🇧' : marketplace.includes('.de') ? '🇩🇪' : marketplace.includes('.it') ? '🇮🇹' : marketplace.includes('.es') ? '🇪🇸' : marketplace.includes('.ca') ? '🇨🇦' : marketplace.includes('.in') ? '🇮🇳' : marketplace.includes('.com.br') ? '🇧🇷' : '🌍'
 
     let result = `🛍️ **Produits Amazon — "${query}"** ${flag}\n\n`
-    for (const item of data.SearchResult.Items.slice(0,5)) {
+    for (const item of d.SearchResult.Items.slice(0,5)) {
       const titre = item.ItemInfo?.Title?.DisplayValue || 'Produit'
       const prix = item.Offers?.Listings?.[0]?.Price?.DisplayAmount || 'Prix N/A'
-      const url = item.DetailPageURL || `https://${marketplace}/s?k=${encodeURIComponent(query)}`
+      const url = item.DetailPageURL || ''
       result += `• **${titre.substring(0,80)}**\n  💰 ${prix} | 🔗 ${url}\n\n`
     }
     result += `🏪 Boutique REUSSITESS: https://${marketplace}/shop/amourguadeloupe\nBoudoum ! 🇬🇵`
     return result
   } catch(e) {
-    return `⚠️ PAAPI ERR: ${e.message} | 🛍️ **Boutiques REUSSITESS — 26 boutiques / 14 pays**\n\n🇫🇷 **France:** https://www.amazon.fr/shop/amourguadeloupe\n🇺🇸 **USA:** https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837\n🇩🇪 **Allemagne:** https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837\n🇬🇧 **UK:** https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837\n🇮🇹 **Italie:** https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837\n🇪🇸 **Espagne:** https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837\n🇨🇦 **Canada:** https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837\n🇦🇺 **Australie:** https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837\n🇮🇳 **Inde:** https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837\n🇧🇷 **Brésil:** https://www.amazon.com.br/shop/amourguadeloupe\n🇸🇬 **Singapour:** https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837\n🇸🇪 **Suède:** https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837\n🇧🇪 **Belgique:** https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837\n🇳🇱 **Pays-Bas:** https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837\n\n🌐 Toutes boutiques: https://reussitess.fr/boutiques\nBoudoum ! 🇬🇵`
+    return `⚠️ PAAPI ERR: ${e.message} | 🛍️ **Boutiques REUSSITESS — 26 boutiques / 14 pays**\n\n🇫🇷 **France:** https://www.amazon.fr/shop/amourguadeloupe\n🇺🇸 **USA:** https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837\n🇩🇪 **Allemagne:** https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837\n🇬🇧 **UK:** https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837\n🇮🇹 **Italie:** https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837\n🇪🇸 **Espagne:** https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837\n🇨🇦 **Canada:** https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837\n🇦🇺 **Australie:** https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837\n🇮🇳 **Inde:** https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837\n🇧🇷 **Brésil:** https://www.amazon.com.br/shop/amourguadeloupe\n🇸🇬 **Singapour:** https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837\n🇸🇪 **Suède:** https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837\n🇧🇪 **Belgique:** https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837\n🇳🇱 **Pays-Bas:** https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837\n\n🌐 https://reussitess.fr/boutiques\nBoudoum ! 🇬🇵`
   }
 }
 
