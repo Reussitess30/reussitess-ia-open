@@ -3857,6 +3857,7 @@ export default async function handler(req, res) {
 • 🎓 BAC/BTS résultats & calendrier
 • 💼 Offres emploi temps réel France Travail OAuth (Guadeloupe/Martinique/Guyane/Réunion)
 • 💼 CaribbeaJobs, Indeed, LinkedIn, Caraibe-emploi
+• 🛍️ Amazon: recherche produits, top catégories, calcul commissions affilié (14 pays)
 • 📚 Bourses AUF
 • 🎓 Rectorat Guadeloupe
 
@@ -3914,7 +3915,7 @@ export default async function handler(req, res) {
 • PWA installable
 • Mémoire conversation
 
-**Total : 100+ fonctionnalités actives** 🎯
+**Total : 110+ fonctionnalités actives** 🎯
 
 Boudoum ! 🇬🇵`})
   }
