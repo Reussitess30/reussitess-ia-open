@@ -19,7 +19,7 @@ function renderBotMessage(text) {
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
     .replace(/\*(.+?)\*/g,'<em>$1</em>')
-    .replace(URL_REGEX, (m) => '<a href="' + m + '" data-botlink="1" style="color:#10b981;text-decoration:underline;word-break:break-all;cursor:pointer;">' + m + '</a>')
+    .replace(URL_REGEX, (m) => '<a href="' + m + '" target="_blank" rel="noopener noreferrer" style="color:#10b981;text-decoration:underline;word-break:break-all;">' + m + '</a>')
     .replace(/\n/g,'<br/>')
 }
 
