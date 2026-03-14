@@ -3364,23 +3364,7 @@ async function searchAmazonProducts(query = "smartphone", marketplace = "www.ama
   try {
     const accessKey = process.env.AMAZON_ACCESS_KEY
     const secretKey = process.env.AMAZON_SECRET_KEY
-    const TAGS = {
-      'www.amazon.fr': 'reussitess0b-21',
-      'www.amazon.com': 'reussitess-20',
-      'www.amazon.de': 'reussitess07-21',
-      'www.amazon.it': 'reussitess06-21',
-      'www.amazon.es': 'reussitess0c-21',
-      'www.amazon.ca': 'reussitess0e-20',
-      'www.amazon.co.uk': 'reussitess0d-21',
-      'www.amazon.com.au': 'reussitess05-21',
-      'www.amazon.in': 'reussitess04-21',
-      'www.amazon.com.br': 'reussitess03-22',
-      'www.amazon.se': 'reussitess01-21',
-      'www.amazon.com.be': 'reussitess0a-22',
-      'www.amazon.sg': 'reussitess08-21',
-      'www.amazon.nl': 'reussitess09-21',
-    }
-    const tag = TAGS[marketplace] || process.env.AMAZON_ASSOCIATE_TAG || 'reussitess0b-21'
+    const tag = process.env.AMAZON_ASSOCIATE_TAG || 'ronyporinu0ac-21'
     if (!accessKey || !secretKey) throw new Error('clés manquantes')
 
     const host = marketplace
