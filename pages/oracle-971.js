@@ -149,6 +149,9 @@ export default function Oracle971() {
           <Link href="/boutiques" style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.85rem' }}>🛍️ Boutiques</Link>
           <Link href="/investir-reuss" style={{ background: 'linear-gradient(135deg, #8b5cf6, #6d28d9)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.85rem' }}>💎 Token REUSS</Link>
           <Link href="/champions" style={{ background: 'linear-gradient(135deg, #ec4899, #8b5cf6)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.85rem' }}>🏆 Champions</Link>
+          <Link href="/bibliotheque" style={{ background: 'linear-gradient(135deg, #10b981, #059669)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.85rem' }}>📚 Bibliothèque</Link>
+          <Link href="/boutiques" style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.85rem' }}>🛍️ Boutiques</Link>
+          <Link href="/champions" style={{ background: 'linear-gradient(135deg, #ec4899, #8b5cf6)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.85rem' }}>🏆 Champions</Link>
           <button onClick={restart} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.15)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.85rem' }}>🔄 Reconsulter</button>
         </div>
         {citation && (
