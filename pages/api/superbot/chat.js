@@ -4551,7 +4551,7 @@ Boudoum ! 🇬🇵`})
             { role: "system", content: "Tu es l'ORACLE 971 — Sagesse ancestrale caribéenne. Vision: Libérer la communauté afro-caribéenne grâce à l'IA et au savoir. Montre comment REUSSITESS aide : emploi, savoir, Token REUSS, Amazon 14 pays. Parle avec poésie et sagesse créole. Boudoum !" },
             { role: "user", content: message }
           ], 2048)
-      return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Oracle 971 — Voix des Terres de Champions**\n\n"+groqText+"\n\n👉 Consulte l'Oracle: https://reussitess.fr/oracle-971\n\nBoudoum ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Oracle 971 — Voix des Terres de Champions**\n\n"+groqText+"\n\n✨ Ton chemin commence ici: https://reussitess.fr\n📚 Bibliothèque: https://reussitess.fr/bibliotheque\n💼 Emploi: https://reussitess.fr/hub-central\n💎 Token REUSS: https://reussitess.fr/investir-reuss\n🛍️ Boutiques: https://reussitess.fr/boutiques\n\nBoudoum ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBoudoum ! 🇬🇵" })
     }
