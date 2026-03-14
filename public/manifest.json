@@ -1,7 +1,7 @@
 {
   "name": "REUSSITESS®971 AI",
   "short_name": "REUSSITESS",
-  "description": "IA née en Guadeloupe — 200 agents, 14 pays, Token REUSS, Positivité à l'infini. BOUDOUM !",
+  "description": "IA née en Guadeloupe — 200 agents, 14 pays, Token REUSS, Positivité à l'infini. Boudoum !",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -9,7 +9,11 @@
   "background_color": "#0a0a0a",
   "theme_color": "#00a651",
   "lang": "fr",
-  "categories": ["education", "productivity", "finance"],
+  "categories": [
+    "education",
+    "productivity",
+    "finance"
+  ],
   "icons": [
     {
       "src": "/icon-192x192.png",
@@ -44,6 +48,16 @@
       "name": "Champions",
       "url": "/champions",
       "description": "Passeport de Réussite"
+    },
+    {
+      "name": "Boutiques Amazon",
+      "url": "/boutiques",
+      "description": "26 boutiques 14 pays"
+    },
+    {
+      "name": "Oracle 971",
+      "url": "/oracle-971",
+      "description": "Voix mystique caribéenne"
     }
   ]
 }
