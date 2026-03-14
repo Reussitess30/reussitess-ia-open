@@ -26,7 +26,7 @@ export default function Custom404() {
         
         {/* Bouton presque invisible */}
         <div 
-          onClick={() => router.push('/airpods')}
+          onClick={() => router.push('/')}
           style={{
             marginTop: '50px',
             padding: '10px',
