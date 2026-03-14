@@ -501,6 +501,17 @@ export default function SuperBotAssistant() {
                       style={{padding:'0.3rem 0.7rem',background:'rgba(16,185,129,0.2)',border:'1px solid #10b981',borderRadius:'15px',color:'#10b981',fontSize:'0.72rem',cursor:'pointer',fontWeight:'bold'}}>
                       📄 Télécharger PDF
                     </button>
+                    <button aria-label="Télécharger en PDF" onClick={() => {
+                        const blob = new Blob([msg.content], {type:'text/plain'})
+                        const url = URL.createObjectURL(blob)
+                        const a = document.createElement('a')
+                        a.href = url
+                        a.download = 'reussitess-ai-'+Date.now()+'.txt'
+                        a.click()
+                        URL.revokeObjectURL(url)
+                      }} style={{background:'rgba(16,185,129,0.2)',border:'1px solid rgba(16,185,129,0.4)',color:'white',borderRadius:'8px',padding:'0.4rem 0.8rem',cursor:'pointer',fontSize:'0.75rem'}}>
+                      📥 Télécharger
+                    </button>
                     <button aria-label="Imprimer ce message" onClick={() => {const w=window.open('');w.document.write('<pre>'+msg.content+'</pre>');w.print();}}
                       style={{padding:'0.3rem 0.7rem',background:'rgba(16,185,129,0.2)',border:'1px solid #10b981',borderRadius:'15px',color:'#10b981',fontSize:'0.72rem',cursor:'pointer',fontWeight:'bold'}}>
                       🖨️ Imprimer
