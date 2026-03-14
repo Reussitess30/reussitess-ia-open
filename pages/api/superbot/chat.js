@@ -3797,11 +3797,11 @@ export default async function handler(req, res) {
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
-  // AMAZON RECHERCHE
+  // AMAZON RECHERCHE PAAPI
   if ((msgLow.includes('cherche') || msgLow.includes('trouve') || msgLow.includes('recherche')) && msgLow.includes('amazon')) {
-    const pays = msgLow.includes('usa') ? 'usa' : msgLow.includes('canada') ? 'canada' : msgLow.includes('allemagne') ? 'allemagne' : msgLow.includes('espagne') ? 'espagne' : msgLow.includes('italie') ? 'italie' : msgLow.includes('angleterre') ? 'angleterre' : msgLow.includes('australie') ? 'australie' : msgLow.includes('inde') ? 'inde' : msgLow.includes('bresil') ? 'bresil' : 'france'
-    const query = message.replace(/cherche|trouve|recherche|amazon|sur|dans|en|un|une|des|le|la|les|france|usa|canada|allemagne|espagne|italie|angleterre|australie|inde|bresil|singapour|suede|belgique/gi,'').trim()
-    const data = await getAmazonInfo(query, 'search', pays)
+    const marketplace = msgLow.includes('usa') ? 'www.amazon.com' : msgLow.includes('canada') ? 'www.amazon.ca' : msgLow.includes('allemagne') ? 'www.amazon.de' : msgLow.includes('espagne') ? 'www.amazon.es' : msgLow.includes('italie') ? 'www.amazon.it' : msgLow.includes('angleterre') ? 'www.amazon.co.uk' : msgLow.includes('australie') ? 'www.amazon.com.au' : msgLow.includes('inde') ? 'www.amazon.in' : msgLow.includes('bresil') ? 'www.amazon.com.br' : 'www.amazon.fr'
+    const query = message.replace(/cherche|trouve|recherche|amazon|sur|dans|en|un|une|des|le|la|les|france|usa|canada|allemagne|espagne|italie|angleterre|australie|inde|bresil|singapour|suede|belgique/gi,'').trim() || 'bestsellers'
+    const data = await searchAmazonProducts(query, marketplace)
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
