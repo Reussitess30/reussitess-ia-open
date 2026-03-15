@@ -3465,6 +3465,21 @@ async function searchAmazonProducts(query = "smartphone", marketplace = "www.ama
   }
 }
 
+// ===== TELEGRAM ALERTES =====
+async function sendTelegramAlert(message) {
+  try {
+    const token = process.env.TELEGRAM_BOT_TOKEN
+    const chatId = process.env.TELEGRAM_CHAT_ID
+    if (!token || !chatId) return false
+    await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'Markdown' })
+    })
+    return true
+  } catch(e) { return false }
+}
+
 // ===== AUTO-GUERISON — Health Check Temps Réel =====
 async function getHealthCheck() {
   try {
@@ -3509,6 +3524,10 @@ async function getHealthCheck() {
 
     const allOk = Object.values(checks).every(v => v.startsWith("✅"))
     const status = allOk ? "🟢 TOUS SYSTÈMES OPÉRATIONNELS" : "🟡 SYSTÈME DÉGRADÉ"
+    if (!allOk) {
+      const failedServices = Object.entries(checks).filter(([k,v]) => !v.startsWith("✅")).map(([k,v]) => v).join("\n")
+      await sendTelegramAlert(`🚨 *REUSSSHIELD ALERTE*\n\n${failedServices}\n\n⏰ ${new Date().toISOString().substring(0,19)} UTC`)
+    }
     
     let result = `🛡️ **REUSSSHIELD — Rapport Temps Réel**\n\n${status}\n\n`
     for (const [k, v] of Object.entries(checks)) {
