@@ -3920,15 +3920,6 @@ export default async function handler(req, res) {
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
-  // MEMOIRE — Retenir le prénom
-  if (msgLow.includes('je m appelle') || msgLow.includes("je m'appelle") || msgLow.includes('mon prenom') || msgLow.includes('mon prénom')) {
-    const prenom = message.replace(/je m.appelle|mon pr[ée]nom est|mon pr[ée]nom/gi,'').trim().split(' ')[0]
-    if (prenom.length > 1) {
-      await updateUserMemory(userId, 'prenom', prenom)
-      return res.status(200).json({ pdfAction: null, response: `Enchanté **${prenom}** ! Je me souviendrai de ton prénom. Boudoum ! 🇬🇵` })
-    }
-  }
-
   // REUSSSHIELD HEALTH CHECK
   if (msgLow.includes('reussshield') || msgLow.includes('état du système') || msgLow.includes('etat systeme') || msgLow.includes('santé système') || (msgLow.includes('tout') && msgLow.includes('fonctionne'))) {
     const data = await getHealthCheck()
