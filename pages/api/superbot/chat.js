@@ -3465,6 +3465,60 @@ async function searchAmazonProducts(query = "smartphone", marketplace = "www.ama
   }
 }
 
+// ===== AUTO-GUERISON — Health Check Temps Réel =====
+async function getHealthCheck() {
+  try {
+    const checks = {}
+    
+    // Test Groq
+    try {
+      const r = await fetch("https://api.groq.com/openai/v1/models", {
+        headers: { "Authorization": "Bearer " + process.env.GROQ_API_KEY },
+        signal: AbortSignal.timeout(3000)
+      })
+      checks.groq = r.ok ? "✅ Groq IA" : "⚠️ Groq dégradé"
+    } catch(e) { checks.groq = "❌ Groq indisponible" }
+
+    // Test Alchemy
+    try {
+      const r = await fetch(process.env.RPC_URL || 'https://polygon-mainnet.g.alchemy.com/v2/3pTz5vSd3WrsST8MhLEUC', {
+        method: 'POST', headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({jsonrpc:'2.0',method:'eth_blockNumber',params:[],id:1}),
+        signal: AbortSignal.timeout(3000)
+      })
+      checks.blockchain = r.ok ? "✅ Blockchain Polygon" : "⚠️ Blockchain dégradée"
+    } catch(e) { checks.blockchain = "❌ Blockchain indisponible" }
+
+    // Test Open-Meteo
+    try {
+      const r = await fetch("https://api.open-meteo.com/v1/forecast?latitude=16.01&longitude=-61.73&current_weather=true", { signal: AbortSignal.timeout(3000) })
+      checks.meteo = r.ok ? "✅ Météo Open-Meteo" : "⚠️ Météo dégradée"
+    } catch(e) { checks.meteo = "❌ Météo indisponible" }
+
+    // Test CoinGecko
+    try {
+      const r = await fetch("https://api.coingecko.com/api/v3/ping", { signal: AbortSignal.timeout(3000) })
+      checks.crypto = r.ok ? "✅ Crypto CoinGecko" : "⚠️ Crypto dégradée"
+    } catch(e) { checks.crypto = "❌ Crypto indisponible" }
+
+    // Test RSS Actualités
+    try {
+      const r = await fetch("https://www.rfi.fr/fr/afrique/rss", { signal: AbortSignal.timeout(3000) })
+      checks.actualites = r.ok ? "✅ Actualités RFI" : "⚠️ Actualités dégradées"
+    } catch(e) { checks.actualites = "❌ Actualités indisponibles" }
+
+    const allOk = Object.values(checks).every(v => v.startsWith("✅"))
+    const status = allOk ? "🟢 TOUS SYSTÈMES OPÉRATIONNELS" : "🟡 SYSTÈME DÉGRADÉ"
+    
+    let result = `🛡️ **REUSSSHIELD — Rapport Temps Réel**\n\n${status}\n\n`
+    for (const [k, v] of Object.entries(checks)) {
+      result += `${v}\n`
+    }
+    result += `\n⏰ ${new Date().toISOString().substring(0,19).replace('T',' ')} UTC\n200 agents IA en surveillance 24/7\nBoudoum ! 🇬🇵`
+    return result
+  } catch(e) { return "⚠️ Health check indisponible." }
+}
+
 // ===== ALCHEMY — Token REUSS Polygon Blockchain =====
 async function getReussTokenBlockchain() {
   try {
@@ -3863,6 +3917,12 @@ export default async function handler(req, res) {
   // 14 PAYS AMAZON REUSSITESS
   if (msgLow.includes('boutique') && (msgLow.includes('france') || msgLow.includes('usa') || msgLow.includes('canada') || msgLow.includes('australie') || msgLow.includes('inde') || msgLow.includes('allemagne') || msgLow.includes('espagne') || msgLow.includes('italie') || msgLow.includes('bresil') || msgLow.includes('singapour') || msgLow.includes('suede') || msgLow.includes('belgique') || msgLow.includes('angleterre') || msgLow.includes('zelande'))) {
     const data = await getInfoPaysAmazon(message)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // REUSSSHIELD HEALTH CHECK
+  if (msgLow.includes('reussshield') || msgLow.includes('état du système') || msgLow.includes('etat systeme') || msgLow.includes('santé système') || (msgLow.includes('tout') && msgLow.includes('fonctionne'))) {
+    const data = await getHealthCheck()
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
