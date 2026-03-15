@@ -3920,6 +3920,15 @@ export default async function handler(req, res) {
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
+  // MEMOIRE — Retenir le prénom
+  if (msgLow.includes('je m appelle') || msgLow.includes("je m'appelle") || msgLow.includes('mon prenom') || msgLow.includes('mon prénom')) {
+    const prenom = message.replace(/je m.appelle|mon pr[ée]nom est|mon pr[ée]nom/gi,'').trim().split(' ')[0]
+    if (prenom.length > 1) {
+      await updateUserMemory(userId, 'prenom', prenom)
+      return res.status(200).json({ pdfAction: null, response: `Enchanté **${prenom}** ! Je me souviendrai de ton prénom. Boudoum ! 🇬🇵` })
+    }
+  }
+
   // REUSSSHIELD HEALTH CHECK
   if (msgLow.includes('reussshield') || msgLow.includes('état du système') || msgLow.includes('etat systeme') || msgLow.includes('santé système') || (msgLow.includes('tout') && msgLow.includes('fonctionne'))) {
     const data = await getHealthCheck()
@@ -7965,4 +7974,31 @@ async function orchestrateAgents(message, context) {
     return await groqFetch([...history, { role: "user", content: message }].map((m,i) => i === 0 && !history.length ? { role: "system", content: systemPrompt } : m).concat(history.length ? [{ role: "user", content: message }] : []), 1024)
   }
   return null
+}// ===== MEMOIRE REDIS — Préférences utilisateur =====
+async function getUserMemory(userId) {
+  try {
+    const { Redis } = await import('@upstash/redis')
+    const redis = Redis.fromEnv()
+    const data = await redis.get('user:' + userId)
+    return data ? JSON.parse(data) : {}
+  } catch(e) { return {} }
 }
+
+async function saveUserMemory(userId, data) {
+  try {
+    const { Redis } = await import('@upstash/redis')
+    const redis = Redis.fromEnv()
+    await redis.set('user:' + userId, JSON.stringify(data), { ex: 30 * 24 * 60 * 60 }) // 30 jours
+    return true
+  } catch(e) { return false }
+}
+
+async function updateUserMemory(userId, key, value) {
+  const mem = await getUserMemory(userId)
+  mem[key] = value
+  mem.lastSeen = new Date().toISOString()
+  await saveUserMemory(userId, mem)
+  return mem
+}
+
+
