@@ -334,7 +334,7 @@ const whitepaperData = {
       site: "reussitess.fr",
       quiz: "50 catégories en 6 langues (FR, EN, ES, PT, Créole, AR)",
       languebot: "LanguageBot — lecture vocale 6 langues",
-      amazon: "26 boutiques dans 14 pays — tag: ronyporinu0ac-21",
+      amazon: "26 boutiques dans 14 pays — tag: porinus-21",
       pays_amazon: ["USA", "France", "Allemagne", "Italie", "Espagne", "Canada", "UK", "Australie", "Belgique", "Inde", "Pays-Bas", "Suède", "Singapour", "Brésil"],
       gomining: "gomining.com/?ref=OT3GI2U — Minage Bitcoin cloud (revenus variables selon marché)",
       agents_ia: "200 agents IA (1 Suprême, 99 Nexus, 60 Neuro-X, 40 Sentinelles)",
@@ -497,7 +497,7 @@ Fondateur : Rony Porinus • Guadeloupe 🇬🇵 • Boudoum !
 
   // Amazon
   if (msg.includes('amazon') || msg.includes('boutique') || msg.includes('affilié')) {
-    return `✅ **Réseau Amazon — 26 boutiques · 14 pays :**\n\n\${whitepaperData.reel.plateforme.pays_amazon.join(", ")}\n\nTag affilié : ronyporinu0ac-21\nCommissions : 4-8% sur chaque vente qualifiée\n\nBoudoum ! 🌴`
+    return `✅ **Réseau Amazon — 26 boutiques · 14 pays :**\n\n\${whitepaperData.reel.plateforme.pays_amazon.join(", ")}\n\nTag affilié : porinus-21\nCommissions : 4-8% sur chaque vente qualifiée\n\nBoudoum ! 🌴`
   }
 
   // Sécurité
@@ -3253,20 +3253,20 @@ async function getMareesGuadeloupe() {
 // ===== AMAZON RECHERCHE + RECOMMANDATIONS + COMMISSIONS =====
 async function getAmazonInfo(query = "", type = "search", pays = "france") {
   const BOUTIQUES = {
-    'france': { flag: '🇫🇷', url: 'amazon.fr', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.fr/shop/amourguadeloupe' },
-    'usa': { flag: '🇺🇸', url: 'amazon.com', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.com/shop/amourguadeloupe', b2: 'https://www.amazon.com/shop/influencer-fb942837' },
-    'canada': { flag: '🇨🇦', url: 'amazon.ca', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.ca/shop/amourguadeloupe', b2: 'https://www.amazon.ca/shop/influencer-fb942837' },
-    'allemagne': { flag: '🇩🇪', url: 'amazon.de', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.de/shop/amourguadeloupe', b2: 'https://www.amazon.de/shop/influencer-fb942837' },
-    'espagne': { flag: '🇪🇸', url: 'amazon.es', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.es/shop/amourguadeloupe', b2: 'https://www.amazon.es/shop/influencer-fb942837' },
-    'italie': { flag: '🇮🇹', url: 'amazon.it', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.it/shop/amourguadeloupe', b2: 'https://www.amazon.it/shop/influencer-fb942837' },
-    'angleterre': { flag: '🇬🇧', url: 'amazon.co.uk', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.co.uk/shop/amourguadeloupe', b2: 'https://www.amazon.co.uk/shop/influencer-fb942837' },
-    'australie': { flag: '🇦🇺', url: 'amazon.com.au', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.com.au/shop/amourguadeloupe', b2: 'https://www.amazon.com.au/shop/influencer-fb942837' },
-    'inde': { flag: '🇮🇳', url: 'amazon.in', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.in/shop/amourguadeloupe', b2: 'https://www.amazon.in/shop/influencer-fb942837' },
-    'bresil': { flag: '🇧🇷', url: 'amazon.com.br', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.com.br/shop/amourguadeloupe' },
-    'singapour': { flag: '🇸🇬', url: 'amazon.sg', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.sg/shop/amourguadeloupe', b2: 'https://www.amazon.sg/shop/influencer-fb942837' },
-    'suede': { flag: '🇸🇪', url: 'amazon.se', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.se/shop/amourguadeloupe', b2: 'https://www.amazon.se/shop/influencer-fb942837' },
-    'belgique': { flag: '🇧🇪', url: 'amazon.com.be', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.com.be/shop/amourguadeloupe', b2: 'https://www.amazon.com.be/shop/influencer-fb942837' },
-    'pays-bas': { flag: '🇳🇱', url: 'amazon.nl', tag: 'ronyporinu0ac-21', b1: 'https://www.amazon.nl/shop/amourguadeloupe', b2: 'https://www.amazon.nl/shop/influencer-fb942837' },
+    'france': { flag: '🇫🇷', url: 'amazon.fr', tag: 'porinus-21', b1: 'https://www.amazon.fr/shop/amourguadeloupe' },
+    'usa': { flag: '🇺🇸', url: 'amazon.com', tag: 'porinus-21', b1: 'https://www.amazon.com/shop/amourguadeloupe', b2: 'https://www.amazon.com/shop/influencer-fb942837' },
+    'canada': { flag: '🇨🇦', url: 'amazon.ca', tag: 'porinus-21', b1: 'https://www.amazon.ca/shop/amourguadeloupe', b2: 'https://www.amazon.ca/shop/influencer-fb942837' },
+    'allemagne': { flag: '🇩🇪', url: 'amazon.de', tag: 'porinus-21', b1: 'https://www.amazon.de/shop/amourguadeloupe', b2: 'https://www.amazon.de/shop/influencer-fb942837' },
+    'espagne': { flag: '🇪🇸', url: 'amazon.es', tag: 'porinus-21', b1: 'https://www.amazon.es/shop/amourguadeloupe', b2: 'https://www.amazon.es/shop/influencer-fb942837' },
+    'italie': { flag: '🇮🇹', url: 'amazon.it', tag: 'porinus-21', b1: 'https://www.amazon.it/shop/amourguadeloupe', b2: 'https://www.amazon.it/shop/influencer-fb942837' },
+    'angleterre': { flag: '🇬🇧', url: 'amazon.co.uk', tag: 'porinus-21', b1: 'https://www.amazon.co.uk/shop/amourguadeloupe', b2: 'https://www.amazon.co.uk/shop/influencer-fb942837' },
+    'australie': { flag: '🇦🇺', url: 'amazon.com.au', tag: 'porinus-21', b1: 'https://www.amazon.com.au/shop/amourguadeloupe', b2: 'https://www.amazon.com.au/shop/influencer-fb942837' },
+    'inde': { flag: '🇮🇳', url: 'amazon.in', tag: 'porinus-21', b1: 'https://www.amazon.in/shop/amourguadeloupe', b2: 'https://www.amazon.in/shop/influencer-fb942837' },
+    'bresil': { flag: '🇧🇷', url: 'amazon.com.br', tag: 'porinus-21', b1: 'https://www.amazon.com.br/shop/amourguadeloupe' },
+    'singapour': { flag: '🇸🇬', url: 'amazon.sg', tag: 'porinus-21', b1: 'https://www.amazon.sg/shop/amourguadeloupe', b2: 'https://www.amazon.sg/shop/influencer-fb942837' },
+    'suede': { flag: '🇸🇪', url: 'amazon.se', tag: 'porinus-21', b1: 'https://www.amazon.se/shop/amourguadeloupe', b2: 'https://www.amazon.se/shop/influencer-fb942837' },
+    'belgique': { flag: '🇧🇪', url: 'amazon.com.be', tag: 'porinus-21', b1: 'https://www.amazon.com.be/shop/amourguadeloupe', b2: 'https://www.amazon.com.be/shop/influencer-fb942837' },
+    'pays-bas': { flag: '🇳🇱', url: 'amazon.nl', tag: 'porinus-21', b1: 'https://www.amazon.nl/shop/amourguadeloupe', b2: 'https://www.amazon.nl/shop/influencer-fb942837' },
   }
 
   const p = BOUTIQUES[pays] || BOUTIQUES['france']
@@ -3364,7 +3364,7 @@ async function searchAmazonProducts(query = "smartphone", marketplace = "www.ama
   try {
     const accessKey = process.env.AMAZON_ACCESS_KEY
     const secretKey = process.env.AMAZON_SECRET_KEY
-    const tag = process.env.AMAZON_PARTNER_TAG || 'ronyporinu0ac-21'
+    const tag = process.env.AMAZON_PARTNER_TAG || 'porinus-21'
     if (!accessKey || !secretKey) throw new Error('clés manquantes')
 
     const crypto = require('crypto')
