@@ -88,7 +88,21 @@ async function groqFetch(messages, maxTokens = 512) {
       if (!orRes.ok) return null
       const orData = await orRes.json()
       return orData.choices?.[0]?.message?.content || null
-    } catch(e2) { console.error("OpenRouter:", e2.message); return null }
+    } catch(e2) {
+      // Fallback Cerebras
+      try {
+        const cbKey = process.env.CEREBRAS_API_KEY
+        if (!cbKey) return null
+        const cbRes = await fetch("https://api.cerebras.ai/v1/chat/completions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": "Bearer " + cbKey },
+          body: JSON.stringify({ model: "llama-3.3-70b", messages, max_tokens: maxTokens })
+        })
+        if (!cbRes.ok) return null
+        const cbData = await cbRes.json()
+        return cbData.choices?.[0]?.message?.content || null
+      } catch(e3) { console.error("Cerebras:", e3.message); return null }
+    }
   }
 }
 // ===== STREAMING GROQ =====
