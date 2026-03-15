@@ -3465,6 +3465,31 @@ async function searchAmazonProducts(query = "smartphone", marketplace = "www.ama
   }
 }
 
+// ===== CHIFFREMENT AES-256 =====
+const crypto_node = require('crypto')
+const ENCRYPT_KEY = process.env.ENCRYPT_KEY || 'reussitess971-guadeloupe-secure-key-32b'
+
+function encryptData(text) {
+  try {
+    const key = crypto_node.createHash('sha256').update(ENCRYPT_KEY).digest()
+    const iv = crypto_node.randomBytes(16)
+    const cipher = crypto_node.createCipheriv('aes-256-cbc', key, iv)
+    const encrypted = Buffer.concat([cipher.update(text, 'utf8'), cipher.final()])
+    return iv.toString('hex') + ':' + encrypted.toString('hex')
+  } catch(e) { return text }
+}
+
+function decryptData(encryptedText) {
+  try {
+    const [ivHex, encHex] = encryptedText.split(':')
+    const key = crypto_node.createHash('sha256').update(ENCRYPT_KEY).digest()
+    const iv = Buffer.from(ivHex, 'hex')
+    const encrypted = Buffer.from(encHex, 'hex')
+    const decipher = crypto_node.createDecipheriv('aes-256-cbc', key, iv)
+    return Buffer.concat([decipher.update(encrypted), decipher.final()]).toString('utf8')
+  } catch(e) { return encryptedText }
+}
+
 // ===== TELEGRAM ALERTES =====
 async function sendTelegramAlert(message) {
   try {
