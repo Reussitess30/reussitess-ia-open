@@ -74,7 +74,22 @@ async function groqFetch(messages, maxTokens = 512) {
     const text = d.choices?.[0]?.message?.content || null
     if (text) responseCache.set(cacheKey, { val: text, ts: Date.now() })
     return text
-  } catch(e) { console.error("groqFetch:", e.message); return null }
+  } catch(e) {
+    console.error("groqFetch:", e.message)
+    // Fallback OpenRouter
+    try {
+      const orKey = process.env.OPENROUTER_API_KEY
+      if (!orKey) return null
+      const orRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer " + orKey, "HTTP-Referer": "https://reussitess.fr", "X-Title": "REUSSITESS AI" },
+        body: JSON.stringify({ model: "meta-llama/llama-3.3-70b-instruct:free", messages, max_tokens: maxTokens })
+      })
+      if (!orRes.ok) return null
+      const orData = await orRes.json()
+      return orData.choices?.[0]?.message?.content || null
+    } catch(e2) { console.error("OpenRouter:", e2.message); return null }
+  }
 }
 // ===== STREAMING GROQ =====
 export async function groqStream(messages, systemPrompt, res) {
