@@ -3517,6 +3517,104 @@ async function getAlertesCatastrophes() {
   } catch(e) { return "⚠️ Alertes indisponibles." }
 }
 
+// ===== LECTURE URL — Analyse de pages web =====
+async function analyserURL(url) {
+  try {
+    const res = await fetch(url, {
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; REUSSITESS-AI/1.0)' },
+      signal: AbortSignal.timeout(8000)
+    })
+    const html = await res.text()
+    // Extraire texte propre
+    const text = html
+      .replace(/<script[\s\S]*?<\/script>/gi, '')
+      .replace(/<style[\s\S]*?<\/style>/gi, '')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .substring(0, 3000)
+    return text
+  } catch(e) { return null }
+}
+
+// ===== OMDB — Films & Séries =====
+async function getFilm(titre = "Avatar") {
+  try {
+    const res = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(titre)}&apikey=trilogy&plot=short`, { signal: AbortSignal.timeout(5000) })
+    const d = await res.json()
+    if (d.Error) return `❌ Film "${titre}" non trouvé.`
+    return `🎬 **${d.Title}** (${d.Year})\n\n📖 ${d.Plot}\n⭐ Note: ${d.imdbRating}/10\n🎭 Genre: ${d.Genre}\n🎬 Réalisateur: ${d.Director}\n🌍 Pays: ${d.Country}\n\nBoudoum ! 🇬🇵`
+  } catch(e) { return "⚠️ Données film indisponibles." }
+}
+
+// ===== COCKTAILDB — Recettes Cocktails =====
+async function getCocktail(nom = "mojito") {
+  try {
+    const res = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${encodeURIComponent(nom)}`, { signal: AbortSignal.timeout(5000) })
+    const d = await res.json()
+    if (!d.drinks?.length) return `❌ Cocktail "${nom}" non trouvé.`
+    const c = d.drinks[0]
+    const ingredients = Object.keys(c).filter(k => k.startsWith('strIngredient') && c[k]).map((k,i) => `${c[k]} (${c['strMeasure'+(i+1)] || ''})`).join(', ')
+    return `🍹 **${c.strDrink}**\n\n📋 Instructions: ${c.strInstructions?.substring(0,300)}...\n\n🧪 Ingrédients: ${ingredients}\n\nBoudoum ! 🇬🇵`
+  } catch(e) { return "⚠️ Recette cocktail indisponible." }
+}
+
+// ===== THEMEALDB — Recettes Cuisine =====
+async function getRecette(plat = "chicken") {
+  try {
+    const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(plat)}`, { signal: AbortSignal.timeout(5000) })
+    const d = await res.json()
+    if (!d.meals?.length) return `❌ Recette "${plat}" non trouvée.`
+    const m = d.meals[0]
+    return `🍽️ **${m.strMeal}** — ${m.strArea}\n\n📋 ${m.strInstructions?.substring(0,400)}...\n\n🌍 Cuisine: ${m.strCategory}\n\nBoudoum ! 🇬🇵`
+  } catch(e) { return "⚠️ Recette indisponible." }
+}
+
+// ===== WIKIPEDIA FR — Articles =====
+
+// ===== AIR QUALITY =====
+async function getAirQuality(ville = "Guadeloupe") {
+  try {
+    const res = await fetch(`https://api.waqi.info/feed/${encodeURIComponent(ville)}/?token=demo`, { signal: AbortSignal.timeout(5000) })
+    const d = await res.json()
+    if (d.status !== 'ok') return `❌ Qualité de l'air pour "${ville}" non trouvée.`
+    const aqi = d.data.aqi
+    const niveau = aqi <= 50 ? '🟢 Bonne' : aqi <= 100 ? '🟡 Modérée' : aqi <= 150 ? '🟠 Mauvaise' : '🔴 Très mauvaise'
+    return `🌬️ **Qualité de l'air — ${ville}**\n\n📊 AQI: **${aqi}** — ${niveau}\n⏰ Mise à jour: ${d.data.time?.s || 'N/A'}\n\nSource: WAQI\nBoudoum ! 🇬🇵`
+  } catch(e) { return "⚠️ Qualité air indisponible." }
+}
+
+// ===== JOKEAPI — Blagues en français =====
+async function getBlague() {
+  try {
+    const res = await fetch('https://v2.jokeapi.dev/joke/Any?lang=fr&blacklistFlags=nsfw,racist', { signal: AbortSignal.timeout(5000) })
+    const d = await res.json()
+    if (d.type === 'single') return `😂 **Blague du moment**\n\n${d.joke}\n\nBoudoum ! 🇬🇵`
+    return `😂 **Blague du moment**\n\n${d.setup}\n\n🥁 ... ${d.delivery}\n\nBoudoum ! 🇬🇵`
+  } catch(e) { return "😂 Pas de blague disponible !" }
+}
+
+// ===== UN POPULATION — Données ONU =====
+async function getUNPopulation(pays = "250") {
+  try {
+    const res = await fetch(`https://population.un.org/dataportalapi/api/v1/data/indicators/49/locations/${pays}/start/2020/end/2023?format=json&pageSize=1`, { signal: AbortSignal.timeout(5000) })
+    const d = await res.json()
+    if (!d.data?.length) return "❌ Données ONU non trouvées."
+    const pop = d.data[0]
+    return `👥 **Population ONU — ${pop.location}**\n\n📊 ${pop.value?.toLocaleString()} millions (${pop.timeLabel})\n\nSource: Nations Unies\nBoudoum ! 🇬🇵`
+  } catch(e) { return "⚠️ Données ONU indisponibles." }
+}
+
+// ===== IP GEOLOCATION =====
+async function getIPLocation(ip = "") {
+  try {
+    const url = ip ? `https://freeipapi.com/api/json/${ip}` : 'https://freeipapi.com/api/json'
+    const res = await fetch(url, { signal: AbortSignal.timeout(5000) })
+    const d = await res.json()
+    return `📍 **Localisation IP**\n\n🌍 Pays: ${d.countryName}\n🏙️ Ville: ${d.cityName}\n📡 IP: ${d.ipAddress}\n🌐 Fuseau: ${d.timeZone}\n\nBoudoum ! 🇬🇵`
+  } catch(e) { return "⚠️ Géolocalisation indisponible." }
+}
+
 // ===== CHIFFREMENT AES-256 =====
 const crypto_node = require('crypto')
 const ENCRYPT_KEY = process.env.ENCRYPT_KEY || 'reussitess971-guadeloupe-secure-key-32b'
@@ -4016,6 +4114,70 @@ export default async function handler(req, res) {
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
+  // OMDB FILMS
+  if ((msgLow.includes('film') || msgLow.includes('série') || msgLow.includes('movie') || msgLow.includes('cinéma')) && !msgLow.includes('caribéen') && !msgLow.includes('guadeloupe')) {
+    const titre = message.replace(/film|série|movie|cinéma|cherche|info|sur|le|la|les/gi,'').trim() || 'Avatar'
+    const data = await getFilm(titre)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // COCKTAIL
+  if (msgLow.includes('cocktail') || msgLow.includes('recette') && msgLow.includes('boisson') || msgLow.includes('mojito') || msgLow.includes('rhum punch')) {
+    const nom = message.replace(/cocktail|recette|boisson|fais|moi/gi,'').trim() || 'mojito'
+    const data = await getCocktail(nom)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // RECETTE CUISINE
+  if ((msgLow.includes('recette') || msgLow.includes('cuisine') || msgLow.includes('plat')) && !msgLow.includes('boisson')) {
+    const plat = message.replace(/recette|cuisine|plat|fais|moi|de|du/gi,'').trim() || 'chicken'
+    const data = await getRecette(plat)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // WIKIPEDIA
+  if (msgLow.includes('wikipedia') || msgLow.includes('qui est') || msgLow.includes('c est quoi') || msgLow.includes("c'est quoi") || msgLow.includes('définition de')) {
+    const sujet = message.replace(/wikipedia|qui est|c.est quoi|définition de/gi,'').trim() || 'Guadeloupe'
+    const data = await getWikipedia(sujet)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // JOKEAPI BLAGUE
+  if (msgLow.includes('blague') || msgLow.includes('joke') || msgLow.includes('fais moi rire') || msgLow.includes('raconte') && msgLow.includes('drôle')) {
+    const data = await getBlague()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // IP GEOLOCATION
+  if (msgLow.includes('ma localisation') || msgLow.includes('mon ip') || msgLow.includes('où suis-je') || msgLow.includes('localise moi')) {
+    const data = await getIPLocation()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // AIR QUALITY
+  if (msgLow.includes('qualité') && msgLow.includes('air') || msgLow.includes('pollution') || msgLow.includes('aqi')) {
+    const ville = message.replace(/qualité|air|pollution|aqi|de|la|à/gi,'').trim() || 'Guadeloupe'
+    const data = await getAirQuality(ville)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // ANALYSE URL
+  const urlMatch = message.match(/(https?:\/\/[^\s]+)/)
+  if (urlMatch) {
+    const url = urlMatch[1]
+    const contenu = await analyserURL(url)
+    if (contenu) {
+      const historyCtx = Array.isArray(context) ? context.slice(-4).map(m => ({ role: m.role === 'assistant' ? 'assistant' : 'user', content: m.content?.substring(0,200) || '' })).filter(m => m.content) : []
+      const question = message.replace(urlMatch[1], '').trim() || 'Résume et analyse ce contenu'
+      const groqText = await groqFetch([
+        ...historyCtx,
+        { role: "system", content: "Tu es REUSSITESS AI. Analyse le contenu web fourni et réponds à la question de l'utilisateur. Sois précis et utile. Boudoum!" },
+        { role: "user", content: `Contenu de ${url}:\n\n${contenu}\n\nQuestion: ${question}` }
+      ], 1024)
+      return res.status(200).json({ pdfAction: null, response: `🔍 **Analyse de ${url}**\n\n${groqText}\n\nBoudoum ! 🇬🇵` })
+    }
+  }
+
   // QUIZ INTERACTIF AVEC MEMOIRE
   if (msgLow.includes('crée un quiz') || msgLow.includes('créer un quiz') || msgLow.includes('fais moi un quiz') || msgLow.includes('quiz sur') || msgLow.includes('jouer quiz')) {
     const topic = message.replace(/crée?|un|quiz|fais|moi|jouer|sur/gi,'').trim() || 'Guadeloupe'
@@ -4154,6 +4316,14 @@ export default async function handler(req, res) {
 • 📰 Actualités Bondamanjak (Guadeloupe/Martinique/Guyane/Mayotte) + RFI + France24
 • 🌊 Marées Guadeloupe temps réel (NOAA)
 • 🥗 Nutrition aliments (OpenFoodFacts)
+• 🎬 Films & Séries (OMDb)
+• 🍹 Cocktails & Recettes (CocktailDB + MealDB)
+• 📖 Wikipedia FR temps réel
+• 🌬️ Qualité de l'air mondiale
+• 😂 Blagues (JokeAPI)
+• 📍 Géolocalisation IP
+• 👥 Données ONU Population
+• 🔍 Analyse de liens URL
 • 📊 PIB/Chômage DOM-TOM (World Bank)
 • 🏘️ Communes & population (INSEE)
 • 📂 Open Data officiel (data.gouv.fr)
@@ -4248,7 +4418,7 @@ export default async function handler(req, res) {
 • PWA installable
 • Mémoire conversation
 
-**Total : 120+ fonctionnalités actives** 🎯
+**Total : 130+ fonctionnalités actives** 🎯
 
 Boudoum ! 🇬🇵`})
   }
