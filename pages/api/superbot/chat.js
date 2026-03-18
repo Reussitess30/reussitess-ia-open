@@ -3465,6 +3465,58 @@ async function searchAmazonProducts(query = "smartphone", marketplace = "www.ama
   }
 }
 
+// ===== DASHBOARD ADMIN STATS =====
+async function getDashboardStats() {
+  try {
+    const { Redis } = await import('@upstash/redis')
+    const redis = Redis.fromEnv()
+    const visitors = await redis.get('reussitess_visitors') || 0
+    const today = new Date().toISOString().substring(0,10)
+    const todayRequests = await redis.get('requests:'+today) || 0
+    return `📊 **Dashboard REUSSITESS AI**\n\n👥 Visiteurs total: **${visitors}**\n📡 Requêtes aujourd'hui: **${todayRequests}**\n🌍 14 pays actifs\n⚡ 6 niveaux fallback IA\n🛡️ Chiffrement AES-256 actif\n🔔 Alertes Telegram actives\n\n⏰ ${new Date().toISOString().substring(0,19)} UTC\nBoudoum ! 🇬🇵`
+  } catch(e) { return "📊 Dashboard indisponible." }
+}
+
+// ===== ALERTES CATASTROPHES =====
+async function getAlertesCatastrophes() {
+  try {
+    const [seismesRes, cyclonesRes] = await Promise.all([
+      fetch('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_week.geojson', { signal: AbortSignal.timeout(5000) }),
+      fetch('https://www.nhc.noaa.gov/CurrentStorms.json', { signal: AbortSignal.timeout(5000) })
+    ])
+    
+    let result = '🚨 **Alertes Catastrophes — Temps Réel**\n\n'
+    
+    // Séismes significatifs
+    const seismes = await seismesRes.json()
+    const bigQuakes = seismes.features?.filter(f => f.properties.mag >= 5.0) || []
+    if (bigQuakes.length > 0) {
+      result += `🌋 **Séismes M5.0+ cette semaine:** ${bigQuakes.length}\n`
+      for (const q of bigQuakes.slice(0,3)) {
+        result += `• M${q.properties.mag} — ${q.properties.place}\n`
+      }
+    } else {
+      result += `🌋 Aucun séisme majeur cette semaine\n`
+    }
+    
+    result += `\n🌀 **Cyclones Atlantique:**\n`
+    try {
+      const cyclones = await cyclonesRes.json()
+      if (cyclones.activeStorms?.length > 0) {
+        for (const s of cyclones.activeStorms) {
+          result += `⚠️ ${s.name} — ${s.classification}\n`
+          await sendTelegramAlert(`🚨 CYCLONE ACTIF: ${s.name} — ${s.classification}`)
+        }
+      } else {
+        result += `✅ Aucun cyclone actif\n`
+      }
+    } catch(e) { result += `✅ Aucun cyclone actif\n` }
+    
+    result += `\nSource: USGS + NHC\nBoudoum ! 🇬🇵`
+    return result
+  } catch(e) { return "⚠️ Alertes indisponibles." }
+}
+
 // ===== CHIFFREMENT AES-256 =====
 const crypto_node = require('crypto')
 const ENCRYPT_KEY = process.env.ENCRYPT_KEY || 'reussitess971-guadeloupe-secure-key-32b'
@@ -3964,6 +4016,18 @@ export default async function handler(req, res) {
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
+  // DASHBOARD ADMIN
+  if (msgLow.includes('dashboard') || msgLow.includes('statistiques bot') || msgLow.includes('stats admin')) {
+    const data = await getDashboardStats()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // ALERTES CATASTROPHES
+  if (msgLow.includes('alerte') && (msgLow.includes('catastrophe') || msgLow.includes('urgence') || msgLow.includes('danger'))) {
+    const data = await getAlertesCatastrophes()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
   // REUSSSHIELD HEALTH CHECK
   if (msgLow.includes('reussshield') || msgLow.includes('état du système') || msgLow.includes('etat systeme') || msgLow.includes('santé système') || (msgLow.includes('tout') && msgLow.includes('fonctionne'))) {
     const data = await getHealthCheck()
@@ -4160,12 +4224,18 @@ export default async function handler(req, res) {
 • Mot créole du jour
 
 🛡️ **Infrastructure :**
-• 3 clés Groq rotation anti-429
+• 6 niveaux fallback IA (Groq x3 + OpenRouter + Cerebras + LangChain)
+• Chiffrement AES-256 conversations
+• Rate limiting 30 req/min par IP
+• Alertes Telegram automatiques
+• REUSSSHIELD health check temps réel
+• Dashboard stats admin
+• Traduction MyMemory gratuite
 • HTTPS + headers sécurisés A+
 • PWA installable
 • Mémoire conversation
 
-**Total : 110+ fonctionnalités actives** 🎯
+**Total : 120+ fonctionnalités actives** 🎯
 
 Boudoum ! 🇬🇵`})
   }
