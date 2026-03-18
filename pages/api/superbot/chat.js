@@ -4089,7 +4089,8 @@ export default async function handler(req, res) {
 
   // METEO DOM-TOM PRIORITAIRE
   if (msgLow.includes('meteo') || msgLow.includes('météo') || msgLow.includes('température') || msgLow.includes('temperature') || msgLow.includes('quel temps') || msgLow.includes('climat')) {
-    const data = await getMeteoDOM()
+    const commune = message.replace(/meteo|météo|température|temperature|quel temps|climat/gi,'').trim() || 'Pointe-à-Pitre'
+    const data = await getMeteoDOMTOM(commune)
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
