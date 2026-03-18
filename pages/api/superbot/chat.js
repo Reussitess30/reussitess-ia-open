@@ -544,7 +544,7 @@ async function getWikipedia(term) {
   if (msgLow.includes("crypto art") || msgLow.includes("generative art") || msgLow.includes("art génératif") || msgLow.includes("créer avec ia") || msgLow.includes("midjourney")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Créatif, expert art génératif IA et NFT caribéen. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X Créatif — Art Génératif IA**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -557,7 +557,7 @@ async function getWikipedia(term) {
   if (msgLow.includes("parentalité") || msgLow.includes("éduquer mon enfant") || msgLow.includes("bébé") || msgLow.includes("grossesse") || msgLow.includes("élever enfant caribéen")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Coach, expert parentalité et famille caribéenne. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "👶 **Neuro-X Enfants — Parentalité Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -570,7 +570,7 @@ async function getWikipedia(term) {
   if (msgLow.includes("gestion du temps") || msgLow.includes("productivité") || msgLow.includes("organisation") || msgLow.includes("procrastination") || msgLow.includes("planning")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Coach, expert productivité et gestion du temps. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "⏰ **Neuro-X Coach — Productivité Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -583,7 +583,7 @@ async function getWikipedia(term) {
   if (msgLow.includes("intelligence collective") || msgLow.includes("travailler ensemble") || msgLow.includes("synergie") || msgLow.includes("collaboration") || msgLow.includes("réseau caribéen")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Stratégie, expert intelligence collective et leadership. Boudoum!" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Stratégie — Intelligence Collective**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -901,7 +901,7 @@ async function getWikipedia(term) {
   if (msgLow.includes("visa universel") || msgLow.includes("opportunité mondiale") || msgLow.includes("réseau mondial") || msgLow.includes("rejoindre reussitess") || msgLow.includes("visa reussitess") || msgLow.includes("opportunités reussitess")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert création association loi 1901 DOM-TOM. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Visa Universel REUSSITESS**\n\n"+groqText+"\n\n👉 **Obtiens ton Visa :** https://reussitess.fr/visa-universel\n\n🚀 Accès aux opportunités mondiales dans 14 pays partenaires !\n\nBoudoum ! 🇬🇵" })
@@ -932,7 +932,7 @@ async function getWikipedia(term) {
   if (msgLow.includes("mon adn") || msgLow.includes("mon identité") || msgLow.includes("mes origines") || msgLow.includes("héritage caribéen")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Culture, expert identité et ADN caribéen afro-antillais. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🧬 **Neuro-X Culture — Mon ADN Caribéen**\n\n"+groqText+"\n\n👉 Explore ton ADN: https://reussitess.fr/mon-adn\n\nBoudoum ! 🇬🇵" })
@@ -967,7 +967,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("ma révolution") || msgLow.includes("revolution ia") || msgLow.includes("transformer ma vie") || msgLow.includes("changer ma vie avec ia") || msgLow.includes("révolution personnelle")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Coach, expert révolution personnelle par IA. Inspire à agir. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🚀 **Neuro-X Coach — Ta Révolution IA**\n\n"+groqText+"\n\n👉 Lance ta révolution: https://reussitess.fr/ma-revolution-ia\n\nBoudoum ! 🇬🇵" })
@@ -997,7 +997,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("biographie") || msgLow.includes("bio instagram") || msgLow.includes("présentation personnelle") || msgLow.includes("qui suis-je") || msgLow.includes("rédige ma bio")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Coach, expert révolution personnelle par IA. Inspire à agir. Boudoum!" },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "✍️ **Neuro-X Marketing — Générateur Bio**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1010,7 +1010,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("cardio") || msgLow.includes("tension artérielle") || msgLow.includes("cholestérol") || msgLow.includes("diabète") || msgLow.includes("santé cardiovasculaire")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Santé, expert santé cardiovasculaire. Toujours recommander un médecin. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "❤️ **Neuro-X Santé — Santé Cardiovasculaire**\n\n"+groqText+"\n\n⚠️ Consultez votre médecin.\n\nBoudoum ! 🇬🇵" })
@@ -1023,7 +1023,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("terrain guadeloupe") || msgLow.includes("acheter terrain") || msgLow.includes("foncier antilles") || msgLow.includes("cadastre guadeloupe") || msgLow.includes("terrain constructible")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert immobilier et achat terrain DOM-TOM. Boudoum!" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🏡 **Neuro-X Immobilier — Achat Terrain Caribéen**\n\n"+groqText+"\n\n⚠️ Consultez un notaire.\n\nBoudoum ! 🇬🇵" })
@@ -1417,10 +1417,10 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("gomining") || msgLow.includes("go mining") || msgLow.includes("minage bitcoin") || msgLow.includes("miner bitcoin") || msgLow.includes("hashrate")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Finance expert crypto. GoMining est une plateforme de minage cloud Bitcoin. REUSSITESS propose uniquement un lien de parrainage GoMining — pas de minage propre. Explique GoMining objectivement, mentionne que REUSSITESS partage un lien affilié. Toujours ajouter: ce n'est pas un conseil financier, DYOR. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
-      return res.status(200).json({ pdfAction: pdfType, response: "⛏️ **Neuro-X Finance — Guide GoMining**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "⛏️ **GoMining — Minage Cloud Bitcoin**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBoudoum ! 🇬🇵" })
     }
@@ -1445,7 +1445,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("champion") || msgLow.includes("sportif antillais") || msgLow.includes("marie-jose perec") || msgLow.includes("teddy riner") || msgLow.includes("athlète guadeloupe") || (msgLow.includes("qui est") && (msgLow.includes("mandela") || msgLow.includes("sankara") || msgLow.includes("lumumba") || msgLow.includes("nkrumah") || msgLow.includes("césaire") || msgLow.includes("fanon"))) || (msgLow.includes("qui était") && (msgLow.includes("mandela") || msgLow.includes("sankara") || msgLow.includes("africain")))) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Finance, expert crypto. GoMining = minage cloud BTC. REUSSITESS propose uniquement un lien parrainage. DYOR. Boudoum!" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Neuro-X Sport — Champions Antillais**\n\n"+groqText+"\n\nTerres de Champions ! Boudoum ! 🇬🇵" })
@@ -3703,7 +3703,7 @@ async function getVillesPays(pays = "Guadeloupe") {
 async function getActualitesCurrents(query = "Guadeloupe", langue = "fr") {
   try {
     const q = query.toLowerCase()
-    const feedUrl = q.includes('guadeloupe') ? "https://www.bondamanjak.com/category/guadeloupe/feed/" :
+    const feedUrl = q.includes('guadeloupe') ? "https://www.faxinfo.fr/feed/" :
                     q.includes('martinique') ? "https://www.bondamanjak.com/category/martinique/feed/" :
                     q.includes('guyane') ? "https://www.bondamanjak.com/category/guyane/feed/" :
                     q.includes('mayotte') ? "https://www.mayottehebdo.com/feed/" :
@@ -4527,7 +4527,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("crypto art") || msgLow.includes("generative art") || msgLow.includes("art génératif") || msgLow.includes("créer avec ia") || msgLow.includes("midjourney")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Créatif, expert art génératif IA et NFT caribéen. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X Créatif — Art Génératif IA**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -4540,7 +4540,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("parentalité") || msgLow.includes("éduquer mon enfant") || msgLow.includes("bébé") || msgLow.includes("grossesse") || msgLow.includes("élever enfant caribéen")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Coach, expert parentalité et famille caribéenne. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "👶 **Neuro-X Enfants — Parentalité Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -4553,7 +4553,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("gestion du temps") || msgLow.includes("productivité") || msgLow.includes("organisation") || msgLow.includes("procrastination") || msgLow.includes("planning")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Coach, expert productivité et gestion du temps. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "⏰ **Neuro-X Coach — Productivité Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -4566,7 +4566,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("intelligence collective") || msgLow.includes("travailler ensemble") || msgLow.includes("synergie") || msgLow.includes("collaboration") || msgLow.includes("réseau caribéen")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Stratégie, expert intelligence collective et leadership. Boudoum!" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Stratégie — Intelligence Collective**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -4816,7 +4816,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("visa universel") || msgLow.includes("opportunité mondiale") || msgLow.includes("réseau mondial") || msgLow.includes("rejoindre reussitess") || msgLow.includes("visa reussitess") || msgLow.includes("opportunités reussitess")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert création association loi 1901 DOM-TOM. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Visa Universel REUSSITESS**\n\n"+groqText+"\n\n👉 **Obtiens ton Visa :** https://reussitess.fr/visa-universel\n\n🚀 Accès aux opportunités mondiales dans 14 pays partenaires !\n\nBoudoum ! 🇬🇵" })
@@ -4847,7 +4847,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("mon adn") || msgLow.includes("mon identité") || msgLow.includes("mes origines") || msgLow.includes("héritage caribéen")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Culture, expert identité et ADN caribéen afro-antillais. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🧬 **Neuro-X Culture — Mon ADN Caribéen**\n\n"+groqText+"\n\n👉 Explore ton ADN: https://reussitess.fr/mon-adn\n\nBoudoum ! 🇬🇵" })
@@ -4873,7 +4873,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("ma révolution") || msgLow.includes("revolution ia") || msgLow.includes("transformer ma vie") || msgLow.includes("changer ma vie avec ia") || msgLow.includes("révolution personnelle")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Coach, expert révolution personnelle par IA. Inspire à agir. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🚀 **Neuro-X Coach — Ta Révolution IA**\n\n"+groqText+"\n\n👉 Lance ta révolution: https://reussitess.fr/ma-revolution-ia\n\nBoudoum ! 🇬🇵" })
@@ -4901,7 +4901,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("biographie") || msgLow.includes("bio instagram") || msgLow.includes("présentation personnelle") || msgLow.includes("qui suis-je") || msgLow.includes("rédige ma bio")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Coach, expert révolution personnelle par IA. Inspire à agir. Boudoum!" },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "✍️ **Neuro-X Marketing — Générateur Bio**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -4914,7 +4914,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("cardio") || msgLow.includes("tension artérielle") || msgLow.includes("cholestérol") || msgLow.includes("diabète") || msgLow.includes("santé cardiovasculaire")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Santé, expert santé cardiovasculaire. Toujours recommander un médecin. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "❤️ **Neuro-X Santé — Santé Cardiovasculaire**\n\n"+groqText+"\n\n⚠️ Consultez votre médecin.\n\nBoudoum ! 🇬🇵" })
@@ -4927,7 +4927,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("terrain guadeloupe") || msgLow.includes("acheter terrain") || msgLow.includes("foncier antilles") || msgLow.includes("cadastre guadeloupe") || msgLow.includes("terrain constructible")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert immobilier et achat terrain DOM-TOM. Boudoum!" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🏡 **Neuro-X Immobilier — Achat Terrain Caribéen**\n\n"+groqText+"\n\n⚠️ Consultez un notaire.\n\nBoudoum ! 🇬🇵" })
@@ -5321,7 +5321,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("gomining") || msgLow.includes("go mining") || msgLow.includes("minage bitcoin") || msgLow.includes("miner bitcoin") || msgLow.includes("hashrate")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Finance, expert crypto. GoMining = minage cloud BTC. REUSSITESS propose uniquement un lien parrainage. DYOR. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "⛏️ **Neuro-X Finance — Guide GoMining**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5349,7 +5349,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("champion") || msgLow.includes("sportif antillais") || msgLow.includes("marie-jose perec") || msgLow.includes("teddy riner") || msgLow.includes("athlète guadeloupe") || (msgLow.includes("qui est") && (msgLow.includes("mandela") || msgLow.includes("sankara") || msgLow.includes("lumumba") || msgLow.includes("nkrumah") || msgLow.includes("césaire") || msgLow.includes("fanon"))) || (msgLow.includes("qui était") && (msgLow.includes("mandela") || msgLow.includes("sankara") || msgLow.includes("africain")))) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Finance, expert crypto. GoMining = minage cloud BTC. REUSSITESS propose uniquement un lien parrainage. DYOR. Boudoum!" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Neuro-X Sport — Champions Antillais**\n\n"+groqText+"\n\nTerres de Champions ! Boudoum ! 🇬🇵" })
