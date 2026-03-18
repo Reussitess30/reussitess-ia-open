@@ -1036,7 +1036,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("web3") || msgLow.includes("metaverse") || msgLow.includes("décentralisé") || msgLow.includes("dapp") || msgLow.includes("defi caribéen")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Tech, expert Web3, blockchain et NFT. Boudoum!" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Tech — Web3 Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1106,7 +1106,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("photographie") || msgLow.includes("photo caribéenne") || msgLow.includes("appareil photo") || msgLow.includes("instagram photo") || msgLow.includes("shooting")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Marketing, expert Instagram et réseaux sociaux. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "📸 **Neuro-X Créatif — Photographie Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1211,7 +1211,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("podcast") || msgLow.includes("créer un podcast") || msgLow.includes("lancer podcast") || msgLow.includes("micro") && msgLow.includes("enregistrer")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Marketing, expert création podcast et contenu audio. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🎙️ **Neuro-X Marketing — Guide Podcast**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1237,7 +1237,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("senior") || msgLow.includes("personnes âgées") || msgLow.includes("vieillir bien") || msgLow.includes("ehpad") || msgLow.includes("aide à domicile")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Seniors, expert bien-vieillir et activités pour seniors DOM-TOM. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Seniors — Bien-Vieillir Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1341,7 +1341,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("créer du contenu") || msgLow.includes("youtuber") || msgLow.includes("streamer") || msgLow.includes("influenceur") || msgLow.includes("monétiser") && msgLow.includes("contenu")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Marketing, expert YouTube et création vidéo. Boudoum!" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🎬 **Neuro-X Marketing — Création Contenu**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1795,7 +1795,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("post instagram") || msgLow.includes("post tiktok") || msgLow.includes("post facebook") || msgLow.includes("caption") || msgLow.includes("génère un post") || msgLow.includes("contenu réseaux")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Marketing, expert TikTok et réseaux sociaux caribéens. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "📱 **Neuro-X Marketing — Générateur Posts**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -4120,7 +4120,7 @@ export default async function handler(req, res) {
   }
 
   // RECETTE CUISINE
-  if ((msgLow.includes('recette') || msgLow.includes('cuisine') || msgLow.includes('plat')) && !msgLow.includes('boisson') && !msgLow.includes('accras') && !msgLow.includes('colombo') && !msgLow.includes('blaff') && !msgLow.includes('bokits') && !msgLow.includes('creole') && !msgLow.includes('antillais') && !msgLow.includes('guadeloupe') && !msgLow.includes('martinique')) {
+  if ((msgLow.includes('recette') || msgLow.includes('cuisine') || msgLow.includes('plat')) && !msgLow.includes('boisson') && !msgLow.includes('accras') && !msgLow.includes('santé') && !msgLow.includes('diabète') && !msgLow.includes('maladie') && !msgLow.includes('colombo') && !msgLow.includes('blaff') && !msgLow.includes('bokits') && !msgLow.includes('creole') && !msgLow.includes('antillais') && !msgLow.includes('guadeloupe') && !msgLow.includes('martinique')) {
     const plat = message.replace(/recette|cuisine|plat|fais|moi|de|du/gi,'').trim() || 'chicken'
     const data = await getRecette(plat)
     return res.status(200).json({ pdfAction: null, response: data })
@@ -4209,6 +4209,51 @@ export default async function handler(req, res) {
     const texte = message.replace(/traduis?\s*(en\s*\w+)?\s*/i,'').trim() || 'Bonjour'
     const trad = await traduire(texte, cible)
     if (trad) return res.status(200).json({ pdfAction: null, response: `🌐 **Traduction → ${cible.toUpperCase()}**\n\n📝 Original: ${texte}\n\n✨ Traduction: **${trad}**\n\nBoudoum ! 🇬🇵` })
+  }
+
+  // SALAIRE MOYEN DOM-TOM
+  if ((msgLow.includes('salaire') || msgLow.includes('smic') || msgLow.includes('revenu moyen')) && (msgLow.includes('guadeloupe') || msgLow.includes('martinique') || msgLow.includes('dom-tom') || msgLow.includes('antilles'))) {
+    const groqText = await groqFetch([
+      { role: "system", content: "Tu es Neuro-X Business, expert marché du travail DOM-TOM. Donne des infos précises sur les salaires moyens, SMIC, coût de la vie en Guadeloupe/Martinique/DOM-TOM. Boudoum!" },
+      { role: "user", content: message }
+    ], 1024)
+    return res.status(200).json({ pdfAction: null, response: "💰 **Salaires DOM-TOM**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
+  }
+
+  // GASTRONOMIE ANTILLAISE
+  if (msgLow.includes('gastronomie') || (msgLow.includes('restaurant') && (msgLow.includes('antillais') || msgLow.includes('créole') || msgLow.includes('guadeloupe') || msgLow.includes('martinique')))) {
+    const groqText = await groqFetch([
+      { role: "system", content: "Tu es Neuro-X Gastronomie, expert cuisine antillaise et gastronomie caribéenne. Parle des restaurants, plats typiques, recettes créoles. Boudoum!" },
+      { role: "user", content: message }
+    ], 1024)
+    return res.status(200).json({ pdfAction: null, response: "🍽️ **Neuro-X Gastronomie — Cuisine Caribéenne**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
+  }
+
+  // ENFANTS EDUCATION
+  if (msgLow.includes('enfant') || msgLow.includes('pédagogie') || msgLow.includes('pedagogie')) {
+    const groqText = await groqFetch([
+      { role: "system", content: "Tu es Neuro-X Éducation, expert pédagogie et développement enfant caribéen. Boudoum!" },
+      { role: "user", content: message }
+    ], 1024)
+    return res.status(200).json({ pdfAction: null, response: "👶 **Neuro-X Éducation — Enfants**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
+  }
+
+  // MODE FASHION
+  if (msgLow.includes('mode') && (msgLow.includes('fashion') || msgLow.includes('tendance') || msgLow.includes('vêtement') || msgLow.includes('style') || msgLow.includes('madras'))) {
+    const groqText = await groqFetch([
+      { role: "system", content: "Tu es Neuro-X Mode, expert fashion et style caribéen, madras, tendances vestimentaires DOM-TOM. Boudoum!" },
+      { role: "user", content: message }
+    ], 1024)
+    return res.status(200).json({ pdfAction: null, response: "👗 **Neuro-X Mode — Style Caribéen**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
+  }
+
+  // DIABETE NUTRITION
+  if (msgLow.includes('diabète') || msgLow.includes('diabete') || msgLow.includes('glycémie') || msgLow.includes('insuline')) {
+    const groqText = await groqFetch([
+      { role: "system", content: "Tu es Neuro-X Santé, expert nutrition et diabète. Toujours recommander un médecin. Boudoum!" },
+      { role: "user", content: message }
+    ], 1024)
+    return res.status(200).json({ pdfAction: null, response: "🏥 **Neuro-X Santé — Nutrition & Diabète**\n\n" + groqText + "\n\n⚠️ Consultez toujours un médecin.\nBoudoum ! 🇬🇵" })
   }
 
   // REUSSSHIELD HEALTH CHECK
@@ -4623,7 +4668,7 @@ Boudoum ! 🇬🇵`})
     return res.status(200).json({ pdfAction: null, response: "Devises Afrique & Caraibe\n\n"+(data||"Donnees indisponibles")+"\n\nSource: ExchangeRate-API\nBoudoum ! 🇬🇵" })
   }
   // ============ BOURSES ============
-  if (msgLow.includes('bourse') || msgLow.includes('auf') || msgLow.includes('campus france') || msgLow.includes('financement etude') || msgLow.includes('aide etudiant')) {
+  if ((msgLow.includes('bourse') && !msgLow.includes('trading') && !msgLow.includes('action') && !msgLow.includes('bourse valeur')) || msgLow.includes('auf') || msgLow.includes('campus france') || msgLow.includes('financement etude') || msgLow.includes('aide etudiant')) {
     const data = await getBoursesAUF()
     return res.status(200).json({ pdfAction: null, response: "Bourses AUF & Francophonie\n\n"+(data||"Consulte auf.org et campusfrance.org")+"\n\nhttps://www.auf.org | https://www.campusfrance.org\nBoudoum ! 🇬🇵" })
   }
@@ -5163,7 +5208,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("web3") || msgLow.includes("metaverse") || msgLow.includes("décentralisé") || msgLow.includes("dapp") || msgLow.includes("defi caribéen")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Tech, expert Web3, blockchain et NFT. Boudoum!" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Tech — Web3 Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5233,7 +5278,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("photographie") || msgLow.includes("photo caribéenne") || msgLow.includes("appareil photo") || msgLow.includes("instagram photo") || msgLow.includes("shooting")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Marketing, expert Instagram et réseaux sociaux. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "📸 **Neuro-X Créatif — Photographie Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5338,7 +5383,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("podcast") || msgLow.includes("créer un podcast") || msgLow.includes("lancer podcast") || msgLow.includes("micro") && msgLow.includes("enregistrer")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Marketing, expert création podcast et contenu audio. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🎙️ **Neuro-X Marketing — Guide Podcast**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5364,7 +5409,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("senior") || msgLow.includes("personnes âgées") || msgLow.includes("vieillir bien") || msgLow.includes("ehpad") || msgLow.includes("aide à domicile")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Seniors, expert bien-vieillir et activités pour seniors DOM-TOM. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Seniors — Bien-Vieillir Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5468,7 +5513,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("créer du contenu") || msgLow.includes("youtuber") || msgLow.includes("streamer") || msgLow.includes("influenceur") || msgLow.includes("monétiser") && msgLow.includes("contenu")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Marketing, expert YouTube et création vidéo. Boudoum!" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🎬 **Neuro-X Marketing — Création Contenu**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5922,7 +5967,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("post instagram") || msgLow.includes("post tiktok") || msgLow.includes("post facebook") || msgLow.includes("caption") || msgLow.includes("génère un post") || msgLow.includes("contenu réseaux")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Marketing, expert TikTok et réseaux sociaux caribéens. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "📱 **Neuro-X Marketing — Générateur Posts**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
