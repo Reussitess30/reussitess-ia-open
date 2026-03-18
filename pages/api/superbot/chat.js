@@ -712,7 +712,7 @@ async function getWikipedia(term) {
   }
 
   // GUIDE AIDE SOCIALE
-  if (msgLow.includes("rsa") || msgLow.includes("caf") || msgLow.includes("aides sociales") || msgLow.includes("allocation") || msgLow.includes("aide guadeloupe")) {
+  if (msgLow.includes("rsa") || msgLow.includes("caf") || msgLow.includes("aides sociales") || msgLow.includes("allocation") || msgLow.includes("apl") || msgLow.includes("aide logement") || msgLow.includes("aide guadeloupe") || msgLow.includes("aide martinique")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. Boudoum!" },
@@ -1685,7 +1685,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("business plan") || msgLow.includes("plan d'affaires") || msgLow.includes("créer mon entreprise") || msgLow.includes("lancer mon business") || msgLow.includes("monter mon projet")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Business, expert création entreprise et business plan DOM-TOM. Rédige un business plan complet et professionnel. Boudoum!" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "📋 **Neuro-X Business — Business Plan**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1699,7 +1699,9 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
     try {
       const nb = message.match(/[\d.,]+/g)?.map(n => parseFloat(n.replace(",","."))) 
       if (nb && nb.length >= 2) {
-        const poids = nb[0], taille = nb[1] > 3 ? nb[1]/100 : nb[1]
+        const msg_imc = message.replace(/[kmcg]+/gi,' ')
+        const nb_imc = msg_imc.match(/[0-9]+[.,]?[0-9]*/g)?.map(Number) || []
+        const poids = nb_imc[0], taille = nb_imc[1] > 3 ? nb_imc[1]/100 : nb_imc[1]
         const imc = (poids / (taille * taille)).toFixed(1)
         const cat = imc < 18.5 ? "🔵 Insuffisance pondérale" : imc < 25 ? "🟢 Poids normal" : imc < 30 ? "🟡 Surpoids" : "🔴 Obésité"
         return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Calculateur IMC — Neuro-X Santé**\n\nPoids: "+poids+"kg | Taille: "+(taille*100)+"cm\n\n📊 IMC : "+imc+"\n"+cat+"\n\n💡 Conseil caribéen: Mangez équilibré, bougez au soleil !\n\nBoudoum ! 🇬🇵" })
@@ -1752,7 +1754,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("plan marketing") || msgLow.includes("stratégie marketing") || msgLow.includes("strategie marketing") || msgLow.includes("plan de communication") || msgLow.includes("lancer mon produit")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Marketing, expert stratégie digitale et réseaux sociaux caribéen. Boudoum!" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "📊 **Neuro-X Marketing — Plan Complet**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2384,13 +2386,13 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   // CRYPTO PRIX DIRECT
   if (msgLow.includes('bitcoin') || msgLow.includes('btc') || msgLow.includes('ethereum') || msgLow.includes('eth') || msgLow.includes('crypto') || msgLow.includes('prix') && msgLow.includes('coin')) {
     try {
-      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,pol-ecosystem&vs_currencies=usd")
+      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,polygon-ecosystem-token&vs_currencies=usd")
       const cd = await cr.json()
       const tr = await fetch("https://api.coingecko.com/api/v3/search/trending")
       const td = await tr.json()
       const fg = await getFearGreed()
       const trending = td.coins.slice(0,5).map(function(c){ return c.item.name }).join(", ")
-      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Données Temps Réel**\n\n₿ Bitcoin : $" + (cd.bitcoin?.usd||"N/A") + "\nΞ Ethereum : $" + (cd.ethereum?.usd||"N/A") + "\n🔷 POL : $" + (cd["pol-ecosystem"]?.usd||"N/A") + "\n\n🔥 Tendances : " + trending + "\n😨 Sentiment : " + fg + "\n\nBoudoum ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Données Temps Réel**\n\n₿ Bitcoin : $" + (cd.bitcoin?.usd||"N/A") + "\nΞ Ethereum : $" + (cd.ethereum?.usd||"N/A") + "\n🔷 POL : $" + (cd["polygon-ecosystem-token"]?.usd||"N/A") + "\n\n🔥 Tendances : " + trending + "\n😨 Sentiment : " + fg + "\n\nBoudoum ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBoudoum ! 🇬🇵" })
     }
@@ -2615,12 +2617,12 @@ async function getBBCNews() {
 
 async function getCryptoPrice() {
   try {
-    const r = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,pol-ecosystem&vs_currencies=usd")
+    const r = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,polygon-ecosystem-token&vs_currencies=usd")
     const d = await r.json()
     const parts = []
     if(d.bitcoin) parts.push("BTC $" + d.bitcoin.usd)
     if(d.ethereum) parts.push("ETH $" + d.ethereum.usd)
-    if(d["pol-ecosystem"]) parts.push("POL $" + d["pol-ecosystem"].usd)
+    if(d["polygon-ecosystem-token"]) parts.push("POL $" + d["polygon-ecosystem-token"].usd)
     return parts.join(" | ")
   } catch(e) { return null }
 }
@@ -3170,13 +3172,10 @@ async function getCyclones() {
 
 async function traduire(texte, cible) {
   try {
-    const r = await fetch("https://libretranslate.com/translate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ q: texte, source: "auto", target: cible, format: "text" })
-    })
+    const q = encodeURIComponent(texte.substring(0, 400))
+    const r = await fetch(`https://api.mymemory.translated.net/get?q=${q}&langpair=fr|${cible}`, { signal: AbortSignal.timeout(5000) })
     const d = await r.json()
-    return d.translatedText || null
+    return d.responseData?.translatedText || null
   } catch(e) { return null }
 }
 
@@ -4121,14 +4120,14 @@ export default async function handler(req, res) {
   }
 
   // RECETTE CUISINE
-  if ((msgLow.includes('recette') || msgLow.includes('cuisine') || msgLow.includes('plat')) && !msgLow.includes('boisson')) {
+  if ((msgLow.includes('recette') || msgLow.includes('cuisine') || msgLow.includes('plat')) && !msgLow.includes('boisson') && !msgLow.includes('accras') && !msgLow.includes('colombo') && !msgLow.includes('blaff') && !msgLow.includes('bokits') && !msgLow.includes('creole') && !msgLow.includes('antillais') && !msgLow.includes('guadeloupe') && !msgLow.includes('martinique')) {
     const plat = message.replace(/recette|cuisine|plat|fais|moi|de|du/gi,'').trim() || 'chicken'
     const data = await getRecette(plat)
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
   // WIKIPEDIA
-  if (msgLow.includes('wikipedia') || msgLow.includes('qui est') || msgLow.includes('c est quoi') || msgLow.includes("c'est quoi") || msgLow.includes('définition de')) {
+  if (msgLow.includes('wikipedia') || (msgLow.includes('qui est') && message.split(' ').length > 3)) {
     const sujet = message.replace(/wikipedia|qui est|c.est quoi|définition de/gi,'').trim() || 'Guadeloupe'
     const data = await getWikipedia(sujet)
     return res.status(200).json({ pdfAction: null, response: data })
@@ -4147,7 +4146,7 @@ export default async function handler(req, res) {
   }
 
   // AIR QUALITY
-  if (msgLow.includes('qualité') && msgLow.includes('air') || msgLow.includes('pollution') || msgLow.includes('aqi')) {
+  if ((msgLow.includes('qualité') && msgLow.includes('air')) || msgLow.includes('pollution air') || msgLow.includes('indice aqi')) {
     const ville = message.replace(/qualité|air|pollution|aqi|de|la|à/gi,'').trim() || 'Guadeloupe'
     const data = await getAirQuality(ville)
     return res.status(200).json({ pdfAction: null, response: data })
@@ -4194,6 +4193,24 @@ export default async function handler(req, res) {
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
+  // ISS POSITION
+  if (msgLow === 'iss' || (msgLow.includes('iss') && msgLow.includes('position')) || msgLow.includes('station spatiale internationale') || msgLow.includes('où est l\'iss')) {
+    const data = await getISSPosition()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // TRADUCTION MYMEMORY ULTRA-PRIORITAIRE
+  if ((msgLow.includes('traduis') || msgLow.includes('traduire') || msgLow.includes('translate')) && !msgLow.includes('creole') && !msgLow.includes('kreyol')) {
+    const langues = { 'anglais':'en','espagnol':'es','portugais':'pt','allemand':'de','italien':'it','arabe':'ar','chinois':'zh','japonais':'ja','russe':'ru' }
+    let cible = 'en'
+    for (const [nom, code] of Object.entries(langues)) {
+      if (msgLow.includes(nom)) { cible = code; break }
+    }
+    const texte = message.replace(/traduis?\s*(en\s*\w+)?\s*/i,'').trim() || 'Bonjour'
+    const trad = await traduire(texte, cible)
+    if (trad) return res.status(200).json({ pdfAction: null, response: `🌐 **Traduction → ${cible.toUpperCase()}**\n\n📝 Original: ${texte}\n\n✨ Traduction: **${trad}**\n\nBoudoum ! 🇬🇵` })
+  }
+
   // REUSSSHIELD HEALTH CHECK
   if (msgLow.includes('reussshield') || msgLow.includes('état du système') || msgLow.includes('etat systeme') || msgLow.includes('santé système') || (msgLow.includes('tout') && msgLow.includes('fonctionne'))) {
     const data = await getHealthCheck()
@@ -4209,7 +4226,34 @@ export default async function handler(req, res) {
   // WORLD BANK PIB CHOMAGE
   if (msgLow.includes('pib') || msgLow.includes('chomage') || msgLow.includes('chômage') || msgLow.includes('economie') || msgLow.includes('économie') && msgLow.includes('guadeloupe')) {
     const indic = msgLow.includes('chomage') || msgLow.includes('chômage') ? 'SL.UEM.TOTL.ZS' : msgLow.includes('population') ? 'SP.POP.TOTL' : 'NY.GDP.MKTP.CD'
-    const pays = msgLow.includes('martinique') ? 'MQ' : msgLow.includes('guyane') ? 'GF' : msgLow.includes('reunion') ? 'RE' : 'GLP'
+    const pays = 
+    msgLow.includes('martinique') ? 'MTQ' :
+    msgLow.includes('guyane') ? 'GUF' :
+    msgLow.includes('reunion') || msgLow.includes('réunion') ? 'REU' :
+    msgLow.includes('mayotte') ? 'MYT' :
+    msgLow.includes('haiti') || msgLow.includes('haïti') ? 'HTI' :
+    msgLow.includes('cuba') ? 'CUB' :
+    msgLow.includes('jamaique') || msgLow.includes('jamaïque') ? 'JAM' :
+    msgLow.includes('trinidad') ? 'TTO' :
+    msgLow.includes('barbade') ? 'BRB' :
+    msgLow.includes('bahamas') ? 'BHS' :
+    msgLow.includes('dominicaine') ? 'DOM' :
+    msgLow.includes('martinique') ? 'MTQ' :
+    msgLow.includes('senegal') || msgLow.includes('sénégal') ? 'SEN' :
+    msgLow.includes('cote ivoire') || msgLow.includes('côte') ? 'CIV' :
+    msgLow.includes('cameroun') ? 'CMR' :
+    msgLow.includes('maroc') ? 'MAR' :
+    msgLow.includes('madagascar') ? 'MDG' :
+    msgLow.includes('usa') || msgLow.includes('etats-unis') || msgLow.includes('états-unis') ? 'US' :
+    msgLow.includes('france') ? 'FR' :
+    msgLow.includes('allemagne') ? 'DE' :
+    msgLow.includes('espagne') ? 'ES' :
+    msgLow.includes('italie') ? 'IT' :
+    msgLow.includes('canada') ? 'CA' :
+    msgLow.includes('bresil') || msgLow.includes('brésil') ? 'BR' :
+    msgLow.includes('chine') ? 'CN' :
+    msgLow.includes('inde') ? 'IN' :
+    'GLP'
     const data = await getWorldBank(pays, indic)
     return res.status(200).json({ pdfAction: null, response: data })
   }
@@ -5763,7 +5807,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("business plan") || msgLow.includes("plan d'affaires") || msgLow.includes("créer mon entreprise") || msgLow.includes("lancer mon business") || msgLow.includes("monter mon projet")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Business, expert création entreprise et business plan DOM-TOM. Rédige un business plan complet et professionnel. Boudoum!" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "📋 **Neuro-X Business — Business Plan**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5777,7 +5821,9 @@ Boudoum ! 🇬🇵`})
     try {
       const nb = message.match(/[\d.,]+/g)?.map(n => parseFloat(n.replace(",","."))) 
       if (nb && nb.length >= 2) {
-        const poids = nb[0], taille = nb[1] > 3 ? nb[1]/100 : nb[1]
+        const msg_imc = message.replace(/[kmcg]+/gi,' ')
+        const nb_imc = msg_imc.match(/[0-9]+[.,]?[0-9]*/g)?.map(Number) || []
+        const poids = nb_imc[0], taille = nb_imc[1] > 3 ? nb_imc[1]/100 : nb_imc[1]
         const imc = (poids / (taille * taille)).toFixed(1)
         const cat = imc < 18.5 ? "🔵 Insuffisance pondérale" : imc < 25 ? "🟢 Poids normal" : imc < 30 ? "🟡 Surpoids" : "🔴 Obésité"
         return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Calculateur IMC — Neuro-X Santé**\n\nPoids: "+poids+"kg | Taille: "+(taille*100)+"cm\n\n📊 IMC : "+imc+"\n"+cat+"\n\n💡 Conseil caribéen: Mangez équilibré, bougez au soleil !\n\nBoudoum ! 🇬🇵" })
@@ -5830,7 +5876,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("plan marketing") || msgLow.includes("stratégie marketing") || msgLow.includes("strategie marketing") || msgLow.includes("plan de communication") || msgLow.includes("lancer mon produit")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Marketing, expert stratégie digitale et réseaux sociaux caribéen. Boudoum!" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "📊 **Neuro-X Marketing — Plan Complet**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -6436,13 +6482,13 @@ Boudoum ! 🇬🇵`})
   // CRYPTO DIRECTE
   if (msgLow.includes("bitcoin") || msgLow.includes("btc") || msgLow.includes("ethereum") || (msgLow.includes("crypto") && msgLow.includes("prix"))) {
     try {
-      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,pol-ecosystem&vs_currencies=usd")
+      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,polygon-ecosystem-token&vs_currencies=usd")
       const cd = await cr.json()
       const tr = await fetch("https://api.coingecko.com/api/v3/search/trending")
       const td = await tr.json()
       const fg = await getFearGreed()
       const trending = td.coins.slice(0,5).map(function(c){ return c.item.name }).join(", ")
-      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Temps Réel**\n\n₿ Bitcoin : $"+(cd.bitcoin?.usd||"N/A")+"\nΞ Ethereum : $"+(cd.ethereum?.usd||"N/A")+"\n🔷 POL : $"+(cd["pol-ecosystem"]?.usd||"N/A")+"\n\n🔥 Tendances : "+trending+"\n😨 Sentiment : "+fg+"\n\nBoudoum ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Temps Réel**\n\n₿ Bitcoin : $"+(cd.bitcoin?.usd||"N/A")+"\nΞ Ethereum : $"+(cd.ethereum?.usd||"N/A")+"\n🔷 POL : $"+(cd["polygon-ecosystem-token"]?.usd||"N/A")+"\n\n🔥 Tendances : "+trending+"\n😨 Sentiment : "+fg+"\n\nBoudoum ! 🇬🇵" })
     } catch(e) { return res.status(200).json({ pdfAction: pdfType, response: "💎 Service crypto indisponible. Boudoum 🇬🇵" }) }
   }
 
