@@ -2384,13 +2384,13 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   // CRYPTO PRIX DIRECT
   if (msgLow.includes('bitcoin') || msgLow.includes('btc') || msgLow.includes('ethereum') || msgLow.includes('eth') || msgLow.includes('crypto') || msgLow.includes('prix') && msgLow.includes('coin')) {
     try {
-      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=usd")
+      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,pol-ecosystem&vs_currencies=usd")
       const cd = await cr.json()
       const tr = await fetch("https://api.coingecko.com/api/v3/search/trending")
       const td = await tr.json()
       const fg = await getFearGreed()
       const trending = td.coins.slice(0,5).map(function(c){ return c.item.name }).join(", ")
-      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Données Temps Réel**\n\n₿ Bitcoin : $" + (cd.bitcoin?.usd||"N/A") + "\nΞ Ethereum : $" + (cd.ethereum?.usd||"N/A") + "\n🔷 POL : $" + (cd["matic-network"]?.usd||"N/A") + "\n\n🔥 Tendances : " + trending + "\n😨 Sentiment : " + fg + "\n\nBoudoum ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Données Temps Réel**\n\n₿ Bitcoin : $" + (cd.bitcoin?.usd||"N/A") + "\nΞ Ethereum : $" + (cd.ethereum?.usd||"N/A") + "\n🔷 POL : $" + (cd["pol-ecosystem"]?.usd||"N/A") + "\n\n🔥 Tendances : " + trending + "\n😨 Sentiment : " + fg + "\n\nBoudoum ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBoudoum ! 🇬🇵" })
     }
@@ -2615,12 +2615,12 @@ async function getBBCNews() {
 
 async function getCryptoPrice() {
   try {
-    const r = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=usd")
+    const r = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,pol-ecosystem&vs_currencies=usd")
     const d = await r.json()
     const parts = []
     if(d.bitcoin) parts.push("BTC $" + d.bitcoin.usd)
     if(d.ethereum) parts.push("ETH $" + d.ethereum.usd)
-    if(d["matic-network"]) parts.push("POL $" + d["matic-network"].usd)
+    if(d["pol-ecosystem"]) parts.push("POL $" + d["pol-ecosystem"].usd)
     return parts.join(" | ")
   } catch(e) { return null }
 }
@@ -6262,13 +6262,13 @@ Boudoum ! 🇬🇵`})
   // CRYPTO DIRECTE
   if (msgLow.includes("bitcoin") || msgLow.includes("btc") || msgLow.includes("ethereum") || (msgLow.includes("crypto") && msgLow.includes("prix"))) {
     try {
-      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=usd")
+      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,pol-ecosystem&vs_currencies=usd")
       const cd = await cr.json()
       const tr = await fetch("https://api.coingecko.com/api/v3/search/trending")
       const td = await tr.json()
       const fg = await getFearGreed()
       const trending = td.coins.slice(0,5).map(function(c){ return c.item.name }).join(", ")
-      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Temps Réel**\n\n₿ Bitcoin : $"+(cd.bitcoin?.usd||"N/A")+"\nΞ Ethereum : $"+(cd.ethereum?.usd||"N/A")+"\n🔷 POL : $"+(cd["matic-network"]?.usd||"N/A")+"\n\n🔥 Tendances : "+trending+"\n😨 Sentiment : "+fg+"\n\nBoudoum ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Temps Réel**\n\n₿ Bitcoin : $"+(cd.bitcoin?.usd||"N/A")+"\nΞ Ethereum : $"+(cd.ethereum?.usd||"N/A")+"\n🔷 POL : $"+(cd["pol-ecosystem"]?.usd||"N/A")+"\n\n🔥 Tendances : "+trending+"\n😨 Sentiment : "+fg+"\n\nBoudoum ! 🇬🇵" })
     } catch(e) { return res.status(200).json({ pdfAction: pdfType, response: "💎 Service crypto indisponible. Boudoum 🇬🇵" }) }
   }
 
