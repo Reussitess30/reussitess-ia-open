@@ -2,96 +2,174 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(200).json({ ok: true })
   
   try {
-    const { message } = req.body
-    if (!message) return res.status(200).json({ ok: true })
-    
-    const chatId = message.chat.id
-    const text = message.text || ''
+    const body = req.body
     const token = process.env.TELEGRAM_BOT_TOKEN
 
-    async function sendMsg(msg) {
+    async function sendMsg(chatId, msg, keyboard = null) {
+      const payload = {
+        chat_id: chatId,
+        text: msg.substring(0, 4096),
+        parse_mode: 'Markdown'
+      }
+      if (keyboard) payload.reply_markup = keyboard
       await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: chatId, text: msg.substring(0,4096), parse_mode: 'Markdown' })
+        body: JSON.stringify(payload)
       })
     }
 
-    // Commandes spéciales
-    if (text === '/start') {
-      return await sendMsg(`🌟 *Bienvenue sur REUSSITESS AI* 🇬🇵
+    async function typing(chatId) {
+      await fetch(`https://api.telegram.org/bot${token}/sendChatAction`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: chatId, action: 'typing' })
+      })
+    }
+
+    async function askAI(message) {
+      const aiRes = await fetch('https://reussitess.fr/api/superbot/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message, langue: 'fr' })
+      })
+      const d = await aiRes.json()
+      return (d.response || 'Boudoum ! 🇬🇵')
+        .replace(/\*\*(.+?)\*\*/g, '*$1*')
+        .replace(/#{1,3}\s/g, '')
+        .substring(0, 4096)
+    }
+
+    // Menu principal inline
+    const MAIN_MENU = {
+      inline_keyboard: [
+        [
+          { text: '🌤️ Météo', callback_data: 'météo Guadeloupe' },
+          { text: '₿ Bitcoin', callback_data: 'prix bitcoin' },
+          { text: '💱 Devises', callback_data: 'taux de change euro dollar' }
+        ],
+        [
+          { text: '💼 Emploi', callback_data: 'liste emploi Guadeloupe' },
+          { text: '📰 Actualités', callback_data: 'actualités Guadeloupe' },
+          { text: '🌋 Séismes', callback_data: 'séismes antilles' }
+        ],
+        [
+          { text: '🛍️ Boutiques', callback_data: 'boutiques amazon 14 pays' },
+          { text: '💎 Token REUSS', callback_data: 'token REUSS blockchain supply' },
+          { text: '🔮 Oracle', callback_data: 'oracle 971 quel est mon destin' }
+        ],
+        [
+          { text: '🏆 Champions', callback_data: 'passeport de réussite' },
+          { text: '🛡️ Shield', callback_data: 'reussshield' },
+          { text: '🌊 Marées', callback_data: 'marées Guadeloupe' }
+        ],
+        [
+          { text: '📚 Bibliothèque', callback_data: 'bibliothèque caribéenne' },
+          { text: '🎯 Quiz', callback_data: 'quiz caribéen' },
+          { text: '🥗 Nutrition', callback_data: 'nutrition banane' }
+        ]
+      ]
+    }
+
+    // Menu persistant en bas
+    const PERSISTENT_MENU = {
+      keyboard: [
+        ['🌤️ Météo', '₿ Bitcoin', '💱 Devises'],
+        ['💼 Emploi', '📰 Actualités', '🌋 Séismes'],
+        ['🛍️ Boutiques', '💎 REUSS', '🔮 Oracle'],
+        ['🏠 Menu Principal']
+      ],
+      resize_keyboard: true,
+      persistent: true
+    }
+
+    // Gestion message normal
+    if (body.message) {
+      const message = body.message
+      const chatId = message.chat.id
+      const text = message.text || ''
+      const firstName = message.from?.first_name || 'Champion'
+
+      // Détecter langue
+      const langue = text.match(/[a-zA-ZÀ-ÿ]/) ? 'fr' : 'fr'
+
+      if (text === '/start') {
+        await sendMsg(chatId, `🌟 *Bienvenue ${firstName} sur REUSSITESS AI* 🇬🇵
 
 Né en Guadeloupe — Terres de Champions !
 
-*Commandes disponibles :*
-/meteo — Météo DOM-TOM
-/bitcoin — Prix Bitcoin
-/emploi — Offres emploi Guadeloupe
-/actualites — Actualités DOM-TOM
-/boutiques — 26 boutiques Amazon
-/seismes — Séismes Antilles
-/cyclones — Cyclones Atlantique
-/reussshield — État système
-/oracle — Oracle 971
-/token — Token REUSS
-/champions — Passeport de Réussite
-/visa — Visa Universel
-/quiz — Quiz caribéens
-/bibliotheque — Bibliothèque mondiale
+Je suis ton assistant IA caribéen avec *120+ fonctionnalités* :
+• 📡 Données temps réel
+• 💼 Emploi DOM-TOM
+• 🛍️ 26 boutiques Amazon
+• 💎 Token REUSS Polygon
+• 📰 Actualités DOM-TOM
+• 🌋 Séismes & Cyclones
+• 🔮 Oracle 971
 
-Ou pose-moi *n'importe quelle question* !
+Utilise les boutons ci-dessous ou pose-moi *n'importe quelle question* !
 
-Boudoum ! 🇬🇵`)
+Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
+        
+        // Activer menu persistant
+        await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: '⬇️ Menu rapide toujours disponible',
+            reply_markup: PERSISTENT_MENU
+          })
+        })
+        return res.status(200).json({ ok: true })
+      }
+
+      if (text === '/menu' || text === '🏠 Menu Principal') {
+        return await sendMsg(chatId, '🌟 *Menu REUSSITESS AI*', { inline_keyboard: MAIN_MENU.inline_keyboard })
+      }
+
+      // Commandes texte du menu persistant
+      const TEXT_COMMANDS = {
+        '🌤️ Météo': 'météo Guadeloupe',
+        '₿ Bitcoin': 'prix bitcoin',
+        '💱 Devises': 'taux de change euro dollar',
+        '💼 Emploi': 'liste emploi Guadeloupe',
+        '📰 Actualités': 'actualités Guadeloupe',
+        '🌋 Séismes': 'séismes antilles',
+        '🛍️ Boutiques': 'boutiques amazon 14 pays',
+        '💎 REUSS': 'token REUSS blockchain supply',
+        '🔮 Oracle': 'oracle 971 quel est mon destin',
+      }
+
+      const msgToSend = TEXT_COMMANDS[text] || text
+      await typing(chatId)
+      const response = await askAI(msgToSend)
+      await sendMsg(chatId, response, { inline_keyboard: [[{ text: '🔄 Menu Principal', callback_data: 'menu' }]] })
     }
 
-    const COMMANDS = {
-      '/meteo': 'météo Guadeloupe',
-      '/bitcoin': 'prix bitcoin',
-      '/emploi': 'liste emploi Guadeloupe',
-      '/actualites': 'actualités Guadeloupe',
-      '/boutiques': 'boutiques amazon 14 pays',
-      '/seismes': 'séismes antilles',
-      '/cyclones': 'cyclones atlantique',
-      '/reussshield': 'reussshield',
-      '/oracle': 'oracle 971 quel est mon destin',
-      '/token': 'token REUSS blockchain supply',
-      '/champions': 'passeport de réussite reussitess',
-      '/visa': 'visa universel reussitess',
-      '/quiz': 'quiz caribéen',
-      '/bibliotheque': 'bibliothèque caribéenne',
-      '/marées': 'marées Guadeloupe',
-      '/devises': 'taux de change euro dollar',
-      '/dashboard': 'dashboard stats',
+    // Gestion callback (boutons inline)
+    if (body.callback_query) {
+      const callback = body.callback_query
+      const chatId = callback.message.chat.id
+      const data = callback.data
+
+      // Répondre au callback
+      await fetch(`https://api.telegram.org/bot${token}/answerCallbackQuery`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ callback_query_id: callback.id, text: '⏳ Chargement...' })
+      })
+
+      if (data === 'menu') {
+        return await sendMsg(chatId, '🌟 *Menu REUSSITESS AI*', { inline_keyboard: MAIN_MENU.inline_keyboard })
+      }
+
+      await typing(chatId)
+      const response = await askAI(data)
+      await sendMsg(chatId, response, { inline_keyboard: [[{ text: '🔄 Menu Principal', callback_data: 'menu' }]] })
     }
 
-    const msgToSend = COMMANDS[text] || text
-    if (!msgToSend) return res.status(200).json({ ok: true })
-
-    // Envoyer indicateur de frappe
-    await fetch(`https://api.telegram.org/bot${token}/sendChatAction`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: chatId, action: 'typing' })
-    })
-
-    // Appeler REUSSITESS AI
-    const aiRes = await fetch('https://reussitess.fr/api/superbot/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: msgToSend, langue: 'fr' })
-    })
-    const aiData = await aiRes.json()
-    let response = aiData.response || 'Boudoum ! 🇬🇵'
-
-    // Nettoyer markdown pour Telegram
-    response = response
-      .replace(/\*\*(.+?)\*\*/g, '*$1*')
-      .replace(/#{1,3}\s/g, '*')
-      .substring(0, 4096)
-
-    await sendMsg(response)
     return res.status(200).json({ ok: true })
-
   } catch(e) {
     console.error('Telegram webhook:', e.message)
     return res.status(200).json({ ok: true })
