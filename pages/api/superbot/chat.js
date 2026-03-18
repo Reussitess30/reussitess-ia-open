@@ -1699,7 +1699,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
     try {
       const nb = message.match(/[\d.,]+/g)?.map(n => parseFloat(n.replace(",","."))) 
       if (nb && nb.length >= 2) {
-        const msg_imc = message.replace(/[kmcg]+/gi,' ')
+        const msg_imc = message.replace(/([0-9])[a-zA-Z]+([0-9])/g,'$1$2').replace(/kg|cm/gi,' ')
         const nb_imc = msg_imc.match(/[0-9]+[.,]?[0-9]*/g)?.map(Number) || []
         const poids = nb_imc[0], taille = nb_imc[1] > 3 ? nb_imc[1]/100 : nb_imc[1]
         const imc = (poids / (taille * taille)).toFixed(1)
@@ -5821,7 +5821,7 @@ Boudoum ! 🇬🇵`})
     try {
       const nb = message.match(/[\d.,]+/g)?.map(n => parseFloat(n.replace(",","."))) 
       if (nb && nb.length >= 2) {
-        const msg_imc = message.replace(/[kmcg]+/gi,' ')
+        const msg_imc = message.replace(/([0-9])[a-zA-Z]+([0-9])/g,'$1$2').replace(/kg|cm/gi,' ')
         const nb_imc = msg_imc.match(/[0-9]+[.,]?[0-9]*/g)?.map(Number) || []
         const poids = nb_imc[0], taille = nb_imc[1] > 3 ? nb_imc[1]/100 : nb_imc[1]
         const imc = (poids / (taille * taille)).toFixed(1)
