@@ -1054,7 +1054,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("intelligence émotionnelle") || msgLow.includes("gérer mes émotions") || msgLow.includes("empathie") || msgLow.includes("gestion émotions") || msgLow.includes("eq")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💛 **Neuro-X Psychologie — Intelligence Émotionnelle**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1067,7 +1082,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("crowdfunding") || msgLow.includes("financement participatif") || msgLow.includes("kickstarter") || msgLow.includes("ulule") || msgLow.includes("lever fonds communauté")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Business — Crowdfunding Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1080,7 +1110,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("bien-être au travail") || msgLow.includes("equilibre vie pro") || msgLow.includes("work life balance") || msgLow.includes("épuisement professionnel") || msgLow.includes("motivation travail")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌺 **Neuro-X Coach — Bien-Être au Travail**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1093,7 +1138,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("caricom") || msgLow.includes("géopolitique caraïbes") || msgLow.includes("relations caraïbes") || msgLow.includes("union européenne dom") || msgLow.includes("indépendance guadeloupe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Géopolitique — Caraïbes**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1119,7 +1179,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("mode caribéenne") || msgLow.includes("stylisme") || msgLow.includes("madras") || msgLow.includes("tenue créole") || msgLow.includes("fashion antillais")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "👗 **Neuro-X Mode — Stylisme Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1132,7 +1207,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("leadership") || msgLow.includes("manager mon équipe") || msgLow.includes("diriger") || msgLow.includes("management") || msgLow.includes("gérer mon équipe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Coach — Leadership Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1145,7 +1235,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("rgpd") || msgLow.includes("protection données") || msgLow.includes("vie privée") || msgLow.includes("cnil") || msgLow.includes("données personnelles")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🔒 **Neuro-X Réseaux — Protection Données RGPD**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1158,7 +1263,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("hashtag") || msgLow.includes("hashtags") || msgLow.includes("mots-dièse") || msgLow.includes("trending") || msgLow.includes("viral hashtag")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "# **Neuro-X Marketing — Hashtags Viraux**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1172,7 +1292,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
     try {
       const crypto = await getCryptoPrice()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Finance — Crypto pour Débutants**\n\n📊 Marché: "+crypto+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1185,7 +1320,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("anxiété") || msgLow.includes("anxiete") || msgLow.includes("dépression") || msgLow.includes("depression") || msgLow.includes("santé mentale") || msgLow.includes("burn out")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💚 **Neuro-X Psychologie — Santé Mentale**\n\n"+groqText+"\n\n⚠️ Consultez un professionnel de santé.\nUrgence: 3114 (numéro national prévention suicide)\n\nBoudoum ! 🇬🇵" })
@@ -1198,7 +1348,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("exporter") || msgLow.includes("export") || msgLow.includes("vendre à l'international") || msgLow.includes("marché international") || msgLow.includes("14 pays")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Logistique — Export International**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1224,7 +1389,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("microcrédit") || msgLow.includes("micro-crédit") || msgLow.includes("prêt professionnel") || msgLow.includes("financement projet") || msgLow.includes("adie") || msgLow.includes("bpifrance")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Business — Micro-Finance**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1250,7 +1430,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("modèle de contrat") || msgLow.includes("contrat freelance") || msgLow.includes("contrat commercial") || msgLow.includes("cgv") || msgLow.includes("mentions légales")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "📝 **Neuro-X Juridique — Générateur Contrats**\n\n"+groqText+"\n\n⚠️ Consultez un avocat avant signature.\n\nBoudoum ! 🇬🇵" })
@@ -1263,7 +1458,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("dropshipping") || msgLow.includes("vendre sans stock") || msgLow.includes("e-commerce caribéen") || msgLow.includes("boutique en ligne") || msgLow.includes("shopify")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🛒 **Neuro-X Business — Dropshipping Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1276,7 +1486,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("freelance") || msgLow.includes("travailler à distance") || msgLow.includes("télétravail") || msgLow.includes("mission freelance") || msgLow.includes("indépendant")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💻 **Neuro-X Business — Guide Freelance**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1289,7 +1514,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("apprendre ia") || msgLow.includes("débuter en ia") || msgLow.includes("intelligence artificielle débutant") || msgLow.includes("chatgpt débutant") || msgLow.includes("comment utiliser ia")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **Neuro-X IA — Guide Débutants**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1302,7 +1542,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("nutrition") || msgLow.includes("alimentation saine") || msgLow.includes("régime caribéen") || msgLow.includes("manger sainement") || msgLow.includes("fruits tropicaux")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🥗 **Neuro-X Santé — Nutrition Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1315,7 +1570,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("deuil") || msgLow.includes("j'ai perdu") || msgLow.includes("quelqu'un est décédé") || msgLow.includes("soutien famille") || msgLow.includes("difficile en ce moment")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💙 **REUSSITESS AI — Soutien & Accompagnement**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1328,7 +1598,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("médicament") || msgLow.includes("medicament") || msgLow.includes("ordonnance") || msgLow.includes("posologie") || msgLow.includes("traitement médical")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💊 **Neuro-X Santé — Information Médicale**\n\n"+groqText+"\n\n⚠️ Consultez toujours un médecin ou pharmacien.\n\nBoudoum ! 🇬🇵" })
@@ -1354,7 +1639,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("épargne") || msgLow.includes("epargne") || msgLow.includes("livret a") || msgLow.includes("économiser") || msgLow.includes("mettre de côté")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💳 **Neuro-X Finance — Guide Épargne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1378,7 +1678,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("pour enfant") || msgLow.includes("histoire pour enfant") || msgLow.includes("mon enfant") || msgLow.includes("activité enfant") || msgLow.includes("jeu éducatif")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🧒 **Neuro-X Enfants — Mode Famille**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1404,7 +1719,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("nft") || msgLow.includes("créer un nft") || msgLow.includes("vendre nft") || msgLow.includes("collection nft") || msgLow.includes("art numérique")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X NFT — Art Numérique Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1460,7 +1790,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
       const meteo = await getMeteo()
       const lune = getLunePhase()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌱 **Neuro-X Agriculture — Jardin Créole**\n\n🌙 "+lune+" | 🌤️ "+meteo+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1473,7 +1818,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("philosophie") || msgLow.includes("césaire") || msgLow.includes("fanon") || msgLow.includes("glissant") || msgLow.includes("négritude") || msgLow.includes("créolité") || (msgLow.includes("ubuntu") && !msgLow.includes("linux") && !msgLow.includes("installer")) || msgLow.includes("philosophie africaine") || msgLow.includes("pensée africaine")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Philosophie — Pensée Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1486,7 +1846,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("diaspora") || msgLow.includes("guadeloupéen à paris") || msgLow.includes("antillais en france") || msgLow.includes("retour au pays") || msgLow.includes("double culture")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Diaspora — Communauté Mondiale**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1499,7 +1874,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("smart contract") || msgLow.includes("solidity") || msgLow.includes("déployer un contrat") || msgLow.includes("erc20") || msgLow.includes("polygon contract")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "⛓️ **Neuro-X Blockchain — Smart Contracts**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1525,7 +1915,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("acheter une maison") || msgLow.includes("immobilier guadeloupe") || msgLow.includes("girardin") || msgLow.includes("défiscalisation immobilier") || msgLow.includes("investir immobilier")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🏠 **Neuro-X Immobilier — Guide DOM-TOM**\n\n"+groqText+"\n\n⚠️ Consultez un notaire.\n\nBoudoum ! 🇬🇵" })
@@ -1538,7 +1943,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("femme entrepreneur") || msgLow.includes("entrepreneuriat féminin") || msgLow.includes("business woman") || msgLow.includes("femme boss") || msgLow.includes("créer mon activité femme")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Femmes — Coach Entrepreneuriat**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1591,7 +2011,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
     try {
       const meteo = await getMeteo()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Tourisme — Éco-Tourisme Guadeloupe**\n\n🌤️ "+meteo+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1604,7 +2039,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("volcan") || msgLow.includes("biodiversité") || msgLow.includes("mangrove") || msgLow.includes("récif corallien") || msgLow.includes("faune caribéenne")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🔬 **Neuro-X Sciences — Biodiversité Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1617,7 +2067,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("énergie solaire") || msgLow.includes("panneau solaire") || msgLow.includes("renouvelable") || msgLow.includes("électricité guadeloupe") || msgLow.includes("edf guadeloupe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "☀️ **Neuro-X Énergie — Solaire Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1630,7 +2095,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("que veut dire") || msgLow.includes("définition") || msgLow.includes("signifie") || msgLow.includes("en créole") || msgLow.includes("traduction créole") || msgLow.includes("comment dire")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "📖 **Neuro-X Langues — Dictionnaire Créole**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1644,7 +2124,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
     try {
       const citation = await getCitation()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "✨ **Neuro-X Coach — Développement Personnel**\n\n💬 "+citation+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1659,7 +2154,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
       const crypto = await getCryptoPrice()
       const fg = await getFearGreed()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "📈 **Neuro-X Finance — Analyse Marché**\n\n"+crypto+"\n😨 "+fg+"\n\n"+groqText+"\n\n⚠️ DYOR\n\nBoudoum ! 🇬🇵" })
@@ -1672,7 +2182,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("retraite") || msgLow.includes("pension") || msgLow.includes("cnav") || msgLow.includes("cotisation retraite") || msgLow.includes("préparer ma retraite")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Juridique — Guide Retraite DOM-TOM**\n\n"+groqText+"\n\n⚠️ Consultez un conseiller retraite.\n\nBoudoum ! 🇬🇵" })
@@ -1714,7 +2239,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("immigration") || msgLow.includes("visa") || msgLow.includes("s'installer") || msgLow.includes("expatrié") || msgLow.includes("vivre en guadeloupe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Juridique — Guide Immigration**\n\n"+groqText+"\n\n⚠️ Consultez les services préfectoraux.\n\nBoudoum ! 🇬🇵" })
@@ -1728,7 +2268,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
     try {
       const lune = getLunePhase()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "⭐ **Neuro-X Spiritualité — Astrologie Caribéenne**\n\n"+lune+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1741,7 +2296,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("interroge moi") || msgLow.includes("teste moi") || msgLow.includes("question culture") || msgLow.includes("quiz rapide") || msgLow.includes("pose moi une question")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Éducation — Quiz Instantané**\n\n"+groqText+"\n\n+5 points REUSS si bonne réponse !\n\nBoudoum ! 🇬🇵" })
@@ -1767,7 +2337,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("histoire guadeloupe") || msgLow.includes("histoire de la guadeloupe") || msgLow.includes("histoire des antilles") || msgLow.includes("histoire caribéenne") || msgLow.includes("histoire martinique") || msgLow.includes("histoire haiti") || msgLow.includes("histoire haïti") || msgLow.includes("histoire de la martinique") || msgLow.includes("histoire afrique") || msgLow.includes("abolition") || msgLow.includes("victor schoelcher") || msgLow.includes("patrimoine antillais") || msgLow.includes("culture guadeloupéenne") || (msgLow.includes("histoire") && msgLow.includes("guadeloupe")) || (msgLow.includes("histoire") && msgLow.includes("antilles")) || (msgLow.includes("histoire") && msgLow.includes("caraïbes")) || (msgLow.includes("histoire") && msgLow.includes("afrique")) || (msgLow.includes("histoire") && msgLow.includes("martinique"))) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       const rep = groqText
@@ -1782,7 +2367,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("email professionnel") || msgLow.includes("rédige un email") || msgLow.includes("lettre professionnelle") || msgLow.includes("email commercial") || msgLow.includes("mail pro")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "📧 **Neuro-X Business — Email Professionnel**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1808,7 +2408,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("cocktail") || msgLow.includes("rhum") || msgLow.includes("ti punch") || msgLow.includes("planteur") || msgLow.includes("mojito") || msgLow.includes("recette boisson")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🍹 **Neuro-X Cuisine — Cocktails Caribéens**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1822,7 +2437,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
     try {
       const lune = getLunePhase()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌙 **Neuro-X Spiritualité — Analyse Rêves**\n\n"+lune+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1836,7 +2466,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
     try {
       const meteo = await getMeteo()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Tourisme — Guide Caribéen**\n\n🌤️ "+meteo+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1849,7 +2494,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("analyse ma personnalité") || msgLow.includes("test personnalité") || msgLow.includes("quel type") || msgLow.includes("mbti") || msgLow.includes("profil personnalité")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Psychologie — Analyse Personnalité**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1862,7 +2522,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("slogan") || msgLow.includes("accroche") || msgLow.includes("tagline") || msgLow.includes("phrase marketing")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Marketing — Générateur Slogans**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1877,7 +2552,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
       const crypto = await getCryptoPrice()
       const fg = await getFearGreed()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Finance — Conseils Investissement**\n\n📊 Marché actuel : "+fg+"\n\n"+groqText+"\n\n⚠️ DYOR — Pas de conseil financier.\n\nBoudoum ! 🇬🇵" })
@@ -1890,7 +2580,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("apprendre") && (msgLow.includes("anglais") || msgLow.includes("espagnol") || msgLow.includes("créole") || msgLow.includes("portugais") || msgLow.includes("langue")) || msgLow.includes("leçon de langue")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Langues — Leçon**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1905,7 +2610,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
       const meteo = await getMeteo()
       const lune = getLunePhase()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message + " (Météo actuelle: "+meteo+" | Lune: "+lune+")" }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🧘 **Neuro-X Santé — Méditation Caribéenne**\n\n🌊 "+meteo+" | "+lune+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1934,7 +2654,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("plante médicinale") || msgLow.includes("remède naturel") || msgLow.includes("médecine naturelle") || msgLow.includes("herbe") || msgLow.includes("soigner naturellement")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Santé — Plantes Caribéennes**\n\n"+groqText+"\n\n⚠️ Consultez un médecin.\n\nBoudoum ! 🇬🇵" })
@@ -1980,7 +2715,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("programme sport") || msgLow.includes("musculation") || msgLow.includes("perte de poids") || msgLow.includes("fitness") || msgLow.includes("programme fitness")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💪 **Neuro-X Sport — Coach Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1993,7 +2743,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("recette") || msgLow.includes("comment cuisiner") || msgLow.includes("comment préparer") || msgLow.includes("accras") || msgLow.includes("colombo") || msgLow.includes("blaff") || msgLow.includes("court-bouillon")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🍽️ **Neuro-X Cuisine — Recette Créole**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2006,7 +2771,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("mes droits") || msgLow.includes("légalement") || msgLow.includes("juridique") || msgLow.includes("contrat") || msgLow.includes("auto-entrepreneur") || msgLow.includes("siret")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Neuro-X Juridique — Conseil Droit**\n\n"+groqText+"\n\n⚠️ Consultez un avocat pour toute décision légale.\n\nBoudoum ! 🇬🇵" })
@@ -2032,7 +2812,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("résume") || msgLow.includes("resume notre") || msgLow.includes("résumé de notre") || msgLow.includes("recap") || msgLow.includes("récap")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: "Résume cette conversation : "+message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "📋 **Résumé de Session**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2045,7 +2840,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("débat") || msgLow.includes("debat") || msgLow.includes("pour et contre") || msgLow.includes("avantages inconvénients") || msgLow.includes("argumente")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Mode Débat — Neuro-X Stratégie**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2058,7 +2868,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("conseil business") || msgLow.includes("idée business") || msgLow.includes("idée entreprise") || msgLow.includes("comment gagner") || msgLow.includes("revenus passifs")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Business — Conseils Caribéens**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2071,7 +2896,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("poème") || msgLow.includes("poeme") || msgLow.includes("écris un poème") || msgLow.includes("crée un poème") || msgLow.includes("rimé")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       const poeme = groqText || ""
@@ -2085,7 +2925,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("nom d'entreprise") || msgLow.includes("nom de marque") || msgLow.includes("nom business") || msgLow.includes("génère un nom") || msgLow.includes("genere un nom")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 1024)
       const noms = groqText || ""
@@ -2099,7 +2954,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("cv") || msgLow.includes("curriculum") || msgLow.includes("génère mon cv") || msgLow.includes("aide cv") || msgLow.includes("rédige cv")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "📄 **Neuro-X Business — Assistant CV**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2190,7 +3060,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
       if (wiki) {
         // Enrichit avec Groq
         const groqText = await groqFetch([
-              { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+              { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
               { role: "user", content: "Question: "+message+"\n\nSource Wikipedia:\n"+wiki }
             ], 4096)
         const rep = groqText
@@ -2211,7 +3096,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
         const wiki = await rechercheWikipedia(message, "fr")
         if (wiki) {
           const groqText = await groqFetch([
-                { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+                { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
                 { role: "user", content: message+"\n\nWikipedia: "+wiki }
               ], 4096)
           const rep = groqText
@@ -2231,7 +3131,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
       const wiki = await rechercheWikipedia(message, "fr")
       if (wiki) {
         const groqText = await groqFetch([
-              { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+              { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
               { role: "user", content: message+"\n\nWikipedia: "+wiki }
             ], 4096)
         const rep = groqText
@@ -2247,7 +3162,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
     try {
       const wiki = await rechercheWikipedia("Ubuntu philosophie africaine humanisme", "fr")
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n*Umuntu ngumuntu ngabantu — Je suis parce que nous sommes*\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2261,7 +3191,22 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
     try {
       const wiki = await rechercheWikipedia("Ubuntu philosophie africaine", "fr")
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n"+groqText+"\n\n*Ubuntu: Je suis parce que nous sommes*\n\nBoudoum ! 🇬🇵" })
@@ -5253,7 +6198,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("intelligence émotionnelle") || msgLow.includes("gérer mes émotions") || msgLow.includes("empathie") || msgLow.includes("gestion émotions") || msgLow.includes("eq")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💛 **Neuro-X Psychologie — Intelligence Émotionnelle**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5266,7 +6226,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("crowdfunding") || msgLow.includes("financement participatif") || msgLow.includes("kickstarter") || msgLow.includes("ulule") || msgLow.includes("lever fonds communauté")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Business — Crowdfunding Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5279,7 +6254,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("bien-être au travail") || msgLow.includes("equilibre vie pro") || msgLow.includes("work life balance") || msgLow.includes("épuisement professionnel") || msgLow.includes("motivation travail")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌺 **Neuro-X Coach — Bien-Être au Travail**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5292,7 +6282,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("caricom") || msgLow.includes("géopolitique caraïbes") || msgLow.includes("relations caraïbes") || msgLow.includes("union européenne dom") || msgLow.includes("indépendance guadeloupe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Géopolitique — Caraïbes**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5318,7 +6323,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("mode caribéenne") || msgLow.includes("stylisme") || msgLow.includes("madras") || msgLow.includes("tenue créole") || msgLow.includes("fashion antillais")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "👗 **Neuro-X Mode — Stylisme Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5331,7 +6351,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("leadership") || msgLow.includes("manager mon équipe") || msgLow.includes("diriger") || msgLow.includes("management") || msgLow.includes("gérer mon équipe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Coach — Leadership Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5344,7 +6379,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("rgpd") || msgLow.includes("protection données") || msgLow.includes("vie privée") || msgLow.includes("cnil") || msgLow.includes("données personnelles")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🔒 **Neuro-X Réseaux — Protection Données RGPD**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5357,7 +6407,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("hashtag") || msgLow.includes("hashtags") || msgLow.includes("mots-dièse") || msgLow.includes("trending") || msgLow.includes("viral hashtag")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "# **Neuro-X Marketing — Hashtags Viraux**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5371,7 +6436,22 @@ Boudoum ! 🇬🇵`})
     try {
       const crypto = await getCryptoPrice()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Finance — Crypto pour Débutants**\n\n📊 Marché: "+crypto+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5384,7 +6464,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("anxiété") || msgLow.includes("anxiete") || msgLow.includes("dépression") || msgLow.includes("depression") || msgLow.includes("santé mentale") || msgLow.includes("burn out")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💚 **Neuro-X Psychologie — Santé Mentale**\n\n"+groqText+"\n\n⚠️ Consultez un professionnel de santé.\nUrgence: 3114 (numéro national prévention suicide)\n\nBoudoum ! 🇬🇵" })
@@ -5397,7 +6492,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("exporter") || msgLow.includes("export") || msgLow.includes("vendre à l'international") || msgLow.includes("marché international") || msgLow.includes("14 pays")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Logistique — Export International**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5423,7 +6533,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("microcrédit") || msgLow.includes("micro-crédit") || msgLow.includes("prêt professionnel") || msgLow.includes("financement projet") || msgLow.includes("adie") || msgLow.includes("bpifrance")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Business — Micro-Finance**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5449,7 +6574,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("modèle de contrat") || msgLow.includes("contrat freelance") || msgLow.includes("contrat commercial") || msgLow.includes("cgv") || msgLow.includes("mentions légales")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "📝 **Neuro-X Juridique — Générateur Contrats**\n\n"+groqText+"\n\n⚠️ Consultez un avocat avant signature.\n\nBoudoum ! 🇬🇵" })
@@ -5462,7 +6602,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("dropshipping") || msgLow.includes("vendre sans stock") || msgLow.includes("e-commerce caribéen") || msgLow.includes("boutique en ligne") || msgLow.includes("shopify")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🛒 **Neuro-X Business — Dropshipping Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5475,7 +6630,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("freelance") || msgLow.includes("travailler à distance") || msgLow.includes("télétravail") || msgLow.includes("mission freelance") || msgLow.includes("indépendant")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💻 **Neuro-X Business — Guide Freelance**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5488,7 +6658,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("apprendre ia") || msgLow.includes("débuter en ia") || msgLow.includes("intelligence artificielle débutant") || msgLow.includes("chatgpt débutant") || msgLow.includes("comment utiliser ia")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **Neuro-X IA — Guide Débutants**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5501,7 +6686,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("nutrition") || msgLow.includes("alimentation saine") || msgLow.includes("régime caribéen") || msgLow.includes("manger sainement") || msgLow.includes("fruits tropicaux")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🥗 **Neuro-X Santé — Nutrition Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5514,7 +6714,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("deuil") || msgLow.includes("j'ai perdu") || msgLow.includes("quelqu'un est décédé") || msgLow.includes("soutien famille") || msgLow.includes("difficile en ce moment")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💙 **REUSSITESS AI — Soutien & Accompagnement**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5527,7 +6742,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("médicament") || msgLow.includes("medicament") || msgLow.includes("ordonnance") || msgLow.includes("posologie") || msgLow.includes("traitement médical")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💊 **Neuro-X Santé — Information Médicale**\n\n"+groqText+"\n\n⚠️ Consultez toujours un médecin ou pharmacien.\n\nBoudoum ! 🇬🇵" })
@@ -5553,7 +6783,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("épargne") || msgLow.includes("epargne") || msgLow.includes("livret a") || msgLow.includes("économiser") || msgLow.includes("mettre de côté")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💳 **Neuro-X Finance — Guide Épargne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5577,7 +6822,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("pour enfant") || msgLow.includes("histoire pour enfant") || msgLow.includes("mon enfant") || msgLow.includes("activité enfant") || msgLow.includes("jeu éducatif")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🧒 **Neuro-X Enfants — Mode Famille**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5603,7 +6863,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("nft") || msgLow.includes("créer un nft") || msgLow.includes("vendre nft") || msgLow.includes("collection nft") || msgLow.includes("art numérique")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X NFT — Art Numérique Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5659,7 +6934,22 @@ Boudoum ! 🇬🇵`})
       const meteo = await getMeteo()
       const lune = getLunePhase()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌱 **Neuro-X Agriculture — Jardin Créole**\n\n🌙 "+lune+" | 🌤️ "+meteo+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5672,7 +6962,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("philosophie") || msgLow.includes("césaire") || msgLow.includes("fanon") || msgLow.includes("glissant") || msgLow.includes("négritude") || msgLow.includes("créolité") || (msgLow.includes("ubuntu") && !msgLow.includes("linux") && !msgLow.includes("installer")) || msgLow.includes("philosophie africaine") || msgLow.includes("pensée africaine")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Philosophie — Pensée Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5685,7 +6990,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("diaspora") || msgLow.includes("guadeloupéen à paris") || msgLow.includes("antillais en france") || msgLow.includes("retour au pays") || msgLow.includes("double culture")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Diaspora — Communauté Mondiale**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5698,7 +7018,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("smart contract") || msgLow.includes("solidity") || msgLow.includes("déployer un contrat") || msgLow.includes("erc20") || msgLow.includes("polygon contract")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "⛓️ **Neuro-X Blockchain — Smart Contracts**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5724,7 +7059,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("acheter une maison") || msgLow.includes("immobilier guadeloupe") || msgLow.includes("girardin") || msgLow.includes("défiscalisation immobilier") || msgLow.includes("investir immobilier")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🏠 **Neuro-X Immobilier — Guide DOM-TOM**\n\n"+groqText+"\n\n⚠️ Consultez un notaire.\n\nBoudoum ! 🇬🇵" })
@@ -5737,7 +7087,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("femme entrepreneur") || msgLow.includes("entrepreneuriat féminin") || msgLow.includes("business woman") || msgLow.includes("femme boss") || msgLow.includes("créer mon activité femme")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Femmes — Coach Entrepreneuriat**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5790,7 +7155,22 @@ Boudoum ! 🇬🇵`})
     try {
       const meteo = await getMeteo()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Tourisme — Éco-Tourisme Guadeloupe**\n\n🌤️ "+meteo+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5803,7 +7183,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("volcan") || msgLow.includes("biodiversité") || msgLow.includes("mangrove") || msgLow.includes("récif corallien") || msgLow.includes("faune caribéenne")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🔬 **Neuro-X Sciences — Biodiversité Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5816,7 +7211,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("énergie solaire") || msgLow.includes("panneau solaire") || msgLow.includes("renouvelable") || msgLow.includes("électricité guadeloupe") || msgLow.includes("edf guadeloupe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "☀️ **Neuro-X Énergie — Solaire Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5829,7 +7239,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("que veut dire") || msgLow.includes("définition") || msgLow.includes("signifie") || msgLow.includes("en créole") || msgLow.includes("traduction créole") || msgLow.includes("comment dire")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "📖 **Neuro-X Langues — Dictionnaire Créole**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5843,7 +7268,22 @@ Boudoum ! 🇬🇵`})
     try {
       const citation = await getCitation()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "✨ **Neuro-X Coach — Développement Personnel**\n\n💬 "+citation+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5858,7 +7298,22 @@ Boudoum ! 🇬🇵`})
       const crypto = await getCryptoPrice()
       const fg = await getFearGreed()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "📈 **Neuro-X Finance — Analyse Marché**\n\n"+crypto+"\n😨 "+fg+"\n\n"+groqText+"\n\n⚠️ DYOR\n\nBoudoum ! 🇬🇵" })
@@ -5871,7 +7326,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("retraite") || msgLow.includes("pension") || msgLow.includes("cnav") || msgLow.includes("cotisation retraite") || msgLow.includes("préparer ma retraite")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Juridique — Guide Retraite DOM-TOM**\n\n"+groqText+"\n\n⚠️ Consultez un conseiller retraite.\n\nBoudoum ! 🇬🇵" })
@@ -5913,7 +7383,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("immigration") || msgLow.includes("visa") || msgLow.includes("s'installer") || msgLow.includes("expatrié") || msgLow.includes("vivre en guadeloupe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Juridique — Guide Immigration**\n\n"+groqText+"\n\n⚠️ Consultez les services préfectoraux.\n\nBoudoum ! 🇬🇵" })
@@ -5927,7 +7412,22 @@ Boudoum ! 🇬🇵`})
     try {
       const lune = getLunePhase()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "⭐ **Neuro-X Spiritualité — Astrologie Caribéenne**\n\n"+lune+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -5940,7 +7440,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("interroge moi") || msgLow.includes("teste moi") || msgLow.includes("question culture") || msgLow.includes("quiz rapide") || msgLow.includes("pose moi une question")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Éducation — Quiz Instantané**\n\n"+groqText+"\n\n+5 points REUSS si bonne réponse !\n\nBoudoum ! 🇬🇵" })
@@ -5966,7 +7481,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("histoire guadeloupe") || msgLow.includes("histoire de la guadeloupe") || msgLow.includes("histoire des antilles") || msgLow.includes("histoire caribéenne") || msgLow.includes("histoire martinique") || msgLow.includes("histoire haiti") || msgLow.includes("histoire haïti") || msgLow.includes("histoire de la martinique") || msgLow.includes("histoire afrique") || msgLow.includes("abolition") || msgLow.includes("victor schoelcher") || msgLow.includes("patrimoine antillais") || msgLow.includes("culture guadeloupéenne") || (msgLow.includes("histoire") && msgLow.includes("guadeloupe")) || (msgLow.includes("histoire") && msgLow.includes("antilles")) || (msgLow.includes("histoire") && msgLow.includes("caraïbes")) || (msgLow.includes("histoire") && msgLow.includes("afrique")) || (msgLow.includes("histoire") && msgLow.includes("martinique"))) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       const rep = groqText
@@ -5981,7 +7511,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("email professionnel") || msgLow.includes("rédige un email") || msgLow.includes("lettre professionnelle") || msgLow.includes("email commercial") || msgLow.includes("mail pro")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "📧 **Neuro-X Business — Email Professionnel**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -6007,7 +7552,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("cocktail") || msgLow.includes("rhum") || msgLow.includes("ti punch") || msgLow.includes("planteur") || msgLow.includes("mojito") || msgLow.includes("recette boisson")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🍹 **Neuro-X Cuisine — Cocktails Caribéens**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -6021,7 +7581,22 @@ Boudoum ! 🇬🇵`})
     try {
       const lune = getLunePhase()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌙 **Neuro-X Spiritualité — Analyse Rêves**\n\n"+lune+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -6035,7 +7610,22 @@ Boudoum ! 🇬🇵`})
     try {
       const meteo = await getMeteo()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Tourisme — Guide Caribéen**\n\n🌤️ "+meteo+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -6048,7 +7638,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("analyse ma personnalité") || msgLow.includes("test personnalité") || msgLow.includes("quel type") || msgLow.includes("mbti") || msgLow.includes("profil personnalité")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Psychologie — Analyse Personnalité**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -6061,7 +7666,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("slogan") || msgLow.includes("accroche") || msgLow.includes("tagline") || msgLow.includes("phrase marketing")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Marketing — Générateur Slogans**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -6076,7 +7696,22 @@ Boudoum ! 🇬🇵`})
       const crypto = await getCryptoPrice()
       const fg = await getFearGreed()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Finance — Conseils Investissement**\n\n📊 Marché actuel : "+fg+"\n\n"+groqText+"\n\n⚠️ DYOR — Pas de conseil financier.\n\nBoudoum ! 🇬🇵" })
@@ -6089,7 +7724,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("apprendre") && (msgLow.includes("anglais") || msgLow.includes("espagnol") || msgLow.includes("créole") || msgLow.includes("portugais") || msgLow.includes("langue")) || msgLow.includes("leçon de langue")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Langues — Leçon**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -6104,7 +7754,22 @@ Boudoum ! 🇬🇵`})
       const meteo = await getMeteo()
       const lune = getLunePhase()
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message + " (Météo actuelle: "+meteo+" | Lune: "+lune+")" }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🧘 **Neuro-X Santé — Méditation Caribéenne**\n\n🌊 "+meteo+" | "+lune+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -6133,7 +7798,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("plante médicinale") || msgLow.includes("remède naturel") || msgLow.includes("médecine naturelle") || msgLow.includes("herbe") || msgLow.includes("soigner naturellement")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Santé — Plantes Caribéennes**\n\n"+groqText+"\n\n⚠️ Consultez un médecin.\n\nBoudoum ! 🇬🇵" })
@@ -6179,7 +7859,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("programme sport") || msgLow.includes("musculation") || msgLow.includes("perte de poids") || msgLow.includes("fitness") || msgLow.includes("programme fitness")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💪 **Neuro-X Sport — Coach Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -6192,7 +7887,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("recette") || msgLow.includes("comment cuisiner") || msgLow.includes("comment préparer") || msgLow.includes("accras") || msgLow.includes("colombo") || msgLow.includes("blaff") || msgLow.includes("court-bouillon")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🍽️ **Neuro-X Cuisine — Recette Créole**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -6205,7 +7915,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("mes droits") || msgLow.includes("légalement") || msgLow.includes("juridique") || msgLow.includes("contrat") || msgLow.includes("auto-entrepreneur") || msgLow.includes("siret")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Neuro-X Juridique — Conseil Droit**\n\n"+groqText+"\n\n⚠️ Consultez un avocat pour toute décision légale.\n\nBoudoum ! 🇬🇵" })
@@ -6231,7 +7956,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("résume") || msgLow.includes("resume notre") || msgLow.includes("résumé de notre") || msgLow.includes("recap") || msgLow.includes("récap")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: "Résume cette conversation : "+message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "📋 **Résumé de Session**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -6244,7 +7984,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("débat") || msgLow.includes("debat") || msgLow.includes("pour et contre") || msgLow.includes("avantages inconvénients") || msgLow.includes("argumente")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Mode Débat — Neuro-X Stratégie**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -6257,7 +8012,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("conseil business") || msgLow.includes("idée business") || msgLow.includes("idée entreprise") || msgLow.includes("comment gagner") || msgLow.includes("revenus passifs")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Business — Conseils Caribéens**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -6270,7 +8040,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("poème") || msgLow.includes("poeme") || msgLow.includes("écris un poème") || msgLow.includes("crée un poème") || msgLow.includes("rimé")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       const poeme = groqText || ""
@@ -6284,7 +8069,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("nom d'entreprise") || msgLow.includes("nom de marque") || msgLow.includes("nom business") || msgLow.includes("génère un nom") || msgLow.includes("genere un nom")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 1024)
       const noms = groqText || ""
@@ -6298,7 +8098,22 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("cv") || msgLow.includes("curriculum") || msgLow.includes("génère mon cv") || msgLow.includes("aide cv") || msgLow.includes("rédige cv")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "📄 **Neuro-X Business — Assistant CV**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -6377,7 +8192,22 @@ Boudoum ! 🇬🇵`})
       if (wiki) {
         // Enrichit avec Groq
         const groqText = await groqFetch([
-              { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+              { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
               { role: "user", content: "Question: "+message+"\n\nSource Wikipedia:\n"+wiki }
             ], 4096)
         const rep = groqText
@@ -6398,7 +8228,22 @@ Boudoum ! 🇬🇵`})
         const wiki = await rechercheWikipedia(message, "fr")
         if (wiki) {
           const groqText = await groqFetch([
-                { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+                { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
                 { role: "user", content: message+"\n\nWikipedia: "+wiki }
               ], 4096)
           const rep = groqText
@@ -6418,7 +8263,22 @@ Boudoum ! 🇬🇵`})
       const wiki = await rechercheWikipedia(message, "fr")
       if (wiki) {
         const groqText = await groqFetch([
-              { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+              { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
               { role: "user", content: message+"\n\nWikipedia: "+wiki }
             ], 4096)
         const rep = groqText
@@ -6434,7 +8294,22 @@ Boudoum ! 🇬🇵`})
     try {
       const wiki = await rechercheWikipedia("Ubuntu philosophie africaine humanisme", "fr")
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n*Umuntu ngumuntu ngabantu — Je suis parce que nous sommes*\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -6448,7 +8323,22 @@ Boudoum ! 🇬🇵`})
     try {
       const wiki = await rechercheWikipedia("Ubuntu philosophie africaine", "fr")
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF). Boudoum!" },
+            { role: "system", content: "`Tu es Neuro-X Business, expert export international REUSSITESS. Les 14 pays avec boutiques Amazon REUSSITESS sont UNIQUEMENT: France, USA, UK, Allemagne, Italie, Espagne, Canada, Australie, Inde, Brésil, Singapour, Suède, Belgique, Pays-Bas. JAMAIS Chine, Japon, Mexique. Voici les 26 liens exacts:
+🇫🇷 France: https://www.amazon.fr/shop/amourguadeloupe (1 boutique)
+🇺🇸 USA: https://www.amazon.com/shop/amourguadeloupe | https://www.amazon.com/shop/influencer-fb942837
+🇬🇧 UK: https://www.amazon.co.uk/shop/amourguadeloupe | https://www.amazon.co.uk/shop/influencer-fb942837
+🇩🇪 Allemagne: https://www.amazon.de/shop/amourguadeloupe | https://www.amazon.de/shop/influencer-fb942837
+🇮🇹 Italie: https://www.amazon.it/shop/amourguadeloupe | https://www.amazon.it/shop/influencer-fb942837
+🇪🇸 Espagne: https://www.amazon.es/shop/amourguadeloupe | https://www.amazon.es/shop/influencer-fb942837
+🇨🇦 Canada: https://www.amazon.ca/shop/amourguadeloupe | https://www.amazon.ca/shop/influencer-fb942837
+🇦🇺 Australie: https://www.amazon.com.au/shop/amourguadeloupe | https://www.amazon.com.au/shop/influencer-fb942837
+🇮🇳 Inde: https://www.amazon.in/shop/amourguadeloupe | https://www.amazon.in/shop/influencer-fb942837
+🇧🇷 Brésil: https://www.amazon.com.br/shop/amourguadeloupe (1 boutique)
+🇸🇬 Singapour: https://www.amazon.sg/shop/amourguadeloupe | https://www.amazon.sg/shop/influencer-fb942837
+🇸🇪 Suède: https://www.amazon.se/shop/amourguadeloupe | https://www.amazon.se/shop/influencer-fb942837
+🇧🇪 Belgique: https://www.amazon.com.be/shop/amourguadeloupe | https://www.amazon.com.be/shop/influencer-fb942837
+🇳🇱 Pays-Bas: https://www.amazon.nl/shop/amourguadeloupe | https://www.amazon.nl/shop/influencer-fb942837
+Boudoum!`" },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n"+groqText+"\n\n*Ubuntu: Je suis parce que nous sommes*\n\nBoudoum ! 🇬🇵" })
