@@ -3585,14 +3585,6 @@ async function getAirQuality(ville = "Guadeloupe") {
 }
 
 // ===== JOKEAPI — Blagues en français =====
-async function getBlague() {
-  try {
-    const res = await fetch('https://v2.jokeapi.dev/joke/Any?lang=fr&blacklistFlags=nsfw,racist', { signal: AbortSignal.timeout(5000) })
-    const d = await res.json()
-    if (d.type === 'single') return `😂 **Blague du moment**\n\n${d.joke}\n\nBoudoum ! 🇬🇵`
-    return `😂 **Blague du moment**\n\n${d.setup}\n\n🥁 ... ${d.delivery}\n\nBoudoum ! 🇬🇵`
-  } catch(e) { return "😂 Pas de blague disponible !" }
-}
 
 // ===== UN POPULATION — Données ONU =====
 async function getUNPopulation(pays = "250") {
