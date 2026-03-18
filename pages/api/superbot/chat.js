@@ -4220,24 +4220,6 @@ export default async function handler(req, res) {
     return res.status(200).json({ pdfAction: null, response: "💰 **Salaires DOM-TOM**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
   }
 
-  // GASTRONOMIE ANTILLAISE
-  if (msgLow.includes('gastronomie') || (msgLow.includes('restaurant') && (msgLow.includes('antillais') || msgLow.includes('créole') || msgLow.includes('guadeloupe') || msgLow.includes('martinique')))) {
-    const groqText = await groqFetch([
-      { role: "system", content: "Tu es Neuro-X Gastronomie, expert cuisine antillaise et gastronomie caribéenne. Parle des restaurants, plats typiques, recettes créoles. Boudoum!" },
-      { role: "user", content: message }
-    ], 1024)
-    return res.status(200).json({ pdfAction: null, response: "🍽️ **Neuro-X Gastronomie — Cuisine Caribéenne**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
-  }
-
-  // ENFANTS EDUCATION
-  if (msgLow.includes('enfant') || msgLow.includes('pédagogie') || msgLow.includes('pedagogie')) {
-    const groqText = await groqFetch([
-      { role: "system", content: "Tu es Neuro-X Éducation, expert pédagogie et développement enfant caribéen. Boudoum!" },
-      { role: "user", content: message }
-    ], 1024)
-    return res.status(200).json({ pdfAction: null, response: "👶 **Neuro-X Éducation — Enfants**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
-  }
-
   // MODE FASHION
   if (msgLow.includes('mode') && (msgLow.includes('fashion') || msgLow.includes('tendance') || msgLow.includes('vêtement') || msgLow.includes('style') || msgLow.includes('madras'))) {
     const groqText = await groqFetch([
@@ -4254,6 +4236,24 @@ export default async function handler(req, res) {
       { role: "user", content: message }
     ], 1024)
     return res.status(200).json({ pdfAction: null, response: "🏥 **Neuro-X Santé — Nutrition & Diabète**\n\n" + groqText + "\n\n⚠️ Consultez toujours un médecin.\nBoudoum ! 🇬🇵" })
+  }
+
+  // GASTRONOMIE ANTILLAISE
+  if (msgLow.includes('gastronomie') || (msgLow.includes('restaurant') && (msgLow.includes('antillais') || msgLow.includes('créole') || msgLow.includes('guadeloupe') || msgLow.includes('martinique')))) {
+    const groqText = await groqFetch([
+      { role: "system", content: "Tu es Neuro-X Gastronomie, expert cuisine antillaise et gastronomie caribéenne. Parle des restaurants, plats typiques, recettes créoles. Boudoum!" },
+      { role: "user", content: message }
+    ], 1024)
+    return res.status(200).json({ pdfAction: null, response: "🍽️ **Neuro-X Gastronomie — Cuisine Caribéenne**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
+  }
+
+  // ENFANTS EDUCATION
+  if (msgLow.includes('enfant') || msgLow.includes('pédagogie') || msgLow.includes('pedagogie')) {
+    const groqText = await groqFetch([
+      { role: "system", content: "Tu es Neuro-X Éducation, expert pédagogie et développement enfant caribéen. Boudoum!" },
+      { role: "user", content: message }
+    ], 1024)
+    return res.status(200).json({ pdfAction: null, response: "👶 **Neuro-X Éducation — Enfants**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
   }
 
   // REUSSSHIELD HEALTH CHECK
