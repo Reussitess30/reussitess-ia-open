@@ -1832,7 +1832,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // CONSEILS VOYAGE CARAIBES
-  if (msgLow.includes("visiter") || msgLow.includes("vacances guadeloupe") || msgLow.includes("tourisme caraïbes") || msgLow.includes("que faire en guadeloupe") || msgLow.includes("bon plan voyage")) {
+  if (msgLow.includes("visiter") || msgLow.includes("vacances guadeloupe") || msgLow.includes("tourisme") || msgLow.includes("circuit") || msgLow.includes("que faire en guadeloupe") || msgLow.includes("bon plan voyage") || msgLow.includes("excursion")) {
     try {
       const meteo = await getMeteo()
       const groqText = await groqFetch([
@@ -4360,6 +4360,11 @@ export default async function handler(req, res) {
 • 📍 Géolocalisation IP
 • 👥 Données ONU Population
 • 🔍 Analyse de liens URL
+• 🎯 Quiz interactif avec mémoire conversationnelle
+• 🤖 Bot Telegram @Reussitessbot
+• 🔐 Chiffrement AES-256
+• 🛡️ Rate limiting anti-abus
+• 🔔 Alertes Telegram automatiques
 • 📊 PIB/Chômage DOM-TOM (World Bank)
 • 🏘️ Communes & population (INSEE)
 • 📂 Open Data officiel (data.gouv.fr)
@@ -4454,7 +4459,7 @@ export default async function handler(req, res) {
 • PWA installable
 • Mémoire conversation
 
-**Total : 130+ fonctionnalités actives** 🎯
+**Total : 135+ fonctionnalités actives** 🎯
 
 Boudoum ! 🇬🇵`})
   }
@@ -5954,7 +5959,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // CONSEILS VOYAGE CARAIBES
-  if (msgLow.includes("visiter") || msgLow.includes("vacances guadeloupe") || msgLow.includes("tourisme caraïbes") || msgLow.includes("que faire en guadeloupe") || msgLow.includes("bon plan voyage")) {
+  if (msgLow.includes("visiter") || msgLow.includes("vacances guadeloupe") || msgLow.includes("tourisme") || msgLow.includes("circuit") || msgLow.includes("que faire en guadeloupe") || msgLow.includes("bon plan voyage") || msgLow.includes("excursion")) {
     try {
       const meteo = await getMeteo()
       const groqText = await groqFetch([
