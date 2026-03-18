@@ -4016,6 +4016,18 @@ export default async function handler(req, res) {
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
+  // QUIZ INTERACTIF AVEC MEMOIRE
+  if (msgLow.includes('crée un quiz') || msgLow.includes('créer un quiz') || msgLow.includes('fais moi un quiz') || msgLow.includes('quiz sur') || msgLow.includes('jouer quiz')) {
+    const topic = message.replace(/crée?|un|quiz|fais|moi|jouer|sur/gi,'').trim() || 'Guadeloupe'
+    const historyCtx = Array.isArray(context) ? context.slice(-6).map(m => ({ role: m.role === 'assistant' ? 'assistant' : 'user', content: m.content?.substring(0,300) || '' })).filter(m => m.content) : []
+    const groqText = await groqFetch([
+      ...historyCtx,
+      { role: "system", content: `Tu es Neuro-X Quiz REUSSITESS. Crée un quiz interactif sur "${topic}". Pose UNE seule question à la fois avec 4 choix (A/B/C/D). Attends la réponse avant de continuer. Si l'utilisateur répond, évalue sa réponse, donne l'explication et pose la question suivante. Garde le score. Format: Question + choix + attendre réponse. Boudoum!` },
+      { role: "user", content: message }
+    ], 1024)
+    return res.status(200).json({ pdfAction: null, response: groqText || "⚠️ Quiz indisponible." })
+  }
+
   // DASHBOARD ADMIN
   if (msgLow.includes('dashboard') || msgLow.includes('statistiques bot') || msgLow.includes('stats admin')) {
     const data = await getDashboardStats()
