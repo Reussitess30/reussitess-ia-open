@@ -4274,6 +4274,15 @@ export default async function handler(req, res) {
     return res.status(200).json({ pdfAction: null, response: "👶 **Neuro-X Éducation — Enfants**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
   }
 
+  // SPORT SURF NAUTIQUE
+  if (msgLow.includes('surf') || msgLow.includes('voile') || msgLow.includes('nautique') || msgLow.includes('plongée') || msgLow.includes('plongee') || (msgLow.includes('sport') && (msgLow.includes('guadeloupe') || msgLow.includes('martinique') || msgLow.includes('caraïbes')))) {
+    const groqText = await groqFetch([
+      { role: "system", content: "Tu es Neuro-X Sport, expert sports nautiques et activités sportives caribéennes (surf, voile, plongée, football, athlétisme). Boudoum!" },
+      { role: "user", content: message }
+    ], 1024)
+    return res.status(200).json({ pdfAction: null, response: "🏄 **Neuro-X Sport — Sports Caribéens**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
+  }
+
   // REUSSSHIELD HEALTH CHECK
   if (msgLow.includes('reussshield') || msgLow.includes('état du système') || msgLow.includes('etat systeme') || msgLow.includes('santé système') || (msgLow.includes('tout') && msgLow.includes('fonctionne'))) {
     const data = await getHealthCheck()
