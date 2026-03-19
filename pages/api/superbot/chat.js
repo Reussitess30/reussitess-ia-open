@@ -3743,6 +3743,78 @@ async function getCryptoSecurite(contrat = "", chain = "polygon") {
   } catch(e) { return "⚠️ Service sécurité crypto indisponible." }
 }
 
+// ===== HUGGINGFACE — APIs Complémentaires =====
+const HF_KEY = process.env.HUGGINGFACE_API_KEY
+const HF_BASE = "https://router.huggingface.co/hf-inference/models"
+
+// Traduction avancée 100+ langues
+async function hfTraduire(texte, sourceLang = "fr", targetLang = "en") {
+  try {
+    if (!HF_KEY) return null
+    const model = `Helsinki-NLP/opus-mt-${sourceLang}-${targetLang}`
+    const res = await fetch(`${HF_BASE}/${model}`, {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + HF_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ inputs: texte }),
+      signal: AbortSignal.timeout(8000)
+    })
+    if (!res.ok) return null
+    const d = await res.json()
+    return d[0]?.translation_text || null
+  } catch(e) { return null }
+}
+
+// Résumé de texte
+async function hfResumer(texte) {
+  try {
+    if (!HF_KEY) return null
+    const res = await fetch(`${HF_BASE}/facebook/bart-large-cnn`, {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + HF_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ inputs: texte.substring(0, 1000) }),
+      signal: AbortSignal.timeout(10000)
+    })
+    if (!res.ok) return null
+    const d = await res.json()
+    return d[0]?.summary_text || null
+  } catch(e) { return null }
+}
+
+// Analyse sentiment
+async function hfSentiment(texte) {
+  try {
+    if (!HF_KEY) return null
+    const res = await fetch(`${HF_BASE}/cardiffnlp/twitter-roberta-base-sentiment-latest`, {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + HF_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ inputs: texte.substring(0, 500) }),
+      signal: AbortSignal.timeout(8000)
+    })
+    if (!res.ok) return null
+    const d = await res.json()
+    const top = d[0]?.sort((a,b) => b.score - a.score)[0]
+    const labels = { 'LABEL_0': '😟 Négatif', 'LABEL_1': '😐 Neutre', 'LABEL_2': '😊 Positif', 'negative': '😟 Négatif', 'neutral': '😐 Neutre', 'positive': '😊 Positif' }
+    return top ? `${labels[top.label] || top.label} (${Math.round(top.score*100)}%)` : null
+  } catch(e) { return null }
+}
+
+// Détection langue
+async function hfDetectLangue(texte) {
+  try {
+    if (!HF_KEY) return null
+    const res = await fetch(`${HF_BASE}/papluca/xlm-roberta-base-language-detection`, {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + HF_KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ inputs: texte.substring(0, 200) }),
+      signal: AbortSignal.timeout(8000)
+    })
+    if (!res.ok) return null
+    const d = await res.json()
+    const top = d[0]?.sort((a,b) => b.score - a.score)[0]
+    return top ? `${top.label} (${Math.round(top.score*100)}%)` : null
+  } catch(e) { return null }
+}
+
 // ===== CHIFFREMENT AES-256 =====
 const crypto_node = require('crypto')
 const ENCRYPT_KEY = process.env.ENCRYPT_KEY || 'reussitess971-guadeloupe-secure-key-32b'
@@ -4334,6 +4406,29 @@ export default async function handler(req, res) {
   if (msgLow === 'iss' || (msgLow.includes('iss') && msgLow.includes('position')) || msgLow.includes('station spatiale internationale') || msgLow.includes('où est l\'iss')) {
     const data = await getISSPosition()
     return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // ANALYSE SENTIMENT HF
+  if (msgLow.includes('analyse sentiment') || msgLow.includes('analyser sentiment') || msgLow.includes('emotion texte') || msgLow.includes('sentiment de')) {
+    const texte = message.replace(/analyse sentiment|analyser sentiment|emotion texte|sentiment de/gi,'').trim() || message
+    const result = await hfSentiment(texte)
+    if (result) return res.status(200).json({ pdfAction: null, response: `🧠 **Analyse Sentiment HuggingFace**\n\nTexte: "${texte.substring(0,100)}"\n\nRésultat: **${result}**\n\nBoudoum ! 🇬🇵` })
+  }
+
+  // DETECTION LANGUE HF
+  if (msgLow.includes('detecter langue') || msgLow.includes('détecter langue') || msgLow.includes('quelle langue') || msgLow.includes('identifier langue')) {
+    const texte = message.replace(/detecter langue|détecter langue|quelle langue|identifier langue/gi,'').trim() || message
+    const result = await hfDetectLangue(texte)
+    if (result) return res.status(200).json({ pdfAction: null, response: `🌍 **Détection Langue HuggingFace**\n\nTexte: "${texte.substring(0,100)}"\n\nLangue détectée: **${result}**\n\nBoudoum ! 🇬🇵` })
+  }
+
+  // RESUME TEXTE HF
+  if (msgLow.includes('résume ce texte') || msgLow.includes('resume ce texte') || msgLow.includes('résumer ce texte') || msgLow.includes('fais un résumé de')) {
+    const texte = message.replace(/résume ce texte|resume ce texte|résumer ce texte|fais un résumé de/gi,'').trim()
+    if (texte.length > 50) {
+      const result = await hfResumer(texte)
+      if (result) return res.status(200).json({ pdfAction: null, response: `📝 **Résumé automatique HuggingFace**\n\n${result}\n\nBoudoum ! 🇬🇵` })
+    }
   }
 
   // CREATEUR FONDATEUR
