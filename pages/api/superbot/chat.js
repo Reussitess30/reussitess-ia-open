@@ -5357,6 +5357,15 @@ Boudoum!` },
     return res.status(200).json({ pdfAction: null, response: "✈️ **Neuro-X Expatriation — Guide Mobilité**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
   }
 
+  // LOGEMENT SOCIAL HLM
+  if (msgLow.includes('hlm') || msgLow.includes('logement social') || msgLow.includes('logement aidé') || msgLow.includes('demande logement')) {
+    const groqText = await groqFetch([
+      { role: "system", content: "Tu es Neuro-X Juridique, expert logement social et HLM DOM-TOM. Guide sur demande HLM, dossier, délais, aides au logement. Boudoum!" },
+      { role: "user", content: message }
+    ], 1024)
+    return res.status(200).json({ pdfAction: null, response: "🏘️ **Neuro-X Logement — HLM DOM-TOM**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
+  }
+
   // REUSSSHIELD HEALTH CHECK
   if (msgLow.includes('reussshield') || msgLow.includes('état du système') || msgLow.includes('etat systeme') || msgLow.includes('santé système') || (msgLow.includes('tout') && msgLow.includes('fonctionne'))) {
     const data = await getHealthCheck()
