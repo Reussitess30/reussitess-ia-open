@@ -67,6 +67,21 @@ export default async function handler(req, res) {
           { text: '📚 Bibliothèque', callback_data: 'bibliothèque caribéenne' },
           { text: '🎯 Quiz', callback_data: 'quiz caribéen' },
           { text: '🥗 Nutrition', callback_data: 'nutrition banane' }
+        ],
+        [
+          { text: '🌙 Lune', callback_data: 'phase de la lune' },
+          { text: '🛸 ISS', callback_data: 'position ISS station spatiale' },
+          { text: '⛽ Carburant', callback_data: 'prix carburant guadeloupe' }
+        ],
+        [
+          { text: '🎵 Zouk', callback_data: 'deezer zouk guadeloupe' },
+          { text: '🎙️ Podcast', callback_data: 'podcast guadeloupe' },
+          { text: '🌀 Cyclones', callback_data: 'cyclones atlantique' }
+        ],
+        [
+          { text: '🔐 Crypto Sécurité', callback_data: 'crypto securite draineur danger' },
+          { text: '😂 Blague', callback_data: 'raconte moi une blague' },
+          { text: '📊 Dashboard', callback_data: 'dashboard stats' }
         ]
       ]
     }
@@ -137,6 +152,9 @@ Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
         '📰 Actualités': 'actualités Guadeloupe',
         '🌋 Séismes': 'séismes antilles',
         '🛍️ Boutiques': 'boutiques amazon 14 pays',
+      '🎵 Musique': 'deezer zouk guadeloupe',
+      '🎙️ Podcast': 'podcast guadeloupe',
+      '🔐 Crypto': 'crypto securite draineur danger',
         '💎 REUSS': 'token REUSS blockchain supply',
         '🔮 Oracle': 'oracle 971 quel est mon destin',
       }
