@@ -3683,6 +3683,66 @@ async function getDiscogsCaraibe(query = "zouk") {
   } catch(e) { return "⚠️ Discogs indisponible." }
 }
 
+// ===== CRYPTO SECURITE — GoPlus + Education =====
+async function getCryptoSecurite(contrat = "", chain = "polygon") {
+  try {
+    let result = `🛡️ **REUSSSHIELD CRYPTO — Guide Sécurité**\n\n`
+
+    // Vérification contrat si fourni
+    if (contrat && contrat.startsWith('0x')) {
+      const chainId = chain === 'polygon' ? '137' : chain === 'eth' ? '1' : chain === 'bsc' ? '56' : '137'
+      const res = await fetch(`https://api.gopluslabs.io/api/v1/token_security/${chainId}?contract_addresses=${contrat}`, { signal: AbortSignal.timeout(8000) })
+      const d = await res.json()
+      const token = d.result?.[contrat.toLowerCase()]
+
+      if (token) {
+        const isHoneypot = token.is_honeypot === '1'
+        const isScam = token.is_blacklisted === '1' || token.is_whitelisted === '0'
+        const mintable = token.is_mintable === '1'
+        const proxyContract = token.is_proxy === '1'
+        const openSource = token.is_open_source === '1'
+
+        result += `🔍 **Analyse Contrat: ${contrat.substring(0,10)}...**\n\n`
+        result += `${isHoneypot ? '🚨 HONEYPOT DÉTECTÉ !' : '✅ Pas un honeypot'}\n`
+        result += `${openSource ? '✅ Code source vérifié' : '⚠️ Code source NON vérifié'}\n`
+        result += `${mintable ? '⚠️ Token mintable (risque inflation)' : '✅ Supply fixe'}\n`
+        result += `${proxyContract ? '⚠️ Contrat proxy (peut changer)' : '✅ Contrat fixe'}\n`
+        result += `\n`
+      }
+    }
+
+    result += `📚 **Guide Crypto Sécurité REUSSITESS**\n\n`
+    result += `🚨 **DANGERS PRINCIPAUX :**\n`
+    result += `• Draineurs de wallet — apps/sites qui volent tout ton wallet en 1 clic\n`
+    result += `• Honeypot — token qu'on peut acheter mais jamais vendre\n`
+    result += `• Rug Pull — équipe qui vide la liquidité et disparaît\n`
+    result += `• Phishing — faux sites MetaMask/Uniswap qui volent ta seedphrase\n`
+    result += `• Fake airdrop — signature malveillante qui donne accès à ton wallet\n\n`
+
+    result += `🔒 **RÈGLES D'OR :**\n`
+    result += `• JAMAIS partager ta seedphrase (12/24 mots) — même à ton frère !\n`
+    result += `• Vérifier l'URL exacte avant de connecter ton wallet\n`
+    result += `• Utiliser revoke.cash pour révoquer les approbations suspectes\n`
+    result += `• Tester avec un petit montant avant d'investir\n`
+    result += `• Vérifier le contrat sur PolygonScan/Etherscan\n\n`
+
+    result += `🔎 **OUTILS GRATUITS DE VÉRIFICATION :**\n`
+    result += `• https://gopluslabs.io — scanner de token gratuit\n`
+    result += `• https://revoke.cash — révoquer accès wallet\n`
+    result += `• https://de.fi/scanner — audit contrat gratuit\n`
+    result += `• https://tokensniffer.com — détecter scams\n`
+    result += `• https://polygonscan.com — vérifier contrats Polygon\n\n`
+
+    result += `⚖️ **MiCA (Europe) :**\n`
+    result += `• En vigueur depuis 2024 pour les crypto-actifs en Europe\n`
+    result += `• Oblige la transparence sur les tokenomics et risques\n`
+    result += `• REUSS Token suit les directives MiCA\n\n`
+
+    result += `⚠️ Ce n'est PAS un conseil financier. DYOR. Risque de perte totale.\nBoudoum ! 🇬🇵`
+    return result
+  } catch(e) { return "⚠️ Service sécurité crypto indisponible." }
+}
+
 // ===== CHIFFREMENT AES-256 =====
 const crypto_node = require('crypto')
 const ENCRYPT_KEY = process.env.ENCRYPT_KEY || 'reussitess971-guadeloupe-secure-key-32b'
@@ -4322,6 +4382,15 @@ export default async function handler(req, res) {
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
+  // CRYPTO SECURITE DRAINEUR
+  if ((msgLow.includes('draineur') || msgLow.includes('draneur') || msgLow.includes('honeypot') || msgLow.includes('rug pull') || msgLow.includes('scam crypto') || msgLow.includes('sécurité crypto') || msgLow.includes('securite crypto') || msgLow.includes('verifier contrat') || msgLow.includes('vérifier contrat') || msgLow.includes('crypto danger') || msgLow.includes('mica') || (msgLow.includes('crypto') && msgLow.includes('sécurité')))) {
+    const contratMatch = message.match(/0x[a-fA-F0-9]{40}/)
+    const contrat = contratMatch ? contratMatch[0] : ''
+    const chain = msgLow.includes('polygon') ? 'polygon' : msgLow.includes('bsc') || msgLow.includes('bnb') ? 'bsc' : 'polygon'
+    const data = await getCryptoSecurite(contrat, chain)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
   // NEWSLETTER EMAILING
   if (msgLow.includes('newsletter') || msgLow.includes('emailing') || (msgLow.includes('email') && msgLow.includes('marketing')) || msgLow.includes('mailing list')) {
     const groqText = await groqFetch([
@@ -4629,6 +4698,10 @@ export default async function handler(req, res) {
 • 🔐 Chiffrement AES-256
 • 🛡️ Rate limiting anti-abus
 • 🔔 Alertes Telegram automatiques
+• 🛡️ Crypto sécurité: détection draineurs/honeypot
+• 🔎 Scanner contrats GoPlus gratuit
+• ⚖️ Guide MiCA conformité européenne
+• 🔒 Outils protection wallet (revoke.cash, de.fi)
 • 📊 PIB/Chômage DOM-TOM (World Bank)
 • 🏘️ Communes & population (INSEE)
 • 📂 Open Data officiel (data.gouv.fr)
@@ -4723,7 +4796,7 @@ export default async function handler(req, res) {
 • PWA installable
 • Mémoire conversation
 
-**Total : 145+ fonctionnalités actives** 🎯
+**Total : 150+ fonctionnalités actives** 🎯
 
 Boudoum ! 🇬🇵`})
   }
