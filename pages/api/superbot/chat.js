@@ -3606,6 +3606,83 @@ async function getIPLocation(ip = "") {
   } catch(e) { return "⚠️ Géolocalisation indisponible." }
 }
 
+// ===== ITUNES PODCASTS GRATUITS =====
+async function getPodcasts(query = "guadeloupe") {
+  try {
+    const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&media=podcast&limit=5&lang=fr_fr`, { signal: AbortSignal.timeout(5000) })
+    const d = await res.json()
+    if (!d.results?.length) return `❌ Aucun podcast trouvé pour "${query}".`
+    let result = `🎙️ **Podcasts — "${query}"**\n\n`
+    for (const p of d.results.slice(0,5)) {
+      result += `🎵 **${p.collectionName}**\n`
+      result += `👤 ${p.artistName}\n`
+      result += `🔗 ${p.collectionViewUrl}\n\n`
+    }
+    result += `Source: iTunes • 100% gratuit\nBoudoum ! 🇬🇵`
+    return result
+  } catch(e) { return "⚠️ Podcasts indisponibles." }
+}
+
+// ===== ITUNES MUSIQUE CARIBÉENNE =====
+async function getMusiqueCaraibe(query = "zouk guadeloupe") {
+  try {
+    const res = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&media=music&limit=5&lang=fr_fr`, { signal: AbortSignal.timeout(5000) })
+    const d = await res.json()
+    if (!d.results?.length) return `❌ Aucun résultat pour "${query}".`
+    let result = `🎵 **Musique — "${query}"**\n\n`
+    for (const t of d.results.slice(0,5)) {
+      result += `🎶 **${t.trackName}** — ${t.artistName}\n`
+      result += `💿 Album: ${t.collectionName} (${t.releaseDate?.substring(0,4)||'N/A'})\n`
+      result += `🔗 ${t.trackViewUrl}\n\n`
+    }
+    result += `Source: iTunes • Boudoum ! 🇬🇵`
+    return result
+  } catch(e) { return "⚠️ Musique indisponible." }
+}
+
+// ===== MUSICBRAINZ — Artistes Caribéens =====
+async function getArtisteCaraibe(artiste = "Kassav") {
+  try {
+    const res = await fetch(`https://musicbrainz.org/ws/2/artist/?query=${encodeURIComponent(artiste)}&fmt=json&limit=3`, { headers: {'User-Agent': 'REUSSITESS-AI/1.0 (reussitess.fr)'}, signal: AbortSignal.timeout(5000) })
+    const d = await res.json()
+    if (!d.artists?.length) return `❌ Artiste "${artiste}" non trouvé.`
+    const a = d.artists[0]
+    return `🎤 **${a.name}**\n\n📍 Origine: ${a.country || a['begin-area']?.name || 'N/A'}\n📅 Actif depuis: ${a['life-span']?.begin || 'N/A'}\n🎭 Genre: ${a.tags?.slice(0,3).map(t=>t.name).join(', ') || 'N/A'}\n\nSource: MusicBrainz\nBoudoum ! 🇬🇵`
+  } catch(e) { return "⚠️ Données artiste indisponibles." }
+}
+
+// ===== DEEZER — Radio & Musique Caribéenne =====
+async function getDeezerCaraibe(query = "zouk") {
+  try {
+    const res = await fetch(`https://api.deezer.com/search?q=${encodeURIComponent(query)}&type=track&limit=5`, { signal: AbortSignal.timeout(5000) })
+    const d = await res.json()
+    if (!d.data?.length) return `❌ Aucun résultat Deezer pour "${query}".`
+    let result = `🎧 **Deezer — "${query}"**\n\n`
+    for (const t of d.data.slice(0,5)) {
+      result += `🎵 **${t.title}** — ${t.artist.name}\n`
+      result += `💿 ${t.album.title} | 🔗 https://www.deezer.com/track/${t.id}\n\n`
+    }
+    result += `Source: Deezer • Boudoum ! 🇬🇵`
+    return result
+  } catch(e) { return "⚠️ Deezer indisponible." }
+}
+
+// ===== DISCOGS — Vinyles & Albums Caribéens =====
+async function getDiscogsCaraibe(query = "zouk") {
+  try {
+    const res = await fetch(`https://api.discogs.com/database/search?q=${encodeURIComponent(query)}&type=release&per_page=5`, { headers: {'User-Agent': 'REUSSITESS-AI/1.0'}, signal: AbortSignal.timeout(5000) })
+    const d = await res.json()
+    if (!d.results?.length) return `❌ Aucun album trouvé pour "${query}".`
+    let result = `💿 **Discogs — Albums "${query}"**\n\n`
+    for (const r of d.results.slice(0,5)) {
+      result += `🎵 **${r.title}** (${r.year || 'N/A'})\n`
+      result += `🎭 Genre: ${r.genre?.join(', ') || 'N/A'} | Style: ${r.style?.join(', ') || 'N/A'}\n\n`
+    }
+    result += `Source: Discogs • Boudoum ! 🇬🇵`
+    return result
+  } catch(e) { return "⚠️ Discogs indisponible." }
+}
+
 // ===== CHIFFREMENT AES-256 =====
 const crypto_node = require('crypto')
 const ENCRYPT_KEY = process.env.ENCRYPT_KEY || 'reussitess971-guadeloupe-secure-key-32b'
@@ -4217,6 +4294,43 @@ export default async function handler(req, res) {
     return res.status(200).json({ pdfAction: null, response: "👔 **Neuro-X RH — Ressources Humaines**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
   }
 
+  // MUSIQUE ITUNES CARAIBE
+  if ((msgLow.includes('chanson') || msgLow.includes('titre') || msgLow.includes('morceau')) && (msgLow.includes('zouk') || msgLow.includes('soca') || msgLow.includes('reggae') || msgLow.includes('afrobeats') || msgLow.includes('caribéen'))) {
+    const query = message.replace(/chanson|titre|morceau|cherche|trouve/gi,'').trim() || 'zouk guadeloupe'
+    const data = await getMusiqueCaraibe(query)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // DEEZER RECHERCHE
+  if (msgLow.includes('deezer') || (msgLow.includes('écouter') && msgLow.includes('musique'))) {
+    const query = message.replace(/deezer|écouter|musique|cherche/gi,'').trim() || 'zouk'
+    const data = await getDeezerCaraibe(query)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // DISCOGS VINYLES
+  if (msgLow.includes('discogs') || msgLow.includes('vinyle') || msgLow.includes('album') && msgLow.includes('caraïbes')) {
+    const query = message.replace(/discogs|vinyle|album|caraïbes|cherche/gi,'').trim() || 'zouk'
+    const data = await getDiscogsCaraibe(query)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // PODCASTS ITUNES
+  if (msgLow.includes('podcast') || msgLow.includes('écouter') && msgLow.includes('radio') || msgLow.includes('audio') && msgLow.includes('emission')) {
+    const query = message.replace(/podcast|écouter|audio|emission|radio|gratuit/gi,'').trim() || 'Guadeloupe'
+    const data = await getPodcasts(query)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // NEWSLETTER EMAILING
+  if (msgLow.includes('newsletter') || msgLow.includes('emailing') || (msgLow.includes('email') && msgLow.includes('marketing')) || msgLow.includes('mailing list')) {
+    const groqText = await groqFetch([
+      { role: "system", content: "Tu es Neuro-X Marketing, expert newsletter et email marketing. Guide sur création, segmentation, automatisation. Boudoum!" },
+      { role: "user", content: message }
+    ], 1024)
+    return res.status(200).json({ pdfAction: null, response: "📧 **Neuro-X Marketing — Newsletter & Emailing**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
+  }
+
   // TRADUCTION MYMEMORY ULTRA-PRIORITAIRE
   if ((msgLow.includes('traduis') || msgLow.includes('traduire') || msgLow.includes('translate')) && !msgLow.includes('creole') && !msgLow.includes('kreyol')) {
     const langues = { 'anglais':'en','espagnol':'es','portugais':'pt','allemand':'de','italien':'it','arabe':'ar','chinois':'zh','japonais':'ja','russe':'ru' }
@@ -4504,6 +4618,12 @@ export default async function handler(req, res) {
 • 📍 Géolocalisation IP
 • 👥 Données ONU Population
 • 🔍 Analyse de liens URL
+• 🎵 Musique caribéenne iTunes temps réel
+• 🎧 Deezer recherche musicale
+• 💿 Discogs vinyles et albums
+• 🎤 MusicBrainz artistes caribéens
+• 🎙️ Podcasts gratuits iTunes
+• 📧 Newsletter et email marketing
 • 🎯 Quiz interactif avec mémoire conversationnelle
 • 🤖 Bot Telegram @Reussitessbot
 • 🔐 Chiffrement AES-256
@@ -4603,7 +4723,7 @@ export default async function handler(req, res) {
 • PWA installable
 • Mémoire conversation
 
-**Total : 135+ fonctionnalités actives** 🎯
+**Total : 145+ fonctionnalités actives** 🎯
 
 Boudoum ! 🇬🇵`})
   }
