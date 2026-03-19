@@ -4802,6 +4802,10 @@ export default async function handler(req, res) {
 • 🔎 Scanner contrats GoPlus gratuit
 • ⚖️ Guide MiCA conformité européenne
 • 🔒 Outils protection wallet (revoke.cash, de.fi)
+• 🤗 HuggingFace: analyse sentiment texte
+• 🌍 HuggingFace: détection langue automatique
+• 📝 HuggingFace: résumé automatique texte
+• 🔊 TTS créole (Groq PlayAI)
 • 📊 PIB/Chômage DOM-TOM (World Bank)
 • 🏘️ Communes & population (INSEE)
 • 📂 Open Data officiel (data.gouv.fr)
@@ -4896,7 +4900,7 @@ export default async function handler(req, res) {
 • PWA installable
 • Mémoire conversation
 
-**Total : 150+ fonctionnalités actives** 🎯
+**Total : 155+ fonctionnalités actives** 🎯
 
 Boudoum ! 🇬🇵`})
   }
