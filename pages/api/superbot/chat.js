@@ -5348,6 +5348,15 @@ Boudoum!` },
     return res.status(200).json({ pdfAction: null, response: "🏄 **Neuro-X Sport — Sports Caribéens**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
   }
 
+  // EXPATRIATION DOM-TOM
+  if (msgLow.includes('expatriation') || msgLow.includes('expatrier') || msgLow.includes('partir en metropole') || msgLow.includes('quitter guadeloupe') || msgLow.includes('quitter martinique') || (msgLow.includes('partir') && msgLow.includes('dom-tom'))) {
+    const groqText = await groqFetch([
+      { role: "system", content: "Tu es Neuro-X Voyage, expert expatriation et mobilité depuis les DOM-TOM vers la métropole ou l'étranger. Donne des conseils pratiques. Boudoum!" },
+      { role: "user", content: message }
+    ], 1024)
+    return res.status(200).json({ pdfAction: null, response: "✈️ **Neuro-X Expatriation — Guide Mobilité**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
+  }
+
   // REUSSSHIELD HEALTH CHECK
   if (msgLow.includes('reussshield') || msgLow.includes('état du système') || msgLow.includes('etat systeme') || msgLow.includes('santé système') || (msgLow.includes('tout') && msgLow.includes('fonctionne'))) {
     const data = await getHealthCheck()
