@@ -3815,6 +3815,27 @@ async function hfDetectLangue(texte) {
   } catch(e) { return null }
 }
 
+// ===== REDDIT RSS GRATUIT =====
+async function getRedditPosts(subreddit = "reussitess_quiz_dev") {
+  try {
+    const res = await fetch(`https://www.reddit.com/r/${subreddit}/new.json?limit=5`, {
+      headers: { 'User-Agent': 'REUSSITESS-AI/1.0' },
+      signal: AbortSignal.timeout(5000)
+    })
+    const d = await res.json()
+    if (!d.data?.children?.length) return `❌ Aucun post dans r/${subreddit}.`
+    let result = `📱 **Reddit — r/${subreddit}**\n\n`
+    for (const p of d.data.children.slice(0,5)) {
+      const post = p.data
+      result += `📌 **${post.title}**\n`
+      result += `👍 ${post.score} votes | 💬 ${post.num_comments} commentaires\n`
+      result += `🔗 https://reddit.com${post.permalink}\n\n`
+    }
+    result += `Source: Reddit • Boudoum ! 🇬🇵`
+    return result
+  } catch(e) { return "⚠️ Reddit indisponible." }
+}
+
 // ===== CHIFFREMENT AES-256 =====
 const crypto_node = require('crypto')
 const ENCRYPT_KEY = process.env.ENCRYPT_KEY || 'reussitess971-guadeloupe-secure-key-32b'
@@ -4429,6 +4450,13 @@ export default async function handler(req, res) {
       const result = await hfResumer(texte)
       if (result) return res.status(200).json({ pdfAction: null, response: `📝 **Résumé automatique HuggingFace**\n\n${result}\n\nBoudoum ! 🇬🇵` })
     }
+  }
+
+  // REDDIT POSTS
+  if (msgLow.includes('reddit') || msgLow.includes('r/reussitess') || msgLow.includes('quiz communauté')) {
+    const sub = msgLow.includes('guadeloupe') ? 'Guadeloupe' : msgLow.includes('caribbean') ? 'caribbean' : 'reussitess_quiz_dev'
+    const data = await getRedditPosts(sub)
+    return res.status(200).json({ pdfAction: null, response: data })
   }
 
   // CREATEUR FONDATEUR
