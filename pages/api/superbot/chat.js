@@ -848,7 +848,7 @@ async function getWikipedia(term) {
   }
 
   // OFFRES EMPLOI DOM-TOM CARAIBES AFRIQUE
-  if (msgLow.includes("offre emploi") || msgLow.includes("chercher emploi") || msgLow.includes("trouver un emploi") || msgLow.includes("job guadeloupe") || msgLow.includes("job martinique") || msgLow.includes("job reunion") || msgLow.includes("emploi dom-tom") || msgLow.includes("emploi caraibes") || msgLow.includes("emploi afrique") || msgLow.includes("recrutement guadeloupe") || msgLow.includes("remote job") || msgLow.includes("offre de travail")) {
+  if ((msgLow.includes("offre emploi") || msgLow.includes("chercher emploi") || msgLow.includes("trouver un emploi") || msgLow.includes("job guadeloupe") || msgLow.includes("job martinique") || msgLow.includes("job reunion") || msgLow.includes("emploi dom-tom") || msgLow.includes("emploi caraibes") || msgLow.includes("emploi afrique") || msgLow.includes("recrutement guadeloupe") || msgLow.includes("remote job") || msgLow.includes("offre de travail")) && !msgLow.includes("ressources humaines")) {
     try {
       const remoteRes = await fetch("https://remoteok.com/api?limit=5", { headers: { "User-Agent": "REUSSITESS971Bot/1.0" } })
       const remoteData = await remoteRes.json()
@@ -4065,7 +4065,7 @@ export default async function handler(req, res) {
   // ===== TRIGGERS ULTRA PRIORITAIRES =====
 
   // FRANCE TRAVAIL EMPLOI TEMPS REEL
-  if (msgLow.includes('emploi') || msgLow.includes('offre') || msgLow.includes('recrutement') || msgLow.includes('liste') && msgLow.includes('travail')) {
+  if ((msgLow.includes('emploi') || msgLow.includes('offre emploi') || (msgLow.includes('liste') && msgLow.includes('travail'))) && !msgLow.includes('ressources humaines') && !msgLow.includes(' rh ')) {
     const zone = msgLow.includes('martinique') ? '972' : msgLow.includes('guyane') ? '973' : msgLow.includes('reunion') ? '974' : '971'
     const data = await getOffresEmploiDOMTOM(message, zone)
     return res.status(200).json({ pdfAction: null, response: data })
@@ -5130,7 +5130,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // OFFRES EMPLOI DOM-TOM CARAIBES AFRIQUE
-  if (msgLow.includes("offre emploi") || msgLow.includes("chercher emploi") || msgLow.includes("trouver un emploi") || msgLow.includes("job guadeloupe") || msgLow.includes("job martinique") || msgLow.includes("job reunion") || msgLow.includes("emploi dom-tom") || msgLow.includes("emploi caraibes") || msgLow.includes("emploi afrique") || msgLow.includes("recrutement guadeloupe") || msgLow.includes("remote job") || msgLow.includes("offre de travail")) {
+  if ((msgLow.includes("offre emploi") || msgLow.includes("chercher emploi") || msgLow.includes("trouver un emploi") || msgLow.includes("job guadeloupe") || msgLow.includes("job martinique") || msgLow.includes("job reunion") || msgLow.includes("emploi dom-tom") || msgLow.includes("emploi caraibes") || msgLow.includes("emploi afrique") || msgLow.includes("recrutement guadeloupe") || msgLow.includes("remote job") || msgLow.includes("offre de travail")) && !msgLow.includes("ressources humaines")) {
     try {
       const remoteRes = await fetch("https://remoteok.com/api?limit=5", { headers: { "User-Agent": "REUSSITESS971Bot/1.0" } })
       const remoteData = await remoteRes.json()
