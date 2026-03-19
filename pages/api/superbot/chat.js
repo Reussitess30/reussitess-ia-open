@@ -4167,16 +4167,17 @@ async function getGeoLocation(lieu) {
 
 async function getMeteoDOMTOM(commune) {
   try {
-    const lats = {'pointe-a-pitre':'16.24','basse-terre':'16.00','fort-de-france':'14.60','cayenne':'4.93','saint-denis':'-20.88'}
-    const lngs = {'pointe-a-pitre':'-61.53','basse-terre':'-61.72','fort-de-france':'-61.07','cayenne':'-52.33','saint-denis':'55.45'}
-    const key = (commune||'pointe-a-pitre').toLowerCase().replace(/[^a-z-]/g,'')
-    const lat = lats[key] || '16.24'
-    const lng = lngs[key] || '-61.53'
-    const r = await fetch("https://api.open-meteo.com/v1/forecast?latitude="+lat+"&longitude="+lng+"&current=temperature_2m,weathercode,windspeed_10m&timezone=auto")
+    const nom = commune || 'Pointe-a-Pitre'
+    // Géocodage dynamique via Nominatim
+    const geo = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(nom)}&format=json&limit=1&countrycodes=gp,mq,gf,re,yt,pm,nc,pf,bl,mf`, { headers: {'User-Agent':'REUSSITESS-AI/1.0'}, signal: AbortSignal.timeout(5000) })
+    const gd = await geo.json()
+    const lat = gd[0]?.lat || '16.24'
+    const lng = gd[0]?.lon || '-61.53'
+    const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=temperature_2m,weathercode,windspeed_10m&timezone=auto`, { signal: AbortSignal.timeout(5000) })
     const data = await r.json()
     const c = data.current
     const codes = {0:'Ciel degage',1:'Peu nuageux',2:'Nuageux',3:'Couvert',61:'Pluie legere',63:'Pluie moderee',80:'Averses',95:'Orage'}
-    return (commune||'Pointe-a-Pitre')+": "+(codes[c.weathercode]||'Variable')+" | "+c.temperature_2m+"C | Vent: "+c.windspeed_10m+" km/h"
+    return nom+": "+(codes[c.weathercode]||'Variable')+" | "+c.temperature_2m+"C | Vent: "+c.windspeed_10m+" km/h"
   } catch(e) { return null }
 }
 
