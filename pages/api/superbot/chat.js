@@ -4454,7 +4454,7 @@ export default async function handler(req, res) {
 
   // REDDIT POSTS
   if (msgLow.includes('reddit') || msgLow.includes('r/reussitess') || msgLow.includes('quiz communauté')) {
-    const sub = msgLow.includes('guadeloupe') ? 'Guadeloupe' : msgLow.includes('caribbean') ? 'caribbean' : 'reussitess_quiz_dev'
+    const sub = msgLow.includes('guadeloupe') ? 'Guadeloupe' : msgLow.includes('caribbean') || msgLow.includes('caraïbes') ? 'caribbean' : msgLow.includes('martinique') ? 'martinique' : msgLow.includes('haiti') ? 'haiti' : msgLow.includes('afrique') ? 'francophonie' : 'Guadeloupe'
     const data = await getRedditPosts(sub)
     return res.status(200).json({ pdfAction: null, response: data })
   }
