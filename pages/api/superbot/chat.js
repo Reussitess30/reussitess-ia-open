@@ -4846,6 +4846,9 @@ export default async function handler(req, res) {
 • 📚 Césaire, Fanon, Condé, Glissant
 • 🏺 Histoire & Philosophie antillaise
 • 🌿 Bibliothèque caribéenne (26 pays)
+• 🎵 Musique iTunes/Deezer/Discogs/MusicBrainz
+• 🎙️ Podcasts gratuits iTunes
+• 🎉 Festivals & événements caribéens
 
 💼 **Business & Documents PDF :**
 • 📄 CV professionnel PDF
@@ -4860,6 +4863,8 @@ export default async function handler(req, res) {
 • Lien direct QuickSwap
 • GoMining suivi
 • NFT & Staking (en développement)
+• 🛡️ Détection draineurs/honeypot (GoPlus)
+• ⚖️ Guide MiCA conformité européenne
 
 🧠 **Intelligence Artificielle Avancée :**
 • 60 agents Neuro-X spécialisés
