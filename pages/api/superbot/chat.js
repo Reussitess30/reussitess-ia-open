@@ -3154,7 +3154,7 @@ async function encyclopedieAntillesAfrique(sujet) {
 async function getSeismesCaraibes() {
 
   try {
-    const r = await fetch("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minmagnitude=3&minlatitude=10&maxlatitude=20&minlongitude=-70&maxlongitude=-58&limit=5")
+    const r = await fetch("https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minmagnitude=3&minlatitude=10&maxlatitude=20&minlongitude=-70&maxlongitude=-58&limit=5", { signal: AbortSignal.timeout(5000) })
     const d = await r.json()
     if (!d.features?.length) return "Aucun séisme récent"
     return d.features.map(f => "M"+f.properties.mag+" — "+f.properties.place).join("\n")
