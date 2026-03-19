@@ -4400,6 +4400,11 @@ export default async function handler(req, res) {
     return res.status(200).json({ pdfAction: null, response: "📧 **Neuro-X Marketing — Newsletter & Emailing**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
   }
 
+  // CREATEUR FONDATEUR
+  if (msgLow.includes('créateur') || msgLow.includes('createur') || msgLow.includes('qui t a cree') || msgLow.includes('qui ta cree') || msgLow.includes('qui t as cree') || msgLow.includes('qui vous a cree') || msgLow.includes('origine') && msgLow.includes('toi') || msgLow.includes('cree par qui')) {
+    return res.status(200).json({ pdfAction: null, response: "🌟 **Mon Créateur**\n\nJe suis **REUSSITESS®971 AI**, créé par **Rony Porinus**, entrepreneur guadeloupéen basé à **Gourbeyre, Guadeloupe 🇬🇵**\n\n**SIRET :** 444699979700031\n**Marque :** REUSSITESS® (DSO2026008921 — INPI eSoleau)\n**Site :** https://reussitess.fr\n**Telegram :** @Reussitessbot\n\n💡 Rony a construit REUSSITESS depuis la Guadeloupe avec Termux sur Android — preuve que l\'excellence caribéenne n\'a pas de limite !\n\n**Devise :** *Cultiver le maximum de personnes dans le monde entier*\n\nBoudoum ! 🇬🇵" })
+  }
+
   // TRADUCTION MYMEMORY ULTRA-PRIORITAIRE
   if ((msgLow.includes('traduis') || msgLow.includes('traduire') || msgLow.includes('translate')) && !msgLow.includes('creole') && !msgLow.includes('kreyol')) {
     const langues = { 'anglais':'en','espagnol':'es','portugais':'pt','allemand':'de','italien':'it','arabe':'ar','chinois':'zh','japonais':'ja','russe':'ru' }
