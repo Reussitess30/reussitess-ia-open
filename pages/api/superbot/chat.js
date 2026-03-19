@@ -40,7 +40,7 @@ const GROQ_KEYS = [process.env.GROQ_API_KEY, process.env.GROQ_API_KEY_2, process
 let keyIndex = 0
 const keyErrors = {}
 const responseCache = new Map()
-const CACHE_TTL = 5 * 60 * 1000
+const CACHE_TTL = 30 * 1000
 
 function getNextKey() {
   const now = Date.now()
