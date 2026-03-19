@@ -59,9 +59,9 @@ function getNextKey() {
 
 // =======================
 async function groqFetch(messages, maxTokens = 512) {
-  const cacheKey = JSON.stringify(messages).substring(0, 200)
+  const cacheKey = JSON.stringify(messages).substring(0, 500) + (messages[messages.length-1]?.content || '').substring(0, 100)
   const cached = responseCache.get(cacheKey)
-  if (cached && Date.now() - cached.ts < CACHE_TTL) return cached.val
+  if (false && cached && Date.now() - cached.ts < CACHE_TTL) return cached.val // cache désactivé
   const key = getNextKey()
   try {
     const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
