@@ -14,14 +14,24 @@ const LANGUES = {
 
 const URL_REGEX = new RegExp('(https?://[^\\s<>"]+)', 'g')
 function renderBotMessage(text) {
-  return text
+  // D'abord extraire les liens markdown AVANT l'échappement HTML
+  const links = []
+  const placeholder = text.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, (m, txt, url) => {
+    const id = '%%LINK' + links.length + '%%'
+    links.push('<a href="' + url.replace('http://', 'https://') + '" target="_blank" rel="noopener noreferrer" style="color:#10b981;text-decoration:underline;">' + txt + '</a>')
+    return id
+  })
+  // Ensuite échapper le HTML
+  let result = placeholder
     .replace(/BOUDOUM/g, 'Boudoum')
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, (m, txt, url) => '<a href="' + url.replace('http://', 'https://') + '" target="_blank" rel="noopener noreferrer" style="color:#10b981;text-decoration:underline;">' + txt + '</a>')
     .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
     .replace(/\*(.+?)\*/g,'<em>$1</em>')
     .replace(URL_REGEX, (m) => '<a href="' + m + '" target="_blank" rel="noopener noreferrer nofollow" onclick="window.open(this.href,\'_blank\');return false;" style="color:#10b981;text-decoration:underline;word-break:break-all;">' + m + '</a>')
     .replace(/\n/g,'<br/>')
+  // Restaurer les liens
+  links.forEach((link, i) => { result = result.replace('%%LINK' + i + '%%', link) })
+  return result
 }
 
 export default function SuperBotAssistant() {
