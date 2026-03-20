@@ -17,6 +17,7 @@
     "@langchain/groq": "^1.1.5",
     "@prisma/client": "^7.1.0",
     "@stripe/stripe-js": "^8.5.3",
+    "@upstash/redis": "^1.37.0",
     "dotenv": "^17.2.3",
     "ethers": "^6.16.0",
     "geoip-lite": "^1.4.10",
