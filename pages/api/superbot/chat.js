@@ -3881,6 +3881,32 @@ async function hfDetectLangue(texte) {
   } catch(e) { return null }
 }
 
+// ===== KICK.COM API =====
+async function getKickStats() {
+  try {
+    const res = await fetch("https://kick.com/api/v2/channels/Reussitess", {
+      headers: { 'User-Agent': 'Mozilla/5.0', 'Accept': 'application/json', 'Referer': 'https://kick.com' },
+      signal: AbortSignal.timeout(5000)
+    })
+    const d = await res.json()
+    const isLive = d.livestream !== null
+    const followers = d.followers_count || 0
+    const viewers = d.livestream?.viewer_count || 0
+    const title = d.livestream?.session_title || 'Hors ligne'
+    
+    let result = `🎮 **REUSSITESS sur Kick.com**\n\n`
+    result += `👥 Followers: **${followers}**\n`
+    result += `${isLive ? '🔴 **EN DIRECT** !' : '⚫ Hors ligne'}\n`
+    if (isLive) {
+      result += `👁️ Viewers: **${viewers}**\n`
+      result += `🎯 Stream: ${title}\n`
+    }
+    result += `\n🔗 https://kick.com/Reussitess\n`
+    result += `\n💡 Abonne-toi pour suivre les streams REUSSITESS !\n\nBoudoum ! 🇬🇵`
+    return result
+  } catch(e) { return null }
+}
+
 // ===== REDDIT RSS GRATUIT =====
 async function getRedditPosts(subreddit = "reussitess_quiz_dev") {
   try {
@@ -4545,6 +4571,12 @@ export default async function handler(req, res) {
       const result = await hfResumer(texte)
       if (result) return res.status(200).json({ pdfAction: null, response: `📝 **Résumé automatique HuggingFace**\n\n${result}\n\nBoudoum ! 🇬🇵` })
     }
+  }
+
+  // KICK.COM
+  if (msgLow.includes('kick') || msgLow.includes('stream') || msgLow.includes('streaming') || msgLow.includes('live reussitess')) {
+    const data = await getKickStats()
+    if (data) return res.status(200).json({ pdfAction: null, response: data })
   }
 
   // REDDIT POSTS
