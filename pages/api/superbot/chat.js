@@ -4365,6 +4365,15 @@ export default async function handler(req, res) {
 
   const { message, personality, context, langue, datetime, image, imageQuestion } = req.body
 
+  // Incrémenter compteurs Redis
+  try {
+    const { Redis } = await import('@upstash/redis')
+    const redis = Redis.fromEnv()
+    await redis.incr('reussitess_visitors')
+    const today = new Date().toISOString().substring(0,10)
+    await redis.incr('requests:' + today)
+  } catch(e) {}
+
   // ===== MULTIMODAL — Analyse Image =====
   if (image) {
     try {
