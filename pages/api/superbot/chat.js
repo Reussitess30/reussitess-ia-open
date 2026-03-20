@@ -4980,7 +4980,7 @@ Boudoum ! 🇬🇵`})
       const data = getPolitiquesGuadeloupe()
       return res.status(200).json({ pdfAction: null, response: data })
     } catch(e) {
-      return res.status(200).json({ pdfAction: null, response: "🗳️ Consultez https://www.guadeloupe.gouv.fr\n\nBoudoum ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: null, response: "🗳️ Consultez https://www.guadeloupe.gouv.fr 📱*(navigateur)*\n\nBoudoum ! 🇬🇵" })
     }
   }
 
@@ -5129,12 +5129,12 @@ Boudoum ! 🇬🇵`})
   // ============ CARBURANT ============
   if (msgLow.includes('carburant') || msgLow.includes('essence') || msgLow.includes('gazole') || msgLow.includes('prix pompe')) {
     const data = await getPrixCarburant()
-    return res.status(200).json({ pdfAction: null, response: "Prix Carburant DOM-TOM\n\n"+(data||"Donnees indisponibles")+"\n\nhttps://www.prix-carburants.gouv.fr\nBoudoum ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: null, response: "Prix Carburant DOM-TOM\n\n"+(data||"Donnees indisponibles")+"\n\nhttps://www.prix-carburants.gouv.fr 📱*(navigateur)*\nBoudoum ! 🇬🇵" })
   }
   // ============ CALENDRIER SCOLAIRE ============
   if (msgLow.includes('calendrier scolaire') || msgLow.includes('vacances scolaires') || msgLow.includes('rentree') || msgLow.includes('vacances ecole')) {
     const data = await getCalendrieScolaire()
-    return res.status(200).json({ pdfAction: null, response: "Calendrier Scolaire DOM-TOM\n\n"+(data||"Consulte education.gouv.fr")+"\n\nhttps://www.education.gouv.fr\nBoudoum ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: null, response: "Calendrier Scolaire DOM-TOM\n\n"+(data||"Consulte education.gouv.fr")+"\n\nhttps://www.education.gouv.fr 📱*(navigateur)*\nBoudoum ! 🇬🇵" })
   }
   // ============ BIBLIOTHEQUE CARIBEENNE ============
   if (msgLow.includes('cesaire') || msgLow.includes('fanon') || msgLow.includes('conde') || msgLow.includes('glissant') || msgLow.includes('schwarz-bart') || msgLow.includes('bibliotheque caribeenne') || msgLow.includes('litterature antillaise')) {
@@ -8304,7 +8304,7 @@ async function getImmobilierTempsReel() {
           result += `• ${item.type_local || 'Bien'} — ${item.surface_reelle_bati}m² — ${item.valeur_fonciere.toLocaleString('fr-FR')}€ (${prixm2}€/m²)\n`
         }
       }
-      result += "\n📊 Source : DVF Etalab (données officielles)\n🔗 https://app.dvf.etalab.gouv.fr\n\nBoudoum ! 🇬🇵"
+      result += "\n📊 Source : DVF Etalab (données officielles)\n🔗 https://app.dvf.etalab.gouv.fr 📱*(navigateur)*\n\nBoudoum ! 🇬🇵"
       return result
     }
     throw new Error('no data')
@@ -8510,7 +8510,7 @@ function getResultatsBAC() {
 • Résultats BTS : Juillet ${annee}
 
 🔗 **Consulter ses résultats :**
-• 🎓 https://www.education.gouv.fr/bac
+• 🎓 https://www.education.gouv.fr 📱*(navigateur)*/bac
 • 📱 Application Cyclades
 • 🔗 https://cyclades.education.fr
 
