@@ -4930,6 +4930,10 @@ export default async function handler(req, res) {
 • 🌍 HuggingFace: détection langue automatique
 • 📝 HuggingFace: résumé automatique texte
 • 🔊 TTS créole (Groq PlayAI)
+• 📊 Dashboard visiteurs Redis temps réel
+• 🌍 Compteur visiteurs par pays
+• 🔧 OpenRouter Function Calling intelligent
+• 📄 Whitepaper REUSSITESS+TERRA PDF
 • 📊 PIB/Chômage DOM-TOM (World Bank)
 • 🏘️ Communes & population (INSEE)
 • 📂 Open Data officiel (data.gouv.fr)
@@ -5029,7 +5033,7 @@ export default async function handler(req, res) {
 • PWA installable
 • Mémoire conversation
 
-**Total : 155+ fonctionnalités actives** 🎯
+**Total : 160+ fonctionnalités actives** 🎯
 
 Boudoum ! 🇬🇵`})
   }
