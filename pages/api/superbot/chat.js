@@ -715,7 +715,7 @@ async function getWikipedia(term) {
   if (msgLow.includes("rsa") || msgLow.includes("caf") || msgLow.includes("aides sociales") || msgLow.includes("allocation") || msgLow.includes("apl") || msgLow.includes("aide logement") || msgLow.includes("aide guadeloupe") || msgLow.includes("aide martinique")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. Boudoum!" },
+            { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF, AAH, aide logement). Guide précis sur montants, conditions, démarches. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Juridique — Aides Sociales DOM-TOM**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
