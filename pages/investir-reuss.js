@@ -103,7 +103,7 @@ export default function InvestirReuss() {
             <a href={`https://dexscreener.com/polygon/${CONTRACT}`} target="_blank" rel="noopener noreferrer" style={{ display: 'block', background: '#10b981', color: '#fff', textAlign: 'center', padding: '10px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.8rem' }}>
               📈 VOIR SUR DEXSCREENER →
             </a>
-            <a href="/documents/REUSS_Whitepaper_v1.0_2026.docx" download style={{ display: 'block', background: 'linear-gradient(135deg, #7c3aed, #5b21b6)', color: '#fff', textAlign: 'center', padding: '10px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.8rem' }}>
+            <a href="/whitepaper.pdf" download style={{ display: 'block', background: 'linear-gradient(135deg, #7c3aed, #5b21b6)', color: '#fff', textAlign: 'center', padding: '10px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.8rem' }}>
               📄 TÉLÉCHARGER LE WHITEPAPER OFFICIEL →
             </a>
           </div>
