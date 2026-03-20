@@ -40,7 +40,7 @@ export default function InvestirReuss() {
       { name: "Instagram", url: "https://instagram.com/reussitess", icon: "📸" },
       { name: "Threads", url: "https://www.threads.net/@am.our4602", icon: "🧵" },
       { name: "Snapchat", url: "https://www.snapchat.com/add/reussitess", icon: "👻" },
-      { name: "Reddit", url: "https://www.reddit.com/u/Ornery-Summer-1014/s/2Kfz43iK7m", icon: "🤖" },
+      { name: "Reddit", url: "https://www.reddit.com/u/Reussitess971?utm_source=share&utm_medium=android_app&utm_name=androidcss&utm_term=1&utm_content=1", icon: "🤖" },
       { name: "Discord", url: "https://discord.com/invite/AMOUR#3318", icon: "💬" }
     ],
     facebook: [
