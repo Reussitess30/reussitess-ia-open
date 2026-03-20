@@ -4168,11 +4168,30 @@ async function getGeoLocation(lieu) {
 async function getMeteoDOMTOM(commune) {
   try {
     const nom = commune || 'Pointe-a-Pitre'
-    // Géocodage dynamique via Nominatim
-    const geo = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(nom)}&format=json&limit=1&countrycodes=gp,mq,gf,re,yt,pm,nc,pf,bl,mf`, { headers: {'User-Agent':'REUSSITESS-AI/1.0'}, signal: AbortSignal.timeout(5000) })
-    const gd = await geo.json()
-    const lat = gd[0]?.lat || '16.24'
-    const lng = gd[0]?.lon || '-61.53'
+    // Base coordonnées DOM-TOM complète
+    const COORDS = {
+      'pointe-a-pitre':[16.2411,-61.5331],'basse-terre':[16.0078,-61.7253],'abymes':[16.2695,-61.5166],
+      'baie-mahault':[16.2683,-61.5866],'le-gosier':[16.2017,-61.4936],'petit-bourg':[16.1886,-61.5792],
+      'sainte-anne':[16.2292,-61.3728],'saint-francois':[16.2528,-61.2708],'le-moule':[16.3331,-61.3528],
+      'capesterre-belle-eau':[16.0436,-61.5625],'saint-claude':[16.0408,-61.7025],'trois-rivieres':[15.9678,-61.6536],
+      'vieux-habitants':[16.0653,-61.7775],'bouillante':[16.1219,-61.7761],'deshaies':[16.3028,-61.7961],
+      'pointe-noire':[16.2292,-61.7861],'lamentin':[16.2717,-61.6269],'morne-a-leau':[16.3319,-61.5414],
+      'port-louis':[16.4131,-61.5353],'anse-bertrand':[16.4728,-61.5117],'gourbeyre':[16.0044,-61.6897],
+      // Martinique
+      'fort-de-france':[14.6037,-61.0722],'le-lamentin':[14.6161,-60.9969],'le-robert':[14.6806,-60.9306],
+      'sainte-marie':[14.7869,-61.0014],'le-francois':[14.6228,-60.8958],'le-vauclin':[14.5536,-60.8394],
+      'riviere-pilote':[14.4797,-60.9008],'le-marin':[14.4675,-60.8739],'saint-esprit':[14.5619,-60.9506],
+      // Guyane
+      'cayenne':[4.9224,-52.3135],'kourou':[5.1604,-52.6477],'saint-laurent-du-maroni':[5.4903,-54.0322],
+      // Réunion
+      'saint-denis':[-20.8823,55.4504],'saint-paul':[-21.0103,55.2733],'saint-pierre':[-21.3393,55.4781],
+      // Mayotte
+      'mamoudzou':[-12.7806,45.2278],'dzaoudzi':[-12.7878,45.2742]
+    }
+    const key = nom.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z-]/g,'-').replace(/-+/g,'-').trim()
+    const found = COORDS[key] || Object.entries(COORDS).find(([k]) => key.includes(k) || k.includes(key.split('-')[0]))?.[1]
+    const lat = found ? found[0] : 16.24
+    const lng = found ? found[1] : -61.53
     const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}&current=temperature_2m,weathercode,windspeed_10m&timezone=auto`, { signal: AbortSignal.timeout(5000) })
     const data = await r.json()
     const c = data.current
