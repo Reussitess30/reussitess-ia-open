@@ -76,18 +76,84 @@ async function groqFetch(messages, maxTokens = 512) {
     return text
   } catch(e) {
     console.error("groqFetch:", e.message)
-    // Fallback OpenRouter
+    // Fallback OpenRouter avec Function Calling
     try {
       const orKey = process.env.OPENROUTER_API_KEY
       if (!orKey) return null
+
+      const tools = [
+        {
+          type: "function",
+          function: {
+            name: "get_weather",
+            description: "Obtenir la météo d'une commune DOM-TOM",
+            parameters: { type: "object", properties: { commune: { type: "string", description: "Nom de la commune" } }, required: ["commune"] }
+          }
+        },
+        {
+          type: "function",
+          function: {
+            name: "get_crypto_price",
+            description: "Obtenir le prix d'une cryptomonnaie",
+            parameters: { type: "object", properties: { symbol: { type: "string", description: "Symbole: bitcoin, ethereum, pol" } }, required: ["symbol"] }
+          }
+        },
+        {
+          type: "function",
+          function: {
+            name: "get_news",
+            description: "Obtenir les actualités DOM-TOM ou caribéennes",
+            parameters: { type: "object", properties: { region: { type: "string", description: "guadeloupe, martinique, guyane, monde" } }, required: ["region"] }
+          }
+        }
+      ]
+
       const orRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": "Bearer " + orKey, "HTTP-Referer": "https://reussitess.fr", "X-Title": "REUSSITESS AI" },
-        body: JSON.stringify({ model: "meta-llama/llama-3.3-70b-instruct:free", messages, max_tokens: maxTokens })
+        body: JSON.stringify({ model: "meta-llama/llama-3.3-70b-instruct:free", messages, max_tokens: maxTokens, tools, tool_choice: "auto" })
       })
       if (!orRes.ok) return null
       const orData = await orRes.json()
-      return orData.choices?.[0]?.message?.content || null
+      const choice = orData.choices?.[0]?.message
+
+      // Si Function Calling déclenché
+      if (choice?.tool_calls?.length > 0) {
+        const toolCall = choice.tool_calls[0]
+        const fn = toolCall.function.name
+        const args = JSON.parse(toolCall.function.arguments || '{}')
+        let toolResult = ""
+
+        if (fn === "get_weather") {
+          const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=16.24&longitude=-61.53&current=temperature_2m,weathercode,windspeed_10m&timezone=auto`)
+          const d = await r.json()
+          toolResult = `Météo ${args.commune}: ${d.current?.temperature_2m}°C`
+        } else if (fn === "get_crypto_price") {
+          const r = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${args.symbol}&vs_currencies=usd`)
+          const d = await r.json()
+          toolResult = `${args.symbol}: $${Object.values(d)[0]?.usd}`
+        } else if (fn === "get_news") {
+          const r = await fetch("https://www.bondamanjak.com/feed/")
+          const t = await r.text()
+          const titles = [...t.matchAll(/<title><!\[CDATA\[(.*?)\]\]><\/title>/g)].slice(1,3).map(m=>m[1])
+          toolResult = titles.join(" | ")
+        }
+
+        // Deuxième appel avec résultat
+        const res2 = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Authorization": "Bearer " + orKey, "HTTP-Referer": "https://reussitess.fr", "X-Title": "REUSSITESS AI" },
+          body: JSON.stringify({
+            model: "meta-llama/llama-3.3-70b-instruct:free",
+            messages: [...messages, choice, { role: "tool", tool_call_id: toolCall.id, content: toolResult }],
+            max_tokens: maxTokens
+          })
+        })
+        const d2 = await res2.json()
+        return d2.choices?.[0]?.message?.content || toolResult
+      }
+
+      return choice?.content || null
     } catch(e2) {
       // Fallback Cerebras
       try {
