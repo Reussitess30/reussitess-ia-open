@@ -17,7 +17,7 @@ function renderBotMessage(text) {
   return text
     .replace(/BOUDOUM/g, 'Boudoum')
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, (m, text, url) => '<a href="' + url.replace('http://', 'https://') + '" target="_blank" rel="noopener noreferrer nofollow" onclick="window.open(this.href,\'_blank\');return false;" style="color:#10b981;text-decoration:underline;">$1</a>')
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, (m, txt, url) => '<a href="' + url.replace('http://', 'https://') + '" target="_blank" rel="noopener noreferrer" style="color:#10b981;text-decoration:underline;">' + txt + '</a>')
     .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
     .replace(/\*(.+?)\*/g,'<em>$1</em>')
     .replace(URL_REGEX, (m) => '<a href="' + m + '" target="_blank" rel="noopener noreferrer nofollow" onclick="window.open(this.href,\'_blank\');return false;" style="color:#10b981;text-decoration:underline;word-break:break-all;">' + m + '</a>')
