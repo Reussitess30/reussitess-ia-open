@@ -215,7 +215,7 @@ export default function SuperBotAssistant() {
       const [site, token, matic] = await Promise.all([
         fetch('https://reussitess-global-nexus-jfgk.vercel.app').then(r => ({ok:r.ok})).catch(()=>({ok:false})),
         fetch('https://api.dexscreener.com/latest/dex/tokens/0xB37531727fC07c6EED4f97F852A115B428046EB2').then(r=>r.json()).catch(()=>null),
-        fetch('https://api.coingecko.com/api/v3/simple/price?ids=matic-network&vs_currencies=usd').then(r=>r.json()).catch(()=>null)
+        fetch('https://api.coingecko.com/api/v3/simple/price?ids=polygon-ecosystem-token&vs_currencies=usd').then(r=>r.json()).catch(()=>null)
       ])
       const pair = token?.pairs?.[0]
       setNexusStats({
@@ -224,7 +224,7 @@ export default function SuperBotAssistant() {
         change: pair?.priceChange?.h24 || 'N/A',
         volume: pair?.volume?.h24 || 'N/A',
         liquidity: pair?.liquidity?.usd || 'N/A',
-        pol: matic?.['matic-network']?.usd || 'N/A',
+        pol: matic?.['polygon-ecosystem-token']?.usd || 'N/A',
         time: new Date().toLocaleTimeString('fr-FR')
       })
     } catch(e) {}
