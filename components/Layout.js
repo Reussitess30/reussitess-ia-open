@@ -257,7 +257,7 @@ export default function Layout({ children, title = 'REUSSITESS®971' }) {
 
       {/* BARRE SECONDAIRE */}
       <div style={{ background: 'linear-gradient(135deg, #0a0f1e 0%, #111827 100%)', borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '0.6rem 2rem' }}>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.4rem' }}>
           <Link href="/mon-adn" style={{ background: 'linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #06b6d4 100%)', color: 'white', padding: '0.4rem 0.75rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.78rem', textAlign: 'center' }}>🧬 Mon ADN</Link>
           <Link href="/oracle-971" style={{ background: 'linear-gradient(135deg, #6d28d9 0%, #a78bfa 100%)', color: 'white', padding: '0.4rem 0.75rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.78rem', textAlign: 'center' }}>🔮 Oracle 971</Link>
           <Link href="/ma-revolution-ia" style={{ background: 'linear-gradient(135deg, #064e3b 0%, #10b981 100%)', color: 'white', padding: '0.4rem 0.75rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.78rem', textAlign: 'center' }}>🌍 Ma Révolution</Link>
