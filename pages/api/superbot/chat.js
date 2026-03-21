@@ -4958,14 +4958,18 @@ export default async function handler(req, res) {
 • 🔎 Scanner contrats GoPlus gratuit
 • ⚖️ Guide MiCA conformité européenne
 • 🔒 Outils protection wallet (revoke.cash, de.fi)
-• 🤗 HuggingFace: analyse sentiment texte
-• 🌍 HuggingFace: détection langue automatique
-• 📝 HuggingFace: résumé automatique texte
+• 🤗 HuggingFace: analyse sentiment, détection langue, résumé
+• 🎮 Kick.com streaming stats temps réel
+• 📱 App Android APK disponible
+• 🌿 REUSSITESS TERRA® Agriculture+Eau+Santé
 • 🔊 TTS créole (Groq PlayAI)
 • 📊 Dashboard visiteurs Redis temps réel
 • 🌍 Compteur visiteurs par pays
 • 🔧 OpenRouter Function Calling intelligent
 • 📄 Whitepaper REUSSITESS+TERRA PDF
+• 🎮 Kick.com stats streaming temps réel
+• 📱 App Android APK (reussitess.fr/telecharger)
+• 🌿 REUSSITESS TERRA® (Agriculture+Eau+Santé)
 • 📊 PIB/Chômage DOM-TOM (World Bank)
 • 🏘️ Communes & population (INSEE)
 • 📂 Open Data officiel (data.gouv.fr)
@@ -5065,7 +5069,7 @@ export default async function handler(req, res) {
 • PWA installable
 • Mémoire conversation
 
-**Total : 160+ fonctionnalités actives** 🎯
+**Total : 165+ fonctionnalités actives** 🎯
 
 Boudoum ! 🇬🇵`})
   }
