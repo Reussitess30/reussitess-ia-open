@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "251dcb87-6832-4c09-8137-532c7ced30b6"
+      }
+    },
+    "android": {
+      "package": "com.reussitess971.reussitessglobalnexus"
+    },
+    "owner": "reussitess971"
+  }
+}
