@@ -598,7 +598,7 @@ export default function SuperBotAssistant() {
               <input type="text" value={input} onChange={e => setInput(e.target.value)}
                 placeholder={`Parlez ou écrivez en ${LANGUES[langue].label.split(' ')[1]}...`}
                 disabled={isLoading || isListening}
-                style={{flex:1,padding:'0.8rem 1rem',borderRadius:'15px',border:'2px solid rgba(16,185,129,0.3)',background:'rgba(15,23,42,0.8)',color:'white',fontSize:'0.9rem',outline:'none'}} />
+                style={{flex:1,minWidth:0,maxWidth:'calc(100% - 130px)',padding:'0.8rem 1rem',borderRadius:'15px',border:'2px solid rgba(16,185,129,0.3)',background:'rgba(15,23,42,0.8)',color:'white',fontSize:'0.9rem',outline:'none'}} />
               <button type="submit" disabled={isLoading || !input.trim()} style={btnStyle('linear-gradient(135deg,#10b981,#059669)', isLoading || !input.trim())}>
                 ➤
               </button>
