@@ -111,7 +111,7 @@ async function groqFetch(messages, maxTokens = 512) {
       const orRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": "Bearer " + orKey, "HTTP-Referer": "https://reussitess.fr", "X-Title": "REUSSITESS AI" },
-        body: JSON.stringify({ model: "qwen/qwen3-next-80b-a3b-instruct:free", messages, max_tokens: maxTokens, tools, tool_choice: "auto" })
+        body: JSON.stringify({ model: "meta-llama/llama-3.3-70b-instruct:free", messages, max_tokens: maxTokens, tools, tool_choice: "auto" })
       })
       if (!orRes.ok) return null
       const orData = await orRes.json()
@@ -144,7 +144,7 @@ async function groqFetch(messages, maxTokens = 512) {
           method: "POST",
           headers: { "Content-Type": "application/json", "Authorization": "Bearer " + orKey, "HTTP-Referer": "https://reussitess.fr", "X-Title": "REUSSITESS AI" },
           body: JSON.stringify({
-            model: "qwen/qwen3-next-80b-a3b-instruct:free",
+            model: "meta-llama/llama-3.3-70b-instruct:free",
             messages: [...messages, choice, { role: "tool", tool_call_id: toolCall.id, content: toolResult }],
             max_tokens: maxTokens
           })
@@ -3881,55 +3881,6 @@ async function hfDetectLangue(texte) {
   } catch(e) { return null }
 }
 
-// ===== OPENROUTER IMAGE GENERATION =====
-async function generateImageOR(prompt) {
-  try {
-    const key = process.env.OPENROUTER_API_KEY
-    if (!key) return null
-    const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key, 'HTTP-Referer': 'https://reussitess.fr', 'X-Title': 'REUSSITESS AI' },
-      body: JSON.stringify({
-        model: "google/gemini-3.1-flash-image-preview",
-        messages: [{ role: "user", content: prompt }],
-        max_tokens: 500
-      }),
-      signal: AbortSignal.timeout(15000)
-    })
-    if (!res.ok) return null
-    const d = await res.json()
-    const content = d.choices?.[0]?.message?.content
-    if (!content) return null
-    // Chercher URL image dans la réponse
-    const urlMatch = content.match(/https?:\/\/[^\s]+\.(jpg|jpeg|png|webp|gif)/i)
-    return urlMatch ? urlMatch[0] : content
-  } catch(e) { return null }
-}
-
-// ===== OPENROUTER PDF ANALYSIS =====
-async function analyzePDForURL(url) {
-  try {
-    const key = process.env.OPENROUTER_API_KEY
-    if (!key) return null
-    const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key, 'HTTP-Referer': 'https://reussitess.fr' },
-      body: JSON.stringify({
-        model: "openai/gpt-4o-mini",
-        messages: [{ role: "user", content: [
-          { type: "text", text: "Résume ce document en français en 5 points clés. Boudoum !" },
-          { type: "file", file: { url: url } }
-        ]}],
-        max_tokens: 800
-      }),
-      signal: AbortSignal.timeout(15000)
-    })
-    if (!res.ok) return null
-    const d = await res.json()
-    return d.choices?.[0]?.message?.content || null
-  } catch(e) { return null }
-}
-
 // ===== KICK.COM API =====
 async function getKickStats() {
   try {
@@ -4622,26 +4573,6 @@ export default async function handler(req, res) {
     }
   }
 
-  // GENERATION IMAGE OPENROUTER
-  if (msgLow.includes('genere une image') || msgLow.includes('génère une image') || msgLow.includes('crée une image') || msgLow.includes('dessine') || msgLow.includes('image de')) {
-    const prompt = message + ' Style caribéen, Guadeloupe, couleurs tropicales vibrantes'
-    const result = await generateImageOR(prompt)
-    if (result) return res.status(200).json({ pdfAction: null, response: `🎨 **Image générée — OpenRouter**\n\n${result.startsWith('http') ? '
-
-![Image](' + result + ')
-
-' : result}\n\nBoudoum ! 🇬🇵` })
-  }
-
-  // ANALYSE PDF URL OPENROUTER
-  if ((msgLow.includes('analyse') || msgLow.includes('résume') || msgLow.includes('resume')) && msgLow.includes('.pdf')) {
-    const urlMatch = message.match(/https?:\/\/[^\s]+\.pdf/i)
-    if (urlMatch) {
-      const result = await analyzePDForURL(urlMatch[0])
-      if (result) return res.status(200).json({ pdfAction: null, response: `📄 **Analyse PDF — OpenRouter**\n\n${result}\n\nBoudoum ! 🇬🇵` })
-    }
-  }
-
   // KICK.COM
   if (msgLow.includes('kick') || msgLow.includes('stream') || msgLow.includes('streaming') || msgLow.includes('live reussitess')) {
     const data = await getKickStats()
@@ -5039,9 +4970,6 @@ export default async function handler(req, res) {
 • 🎮 Kick.com stats streaming temps réel
 • 📱 App Android APK (reussitess.fr/telecharger)
 • 🌿 REUSSITESS TERRA® (Agriculture+Eau+Santé)
-• 🎨 Génération d'images OpenRouter (Gemini)
-• 📄 Analyse PDF par URL (OpenRouter)
-• 🧠 Fallback Qwen3-80b ultra-puissant
 • 📊 PIB/Chômage DOM-TOM (World Bank)
 • 🏘️ Communes & population (INSEE)
 • 📂 Open Data officiel (data.gouv.fr)
@@ -5141,7 +5069,7 @@ export default async function handler(req, res) {
 • PWA installable
 • Mémoire conversation
 
-**Total : 170+ fonctionnalités actives** 🎯
+**Total : 165+ fonctionnalités actives** 🎯
 
 Boudoum ! 🇬🇵`})
   }
