@@ -1,4 +1,3 @@
-"use client";
 
 import { useState, useEffect } from "react";
 import Layout from "../components/Layout";
@@ -325,7 +324,7 @@ export default function VisaUniversel() {
             {[
               { icon: "🎓", num: "AUF", label: "Bourses Francophones" },
               { icon: "💼", num: "14", label: "Pays Partenaires" },
-              { icon: "🤝", num: "200+", label: "Agents IA Actifs" },
+              { icon: "🤝", num: "200", label: "Objectif Agents IA" },
               { icon: "💰", num: "26", label: "Boutiques Amazon" },
             ].map((stat, i) => (
               <div

@@ -1,5 +1,4 @@
-'use client'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 const questions = [
@@ -42,9 +41,9 @@ export default function Oracle971() {
   const [citation, setCitation] = useState(null)
 
   useEffect(() => {
-    fetch('https://zenquotes.io/api/random')
+    fetch('/api/zenquote')
       .then(r => r.json())
-      .then(d => setCitation({ text: d[0].q, author: d[0].a }))
+      .then(d => setCitation({ text: d.text, author: d.author }))
       .catch(() => {})
   }, [])
 
@@ -76,19 +75,23 @@ export default function Oracle971() {
 
   if (step === 'intro') return (
     <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #0a0015 0%, #1a0030 50%, #0d0025 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem', position: 'relative', overflow: 'hidden' }}>
-      {particles.map(p => <div key={p.id} style={{ position: 'absolute', left: `${p.x}%`, top: `${p.y}%`, width: `${p.size}px`, height: `${p.size}px`, background: '#a78bfa', borderRadius: '50%', opacity: 0.6, animation: `pulse ${2 + p.delay}s infinite` }} />)}
+      {particles.map(p => (
+        <div key={p.id} style={{ position: 'absolute', left: `${p.x}%`, top: `${p.y}%`, width: `${p.size}px`, height: `${p.size}px`, background: '#a78bfa', borderRadius: '50%', opacity: 0.6, animation: `pulse ${2 + p.delay}s infinite` }} />
+      ))}
       <div style={{ maxWidth: '600px', width: '100%', textAlign: 'center', position: 'relative', zIndex: 1 }}>
         <div style={{ fontSize: '6rem', marginBottom: '0.5rem', filter: 'drop-shadow(0 0 20px #a78bfa)' }}>🔮</div>
         <h1 style={{ color: '#fff', fontSize: '2.8rem', fontWeight: '900', marginBottom: '0.5rem', textShadow: '0 0 30px #a78bfa' }}>ORACLE 971</h1>
-        <p style={{ color: '#a78bfa', fontSize: '1.1rem', marginBottom: '0.5rem', fontStyle: 'italic' }}>La sagesse du Quimbois rencontre l'Intelligence Artificielle</p>
-        <p style={{ color: '#64748b', fontSize: '0.85rem', marginBottom: '2.5rem' }}>3 questions • Prophétie personnalisée • Plan d'action caribéen</p>
-        <div style={{ background: 'rgba(167,139,250,0.1)', border: '1px solid rgba(167,139,250,0.3)', borderRadius: '20px', padding: '1.5rem', marginBottom: '2rem' }}>
-          <p style={{ color: '#c4b5fd', fontSize: '0.95rem', lineHeight: '1.7', fontStyle: 'italic' }}>"Entre les ancêtres qui ont forgé nos îles et l'IA qui forge le futur, il existe un chemin tracé pour toi. L'Oracle 971 te le révèle."</p>
-        </div>
-        <button onClick={() => setStep('quiz')} style={{ background: 'linear-gradient(135deg, #6d28d9, #a78bfa)', color: 'white', border: 'none', padding: '1rem 3rem', borderRadius: '50px', fontSize: '1.2rem', fontWeight: '900', cursor: 'pointer', boxShadow: '0 0 40px rgba(109,40,217,0.6)', letterSpacing: '1px' }}>
+        <p style={{ color: '#a78bfa', fontSize: '1.1rem', marginBottom: '2rem', fontStyle: 'italic' }}>La sagesse du Quimbois numérique</p>
+        {citation && (
+          <div style={{ background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.2)', borderRadius: '12px', padding: '1rem', marginBottom: '2rem' }}>
+            <p style={{ color: '#c4b5fd', fontSize: '0.85rem', fontStyle: 'italic' }}>"{citation.text}"</p>
+            <p style={{ color: '#7c3aed', fontSize: '0.75rem', marginTop: '0.5rem' }}>— {citation.author}</p>
+          </div>
+        )}
+        <button onClick={() => setStep('quiz')} style={{ background: 'linear-gradient(135deg, #6d28d9, #a78bfa)', color: 'white', padding: '1rem 2.5rem', borderRadius: '50px', border: 'none', cursor: 'pointer', fontSize: '1.1rem', fontWeight: '900', boxShadow: '0 0 30px rgba(109,40,217,0.5)', letterSpacing: '1px' }}>
           🔮 CONSULTER L'ORACLE
         </button>
-        <div style={{ marginTop: '1.5rem' }}><Link href="/" style={{ color: '#64748b', fontSize: '0.8rem', textDecoration: 'none' }}>↩ Retour</Link></div>
+        <p style={{ color: '#475569', fontSize: '0.75rem', marginTop: '2rem' }}>REUSSITESS®971 — Guadeloupe 🇬🇵 Boudoum !</p>
       </div>
     </div>
   )
@@ -98,14 +101,12 @@ export default function Oracle971() {
     return (
       <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #0a0015 0%, #1a0030 50%, #0d0025 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
         <div style={{ maxWidth: '600px', width: '100%' }}>
-          <div style={{ marginBottom: '2rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-              <span style={{ color: '#94a3b8', fontSize: '0.85rem' }}>Vision {currentQ + 1} / {questions.length}</span>
-              <span style={{ color: '#a78bfa', fontSize: '0.85rem' }}>L'Oracle écoute...</span>
-            </div>
-            <div style={{ height: '4px', background: '#1e0040', borderRadius: '2px' }}>
-              <div style={{ height: '100%', width: `${((currentQ) / questions.length) * 100}%`, background: 'linear-gradient(90deg, #6d28d9, #a78bfa)', borderRadius: '2px', transition: 'width 0.4s', boxShadow: '0 0 10px #a78bfa' }} />
-            </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+            <span style={{ color: '#a78bfa', fontSize: '0.85rem' }}>Question {currentQ + 1} / {questions.length}</span>
+            <span style={{ color: '#a78bfa', fontSize: '0.85rem' }}>L'Oracle écoute...</span>
+          </div>
+          <div style={{ height: '4px', background: '#1e0040', borderRadius: '2px', marginBottom: '2.5rem' }}>
+            <div style={{ height: '100%', width: `${((currentQ) / questions.length) * 100}%`, background: 'linear-gradient(90deg, #6d28d9, #a78bfa)', borderRadius: '2px', transition: 'width 0.4s', boxShadow: '0 0 10px #a78bfa' }} />
           </div>
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
             <div style={{ fontSize: '4rem', marginBottom: '1rem', filter: 'drop-shadow(0 0 15px #a78bfa)' }}>{q.emoji}</div>
@@ -143,23 +144,20 @@ export default function Oracle971() {
             ))}
           </div>
         </div>
+        {citation && (
+          <div style={{ background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.2)', borderRadius: '12px', padding: '1rem', marginBottom: '1.5rem' }}>
+            <p style={{ color: '#c4b5fd', fontSize: '0.85rem', fontStyle: 'italic' }}>"{citation.text}"</p>
+            <p style={{ color: '#7c3aed', fontSize: '0.75rem', marginTop: '0.5rem' }}>— {citation.author}</p>
+          </div>
+        )}
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
           <Link href="/bibliotheque" style={{ background: 'linear-gradient(135deg, #10b981, #059669)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.85rem' }}>📚 Bibliothèque</Link>
           <Link href="/hub-central" style={{ background: 'linear-gradient(135deg, #3b82f6, #2563eb)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.85rem' }}>💼 Emploi</Link>
           <Link href="/boutiques" style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.85rem' }}>🛍️ Boutiques</Link>
           <Link href="/investir-reuss" style={{ background: 'linear-gradient(135deg, #8b5cf6, #6d28d9)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.85rem' }}>💎 Token REUSS</Link>
           <Link href="/champions" style={{ background: 'linear-gradient(135deg, #ec4899, #8b5cf6)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.85rem' }}>🏆 Champions</Link>
-          <Link href="/bibliotheque" style={{ background: 'linear-gradient(135deg, #10b981, #059669)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.85rem' }}>📚 Bibliothèque</Link>
-          <Link href="/boutiques" style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.85rem' }}>🛍️ Boutiques</Link>
-          <Link href="/champions" style={{ background: 'linear-gradient(135deg, #ec4899, #8b5cf6)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', textDecoration: 'none', fontWeight: 'bold', fontSize: '0.85rem' }}>🏆 Champions</Link>
           <button onClick={restart} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.15)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '50px', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.85rem' }}>🔄 Reconsulter</button>
         </div>
-        {citation && (
-          <div style={{ background: 'rgba(167,139,250,0.08)', border: '1px solid rgba(167,139,250,0.2)', borderRadius: '12px', padding: '1rem', marginBottom: '1rem' }}>
-            <p style={{ color: '#c4b5fd', fontSize: '0.85rem', fontStyle: 'italic' }}>"{citation.text}"</p>
-            <p style={{ color: '#7c3aed', fontSize: '0.75rem', marginTop: '0.5rem' }}>— {citation.author}</p>
-          </div>
-        )}
         <p style={{ color: '#475569', fontSize: '0.75rem', marginTop: '1.5rem' }}>REUSSITESS®971 — Guadeloupe 🇬🇵 Boudoum !</p>
       </div>
     </div>
