@@ -587,12 +587,12 @@ export default function SuperBotAssistant() {
                 }
               }} />
               <button type="button" onClick={() => document.getElementById('img-upload').click()} disabled={isLoading}
-                style={btnStyle(selectedImage ? 'linear-gradient(135deg,#f59e0b,#d97706)' : 'linear-gradient(135deg,#374151,#1f2937)', isLoading)}
+                style={{padding:'0.4rem 0.6rem',borderRadius:'10px',border:'none',background:selectedImage?'linear-gradient(135deg,#f59e0b,#d97706)':'rgba(55,65,81,0.8)',color:'white',cursor:'pointer',fontSize:'0.85rem',flexShrink:0,opacity:isLoading?0.5:1}}
                 title="Envoyer une image">
                 📷
               </button>
               <button type="button" onClick={isListening ? stopListening : startListening} disabled={isLoading}
-                style={btnStyle(isListening?'linear-gradient(135deg,#ef4444,#dc2626)':'linear-gradient(135deg,#7c3aed,#5b21b6)', isLoading)}>
+                style={{padding:'0.4rem 0.6rem',borderRadius:'10px',border:'none',background:isListening?'linear-gradient(135deg,#ef4444,#dc2626)':'linear-gradient(135deg,#7c3aed,#5b21b6)',color:'white',cursor:'pointer',fontSize:'0.85rem',flexShrink:0,opacity:isLoading?0.5:1}}>
                 {isListening ? '⏹' : '🎤'}
               </button>
               <input type="text" value={input} onChange={e => setInput(e.target.value)}
