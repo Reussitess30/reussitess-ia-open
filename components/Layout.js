@@ -207,6 +207,50 @@ export default function Layout({ children, title = 'REUSSITESS®971' }) {
               Juridique
             </Link>
 
+            <Link href="/mon-compte" style={{
+              background: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 100%)',
+              color: 'white',
+              padding: '0.5rem 1.25rem',
+              borderRadius: '50px',
+              textDecoration: 'none',
+              fontWeight: 'bold',
+              fontSize: '0.9rem',
+              boxShadow: '0 4px 15px rgba(124, 58, 237, 0.3)'
+            }}>
+              💎 Mes REUSS
+            </Link>
+
+            <Link href="/boutiques" style={{
+              background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+              color: 'white',
+              padding: '0.5rem 1.25rem',
+              borderRadius: '50px',
+              textDecoration: 'none',
+              fontWeight: 'bold',
+              fontSize: '0.9rem',
+              boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)'
+            }}
+            className="btn-boutiques">
+              🛍️ Boutiques
+            </Link>
+
+            <a
+              href="https://shop.reussitess.fr/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                color: 'white',
+                padding: '0.5rem 1.25rem',
+                borderRadius: '50px',
+                textDecoration: 'none',
+                fontWeight: 'bold',
+                fontSize: '0.9rem',
+                boxShadow: '0 4px 15px rgba(245, 87, 108, 0.3)'
+              }}
+              className="btn-shop">
+              🏪 Shop
+            </a>
           </div>
         </div>
       </nav>
