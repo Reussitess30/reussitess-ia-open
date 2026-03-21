@@ -823,7 +823,7 @@ async function getWikipedia(term) {
   // BIBLIOTHEQUE MONDIALE — Open Library gratuit
   if (msgLow.includes("livre sur") || msgLow.includes("bibliothèque") || msgLow.includes("recherche livre") || msgLow.includes("trouver livre") || msgLow.includes("open library")) {
     try {
-      const query = encodeURIComponent(message.replace(/livre sur|bibliothèque caribéenne|bibliothèque|recherche livre|trouver livre/gi,"").replace(/[🀀-🿿☀-⟿]/gu,"").trim() || "guadeloupe")
+      const query = encodeURIComponent(message.replace(/livre sur|bibliothèque caribéenne|bibliothèque|recherche livre|trouver livre/gi,"").replace(/[^\w\sÀ-ÿ]/g,"").trim() || "guadeloupe")
       const libR = await fetch(`https://openlibrary.org/search.json?q=${query}&limit=5&language=fre`)
       const libD = await libR.json()
       const books = (libD.docs || []).slice(0,5)
