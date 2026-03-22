@@ -44,6 +44,7 @@ export default function SuperBotAssistant() {
   const [langue, setLangue] = useState('fr')
   const [showLangMenu, setShowLangMenu] = useState(false)
   const [audioEnabled, setAudioEnabled] = useState(true)
+  const [sessionId] = useState(() => 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2,9))
   const [suggestions, setSuggestions] = useState(['🌋 Séismes Antilles','🌀 Cyclones','🌤️ Météo DOM-TOM','💱 Devises XOF/XAF','⛽ Carburant DOM-TOM','📅 Calendrier scolaire','💎 Prix REUSS','🎓 Bourses francophones','💼 Emploi Caraïbes','🌴 Traduire créole','📚 Bibliothèque caribéenne','📰 Actualités Guadeloupe','💰 Calculateur Amazon','📄 Créer mon CV'])
   const [selectedImage, setSelectedImage] = useState(null)
   const [imagePreview, setImagePreview] = useState(null)
@@ -224,6 +225,8 @@ export default function SuperBotAssistant() {
         await new Promise(r => setTimeout(r, 18))
       }
       if (audioEnabled) speakResponse(botResponse, LANGUES[langue].voice)
+      // Sauvegarder conversation
+      fetch('/api/conversations', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ sessionId, messages: [...messages, { role: 'user', content: userMessage }, { role: 'assistant', content: botResponse }] }) }).catch(()=>{})
     } catch {
       setMessages(prev => [...prev, { role: 'assistant', content: "⚠️ Connexion temporairement indisponible. Réessayez dans un instant. 💪" }])
     } finally { setIsLoading(false) }
