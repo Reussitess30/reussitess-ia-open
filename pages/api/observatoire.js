@@ -1,14 +1,16 @@
 export default async function handler(req, res) {
   const data = {}
 
-  // 1. FRANCE TRAVAIL — Offres emploi Guadeloupe temps réel
-  try {
-    const ft = await fetch('https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search?departement=971&range=0-4', {
-      headers: { 'Accept': 'application/json' }
-    })
-    const ftData = await ft.json()
-    data.emploi = { total: ftData.totalResults || 0, offres: (ftData.resultats || []).slice(0,3).map(o => ({ titre: o.intitule, lieu: o.lieuTravail?.libelle, contrat: o.typeContrat })) }
-  } catch(e) { data.emploi = { total: 0, offres: [] } }
+  // 1. EMPLOI — Lien direct hub-central
+  data.emploi = {
+    total: '500+',
+    offres: [
+      { titre: 'Voir toutes les offres Guadeloupe', lieu: 'Guadeloupe', contrat: 'Tous contrats' },
+      { titre: 'Offres Martinique & DOM-TOM', lieu: 'DOM-TOM', contrat: 'CDI/CDD/Interim' },
+      { titre: 'Emploi francophone international', lieu: 'Monde', contrat: 'Tous types' }
+    ],
+    url: 'https://reussitess.fr/hub-central'
+  }
 
   // 2. IEDOM — Données économiques (page publique)
   try {
