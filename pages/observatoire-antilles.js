@@ -103,7 +103,7 @@ export default function ObservatoireAntilles() {
                   )) : (
                     <p style={{ color: '#94a3b8' }}>Consultez France Travail pour les offres en temps réel</p>
                   )}
-                  <Link href="/hub-central" target="_blank" style={{ display: 'inline-block', marginTop: '1rem', background: 'linear-gradient(135deg,#3b82f6,#2563eb)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '25px', textDecoration: 'none', fontWeight: '700' }}>
+                  <Link href="https://www.francetravail.fr/accueil/" target="_blank" style={{ display: 'inline-block', marginTop: '1rem', background: 'linear-gradient(135deg,#3b82f6,#2563eb)', color: 'white', padding: '0.75rem 1.5rem', borderRadius: '25px', textDecoration: 'none', fontWeight: '700' }}>
                     💼 Voir toutes les offres
                   </Link>
                 </div>
