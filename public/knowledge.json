@@ -33,6 +33,30 @@
     {
       "trigger": "données économiques",
       "response": "📊 Consultez l'Observatoire Antilles REUSSITESS®971 pour toutes les données économiques et sociales des DOM-TOM :\n\nhttps://reussitess.fr/observatoire-antilles\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "iedom",
+      "response": "🏦 **IEDOM — Institut d'Émission des DOM**\n\nPIB Guadeloupe: 9,8 Mds€ | Martinique: 9,4 Mds€ | Guyane: 4,8 Mds€ | Réunion: 18,5 Mds€\n\n📊 Données complètes: https://reussitess.fr/observatoire-antilles\n→ iedom.fr\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "cerom",
+      "response": "📈 **CEROM — Comptes Économiques DOM**\n\nCroissance 2023: Guadeloupe +1.8% | Martinique +1.2% | Guyane +3.1% | Réunion +2.0%\n\n📊 https://reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "afd",
+      "response": "🌍 **AFD — Agence Française de Développement**\n\n1,2 Mds€ engagés dans les DOM en 2023\nDomaines: Logement social • Transition énergétique • Eau\n\n📊 https://reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "pib guadeloupe",
+      "response": "📊 PIB Guadeloupe: **9,8 Mds€** (2022) — Source IEDOM\n\nDonnées complètes: https://reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "chomage guadeloupe",
+      "response": "💼 Taux de chômage Guadeloupe: **17,2%** (2023) — Source INSEE\n\nOffres emploi: https://reussitess.fr/hub-central\nObservatoire: https://reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "population guadeloupe",
+      "response": "👥 Population Guadeloupe: **378 561 habitants** (2023) — Source INSEE\n\n📊 https://reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
     }
   ]
 }
