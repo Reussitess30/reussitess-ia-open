@@ -308,11 +308,11 @@ export default function SuperBotAssistant() {
               </div>
               <div style={{display:'flex',gap:'0.5rem',alignItems:'center'}}>
                 <button aria-label="Activer/désactiver audio" onClick={() => { setAudioEnabled(!audioEnabled); if(!audioEnabled) stopSpeaking() }}
-                  style={{background: audioEnabled?'rgba(255,255,255,0.3)':'rgba(0,0,0,0.3)', border:'none', borderRadius:'8px', padding:'0.4rem 0.6rem', cursor:'pointer', fontSize:'1rem', color:'white'}}>
+                  style={{background: audioEnabled?'rgba(245,158,11,0.4)':'rgba(0,0,0,0.3)', border:'none', borderRadius:'8px', padding:'0.2rem 0.4rem', cursor:'pointer', fontSize:'0.85rem', color:'#fbbf24'}}>
                   {audioEnabled ? '🔊' : '🔇'}
                 </button>
                 <button aria-label="Mode mains libres" onClick={() => setHandsFreeModeActive(v => !v)}
-                  style={{background: handsFreeModeActive?'rgba(16,185,129,0.4)':'rgba(0,0,0,0.3)', border:'none', borderRadius:'8px', padding:'0.4rem 0.6rem', cursor:'pointer', fontSize:'1rem', color:'white'}}
+                  style={{background: handsFreeModeActive?'rgba(245,158,11,0.4)':'rgba(0,0,0,0.3)', border:'none', borderRadius:'8px', padding:'0.2rem 0.4rem', cursor:'pointer', fontSize:'0.85rem', color:'#fbbf24'}}
                   title="Mode mains libres — conversation continue">
                   {handsFreeModeActive ? '🤝' : '🤝'}
                 </button>
