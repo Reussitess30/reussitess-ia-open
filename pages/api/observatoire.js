@@ -1,15 +1,32 @@
 export default async function handler(req, res) {
   const data = {}
 
-  // 1. EMPLOI — Lien direct hub-central
-  data.emploi = {
-    total: '500+',
-    offres: [
-      { titre: 'Voir toutes les offres Guadeloupe', lieu: 'Guadeloupe', contrat: 'Tous contrats' },
-      { titre: 'Offres Martinique & DOM-TOM', lieu: 'DOM-TOM', contrat: 'CDI/CDD/Interim' },
-      { titre: 'Emploi francophone international', lieu: 'Monde', contrat: 'Tous types' }
-    ],
-    url: 'https://reussitess.fr/hub-central'
+  // 1. FRANCE TRAVAIL — Offres emploi Guadeloupe temps réel
+  try {
+    const clientId = process.env.FRANCE_TRAVAIL_CLIENT_ID
+    const secret = process.env.FRANCE_TRAVAIL_SECRET
+    const tokenRes = await fetch('https://entreprise.francetravail.fr/connexion/oauth2/access_token?realm=/partenaire', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${secret}&scope=api_offresdemploiv2 o2dsoffre`
+    })
+    const tokenData = await tokenRes.json()
+    const token = tokenData.access_token
+    const ftRes = await fetch('https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search?departement=971&range=0-4', {
+      headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/json' }
+    })
+    const ftData = await ftRes.json()
+    data.emploi = {
+      total: ftData.Content?.totalResults || ftData.totalResults || '500+',
+      offres: (ftData.Content?.resultats || ftData.resultats || []).slice(0,3).map(o => ({
+        titre: o.intitule,
+        lieu: o.lieuTravail?.libelle,
+        contrat: o.typeContrat
+      })),
+      url: 'https://reussitess.fr/hub-central'
+    }
+  } catch(e) {
+    data.emploi = { total: '500+', offres: [], url: 'https://reussitess.fr/hub-central' }
   }
 
   // 2. IEDOM — Données économiques (page publique)
