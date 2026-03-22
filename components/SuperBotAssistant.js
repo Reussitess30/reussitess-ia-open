@@ -61,6 +61,13 @@ export default function SuperBotAssistant() {
   }
 
   const scrollToBottom = () => { messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' }) }
+  useEffect(() => {
+    fetch('/api/suggestions')
+      .then(r => r.json())
+      .then(d => { if(Array.isArray(d) && d.length > 0) setSuggestions(d) })
+      .catch(() => {})
+  }, [])
+
   useEffect(() => { scrollToBottom() }, [messages])
 
   useEffect(() => {
