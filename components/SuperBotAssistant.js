@@ -314,7 +314,7 @@ export default function SuperBotAssistant() {
                 <button aria-label="Mode mains libres" onClick={() => setHandsFreeModeActive(v => !v)}
                   style={{background: handsFreeModeActive?'rgba(16,185,129,0.4)':'rgba(0,0,0,0.3)', border:'none', borderRadius:'8px', padding:'0.4rem 0.6rem', cursor:'pointer', fontSize:'1rem', color:'white', marginLeft:'0.3rem'}}
                   title="Mode mains libres — conversation continue">
-                  {handsFreeModeActive ? '🤝 ON' : '🤝 OFF'}
+                  {handsFreeModeActive ? '🤝' : '🤝'}
                 </button>
                 <div style={{position:'relative'}}>
                   <button aria-label="Choisir la langue" onClick={() => setShowLangMenu(!showLangMenu)}
