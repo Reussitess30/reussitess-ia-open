@@ -63,7 +63,7 @@ export default async function handler(req, res) {
       tauxDirecteur: 3.15,
       inflation: 2.4,
       dateMAJ: '2026-03-01',
-      source: 'Banque de France'
+      source: 'Banque de France', url: 'https://www.banque-france.fr'
     }
   } catch(e) { data.banqueFrance = {} }
 
@@ -71,7 +71,7 @@ export default async function handler(req, res) {
   try {
     data.cerom = {
       source: 'CEROM',
-      url: 'https://www.cerom-dom.fr',
+      url: 'https://www.insee.fr/fr/statistiques/pages/cerom.html',
       croissance: [
         { territoire: 'Guadeloupe', taux: 1.8, annee: 2023 },
         { territoire: 'Martinique', taux: 1.2, annee: 2023 },
