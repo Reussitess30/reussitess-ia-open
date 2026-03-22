@@ -45,6 +45,13 @@ export default function SuperBotAssistant() {
   const [showLangMenu, setShowLangMenu] = useState(false)
   const [audioEnabled, setAudioEnabled] = useState(true)
   const [handsFreeModeActive, setHandsFreeModeActive] = useState(false)
+  const [responseStyle, setResponseStyle] = useState('caribeen')
+  const styles = {
+    caribeen: { label: '🌴 Caribéen', prompt: 'Tu réponds avec chaleur caribéenne, style REUSSITESS, emojis, BOUDOUM. Court et percutant.' },
+    expert: { label: '🎓 Expert', prompt: 'Tu réponds de façon détaillée, technique, avec sources et données précises.' },
+    casual: { label: '😊 Casual', prompt: 'Tu réponds de façon décontractée, simple, comme un ami proche.' },
+    court: { label: '⚡ Ultra-court', prompt: 'Tu réponds en 3 lignes maximum, direct, essentiel seulement.' }
+  }
   const [historiqueList, setHistoriqueList] = useState([])
   const [sessionId] = useState(() => 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2,9))
   const [suggestions, setSuggestions] = useState(['🌋 Séismes Antilles','🌀 Cyclones','🌤️ Météo DOM-TOM','💱 Devises XOF/XAF','⛽ Carburant DOM-TOM','📅 Calendrier scolaire','💎 Prix REUSS','🎓 Bourses francophones','💼 Emploi Caraïbes','🌴 Traduire créole','📚 Bibliothèque caribéenne','📰 Actualités Guadeloupe','💰 Calculateur Amazon','📄 Créer mon CV'])
@@ -198,7 +205,7 @@ export default function SuperBotAssistant() {
           message: userMessage,
           image: selectedImage || undefined,
           imageQuestion: selectedImage ? userMessage : undefined,
-          personality: botPersonality,
+          personality: { ...botPersonality, stylePrompt: styles[responseStyle].prompt },
           context: messages,
           langue,
           datetime: {
@@ -531,6 +538,17 @@ export default function SuperBotAssistant() {
         )}
 
         {activeTab === 'chat' && <>
+          {/* SÉLECTEUR DE STYLE */}
+          <div style={{display:'flex',gap:'0.3rem',padding:'0.5rem 1rem',borderBottom:'1px solid rgba(255,255,255,0.05)',overflowX:'auto'}}>
+            {Object.entries(styles).map(([key,val]) => (
+              <button key={key} onClick={() => setResponseStyle(key)}
+                style={{padding:'0.3rem 0.7rem',borderRadius:'15px',border:'none',cursor:'pointer',fontSize:'0.7rem',fontWeight:'600',whiteSpace:'nowrap',
+                  background: responseStyle===key ? 'linear-gradient(135deg,#10b981,#059669)' : 'rgba(255,255,255,0.05)',
+                  color: responseStyle===key ? 'white' : '#64748b'}}>
+                {val.label}
+              </button>
+            ))}
+          </div>
           {/* MESSAGES */}
           <div style={{flex:1,overflowY:'auto',padding:'1.5rem',display:'flex',flexDirection:'column',gap:'1rem'}}>
             {messages.map((msg, idx) => (
