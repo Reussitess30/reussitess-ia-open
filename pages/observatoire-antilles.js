@@ -6,8 +6,10 @@ export default function ObservatoireAntilles() {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState('population')
+  const [articles, setArticles] = useState([])
 
   useEffect(() => {
+    fetch('/api/rss-experts').then(r=>r.json()).then(d=>setArticles(d.articles||[])).catch(()=>{})
     fetch('/api/observatoire')
       .then(r => r.json())
       .then(d => { setData(d.data); setLoading(false) })
@@ -19,6 +21,7 @@ export default function ObservatoireAntilles() {
     { id: 'emploi', label: '💼 Emploi', icon: '💼' },
     { id: 'economie', label: '📊 Économie', icon: '📊' },
     { id: 'financement', label: '💰 Financement', icon: '💰' },
+    { id: 'experts', label: '🎓 Experts', icon: '🎓' },
   ]
 
   return (
@@ -173,6 +176,29 @@ export default function ObservatoireAntilles() {
 
           </div>
         )}
+
+        {/* Experts RSS */}
+            {activeTab === 'experts' && (
+              <div>
+                <h2 style={{color:'#e2e8f0',marginBottom:'1.5rem',textAlign:'center'}}>🎓 Analyses & Avis d'Experts DOM-TOM</h2>
+                {articles.length === 0 && <p style={{color:'#94a3b8',textAlign:'center'}}>⏳ Chargement des analyses...</p>}
+                <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))',gap:'1rem'}}>
+                  {articles.map((a,i) => (
+                    <a key={i} href={a.link} target="_blank" rel="noreferrer" style={{textDecoration:'none'}}>
+                      <div style={{background:'rgba(255,255,255,0.05)',border:'1px solid rgba(255,255,255,0.1)',borderRadius:'16px',padding:'1.2rem',cursor:'pointer',transition:'all 0.2s'}}>
+                        <div style={{display:'flex',alignItems:'center',gap:'0.5rem',marginBottom:'0.5rem'}}>
+                          <span style={{fontSize:'1.2rem'}}>{a.emoji}</span>
+                          <span style={{color:'#10b981',fontSize:'0.75rem',fontWeight:'700'}}>{a.source}</span>
+                        </div>
+                        <p style={{color:'#e2e8f0',fontWeight:'600',fontSize:'0.9rem',marginBottom:'0.5rem',lineHeight:'1.4'}}>{a.title}</p>
+                        <p style={{color:'#94a3b8',fontSize:'0.8rem',lineHeight:'1.4'}}>{a.desc}</p>
+                        <p style={{color:'#475569',fontSize:'0.72rem',marginTop:'0.5rem'}}>{a.date}</p>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
 
         {/* Footer */}
         <div style={{ textAlign: 'center', marginTop: '3rem', color: '#475569', fontSize: '0.8rem' }}>
