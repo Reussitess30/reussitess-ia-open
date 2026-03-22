@@ -44,8 +44,6 @@ export default function SuperBotAssistant() {
   const [langue, setLangue] = useState('fr')
   const [showLangMenu, setShowLangMenu] = useState(false)
   const [audioEnabled, setAudioEnabled] = useState(true)
-  const [autocomplete, setAutocomplete] = useState([])
-  const [showAutocomplete, setShowAutocomplete] = useState(false)
   const [suggestions, setSuggestions] = useState(['🌋 Séismes Antilles','🌀 Cyclones','🌤️ Météo DOM-TOM','💱 Devises XOF/XAF','⛽ Carburant DOM-TOM','📅 Calendrier scolaire','💎 Prix REUSS','🎓 Bourses francophones','💼 Emploi Caraïbes','🌴 Traduire créole','📚 Bibliothèque caribéenne','📰 Actualités Guadeloupe','💰 Calculateur Amazon','📄 Créer mon CV'])
   const [selectedImage, setSelectedImage] = useState(null)
   const [imagePreview, setImagePreview] = useState(null)
@@ -211,7 +209,7 @@ export default function SuperBotAssistant() {
       const data = await response.json()
       const botResponse = data.response || "Désolé, une erreur s'est produite. Réessayez ! 🔄"
       const botPdfAction = data.pdfAction || null
-      setMessages(prev => [...prev, { role: 'assistant', content: botResponse, pdfAction: botPdfAction, followUp: data.followUp || [] }])
+      setMessages(prev => [...prev, { role: 'assistant', content: botResponse, pdfAction: botPdfAction }])
       if (audioEnabled) speakResponse(botResponse, LANGUES[langue].voice)
     } catch {
       setMessages(prev => [...prev, { role: 'assistant', content: "⚠️ Connexion temporairement indisponible. Réessayez dans un instant. 💪" }])
@@ -540,16 +538,6 @@ export default function SuperBotAssistant() {
                   </div>
                 )}
                 {msg.role==='assistant' && audioEnabled && (
-                {msg.role === 'assistant' && msg.followUp && msg.followUp.length > 0 && (
-                  <div style={{display:'flex',flexWrap:'wrap',gap:'0.4rem',marginTop:'0.5rem'}}>
-                    {msg.followUp.map((q,i) => (
-                      <button key={i} onClick={() => submitMessage(q)}
-                        style={{padding:'0.35rem 0.7rem',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.25)',borderRadius:'15px',color:'#10b981',fontSize:'0.72rem',cursor:'pointer',fontWeight:'600'}}>
-                        💡 {q}
-                      </button>
-                    ))}
-                  </div>
-                )}
                   <button aria-label="Lire à voix haute" onClick={() => speakResponse(msg.content, LANGUES[langue].voice)}
                     style={{background:'none',border:'none',cursor:'pointer',fontSize:'0.75rem',color:'#10b981',padding:'0.2rem 0.5rem',marginTop:'0.2rem'}}>
                     🔊 Écouter
@@ -615,33 +603,10 @@ export default function SuperBotAssistant() {
                 style={{padding:'0.4rem 0.6rem',borderRadius:'10px',border:'none',background:isListening?'linear-gradient(135deg,#ef4444,#dc2626)':'linear-gradient(135deg,#7c3aed,#5b21b6)',color:'white',cursor:'pointer',fontSize:'0.85rem',flexShrink:0,opacity:isLoading?0.5:1}}>
                 {isListening ? '⏹' : '🎤'}
               </button>
-              <input type="text" value={input} onChange={e => {
-                    setInput(e.target.value)
-                    const val = e.target.value
-                    if (val.length >= 2) {
-                      fetch(`/api/autocomplete?q=${encodeURIComponent(val)}`)
-                        .then(r => r.json())
-                        .then(d => { setAutocomplete(d); setShowAutocomplete(d.length > 0) })
-                        .catch(() => {})
-                    } else {
-                      setShowAutocomplete(false)
-                    }
-                  }}
+              <input type="text" value={input} onChange={e => setInput(e.target.value)}
                 placeholder={`Parlez ou écrivez en ${LANGUES[langue].label.split(' ')[1]}...`}
                 disabled={isLoading || isListening}
                 style={{flex:1,minWidth:0,maxWidth:'calc(100% - 130px)',padding:'0.8rem 1rem',borderRadius:'15px',border:'2px solid rgba(16,185,129,0.3)',background:'rgba(15,23,42,0.8)',color:'white',fontSize:'0.9rem',outline:'none'}} />
-              {showAutocomplete && autocomplete.length > 0 && (
-                <div style={{position:'absolute',bottom:'65px',left:'1rem',right:'1rem',background:'#1e293b',border:'1px solid rgba(16,185,129,0.3)',borderRadius:'12px',padding:'0.5rem',zIndex:200,boxShadow:'0 -5px 20px rgba(0,0,0,0.3)'}}>
-                  {autocomplete.map((s,i) => (
-                    <div key={i} onClick={() => { setInput(s); setShowAutocomplete(false); setAutocomplete([]) }}
-                      style={{padding:'0.6rem 1rem',color:'#e2e8f0',fontSize:'0.85rem',cursor:'pointer',borderRadius:'8px',borderBottom:'1px solid rgba(255,255,255,0.05)'}}
-                      onMouseEnter={e => e.currentTarget.style.background='rgba(16,185,129,0.15)'}
-                      onMouseLeave={e => e.currentTarget.style.background='transparent'}>
-                      🔍 {s}
-                    </div>
-                  ))}
-                </div>
-              )}
               <button type="submit" disabled={isLoading || !input.trim()} style={btnStyle('linear-gradient(135deg,#10b981,#059669)', isLoading || !input.trim())}>
                 ➤
               </button>
