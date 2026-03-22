@@ -44,6 +44,7 @@ export default function SuperBotAssistant() {
   const [langue, setLangue] = useState('fr')
   const [showLangMenu, setShowLangMenu] = useState(false)
   const [audioEnabled, setAudioEnabled] = useState(true)
+  const [historiqueList, setHistoriqueList] = useState([])
   const [sessionId] = useState(() => 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2,9))
   const [suggestions, setSuggestions] = useState(['🌋 Séismes Antilles','🌀 Cyclones','🌤️ Météo DOM-TOM','💱 Devises XOF/XAF','⛽ Carburant DOM-TOM','📅 Calendrier scolaire','💎 Prix REUSS','🎓 Bourses francophones','💼 Emploi Caraïbes','🌴 Traduire créole','📚 Bibliothèque caribéenne','📰 Actualités Guadeloupe','💰 Calculateur Amazon','📄 Créer mon CV'])
   const [selectedImage, setSelectedImage] = useState(null)
@@ -321,8 +322,9 @@ export default function SuperBotAssistant() {
 
           {/* ONGLETS */}
           <div style={{display:'flex',borderBottom:'1px solid rgba(255,255,255,0.1)'}}>
-            {[['chat','💬 Chat'],['nexus','🌐 Nexus'],['amazon','🛍️ Amazon'],['token','💎 Token'],['quiz','📚 Quiz']].map(([tab,label]) => (
-              <button key={tab} onClick={() => { setActiveTab(tab); if(tab==='nexus') fetchNexusStats() }}
+            {[['chat','💬 Chat'],['nexus','🌐 Nexus'],['amazon','🛍️ Amazon'],['token','💎 Token'],['quiz','📚 Quiz'],['historique','📜 Hist']].map(([tab,label]) => (
+              <button key={tab} onClick={() => { setActiveTab(tab); if(tab==='nexus') fetchNexusStats()
+                  if(tab==='historique') fetch('/api/conversations').then(r=>r.json()).then(d=>setHistoriqueList(Array.isArray(d)?d:[])).catch(()=>{}) }}
                 style={{flex:1,padding:'0.6rem',border:'none',background: activeTab===tab?'rgba(16,185,129,0.2)':'transparent',color: activeTab===tab?'#10b981':'#64748b',fontSize:'0.7rem',cursor:'pointer',fontWeight: activeTab===tab?'bold':'normal',borderBottom: activeTab===tab?'2px solid #10b981':'2px solid transparent'}}>
                 {label}
               </button>
@@ -501,7 +503,24 @@ export default function SuperBotAssistant() {
             </div>
           )}
 
-          {activeTab === 'chat' && <>
+          {activeTab === 'historique' && (
+          <div style={{padding:'1rem',overflowY:'auto',flex:1}}>
+            <h3 style={{color:'#10b981',marginBottom:'1rem',fontSize:'0.9rem'}}>📜 Mes Conversations — Archives REUSSITESS AI</h3>
+            {historiqueList.length === 0 && <p style={{color:'#64748b',fontSize:'0.85rem'}}>Aucune conversation sauvegardée. Boudoum ! 🇬🇵</p>}
+            {historiqueList.map((h,i) => (
+              <div key={i} onClick={() => {
+                fetch('/api/conversations?sessionId='+h.id).then(r=>r.json()).then(d=>{
+                  if(d && d.messages) { setMessages(d.messages); setActiveTab('chat') }
+                })
+              }} style={{padding:'0.8rem',background:'rgba(16,185,129,0.08)',border:'1px solid rgba(16,185,129,0.2)',borderRadius:'12px',marginBottom:'0.5rem',cursor:'pointer'}}>
+                <p style={{color:'#e2e8f0',fontSize:'0.82rem',fontWeight:'600',marginBottom:'0.2rem'}}>💬 {h.preview || 'Conversation'}...</p>
+                <p style={{color:'#64748b',fontSize:'0.72rem'}}>{new Date(h.updatedAt).toLocaleDateString('fr-FR', {day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'})}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {activeTab === 'chat' && <>
           {/* MESSAGES */}
           <div style={{flex:1,overflowY:'auto',padding:'1.5rem',display:'flex',flexDirection:'column',gap:'1rem'}}>
             {messages.map((msg, idx) => (
