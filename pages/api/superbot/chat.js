@@ -4383,7 +4383,46 @@ function calculerJourDate(dateStr) {
 
 import { langchainChat } from './langchain.js'
 
+async function generateFollowUp(response, message) {
+  try {
+    const Groq = (await import('groq-sdk')).default
+    const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
+    const completion = await groq.chat.completions.create({
+      model: 'llama-3.3-70b-versatile',
+      max_tokens: 150,
+      messages: [{
+        role: 'system',
+        content: 'Tu génères exactement 3 questions de suivi courtes en français basées sur la réponse donnée. Format JSON uniquement: ["question1?","question2?","question3?"]. Questions simples, max 8 mots chacune, adaptées au public caribéen non technique.'
+      }, {
+        role: 'user',
+        content: `Question posée: "${message}"
+Réponse donnée: "${response.substring(0,200)}"
+Génère 3 questions de suivi.`
+      }]
+    })
+    const text = completion.choices[0]?.message?.content?.trim()
+    const parsed = JSON.parse(text.replace(/```json|```/g,'').trim())
+    return Array.isArray(parsed) ? parsed.slice(0,3) : []
+  } catch(e) {
+    return []
+  }
+}
+
 export default async function handler(req, res) {
+  // Wrapper pour ajouter followUp automatiquement
+  const originalJson = res.json.bind(res)
+  res.json = async function(data) {
+    if (data && data.response && typeof data.response === 'string') {
+      try {
+        const followUp = await generateFollowUp(data.response, req.body?.message || '')
+        return originalJson({ ...data, followUp })
+      } catch(e) {
+        return originalJson(data)
+      }
+    }
+    return originalJson(data)
+  }
+
 
   // KNOWLEDGE EXTERNE — commandes depuis /api/knowledge
   try {

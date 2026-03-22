@@ -211,7 +211,7 @@ export default function SuperBotAssistant() {
       const data = await response.json()
       const botResponse = data.response || "Désolé, une erreur s'est produite. Réessayez ! 🔄"
       const botPdfAction = data.pdfAction || null
-      setMessages(prev => [...prev, { role: 'assistant', content: botResponse, pdfAction: botPdfAction }])
+      setMessages(prev => [...prev, { role: 'assistant', content: botResponse, pdfAction: botPdfAction, followUp: data.followUp || [] }])
       if (audioEnabled) speakResponse(botResponse, LANGUES[langue].voice)
     } catch {
       setMessages(prev => [...prev, { role: 'assistant', content: "⚠️ Connexion temporairement indisponible. Réessayez dans un instant. 💪" }])
@@ -540,6 +540,16 @@ export default function SuperBotAssistant() {
                   </div>
                 )}
                 {msg.role==='assistant' && audioEnabled && (
+                {msg.role === 'assistant' && msg.followUp && msg.followUp.length > 0 && (
+                  <div style={{display:'flex',flexWrap:'wrap',gap:'0.4rem',marginTop:'0.5rem'}}>
+                    {msg.followUp.map((q,i) => (
+                      <button key={i} onClick={() => submitMessage(q)}
+                        style={{padding:'0.35rem 0.7rem',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.25)',borderRadius:'15px',color:'#10b981',fontSize:'0.72rem',cursor:'pointer',fontWeight:'600'}}>
+                        💡 {q}
+                      </button>
+                    ))}
+                  </div>
+                )}
                   <button aria-label="Lire à voix haute" onClick={() => speakResponse(msg.content, LANGUES[langue].voice)}
                     style={{background:'none',border:'none',cursor:'pointer',fontSize:'0.75rem',color:'#10b981',padding:'0.2rem 0.5rem',marginTop:'0.2rem'}}>
                     🔊 Écouter
