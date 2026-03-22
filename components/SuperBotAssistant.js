@@ -595,6 +595,21 @@ export default function SuperBotAssistant() {
           {/* INPUT */}
           <form onSubmit={handleSubmit} style={{padding:'1rem 1.5rem',borderTop:'1px solid rgba(255,255,255,0.1)'}}>
             <div style={{display:'flex',gap:'0.5rem',alignItems:'center'}}>
+              <input type="file" id="pdf-upload" accept=".pdf" style={{display:'none'}} onChange={async e => {
+                const file = e.target.files[0]
+                if (!file) return
+                const formData = new FormData()
+                formData.append('pdf', file)
+                setIsLoading(true)
+                try {
+                  const r = await fetch('/api/read-pdf', { method: 'POST', body: formData })
+                  const d = await r.json()
+                  if (d.success) {
+                    setInput(`Analyse ce document PDF (${d.pages} pages): ${d.text.substring(0,500)}...`)
+                  }
+                } catch(e) {}
+                setIsLoading(false)
+              }} />
               <input type="file" id="img-upload" accept="image/*" style={{display:'none'}} onChange={e => {
                 const file = e.target.files[0]
                 if (file) {
@@ -607,7 +622,12 @@ export default function SuperBotAssistant() {
                   reader.readAsDataURL(file)
                 }
               }} />
-              <button type="button" onClick={() => document.getElementById('img-upload').click()} disabled={isLoading}
+              <button type="button" onClick={() => document.getElementById('pdf-upload').click()} disabled={isLoading}
+                      style={{padding:'0.4rem 0.6rem',borderRadius:'10px',border:'none',background:'rgba(55,65,81,0.8)',color:'white',cursor:'pointer',fontSize:'0.85rem',flexShrink:0,opacity:isLoading?0.5:1}}
+                      title="Envoyer un PDF">
+                    📄
+                </button>
+                <button type="button" onClick={() => document.getElementById('img-upload').click()} disabled={isLoading}
                 style={{padding:'0.4rem 0.6rem',borderRadius:'10px',border:'none',background:selectedImage?'linear-gradient(135deg,#f59e0b,#d97706)':'rgba(55,65,81,0.8)',color:'white',cursor:'pointer',fontSize:'0.85rem',flexShrink:0,opacity:isLoading?0.5:1}}
                 title="Envoyer une image">
                 📷
