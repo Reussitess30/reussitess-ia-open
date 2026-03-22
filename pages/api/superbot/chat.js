@@ -4384,6 +4384,19 @@ function calculerJourDate(dateStr) {
 import { langchainChat } from './langchain.js'
 
 export default async function handler(req, res) {
+
+  // KNOWLEDGE EXTERNE — commandes depuis /api/knowledge
+  try {
+    const kbRes = await fetch('https://reussitess.fr/api/knowledge')
+    const kb = await kbRes.json()
+    const msgL = (req.body?.message || '').toLowerCase()
+    for (const cmd of (kb.commands || [])) {
+      if (msgL.includes(cmd.trigger.toLowerCase())) {
+        return res.status(200).json({ pdfAction: null, response: cmd.response })
+      }
+    }
+  } catch(e) {}
+
   let pdfType = null;
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
