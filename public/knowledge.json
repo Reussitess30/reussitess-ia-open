@@ -2,10 +2,37 @@
   "version": "1.0",
   "updated": "2026-03-21",
   "commands": [
-    { "trigger": "qui a créé reussitess", "response": "REUSSITESS®971 a été créé par Porinus, entrepreneur guadeloupéen basé à Gourbeyre. BOUDOUM ! 🇬🇵" },
-    { "trigger": "c'est quoi reussitess", "response": "REUSSITESS®971 est une plateforme IA caribéenne connectant la diaspora francophone aux opportunités mondiales. 26 boutiques Amazon, token REUSS, IA multilingue. Boudoum ! 🇬🇵" },
-    { "trigger": "token reuss", "response": "💎 Token REUSS — Polygon\nContrat: 0xB37531727fC07c6EED4f97F852A115B428046EB2\nSupply: 999,999,999\nDisponible sur Quickswap\nhttps://reussitess.fr/investir-reuss\nBoudoum ! 🇬🇵" },
-    { "trigger": "boudoum", "response": "BOUDOUM ! 🌟 Positivité à l'infini — REUSSITESS®971 🇬🇵" },
-    { "trigger": "fondateur", "response": "Porinus est le fondateur de REUSSITESS®971, auto-entrepreneur guadeloupéen. SIRET: 444699979700031. Motto: Positivité à l'infini — BOUDOUM. 🇬🇵" }
+    {
+      "trigger": "qui a créé reussitess",
+      "response": "REUSSITESS®971 a été créé par Porinus, entrepreneur guadeloupéen basé à Gourbeyre. BOUDOUM ! 🇬🇵"
+    },
+    {
+      "trigger": "c'est quoi reussitess",
+      "response": "REUSSITESS®971 est une plateforme IA caribéenne connectant la diaspora francophone aux opportunités mondiales. 26 boutiques Amazon, token REUSS, IA multilingue. Boudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "token reuss",
+      "response": "💎 Token REUSS — Polygon\nContrat: 0xB37531727fC07c6EED4f97F852A115B428046EB2\nSupply: 999,999,999\nDisponible sur Quickswap\nhttps://reussitess.fr/investir-reuss\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "boudoum",
+      "response": "BOUDOUM ! 🌟 Positivité à l'infini — REUSSITESS®971 🇬🇵"
+    },
+    {
+      "trigger": "fondateur",
+      "response": "Porinus est le fondateur de REUSSITESS®971, auto-entrepreneur guadeloupéen. SIRET: 444699979700031. Motto: Positivité à l'infini — BOUDOUM. 🇬🇵"
+    },
+    {
+      "trigger": "observatoire",
+      "response": "📊 **Observatoire Antilles**\n\nDonnées économiques & sociales DOM-TOM en temps réel :\n\n👥 Population & chômage\n💼 Offres emploi\n📈 PIB & croissance\n💰 Financement AFD\n\n👉 https://reussitess.fr/observatoire-antilles\n\nSources : INSEE • IEDOM • CEROM • AFD • Banque de France\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "statistiques antilles",
+      "response": "📊 Consultez l'Observatoire Antilles REUSSITESS®971 pour toutes les données économiques et sociales des DOM-TOM :\n\nhttps://reussitess.fr/observatoire-antilles\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "données économiques",
+      "response": "📊 Consultez l'Observatoire Antilles REUSSITESS®971 pour toutes les données économiques et sociales des DOM-TOM :\n\nhttps://reussitess.fr/observatoire-antilles\n\nBoudoum ! 🇬🇵"
+    }
   ]
 }
