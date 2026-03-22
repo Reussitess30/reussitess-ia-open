@@ -82,6 +82,11 @@ export default async function handler(req, res) {
           { text: '🔐 Crypto Sécurité', callback_data: 'crypto securite draineur danger' },
           { text: '😂 Blague', callback_data: 'raconte moi une blague' },
           { text: '📊 Dashboard', callback_data: 'dashboard stats' }
+                        ],
+                        [
+                          { text: '📊 Observatoire', callback_data: 'observatoire antilles' },
+                          { text: '🎓 Bourses', callback_data: 'bourses francophones AUF' },
+                          { text: '📅 Calendrier', callback_data: 'calendrier scolaire dom-tom' }
         ]
       ]
     }
