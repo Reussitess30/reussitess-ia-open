@@ -559,6 +559,7 @@ export default function SuperBotAssistant() {
                     🔊 Écouter
                   </button>
                 )}
+                {msg.followUp && msg.followUp.length > 0 && msg.role === 'assistant' && msg.followUp.map((q,qi) => (<button key={qi} onClick={() => submitMessage(q)} style={{display:'inline-block',margin:'0.2rem',padding:'0.3rem 0.6rem',background:'rgba(16,185,129,0.1)',border:'1px solid rgba(16,185,129,0.25)',borderRadius:'12px',color:'#10b981',fontSize:'0.7rem',cursor:'pointer'}}>💡 {q}</button>))}
               </div>
             ))}
             {messages.length === 1 && !isLoading && (
