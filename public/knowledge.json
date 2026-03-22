@@ -81,6 +81,46 @@
     {
       "trigger": "taux de chomage",
       "response": "💼 **Marché du travail DOM-TOM** — Source INSEE 2023\n\nGuadeloupe: 17,2% | Martinique: 15,8% | Guyane: 20,1% | Réunion: 17,6%\n\n🎯 **Trouve ton opportunité :**\n• 💼 Offres emploi : reussitess.fr/hub-central\n• 🎓 Formations : reussitess.fr/bibliotheque\n• 📊 Observatoire : reussitess.fr/observatoire-antilles\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "chomage",
+      "response": "💼 **Marché du travail DOM-TOM** — INSEE 2023\n\nGuadeloupe: 17,2% | Martinique: 15,8% | Guyane: 20,1% | Réunion: 17,6%\n\n🎯 **Tes opportunités :**\n• 💼 Offres emploi : reussitess.fr/hub-central\n• 🎓 Formations gratuites disponibles\n• 🌍 Entrepreneuriat : reussitess.fr/visa-universel\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "emploi",
+      "response": "💼 **Emploi Guadeloupe & DOM-TOM**\n\n🔥 Offres en temps réel sur France Travail\n📊 Secteurs porteurs : Tourisme • BTP • Santé • IA • E-commerce\n\n👉 reussitess.fr/hub-central\n👉 francetravail.fr\n👉 caribbeanjobs.com\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "formation",
+      "response": "🎓 **Formations Disponibles**\n\n✅ Formations gratuites en ligne\n✅ Bourses AUF francophones\n✅ Campus France international\n✅ Coursera aide financière\n✅ Google Developer Scholarship\n\n👉 reussitess.fr/hub-central\n👉 auf.org\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "travail",
+      "response": "💼 **Opportunités de travail**\n\n🌴 Guadeloupe • Martinique • Réunion • Guyane\n🌍 14 pays partenaires REUSSITESS\n\n• France Travail temps réel\n• Caribbeanjobs.com\n• Jobartis.com Afrique\n• LinkedIn international\n\n👉 reussitess.fr/hub-central\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "salaire",
+      "response": "💰 **Salaires DOM-TOM**\n\nSMIC Guadeloupe : 1 767€/mois brut (2024)\nSalaire médian : ~1 900€/mois\nSecteurs les mieux payés : Santé • Énergie • Tech • BTP\n\n📊 reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "logement",
+      "response": "🏠 **Logement Guadeloupe**\n\nPrix moyen location : 600-900€/mois\nAides disponibles : APL • Action Logement • FRAFU\n\n📊 Données complètes : reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "bourse",
+      "response": "🎓 **Bourses disponibles**\n\n• AUF — Bourses francophones\n• Campus France — études à l'étranger\n• Fulbright — USA\n• Chevening — Royaume-Uni\n• Erasmus — Europe\n\n👉 auf.org | campusfrance.org\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "aide",
+      "response": "🤝 **Aides disponibles DOM-TOM**\n\n💰 Chèque TIC — numérique\n🏠 APL — logement\n💼 ARE — chômage\n🎓 Bourses — études\n🌱 ACRE — création entreprise\n\n📊 reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "entreprise",
+      "response": "🚀 **Créer son entreprise en Guadeloupe**\n\n✅ Auto-entrepreneur — simple et rapide\n✅ ACRE — exonération charges 1 an\n✅ Chèque TIC — aide numérique\n✅ Réseau REUSSITESS — 14 pays\n\n👉 reussitess.fr/visa-universel\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "prix",
+      "response": "💰 **Prix & Coût de la vie Guadeloupe**\n\n⛽ Carburant SP95 : ~1,65€/L\n🛒 Courses : +10-15% vs France métro\n🏠 Loyer moyen : 700€/mois\n\n📊 Observatoire complet : reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
     }
   ]
 }
