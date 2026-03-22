@@ -44,6 +44,7 @@ export default function SuperBotAssistant() {
   const [langue, setLangue] = useState('fr')
   const [showLangMenu, setShowLangMenu] = useState(false)
   const [audioEnabled, setAudioEnabled] = useState(true)
+  const [handsFreeModeActive, setHandsFreeModeActive] = useState(false)
   const [historiqueList, setHistoriqueList] = useState([])
   const [sessionId] = useState(() => 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2,9))
   const [suggestions, setSuggestions] = useState(['🌋 Séismes Antilles','🌀 Cyclones','🌤️ Météo DOM-TOM','💱 Devises XOF/XAF','⛽ Carburant DOM-TOM','📅 Calendrier scolaire','💎 Prix REUSS','🎓 Bourses francophones','💼 Emploi Caraïbes','🌴 Traduire créole','📚 Bibliothèque caribéenne','📰 Actualités Guadeloupe','💰 Calculateur Amazon','📄 Créer mon CV'])
@@ -226,6 +227,10 @@ export default function SuperBotAssistant() {
         await new Promise(r => setTimeout(r, 18))
       }
       if (audioEnabled) speakResponse(botResponse, LANGUES[langue].voice)
+      // Mode mains libres — micro s'active après la réponse
+      if (handsFreeModeActive && audioEnabled) {
+        setTimeout(() => startListening(), 2500)
+      }
       // Sauvegarder conversation
       fetch('/api/conversations', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ sessionId, messages: [...messages, { role: 'user', content: userMessage }, { role: 'assistant', content: botResponse }] }) }).catch(()=>{})
     } catch {
@@ -298,6 +303,11 @@ export default function SuperBotAssistant() {
                 <button aria-label="Activer/désactiver audio" onClick={() => { setAudioEnabled(!audioEnabled); if(!audioEnabled) stopSpeaking() }}
                   style={{background: audioEnabled?'rgba(255,255,255,0.3)':'rgba(0,0,0,0.3)', border:'none', borderRadius:'8px', padding:'0.4rem 0.6rem', cursor:'pointer', fontSize:'1rem', color:'white'}}>
                   {audioEnabled ? '🔊' : '🔇'}
+                </button>
+                <button aria-label="Mode mains libres" onClick={() => setHandsFreeModeActive(v => !v)}
+                  style={{background: handsFreeModeActive?'rgba(16,185,129,0.4)':'rgba(0,0,0,0.3)', border:'none', borderRadius:'8px', padding:'0.4rem 0.6rem', cursor:'pointer', fontSize:'1rem', color:'white', marginLeft:'0.3rem'}}
+                  title="Mode mains libres — conversation continue">
+                  {handsFreeModeActive ? '🤝 ON' : '🤝 OFF'}
                 </button>
                 <div style={{position:'relative'}}>
                   <button aria-label="Choisir la langue" onClick={() => setShowLangMenu(!showLangMenu)}
