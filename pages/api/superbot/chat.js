@@ -4383,6 +4383,23 @@ function calculerJourDate(dateStr) {
 
 import { langchainChat } from './langchain.js'
 
+async function generateFollowUp(response, message) {
+  try {
+    const Groq = (await import('groq-sdk')).default
+    const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
+    const completion = await groq.chat.completions.create({
+      model: 'llama-3.3-70b-versatile',
+      max_tokens: 120,
+      messages: [
+        { role: 'system', content: 'Reponds UNIQUEMENT avec un tableau JSON: ["question1?","question2?","question3?"]. 3 questions courtes max 8 mots.' },
+        { role: 'user', content: message.substring(0,100) + ' ' + response.substring(0,200) }
+      ]
+    })
+    const text = completion.choices[0].message.content.trim().replace(/```json|```/g,'').trim()
+    return JSON.parse(text).slice(0,3)
+  } catch(e) { return [] }
+}
+
 export default async function handler(req, res) {
 
   // KNOWLEDGE EXTERNE — commandes depuis /api/knowledge
