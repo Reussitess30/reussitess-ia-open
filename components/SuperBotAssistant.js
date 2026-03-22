@@ -209,7 +209,20 @@ export default function SuperBotAssistant() {
       const data = await response.json()
       const botResponse = data.response || "Désolé, une erreur s'est produite. Réessayez ! 🔄"
       const botPdfAction = data.pdfAction || null
-      setMessages(prev => [...prev, { role: 'assistant', content: botResponse, pdfAction: botPdfAction }])
+      // Streaming simulé — affichage mot par mot
+      const words = botResponse.split(' ')
+      let current = ''
+      setMessages(prev => [...prev, { role: 'assistant', content: '', pdfAction: botPdfAction }])
+      for (let i = 0; i < words.length; i++) {
+        current += (i === 0 ? '' : ' ') + words[i]
+        const snapshot = current
+        setMessages(prev => {
+          const updated = [...prev]
+          updated[updated.length - 1] = { ...updated[updated.length - 1], content: snapshot }
+          return updated
+        })
+        await new Promise(r => setTimeout(r, 18))
+      }
       if (audioEnabled) speakResponse(botResponse, LANGUES[langue].voice)
     } catch {
       setMessages(prev => [...prev, { role: 'assistant', content: "⚠️ Connexion temporairement indisponible. Réessayez dans un instant. 💪" }])

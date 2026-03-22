@@ -4400,6 +4400,8 @@ async function generateFollowUp(response, message) {
   } catch(e) { return [] }
 }
 
+export const config = { api: { responseLimit: false } }
+
 export default async function handler(req, res) {
 
   // KNOWLEDGE EXTERNE — commandes depuis /api/knowledge
