@@ -14,7 +14,7 @@ export default function Telecharger() {
         <div style={{ width:"100%", maxWidth:"400px", display:"flex", flexDirection:"column", gap:"1rem" }}>
           
           {/* Android APK */}
-          <a href="https://expo.dev/artifacts/eas/wWWxdYLy2xvnXXHgbGsBuG.apk" 
+          <a href="https://expo.dev/artifacts/eas/jFFKgwwQwVGRymXNF2eGDM.apk" 
              target="_blank" rel="noopener noreferrer"
              style={{ display:"flex", alignItems:"center", gap:"1rem", padding:"1.2rem", background:"linear-gradient(135deg,#10b981,#065f46)", borderRadius:"16px", textDecoration:"none", color:"white" }}>
             <span style={{fontSize:"2.5rem"}}>🤖</span>
