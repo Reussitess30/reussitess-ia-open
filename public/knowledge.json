@@ -57,6 +57,26 @@
     {
       "trigger": "population guadeloupe",
       "response": "👥 Population Guadeloupe: **378 561 habitants** (2023) — Source INSEE\n\n📊 https://reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "mode mains libres",
+      "response": "🤝 **Mode Mains Libres REUSSITESS AI**\n\nActive le bouton 🤝 dans le bot — le micro s'active automatiquement après chaque réponse. Conversation continue sans toucher l'écran !\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "historique",
+      "response": "📜 **Historique Conversations**\n\nClique sur l'onglet 📜 Hist dans le bot pour retrouver tes anciennes conversations REUSSITESS AI.\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "style réponse",
+      "response": "🎨 **Personnalise le style du bot !**\n\n🌴 Caribéen — chaleur antillaise\n🎓 Expert — réponses détaillées\n😊 Casual — comme un ami\n⚡ Ultra-court — essentiel seulement\n\nChoisis ton style dans la barre de chat !\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "pdf",
+      "response": "📄 **Lecture PDF REUSSITESS AI**\n\nEnvoie un PDF au bot via le bouton 📄 dans la barre de saisie — contrat, CV, document — le bot lit et analyse le contenu !\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "telegram",
+      "response": "🤖 **Bot Telegram REUSSITESS**\n\n@Reussitessbot sur Telegram — toutes les fonctions disponibles :\n🌤️ Météo • 💼 Emploi • 📊 Observatoire • 🎓 Bourses • 💎 Token REUSS\n\nBoudoum ! 🇬🇵"
     }
   ]
 }
