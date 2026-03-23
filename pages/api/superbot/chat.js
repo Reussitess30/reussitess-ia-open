@@ -4182,7 +4182,7 @@ async function getCryptoCoingecko(coin = "bitcoin") {
     const change = data.eur_24h_change?.toFixed(2)
     const arrow = change > 0 ? "📈" : "📉"
     return `💎 **${coin.toUpperCase()} (CoinGecko)**\n\n💶 EUR: €${data.eur?.toLocaleString("fr-FR")}\n💵 USD: $${data.usd?.toLocaleString("en-US")}\n${arrow} 24h: ${change}%\n\nBoudoum ! 🇬🇵`
-  } catch(e) { return "💎 Crypto en chargement. Réessaie ! Boudoum 🇬🇵" }
+  } catch(e) { try { const {Redis}=await import('@upstash/redis');const r=Redis.fromEnv();const c=await r.get('cache:crypto');if(c) return c } catch(re){} return "💎 Crypto en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== EXCHANGERATE — Devises temps réel =====
@@ -4193,7 +4193,7 @@ async function getExchangeRate(from = "EUR", to = "XCD") {
     const rate = d.rates[to]
     if (!rate) return `❌ Devise ${to} non trouvée.`
     return `💱 **Taux de change (ExchangeRate)**\n\n1 ${from} = ${rate.toFixed(4)} ${to}\n\n🌍 Principales devises:\n• EUR → USD: ${d.rates.USD?.toFixed(4)}\n• EUR → XOF: ${d.rates.XOF?.toFixed(0)} (FCFA)\n• EUR → XCD: ${d.rates.XCD?.toFixed(4)} (Dollar Caraïbes)\n• EUR → HTG: ${d.rates.HTG?.toFixed(2)} (Gourde Haïti)\n\nBoudoum ! 🇬🇵`
-  } catch(e) { return "💱 Taux de change en chargement. Réessaie ! Boudoum 🇬🇵" }
+  } catch(e) { try { const {Redis}=await import('@upstash/redis');const r=Redis.fromEnv();const c=await r.get('cache:devises');if(c) return c } catch(re){} return "💱 Taux en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== RESTCOUNTRIES — Infos pays =====
@@ -4382,6 +4382,20 @@ function calculerJourDate(dateStr) {
 }
 
 import { langchainChat } from './langchain.js'
+
+async function cachedFetch(key, fetchFn, ttl = 3600) {
+  try {
+    const { Redis } = await import('@upstash/redis')
+    const redis = Redis.fromEnv()
+    const cached = await redis.get(key)
+    if (cached) return { data: cached, fromCache: true }
+    const data = await fetchFn()
+    if (data) await redis.set(key, data, { ex: ttl })
+    return { data, fromCache: false }
+  } catch(e) {
+    try { const data = await fetchFn(); return { data, fromCache: false } } catch(e2) { return { data: null, fromCache: false } }
+  }
+}
 
 async function generateFollowUp(response, message) {
   try {
