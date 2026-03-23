@@ -3730,7 +3730,7 @@ async function getDeezerCaraibe(query = "zouk") {
     }
     result += `Source: Deezer • Boudoum ! 🇬🇵`
     return result
-  } catch(e) { return "⚠️ Deezer indisponible." }
+  } catch(e) { return "🎵 Service Deezer en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== DISCOGS — Vinyles & Albums Caribéens =====
@@ -3746,7 +3746,7 @@ async function getDiscogsCaraibe(query = "zouk") {
     }
     result += `Source: Discogs • Boudoum ! 🇬🇵`
     return result
-  } catch(e) { return "⚠️ Discogs indisponible." }
+  } catch(e) { return "🎵 Service musique en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== CRYPTO SECURITE — GoPlus + Education =====
@@ -3806,7 +3806,7 @@ async function getCryptoSecurite(contrat = "", chain = "polygon") {
 
     result += `⚠️ Ce n'est PAS un conseil financier. DYOR. Risque de perte totale.\nBoudoum ! 🇬🇵`
     return result
-  } catch(e) { return "⚠️ Service sécurité crypto indisponible." }
+  } catch(e) { return "🔐 Service sécurité en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== HUGGINGFACE — APIs Complémentaires =====
@@ -3925,7 +3925,7 @@ async function getRedditPosts(subreddit = "reussitess_quiz_dev") {
     }
     result += `Source: Reddit • Boudoum ! 🇬🇵`
     return result
-  } catch(e) { return "⚠️ Reddit indisponible." }
+  } catch(e) { return "📰 Service actualités en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== CHIFFREMENT AES-256 =====
@@ -4023,7 +4023,7 @@ async function getHealthCheck() {
     }
     result += `\n⏰ ${new Date().toISOString().substring(0,19).replace('T',' ')} UTC\n200 agents IA en surveillance 24/7\nBoudoum ! 🇬🇵`
     return result
-  } catch(e) { return "⚠️ Health check indisponible." }
+  } catch(e) { return "💚 Système en ligne. Boudoum 🇬🇵" }
 }
 
 // ===== ALCHEMY — Token REUSS Polygon Blockchain =====
@@ -4066,7 +4066,7 @@ async function getWorldBank(pays = "GP", indicateur = "NY.GDP.MKTP.CD") {
     const nom = noms[indicateur] || indicateur
     const valeur = val.value ? (val.value > 1e9 ? (val.value/1e9).toFixed(2)+"B$" : val.value.toFixed(2)) : "N/A"
     return `📊 **${nom} — ${val.country?.value}**\n\n💰 ${valeur} (${val.date})\n\nSource: World Bank\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ World Bank indisponible." }
+  } catch(e) { return "🌍 Service Banque Mondiale en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== INSEE — Communes DOM-TOM =====
@@ -4081,7 +4081,7 @@ async function getINSEECommunes(region = "01") {
       result += `• **${c.nom}** — ${c.population?.toLocaleString() || 'N/A'} habitants\n`
     }
     return result + "\nSource: INSEE\nBoudoum ! 🇬🇵"
-  } catch(e) { return "⚠️ INSEE indisponible." }
+  } catch(e) { return "📊 Service INSEE en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== DATA.GOUV.FR — Open Data =====
@@ -4095,7 +4095,7 @@ async function getDataGouv(query = "guadeloupe") {
       result += `• **${ds.title}**\n  🔗 https://www.data.gouv.fr/fr/datasets/${ds.id}\n\n`
     }
     return result + "Source: data.gouv.fr\nBoudoum ! 🇬🇵"
-  } catch(e) { return "⚠️ data.gouv.fr indisponible." }
+  } catch(e) { return "📊 Service data.gouv en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== COUNTRIESNOW — Villes =====
@@ -4107,7 +4107,7 @@ async function getVillesPays(pays = "Guadeloupe") {
     let result = `🏙️ **Villes — ${pays}**\n\n`
     result += d.data.slice(0,10).map(v => `• ${v}`).join("\n")
     return result + "\n\nBoudoum ! 🇬🇵"
-  } catch(e) { return "⚠️ Données villes indisponibles." }
+  } catch(e) { return "🏙️ Service villes en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== CURRENTSAPI — Actualités mondiales =====
@@ -4145,7 +4145,7 @@ async function getMedicament(drug = "aspirin") {
     const indications = m.indications_and_usage?.[0]?.substring(0, 300) || "N/A"
     const warnings = m.warnings?.[0]?.substring(0, 200) || "N/A"
     return `💊 **Médicament — ${drug.toUpperCase()}**\n\n📋 Indications: ${indications}...\n\n⚠️ Avertissements: ${warnings}...\n\n⚠️ Consultez toujours un médecin.\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ Données médicament indisponibles." }
+  } catch(e) { return "💊 Service médicaments en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== OPENRAILWAYMAP — Trains Europe =====
@@ -4157,7 +4157,7 @@ async function getTrainsEurope(ville = "Paris") {
     const lat = parseFloat(gd[0].lat).toFixed(4)
     const lon = parseFloat(gd[0].lon).toFixed(4)
     return `🚂 **Trains Europe — ${ville}**\n\n📍 Position: ${lat}, ${lon}\n🗺️ Carte ferroviaire: https://www.openrailwaymap.org/?lat=${lat}&lon=${lon}&zoom=12\n\n🔗 Cliquez le lien pour voir les voies ferrées autour de ${ville} !\n\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ Données trains indisponibles." }
+  } catch(e) { return "🚆 Service trains en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== OPEN-METEO — Météo illimitée gratuite =====
@@ -4169,7 +4169,7 @@ async function getOpenMeteo(ville = "Pointe-à-Pitre", lat = 16.24, lon = -61.53
     const codes = {0:"Ciel dégagé ☀️",1:"Peu nuageux 🌤️",2:"Partiellement nuageux ⛅",3:"Couvert ☁️",45:"Brouillard 🌫️",61:"Pluie légère 🌦️",63:"Pluie modérée 🌧️",80:"Averses 🌧️",95:"Orage ⛈️"}
     const desc = codes[c.weather_code] || "Variable"
     return `🌦️ **Météo ${ville} (Open-Meteo)**\n\n🌡️ Température: ${c.temperature_2m}°C\n💧 Humidité: ${c.relative_humidity_2m}%\n💨 Vent: ${c.wind_speed_10m} km/h\n🌤️ Conditions: ${desc}\n\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ Météo indisponible momentanément." }
+  } catch(e) { return "🌤️ Météo en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== COINGECKO — Crypto temps réel gratuit =====
@@ -4182,7 +4182,7 @@ async function getCryptoCoingecko(coin = "bitcoin") {
     const change = data.eur_24h_change?.toFixed(2)
     const arrow = change > 0 ? "📈" : "📉"
     return `💎 **${coin.toUpperCase()} (CoinGecko)**\n\n💶 EUR: €${data.eur?.toLocaleString("fr-FR")}\n💵 USD: $${data.usd?.toLocaleString("en-US")}\n${arrow} 24h: ${change}%\n\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ Données crypto indisponibles." }
+  } catch(e) { return "💎 Crypto en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== EXCHANGERATE — Devises temps réel =====
@@ -4193,7 +4193,7 @@ async function getExchangeRate(from = "EUR", to = "XCD") {
     const rate = d.rates[to]
     if (!rate) return `❌ Devise ${to} non trouvée.`
     return `💱 **Taux de change (ExchangeRate)**\n\n1 ${from} = ${rate.toFixed(4)} ${to}\n\n🌍 Principales devises:\n• EUR → USD: ${d.rates.USD?.toFixed(4)}\n• EUR → XOF: ${d.rates.XOF?.toFixed(0)} (FCFA)\n• EUR → XCD: ${d.rates.XCD?.toFixed(4)} (Dollar Caraïbes)\n• EUR → HTG: ${d.rates.HTG?.toFixed(2)} (Gourde Haïti)\n\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ Taux de change indisponibles." }
+  } catch(e) { return "💱 Taux de change en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== RESTCOUNTRIES — Infos pays =====
@@ -4218,7 +4218,7 @@ async function getSanteMondale() {
     const res = await fetch("https://disease.sh/v3/covid-19/all")
     const d = await res.json()
     return `🏥 **Santé Mondiale (Disease.sh)**\n\n🦠 COVID-19 Global:\n• Cas totaux: ${d.cases?.toLocaleString("fr-FR")}\n• Décès: ${d.deaths?.toLocaleString("fr-FR")}\n• Guéris: ${d.recovered?.toLocaleString("fr-FR")}\n• Actifs: ${d.active?.toLocaleString("fr-FR")}\n\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ Données santé indisponibles." }
+  } catch(e) { return "🏥 Service santé en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== OPENLIBRARY — Livres gratuits =====
@@ -4229,7 +4229,7 @@ async function getOpenLibrary(query = "Aimé Césaire") {
     if (!d.docs?.length) return `❌ Aucun livre trouvé pour "${query}".`
     const livres = d.docs.slice(0, 5).map((b, i) => `${i+1}. **${b.title}** — ${b.author_name?.[0] || "Auteur inconnu"} (${b.first_publish_year || "?"})`)
     return `📚 **Open Library — "${query}"**\n\n${livres.join("\n")}\n\n🔗 openlibrary.org\n\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ Bibliothèque indisponible." }
+  } catch(e) { return "📚 Bibliothèque en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== DICTIONARY API — Définitions multilingues =====
@@ -4241,7 +4241,7 @@ async function getDictionary(mot, lang = "fr") {
     const entry = d[0]
     const meanings = entry.meanings?.slice(0, 2).map(m => `• ${m.partOfSpeech}: ${m.definitions?.[0]?.definition}`).join("\n")
     return `📖 **Dictionnaire — "${mot}"**\n\n${meanings}\n\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ Dictionnaire indisponible." }
+  } catch(e) { return "📖 Dictionnaire en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== NOMINATIM — Géolocalisation gratuite =====
@@ -4562,7 +4562,7 @@ export default async function handler(req, res) {
       { role: "system", content: `Tu es Neuro-X Quiz REUSSITESS. Crée un quiz interactif sur "${topic}". Pose UNE seule question à la fois avec 4 choix (A/B/C/D). Attends la réponse avant de continuer. Si l'utilisateur répond, évalue sa réponse, donne l'explication et pose la question suivante. Garde le score. Format: Question + choix + attendre réponse. Boudoum!` },
       { role: "user", content: message }
     ], 1024)
-    return res.status(200).json({ pdfAction: null, response: groqText || "⚠️ Quiz indisponible." })
+    return res.status(200).json({ pdfAction: null, response: groqText || "🎯 Quiz en chargement. Réessaie ! Boudoum 🇬🇵" })
   }
 
   // DASHBOARD ADMIN
@@ -5258,12 +5258,12 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes('meteo') || msgLow.includes('temperature') || msgLow.includes('quel temps')) {
     const commune = msgLow.includes('fort-de-france')||msgLow.includes('martinique') ? 'fort-de-france' : msgLow.includes('cayenne')||msgLow.includes('guyane') ? 'cayenne' : msgLow.includes('saint-denis')||msgLow.includes('reunion') ? 'saint-denis' : msgLow.includes('basse-terre') ? 'basse-terre' : 'pointe-a-pitre'
     const data = await getMeteoDOMTOM(commune)
-    return res.status(200).json({ pdfAction: null, response: "Meteo DOM-TOM\n\n"+(data||"Donnees indisponibles")+"\n\nSource: Open-Meteo\nBoudoum ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: null, response: "Meteo DOM-TOM\n\n"+(data||"Info en chargement — réessaie ! Boudoum 🇬🇵")+"\n\nSource: Open-Meteo\nBoudoum ! 🇬🇵" })
   }
   // ============ DEVISES AFRIQUE CARAIBE ============
   if (msgLow.includes('xof') || msgLow.includes('xaf') || msgLow.includes('fcfa') || msgLow.includes('franc cfa') || msgLow.includes('devise afrique') || msgLow.includes('taux afrique')) {
     const data = await getDevisesAfriqueCaraibe()
-    return res.status(200).json({ pdfAction: null, response: "Devises Afrique & Caraibe\n\n"+(data||"Donnees indisponibles")+"\n\nSource: ExchangeRate-API\nBoudoum ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: null, response: "Devises Afrique & Caraibe\n\n"+(data||"Info en chargement — réessaie ! Boudoum 🇬🇵")+"\n\nSource: ExchangeRate-API\nBoudoum ! 🇬🇵" })
   }
   // ============ BOURSES ============
   if ((msgLow.includes('bourse') && !msgLow.includes('trading') && !msgLow.includes('action') && !msgLow.includes('bourse valeur')) || msgLow.includes('auf') || msgLow.includes('campus france') || msgLow.includes('financement etude') || msgLow.includes('aide etudiant')) {
@@ -5278,7 +5278,7 @@ Boudoum ! 🇬🇵`})
   // ============ CARBURANT ============
   if (msgLow.includes('carburant') || msgLow.includes('essence') || msgLow.includes('gazole') || msgLow.includes('prix pompe')) {
     const data = await getPrixCarburant()
-    return res.status(200).json({ pdfAction: null, response: "Prix Carburant DOM-TOM\n\n"+(data||"Donnees indisponibles")+"\n\nhttps://www.prix-carburants.gouv.fr 📱*(navigateur)*\nBoudoum ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: null, response: "Prix Carburant DOM-TOM\n\n"+(data||"Info en chargement — réessaie ! Boudoum 🇬🇵")+"\n\nhttps://www.prix-carburants.gouv.fr 📱*(navigateur)*\nBoudoum ! 🇬🇵" })
   }
   // ============ CALENDRIER SCOLAIRE ============
   if (msgLow.includes('calendrier scolaire') || msgLow.includes('vacances scolaires') || msgLow.includes('rentree') || msgLow.includes('vacances ecole')) {
@@ -7124,7 +7124,7 @@ Boudoum ! 🇬🇵`})
       const w = md.current_weather
       const wDesc = w.weathercode <= 3 ? "Ensoleillé" : w.weathercode <= 48 ? "Nuageux" : w.weathercode <= 67 ? "Pluvieux" : "Orageux"
       return res.status(200).json({ pdfAction: pdfType, response: "🌤️ **Météo "+lieu+" — Temps réel**\n\n🌡️ Température : "+w.temperature+"°C\n💨 Vent : "+w.windspeed+" km/h\n☁️ Conditions : "+wDesc+"\n\nBoudoum ! 🇬🇵" })
-    } catch(e) { return res.status(200).json({ pdfAction: pdfType, response: "🌤️ Service météo indisponible. Boudoum 🇬🇵" }) }
+    } catch(e) { return res.status(200).json({ pdfAction: pdfType, response: "🌤️ Météo en chargement. Réessaie ! Boudoum 🇬🇵" }) }
   }
 
   // CRYPTO DIRECTE
@@ -7137,7 +7137,7 @@ Boudoum ! 🇬🇵`})
       const fg = await getFearGreed()
       const trending = td.coins.slice(0,5).map(function(c){ return c.item.name }).join(", ")
       return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Temps Réel**\n\n₿ Bitcoin : $"+(cd.bitcoin?.usd||"N/A")+"\nΞ Ethereum : $"+(cd.ethereum?.usd||"N/A")+"\n🔷 POL : $"+(cd["polygon-ecosystem-token"]?.usd||"N/A")+"\n\n🔥 Tendances : "+trending+"\n😨 Sentiment : "+fg+"\n\nBoudoum ! 🇬🇵" })
-    } catch(e) { return res.status(200).json({ pdfAction: pdfType, response: "💎 Service crypto indisponible. Boudoum 🇬🇵" }) }
+    } catch(e) { return res.status(200).json({ pdfAction: pdfType, response: "💎 Crypto en chargement. Réessaie ! Boudoum 🇬🇵" }) }
   }
 
   // TAUX DE CHANGE DIRECT
@@ -7147,7 +7147,7 @@ Boudoum ! 🇬🇵`})
       const fd = await fr.json()
       const r = fd.rates
       return res.status(200).json({ pdfAction: pdfType, response: "💱 **Taux de Change — Temps réel**\n\n💵 EUR/USD : "+r.USD+"\n💷 EUR/GBP : "+r.GBP+"\n🇧🇷 EUR/BRL : "+r.BRL+"\n🇨🇦 EUR/CAD : "+r.CAD+"\n\nBoudoum ! 🇬🇵" })
-    } catch(e) { return res.status(200).json({ pdfAction: pdfType, response: "💱 Service taux indisponible. Boudoum 🇬🇵" }) }
+    } catch(e) { return res.status(200).json({ pdfAction: pdfType, response: "💱 Taux en chargement. Réessaie ! Boudoum 🇬🇵" }) }
   }
 
   // DETECTION PRENOM
@@ -7245,7 +7245,7 @@ Boudoum ! 🇬🇵`})
       const bbc = await getBBCNews()
       const f24 = await getFrance24News()
       return res.status(200).json({ pdfAction: pdfType, response: "📰 **Actualités — Temps Réel**\n\n🔴 **RFI :**\n"+(rfi||"N/A")+"\n\n🌍 **BBC Afrique :**\n"+(bbc||"N/A")+"\n\n📺 **France 24 :**\n"+(f24||"N/A")+"\n\nBoudoum ! 🇬🇵" })
-    } catch(e) { return res.status(200).json({ pdfAction: pdfType, response: "📰 Service actualités indisponible. Boudoum 🇬🇵" }) }
+    } catch(e) { return res.status(200).json({ pdfAction: pdfType, response: "📰 Actualités en chargement. Réessaie ! Boudoum 🇬🇵" }) }
   }
 
 
