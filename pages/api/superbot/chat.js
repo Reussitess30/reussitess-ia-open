@@ -394,7 +394,7 @@ async function groqFetchWithTools(messages, systemPrompt) {
             { role: "system", content: systemPrompt },
             ...messages,
             choice.message,
-            { role: "tool", tool_call_id: toolCall.id, content: String(toolResult || "Données indisponibles") }
+            { role: "tool", tool_call_id: toolCall.id, content: String(toolResult || "Info en cours de chargement — réessaie dans un instant ! Boudoum 🇬🇵") }
           ],
           max_tokens: 1024
         })
@@ -2433,7 +2433,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
       const wDesc = w.weathercode <= 3 ? "Ensoleillé" : w.weathercode <= 48 ? "Nuageux" : w.weathercode <= 67 ? "Pluvieux" : "Orageux"
       return res.status(200).json({ pdfAction: pdfType, response: "🌤️ **Météo " + lieu + " — Temps réel**\n\n🌡️ Température : " + w.temperature + "°C\n💨 Vent : " + w.windspeed + " km/h\n☁️ Conditions : " + wDesc + "\n\nBoudoum ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ pdfAction: pdfType, response: "🌤️ Service météo temporairement indisponible. Réessayez dans un instant ! Boudoum 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🌤️ Service météo en chargement — réessaie dans un instant ! Boudoum 🇬🇵" })
     }
   }
 
@@ -2484,10 +2484,10 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
             { role: "user", content: message }
           ], 1024)
       const groqData = await groqRes.json()
-      const rep = groqData.choices?.[0]?.message?.content || "Agent indisponible"
+      const rep = groqData.choices?.[0]?.message?.content || "Agent en chargement — réessaie ! Boudoum 🇬🇵"
       return res.status(200).json({ pdfAction: pdfType, response: "🧠 **"+agent.nom+"** ["+agent.id+"]\n\n"+rep+"\n\nBoudoum ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ pdfAction: pdfType, response: "🧠 "+agent.nom+" temporairement indisponible. Boudoum ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🧠 "+agent.nom+" en chargement. Réessaie dans un instant ! Boudoum 🇬🇵" })
     }
   }
 
@@ -3326,7 +3326,7 @@ async function getAlimentNutrition(query = "banane") {
       result += `• **${p.product_name || query}**\n  🔥 ${n['energy-kcal_100g'] || 'N/A'} kcal/100g | 🥩 Protéines: ${n.proteins_100g || 'N/A'}g | 🍬 Sucres: ${n.sugars_100g || 'N/A'}g\n\n`
     }
     return result + "Source: OpenFoodFacts\nBoudoum ! 🇬🇵"
-  } catch(e) { return "⚠️ Données nutrition indisponibles." }
+  } catch(e) { return "🥗 Service nutrition en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== NOAA TIDES — Marées =====
@@ -3334,14 +3334,14 @@ async function getMareesGuadeloupe() {
   try {
     const res = await fetch('https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?station=9759110&product=predictions&datum=MLLW&time_zone=GMT&units=metric&application=reussitess&format=json&range=24&interval=hilo')
     const d = await res.json()
-    if (!d.predictions?.length) return "❌ Données marées indisponibles."
+    if (!d.predictions?.length) return "🌊 Données marées en chargement. Réessaie ! Boudoum 🇬🇵"
     let result = "🌊 **Marées — Guadeloupe (24h)**\n\n"
     for (const m of d.predictions.slice(0,6)) {
       const type = m.type === 'H' ? '🔺 Haute mer' : '🔻 Basse mer'
       result += `${type} : **${m.v}m** à ${m.t}\n`
     }
     return result + "\nSource: NOAA\nBoudoum ! 🇬🇵"
-  } catch(e) { return "⚠️ Données marées indisponibles." }
+  } catch(e) { return "🌊 Service marées en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== AMAZON RECHERCHE + RECOMMANDATIONS + COMMISSIONS =====
@@ -3449,7 +3449,7 @@ async function getInfoPaysAmazon(paysQuery = "france") {
 
     const boutiques = `🛍️ **Boutique 1:** ${pays.b1}${pays.b2 ? '\n🛍️ **Boutique 2:** '+pays.b2 : ''}`
     return `${pays.flag} **${pays.nom}** — Boutiques REUSSITESS\n\n📍 Capitale: ${pays.capitale}\n👥 Population: ${pays.pop}\n🗣️ Langue: ${pays.langue}\n💰 Monnaie: ${pays.monnaie}\n${meteo}\n${boutiques}\n\n🌐 Toutes boutiques: https://reussitess.fr/boutiques\nBoudoum ! 🇬🇵`
-  } catch(e) { return `⚠️ Infos pays indisponibles. (${e.message})` }
+  } catch(e) { return `🌍 Service pays en chargement. Réessaie ! Boudoum 🇬🇵 (${e.message})` }
 }
 
 
@@ -3539,7 +3539,7 @@ async function getDashboardStats() {
     const today = new Date().toISOString().substring(0,10)
     const todayRequests = await redis.get('requests:'+today) || 0
     return `📊 **Dashboard REUSSITESS AI**\n\n👥 Visiteurs total: **${visitors}**\n📡 Requêtes aujourd'hui: **${todayRequests}**\n🌍 14 pays actifs\n⚡ 6 niveaux fallback IA\n🛡️ Chiffrement AES-256 actif\n🔔 Alertes Telegram actives\n\n⏰ ${new Date().toISOString().substring(0,19)} UTC\nBoudoum ! 🇬🇵`
-  } catch(e) { return "📊 Dashboard indisponible." }
+  } catch(e) { return "📊 Dashboard en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== ALERTES CATASTROPHES =====
@@ -3579,7 +3579,7 @@ async function getAlertesCatastrophes() {
     
     result += `\nSource: USGS + NHC\nBoudoum ! 🇬🇵`
     return result
-  } catch(e) { return "⚠️ Alertes indisponibles." }
+  } catch(e) { return "🚨 Alertes en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== LECTURE URL — Analyse de pages web =====
@@ -3609,7 +3609,7 @@ async function getFilm(titre = "Avatar") {
     const d = await res.json()
     if (d.Error) return `❌ Film "${titre}" non trouvé.`
     return `🎬 **${d.Title}** (${d.Year})\n\n📖 ${d.Plot}\n⭐ Note: ${d.imdbRating}/10\n🎭 Genre: ${d.Genre}\n🎬 Réalisateur: ${d.Director}\n🌍 Pays: ${d.Country}\n\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ Données film indisponibles." }
+  } catch(e) { return "🎬 Service cinéma en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== COCKTAILDB — Recettes Cocktails =====
@@ -3621,7 +3621,7 @@ async function getCocktail(nom = "mojito") {
     const c = d.drinks[0]
     const ingredients = Object.keys(c).filter(k => k.startsWith('strIngredient') && c[k]).map((k,i) => `${c[k]} (${c['strMeasure'+(i+1)] || ''})`).join(', ')
     return `🍹 **${c.strDrink}**\n\n📋 Instructions: ${c.strInstructions?.substring(0,300)}...\n\n🧪 Ingrédients: ${ingredients}\n\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ Recette cocktail indisponible." }
+  } catch(e) { return "🍹 Service cocktail en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== THEMEALDB — Recettes Cuisine =====
@@ -3632,7 +3632,7 @@ async function getRecette(plat = "chicken") {
     if (!d.meals?.length) return `❌ Recette "${plat}" non trouvée.`
     const m = d.meals[0]
     return `🍽️ **${m.strMeal}** — ${m.strArea}\n\n📋 ${m.strInstructions?.substring(0,400)}...\n\n🌍 Cuisine: ${m.strCategory}\n\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ Recette indisponible." }
+  } catch(e) { return "🍽️ Service recette en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== WIKIPEDIA FR — Articles =====
@@ -3646,7 +3646,7 @@ async function getAirQuality(ville = "Guadeloupe") {
     const aqi = d.data.aqi
     const niveau = aqi <= 50 ? '🟢 Bonne' : aqi <= 100 ? '🟡 Modérée' : aqi <= 150 ? '🟠 Mauvaise' : '🔴 Très mauvaise'
     return `🌬️ **Qualité de l'air — ${ville}**\n\n📊 AQI: **${aqi}** — ${niveau}\n⏰ Mise à jour: ${d.data.time?.s || 'N/A'}\n\nSource: WAQI\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ Qualité air indisponible." }
+  } catch(e) { return "🌿 Service qualité air en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== JOKEAPI — Blagues en français =====
@@ -3659,7 +3659,7 @@ async function getUNPopulation(pays = "250") {
     if (!d.data?.length) return "❌ Données ONU non trouvées."
     const pop = d.data[0]
     return `👥 **Population ONU — ${pop.location}**\n\n📊 ${pop.value?.toLocaleString()} millions (${pop.timeLabel})\n\nSource: Nations Unies\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ Données ONU indisponibles." }
+  } catch(e) { return "🌍 Service ONU en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== IP GEOLOCATION =====
@@ -3669,7 +3669,7 @@ async function getIPLocation(ip = "") {
     const res = await fetch(url, { signal: AbortSignal.timeout(5000) })
     const d = await res.json()
     return `📍 **Localisation IP**\n\n🌍 Pays: ${d.countryName}\n🏙️ Ville: ${d.cityName}\n📡 IP: ${d.ipAddress}\n🌐 Fuseau: ${d.timeZone}\n\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ Géolocalisation indisponible." }
+  } catch(e) { return "📍 Service géolocalisation en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== ITUNES PODCASTS GRATUITS =====
@@ -3686,7 +3686,7 @@ async function getPodcasts(query = "guadeloupe") {
     }
     result += `Source: iTunes • 100% gratuit\nBoudoum ! 🇬🇵`
     return result
-  } catch(e) { return "⚠️ Podcasts indisponibles." }
+  } catch(e) { return "🎙️ Service podcasts en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== ITUNES MUSIQUE CARIBÉENNE =====
@@ -3703,7 +3703,7 @@ async function getMusiqueCaraibe(query = "zouk guadeloupe") {
     }
     result += `Source: iTunes • Boudoum ! 🇬🇵`
     return result
-  } catch(e) { return "⚠️ Musique indisponible." }
+  } catch(e) { return "🎵 Service musique en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== MUSICBRAINZ — Artistes Caribéens =====
@@ -3714,7 +3714,7 @@ async function getArtisteCaraibe(artiste = "Kassav") {
     if (!d.artists?.length) return `❌ Artiste "${artiste}" non trouvé.`
     const a = d.artists[0]
     return `🎤 **${a.name}**\n\n📍 Origine: ${a.country || a['begin-area']?.name || 'N/A'}\n📅 Actif depuis: ${a['life-span']?.begin || 'N/A'}\n🎭 Genre: ${a.tags?.slice(0,3).map(t=>t.name).join(', ') || 'N/A'}\n\nSource: MusicBrainz\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ Données artiste indisponibles." }
+  } catch(e) { return "🎤 Service artiste en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== DEEZER — Radio & Musique Caribéenne =====
@@ -4057,7 +4057,7 @@ async function getWorldBank(pays = "GP", indicateur = "NY.GDP.MKTP.CD") {
     const res = await fetch(`https://api.worldbank.org/v2/country/${pays}/indicator/${indicateur}?format=json&mrv=3`)
     const d = await res.json()
     const val = d[1]?.[0]
-    if (!val) return "❌ Données indisponibles."
+    if (!val) return "🌴 Je recherche cette info pour toi ! Reformule ta question ou essaie : météo, emploi, bourses, token REUSS. Boudoum ! 🇬🇵"
     const noms = {
       "NY.GDP.MKTP.CD": "PIB",
       "SL.UEM.TOTL.ZS": "Taux de chômage",
@@ -4209,7 +4209,7 @@ async function getCountryInfo(pays = "Guadeloupe") {
     const langs = Object.values(p.languages || {}).join(", ")
     const currency = Object.values(p.currencies || {}).map(c => `${c.name} (${c.symbol})`).join(", ")
     return `🌍 **${p.name?.common || pays}**\n\n🏙️ Capitale: ${capital}\n👥 Population: ${pop}\n🌐 Région: ${region}\n🗣️ Langue(s): ${langs}\n💰 Monnaie: ${currency}\n🗺️ Superficie: ${p.area?.toLocaleString("fr-FR")} km²\n\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ Infos pays indisponibles." }
+  } catch(e) { return "🌍 Service pays en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 // ===== DISEASE.SH — Santé mondiale =====
@@ -4254,7 +4254,7 @@ async function getGeoLocation(lieu) {
     if (!d?.length) return `❌ Lieu "${lieu}" non trouvé.`
     const loc = d[0]
     return `📍 **Géolocalisation — "${lieu}"**\n\n🌐 Latitude: ${parseFloat(loc.lat).toFixed(4)}\n🌐 Longitude: ${parseFloat(loc.lon).toFixed(4)}\n📌 Adresse: ${loc.display_name}\n\nBoudoum ! 🇬🇵`
-  } catch(e) { return "⚠️ Géolocalisation indisponible." }
+  } catch(e) { return "📍 Service géolocalisation en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
 async function getMeteoDOMTOM(commune) {
