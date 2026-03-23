@@ -4408,9 +4408,10 @@ export default async function handler(req, res) {
   try {
     const kbRes = await fetch('https://reussitess.fr/api/knowledge')
     const kb = await kbRes.json()
-    const msgL = (req.body?.message || '').toLowerCase()
+    const normalize = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    const msgL = normalize(req.body?.message || '')
     for (const cmd of (kb.commands || [])) {
-      if (msgL.includes(cmd.trigger.toLowerCase())) {
+      if (msgL.includes(normalize(cmd.trigger))) {
         return res.status(200).json({ pdfAction: null, response: cmd.response })
       }
     }
