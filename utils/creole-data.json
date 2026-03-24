@@ -1,0 +1,12 @@
+{
+  "proverbes": [
+    {"creole": "Chak jou sé on viktwa", "fr": "Chaque jour est une victoire"},
+    {"creole": "Sé grenn diri ka fè sak diri", "fr": "Ce sont les petits efforts qui font les grandes réussites"}
+  ],
+  "lexique": {
+    "succès": "viktwa",
+    "force": "fòs",
+    "positivité": "boudoum"
+  },
+  "provenance": "Guadeloupe, Terres De Champions"
+}
