@@ -87,16 +87,8 @@
       "response": "💼 **Marché du travail DOM-TOM** — INSEE 2023\n\nGuadeloupe: 17,2% | Martinique: 15,8% | Guyane: 20,1% | Réunion: 17,6%\n\n🎯 **Tes opportunités :**\n• 💼 Offres emploi : reussitess.fr/hub-central\n• 🎓 Formations gratuites disponibles\n• 🌍 Entrepreneuriat : reussitess.fr/visa-universel\n\nBoudoum ! 🇬🇵"
     },
     {
-      "trigger": "emploi",
-      "response": "💼 **Emploi Guadeloupe & DOM-TOM**\n\n🔥 Offres en temps réel sur France Travail\n📊 Secteurs porteurs : Tourisme • BTP • Santé • IA • E-commerce\n\n👉 reussitess.fr/hub-central\n👉 francetravail.fr\n👉 caribbeanjobs.com\n\nBoudoum ! 🇬🇵"
-    },
-    {
       "trigger": "formation",
       "response": "🎓 **Formations Disponibles**\n\n✅ Formations gratuites en ligne\n✅ Bourses AUF francophones\n✅ Campus France international\n✅ Coursera aide financière\n✅ Google Developer Scholarship\n\n👉 reussitess.fr/hub-central\n👉 auf.org\n\nBoudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "travail",
-      "response": "💼 **Opportunités de travail**\n\n🌴 Guadeloupe • Martinique • Réunion • Guyane\n🌍 14 pays partenaires REUSSITESS\n\n• France Travail temps réel\n• Caribbeanjobs.com\n• Jobartis.com Afrique\n• LinkedIn international\n\n👉 reussitess.fr/hub-central\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "salaire",
