@@ -1069,7 +1069,7 @@ export default function VisaUniversel() {
           >
             <button
               onClick={() =>
-                window.open("/documents/REUSS_Whitepaper_v1.0_2026.docx", "_blank")
+                fetch("/api/visa/generate-pdf", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(visaData)}).then(r=>r.text()).then(html=>{const w=window.open("","_blank");w.document.write(html);w.document.close();setTimeout(()=>w.print(),500)})
               }
               style={{
                 padding: "1rem 2rem",
