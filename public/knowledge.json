@@ -113,6 +113,46 @@
     {
       "trigger": "prix",
       "response": "💰 **Prix & Coût de la vie Guadeloupe**\n\n⛽ Carburant SP95 : ~1,65€/L\n🛒 Courses : +10-15% vs France métro\n🏠 Loyer moyen : 700€/mois\n\n📊 Observatoire complet : reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "définition",
+      "response": "🔍 **Fonction /def** Écris `/def <mot>` pour obtenir une définition complète du mot. Boudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "fait sur un nombre",
+      "response": "🧮 **Fonction /fact** Écris `/fact <nombre>` pour obtenir un fait intéressant sur ce nombre. Boudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "météo",
+      "response": "🌤️ **Fonction /weather** Écris `/weather <ville>` pour voir la météo complète de la ville. Boudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "lever de soleil",
+      "response": "🌅 **Fonction /sunrise** Écris `/sunrise <latitude>,<longitude>` pour voir l’heure du lever de soleil. Boudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "poème auteur",
+      "response": "📜 **Fonction /poem** Écris `/poem <auteur>` pour voir des poèmes de cet auteur. Boudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "infos pays",
+      "response": "🌏 **Fonction /country** Écris `/country <pays>` pour obtenir des infos sur le pays. Boudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "citation aléatoire",
+      "response": "💬 **Fonction /quote** Écris `/quote` pour recevoir une citation aléatoire. Boudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "série télé",
+      "response": "📺 **Fonction /tvshow** Écris `/tvshow <nom>` pour chercher une série télé. Boudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "œuvre d'art",
+      "response": "🖼️ **Fonction /art** Écris `/art <id>` pour voir une œuvre d’art. Boudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "photo nasa",
+      "response": "🚀 **Fonction /nasa** Écris `/nasa` pour recevoir la photo du jour de la NASA. Boudoum ! 🇬🇵"
     }
   ]
 }
