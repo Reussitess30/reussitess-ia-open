@@ -153,6 +153,10 @@
     {
       "trigger": "photo nasa",
       "response": "🚀 **Fonction /nasa** Écris `/nasa` pour recevoir la photo du jour de la NASA. Boudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "améliorer groq",
+      "response": "⚡ **Optimiser Groq dans REUSSITESS AI**\n\n**1. Multi-agents en parallèle**\nGroq = latence ultra faible → lance plusieurs appels simultanés\n• Agent compréhension → Agent recherche → Agent génération\n\n**2. RAG optimisé**\n• Knowledge.json = ta base RAG locale\n• Ajoute embeddings + reranking\n• Cache Redis des réponses fréquentes ✅ déjà en place\n\n**3. Self-consistency**\n• 3 réponses Groq → vote → meilleure réponse\n• Réduit les hallucinations de 40%\n\n**4. Prompt dynamique**\n• Adapte selon pays/langue/niveau utilisateur ✅ déjà en place\n• Injecte historique conversation ✅ déjà en place\n\n**5. Fallback intelligent**\n• Groq → OpenRouter → Cerebras ✅ déjà en place\n\n**6. Évaluation automatique**\n• Mesure taux hallucination\n• Score satisfaction utilisateur\n\n📊 reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
     }
   ]
 }
