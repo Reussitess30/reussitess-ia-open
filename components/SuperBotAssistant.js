@@ -656,7 +656,10 @@ export default function SuperBotAssistant() {
                   const r = await fetch('/api/read-pdf', { method: 'POST', body: formData })
                   const d = await r.json()
                   if (d.success) {
-                    setInput(`Analyse ce document PDF (${d.pages} pages): ${d.text.substring(0,500)}...`)
+                      const msg = `📄 Analyse ce document PDF (${d.pages} pages):\n\n${d.text.substring(0,1000)}`
+                      setIsLoading(false)
+                      submitMessage(msg)
+                      return
                   }
                 } catch(e) {}
                 setIsLoading(false)
