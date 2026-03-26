@@ -5354,7 +5354,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // ============ OFFRES EMPLOI DOM-TOM ============
-  if (msgLow.includes('offre emploi') || msgLow.includes('chercher emploi dom-tom') || msgLow.includes('job guadeloupe') || msgLow.includes('travail guadeloupe') || msgLow.includes('recrutement guadeloupe') || msgLow.includes('france travail guadeloupe')) {
+  if (msgLow.includes('offre emploi') || msgLow.includes('offre ') || msgLow.includes('chercher emploi dom-tom') || msgLow.includes('job guadeloupe') || msgLow.includes('travail guadeloupe') || msgLow.includes('recrutement guadeloupe') || msgLow.includes('france travail guadeloupe')) {
     const data = await getOffresEmploiDOMTOM()
     return res.status(200).json({ pdfAction: null, response: data })
   }
