@@ -1,4 +1,14 @@
 // ==========================================================
+const { getFirstDefinition } = require("./services/dictionaryService");
+const { getNumberFact } = require("./services/numberFactService");
+const { getWeather } = require("./services/weatherService");
+const { getSunrise } = require("./services/sunriseService");
+const { getPoemsByAuthor } = require("./services/poetryService");
+const { getCountryInfo } = require("./services/countryService");
+const { getRandomQuote } = require("./services/quoteService");
+const { searchShow } = require("./services/tvmazeService");
+const { getArtwork } = require("./services/artService");
+const { getNasaApod } = require("./services/nasaService");
 // REUSSITESS© GHOST STARTER - Architecture Haute-Vitesse
 // AUCUN IMPACT VISUEL - FONCTIONNEMENT EN ARRIÈRE-PLAN
 // STATUT : ACCÈS MONDIAL ACTIVÉ
