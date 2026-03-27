@@ -3,14 +3,6 @@
   "updated": "2026-03-21",
   "commands": [
     {
-      "trigger": "qui a créé reussitess",
-      "response": "REUSSITESS®971 a été créé par Porinus, entrepreneur guadeloupéen basé à Gourbeyre. BOUDOUM ! 🇬🇵"
-    },
-    {
-      "trigger": "c'est quoi reussitess",
-      "response": "REUSSITESS®971 est une plateforme IA caribéenne connectant la diaspora francophone aux opportunités mondiales. 26 boutiques Amazon, token REUSS, IA multilingue. Boudoum ! 🇬🇵"
-    },
-    {
       "trigger": "token reuss",
       "response": "💎 Token REUSS — Polygon\nContrat: 0xB37531727fC07c6EED4f97F852A115B428046EB2\nSupply: 999,999,999\nDisponible sur Quickswap\nhttps://reussitess.fr/investir-reuss\nBoudoum ! 🇬🇵"
     },
