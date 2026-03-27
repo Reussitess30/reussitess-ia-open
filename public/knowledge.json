@@ -113,6 +113,14 @@
     {
       "trigger": "coucher soleil",
       "response": "🌇 Tape 'lever soleil guadeloupe' pour connaître les heures de lever et coucher du soleil en Guadeloupe !\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "lire pdf",
+      "response": "📄 **Lecture PDF**\n\nClique sur le bouton 📄 dans la barre de saisie → envoie ton PDF → le bot l'analyse et répond !\n\nFonctionne avec : contrats, CV, rapports, documents texte.\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "envoyer pdf",
+      "response": "📄 Clique sur 📄 dans la barre de saisie pour envoyer un PDF. Le bot lira et analysera le contenu !\nBoudoum ! 🇬🇵"
     }
   ]
 }
