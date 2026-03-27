@@ -1,21 +1,37 @@
-export const config = { api: { bodyParser: { sizeLimit: '10mb' } } }
+export const config = { api: { bodyParser: false, sizeLimit: '10mb' } }
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
-  
   try {
-    // Accepte base64 ou buffer direct
-    const { pdf, filename } = req.body
+    const chunks = []
+    for await (const chunk of req) chunks.push(chunk)
+    const body = Buffer.concat(chunks)
+    const bodyStr = body.toString('latin1')
     
-    if (!pdf) return res.status(400).json({ error: 'Aucun fichier PDF' })
+    // Extraire le contenu PDF du multipart
+    const boundaryMatch = req.headers['content-type']?.match(/boundary=(.+)/)
+    if (!boundaryMatch) return res.status(400).json({ error: 'Pas de boundary' })
     
-    const buffer = Buffer.from(pdf, 'base64')
+    const boundary = boundaryMatch[1]
+    const parts = bodyStr.split('--' + boundary)
+    let pdfBuffer = null
     
-    // Extraction texte depuis PDF sans librairie externe
-    const text = buffer.toString('latin1')
+    for (const part of parts) {
+      if (part.includes('filename=') && part.includes('.pdf')) {
+        const headerEnd = part.indexOf('\r\n\r\n')
+        if (headerEnd !== -1) {
+          const content = part.substring(headerEnd + 4).replace(/\r\n$/, '').replace(/--$/, '')
+          pdfBuffer = Buffer.from(content, 'latin1')
+          break
+        }
+      }
+    }
+    
+    if (!pdfBuffer) return res.status(400).json({ error: 'PDF non trouvé' })
+    
+    const text = pdfBuffer.toString('latin1')
     const extracted = []
     
-    // Méthode 1 — blocs BT/ET
     const btRegex = /BT([\s\S]*?)ET/g
     let match
     while ((match = btRegex.exec(text)) !== null) {
@@ -25,8 +41,7 @@ export default async function handler(req, res) {
         if (clean.length > 2 && /[a-zA-ZÀ-ÿ]/.test(clean)) extracted.push(clean)
       })
     }
-    
-    // Méthode 2 — strings entre parenthèses si méthode 1 vide
+
     if (extracted.length < 5) {
       const allStrings = text.match(/\(([^)]{3,100})\)/g) || []
       allStrings.forEach(s => {
@@ -34,23 +49,19 @@ export default async function handler(req, res) {
         if (/[a-zA-ZÀ-ÿ]{3,}/.test(clean)) extracted.push(clean)
       })
     }
-    
+
     const result = extracted.join(' ').replace(/\s+/g,' ').trim().substring(0, 5000)
-    
+
     if (!result || result.length < 20) {
-      return res.status(200).json({ 
-        success: false, 
-        error: 'PDF illisible — essaie un PDF avec texte sélectionnable (pas scanné)' 
-      })
+      return res.status(200).json({ success: false, error: 'PDF illisible — utilise un PDF avec texte sélectionnable' })
     }
 
     res.status(200).json({ 
       success: true, 
       text: result,
-      pages: Math.max(1, (text.match(/\/Page\b/g) || []).length),
-      filename: filename || 'document.pdf'
+      pages: Math.max(1, (text.match(/\/Page\b/g) || []).length)
     })
   } catch(e) {
-    res.status(500).json({ error: 'Erreur: ' + e.message })
+    res.status(500).json({ error: e.message })
   }
 }

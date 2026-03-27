@@ -649,28 +649,15 @@ export default function SuperBotAssistant() {
               <input type="file" id="pdf-upload" accept=".pdf" style={{display:'none'}} onChange={async e => {
                 const file = e.target.files[0]
                 if (!file) return
-                const reader = new FileReader()
-                reader.onload = async () => {
-                  const base64 = reader.result.split(',')[1]
-                  try {
-                    const r = await fetch('/api/read-pdf', {
-                      method: 'POST',
-                      headers: {'Content-Type':'application/json'},
-                      body: JSON.stringify({ pdf: base64, filename: file.name })
-                    })
-                    const d = await r.json()
-                    if (d.success) {
-                      const msg = `📄 Analyse ce PDF "${file.name}" (${d.pages} pages):\n\n${d.text.substring(0,2000)}`
+                const formData = new FormData()
+                formData.append('pdf', file)
+                setIsLoading(true)
+                try {
+                  const r = await fetch('/api/read-pdf', { method: 'POST', body: formData })
+                  const d = await r.json()
+                  if (d.success) {
+                      const msg = `📄 Analyse ce document PDF (${d.pages} pages):\n\n${d.text.substring(0,1000)}`
                       setIsLoading(false)
-                      submitMessage(msg)
-                      return
-                    } else {
-                      setInput(`❌ ${d.error || 'PDF illisible'}`)
-                    }
-                  } catch(e) { setInput('❌ Erreur lecture PDF') }
-                  setIsLoading(false)
-                }
-                reader.readAsDataURL(file)
                       submitMessage(msg)
                       return
                   }
