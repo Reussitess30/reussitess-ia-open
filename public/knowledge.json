@@ -99,46 +99,6 @@
       "response": "💰 **Prix & Coût de la vie Guadeloupe**\n\n⛽ Carburant SP95 : ~1,65€/L\n🛒 Courses : +10-15% vs France métro\n🏠 Loyer moyen : 700€/mois\n\n📊 Observatoire complet : reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
     },
     {
-      "trigger": "définition",
-      "response": "🔍 **Fonction /def** Écris `/def <mot>` pour obtenir une définition complète du mot. Boudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "fait sur un nombre",
-      "response": "🧮 **Fonction /fact** Écris `/fact <nombre>` pour obtenir un fait intéressant sur ce nombre. Boudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "météo",
-      "response": "🌤️ **Fonction /weather** Écris `/weather <ville>` pour voir la météo complète de la ville. Boudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "lever de soleil",
-      "response": "🌅 **Fonction /sunrise** Écris `/sunrise <latitude>,<longitude>` pour voir l’heure du lever de soleil. Boudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "poème auteur",
-      "response": "📜 **Fonction /poem** Écris `/poem <auteur>` pour voir des poèmes de cet auteur. Boudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "infos pays",
-      "response": "🌏 **Fonction /country** Écris `/country <pays>` pour obtenir des infos sur le pays. Boudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "citation aléatoire",
-      "response": "💬 **Fonction /quote** Écris `/quote` pour recevoir une citation aléatoire. Boudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "série télé",
-      "response": "📺 **Fonction /tvshow** Écris `/tvshow <nom>` pour chercher une série télé. Boudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "œuvre d'art",
-      "response": "🖼️ **Fonction /art** Écris `/art <id>` pour voir une œuvre d’art. Boudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "photo nasa",
-      "response": "🚀 **Fonction /nasa** Écris `/nasa` pour recevoir la photo du jour de la NASA. Boudoum ! 🇬🇵"
-    },
-    {
       "trigger": "améliorer groq",
       "response": "⚡ **Optimiser Groq dans REUSSITESS AI**\n\n**1. Multi-agents en parallèle**\nGroq = latence ultra faible → lance plusieurs appels simultanés\n• Agent compréhension → Agent recherche → Agent génération\n\n**2. RAG optimisé**\n• Knowledge.json = ta base RAG locale\n• Ajoute embeddings + reranking\n• Cache Redis des réponses fréquentes ✅ déjà en place\n\n**3. Self-consistency**\n• 3 réponses Groq → vote → meilleure réponse\n• Réduit les hallucinations de 40%\n\n**4. Prompt dynamique**\n• Adapte selon pays/langue/niveau utilisateur ✅ déjà en place\n• Injecte historique conversation ✅ déjà en place\n\n**5. Fallback intelligent**\n• Groq → OpenRouter → Cerebras ✅ déjà en place\n\n**6. Évaluation automatique**\n• Mesure taux hallucination\n• Score satisfaction utilisateur\n\n📊 reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
     },
