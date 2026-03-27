@@ -4444,7 +4444,7 @@ function chunkContext(messages, maxTokens = 2000) {
     return true
   }).map(m => ({
     role: m.role === 'assistant' ? 'assistant' : 'user',
-    content: (m.content || '').substring(0, 300)
+    content: (m.content || '').substring(0, 10000)
   }))
 }
 
