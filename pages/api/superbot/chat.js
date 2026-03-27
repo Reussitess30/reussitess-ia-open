@@ -4414,7 +4414,7 @@ async function getLeverCoucherSoleil(lat = 16.2411, lng = -61.5331, ville = 'Gua
     const r = await fetch(`https://api.sunrisesunset.io/json?lat=${lat}&lng=${lng}&timezone=America/Guadeloupe`, { signal: AbortSignal.timeout(5000) })
     const d = await r.json()
     const s = d.results
-    return `☀️ **Lever & Coucher du Soleil — ${ville}**\n\n🌅 Lever : ${s.sunrise}\n🌇 Coucher : ${s.sunset}\n🌙 Crépuscule : ${s.civil_twilight_end}\n⏱️ Durée du jour : ${s.day_length}\n\nSource: SunriseSunset API\nBoudoum ! 🇬🇵`
+    return `☀️ **Lever & Coucher du Soleil — ${ville}**\n\n🌅 Lever : ${s.sunrise}\n🌇 Coucher : ${s.sunset}\n🌙 Crépuscule : ${s.civil_twilight_end || s.astronomical_twilight_end || 'N/A'}\n⏱️ Durée du jour : ${s.day_length}\n\nSource: SunriseSunset API\nBoudoum ! 🇬🇵`
   } catch(e) { return null }
 }
 
@@ -4493,7 +4493,7 @@ export default async function handler(req, res) {
   // NASA PHOTO DU JOUR
   if (msgLow.includes('nasa') || msgLow.includes('photo nasa') || msgLow.includes('image nasa') || msgLow.includes('photo jour nasa')) {
     const data = await getNASAPhotoJour()
-    if (data) return res.status(200).json({ pdfAction: null, response: data })
+    return res.status(200).json({ pdfAction: null, response: data || '🚀 **NASA — Photo du Jour**\n\nConsulte directement : https://apod.nasa.gov/apod/\n\nDes images époustouflantes de l\'univers chaque jour !\nBoudoum ! 🇬🇵' })
   }
 
   // LEVER COUCHER SOLEIL
@@ -5327,7 +5327,7 @@ Boudoum ! 🇬🇵`})
     // NASA PHOTO DU JOUR
   if (msgLow.includes('nasa') || msgLow.includes('photo nasa') || msgLow.includes('image nasa') || msgLow.includes('photo jour nasa')) {
     const data = await getNASAPhotoJour()
-    if (data) return res.status(200).json({ pdfAction: null, response: data })
+    return res.status(200).json({ pdfAction: null, response: data || '🚀 **NASA — Photo du Jour**\n\nConsulte directement : https://apod.nasa.gov/apod/\n\nDes images époustouflantes de l\'univers chaque jour !\nBoudoum ! 🇬🇵' })
   }
 
   // LEVER COUCHER SOLEIL
