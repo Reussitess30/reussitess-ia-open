@@ -43,16 +43,8 @@
       "response": "🤝 **Mode Mains Libres REUSSITESS AI**\n\nActive le bouton 🤝 dans le bot — le micro s'active automatiquement après chaque réponse. Conversation continue sans toucher l'écran !\n\nBoudoum ! 🇬🇵"
     },
     {
-      "trigger": "historique",
-      "response": "📜 **Historique Conversations**\n\nClique sur l'onglet 📜 Hist dans le bot pour retrouver tes anciennes conversations REUSSITESS AI.\n\nBoudoum ! 🇬🇵"
-    },
-    {
       "trigger": "style réponse",
       "response": "🎨 **Personnalise le style du bot !**\n\n🌴 Caribéen — chaleur antillaise\n🎓 Expert — réponses détaillées\n😊 Casual — comme un ami\n⚡ Ultra-court — essentiel seulement\n\nChoisis ton style dans la barre de chat !\nBoudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "pdf",
-      "response": "📄 **Lecture PDF REUSSITESS AI**\n\nEnvoie un PDF au bot via le bouton 📄 dans la barre de saisie — contrat, CV, document — le bot lit et analyse le contenu !\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "telegram",
@@ -77,14 +69,6 @@
     {
       "trigger": "bourse",
       "response": "🎓 **Bourses disponibles**\n\n• AUF — Bourses francophones\n• Campus France — études à l'étranger\n• Fulbright — USA\n• Chevening — Royaume-Uni\n• Erasmus — Europe\n\n👉 auf.org | campusfrance.org\nBoudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "entreprise",
-      "response": "🚀 **Créer son entreprise en Guadeloupe**\n\n✅ Auto-entrepreneur — simple et rapide\n✅ ACRE — exonération charges 1 an\n✅ Chèque TIC — aide numérique\n✅ Réseau REUSSITESS — 14 pays\n\n👉 reussitess.fr/visa-universel\nBoudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "prix",
-      "response": "💰 **Prix & Coût de la vie Guadeloupe**\n\n⛽ Carburant SP95 : ~1,65€/L\n🛒 Courses : +10-15% vs France métro\n🏠 Loyer moyen : 700€/mois\n\n📊 Observatoire complet : reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "améliorer groq",
