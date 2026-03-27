@@ -4292,7 +4292,7 @@ async function getMeteoDOMTOM(commune) {
   } catch(e) { return null }
 }
 
-// ============ DEVISES AFRIQUE CARAIBE ============
+  // ============ DEVISES AFRIQUE CARAIBE ============
 async function getDevisesAfriqueCaraibe() {
   try {
     const r = await fetch('https://api.exchangerate-api.com/v4/latest/EUR')
@@ -4489,6 +4489,25 @@ export default async function handler(req, res) {
     }
   }
   const msgLow = message.toLowerCase()
+
+  // NASA PHOTO DU JOUR
+  if (msgLow.includes('nasa') || msgLow.includes('photo nasa') || msgLow.includes('image nasa') || msgLow.includes('photo jour nasa')) {
+    const data = await getNASAPhotoJour()
+    if (data) return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // LEVER COUCHER SOLEIL
+  if (msgLow.includes('lever soleil') || msgLow.includes('coucher soleil') || msgLow.includes('heure soleil') || msgLow.includes('aube') || msgLow.includes('crepuscule')) {
+    const data = await getLeverCoucherSoleil(16.2411, -61.5331, 'Guadeloupe')
+    if (data) return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // PROGRAMMES TV
+  if (msgLow.includes('programme tv') || msgLow.includes('televison') || msgLow.includes('emission tv') || msgLow.includes('series tv') || msgLow.includes('programme tele')) {
+    const data = await getProgrammesTV('caribbean')
+    if (data) return res.status(200).json({ pdfAction: null, response: data })
+  }
+
 
   // ============ CALCUL JOUR DATE ============
   // ===== TRIGGERS ULTRA PRIORITAIRES =====
@@ -5305,6 +5324,24 @@ Boudoum ! 🇬🇵`})
     const data = await getMeteoDOMTOM(commune)
     return res.status(200).json({ pdfAction: null, response: "Meteo DOM-TOM\n\n"+(data||"Info en chargement — réessaie ! Boudoum 🇬🇵")+"\n\nSource: Open-Meteo\nBoudoum ! 🇬🇵" })
   }
+    // NASA PHOTO DU JOUR
+  if (msgLow.includes('nasa') || msgLow.includes('photo nasa') || msgLow.includes('image nasa') || msgLow.includes('photo jour nasa')) {
+    const data = await getNASAPhotoJour()
+    if (data) return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // LEVER COUCHER SOLEIL
+  if (msgLow.includes('lever soleil') || msgLow.includes('coucher soleil') || msgLow.includes('heure soleil') || msgLow.includes('aube') || msgLow.includes('crepuscule')) {
+    const data = await getLeverCoucherSoleil(16.2411, -61.5331, 'Guadeloupe')
+    if (data) return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  // PROGRAMMES TV
+  if (msgLow.includes('programme tv') || msgLow.includes('televison') || msgLow.includes('emission tv') || msgLow.includes('series tv') || msgLow.includes('programme tele')) {
+    const data = await getProgrammesTV('caribbean')
+    if (data) return res.status(200).json({ pdfAction: null, response: data })
+  }
+
   // ============ DEVISES AFRIQUE CARAIBE ============
   if (msgLow.includes('xof') || msgLow.includes('xaf') || msgLow.includes('fcfa') || msgLow.includes('franc cfa') || msgLow.includes('devise afrique') || msgLow.includes('taux afrique')) {
     const data = await getDevisesAfriqueCaraibe()
