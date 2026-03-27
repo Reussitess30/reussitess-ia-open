@@ -4397,6 +4397,37 @@ async function cachedFetch(key, fetchFn, ttl = 3600) {
   }
 }
 
+
+// ============ NASA APOD ============
+async function getNASAPhotoJour() {
+  try {
+    const apiKey = process.env.NASA_API_KEY || 'DEMO_KEY'
+    const r = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`, { signal: AbortSignal.timeout(5000) })
+    const d = await r.json()
+    return `🚀 **NASA — Photo du Jour**\n\n📸 **${d.title}**\n\n${d.explanation?.substring(0,300)}...\n\n🔗 ${d.url}\n\nSource: NASA APOD\nBoudoum ! 🇬🇵`
+  } catch(e) { return null }
+}
+
+// ============ LEVER/COUCHER SOLEIL DOM-TOM ============
+async function getLeverCoucherSoleil(lat = 16.2411, lng = -61.5331, ville = 'Guadeloupe') {
+  try {
+    const r = await fetch(`https://api.sunrisesunset.io/json?lat=${lat}&lng=${lng}&timezone=America/Guadeloupe`, { signal: AbortSignal.timeout(5000) })
+    const d = await r.json()
+    const s = d.results
+    return `☀️ **Lever & Coucher du Soleil — ${ville}**\n\n🌅 Lever : ${s.sunrise}\n🌇 Coucher : ${s.sunset}\n🌙 Crépuscule : ${s.civil_twilight_end}\n⏱️ Durée du jour : ${s.day_length}\n\nSource: SunriseSunset API\nBoudoum ! 🇬🇵`
+  } catch(e) { return null }
+}
+
+// ============ PROGRAMMES TV ============
+async function getProgrammesTV(query = 'guadeloupe') {
+  try {
+    const r = await fetch(`https://api.tvmaze.com/search/shows?q=${encodeURIComponent(query)}`, { signal: AbortSignal.timeout(5000) })
+    const d = await r.json()
+    const shows = d.slice(0,3).map(s => `• **${s.show.name}** — ${s.show.genres?.join(', ')||'Général'} | ${s.show.language||'FR'}`).join('\n')
+    return `📺 **Programmes TV — ${query}**\n\n${shows}\n\nSource: TVMaze\nBoudoum ! 🇬🇵`
+  } catch(e) { return null }
+}
+
 async function generateFollowUp(response, message) {
   try {
     const Groq = (await import('groq-sdk')).default
