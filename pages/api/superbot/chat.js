@@ -4508,10 +4508,15 @@ export default async function handler(req, res) {
     const kb = await kbRes.json()
     const normalize = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
     const msgL = normalize(req.body?.message || '')
-    for (const cmd of (kb.commands || [])) {
-      if (msgL.includes(normalize(cmd.trigger))) {
-        return res.status(200).json({ pdfAction: null, response: cmd.response })
-      }
+    const matches = (kb.commands || []).map(cmd => {
+      const trigger = normalize(cmd.trigger)
+      const words = trigger.split(' ')
+      const matchCount = words.filter(w => w.length > 2 && msgL.includes(w)).length
+      const exactMatch = msgL.includes(trigger) ? 10 : 0
+      return { cmd, score: matchCount + exactMatch }
+    }).filter(m => m.score > 0).sort((a, b) => b.score - a.score)
+    if (matches.length > 0) {
+      return res.status(200).json({ pdfAction: null, response: matches[0].cmd.response })
     }
   } catch(e) {}
 
@@ -4659,7 +4664,7 @@ export default async function handler(req, res) {
     const url = urlMatch[1]
     const contenu = await analyserURL(url)
     if (contenu) {
-      const historyCtx = Array.isArray(context) ? context.slice(-4).map(m => ({ role: m.role === 'assistant' ? 'assistant' : 'user', content: m.content?.substring(0,200) || '' })).filter(m => m.content) : []
+      const historyCtx = chunkContext(Array.isArray(context) ? context : [])
       const question = message.replace(urlMatch[1], '').trim() || 'Résume et analyse ce contenu'
       const groqText = await groqFetch([
         ...historyCtx,
