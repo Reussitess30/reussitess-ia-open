@@ -47,14 +47,6 @@
       "response": "🌍 **AFD — Agence Française de Développement**\n\n1,2 Mds€ engagés dans les DOM en 2023\nDomaines: Logement social • Transition énergétique • Eau\n\n📊 https://reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
     },
     {
-      "trigger": "chomage guadeloupe",
-      "response": "💼 **Marché du travail Guadeloupe** — Source INSEE 2023\n\nTaux de demandeurs d'emploi : **17,2%**\n\n🎯 **Opportunités à saisir :**\n• 🎓 Formations disponibles : reussitess.fr/hub-central\n• 💼 Offres emploi temps réel : francetravail.fr\n• 🌍 Entrepreneuriat caribéen : reussitess.fr/visa-universel\n• 📊 Données complètes : reussitess.fr/observatoire-antilles\n\nBoudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "population guadeloupe",
-      "response": "👥 Population Guadeloupe: **378 561 habitants** (2023) — Source INSEE\n\n📊 https://reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
-    },
-    {
       "trigger": "mode mains libres",
       "response": "🤝 **Mode Mains Libres REUSSITESS AI**\n\nActive le bouton 🤝 dans le bot — le micro s'active automatiquement après chaque réponse. Conversation continue sans toucher l'écran !\n\nBoudoum ! 🇬🇵"
     },
@@ -73,10 +65,6 @@
     {
       "trigger": "telegram",
       "response": "🤖 **Bot Telegram REUSSITESS**\n\n@Reussitessbot sur Telegram — toutes les fonctions disponibles :\n🌤️ Météo • 💼 Emploi • 📊 Observatoire • 🎓 Bourses • 💎 Token REUSS\n\nBoudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "taux de chomage",
-      "response": "💼 **Marché du travail DOM-TOM** — Source INSEE 2023\n\nGuadeloupe: 17,2% | Martinique: 15,8% | Guyane: 20,1% | Réunion: 17,6%\n\n🎯 **Trouve ton opportunité :**\n• 💼 Offres emploi : reussitess.fr/hub-central\n• 🎓 Formations : reussitess.fr/bibliotheque\n• 📊 Observatoire : reussitess.fr/observatoire-antilles\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "chomage",
