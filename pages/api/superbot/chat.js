@@ -4428,6 +4428,59 @@ async function getProgrammesTV(query = 'guadeloupe') {
   } catch(e) { return null }
 }
 
+// ============ CHUNKING INTELLIGENT ============
+function chunkContext(messages, maxTokens = 2000) {
+  if (!Array.isArray(messages)) return []
+  // Garde les 2 premiers messages (salutation/contexte) + les 6 derniers
+  const important = messages.slice(0, 2)
+  const recent = messages.slice(-6)
+  const combined = [...important, ...recent]
+  // Déduplique
+  const seen = new Set()
+  return combined.filter(m => {
+    const key = m.role + m.content?.substring(0,50)
+    if (seen.has(key)) return false
+    seen.add(key)
+    return true
+  }).map(m => ({
+    role: m.role === 'assistant' ? 'assistant' : 'user',
+    content: (m.content || '').substring(0, 300)
+  }))
+}
+
+// ============ SELF-CONSISTENCY ============
+async function selfConsistency(groq, prompt, systemPrompt, n = 2) {
+  try {
+    const calls = Array(n).fill(null).map(() => 
+      groq.chat.completions.create({
+        model: 'llama-3.3-70b-versatile',
+        max_tokens: 800,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: prompt }
+        ]
+      })
+    )
+    const results = await Promise.all(calls)
+    const responses = results.map(r => r.choices[0]?.message?.content || '')
+    // Retourne la plus longue réponse (heuristique simple)
+    return responses.reduce((a, b) => a.length > b.length ? a : b, '')
+  } catch(e) { return null }
+}
+
+// ============ SCORING QUALITÉ ============
+function scoreReponse(response) {
+  if (!response) return 0
+  let score = 0
+  if (response.length > 100) score += 2
+  if (response.includes('🇬🇵') || response.includes('Boudoum')) score += 1
+  if (response.includes('http')) score += 1
+  if (response.includes('**')) score += 1
+  if (response.length > 500) score += 1
+  if (response.includes('❌') || response.includes('indisponible')) score -= 3
+  return score
+}
+
 async function generateFollowUp(response, message) {
   try {
     const Groq = (await import('groq-sdk')).default

@@ -84,6 +84,11 @@ export default async function handler(req, res) {
           { text: '📊 Dashboard', callback_data: 'dashboard stats' }
                         ],
                         [
+                          { text: '🚀 NASA Photo', callback_data: 'photo nasa du jour' },
+                          { text: '☀️ Lever Soleil', callback_data: 'lever soleil guadeloupe' },
+                          { text: '📺 Programmes TV', callback_data: 'programme tv caribbean' }
+                        ],
+                        [
                           { text: '📊 Observatoire', callback_data: 'observatoire antilles' },
                           { text: '🎓 Bourses', callback_data: 'bourses francophones AUF' },
                           { text: '📅 Calendrier', callback_data: 'calendrier scolaire dom-tom' }
