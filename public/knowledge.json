@@ -79,10 +79,6 @@
       "response": "🎓 **Bourses disponibles**\n\n• AUF — Bourses francophones\n• Campus France — études à l'étranger\n• Fulbright — USA\n• Chevening — Royaume-Uni\n• Erasmus — Europe\n\n👉 auf.org | campusfrance.org\nBoudoum ! 🇬🇵"
     },
     {
-      "trigger": "aide",
-      "response": "🤝 **Aides disponibles DOM-TOM**\n\n💰 Chèque TIC — numérique\n🏠 APL — logement\n💼 ARE — chômage\n🎓 Bourses — études\n🌱 ACRE — création entreprise\n\n📊 reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
-    },
-    {
       "trigger": "entreprise",
       "response": "🚀 **Créer son entreprise en Guadeloupe**\n\n✅ Auto-entrepreneur — simple et rapide\n✅ ACRE — exonération charges 1 an\n✅ Chèque TIC — aide numérique\n✅ Réseau REUSSITESS — 14 pays\n\n👉 reussitess.fr/visa-universel\nBoudoum ! 🇬🇵"
     },
