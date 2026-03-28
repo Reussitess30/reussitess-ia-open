@@ -84,6 +84,11 @@ export default async function handler(req, res) {
           { text: '📊 Dashboard', callback_data: 'dashboard stats' }
                         ],
                         [
+                          { text: '🤝 Communauté', callback_data: 'communauté reussitess forum' },
+                          { text: '🎙️ Podcasts', callback_data: 'podcast caribéen' },
+                          { text: '🗺️ Carte', callback_data: 'carte caribéenne lieux historiques' }
+                        ],
+                        [
                           { text: '🗺️ Carte Caribéenne', callback_data: 'carte caribéenne lieux historiques' },
                           { text: '📅 Événements', callback_data: 'événements afro-caribéens' },
                           { text: '🎙️ Podcasts', callback_data: 'podcast caribéen' }

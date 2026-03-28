@@ -125,6 +125,18 @@
     {
       "trigger": "abolition esclavage",
       "response": "✊ **Commémoration Abolition de l'Esclavage**\n\n🇲🇶 Martinique : 22 mai\n🇬🇵 Guadeloupe : 27 mai\n🇷🇪 Réunion : 20 décembre\n🇲🇾 Mayotte : 27 avril\n\n📅 https://reussitess.fr/evenements\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "communauté",
+      "response": "🤝 **Communauté REUSSITESS**\n\nRéseau de la diaspora afro-caribéenne :\n💼 Entrepreneuriat • 🌴 Culture • 💎 Token REUSS • 🎓 Formation\n\n👉 https://reussitess.fr/communaute\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "forum",
+      "response": "💬 **Forum REUSSITESS**\n\nÉchange avec la communauté afro-caribéenne mondiale !\n\n👉 https://reussitess.fr/communaute\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "réseau social",
+      "response": "🤝 Rejoins la communauté REUSSITESS — réseau de la diaspora afro-caribéenne !\n\n👉 https://reussitess.fr/communaute\nBoudoum ! 🇬🇵"
     }
   ]
 }

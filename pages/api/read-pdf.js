@@ -21,44 +21,44 @@ export default async function handler(req, res) {
       req.pipe(busboy)
     })
 
-    if (!pdfBuffer || pdfBuffer.length < 100) {
+    if (!pdfBuffer || pdfBuffer.length < 50) {
       return res.status(400).json({ error: 'PDF non reçu' })
     }
 
-    // Extraction texte via opérateurs Tj/TJ
-    const str = pdfBuffer.toString('binary')
+    const text = pdfBuffer.toString('latin1')
     const blocks = []
 
-    const tjReg = /\(([^)\\]|\\.){1,300}\)\s*Tj/g
-    const tjArrReg = /\[([^\]]{1,500})\]\s*TJ/g
+    // Extraction Tj
+    const tjReg = /\(([^)]*)\)\s*Tj/g
     let m
-
-    while ((m = tjReg.exec(str)) !== null) {
-      const raw = m[0].replace(/\)\s*Tj$/, '').slice(1)
+    while ((m = tjReg.exec(text)) !== null) {
+      const raw = m[1]
         .replace(/\\n/g,' ').replace(/\\r/g,' ')
         .replace(/\\([0-7]{3})/g, (_, o) => String.fromCharCode(parseInt(o,8)))
         .replace(/\\/g,'').trim()
-      if (raw.length > 1 && /[a-zA-ZÀ-ÿ]/.test(raw)) blocks.push(raw)
+      if (raw.length > 0) blocks.push(raw)
     }
 
-    while ((m = tjArrReg.exec(str)) !== null) {
+    // Extraction TJ array
+    const tjArrReg = /\[([^\]]*)\]\s*TJ/g
+    while ((m = tjArrReg.exec(text)) !== null) {
       const strs = m[1].match(/\(([^)]*)\)/g) || []
       strs.forEach(s => {
         const raw = s.slice(1,-1).replace(/\\/g,'').trim()
-        if (raw.length > 1 && /[a-zA-ZÀ-ÿ]/.test(raw)) blocks.push(raw)
+        if (raw.length > 0) blocks.push(raw)
       })
     }
 
-    const text = blocks.join(' ').replace(/\s+/g,' ').trim().substring(0, 5000)
+    const result = blocks.join(' ').replace(/\s+/g,' ').trim().substring(0, 5000)
 
-    if (!text || text.length < 20) {
+    if (!result || result.length < 3) {
       return res.status(200).json({ success: false, error: 'PDF illisible — utilise un PDF avec texte sélectionnable' })
     }
 
     res.status(200).json({
       success: true,
-      text,
-      pages: Math.max(1, (str.match(/\/Type\s*\/Page\b/g) || []).length)
+      text: result,
+      pages: Math.max(1, (text.match(/\/Type\s*\/Page\b/g) || []).length)
     })
   } catch(e) {
     res.status(500).json({ error: e.message })
