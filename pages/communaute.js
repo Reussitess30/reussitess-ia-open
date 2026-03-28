@@ -11,23 +11,23 @@ const TOPICS = [
   { id: 6, titre: "🚀 Innovation & IA", desc: "Intelligence artificielle, tech et innovation pour la Caraïbe" },
 ]
 
-function DisqusComments({ topic }) {
+function GiscusComments() {
   useEffect(() => {
     if (typeof window === 'undefined') return
-    window.disqus_config = function() {
-      this.page.url = `https://reussitess.fr/communaute#${topic.id}`
-      this.page.identifier = `topic-${topic.id}`
-      this.page.title = topic.titre
-    }
-    const d = document
-    const s = d.createElement('script')
-    s.src = 'https://reussitess971.disqus.com/embed.js'
-    s.setAttribute('data-timestamp', +new Date())
-    ;(d.head || d.body).appendChild(s)
-    return () => { delete window.DISQUS }
-  }, [topic.id])
-
-  return <div id="disqus_thread" style={{ marginTop: '1rem' }} />
+    const script = document.createElement('script')
+    script.src = 'https://giscus.app/client.js'
+    script.setAttribute('data-repo', 'Reussitess30/reussitess-global-nexus')
+    script.setAttribute('data-repo-id', 'your-repo-id')
+    script.setAttribute('data-category', 'General')
+    script.setAttribute('data-category-id', 'your-category-id')
+    script.setAttribute('data-mapping', 'pathname')
+    script.setAttribute('data-theme', 'dark')
+    script.setAttribute('data-lang', 'fr')
+    script.crossOrigin = 'anonymous'
+    script.async = true
+    document.getElementById('giscus-container')?.appendChild(script)
+  }, [])
+  return <div id="giscus-container" style={{ marginTop: '1rem' }} />
 }
 
 export default function Communaute() {
@@ -53,7 +53,7 @@ export default function Communaute() {
 
         <div style={{ maxWidth: '800px', margin: '0 auto', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: '20px', padding: '2rem' }}>
           <h2 style={{ color: '#10b981', marginBottom: '1rem' }}>💬 Discussion Générale</h2>
-          <DisqusComments topic={{ id: 'general', titre: 'Discussion Générale REUSSITESS' }} />
+          <GiscusComments />
         </div>
 
         <div style={{ textAlign: 'center', marginTop: '3rem', color: '#475569', fontSize: '0.8rem' }}>
