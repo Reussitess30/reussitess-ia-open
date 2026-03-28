@@ -84,6 +84,11 @@ export default async function handler(req, res) {
           { text: '📊 Dashboard', callback_data: 'dashboard stats' }
                         ],
                         [
+                          { text: '🗺️ Carte Caribéenne', callback_data: 'carte caribéenne lieux historiques' },
+                          { text: '📅 Événements', callback_data: 'événements afro-caribéens' },
+                          { text: '🎙️ Podcasts', callback_data: 'podcast caribéen' }
+                        ],
+                        [
                           { text: '🚀 NASA', callback_data: 'photo nasa du jour' },
                           { text: '☀️ Lever Soleil', callback_data: 'lever soleil guadeloupe' },
                           { text: '📺 TV', callback_data: 'programme tv caribbean' },

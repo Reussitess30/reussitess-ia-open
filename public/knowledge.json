@@ -93,6 +93,38 @@
     {
       "trigger": "envoyer pdf",
       "response": "📄 Clique sur 📄 dans la barre de saisie pour envoyer un PDF. Le bot lira et analysera le contenu !\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "carte caribéenne",
+      "response": "🗺️ **Carte Afro-Caribéenne**\n\n15 lieux historiques, culturels et patrimoniaux :\n🏛️ Musées • 🌍 Patrimoine UNESCO • 🎉 Festivals • 🏝️ Villes historiques\n\n👉 https://reussitess.fr/carte-caribeenne\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "lieux historiques",
+      "response": "🗺️ Découvre les lieux historiques afro-caribéens sur la carte interactive !\n\n👉 https://reussitess.fr/carte-caribeenne\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "événements",
+      "response": "📅 **Calendrier Afro-Caribéen**\n\nFestivals, commémorations et événements culturels :\n🎉 Carnaval Guadeloupe • 🥁 Festival Gwoka • ✊ Abolition esclavage\n\n👉 https://reussitess.fr/evenements\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "calendrier",
+      "response": "📅 Consulte le calendrier des événements afro-caribéens !\n\n👉 https://reussitess.fr/evenements\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "podcast",
+      "response": "🎙️ **Podcasts Caribéens**\n\nVoix de la diaspora afro-caribéenne :\n🤖 REUSSITESS Radio • 🥁 Gwoka Session • 🌍 Diasporas Africa\n\n👉 https://reussitess.fr/podcasts-creoles\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "festival gwoka",
+      "response": "🥁 **Festival Gwoka — Patrimoine UNESCO**\n\nCélébration annuelle du Gwoka en Guadeloupe.\nJuillet — Sainte-Anne, Guadeloupe 🇬🇵\n\n📅 https://reussitess.fr/evenements\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "carnaval guadeloupe",
+      "response": "🎉 **Carnaval de Guadeloupe**\n\nLe plus grand carnaval des Antilles françaises !\nChars • Costumes • Gwoka • Vidé\n\n📅 https://reussitess.fr/evenements\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "abolition esclavage",
+      "response": "✊ **Commémoration Abolition de l'Esclavage**\n\n🇲🇶 Martinique : 22 mai\n🇬🇵 Guadeloupe : 27 mai\n🇷🇪 Réunion : 20 décembre\n🇲🇾 Mayotte : 27 avril\n\n📅 https://reussitess.fr/evenements\nBoudoum ! 🇬🇵"
     }
   ]
 }
