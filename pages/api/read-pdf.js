@@ -52,7 +52,7 @@ export default async function handler(req, res) {
     const result = blocks.join(' ').replace(/\s+/g,' ').trim().substring(0, 5000)
 
     if (!result || result.length < 3) {
-      return res.status(200).json({ success: false, error: 'PDF illisible — utilise un PDF avec texte sélectionnable' })
+      return res.status(200).json({ success: false, error: 'Ce PDF utilise un encodage avancé. Copie-colle le texte directement dans le chat, ou utilise un PDF exporté depuis Word/Google Docs.' })
     }
 
     res.status(200).json({
