@@ -1,3 +1,5 @@
+import pdfParse from 'pdf-parse'
+
 export const config = { api: { bodyParser: false, sizeLimit: '10mb' } }
 
 export default async function handler(req, res) {
@@ -11,19 +13,29 @@ export default async function handler(req, res) {
     const boundaryMatch = contentType.match(/boundary=(.+)/)
     if (!boundaryMatch) return res.status(400).json({ error: 'Format invalide' })
     
-    const boundary = '--' + boundaryMatch[1]
-    const parts = body.toString('binary').split(boundary)
-    let pdfBuffer = null
+    const boundary = Buffer.from('--' + boundaryMatch[1])
+    const parts = []
+    let start = 0
     
+    for (let i = 0; i < body.length - boundary.length; i++) {
+      if (body.slice(i, i + boundary.length).equals(boundary)) {
+        if (start > 0) parts.push(body.slice(start, i))
+        start = i + boundary.length
+      }
+    }
+    
+    let pdfBuffer = null
     for (const part of parts) {
-      if (part.includes('filename=') && part.includes('.pdf')) {
-        const headerEnd = part.indexOf('\r\n\r\n')
-        if (headerEnd !== -1) {
-          const raw = part.substring(headerEnd + 4)
-          const clean = raw.replace(/\r\n--.*$/s, '').replace(/\r\n$/, '')
-          pdfBuffer = Buffer.from(clean, 'binary')
-          break
+      const headerEnd = part.indexOf(Buffer.from('\r\n\r\n'))
+      if (headerEnd === -1) continue
+      const header = part.slice(0, headerEnd).toString()
+      if (header.includes('.pdf') || header.includes('application/pdf')) {
+        pdfBuffer = part.slice(headerEnd + 4)
+        // Enlever le \r\n final
+        if (pdfBuffer.slice(-2).toString() === '\r\n') {
+          pdfBuffer = pdfBuffer.slice(0, -2)
         }
+        break
       }
     }
     
@@ -31,50 +43,17 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'PDF non reçu' })
     }
 
-    // Extraction texte UTF-8 propre
-    const extracted = []
-    let pos = 0
-    const buf = pdfBuffer
-    
-    while (pos < buf.length - 4) {
-      // Cherche BT (début bloc texte)
-      if (buf[pos] === 0x42 && buf[pos+1] === 0x54) {
-        let end = pos + 2
-        while (end < buf.length - 2) {
-          if (buf[end] === 0x45 && buf[end+1] === 0x54) break
-          end++
-        }
-        const block = buf.slice(pos+2, end).toString('utf8', 0, end-pos)
-        const strings = block.match(/\(([^)]{1,200})\)/g) || []
-        strings.forEach(s => {
-          const clean = s.slice(1,-1)
-            .replace(/\\n/g,' ').replace(/\\r/g,' ')
-            .replace(/\\t/g,' ').replace(/\\\\/g,'\\')
-            .replace(/\\([0-7]{3})/g, (m, oct) => String.fromCharCode(parseInt(oct, 8)))
-            .trim()
-          if (clean.length > 2 && /[a-zA-ZÀ-ÿ\u00C0-\u024F]/.test(clean)) {
-            extracted.push(clean)
-          }
-        })
-        pos = end + 2
-      } else {
-        pos++
-      }
-    }
+    const data = await pdfParse(pdfBuffer)
+    const text = data.text.replace(/\s+/g, ' ').trim().substring(0, 5000)
 
-    const result = extracted.join(' ').replace(/\s+/g,' ').trim().substring(0, 5000)
-
-    if (!result || result.length < 20) {
-      return res.status(200).json({ 
-        success: false, 
-        error: 'PDF illisible — utilise un PDF avec texte sélectionnable (pas scanné ni protégé)' 
-      })
+    if (!text || text.length < 20) {
+      return res.status(200).json({ success: false, error: 'PDF illisible' })
     }
 
     res.status(200).json({ 
       success: true, 
-      text: result,
-      pages: Math.max(1, (pdfBuffer.toString('binary').match(/\/Page\b/g) || []).length)
+      text,
+      pages: data.numpages
     })
   } catch(e) {
     res.status(500).json({ error: 'Erreur: ' + e.message })
