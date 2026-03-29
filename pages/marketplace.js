@@ -3,13 +3,13 @@ import Layout from '../components/Layout'
 import Link from 'next/link'
 
 const PRODUITS = [
-  { id: 1, nom: "Rhum Agricole Guadeloupe", vendeur: "Distillerie Bologne", pays: "Guadeloupe 🇬🇵", prix: "35€", categorie: "Spiritueux", emoji: "🥃", desc: "Rhum agricole AOC Guadeloupe, vieilli 3 ans en fût de chêne.", contact: "bologne.fr" },
-  { id: 2, nom: "Madras Traditionnel", vendeur: "Atelier Créole", pays: "Martinique 🇲🇶", prix: "45€", categorie: "Artisanat", emoji: "🧣", desc: "Tissu madras authentique, couleurs traditionnelles antillaises.", contact: "artisanat-martinique.fr" },
-  { id: 3, nom: "Épices Créoles Bio", vendeur: "Jardin des Antilles", pays: "Guadeloupe 🇬🇵", prix: "18€", categorie: "Cuisine", emoji: "🌶️", desc: "Mélange d'épices créoles bio — bois d'inde, piment, colombo.", contact: "jardinantilles.fr" },
+  { id: 1, nom: "Rhum Agricole Guadeloupe", vendeur: "Distillerie Bologne", pays: "Guadeloupe 🇬🇵", prix: "35€", categorie: "Spiritueux", emoji: "🥃", desc: "Rhum agricole AOC Guadeloupe, vieilli 3 ans en fût de chêne.", contact: "www.amazon.fr/s?k=rhum+guadeloupe&tag=fb942837-21" },
+  { id: 2, nom: "Madras Traditionnel", vendeur: "Atelier Créole", pays: "Martinique 🇲🇶", prix: "45€", categorie: "Artisanat", emoji: "🧣", desc: "Tissu madras authentique, couleurs traditionnelles antillaises.", contact: "www.amazon.fr/s?k=madras+antilles&tag=fb942837-21" },
+  { id: 3, nom: "Épices Créoles Bio", vendeur: "Jardin des Antilles", pays: "Guadeloupe 🇬🇵", prix: "18€", categorie: "Cuisine", emoji: "🌶️", desc: "Mélange d'épices créoles bio — bois d'inde, piment, colombo.", contact: "www.amazon.fr/s?k=epices+creoles&tag=fb942837-21" },
   { id: 4, nom: "Sculpture Bois Tropical", vendeur: "Artiste Créole", pays: "Guyane 🇬🇫", prix: "120€", categorie: "Art", emoji: "🗿", desc: "Sculpture en bois de lettré de Guyane, faite à la main.", contact: "contact@reussitess.fr" },
   { id: 5, nom: "Musique Gwoka CD", vendeur: "Studio 971", pays: "Guadeloupe 🇬🇵", prix: "15€", categorie: "Musique", emoji: "🎵", desc: "Album Gwoka traditionnel, patrimoine UNESCO, 12 titres.", contact: "studio971.fr" },
   { id: 6, nom: "Vanille Bourbon Réunion", vendeur: "Plantatation Réunion", pays: "Réunion 🇷🇪", prix: "28€", categorie: "Cuisine", emoji: "🌿", desc: "Vanille Bourbon de la Réunion, qualité premium, 10 gousses.", contact: "vanille-reunion.fr" },
-  { id: 7, nom: "Huile Monoï Tahiti", vendeur: "Beauté Polynésie", pays: "Polynésie 🌺", prix: "22€", categorie: "Beauté", emoji: "🌺", desc: "Huile de monoï traditionnelle, macération de tiaré authentique.", contact: "monoi-tahiti.fr" },
+  { id: 7, nom: "Huile Monoï Tahiti", vendeur: "Beauté Polynésie", pays: "Polynésie 🌺", prix: "22€", categorie: "Beauté", emoji: "🌺", desc: "Huile de monoï traditionnelle, macération de tiaré authentique.", contact: "www.amazon.fr/s?k=huile+monoi+tahiti&tag=fb942837-21" },
   { id: 8, nom: "Formation Business Digital", vendeur: "REUSSITESS Academy", pays: "Guadeloupe 🇬🇵", prix: "Gratuit", categorie: "Formation", emoji: "💼", desc: "Formation complète entrepreneuriat digital caribéen.", contact: "reussitess.fr/academie" },
 ]
 
