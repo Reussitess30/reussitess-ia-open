@@ -84,6 +84,11 @@ export default async function handler(req, res) {
           { text: '📊 Dashboard', callback_data: 'dashboard stats' }
                         ],
                         [
+                          { text: '🎓 Académie', callback_data: 'académie cours gratuits' },
+                          { text: '🛒 Marketplace', callback_data: 'marketplace caribéen produits' },
+                          { text: '📻 Radio', callback_data: 'radio caribéenne live' }
+                        ],
+                        [
                           { text: '🤝 Communauté', callback_data: 'communauté reussitess forum' },
                           { text: '🎙️ Podcasts', callback_data: 'podcast caribéen' },
                           { text: '🗺️ Carte', callback_data: 'carte caribéenne lieux historiques' }

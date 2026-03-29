@@ -137,6 +137,34 @@
     {
       "trigger": "réseau social",
       "response": "🤝 Rejoins la communauté REUSSITESS — réseau de la diaspora afro-caribéenne !\n\n👉 https://reussitess.fr/communaute\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "académie",
+      "response": "🎓 **Académie REUSSITESS**\n\n6 cours gratuits :\n🗣️ Créole Guadeloupéen\n📚 Histoire Afro-Caribéenne\n💼 Entrepreneuriat Caribéen\n🤖 IA & Technologie\n🥁 Gwoka & Culture\n💎 Blockchain & Token REUSS\n\n👉 https://reussitess.fr/academie\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "cours",
+      "response": "🎓 Accède aux cours gratuits REUSSITESS !\nCréole • Culture • Business • IA • Blockchain\n\n👉 https://reussitess.fr/academie\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "marketplace",
+      "response": "🛒 **Marketplace Caribéen**\n\nProduits locaux afro-caribéens :\n🧣 Artisanat • 🌶️ Cuisine • 🎵 Musique • 🗿 Art\n\n👉 https://reussitess.fr/marketplace\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "marché",
+      "response": "🛒 Découvre le marketplace des produits caribéens locaux !\n\n👉 https://reussitess.fr/marketplace\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "radio",
+      "response": "📻 **Radio Caribéenne REUSSITESS**\n\nStations en direct :\n📻 RCI Guadeloupe • 🎵 Légende FM • 🌍 RFI Monde • 🎶 Africa Radio\n\n👉 https://reussitess.fr/radio\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "musique live",
+      "response": "🎵 Écoute la radio caribéenne en direct !\nZouk • Gwoka • Afrobeat • Kompa\n\n👉 https://reussitess.fr/radio\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "passeport",
+      "response": "🌍 **Passeport Numérique REUSSITESS**\n\nTon identité mondiale :\n✅ Visa Universel de Réussite\n✅ Réseau 14 pays partenaires\n✅ Token REUSS sur Polygon\n\n👉 https://reussitess.fr/visa-universel\nBoudoum ! 🇬🇵"
     }
   ]
 }
