@@ -84,6 +84,9 @@ export default async function handler(req, res) {
           { text: '📊 Dashboard', callback_data: 'dashboard stats' }
                         ],
                         [
+                          { text: '🌍 Écosystème REUSSITESS', callback_data: 'écosystème reussitess' }
+                        ],
+                        [
                           { text: '🎓 Académie', callback_data: 'académie cours gratuits' },
                           { text: '🛒 Marketplace', callback_data: 'marketplace caribéen produits' },
                           { text: '📻 Radio', callback_data: 'radio caribéenne live' }
