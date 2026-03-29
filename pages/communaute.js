@@ -49,7 +49,7 @@ function GiscusComments() {
 
         <div style={{ maxWidth: '900px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(260px,1fr))', gap: '1rem', marginBottom: '3rem' }}>
           {TOPICS.map(t => (
-            <a key={t.id} href={`https://www.reddit.com/r/Reussitess971/`}
+            <a key={t.id} href={`https://www.reddit.com/r/AfroCaraibeenInnov/`}
               style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: '16px', padding: '1.5rem', textDecoration: 'none', display: 'block', transition: 'all 0.2s' }}>
               <h3 style={{ color: '#e2e8f0', fontWeight: '700', marginBottom: '0.5rem', fontSize: '1rem' }}>{t.titre}</h3>
               <p style={{ color: '#94a3b8', fontSize: '0.85rem', lineHeight: '1.5' }}>{t.desc}</p>
