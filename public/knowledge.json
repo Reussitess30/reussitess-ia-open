@@ -165,6 +165,14 @@
     {
       "trigger": "passeport",
       "response": "🌍 **Passeport Numérique REUSSITESS**\n\nTon identité mondiale :\n✅ Visa Universel de Réussite\n✅ Réseau 14 pays partenaires\n✅ Token REUSS sur Polygon\n\n👉 https://reussitess.fr/visa-universel\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "aide utilisation",
+      "response": "🤖 **GUIDE REUSSITESS AI — Tout ce que tu peux faire**\n\n🌍 **ÉCOSYSTÈME COMPLET :**\n\n📊 **Observatoire** → reussitess.fr/observatoire-antilles\nDonnées économiques DOM-TOM en temps réel\n\n🗺️ **Carte Caribéenne** → reussitess.fr/carte-caribeenne\n15 lieux historiques afro-caribéens\n\n📅 **Événements** → reussitess.fr/evenements\nFestivals, commémorations, carnavals\n\n🤝 **Communauté** → reussitess.fr/communaute\nForum diaspora afro-caribéenne\n\n🎙️ **Podcasts** → reussitess.fr/podcasts-creoles\nVoix caribéennes en audio\n\n🎓 **Académie** → reussitess.fr/academie\n6 cours gratuits créole, culture, business, IA\n\n🛒 **Marketplace** → reussitess.fr/marketplace\nProduits locaux caribéens\n\n📻 **Radio** → reussitess.fr/radio\nStations caribéennes en direct\n\n🌍 **Visa Universel** → reussitess.fr/visa-universel\nPasseport numérique mondial REUSSITESS\n\n💎 **Token REUSS** → reussitess.fr/investir-reuss\nBlockchain Polygon — acheter REUSS\n\n🛍️ **Boutiques Amazon** → reussitess.fr/boutiques\n26 boutiques dans 14 pays\n\n📱 **Télécharger APK** → reussitess.fr/telecharger\nApplication Android avec voix\n\n🏆 **Champions** → reussitess.fr/champions\nPasseport de Réussite certifié\n\n🔮 **Oracle 971** → reussitess.fr/oracle-971\nSagesse caribéenne mystique\n\n📚 **Bibliothèque** → reussitess.fr/bibliotheque\n1,5M+ livres gratuits\n\n💬 **Bot Telegram** → t.me/Reussitessbot\nToutes les fonctions sur Telegram\n\nBoudoum ! 🇬🇵✨"
+    },
+    {
+      "trigger": "menu",
+      "response": "📋 Tape **aide utilisation** pour voir tous les liens et fonctions de REUSSITESS AI !\n\nBoudoum ! 🇬🇵"
     }
   ]
 }
