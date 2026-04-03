@@ -38,7 +38,14 @@ def query_groq(prompt):
 
     # Simulation de l'appel GROQ avec la première clé disponible
     fastest_key = GROQ_KEYS[0]
+    
+# 1. IA contextuelle
+response = reponse_contextuelle(message)
+
+# 2. fallback sur triggers existants
+if not response:
     response = trouver_reponse(message, data)
+
 
     # Mettre à jour le cache
     cache[prompt] = response
@@ -78,5 +85,34 @@ def trouver_reponse(message, data):
     for cmd in commands_sorted:
         if cmd["trigger"] in message:
             return cmd["response"]
+
+    return None
+
+
+# ===============================
+# 🧠 IA CONTEXTUELLE (BOOST)
+# ===============================
+def reponse_contextuelle(message):
+    message = message.lower()
+
+    # TOURISME
+    if "tourisme" in message or "visiter" in message:
+        if "martinique" in message:
+            return "🌴 Tourisme Martinique : https://reussitess.fr/tourisme-martinique
+Boudoum ! 🇬🇵"
+        if "guadeloupe" in message:
+            return "🌴 Tourisme Guadeloupe : https://reussitess.fr/tourisme-guadeloupe
+Boudoum ! 🇬🇵"
+
+    # MUSIQUE
+    if "musique" in message or "artiste" in message:
+        return "🎵 Musique Afro-Caribéenne : Zouk • Gwoka • Dancehall • Soca • Kompa
+👉 https://reussitess.fr/radio
+Boudoum ! 🇬🇵"
+
+    # ÉCONOMIE
+    if "économie" in message or "travail" in message:
+        return "📊 Économie DOM-TOM : https://reussitess.fr/observatoire-antilles
+Boudoum ! 🇬🇵"
 
     return None
