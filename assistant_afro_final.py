@@ -74,39 +74,40 @@ if __name__ == "__main__":
 
 
 
+
 def trouver_reponse(message, data):
     message = message.lower()
-
-    best_match = None
-    best_score = 0
+    triggers_found = []
+    responses = []
 
     for cmd in data.get("commands", []):
         trigger = cmd.get("trigger", "").lower()
+        if trigger in message or any(word in message for word in trigger.split()):
+            triggers_found.append(trigger)
+            responses.append(cmd.get("response"))
 
-        score = sum(1 for word in trigger.split() if word in message)
+    # Ajout de réponses automatiques multi-intentions
+    if "tourisme" in message and "tourisme" not in triggers_found:
+        responses.append("🌴 Infos tourisme : https://reussitess.fr/tourisme-martinique
+Boudoum ! 🇬🇵")
+    if "économie" in message and "économie" not in triggers_found:
+        responses.append("📊 Infos économiques : https://reussitess.fr/observatoire-antilles
+Boudoum ! 🇬🇵")
+    if "musique" in message and "musique" not in triggers_found:
+        responses.append("🎵 Découvre la musique caribéenne : https://reussitess.fr/radio
+Boudoum ! 🇬🇵")
 
-        if trigger in message:
-            score += 5
+    if responses:
+        # Fusionner toutes les réponses si plusieurs triggers
+        return "
 
-        if score > best_score:
-            best_score = score
-            best_match = cmd
+".join(responses)
 
-    if best_match and best_score >= 1:
-        return best_match["response"]
-
-    if "tourisme" in message:
-        return "🌴 Infos tourisme : https://reussitess.fr/tourisme-martinique
-Boudoum ! 🇬🇵"
-
-    if "économie" in message:
-        return "📊 Infos économiques : https://reussitess.fr/observatoire-antilles
-Boudoum ! 🇬🇵"
-
-    if "musique" in message:
-        return "🎵 Découvre la musique caribéenne : https://reussitess.fr/radio
-Boudoum ! 🇬🇵"
-
-    return "🤖 Je n'ai pas encore cette info, essaye avec un mot clé simple.
+    # Suggestions si rien ne correspond
+    suggestions = [cmd["trigger"] for cmd in data.get("commands", []) if cmd["trigger"].lower()[:3] in message[:3]]
+    suggestion_text = "
+".join(suggestions[:5]) if suggestions else "aucune suggestion"
+    return f"🤖 Je n'ai pas trouvé cette info. Essaie avec un mot clé simple.
+Suggestions : {suggestion_text}
 Boudoum ! 🇬🇵"
 
