@@ -40,11 +40,11 @@ def query_groq(prompt):
     fastest_key = GROQ_KEYS[0]
     
 # 1. IA contextuelle
-response = reponse_contextuelle(message)
+response = reponse_contextuelle(message_normalise)
 
 # 2. fallback sur triggers existants
 if not response:
-    response = trouver_reponse(message, data)
+    response = trouver_reponse(message_normalise, data)
 
 
     # Mettre à jour le cache
@@ -75,25 +75,105 @@ if __name__ == "__main__":
 
 
 
-def trouver_reponse(message, data):
-    message = message.lower()
+def trouver_reponse(message_normalise, data):
+    import unidecode
+
+    from difflib import get_close_matches
+
+    # Normalisation du message : minuscules, accents retirés
+
+    message_normalise = unidecode.unidecode(message.lower())
+
+    # Dictionnaire de synonymes/fautes courantes
+
+    synonymes = {
+
+        "éco": "économie dom-tom",
+
+        "economique": "économie dom-tom",
+
+        "tourism": "tourisme guadeloupe",
+
+        "tourisme martinique": "tourisme martinique",
+
+        "cours": "académie",
+
+        "musique live": "radio"
+
+    }
+
+    # Correction par synonymes
+
+    message_normalise = synonymes.get(message_normalise, message_normalise)
+
+    # Recherche du trigger le plus proche (tolérance aux fautes)
+
+    triggers = [c["trigger"] for c in data["commands"] if "trigger" in c]
+
+    meilleur_trigger = get_close_matches(message_normalise, triggers, n=1, cutoff=0.6)
+
+    if meilleur_trigger:
+
+        message_normalise = meilleur_trigger[0]
+
+    # Dictionnaire de synonymes et fautes courantes
+
+    synonymes = {
+
+        "éco": "économie dom-tom",
+
+        "economique": "économie dom-tom",
+
+        "tourism": "tourisme guadeloupe",
+
+        "tourisme martinique": "tourisme martinique",
+
+        "cours": "académie",
+
+        "musique live": "radio"
+
+    }
+
+    message_normalise = synonymes.get(message_normalise.lower(), message_normalise.lower())
+
+    # Dictionnaire de synonymes et fautes courantes
+
+    synonymes = {
+
+        "éco": "économie dom-tom",
+
+        "economique": "économie dom-tom",
+
+        "tourism": "tourisme guadeloupe",
+
+        "tourisme martinique": "tourisme martinique",
+
+        "cours": "académie",
+
+        "musique live": "radio"
+
+    }
+
+    message_normalise = synonymes.get(message_normalise.lower(), message_normalise.lower())
+
+    message_normalise = message_normalise.lower()
     triggers_found = []
     responses = []
 
     for cmd in data.get("commands", []):
         trigger = cmd.get("trigger", "").lower()
-        if trigger in message or any(word in message for word in trigger.split()):
+        if trigger in message_normalise or any(word in message_normalise for word in trigger.split()):
             triggers_found.append(trigger)
             responses.append(cmd.get("response"))
 
     # Ajout de réponses automatiques multi-intentions
-    if "tourisme" in message and "tourisme" not in triggers_found:
+    if "tourisme" in message_normalise and "tourisme" not in triggers_found:
         responses.append("🌴 Infos tourisme : https://reussitess.fr/tourisme-martinique
 Boudoum ! 🇬🇵")
-    if "économie" in message and "économie" not in triggers_found:
+    if "économie" in message_normalise and "économie" not in triggers_found:
         responses.append("📊 Infos économiques : https://reussitess.fr/observatoire-antilles
 Boudoum ! 🇬🇵")
-    if "musique" in message and "musique" not in triggers_found:
+    if "musique" in message_normalise and "musique" not in triggers_found:
         responses.append("🎵 Découvre la musique caribéenne : https://reussitess.fr/radio
 Boudoum ! 🇬🇵")
 
@@ -104,7 +184,7 @@ Boudoum ! 🇬🇵")
 ".join(responses)
 
     # Suggestions si rien ne correspond
-    suggestions = [cmd["trigger"] for cmd in data.get("commands", []) if cmd["trigger"].lower()[:3] in message[:3]]
+    suggestions = [cmd["trigger"] for cmd in data.get("commands", []) if cmd["trigger"].lower()[:3] in message_normalise[:3]]
     suggestion_text = "
 ".join(suggestions[:5]) if suggestions else "aucune suggestion"
     return f"🤖 Je n'ai pas trouvé cette info. Essaie avec un mot clé simple.
