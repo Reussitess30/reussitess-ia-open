@@ -1,0 +1,64 @@
+{
+  "afrocaraibe": {
+    "culture": {
+      "musique": ["Zouk", "Soca", "Gwo Ka", "Biguine", "Reggae caribéen", "Kompa", "Afrobeat", "Dancehall"],
+      "artistes": ["Jacques Schwarz-Bart", "Admiral T", "Kassav’", "Wyclef Jean", "Burna Boy", "Aya Nakamura"],
+      "littérature": ["Aimé Césaire", "Frantz Fanon", "Maryse Condé", "Édouard Glissant", "Léon-Gontran Damas"],
+      "cinema": ["Films caribéens et afrodescendants", "Documentaires culturels"]
+    },
+    "langues": {
+      "créole": {
+        "expressions": ["Boudoum !", "Sa ka maché ?", "An nou alé", "Kijan ou yé ?"],
+        "dictionnaire": ["Mwen = je", "Ou = tu", "Li = il/elle", "Nou = nous", "Yo = ils/elles"]
+      },
+      "français": ["Variantes locales DOM-TOM"]
+    },
+    "technologie": {
+      "blockchain": ["Polygon", "Ethereum", "QuickSwap", "NFT caribéens", "Crypto REUSS"],
+      "IA": ["Agents Neuro-X", "Function Calling", "Analyse d'images", "Chatbots créoles"],
+      "outils": ["OpenRouter", "HuggingFace API", "Redis", "TTS PlayAI"]
+    },
+    "savoirs_pratiques": {
+      "agriculture": ["Techniques sol DOM-TOM", "Gestion eau DOM-TOM", "Santé plantes", "Agriculture urbaine afro-caribéenne"],
+      "nutrition": ["Valeur nutritive aliments locaux", "Recettes créoles", "Superaliments afro-caribéens"],
+      "artisanat": ["Bijoux traditionnels", "Tissage", "Pottery caribéenne"]
+    },
+    "événements": {
+      "festivals": ["Festival de Jazz Guadeloupe", "Carnaval de Martinique", "Fèt Gwo Ka", "Carnaval de Trinidad", "AfroCaribbean Music Festivals"],
+      "actualité": ["Cyclones Atlantique", "Séismes Antilles", "Qualité eau DOM-TOM", "Événements internationaux afro-caribéens"]
+    },
+    "histoire": {
+      "colonisation": ["Histoire de la Caraïbe", "Abolition de l’esclavage", "Traites atlantiques"],
+      "héros": ["Toussaint Louverture", "Aimé Césaire", "Frantz Fanon", "Marcus Garvey"]
+    },
+    "économie": {
+      "DOM-TOM": ["PIB, Chômage, Secteurs clés", "Entreprises locales"],
+      "international": ["Commerce afro-caribéen", "Investissements blockchain et crypto"]
+    },
+    "éducation": {
+      "ressources": ["Cours en ligne gratuits", "Scholarships AUF", "Coursera financement", "Google Developer Scholarship"],
+      "méthodes": ["Éducation créole", "Apprentissage bilingue", "Ressources numériques internationales"]
+    },
+    "santé": {
+      "bien-être": ["Nutrition", "Activité physique", "Santé mentale", "Médecine traditionnelle afro-caribéenne"],
+      "sécurité": ["Santé publique DOM-TOM", "Prévention maladies tropicales"]
+    },
+    "environnement": {
+      "durabilité": ["Protection des mangroves", "Gestion déchets DOM-TOM", "Agriculture durable"],
+      "climat": ["Suivi cyclones", "Séismes et risques naturels", "Changement climatique"]
+    },
+    "business": {
+      "startups": ["Tech DOM-TOM", "Crypto & NFT", "Commerce local et international"],
+      "documents": ["CV, Business Plan, Contrat freelance", "Calculateur commissions Amazon"]
+    },
+    "blockchain_crypto": {
+      "tokens": ["REUSS Token", "NFTs caribéens"],
+      "dex": ["Quickswap", "DexScreener"],
+      "sécurité": ["Detection draineurs/honeypot", "Revoke.cash", "de.fi"]
+    },
+    "intelligence_artificielle": {
+      "agents": ["60 agents Neuro-X spécialisés", "Function Calling automatique", "Analyse images et texte"],
+      "TTS": ["Groq PlayAI créole"]
+    }
+  }
+}

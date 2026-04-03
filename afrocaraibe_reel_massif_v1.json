@@ -1,0 +1,58 @@
+{
+  "Afrocaraibe_Reel_Massif_V1": {
+    "Artistes": [
+      {"nom": "Koffi Olomidé", "pays": "Congo/Guadeloupe", "type": "musique", "site_officiel": "https://koffiolomide.com"},
+      {"nom": "Jacob Desvarieux", "pays": "Martinique", "type": "musique", "site_officiel": "https://jacobdesvarieux.com"},
+      {"nom": "Sean Paul", "pays": "Jamaïque", "type": "musique", "site_officiel": "https://seanpaulonline.com"},
+      {"nom": "Shaggy", "pays": "Jamaïque", "type": "musique", "site_officiel": "https://shaggyonline.com"},
+      {"nom": "Wyclef Jean", "pays": "Haïti", "type": "musique", "site_officiel": "https://wyclef.com"},
+      {"nom": "Kalash", "pays": "Martinique", "type": "musique", "site_officiel": "https://kalashofficial.com"},
+      {"nom": "Nicki Minaj", "pays": "Trinité-et-Tobago", "type": "musique", "site_officiel": "https://nickiminaj.com"},
+      {"nom": "Machel Montano", "pays": "Trinité-et-Tobago", "type": "musique", "site_officiel": "https://machelmontano.com"},
+      {"nom": "Bunji Garlin", "pays": "Trinité-et-Tobago", "type": "musique", "site_officiel": "https://bunjigarlin.com"},
+      {"nom": "David Rudder", "pays": "Trinité-et-Tobago", "type": "musique", "site_officiel": "https://davidrudder.com"}
+    ],
+    "Festivals_Événements": [
+      {"nom": "Festival de Jazz de la Martinique", "pays": "Martinique", "site_officiel": "https://festivaljazzmartinique.com"},
+      {"nom": "Carnaval de Guadeloupe", "pays": "Guadeloupe", "site_officiel": "https://carnavalguadeloupe.com"},
+      {"nom": "Reggae Sumfest", "pays": "Jamaïque", "site_officiel": "https://www.reggaesumfest.com"},
+      {"nom": "Caribbean Carnival London", "pays": "UK", "site_officiel": "https://www.caribbeancarnivallondon.com"}
+    ],
+    "Éducation": [
+      {"nom": "AUF Bourses Francophones", "site_officiel": "https://auf.org"},
+      {"nom": "Campus France International", "site_officiel": "https://www.campusfrance.org/fr"},
+      {"nom": "Coursera aide financière", "site_officiel": "https://www.coursera.org/financial-aid"},
+      {"nom": "Google Developer Scholarship", "site_officiel": "https://developers.google.com/community/gdsc"}
+    ],
+    "Médias": [
+      {"nom": "RFI DOM-TOM", "site_officiel": "https://www.rfi.fr/fr"},
+      {"nom": "France24 DOM-TOM", "site_officiel": "https://www.france24.com/fr"},
+      {"nom": "Bondamanjak", "site_officiel": "https://www.bondamanjak.com"},
+      {"nom": "RCI FM Guadeloupe", "site_officiel": "https://www.rci.fm/gp"}
+    ],
+    "Crypto_Blockchain": [
+      {"nom": "REUSS Token", "type": "Polygon", "contrat": "0xB37531727fC07c6EED4f97F852A115B428046EB2", "site_officiel": "https://reussitess.fr/investir-reuss"},
+      {"nom": "QuickSwap", "type": "DEX", "site_officiel": "https://quickswap.exchange"}
+    ],
+    "Santé_Bien_Être": [
+      {"nom": "Santé Guadeloupe", "site_officiel": "https://sante.gp"},
+      {"nom": "Santé Martinique", "site_officiel": "https://sante.mq"},
+      {"nom": "Santé Haïti", "site_officiel": "https://mspp.gouv.ht"}
+    ],
+    "Économie": [
+      {"secteur": "Tourisme", "pays": "Martinique", "site_officiel": "https://www.martinique.org"},
+      {"secteur": "Agriculture", "pays": "Guadeloupe", "site_officiel": "https://agriculture.gp"},
+      {"secteur": "Énergies renouvelables", "pays": "Haïti", "site_officiel": "https://energie.gouv.ht"}
+    ],
+    "Politique": [
+      {"nom": "Ary Chalus", "poste": "Président Guadeloupe", "site_officiel": "https://www.guadeloupe.fr"},
+      {"nom": "Serge Letchimy", "poste": "Président CTM Martinique", "site_officiel": "https://www.martinique.fr"},
+      {"nom": "Gabriel Serville", "poste": "Président CTG Guyane", "site_officiel": "https://www.guyane.fr"}
+    ],
+    "Tourisme_Culture": [
+      {"lieu": "Plage de Grande Anse", "pays": "Guadeloupe", "site_officiel": "https://www.guadeloupe.fr"},
+      {"lieu": "Montagne Pelée", "pays": "Martinique", "site_officiel": "https://www.martinique.fr"},
+      {"lieu": "Citadelle de Saint-Louis", "pays": "Guadeloupe", "site_officiel": "https://www.guadeloupe.fr"}
+    ]
+  }
+}
