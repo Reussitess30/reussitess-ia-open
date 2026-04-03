@@ -1,44 +1,64 @@
 import json
 import time
-import random  # Pour simuler l'erreur GROQ
+import random
 
 CACHE_FILE = "cache.json"
 GROQ_KEYS = ["ta_cle_1_de_Vercel", "ta_cle_2_de_Vercel", "ta_cle_3_de_Vercel"]
+MAX_RETRIES = 3
+RETRY_DELAY = 1  # secondes
 
-# Charger le cache existant
+# Charger le cache une seule fois
 try:
     with open(CACHE_FILE, "r") as f:
         cache = json.load(f)
 except FileNotFoundError:
     cache = {}
 
-def query_groq(prompt, retries=2, delay=1):
-    # Retour du cache si déjà présent
+# Stats clés pour rotation automatique
+key_stats = {key: {"success": 0, "fail": 0, "avg_time": 0.0} for key in GROQ_KEYS}
+
+def _call_groq(prompt, key):
+    """Remplacer cette fonction par l'appel réel à GROQ."""
+    delay = random.uniform(0.2, 1.0)
+    time.sleep(delay)
+    if random.random() < 0.2:
+        raise Exception("Service temporairement indisponible")
+    return f"GROQ réponse pour '{prompt}' avec {key}"
+
+def query_groq(prompt):
+    """Fonction universelle, durable et finale pour GROQ."""
     if prompt in cache:
         return cache[prompt]
 
-    for attempt in range(retries + 1):
+    for attempt in range(1, MAX_RETRIES + 1):
+        # Choix automatique de la meilleure clé
+        fastest_key = min(
+            GROQ_KEYS,
+            key=lambda k: key_stats[k]["avg_time"] if key_stats[k]["success"] > 0 else float('inf')
+        )
+        start = time.time()
         try:
-            # Simuler un appel GROQ avec risque d'erreur aléatoire
-            fastest_key = GROQ_KEYS[0]  # à remplacer par logique réelle
-            # --- Ici tu mettrais l'appel réel à GROQ ---
-            if random.random() < 0.2:  # 20% de chance d'erreur simulée
-                raise ConnectionError("Erreur temporaire GROQ")
-            response = f"GROQ réponse pour {prompt} avec {fastest_key}"
-
-            # Mettre à jour le cache
+            response = _call_groq(prompt, fastest_key)
+            elapsed = time.time() - start
+            # Mettre à jour stats
+            n = key_stats[fastest_key]["success"]
+            key_stats[fastest_key]["success"] += 1
+            key_stats[fastest_key]["avg_time"] = (key_stats[fastest_key]["avg_time'] * n + elapsed) / (n + 1)
+            # Mettre à jour cache
             cache[prompt] = response
             with open(CACHE_FILE, "w") as f:
-                json.dump(cache, f)
+                json.dump(cache, f, indent=2, ensure_ascii=False)
             return response
-
         except Exception as e:
-            print(f"⚠️ Tentative {attempt + 1} échouée: {e}")
-            if attempt < retries:
-                time.sleep(delay)  # attendre avant de réessayer
+            key_stats[fastest_key]["fail"] += 1
+            print(f"[Attempt {attempt}] Erreur avec {fastest_key}: {e}")
+            if attempt < MAX_RETRIES:
+                time.sleep(RETRY_DELAY)
             else:
-                return f"⚠️ Service temporairement indisponible après {retries + 1} tentatives. Réessaie plus tard !"
+                return f"⚠️ GROQ indisponible après {MAX_RETRIES} tentatives."
 
-# Test
+# Test simple
 if __name__ == "__main__":
-    print(query_groq("Bonjour assistant !"))
+    prompts = ["Bonjour assistant !", "Comment améliorer la vitesse ?", "Test durable"]
+    for p in prompts:
+        print(query_groq(p))
