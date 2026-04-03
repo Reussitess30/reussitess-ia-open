@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/sentinelle-protect
 Disallow: /.env
 
-Sitemap: https://reussitess.fr/sitemap.xml
+Sitemap: /sitemap.xml
