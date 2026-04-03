@@ -71,13 +71,37 @@ if __name__ == "__main__":
 # ===============================
 # 🔥 MOTEUR INTELLIGENT REUSSITESS
 # ===============================
+
 def trouver_reponse(message, data):
     message = message.lower()
+    mots_message = message.split()
 
-    # 1. match exact
+    best_score = 0
+    best_response = None
+
     for cmd in data["commands"]:
-        if message.strip() == cmd["trigger"]:
-            return cmd["response"]
+        trigger = cmd["trigger"].lower()
+        mots_trigger = trigger.split()
+
+        score = 0
+
+        # score basé sur mots communs
+        for mot in mots_trigger:
+            if mot in mots_message:
+                score += 2
+
+        # bonus si trigger complet dans phrase
+        if trigger in message:
+            score += 5
+
+        # bonus longueur (plus précis)
+        score += len(trigger) * 0.1
+
+        if score > best_score:
+            best_score = score
+            best_response = cmd["response"]
+
+    return best_response
 
     # 2. priorité aux triggers longs
     commands_sorted = sorted(data["commands"], key=lambda x: len(x["trigger"]), reverse=True)
