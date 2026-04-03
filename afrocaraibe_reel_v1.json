@@ -1,0 +1,60 @@
+{
+  "afrocaraibe_reel": {
+    "Musique": {
+      "Guadeloupe": ["Zouk: Kassav', Franky Vincent", "Gwo Ka: traditionnel et contemporains"],
+      "Martinique": ["Zouk: Kassav', Edith Lefel", "Biguine: Aimé Césaire", "Soca: compétitions locales"],
+      "Jamaïque": ["Reggae: Bob Marley, Peter Tosh", "Dancehall: Vybz Kartel"],
+      "Trinité-et-Tobago": ["Soca: Machel Montano", "Calypso: Lord Kitchener"],
+      "Haïti": ["Kompa: Tabou Combo", "Rara: fêtes traditionnelles"]
+    },
+    "Cuisine": {
+      "Guadeloupe": ["Accras de morue", "Colombo de poulet", "Bokit"],
+      "Martinique": ["Ti-Punch", "Boudin créole", "Colombo de cabri"],
+      "Haïti": ["Soup Joumou", "Griot", "Akasan"],
+      "Guyane": ["Blaff de poisson", "Calou"],
+      "Trinité-et-Tobago": ["Doubles", "Callaloo"]
+    },
+    "Culture": {
+      "Carnavals": ["Guadeloupe", "Martinique", "Trinité-et-Tobago", "Haïti"],
+      "Langues": ["Créole guadeloupéen", "Créole martiniquais", "Kreyòl haïtien", "Anglais caribéen"],
+      "Artistes": ["Aimé Césaire", "Édouard Glissant", "Frantz Fanon"]
+    },
+    "Éducation": {
+      "Bourses": ["AUF francophones: auf.org", "Google Developer Scholarship: developers.google.com"],
+      "Universités": ["Université des Antilles", "Université de Guyane", "Université de la Caraïbe (Trinidad)"],
+      "Cours gratuits": ["Coursera: cours accessibles selon pays", "REUSSITESS Académie: reussitess.fr/academie"]
+    },
+    "Santé": {
+      "Guadeloupe": ["CHU Pointe-à-Pitre", "Qualité eau potable: ARS Guadeloupe"],
+      "Martinique": ["CHU Fort-de-France", "Vaccinations locales"],
+      "Guyane": ["Hôpitaux Cayenne", "Prévention santé communautaire"]
+    },
+    "Technologie": {
+      "Crypto": ["REUSS Token Polygon: 0xB37531727fC07c6EED4f97F852A115B428046EB2", "QuickSwap: quickswap.exchange"],
+      "Blockchain": ["Projets locaux Polygon et Ethereum"],
+      "IA et e-learning": ["REUSSITESS Académie, AI pour agriculture et éducation"]
+    },
+    "Politique": {
+      "Guadeloupe": ["Ary Chalus, Guy Losbar, députés et sénateurs locaux"],
+      "Martinique": ["Serge Letchimy, députés et sénateurs"],
+      "Guyane": ["Gabriel Serville, députés et sénateurs"],
+      "Réunion": ["Huguette Bello, députés et sénateurs"],
+      "Mayotte": ["Ben Issa Ousseni"]
+    },
+    "Économie": {
+      "PIB DOM-TOM": ["Banque mondiale: data.worldbank.org"],
+      "Chômage": ["INSEE DOM-TOM: insee.fr"],
+      "Startups": ["Tech Caraïbes, FinTech locales"]
+    },
+    "Tourisme": {
+      "Guadeloupe": ["Parc National Guadeloupe", "Plages Grande-Terre et Basse-Terre"],
+      "Martinique": ["Montagne Pelée", "Plages Anse Dufour, Anse Noire"],
+      "Guyane": ["Parc Amazonien de Guyane", "Îles du Salut"],
+      "Trinité-et-Tobago": ["Plages Maracas Bay", "Carnaval Port of Spain"],
+      "Haïti": ["Citadelle Laferrière", "Plage Labadee"]
+    },
+    "Actualités": {
+      "Sources fiables": ["Bondamanjak", "RCI FM Guadeloupe", "France24 DOM-TOM", "Al Jazeera Afrique", "BBC Afrique"]
+    }
+  }
+}

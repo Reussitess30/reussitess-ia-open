@@ -1,1 +1,243 @@
-{"Bonjour assistant !": "GROQ r\u00e9ponse pour Bonjour assistant ! avec ta_cle_3"}
+{
+  "Bonjour assistant !": "GROQ réponse pour Bonjour assistant ! avec ta_cle_3",
+  "culture": {
+    "musique": [
+      "Zouk",
+      "Soca",
+      "Gwo Ka",
+      "Biguine",
+      "Reggae caribéen",
+      "Kompa",
+      "Afrobeat",
+      "Dancehall",
+      "Ragga",
+      "Calypso",
+      "Highlife"
+    ],
+    "artistes": [
+      "Jacques Schwarz-Bart",
+      "Admiral T",
+      "Kassav’",
+      "Wyclef Jean",
+      "Burna Boy",
+      "Aya Nakamura",
+      "Angélique Kidjo",
+      "Toofan",
+      "Fela Kuti"
+    ],
+    "littérature": [
+      "Aimé Césaire",
+      "Frantz Fanon",
+      "Maryse Condé",
+      "Édouard Glissant",
+      "Léon-Gontran Damas",
+      "Patrick Chamoiseau"
+    ],
+    "cinema": [
+      "Films caribéens et afrodescendants",
+      "Documentaires culturels",
+      "Web séries créoles"
+    ]
+  },
+  "langues": {
+    "créole": {
+      "expressions": [
+        "Boudoum !",
+        "Sa ka maché ?",
+        "An nou alé",
+        "Kijan ou yé ?",
+        "Mwen kontan wè ou"
+      ],
+      "dictionnaire": [
+        "Mwen = je",
+        "Ou = tu",
+        "Li = il/elle",
+        "Nou = nous",
+        "Yo = ils/elles"
+      ]
+    },
+    "français": [
+      "Variantes locales DOM-TOM"
+    ]
+  },
+  "technologie": {
+    "blockchain": [
+      "Polygon",
+      "Ethereum",
+      "QuickSwap",
+      "NFT caribéens",
+      "Crypto REUSS",
+      "DEX internationaux"
+    ],
+    "IA": [
+      "Agents Neuro-X",
+      "Function Calling",
+      "Analyse d'images",
+      "Chatbots créoles",
+      "Analyse de sentiment"
+    ],
+    "outils": [
+      "OpenRouter",
+      "HuggingFace API",
+      "Redis",
+      "TTS PlayAI",
+      "OCR",
+      "Web scraping"
+    ]
+  },
+  "savoirs_pratiques": {
+    "agriculture": [
+      "Techniques sol DOM-TOM",
+      "Gestion eau DOM-TOM",
+      "Santé plantes",
+      "Agriculture urbaine afro-caribéenne",
+      "Hydroponie",
+      "Permaculture"
+    ],
+    "nutrition": [
+      "Valeur nutritive aliments locaux",
+      "Recettes créoles",
+      "Superaliments afro-caribéens",
+      "Plans alimentaires sains"
+    ],
+    "artisanat": [
+      "Bijoux traditionnels",
+      "Tissage",
+      "Pottery caribéenne",
+      "Textiles et motifs africains"
+    ]
+  },
+  "événements": {
+    "festivals": [
+      "Festival de Jazz Guadeloupe",
+      "Carnaval de Martinique",
+      "Fèt Gwo Ka",
+      "Carnaval de Trinidad",
+      "AfroCaribbean Music Festivals",
+      "Carnaval de Guyane"
+    ],
+    "actualité": [
+      "Cyclones Atlantique",
+      "Séismes Antilles",
+      "Qualité eau DOM-TOM",
+      "Événements internationaux afro-caribéens",
+      "Tendances culturelles internationales"
+    ]
+  },
+  "histoire": {
+    "colonisation": [
+      "Histoire de la Caraïbe",
+      "Abolition de l’esclavage",
+      "Traites atlantiques",
+      "Colonisation africaine et caribéenne"
+    ],
+    "héros": [
+      "Toussaint Louverture",
+      "Aimé Césaire",
+      "Frantz Fanon",
+      "Marcus Garvey",
+      "Cécile Fatiman",
+      "Jean-Jacques Dessalines"
+    ]
+  },
+  "économie": {
+    "DOM-TOM": [
+      "PIB, Chômage, Secteurs clés",
+      "Entreprises locales",
+      "Économie circulaire DOM-TOM"
+    ],
+    "international": [
+      "Commerce afro-caribéen",
+      "Investissements blockchain et crypto",
+      "Startups tech afrocaraibéennes"
+    ]
+  },
+  "éducation": {
+    "ressources": [
+      "Cours en ligne gratuits",
+      "Scholarships AUF",
+      "Coursera financement",
+      "Google Developer Scholarship",
+      "MOOCs internationaux"
+    ],
+    "méthodes": [
+      "Éducation créole",
+      "Apprentissage bilingue",
+      "Ressources numériques internationales",
+      "Bootcamps technologiques"
+    ]
+  },
+  "santé": {
+    "bien-être": [
+      "Nutrition",
+      "Activité physique",
+      "Santé mentale",
+      "Médecine traditionnelle afro-caribéenne",
+      "Prévention maladies tropicales"
+    ],
+    "sécurité": [
+      "Santé publique DOM-TOM",
+      "Conseils santé internationale"
+    ]
+  },
+  "environnement": {
+    "durabilité": [
+      "Protection des mangroves",
+      "Gestion déchets DOM-TOM",
+      "Agriculture durable",
+      "Énergies renouvelables"
+    ],
+    "climat": [
+      "Suivi cyclones",
+      "Séismes et risques naturels",
+      "Changement climatique",
+      "Pollution océans"
+    ]
+  },
+  "business": {
+    "startups": [
+      "Tech DOM-TOM",
+      "Crypto & NFT",
+      "Commerce local et international",
+      "E-commerce afro-caribéen"
+    ],
+    "documents": [
+      "CV, Business Plan, Contrat freelance",
+      "Calculateur commissions Amazon",
+      "Modèles documents administratifs internationaux"
+    ]
+  },
+  "blockchain_crypto": {
+    "tokens": [
+      "REUSS Token",
+      "NFTs caribéens",
+      "Tokens internationaux afrocaraibéens"
+    ],
+    "dex": [
+      "Quickswap",
+      "DexScreener",
+      "PancakeSwap",
+      "Uniswap"
+    ],
+    "sécurité": [
+      "Detection draineurs/honeypot",
+      "Revoke.cash",
+      "de.fi",
+      "Audit smart contracts"
+    ]
+  },
+  "intelligence_artificielle": {
+    "agents": [
+      "60 agents Neuro-X spécialisés",
+      "Function Calling automatique",
+      "Analyse images et texte",
+      "Analyse audio"
+    ],
+    "TTS": [
+      "Groq PlayAI créole",
+      "Voix multilingues",
+      "Synthèse vocale temps réel"
+    ]
+  },
+  "Musique Afro-Caribéenne": "GROQ réponse pour Musique Afro-Caribéenne avec ta_cle_1_de_Vercel"
+}
