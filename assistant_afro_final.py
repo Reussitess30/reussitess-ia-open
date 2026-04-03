@@ -72,71 +72,41 @@ if __name__ == "__main__":
 # 🔥 MOTEUR INTELLIGENT REUSSITESS
 # ===============================
 
+
+
 def trouver_reponse(message, data):
     message = message.lower()
-    mots_message = message.split()
 
+    best_match = None
     best_score = 0
-    best_response = None
 
-    for cmd in data["commands"]:
-        trigger = cmd["trigger"].lower()
-        mots_trigger = trigger.split()
+    for cmd in data.get("commands", []):
+        trigger = cmd.get("trigger", "").lower()
 
-        score = 0
+        score = sum(1 for word in trigger.split() if word in message)
 
-        # score basé sur mots communs
-        for mot in mots_trigger:
-            if mot in mots_message:
-                score += 2
-
-        # bonus si trigger complet dans phrase
         if trigger in message:
             score += 5
 
-        # bonus longueur (plus précis)
-        score += len(trigger) * 0.1
-
         if score > best_score:
             best_score = score
-            best_response = cmd["response"]
+            best_match = cmd
 
-    return best_response
+    if best_match and best_score >= 1:
+        return best_match["response"]
 
-    # 2. priorité aux triggers longs
-    commands_sorted = sorted(data["commands"], key=lambda x: len(x["trigger"]), reverse=True)
-
-    for cmd in commands_sorted:
-        if cmd["trigger"] in message:
-            return cmd["response"]
-
-    return None
-
-
-# ===============================
-# 🧠 IA CONTEXTUELLE (BOOST)
-# ===============================
-def reponse_contextuelle(message):
-    message = message.lower()
-
-    # TOURISME
-    if "tourisme" in message or "visiter" in message:
-        if "martinique" in message:
-            return "🌴 Tourisme Martinique : https://reussitess.fr/tourisme-martinique
-Boudoum ! 🇬🇵"
-        if "guadeloupe" in message:
-            return "🌴 Tourisme Guadeloupe : https://reussitess.fr/tourisme-guadeloupe
+    if "tourisme" in message:
+        return "🌴 Infos tourisme : https://reussitess.fr/tourisme-martinique
 Boudoum ! 🇬🇵"
 
-    # MUSIQUE
-    if "musique" in message or "artiste" in message:
-        return "🎵 Musique Afro-Caribéenne : Zouk • Gwoka • Dancehall • Soca • Kompa
-👉 https://reussitess.fr/radio
+    if "économie" in message:
+        return "📊 Infos économiques : https://reussitess.fr/observatoire-antilles
 Boudoum ! 🇬🇵"
 
-    # ÉCONOMIE
-    if "économie" in message or "travail" in message:
-        return "📊 Économie DOM-TOM : https://reussitess.fr/observatoire-antilles
+    if "musique" in message:
+        return "🎵 Découvre la musique caribéenne : https://reussitess.fr/radio
 Boudoum ! 🇬🇵"
 
-    return None
+    return "🤖 Je n'ai pas encore cette info, essaye avec un mot clé simple.
+Boudoum ! 🇬🇵"
+
