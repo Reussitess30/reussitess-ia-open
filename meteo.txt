@@ -1,0 +1,4 @@
+France: 8.4°C
+Guyane: 30.4°C
+Martinique: 27.8°C
+Guadeloupe: 27.7°C
