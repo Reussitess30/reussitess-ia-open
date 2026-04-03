@@ -4510,10 +4510,12 @@ export default async function handler(req, res) {
     const msgL = normalize(req.body?.message || '')
     const matches = (kb.commands || []).map(cmd => {
       const trigger = normalize(cmd.trigger)
-      const words = trigger.split(' ')
-      const matchCount = words.filter(w => w.length > 2 && msgL.includes(w)).length
+      const words = trigger.split(' ').filter(w => w.length > 2)
+      const matchCount = words.filter(w => msgL.includes(w)).length
       const exactMatch = msgL.includes(trigger) ? 10 : 0
-      return { cmd, score: matchCount + exactMatch }
+      // Exige que TOUS les mots du trigger matchent OU match exact
+      const allMatch = words.length > 0 && words.every(w => msgL.includes(w))
+      return { cmd, score: allMatch ? matchCount + exactMatch : exactMatch }
     }).filter(m => m.score > 0).sort((a, b) => b.score - a.score)
     if (matches.length > 0) {
       return res.status(200).json({ pdfAction: null, response: matches[0].cmd.response })
