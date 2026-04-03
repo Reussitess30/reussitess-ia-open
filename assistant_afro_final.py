@@ -38,7 +38,7 @@ def query_groq(prompt):
 
     # Simulation de l'appel GROQ avec la première clé disponible
     fastest_key = GROQ_KEYS[0]
-    response = f"GROQ réponse pour '{prompt}' avec {fastest_key}"
+    response = trouver_reponse(message, data)
 
     # Mettre à jour le cache
     cache[prompt] = response
@@ -59,3 +59,24 @@ def test_afro_v2():
 
 if __name__ == "__main__":
     test_afro_v2()
+
+
+# ===============================
+# 🔥 MOTEUR INTELLIGENT REUSSITESS
+# ===============================
+def trouver_reponse(message, data):
+    message = message.lower()
+
+    # 1. match exact
+    for cmd in data["commands"]:
+        if message.strip() == cmd["trigger"]:
+            return cmd["response"]
+
+    # 2. priorité aux triggers longs
+    commands_sorted = sorted(data["commands"], key=lambda x: len(x["trigger"]), reverse=True)
+
+    for cmd in commands_sorted:
+        if cmd["trigger"] in message:
+            return cmd["response"]
+
+    return None
