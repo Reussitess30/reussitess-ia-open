@@ -67,7 +67,7 @@ async function groqFetch(messages, maxTokens = 512) {
     const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
-      body: JSON.stringify({ model: "llama-3.3-70b-versatile", messages, max_tokens: maxTokens })
+      body: JSON.stringify({ model: "llama-3.1-8b-instant", messages, max_tokens: maxTokens })
     })
     if (!res.ok) { keyErrors[key] = Date.now(); return null }
     const d = await res.json()
@@ -162,7 +162,7 @@ async function groqFetch(messages, maxTokens = 512) {
         const cbRes = await fetch("https://api.cerebras.ai/v1/chat/completions", {
           method: "POST",
           headers: { "Content-Type": "application/json", "Authorization": "Bearer " + cbKey },
-          body: JSON.stringify({ model: "llama-3.3-70b", messages, max_tokens: maxTokens })
+          body: JSON.stringify({ model: "llama-3.1-8b-instant", messages, max_tokens: maxTokens })
         })
         if (!cbRes.ok) return null
         const cbData = await cbRes.json()
@@ -179,7 +179,7 @@ export async function groqStream(messages, systemPrompt, res) {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model: "llama-3.1-8b-instant",
         messages: [{ role: "system", content: systemPrompt }, ...messages],
         max_tokens: 1024,
         stream: true
@@ -353,7 +353,7 @@ async function groqFetchWithTools(messages, systemPrompt) {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model: "llama-3.1-8b-instant",
         messages: [{ role: "system", content: systemPrompt }, ...messages],
         tools: GROQ_TOOLS,
         tool_choice: "auto",
@@ -389,7 +389,7 @@ async function groqFetchWithTools(messages, systemPrompt) {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
         body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
+          model: "llama-3.1-8b-instant",
           messages: [
             { role: "system", content: systemPrompt },
             ...messages,
@@ -7814,7 +7814,7 @@ Je suis votre assistant IA créé avec passion depuis la **Guadeloupe** 🇬🇵
           method: "POST",
           headers: { "Content-Type": "application/json", "Authorization": "Bearer "+getNextKey() },
           body: JSON.stringify({
-            model: "llama-3.3-70b-versatile",
+            model: "llama-3.1-8b-instant",
             messages: [
               { role: "system", content: finalPrompt },
               { role: "user", content: message }
@@ -9008,7 +9008,7 @@ async function groqFetchJSON(prompt) {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model: "llama-3.1-8b-instant",
         messages: [{ role: "system", content: "Tu réponds UNIQUEMENT en JSON valide, sans markdown, sans backticks." }, { role: "user", content: prompt }],
         response_format: { type: "json_object" },
         max_tokens: 1024

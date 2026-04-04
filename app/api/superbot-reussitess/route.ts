@@ -107,7 +107,7 @@ export async function POST(request: Request) {
       }
     }
 
-    return NextResponse.json({ reply, success: true })
+    return NextResponse.json({ reply, success: true, key_used: keyIndex + 1 })
 
   } catch (error: any) {
     console.error('SuperBot error:', error.message)
