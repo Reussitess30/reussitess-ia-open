@@ -1,16 +1,10 @@
 {
   "afrocaraibeen_knowledge": {
-    "histoires_resistance": "Histoires de résistance et de libération des peuples africains et caraïbes.",
-    "biographies": "Biographies de personnalités importantes.",
-    "artisanat": "Savoir-faire artisanaux traditionnels : poterie, tissage, sculpture, peinture.",
-    "plantes_medicinales": "Plantes médicinales locales utilisées dans la médecine traditionnelle africaine et caraïbe.",
-    "musiques": "Chansons et musiques traditionnelles africaines et caraïbes.",
-    "festivals": "Festivals et célébrations des peuples africains et caraïbes.",
-    "langues": "Langues et dialectes parlés en Afrique et Caraïbes.",
-    "mythes": "Mythes et légendes des peuples africains et caraïbes.",
-    "empire_mali": "Empire du Mali fondé par Soundiata Keïta au XIIIe siècle.",
-    "empire_ashanti": "Empire Ashanti fondé au XVIIe siècle en Afrique de l'Ouest.",
-    "empire_zulu": "Empire Zulu fondé au XIXe siècle en Afrique australe.",
-    "reseau": "Réseau de liens entre les communautés pour faciliter la collaboration et la coopération."
+    "afro_cineverse": "Plateforme immersive pour découvrir le cinéma caribéen.",
+    "ia_caribeenne": "Intelligence artificielle qui répond aux questions sur le cinéma caribéen.",
+    "realite_virtuelle_caribeenne": "Exploration des paysages et festivals afrocaraïbéens en réalité virtuelle.",
+    "cine_cahier": "Collection numérique de documents et ressources audiovisuelles sur le cinéma caribéen.",
+    "caribbean_film_festival": "Événement annuel en ligne pour films et documentaires caribéens.",
+    "caribbean_film_academy": "Programme de formation et de mentorat pour jeunes créateurs de cinéma."
   }
 }
