@@ -1,0 +1,86 @@
+import json
+from pathlib import Path
+from urllib.parse import unquote
+
+CACHE_FILE = Path("groq_cache.json")
+
+# --- Charger le cache ---
+if CACHE_FILE.exists():
+    with open(CACHE_FILE, "r", encoding="utf-8") as f:
+        cache = json.load(f)
+else:
+    cache = {}
+
+def handler(request, response):
+    prompt = request.args.get("prompt", "")
+    prompt = unquote(prompt)
+# --- Réponses locales Afrocaraibeen ---
+if 'mali' in prompt.lower():
+    result = cache.get('afrocaraibeen_knowledge', {}).get('empire_mali', '⚠️ Info non disponible')
+elif 'ashanti' in prompt.lower():
+    result = cache.get('afrocaraibeen_knowledge', {}).get('empire_ashanti', '⚠️ Info non disponible')
+elif 'artisanat' in prompt.lower():
+    result = cache.get('afrocaraibeen_knowledge', {}).get('artisanat', '⚠️ Info non disponible')
+elif 'musiques' in prompt.lower():
+    result = cache.get('afrocaraibeen_knowledge', {}).get('musiques', '⚠️ Info non disponible')
+elif 'mythes' in prompt.lower():
+    result = cache.get('afrocaraibeen_knowledge', {}).get('mythes', '⚠️ Info non disponible')
+else:
+
+    # --- Vérifier le cache ---
+if 'artisanat' in prompt.lower():
+    result = cache['afrocaraibeen_knowledge']['artisanat']
+elif 'plantes' in prompt.lower():
+    result = cache['afrocaraibeen_knowledge']['plantes_medicinales']
+elif 'musique' in prompt.lower():
+    result = cache['afrocaraibeen_knowledge']['musiques']
+elif 'histoires' in prompt.lower():
+    result = cache['afrocaraibeen_knowledge']['histoires_resistance']
+elif 'biographie' in prompt.lower():
+    result = cache['afrocaraibeen_knowledge']['biographies']
+elif 'mythes' in prompt.lower():
+    result = cache['afrocaraibeen_knowledge']['mythes']
+elif 'empire mali' in prompt.lower():
+    result = cache['afrocaraibeen_knowledge']['empire_mali']
+elif 'empire ashanti' in prompt.lower():
+    result = cache['afrocaraibeen_knowledge']['empire_ashanti']
+elif 'empire' in prompt.lower():
+    result = cache['afrocaraibeen_knowledge']['empires']
+elif 'festival' in prompt.lower():
+    result = cache['afrocaraibeen_knowledge']['festivals']
+elif 'reseau' in prompt.lower():
+    result = cache['afrocaraibeen_knowledge']['reseau']
+if 'mali' in prompt.lower():
+    result = cache.get('afrocaraibeen_knowledge', {}).get('empire_mali', '⚠️ Info non disponible')
+elif 'ashanti' in prompt.lower():
+    result = cache.get('afrocaraibeen_knowledge', {}).get('empire_ashanti', '⚠️ Info non disponible')
+elif 'artisanat' in prompt.lower():
+    result = cache.get('afrocaraibeen_knowledge', {}).get('artisanat', '⚠️ Info non disponible')
+else:
+    if prompt in cache:
+        result = cache[prompt]
+    else:
+        # ✅ Réponses locales pour Reussitess AI
+        if "mali" in prompt.lower():
+            result = cache.get("afrocaraibeen_knowledge", {}).get("empire_mali", "⚠️ Info non disponible")
+        elif "ashanti" in prompt.lower():
+            result = cache.get("afrocaraibeen_knowledge", {}).get("empire_ashanti", "⚠️ Info non disponible")
+        elif "artisanat" in prompt.lower():
+            result = cache.get("afrocaraibeen_knowledge", {}).get("artisanat", "⚠️ Info non disponible")
+        elif "mythes" in prompt.lower():
+            result = cache.get("afrocaraibeen_knowledge", {}).get("mythes", "⚠️ Info non disponible")
+        elif "empires" in prompt.lower():
+            result = cache.get("afrocaraibeen_knowledge", {}).get("empires", "⚠️ Info non disponible")
+        elif "musique" in prompt.lower():
+            result = cache.get("afrocaraibeen_knowledge", {}).get("musiques", "⚠️ Info non disponible")
+        else:
+            result = "⚠️ GROQ indisponible"
+
+        # --- Sauvegarder dans le cache ---
+        cache[prompt] = result
+        with open(CACHE_FILE, "w", encoding="utf-8") as f:
+            json.dump(cache, f, indent=2, ensure_ascii=False)
+
+    response.status_code = 200
+    response.content_type = "application/json"
+    response.write(json.dumps({"response": result}))
