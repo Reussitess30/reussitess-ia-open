@@ -1,7 +1,16 @@
 {
-  "Lancement Reussitess© !": "Réponse pour 'Lancement Reussitess© !' via ta_cle_3",
-  "Quelle heure est-il à Paris ?": "Réponse pour 'Quelle heure est-il à Paris ?' via ta_cle_2",
-  "Test Guadeloupe": "Réponse pour 'Test Guadeloupe' via ta_cle_2",
-  "Test Paris": "Réponse pour 'Test Paris' via ta_cle_2",
-  "Quel est le jour aujourd'hui ?": "The deployment could not be found on Vercel.\n\nDEPLOYMENT_NOT_FOUND\n\niad1::f7ftt-1775259502642-0b7b068f2b14"
+  "afrocaraibeen_knowledge": {
+    "histoires_resistance": "Histoires de résistance et de libération des peuples africains et caraïbes.",
+    "biographies": "Biographies de personnalités importantes.",
+    "artisanat": "Savoir-faire artisanaux traditionnels : poterie, tissage, sculpture, peinture.",
+    "plantes_medicinales": "Plantes médicinales locales utilisées dans la médecine traditionnelle africaine et caraïbe.",
+    "musiques": "Chansons et musiques traditionnelles africaines et caraïbes.",
+    "festivals": "Festivals et célébrations des peuples africains et caraïbes.",
+    "langues": "Langues et dialectes parlés en Afrique et Caraïbes.",
+    "mythes": "Mythes et légendes des peuples africains et caraïbes.",
+    "empire_mali": "Empire du Mali fondé par Soundiata Keïta au XIIIe siècle.",
+    "empire_ashanti": "Empire Ashanti fondé au XVIIe siècle en Afrique de l'Ouest.",
+    "empire_zulu": "Empire Zulu fondé au XIXe siècle en Afrique australe.",
+    "reseau": "Réseau de liens entre les communautés pour faciliter la collaboration et la coopération."
+  }
 }
