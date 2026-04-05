@@ -185,10 +185,6 @@
     {
       "trigger": "économie dom-tom",
       "response": "📊 **Économie DOM-TOM**\n\nLes principaux secteurs :\n1️⃣ Tourisme\n2️⃣ Agriculture & rhum\n3️⃣ Pêche & aquaculture\n4️⃣ Industrie locale\n5️⃣ Services & banque\n6️⃣ Énergie renouvelable\n7️⃣ Construction & immobilier\n\n📌 Plus d'infos : https://reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "actualites outremer",
-      "response": "📰 Tape 'actualites outremer complet' pour voir les dernières actualités de Guadeloupe, Martinique, Guyane, Réunion, Mayotte, Outremers360, Bondamanjak et Zinfos974 en temps réel !\n\nBoudoum ! 🇬🇵"
     }
   ]
 }
