@@ -649,20 +649,29 @@ export default function SuperBotAssistant() {
               <input type="file" id="pdf-upload" accept=".pdf" style={{display:'none'}} onChange={async e => {
                 const file = e.target.files[0]
                 if (!file) return
-                const formData = new FormData()
-                formData.append('pdf', file)
                 setIsLoading(true)
                 try {
-                  const r = await fetch('/api/read-pdf', { method: 'POST', body: formData })
-                  const d = await r.json()
-                  if (d.success) {
-                      const msg = `📄 Analyse ce document PDF (${d.pages} pages):\n\n${d.text.substring(0,1000)}`
-                      setIsLoading(false)
-                      submitMessage(msg)
-                      return
+                  const arrayBuffer = await file.arrayBuffer()
+                  const uint8 = new Uint8Array(arrayBuffer)
+                  const pdfjsLib = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.mjs')
+                  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.mjs'
+                  const pdf = await pdfjsLib.getDocument(uint8).promise
+                  let text = ''
+                  for (let i = 1; i <= Math.min(pdf.numPages, 10); i++) {
+                    const page = await pdf.getPage(i)
+                    const content = await page.getTextContent()
+                    text += content.items.map(s => s.str).join(' ') + '\n'
                   }
-                } catch(e) {}
-                setIsLoading(false)
+                  setIsLoading(false)
+                  if (text.trim().length > 10) {
+                    submitMessage('📄 Analyse ce document PDF (' + pdf.numPages + ' pages):\n\n' + text.substring(0, 1000))
+                  } else {
+                    alert('PDF illisible. Copie-colle le texte directement.')
+                  }
+                } catch(err) {
+                  setIsLoading(false)
+                  alert('Erreur lecture PDF: ' + err.message)
+                }
               }} />
               <input type="file" id="img-upload" accept="image/*" style={{display:'none'}} onChange={e => {
                 const file = e.target.files[0]

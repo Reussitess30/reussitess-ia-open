@@ -2,27 +2,6 @@ import Busboy from 'busboy'
 
 export const config = { api: { bodyParser: false, sizeLimit: '10mb' } }
 
-async function parsePDF(buffer) {
-  const { exec } = await import('child_process')
-  const { promisify } = await import('util')
-  const { writeFile, readFile, unlink } = await import('fs/promises')
-  const { tmpdir } = await import('os')
-  const { join } = await import('path')
-  
-  const tmpIn = join(tmpdir(), `pdf_${Date.now()}.pdf`)
-  await writeFile(tmpIn, buffer)
-  
-  return new Promise((resolve) => {
-    exec(`node -e "const p=require('pdf-parse');const fs=require('fs');p(fs.readFileSync('${tmpIn}')).then(d=>process.stdout.write(JSON.stringify({text:d.text,pages:d.numpages}))).catch(e=>process.stdout.write(JSON.stringify({error:e.message})))"`, 
-    { timeout: 15000 }, 
-    async (err, stdout) => {
-      try { await unlink(tmpIn) } catch(e) {}
-      if (err) return resolve({ error: err.message })
-      try { resolve(JSON.parse(stdout)) } catch(e) { resolve({ error: 'Parse error' }) }
-    })
-  })
-}
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
 
@@ -44,20 +23,40 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'PDF non reçu' })
     }
 
-    const result = await parsePDF(pdfBuffer)
-    
-    if (result.error || !result.text || result.text.length < 3) {
-      return res.status(200).json({ 
-        success: false, 
-        error: 'Ce PDF utilise un encodage avancé. Copie-colle le texte directement dans le chat.' 
+    // Extraction texte basique
+    const text = pdfBuffer.toString('latin1')
+    const blocks = []
+    const tjReg = /\(([^)\\]*(?:\\.[^)\\]*)*)\)\s*Tj/g
+    let m
+    while ((m = tjReg.exec(text)) !== null) {
+      const raw = m[1]
+        .replace(/\\n/g,' ').replace(/\\r/g,' ')
+        .replace(/\\([0-7]{3})/g, (_,o) => String.fromCharCode(parseInt(o,8)))
+        .replace(/\\(.)/g,'$1').trim()
+      if (raw.length > 1) blocks.push(raw)
+    }
+    const tjArrReg = /\[([^\]]*)\]\s*TJ/g
+    while ((m = tjArrReg.exec(text)) !== null) {
+      const strs = m[1].match(/\(([^)]*)\)/g) || []
+      strs.forEach(s => {
+        const raw = s.slice(1,-1)
+          .replace(/\\([0-7]{3})/g,(_,o)=>String.fromCharCode(parseInt(o,8)))
+          .replace(/\\(.)/g,'$1').trim()
+        if (raw.length > 1) blocks.push(raw)
       })
     }
 
-    res.status(200).json({
-      success: true,
-      text: result.text.substring(0, 5000),
-      pages: result.pages || 1
-    })
+    const result = blocks.join(' ').replace(/\s+/g,' ').trim().substring(0,5000)
+    const pages = Math.max(1,(text.match(/\/Type\s*\/Page\b/g)||[]).length)
+
+    if (!result || result.length < 10) {
+      return res.status(200).json({ 
+        success: false, 
+        error: 'PDF encodé. Envoie le texte directement dans le chat !' 
+      })
+    }
+
+    res.status(200).json({ success: true, text: result, pages })
 
   } catch(e) {
     res.status(500).json({ error: e.message })
