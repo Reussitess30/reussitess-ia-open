@@ -5552,6 +5552,33 @@ Boudoum ! 🇬🇵`})
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
+  // ===== NOUVELLES FONCTIONS =====
+  if (msgLow.includes("météo marine") || msgLow.includes("meteo marine") || msgLow.includes("vagues guadeloupe") || msgLow.includes("mer guadeloupe") || msgLow.includes("conditions mer") || msgLow.includes("navigation guadeloupe")) {
+    const data = await getMeteoMarine()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  if (msgLow.includes("séismes historiques") || msgLow.includes("seismes historiques") || msgLow.includes("historique séismes") || msgLow.includes("grands séismes caraïbes")) {
+    const data = await getSeismesHistoriques()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  if (msgLow.includes("lieux culturels") || msgLow.includes("sites historiques guadeloupe") || msgLow.includes("patrimoine guadeloupe") || msgLow.includes("musées guadeloupe") || msgLow.includes("tourisme guadeloupe")) {
+    return res.status(200).json({ pdfAction: null, response: getLieuxCulturels("guadeloupe") })
+  }
+
+  if (msgLow.includes("santé mentale") || msgLow.includes("depression") || msgLow.includes("détresse psychologique") || msgLow.includes("aide psychologique dom") || msgLow.includes("psychiatrie guadeloupe")) {
+    return res.status(200).json({ pdfAction: null, response: getSanteMentaleDOMTOM() })
+  }
+
+  if (msgLow.includes("éducation guadeloupe") || msgLow.includes("université antilles") || msgLow.includes("académie guadeloupe") || msgLow.includes("bourse crous") || msgLow.includes("école guadeloupe") || msgLow.includes("lycée guadeloupe")) {
+    return res.status(200).json({ pdfAction: null, response: getEducationDOMTOM("guadeloupe") })
+  }
+
+  if (msgLow.includes("éducation martinique") || msgLow.includes("université martinique") || msgLow.includes("académie martinique")) {
+    return res.status(200).json({ pdfAction: null, response: getEducationDOMTOM("martinique") })
+  }
+
   // DETECTION PDF TRIGGERS
   if (msgLow.includes("creer mon cv") || msgLow.includes("créer mon cv") || msgLow.includes("cv pdf") || msgLow.includes("mon cv")) pdfType = "cv"
   else if (msgLow.includes("certificat champion") || msgLow.includes("mon certificat") || msgLow.includes("certificat pdf")) pdfType = "certificat"
@@ -9187,4 +9214,183 @@ async function getActualitesOutremerComplet() {
   }
 
   return result + "Boudoum ! 🇬🇵"
+}
+
+// ===== MÉTÉO MARINE =====
+async function getMeteoMarine(lieu = 'Guadeloupe') {
+  try {
+    // Coordonnées Guadeloupe mer
+    const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=16.2411&longitude=-61.5331&hourly=wave_height,wave_direction,wave_period,wind_wave_height,swell_wave_height&forecast_days=1&timezone=America/Guadeloupe')
+    const d = await r.json()
+    const h = d.hourly
+    const now = new Date().getHours()
+    return `🌊 **Météo Marine Guadeloupe — Temps Réel**
+
+🌊 Hauteur des vagues : ${h.wave_height?.[now] || 'N/A'} m
+🧭 Direction vagues : ${h.wave_direction?.[now] || 'N/A'}°
+⏱️ Période vagues : ${h.wave_period?.[now] || 'N/A'} s
+🌬️ Vagues de vent : ${h.wind_wave_height?.[now] || 'N/A'} m
+🌊 Houle : ${h.swell_wave_height?.[now] || 'N/A'} m
+
+⚠️ Toujours vérifier les alertes METEO FRANCE avant de prendre la mer
+📞 CROSS Antilles-Guyane : 196
+🔗 meteofrance.gp
+
+Boudoum ! 🇬🇵`
+  } catch(e) {
+    return `🌊 **Météo Marine Guadeloupe**\n\n📞 CROSS Antilles-Guyane : 196\n🔗 meteofrance.gp\n🔗 windy.com\n\nBoudoum ! 🇬🇵`
+  }
+}
+
+// ===== SÉISMES HISTORIQUES CARAÏBES =====
+async function getSeismesHistoriques() {
+  try {
+    const r = await fetch('https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minmagnitude=5&minlatitude=10&maxlatitude=20&minlongitude=-70&maxlongitude=-58&limit=10&orderby=magnitude', { signal: AbortSignal.timeout(5000) })
+    const d = await r.json()
+    const quakes = d.features?.slice(0, 5).map(f => {
+      const date = new Date(f.properties.time).toLocaleDateString('fr-FR')
+      return `• M${f.properties.mag} — ${f.properties.place} (${date})`
+    }).join('\n')
+    return `🌋 **Séismes Majeurs Caraïbes — Historique**\n\n${quakes || 'Aucune donnée'}\n\n📊 Source: USGS\n🔗 earthquake.usgs.gov\n\nBoudoum ! 🇬🇵`
+  } catch(e) {
+    return `🌋 **Séismes Historiques Caraïbes**\n\n🔗 earthquake.usgs.gov\n🔗 brgm.fr\n\nBoudoum ! 🇬🇵`
+  }
+}
+
+// ===== LIEUX CULTURELS ET HISTORIQUES DOM-TOM =====
+function getLieuxCulturels(territoire = 'guadeloupe') {
+  const lieux = {
+    guadeloupe: `🏛️ **Lieux Culturels & Historiques Guadeloupe**
+
+🏰 **Sites Historiques :**
+• Fort Fleur d'Épée — Gosier (fort colonial XVIIIe)
+• Mémorial ACTe — Pointe-à-Pitre (mémorial esclavage)
+• Maison du Bois — Pointe-Noire (patrimoine)
+• Fort Delgrès — Basse-Terre (résistance 1802)
+
+🌿 **Nature & Patrimoine :**
+• Parc National de Guadeloupe — Basse-Terre
+• Chutes du Carbet — 3 cascades tropicales
+• La Soufrière — Volcan actif 1467m
+• Réserve Cousteau — Pigeon, plongée
+
+🎭 **Culture :**
+• Musée Saint-John Perse — Pointe-à-Pitre
+• Musée Edgar Clerc — Le Moule (amérindien)
+• Centre des Arts — Pointe-à-Pitre
+• Distilleries : Damoiseau, Bologne, Montebello
+
+Boudoum ! 🇬🇵`,
+    martinique: `🏛️ **Lieux Culturels & Historiques Martinique**
+
+🏰 **Sites Historiques :**
+• Saint-Pierre — Ville détruite par la Pelée 1902
+• Fort-de-France — Capitale historique
+• Habitation Clément — Rhum et art contemporain
+• Bibliothèque Schoelcher — Architecture coloniale
+
+🌿 **Nature :**
+• Montagne Pelée — Volcan 1397m
+• Jardin de Balata — Jardin tropical
+• Les Salines — Plage paradisiaque
+• Presqu'île de Caravelle — Réserve naturelle
+
+Boudoum ! 🇬🇵`,
+    reunion: `🏛️ **Lieux Culturels & Historiques Réunion**
+
+🌋 **Nature UNESCO :**
+• Piton de la Fournaise — Volcan actif
+• Cirque de Mafate — Patrimoine UNESCO
+• Cirque de Cilaos — Randonnées
+• Grand Raid — Course mythique
+
+🏛️ **Culture :**
+• Musée Léon Dierx — Art contemporain
+• Villa du Département — Architecture
+• Le Téat — Théâtre National
+
+Boudoum ! 🇬🇵`
+  }
+  return lieux[territoire] || lieux.guadeloupe
+}
+
+// ===== SANTÉ MENTALE DOM-TOM =====
+function getSanteMentaleDOMTOM() {
+  return `🧠 **Santé Mentale — Ressources DOM-TOM**
+
+📞 **Numéros d'urgence :**
+• 🆘 Suicide Écoute : **3114** (24h/24, gratuit)
+• 🚨 SAMU : **15**
+• 👮 Police/Gendarmerie : **17**
+
+🏥 **Structures spécialisées :**
+🇬🇵 **Guadeloupe :**
+• CHS de Guadeloupe — Basse-Terre : 0590 80 36 00
+• CLSM Pointe-à-Pitre : 0590 89 10 10
+• UNAFAM Guadeloupe : unafam.org
+
+🇲🇶 **Martinique :**
+• CHUM — Pôle psychiatrie : 0596 55 20 00
+• Croix-Rouge Martinique : 0596 71 02 33
+
+🇷🇪 **Réunion :**
+• CHU Réunion — Psychiatrie : 0262 90 50 50
+• SOS Amitié Réunion : 0262 93 01 01
+
+🇬🇫 **Guyane :**
+• CH de Cayenne : 0594 39 50 50
+
+💬 **En ligne gratuit :**
+• psy-education.fr
+• filsantejeunes.com (12-25 ans)
+• France Dépression : france-depression.org
+
+Boudoum ! 🇬🇵`
+}
+
+// ===== ÉDUCATION DOM-TOM =====
+function getEducationDOMTOM(territoire = 'guadeloupe') {
+  const edu = {
+    guadeloupe: `🎓 **Éducation Guadeloupe**
+
+🏫 **Système scolaire :**
+• Académie de Guadeloupe : ac-guadeloupe.fr
+• 📞 Rectorat : 0590 21 13 00
+• Calendrier scolaire : identique métropole Zone B
+
+🎓 **Enseignement supérieur :**
+• Université des Antilles (UA) — Campus de Fouillole
+• IUT de Kourou (Guyane)
+• INSPE Guadeloupe — Formation enseignants
+• BTS disponibles : Commerce, Tourisme, Informatique
+
+💰 **Bourses & Aides :**
+• CROUS Antilles-Guyane : crous-antillesguyane.fr
+• Bourse sur critères sociaux
+• Aide à la mobilité (PassMob)
+• LADOM — Aide formation mobilité
+
+📞 **Contacts :**
+• CROUS : 0590 21 93 00
+• Campus France Antilles : campusfrance.org
+
+Boudoum ! 🇬🇵`,
+    martinique: `🎓 **Éducation Martinique**
+
+🏫 **Système scolaire :**
+• Académie de Martinique : ac-martinique.fr
+• 📞 Rectorat : 0596 52 26 26
+
+🎓 **Enseignement supérieur :**
+• Université des Antilles — Campus Schœlcher
+• IUT de Martinique
+• INSPE Martinique
+
+💰 **Aides :**
+• CROUS Antilles-Guyane
+• LADOM mobilité
+
+Boudoum ! 🇬🇵`
+  }
+  return edu[territoire] || edu.guadeloupe
 }
