@@ -9607,7 +9607,7 @@ async function getAnalyseFinanciere(sujet = '') {
   📈 Variation 24h : ${crypto.bitcoin?.eur_24h_change?.toFixed(2)}%
 Ξ Ethereum : ${crypto.ethereum?.eur?.toLocaleString()}€
   📈 Variation 24h : ${crypto.ethereum?.eur_24h_change?.toFixed(2)}%
-⬡ Polygon : ${crypto.['matic-network']?.eur?.toFixed(4)}€
+⬡ Polygon : ${crypto['matic-network']?.eur?.toFixed(4)}€
   📈 Variation 24h : ${crypto['matic-network']?.eur_24h_change?.toFixed(2)}%
 
 💱 **Taux de Change EUR :**

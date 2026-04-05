@@ -119,6 +119,8 @@ export default async function handler(req, res) {
                           { text: '📊 Observatoire', callback_data: 'observatoire antilles' },
                           { text: '🎓 Bourses', callback_data: 'bourses francophones AUF' },
                           { text: '📅 Calendrier', callback_data: 'calendrier scolaire dom-tom' }
+                  ],
+                  [
                     { text: '🌊 Météo Marine', callback_data: 'météo marine guadeloupe' },
                     { text: '🏛️ Lieux Culturels', callback_data: 'lieux culturels guadeloupe' },
                     { text: '🧠 Santé Mentale', callback_data: 'santé mentale dom-tom' }
