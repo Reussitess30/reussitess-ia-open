@@ -9474,3 +9474,221 @@ Boudoum ! 🇬🇵`
   }
   return routes[destination] || routes.guadeloupe
 }
+
+// ===== MÉTIERS & EMPLOI DOM-TOM ENRICHI =====
+async function getMetiersDOMTOM(secteur = '') {
+  const metiers = {
+    sante: `👨‍⚕️ **Métiers de la Santé DOM-TOM**
+
+🏥 **Métiers en tension (recrutements urgents) :**
+• Médecin généraliste — pénurie critique
+• Infirmier(e) — forte demande
+• Aide-soignant(e) — recrutements constants
+• Sage-femme — besoin urgent
+• Pharmacien(ne)
+
+💰 **Avantages DOM-TOM :**
+• Surrémunération 40% (Guadeloupe/Martinique)
+• Congés bonification +1 mois/3 ans
+• Logement parfois fourni
+
+📞 **Contacts :**
+• ARS Guadeloupe : 0590 99 19 00
+• CHU Guadeloupe : 0590 89 10 10
+• Pôle Emploi : 3949
+
+🔗 sante.fr | cnracl.fr
+Boudoum ! 🇬🇵`,
+
+    tech: `💻 **Métiers Tech & Numérique DOM-TOM**
+
+🚀 **Métiers recherchés :**
+• Développeur web/mobile
+• Data analyst
+• Cybersécurité
+• Chef de projet digital
+• UX/UI Designer
+
+🎓 **Formations disponibles :**
+• IUT Informatique — Université des Antilles
+• BTS SIO — lycées professionnels
+• OpenClassrooms (en ligne gratuit)
+• Google Career Certificates
+
+💡 **Opportunités locales :**
+• Startups caribéennes en croissance
+• Télétravail pour entreprises métropole
+• REUSSITESS®971 — écosystème IA
+
+🔗 reussitess.fr/hub-central
+Boudoum ! 🇬🇵`,
+
+    tourisme: `🌴 **Métiers du Tourisme DOM-TOM**
+
+🏨 **Métiers disponibles :**
+• Guide touristique
+• Agent d'accueil / réceptionniste
+• Animateur Club Med / Maeva
+• Chef cuisinier créole
+• Plongeur / moniteur nautique
+
+📊 **Statistiques :**
+• Tourisme = 7% PIB Guadeloupe
+• 700 000 touristes/an Guadeloupe
+• Saison haute : Décembre-Avril
+
+🎓 **Formations :**
+• BTS Tourisme — Guadeloupe
+• CAP Restauration
+• BPJEPS Activités nautiques
+
+🔗 reussitess.fr/hub-central
+Boudoum ! 🇬🇵`,
+
+    agriculture: `🌿 **Métiers Agriculture & Environnement**
+
+🌱 **Secteurs porteurs :**
+• Agriculture biologique
+• Maraîchage tropical
+• Pêche artisanale
+• Aquaculture
+• Énergies renouvelables (solaire)
+
+📊 **Aides disponibles :**
+• FEADER — Fonds européen agricole
+• DAAF Guadeloupe : 0590 99 09 00
+• Chambre d'Agriculture : 0590 25 17 17
+
+🔗 agriculture.gouv.fr/outre-mer
+Boudoum ! 🇬🇵`
+  }
+
+  if (secteur && metiers[secteur]) return metiers[secteur]
+
+  return `💼 **Métiers & Emploi DOM-TOM — Guide Complet**
+
+📊 **Secteurs qui recrutent :**
+• 🏥 Santé — pénurie critique médecins/infirmiers
+• 💻 Tech/Numérique — développeurs recherchés
+• 🌴 Tourisme — 700 000 touristes/an Guadeloupe
+• 🏗️ BTP — construction boom DOM-TOM
+• 🌿 Agriculture bio — filière en croissance
+• 🎓 Éducation — enseignants manquants
+
+📈 **Statistiques emploi 2024 :**
+• Chômage Guadeloupe : 17,2%
+• Chômage jeunes : 42%
+• Surrémunération DOM : +40%
+
+🔗 **Chercher un emploi :**
+• reussitess.fr/hub-central
+• francetravail.fr
+• caribbeanjobs.com
+• jobartis.com
+
+Boudoum ! 🇬🇵`
+}
+
+// ===== ANALYSE FINANCIÈRE SIMPLE =====
+async function getAnalyseFinanciere(sujet = '') {
+  try {
+    // Données crypto temps réel
+    const cryptoRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=eur,usd&include_24hr_change=true&include_market_cap=true')
+    const crypto = await cryptoRes.json()
+
+    // Taux de change
+    const fxRes = await fetch('https://api.exchangerate-api.com/v4/latest/EUR')
+    const fx = await fxRes.json()
+
+    return `📊 **Analyse Financière — Tableau de Bord**
+
+💎 **Crypto — Temps Réel :**
+₿ Bitcoin : ${crypto.bitcoin?.eur?.toLocaleString()}€ | ${crypto.bitcoin?.usd?.toLocaleString()}$
+  📈 Variation 24h : ${crypto.bitcoin?.eur_24h_change?.toFixed(2)}%
+Ξ Ethereum : ${crypto.ethereum?.eur?.toLocaleString()}€
+  📈 Variation 24h : ${crypto.ethereum?.eur_24h_change?.toFixed(2)}%
+⬡ Polygon : ${crypto.['matic-network']?.eur?.toFixed(4)}€
+  📈 Variation 24h : ${crypto['matic-network']?.eur_24h_change?.toFixed(2)}%
+
+💱 **Taux de Change EUR :**
+• EUR/USD : ${fx.rates?.USD}
+• EUR/GBP : ${fx.rates?.GBP}
+• EUR/XCD : ${fx.rates?.XCD} (Dollar Caraïbes)
+• EUR/HTG : ${fx.rates?.HTG?.toFixed(2)} (Gourde Haïtienne)
+• EUR/BRL : ${fx.rates?.BRL} (Real Brésil)
+
+📈 **Indicateurs :**
+• Signal BTC : ${crypto.bitcoin?.usd_24h_change > 0 ? '🟢 HAUSSIER' : '🔴 BAISSIER'}
+• Signal ETH : ${crypto.ethereum?.usd_24h_change > 0 ? '🟢 HAUSSIER' : '🔴 BAISSIER'}
+
+⚠️ Ces données sont informatives. Consultez un conseiller financier.
+🔗 reussitess.fr/investir-reuss
+
+Boudoum ! 🇬🇵`
+  } catch(e) {
+    return `📊 **Analyse Financière**\n\n🔗 Coinmarketcap.com\n🔗 Trading Economics\n🔗 Banque de France\n\nBoudoum ! 🇬🇵`
+  }
+}
+
+// ===== JURIDIQUE ENRICHI =====
+function getJuridiqueEntreprise(sujet = '') {
+  return `⚖️ **Juridique Entreprise DOM-TOM**
+
+🏢 **Créer son entreprise :**
+• Auto-entrepreneur : urssaf.fr (gratuit)
+• SARL/SAS : infogreffe.fr
+• Coût création SARL : ~250€
+• SIRET : gratuit via INSEE
+
+📋 **Obligations légales :**
+• Déclaration URSSAF/CGSS (DOM)
+• TVA : 8,5% en Guadeloupe (au lieu de 20%)
+• Cotisations sociales : 45% du salaire brut
+• Bilan comptable annuel obligatoire
+
+💰 **Aides à la création :**
+• ACRE — Exonération charges 1ère année
+• ADIE — Microcrédit jusqu'à 10 000€
+• BPI France — Prêts entreprises
+• Région Guadeloupe — Subventions PME
+
+📞 **Contacts :**
+• CCI Guadeloupe : 0590 93 76 00
+• CMA Guadeloupe : 0590 82 22 22
+• BPI France Antilles : 0590 68 27 70
+• ADIE Guadeloupe : 0590 83 28 28
+
+🔗 cci-guadeloupe.fr | bpifrance.fr
+Boudoum ! 🇬🇵`
+}
+
+// ===== MULTILINGUISME ENRICHI =====
+function getTraductionCreole(mot = '') {
+  const dico = {
+    'bonjour': { creole: 'Bonjou', phonetique: 'bon-jou' },
+    'merci': { creole: 'Mèsi', phonetique: 'mè-si' },
+    'comment vas-tu': { creole: 'Koman ou yé ?', phonetique: 'ko-man ou yé' },
+    'je taime': { creole: 'Mwen enmen-w', phonetique: 'mwen en-men-w' },
+    'bienvenue': { creole: 'Byenvini', phonetique: 'byen-vi-ni' },
+    'au revoir': { creole: 'Awo', phonetique: 'a-wo' },
+    'sil vous plait': { creole: 'Souplé', phonetique: 'sou-plé' },
+    'oui': { creole: 'Wi', phonetique: 'wi' },
+    'non': { creole: 'Non', phonetique: 'non' },
+    'eau': { creole: 'Dlo', phonetique: 'dlo' },
+    'manger': { creole: 'Manjé', phonetique: 'man-jé' },
+    'maison': { creole: 'Kay', phonetique: 'kaï' },
+    'enfant': { creole: 'Timanmay', phonetique: 'ti-man-may' },
+    'ami': { creole: 'Zanmi', phonetique: 'zan-mi' },
+    'beau': { creole: 'Bèl', phonetique: 'bèl' },
+  }
+
+  const motLow = mot.toLowerCase().trim()
+  if (motLow && dico[motLow]) {
+    const t = dico[motLow]
+    return `🗣️ **Traduction Créole Guadeloupéen**\n\n🇫🇷 "${mot}" → 🇬🇵 "${t.creole}"\n📢 Prononciation : [${t.phonetique}]\n\nBoudoum ! 🇬🇵`
+  }
+
+  // Liste aléatoire
+  const liste = Object.entries(dico).slice(0, 5).map(([fr, cr]) => `• ${fr} → **${cr.creole}** [${cr.phonetique}]`).join('\n')
+  return `🗣️ **Dictionnaire Créole Guadeloupéen**\n\n${liste}\n\n💡 Demande "traduction créole [mot]" pour traduire!\n\nBoudoum ! 🇬🇵`
+}

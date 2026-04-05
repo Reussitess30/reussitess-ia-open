@@ -119,6 +119,19 @@ export default async function handler(req, res) {
                           { text: '📊 Observatoire', callback_data: 'observatoire antilles' },
                           { text: '🎓 Bourses', callback_data: 'bourses francophones AUF' },
                           { text: '📅 Calendrier', callback_data: 'calendrier scolaire dom-tom' }
+                    { text: '🌊 Météo Marine', callback_data: 'météo marine guadeloupe' },
+                    { text: '🏛️ Lieux Culturels', callback_data: 'lieux culturels guadeloupe' },
+                    { text: '🧠 Santé Mentale', callback_data: 'santé mentale dom-tom' }
+                  ],
+                  [
+                    { text: '🎓 Éducation', callback_data: 'éducation guadeloupe' },
+                    { text: '🗺️ Carnet Route', callback_data: 'carnet de route guadeloupe' },
+                    { text: '💼 Métiers', callback_data: 'métiers dom-tom' }
+                  ],
+                  [
+                    { text: '📊 Finance', callback_data: 'analyse financière' },
+                    { text: '⚖️ Entreprise', callback_data: 'créer entreprise guadeloupe' },
+                    { text: '🗣️ Créole', callback_data: 'dictionnaire créole' }
         ]
       ]
     }
@@ -194,6 +207,15 @@ Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
       '🔐 Crypto': 'crypto securite draineur danger',
         '💎 REUSS': 'token REUSS blockchain supply',
         '🔮 Oracle': 'oracle 971 quel est mon destin',
+        '🌊 Météo Marine': 'météo marine guadeloupe',
+        '🏛️ Lieux Culturels': 'lieux culturels guadeloupe',
+        '🧠 Santé Mentale': 'santé mentale dom-tom',
+        '🎓 Éducation': 'éducation guadeloupe',
+        '🗺️ Carnet Route': 'carnet de route guadeloupe',
+        '💼 Métiers': 'métiers dom-tom',
+        '📊 Finance': 'analyse financière',
+        '⚖️ Entreprise': 'créer entreprise guadeloupe',
+        '🗣️ Créole': 'dictionnaire créole',
       }
 
       const msgToSend = TEXT_COMMANDS[text] || text
