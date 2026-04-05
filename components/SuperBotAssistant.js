@@ -653,8 +653,11 @@ export default function SuperBotAssistant() {
                 try {
                   const arrayBuffer = await file.arrayBuffer()
                   const uint8 = new Uint8Array(arrayBuffer)
-                  const pdfjsLib = await import('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.mjs')
-                  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.mjs'
+                  // Charger PDF.js depuis CDN dynamiquement
+                  const pdfUrl = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.mjs'
+                  const workerUrl = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.mjs'
+                  const pdfjsLib = await new Function('u', 'return import(u)')(pdfUrl)
+                  pdfjsLib.GlobalWorkerOptions.workerSrc = workerUrl
                   const pdf = await pdfjsLib.getDocument(uint8).promise
                   let text = ''
                   for (let i = 1; i <= Math.min(pdf.numPages, 10); i++) {
