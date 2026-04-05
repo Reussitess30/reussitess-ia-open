@@ -1,4 +1,3 @@
-import { detectLanguage } from "./extensions.js"
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(200).json({ ok: true })
@@ -144,7 +143,7 @@ export default async function handler(req, res) {
       const firstName = message.from?.first_name || 'Champion'
 
       // Détecter langue
-      const langue = detectLanguage(text)
+      const langue = 'fr'
 
       if (text === '/start') {
         await sendMsg(chatId, `🌟 *Bienvenue ${firstName} sur REUSSITESS AI* 🇬🇵
