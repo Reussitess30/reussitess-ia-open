@@ -4,10 +4,10 @@ import Link from 'next/link'
 
 const STATIONS = [
   { id: 1, nom: "RCI Guadeloupe", pays: "Guadeloupe 🇬🇵", genre: "Généraliste", emoji: "📻", url: "https://rci.fm/guadeloupe", web: true, desc: "Radio Caraïbes International — Actualités, musique, débats" },
-  { id: 2, nom: "Légende FM", pays: "Guadeloupe 🇬🇵", genre: "Zouk", emoji: "🎵", url: "https://legendefm.net", web: true, desc: "Zouk, Kompa, R&B caribéen — La légende musicale des Antilles" },
-  { id: 3, nom: "RFO Martinique", pays: "Martinique 🇲🇶", genre: "Généraliste", emoji: "📻", url: "https://la1ere.francetvinfo.fr/martinique", web: true, desc: "Radio France Outre-mer Martinique — Infos et culture" },
+  { id: 2, nom: "Bel Radio", pays: "Guadeloupe 🇬🇵", genre: "Zouk", emoji: "🎵", url: "https://belradio.ice.infomaniak.ch/belradioguadeloupe-mp3-128.mp3", web: false, desc: "Zouk, Kompa, R&B caribéen — La légende musicale des Antilles" },
+  { id: 3, nom: "La 1ère Martinique", pays: "Martinique 🇲🇶", genre: "Généraliste", emoji: "📻", url: "https://la1ere.francetvinfo.fr/martinique", web: true, desc: "Radio France Outre-mer Martinique — Infos et culture" },
   { id: 4, nom: "RFI Monde", pays: "Monde 🌍", genre: "International", emoji: "🌍", url: "https://rfimonde.ice.infomaniak.ch/rfimonde-mp3-128.mp3", web: false, desc: "Radio France Internationale — Voix du monde francophone" },
-  { id: 5, nom: "Africa Radio", pays: "Afrique 🌍", genre: "Afrobeat", emoji: "🎶", url: "https://africaradiofrance.ice.infomaniak.ch/africaradiofrance-mp3-128.mp3", web: false, desc: "Afrobeat, Afropop, Reggae — La voix de l'Afrique" },
+  { id: 5, nom: "Africa Radio", pays: "Afrique 🌍", genre: "Afrobeat", emoji: "🎶", url: "https://africaRadio.ice.infomaniak.ch/africa-radio-mp3-128.mp3", web: false, desc: "Afrobeat, Afropop, Reggae — La voix de l'Afrique" },
   { id: 6, nom: "REUSSITESS FM", pays: "Guadeloupe 🇬🇵", genre: "Entrepreneuriat", emoji: "🤖", url: "#", desc: "🚀 Coming Soon — Radio entrepreneuriale caribéenne 24/7" },
 ]
 
@@ -21,7 +21,7 @@ export default function Radio() {
 
   const play = (station) => {
     if (station.url === "#") return
-    if (station.web || (!station.url.endsWith(".mp3") && !station.url.includes("infomaniak"))) { window.open(station.url, "_blank"); return }
+    if (station.web || (!station.url.endsWith(".mp3") && !station.url.includes("infomaniak"))) { window.open(station.url, "_blank"); setPlaying(station); return }
     if (playing?.id === station.id) {
       audioRef.current?.pause()
       setPlaying(null)
