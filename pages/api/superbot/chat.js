@@ -169,19 +169,6 @@ async function groqFetch(messages, maxTokens = 512) {
         return cbData.choices?.[0]?.message?.content || null
       } catch(e3) {
         console.error("Cerebras:", e3.message)
-        // Fallback Gemini
-        try {
-          const gemKey = process.env.GEMINI_API_KEY
-          if (!gemKey) return null
-          const gemRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${gemKey}`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ contents: messages.map(m => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: m.content }] })) })
-          })
-          if (!gemRes.ok) return null
-          const gemData = await gemRes.json()
-          return gemData.candidates?.[0]?.content?.parts?.[0]?.text || null
-        } catch(e4) { console.error("Gemini:", e4.message); return null }
       }
     }
   }
