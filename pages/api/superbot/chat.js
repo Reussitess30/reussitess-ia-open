@@ -4266,6 +4266,41 @@ async function getGeoLocation(lieu) {
   } catch(e) { return "📍 Service géolocalisation en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
+async function getMeteoMonde(ville) {
+  try {
+    // Géocodage avec Nominatim
+    const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(ville)}&format=json&limit=1`, {
+      headers: { 'User-Agent': 'REUSSITESS-AI/1.0 (reussitess.fr)' },
+      signal: AbortSignal.timeout(5000)
+    })
+    const geo = await geoRes.json()
+    if (!geo || geo.length === 0) return null
+
+    const lat = geo[0].lat
+    const lon = geo[0].lon
+    const nomVille = geo[0].display_name.split(',')[0]
+
+    const meteoRes = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weathercode,windspeed_10m,relative_humidity_2m&timezone=auto`, {
+      signal: AbortSignal.timeout(5000)
+    })
+    const meteo = await meteoRes.json()
+    const c = meteo.current
+    const codes = {0:'☀️ Ciel dégagé',1:'🌤️ Peu nuageux',2:'⛅ Nuageux',3:'☁️ Couvert',45:'🌫️ Brouillard',51:'🌦️ Bruine',61:'🌧️ Pluie légère',63:'🌧️ Pluie modérée',65:'🌧️ Pluie forte',71:'❄️ Neige légère',80:'🌦️ Averses',95:'⛈️ Orage',96:'⛈️ Orage grêle'}
+
+    return `🌤️ **Météo ${nomVille}**
+
+🌡️ Température : ${c.temperature_2m}°C
+💨 Vent : ${c.windspeed_10m} km/h
+💧 Humidité : ${c.relative_humidity_2m}%
+☁️ Conditions : ${codes[c.weathercode] || 'Variable'}
+
+📍 Coordonnées : ${parseFloat(lat).toFixed(4)}, ${parseFloat(lon).toFixed(4)}
+🔗 Source : Open-Meteo
+
+Boudoum ! 🇬🇵`
+  } catch(e) { return null }
+}
+
 async function getMeteoDOMTOM(commune) {
   try {
     const nom = commune || 'Pointe-a-Pitre'
