@@ -1,3 +1,5 @@
+import { detectLanguage, getSystemPromptForLanguage, getDroitDOMTOM, getFinanceAvancee, getDonneesTempsReel } from "./extensions.js"
+
 function getPolitiquesGuadeloupe() {
   return `🏛️ **Élus Officiels de Guadeloupe (2025-2026)**
 
