@@ -51,7 +51,7 @@ export default async function handler(req, res) {
         ],
         [
           { text: '💼 Emploi', callback_data: 'liste emploi Guadeloupe' },
-          { text: '📰 Actualités', callback_data: 'actualités Guadeloupe' },
+          { text: '📰 Actualités', callback_data: 'actualites outremer complet' },
           { text: '🌋 Séismes', callback_data: 'séismes antilles' }
         ],
         [
@@ -186,7 +186,7 @@ Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
         '₿ Bitcoin': 'prix bitcoin',
         '💱 Devises': 'taux de change euro dollar',
         '💼 Emploi': 'liste emploi Guadeloupe',
-        '📰 Actualités': 'actualités Guadeloupe',
+        '📰 Actualités': 'actualites outremer complet',
         '🌋 Séismes': 'séismes antilles',
         '🛍️ Boutiques': 'boutiques amazon 14 pays',
       '🎵 Musique': 'deezer zouk guadeloupe',
