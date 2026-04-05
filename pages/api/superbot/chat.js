@@ -5575,6 +5575,11 @@ Boudoum ! 🇬🇵`})
     return res.status(200).json({ pdfAction: null, response: getEducationDOMTOM("guadeloupe") })
   }
 
+  if (msgLow.includes("carnet de route") || msgLow.includes("itinéraire guadeloupe") || msgLow.includes("visiter guadeloupe") || msgLow.includes("voyage guadeloupe") || msgLow.includes("tourisme martinique") || msgLow.includes("itineraire")) {
+    const dest = msgLow.includes("martinique") ? "martinique" : msgLow.includes("guyane") ? "guyane" : "guadeloupe"
+    return res.status(200).json({ pdfAction: null, response: getCarnetsDeRoute(dest) })
+  }
+
   if (msgLow.includes("éducation martinique") || msgLow.includes("université martinique") || msgLow.includes("académie martinique")) {
     return res.status(200).json({ pdfAction: null, response: getEducationDOMTOM("martinique") })
   }
@@ -9393,4 +9398,79 @@ Boudoum ! 🇬🇵`,
 Boudoum ! 🇬🇵`
   }
   return edu[territoire] || edu.guadeloupe
+}
+
+// ===== CARNETS DE ROUTE DOM-TOM =====
+function getCarnetsDeRoute(destination = 'guadeloupe') {
+  const routes = {
+    guadeloupe: `🗺️ **Carnet de Route Guadeloupe**
+
+✈️ **Arriver :**
+• Aéroport Pôle Caraïbes — Les Abymes
+• Vol Paris : ~8h | Vol Miami : ~3h30
+• Visa : Non requis (DOM français)
+
+🚗 **Se déplacer :**
+• Location voiture recommandée
+• Bus Lilas (réseau urbain PAP)
+• Taxis : tarifs réglementés
+• Ferry inter-îles : L'Express des Îles
+
+🏨 **Hébergement :**
+• Gosier, Sainte-Anne, Saint-François (tourisme)
+• Gîtes ruraux : gites-guadeloupe.com
+• Villages vacances : VVF, Maeva
+
+📅 **Itinéraires recommandés :**
+• J1-2 : Grande-Terre (plages, Gosier)
+• J3-4 : Basse-Terre (Soufrière, Carbet)
+• J5 : Marie-Galante (rhum, plages)
+• J6 : Les Saintes (snorkeling)
+
+🌡️ **Météo idéale :** Décembre-Avril (saison sèche)
+🚫 **Éviter :** Juillet-Novembre (cyclones)
+
+💰 **Budget moyen/jour :** 80-150€
+📞 **Office de Tourisme :** 0590 82 09 30
+🔗 lesilesdeguadeloupe.com
+
+Boudoum ! 🇬🇵`,
+    martinique: `🗺️ **Carnet de Route Martinique**
+
+✈️ **Arriver :**
+• Aéroport Aimé Césaire — Lamentin
+• Vol Paris : ~8h30
+
+🚗 **Se déplacer :**
+• Location voiture indispensable
+• Taxis collectifs (TC) économiques
+• Ferry Saint-Pierre / Les Trois-Îlets
+
+📅 **Itinéraires :**
+• J1-2 : Fort-de-France + Les Salines
+• J3 : Saint-Pierre (ville engloutie)
+• J4 : Montagne Pelée (randonnée)
+• J5 : Les Salines + Grande Anse
+
+🔗 martinique.org
+Boudoum ! 🇬🇵`,
+    guyane: `🗺️ **Carnet de Route Guyane**
+
+✈️ **Arriver :**
+• Aéroport Félix Eboué — Cayenne
+• Vol Paris : ~9h
+
+🌿 **Incontournables :**
+• Kourou — Base spatiale ESA
+• Îles du Salut — Île du Diable
+• Amazonie guyanaise — Forêt tropicale
+• Marché de Cayenne
+
+⚠️ **Vaccins recommandés :** Fièvre jaune obligatoire
+🦟 **Paludisme :** Prévention nécessaire intérieur
+
+🔗 guyane-amazonie.fr
+Boudoum ! 🇬🇵`
+  }
+  return routes[destination] || routes.guadeloupe
 }
