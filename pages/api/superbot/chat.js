@@ -2619,7 +2619,12 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
     const data = await getActualitesMartinique()
     return res.status(200).json({ pdfAction: null, response: data+"Boudoum ! 🇬🇵" })
   }
-  if ((msgLow.includes('actualite') || msgLow.includes('news') || msgLow.includes('info')) && (msgLow.includes('dom-tom') || msgLow.includes('outremer') || msgLow.includes('antilles') || msgLow.includes('la 1ere'))) {
+  if (msgLow.includes('actualite outremer complet') || msgLow.includes('toutes les actus outremer') || msgLow.includes('actualites outremer')) {
+    const data = await getActualitesOutremerComplet()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  if (msgLow.includes('actualite dom-tom') || msgLow.includes('actualites dom-tom') || msgLow.includes('news dom-tom') || msgLow.includes('actu outremer') || msgLow.includes('la 1ere actualite')) {
     const data = await getActualitesDOMTOM()
     return res.status(200).json({ pdfAction: null, response: data+"Boudoum ! 🇬🇵" })
   }
@@ -9140,3 +9145,46 @@ async function updateUserMemory(userId, key, value) {
 }
 
 
+
+// ===== ACTUALITÉS OUTREMER ENRICHIES =====
+async function getActualitesOutremerComplet() {
+  const sources = [
+    { nom: '🇬🇵 La 1ère Guadeloupe', url: 'https://la1ere.francetvinfo.fr/guadeloupe/feed' },
+    { nom: '🇲🇶 La 1ère Martinique', url: 'https://la1ere.francetvinfo.fr/martinique/feed' },
+    { nom: '🇬🇫 La 1ère Guyane', url: 'https://la1ere.francetvinfo.fr/guyane/feed' },
+    { nom: '🇷🇪 La 1ère Réunion', url: 'https://la1ere.francetvinfo.fr/reunion/feed' },
+    { nom: '🇾🇹 La 1ère Mayotte', url: 'https://la1ere.francetvinfo.fr/mayotte/feed' },
+    { nom: '🌴 Outremers360', url: 'https://outremers360.com/feed' },
+    { nom: '🇬🇵 Bondamanjak', url: 'https://www.bondamanjak.com/feed/' },
+    { nom: '🇷🇪 Zinfos974', url: 'https://www.zinfos974.com/feed' },
+  ]
+
+  let result = "📰 **Actualités Outremer — Temps Réel**\n\n"
+  let found = 0
+
+  for (const source of sources) {
+    try {
+      const r = await fetch(source.url, { 
+        headers: { 'User-Agent': 'Mozilla/5.0' },
+        signal: AbortSignal.timeout(4000)
+      })
+      const xml = await r.text()
+      const items = xml.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0, 2) || []
+      if (items.length > 0) {
+        result += `**${source.nom}**\n`
+        for (const item of items) {
+          const title = item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || item.match(/<title>(.*?)<\/title>/)?.[1] || ''
+          if (title) result += `• ${title}\n`
+        }
+        result += '\n'
+        found++
+      }
+    } catch(e) {}
+  }
+
+  if (found === 0) {
+    return "📰 Actualités Outremer :\n🔗 la1ere.francetvinfo.fr\n🔗 outremers360.com\n🔗 bondamanjak.com\n\nBoudoum ! 🇬🇵"
+  }
+
+  return result + "Boudoum ! 🇬🇵"
+}
