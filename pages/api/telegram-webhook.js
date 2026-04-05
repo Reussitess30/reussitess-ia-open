@@ -1,3 +1,5 @@
+import { detectLanguage } from "./extensions.js"
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(200).json({ ok: true })
   
@@ -102,7 +104,9 @@ export default async function handler(req, res) {
                           { text: '🗺️ Carte', callback_data: 'carte caribéenne lieux historiques' }
                         ],
                         [
-                          { text: '🗺️ Carte Caribéenne', callback_data: 'carte caribéenne lieux historiques' },
+                          { text: '⚖️ Droit DOM-TOM', callback_data: 'aide juridictionnelle dom-tom' },
+                    { text: '💰 Finance', callback_data: 'épargne investissement dom-tom' },
+                    { text: '🗺️ Carte Caribéenne', callback_data: 'carte caribéenne lieux historiques' },
                           { text: '📅 Événements', callback_data: 'événements afro-caribéens' },
                           { text: '🎙️ Podcasts', callback_data: 'podcast caribéen' }
                         ],
@@ -111,11 +115,6 @@ export default async function handler(req, res) {
                           { text: '☀️ Lever Soleil', callback_data: 'lever soleil guadeloupe' },
                           { text: '📺 TV', callback_data: 'programme tv caribbean' },
                           { text: '📊 Observatoire', callback_data: 'observatoire antilles' }
-                        ],
-                        [
-                          { text: '🚀 NASA Photo', callback_data: 'photo nasa du jour' },
-                          { text: '☀️ Lever Soleil', callback_data: 'lever soleil guadeloupe' },
-                          { text: '📺 Programmes TV', callback_data: 'programme tv caribbean' }
                         ],
                         [
                           { text: '📊 Observatoire', callback_data: 'observatoire antilles' },
@@ -145,7 +144,7 @@ export default async function handler(req, res) {
       const firstName = message.from?.first_name || 'Champion'
 
       // Détecter langue
-      const langue = text.match(/[a-zA-ZÀ-ÿ]/) ? 'fr' : 'fr'
+      const langue = detectLanguage(text)
 
       if (text === '/start') {
         await sendMsg(chatId, `🌟 *Bienvenue ${firstName} sur REUSSITESS AI* 🇬🇵

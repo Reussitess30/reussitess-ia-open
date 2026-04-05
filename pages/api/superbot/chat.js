@@ -2535,7 +2535,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // HOROSCOPE
-  if (msgLow.includes("horoscope") || msgLow.includes("signe") || msgLow.includes("astrologie") || msgLow.includes("belier") || msgLow.includes("taureau") || msgLow.includes("gemeaux") || msgLow.includes("cancer") || msgLow.includes("lion") || msgLow.includes("vierge") || msgLow.includes("balance") || msgLow.includes("scorpion") || msgLow.includes("sagittaire") || msgLow.includes("capricorne") || msgLow.includes("verseau") || msgLow.includes("poissons")) {
+  if (msgLow.includes("horoscope") || msgLow.includes("signe") || msgLow.includes("astrologie") || msgLow.includes("belier") || msgLow.includes("taureau") || msgLow.includes("gemeaux") || msgLow.includes("cancer") || msgLow.includes("lion") || msgLow.includes("vierge") || msgLow.includes("balance") || msgLow.includes("scorpion") || msgLow.includes("sagittaire") || msgLow.includes("capricorne") || msgLow.includes("verseau") && !msgLow.includes("coupure") && !msgLow.includes("robinet") && !msgLow.includes("plomberie") || msgLow.includes("poissons")) {
     const h = getHoroscope(msgLow)
     if (h) return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Horoscope du Jour**\n\n"+h.signe+"\n\n"+h.msg+"\n\nBoudoum ! 🇬🇵" })
     return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Horoscope du Jour**\n\nPrécise ton signe : Bélier, Taureau, Gémeaux, Cancer, Lion, Vierge, Balance, Scorpion, Sagittaire, Capricorne, Verseau ou Poissons ?\n\nBoudoum ! 🇬🇵" })
@@ -4561,6 +4561,17 @@ export default async function handler(req, res) {
   }
 
   // LEVER COUCHER SOLEIL
+
+  // ===== EXTENSIONS: JURIDIQUE, FINANCE, DONNÉES TEMPS RÉEL =====
+  const droitReponse = getDroitDOMTOM(message)
+  if (droitReponse) return res.status(200).json({ pdfAction: null, response: droitReponse })
+
+  const financeReponse = await getFinanceAvancee(message)
+  if (financeReponse) return res.status(200).json({ pdfAction: null, response: financeReponse })
+
+  const donneesReponse = await getDonneesTempsReel(message)
+  if (donneesReponse) return res.status(200).json({ pdfAction: null, response: donneesReponse })
+
   if (msgLow.includes('lever soleil') || msgLow.includes('coucher soleil') || msgLow.includes('heure soleil') || msgLow.includes('aube') || msgLow.includes('crepuscule')) {
     const data = await getLeverCoucherSoleil(16.2411, -61.5331, 'Guadeloupe')
     if (data) return res.status(200).json({ pdfAction: null, response: data })
@@ -7336,7 +7347,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // HOROSCOPE
-  if (msgLow.includes("horoscope") || msgLow.includes("signe") || msgLow.includes("astrologie") || msgLow.includes("belier") || msgLow.includes("taureau") || msgLow.includes("gemeaux") || msgLow.includes("cancer") || msgLow.includes("lion") || msgLow.includes("vierge") || msgLow.includes("balance") || msgLow.includes("scorpion") || msgLow.includes("sagittaire") || msgLow.includes("capricorne") || msgLow.includes("verseau") || msgLow.includes("poissons")) {
+  if (msgLow.includes("horoscope") || msgLow.includes("signe") || msgLow.includes("astrologie") || msgLow.includes("belier") || msgLow.includes("taureau") || msgLow.includes("gemeaux") || msgLow.includes("cancer") || msgLow.includes("lion") || msgLow.includes("vierge") || msgLow.includes("balance") || msgLow.includes("scorpion") || msgLow.includes("sagittaire") || msgLow.includes("capricorne") || msgLow.includes("verseau") && !msgLow.includes("coupure") && !msgLow.includes("robinet") && !msgLow.includes("plomberie") || msgLow.includes("poissons")) {
     const h = getHoroscope(msgLow)
     if (h) return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Horoscope du Jour**\n\n"+h.signe+"\n\n"+h.msg+"\n\nBoudoum ! 🇬🇵" })
     return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Horoscope du Jour**\n\nPrécise ton signe : Bélier, Taureau, Gémeaux, Cancer, Lion, Vierge, Balance, Scorpion, Sagittaire, Capricorne, Verseau ou Poissons ?\n\nBoudoum ! 🇬🇵" })
