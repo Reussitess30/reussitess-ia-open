@@ -672,7 +672,7 @@ export default function SuperBotAssistant() {
                   }
                   setIsLoading(false)
                   if (text.trim().length > 10) {
-                    submitMessage('📄 Analyse ce document PDF (' + pdf.numPages + ' pages):\n\n' + text.substring(0, 1000))
+                    submitMessage('📄 PDF_UPLOAD Analyse ce document PDF (' + pdf.numPages + ' pages):\n\n' + text.substring(0, 1000))
                   } else {
                     alert('PDF illisible. Copie-colle le texte directement.')
                   }

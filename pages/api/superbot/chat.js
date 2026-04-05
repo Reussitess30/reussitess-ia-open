@@ -4554,6 +4554,13 @@ export default async function handler(req, res) {
   }
   const msgLow = message.toLowerCase()
 
+  // DETECTION PDF UPLOAD PRIORITAIRE
+  if (message.includes("PDF_UPLOAD")) {
+    const pdfContent = message.replace("📄 PDF_UPLOAD ", "")
+    const groqText = await groqFetch([{ role: "system", content: "Tu es REUSSITESS AI. Analyse ce document PDF et réponds en français. Boudoum!" }, { role: "user", content: pdfContent }], 2048)
+    return res.status(200).json({ pdfAction: null, response: "📄 **Analyse Document**\n\n" + (groqText || "Document analysé !") + "\n\nBoudoum ! 🇬🇵" })
+  }
+
   // NASA PHOTO DU JOUR
   if (msgLow.includes('nasa') || msgLow.includes('photo nasa') || msgLow.includes('image nasa') || msgLow.includes('photo jour nasa')) {
     const data = await getNASAPhotoJour()
