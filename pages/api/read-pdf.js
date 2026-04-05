@@ -1,5 +1,4 @@
 import Busboy from 'busboy'
-import pdfParse from 'pdf-parse'
 
 export const config = { api: { bodyParser: false, sizeLimit: '10mb' } }
 
@@ -24,6 +23,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'PDF non reçu' })
     }
 
+    const pdfParse = (await import('pdf-parse')).default
     const data = await pdfParse(pdfBuffer)
     const text = data.text?.trim().substring(0, 5000) || ''
 
