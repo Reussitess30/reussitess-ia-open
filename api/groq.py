@@ -34,4 +34,17 @@ def handle_prompt(prompt):
         result = cache.get("afrocaraibeen_knowledge", {}).get("biographies", "")
     else:
         result = "⚠️ Info non disponible"
+    elif "donnée ajoutée" in prompt.lower():
+        with open(CACHE_FILE, "r+", encoding="utf-8") as f:
+            data = json.load(f)
+            data.setdefault("user_contributions", []).append(prompt)
+            f.seek(0)
+            json.dump(data, f, indent=2, ensure_ascii=False)
+        with open("notifications.log", "a") as log:
+            log.write("Donnée Ajoutée: " + prompt + "\n")
+
+            f.truncate()
+
+        result = "✅ Donnée reçue et ajoutée au système REUSSITESS AI. Merci pour ta contribution."
+
     return result
