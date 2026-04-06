@@ -9727,3 +9727,275 @@ function getTraductionCreole(mot = '') {
   const liste = Object.entries(dico).slice(0, 5).map(([fr, cr]) => `• ${fr} → **${cr.creole}** [${cr.phonetique}]`).join('\n')
   return `🗣️ **Dictionnaire Créole Guadeloupéen**\n\n${liste}\n\n💡 Demande "traduction créole [mot]" pour traduire!\n\nBoudoum ! 🇬🇵`
 }
+
+// ===== MÉDECINE NATURELLE CARIBÉENNE =====
+function getMedecineNaturelle(plante = '') {
+  const plantes = {
+    'citronnelle': {
+      nom: 'Citronnelle (Lemongrass)',
+      usage: 'Fièvre, maux de tête, stress, insomnie',
+      preparation: 'Infusion 10 min, 3 feuilles dans eau bouillante',
+      precautions: 'Éviter pendant grossesse'
+    },
+    'verveine': {
+      nom: 'Verveine citronnée',
+      usage: 'Digestion, anxiété, insomnie',
+      preparation: 'Infusion 5 min, 5 feuilles fraîches',
+      precautions: 'Pas plus de 2 tasses/jour'
+    },
+    'gingembre': {
+      nom: 'Gingembre (Jenjanm)',
+      usage: 'Nausées, digestion, douleurs, anti-inflammatoire',
+      preparation: 'Infusion racine râpée + citron + miel',
+      precautions: 'Éviter si anticoagulants'
+    },
+    'moringa': {
+      nom: 'Moringa (Benzolive)',
+      usage: 'Malnutrition, énergie, anti-oxydant, diabète',
+      preparation: 'Poudre feuilles séchées dans smoothie ou soupe',
+      precautions: 'Dose max 2g/jour poudre'
+    },
+    'aloe vera': {
+      nom: 'Aloe Vera (Lalwa)',
+      usage: 'Brûlures, peau, constipation, cicatrisation',
+      preparation: 'Gel feuille fraîche application directe',
+      precautions: 'Ne pas ingérer latex jaune'
+    },
+    'corossol': {
+      nom: 'Corossol (Graviola)',
+      usage: 'Insomnie, hypertension, anti-parasitaire',
+      preparation: 'Infusion feuilles 15 min',
+      precautions: 'Ne pas consommer en excès - études en cours'
+    },
+    'basilic': {
+      nom: 'Basilic tropical',
+      usage: 'Digestion, stress, antiseptique, maux de gorge',
+      preparation: 'Infusion ou mâcher feuilles fraîches',
+      precautions: 'Aucune connue en usage normal'
+    },
+    'curcuma': {
+      nom: 'Curcuma (Safran péyi)',
+      usage: 'Anti-inflammatoire, articulations, digestion, immunité',
+      preparation: 'Lait doré : curcuma + poivre noir + lait coco',
+      precautions: 'Éviter si calculs biliaires'
+    }
+  }
+
+  const planteLow = plante.toLowerCase().trim()
+  if (planteLow && plantes[planteLow]) {
+    const p = plantes[planteLow]
+    return `🌿 **${p.nom} — Médecine Naturelle Caribéenne**
+
+✅ **Usages :** ${p.usage}
+🍵 **Préparation :** ${p.preparation}
+⚠️ **Précautions :** ${p.precautions}
+
+💡 Consultez un médecin avant tout traitement.
+Boudoum ! 🇬🇵`
+  }
+
+  const liste = Object.entries(plantes).map(([k, v]) => `• **${v.nom}** — ${v.usage.split(',')[0]}`).join('\n')
+  return `🌿 **Médecine Naturelle Caribéenne — Pharmacopée**
+
+${liste}
+
+💡 Demandez "médecine naturelle [plante]" pour plus de détails !
+⚠️ Ces informations ne remplacent pas un avis médical.
+
+🔗 pharmacopee-caribbeenne.fr
+Boudoum ! 🇬🇵`
+}
+
+// ===== TRADUCTION MULTILINGUE =====
+async function getTraductionMultilingue(texte, langCible = 'en') {
+  try {
+    // Utiliser MyMemory API gratuite
+    const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(texte)}&langpair=fr|${langCible}`, {
+      signal: AbortSignal.timeout(5000)
+    })
+    const data = await res.json()
+    const traduction = data.responseData?.translatedText
+
+    const langues = {
+      'en': '🇬🇧 Anglais',
+      'es': '🇪🇸 Espagnol', 
+      'pt': '🇧🇷 Portugais',
+      'de': '🇩🇪 Allemand',
+      'it': '🇮🇹 Italien',
+      'zh': '🇨🇳 Chinois',
+      'ar': '🇸🇦 Arabe',
+      'ht': '🇭🇹 Créole Haïtien',
+    }
+
+    if (traduction) {
+      return `🌍 **Traduction — ${langues[langCible] || langCible}**
+
+🇫🇷 Original : "${texte}"
+${langues[langCible] || langCible} : **"${traduction}"**
+
+🔗 Source : MyMemory Translation API
+Boudoum ! 🇬🇵`
+    }
+    return null
+  } catch(e) { return null }
+}
+
+// ===== DOM-TOM ENRICHI =====
+function getDOMTOMEnrichi(territoire = '') {
+  const data = {
+    guadeloupe: `🇬🇵 **Guadeloupe — Guide Complet**
+
+📊 **Chiffres clés :**
+• Population : 380 000 habitants
+• Superficie : 1 628 km²
+• Chef-lieu : Basse-Terre
+• Plus grande ville : Les Abymes
+• PIB/hab : ~22 000€
+
+🏛️ **Organisation :**
+• Région + Département (fusion impossible)
+• 32 communes
+• 3 arrondissements
+
+🌴 **Économie :**
+• Tourisme : 700 000 visiteurs/an
+• Banane, canne à sucre, rhum
+• Pêche artisanale
+• Économie bleue en développement
+
+🎭 **Traditions :**
+• Gwoka (UNESCO 2014)
+• Carnaval (Février-Mars)
+• Fête des cuisinières (Août)
+• Toussaint lumineuse
+
+🌋 **Géographie :**
+• Grande-Terre (calcaire, plages)
+• Basse-Terre (volcan, forêt)
+• Marie-Galante, Les Saintes, La Désirade
+
+Boudoum ! 🇬🇵`,
+
+    martinique: `🇲🇶 **Martinique — Guide Complet**
+
+📊 **Chiffres clés :**
+• Population : 350 000 habitants
+• Superficie : 1 128 km²
+• Chef-lieu : Fort-de-France
+• PIB/hab : ~21 000€
+
+🎭 **Traditions :**
+• Biguine, Zouk, Mazurka
+• Carnaval (Février)
+• Fête du rhum agricole
+
+🌋 **Géographie :**
+• Montagne Pelée (1 397m)
+• Presqu'île de Caravelle
+• Les Salines (plage paradisiaque)
+
+Boudoum ! 🇬🇵`,
+
+    guyane: `🇬🇫 **Guyane — Guide Complet**
+
+📊 **Chiffres clés :**
+• Population : 300 000 habitants
+• Superficie : 83 534 km² (plus grand DOM)
+• Chef-lieu : Cayenne
+• 90% de forêt amazonienne
+
+🚀 **Spécificités :**
+• Base spatiale de Kourou (ESA/Ariane)
+• Biodiversité exceptionnelle
+• Or artisanal (orpaillage)
+• Frontières : Brésil + Suriname
+
+🌿 **Nature :**
+• Parc Amazonien de Guyane
+• Îles du Salut
+• Marais de Kaw
+
+Boudoum ! 🇬🇵`,
+
+    reunion: `🇷🇪 **Réunion — Guide Complet**
+
+📊 **Chiffres clés :**
+• Population : 900 000 habitants
+• Superficie : 2 512 km²
+• Chef-lieu : Saint-Denis
+• PIB/hab : ~23 000€
+
+🌋 **Géographie :**
+• Piton de la Fournaise (volcan actif)
+• 3 cirques (Mafate, Cilaos, Salazie) — UNESCO
+• Point culminant : Piton des Neiges (3 070m)
+
+🎭 **Culture :**
+• Maloya (UNESCO)
+• Séga
+• Cuisine créole réunionnaise
+
+Boudoum ! 🇬🇵`
+  }
+
+  if (territoire && data[territoire]) return data[territoire]
+  
+  return `🌍 **DOM-TOM France — Vue d'ensemble**
+
+🇬🇵 Guadeloupe — 380 000 hab | Antilles
+🇲🇶 Martinique — 350 000 hab | Antilles  
+🇬🇫 Guyane — 300 000 hab | Amazonie
+🇷🇪 Réunion — 900 000 hab | Océan Indien
+🇾🇹 Mayotte — 320 000 hab | Océan Indien
+🇳🇨 Nouvelle-Calédonie — 270 000 hab | Pacifique
+🇵🇫 Polynésie française — 280 000 hab | Pacifique
+
+💡 Demandez "dom-tom [territoire]" pour plus d'infos !
+Boudoum ! 🇬🇵`
+}
+
+// ===== BLOCKCHAIN ENRICHI =====
+async function getBlockchainInfo(sujet = '') {
+  try {
+    // Prix REUSS sur DexScreener
+    const reussRes = await fetch('https://api.dexscreener.com/latest/dex/tokens/0xB37531727fC07c6EED4f97F852A115B428046EB2', {
+      signal: AbortSignal.timeout(5000)
+    })
+    const reussData = await reussRes.json()
+    const pair = reussData.pairs?.[0]
+
+    // Prix crypto
+    const cryptoRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=usd&include_24hr_change=true')
+    const crypto = await cryptoRes.json()
+
+    return `⛓️ **Blockchain & Crypto — Dashboard**
+
+💎 **Token REUSS (Polygon) :**
+• Contrat : 0xB375...EB2
+• Prix : $${pair?.priceUsd || 'N/A'}
+• Volume 24h : $${pair?.volume?.h24?.toLocaleString() || 'N/A'}
+• 🔗 QuickSwap | DexScreener | PolygonScan
+
+₿ **Bitcoin :** $${crypto.bitcoin?.usd?.toLocaleString()} (${crypto.bitcoin?.usd_24h_change?.toFixed(2)}%)
+Ξ **Ethereum :** $${crypto.ethereum?.usd?.toLocaleString()} (${crypto.ethereum?.usd_24h_change?.toFixed(2)}%)
+⬡ **Polygon :** $${crypto['matic-network']?.usd?.toFixed(4)} (${crypto['matic-network']?.usd_24h_change?.toFixed(2)}%)
+
+🏦 **Outils blockchain :**
+• Scanner : polygonscan.com
+• DEX : quickswap.exchange
+• Sécurité : revoke.cash
+• Honeypot : honeypot.is
+• NFT : opensea.io
+
+📚 **Lexique rapide :**
+• Wallet : Portefeuille crypto
+• DEX : Exchange décentralisé
+• Staking : Mettre crypto en dépôt pour gains
+• DAO : Organisation autonome décentralisée
+• NFT : Token non fongible unique
+
+Boudoum ! 🇬🇵`
+  } catch(e) {
+    return `⛓️ **Blockchain REUSSITESS**\n\n💎 Token REUSS sur Polygon\n🔗 reussitess.fr/investir-reuss\n\nBoudoum ! 🇬🇵`
+  }
+}
