@@ -134,6 +134,16 @@ export default async function handler(req, res) {
                     { text: '📊 Finance', callback_data: 'analyse financière' },
                     { text: '⚖️ Entreprise', callback_data: 'créer entreprise guadeloupe' },
                     { text: '🗣️ Créole', callback_data: 'dictionnaire créole' }
+                  ],
+                  [
+                    { text: '🌿 Médecine Naturelle', callback_data: 'médecine naturelle caribéenne' },
+                    { text: '🌍 Traduction', callback_data: 'traduis bonjour en anglais' },
+                    { text: '🏝️ DOM-TOM Info', callback_data: 'dom-tom guadeloupe' }
+                  ],
+                  [
+                    { text: '⛓️ Blockchain', callback_data: 'dashboard crypto' },
+                    { text: '🌋 Séismes Historiques', callback_data: 'séismes historiques caraïbes' },
+                    { text: '🗺️ Carnet Route', callback_data: 'carnet de route guadeloupe' }
         ]
       ]
     }
