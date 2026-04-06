@@ -71,18 +71,6 @@
       "response": "⚡ **Optimiser Groq dans REUSSITESS AI**\n\n**1. Multi-agents en parallèle**\nGroq = latence ultra faible → lance plusieurs appels simultanés\n• Agent compréhension → Agent recherche → Agent génération\n\n**2. RAG optimisé**\n• Knowledge.json = ta base RAG locale\n• Ajoute embeddings + reranking\n• Cache Redis des réponses fréquentes ✅ déjà en place\n\n**3. Self-consistency**\n• 3 réponses Groq → vote → meilleure réponse\n• Réduit les hallucinations de 40%\n\n**4. Prompt dynamique**\n• Adapte selon pays/langue/niveau utilisateur ✅ déjà en place\n• Injecte historique conversation ✅ déjà en place\n\n**5. Fallback intelligent**\n• Groq → OpenRouter → Cerebras ✅ déjà en place\n\n**6. Évaluation automatique**\n• Mesure taux hallucination\n• Score satisfaction utilisateur\n\n📊 reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
     },
     {
-      "trigger": "lever soleil",
-      "response": "☀️ Tape 'lever soleil guadeloupe' pour connaître les heures de lever et coucher du soleil en Guadeloupe aujourd'hui !\nBoudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "programme tv",
-      "response": "📺 Tape 'programme tv caribbean' pour voir les séries et émissions TV caribéennes disponibles !\nBoudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "coucher soleil",
-      "response": "🌇 Tape 'lever soleil guadeloupe' pour connaître les heures de lever et coucher du soleil en Guadeloupe !\nBoudoum ! 🇬🇵"
-    },
-    {
       "trigger": "lire pdf",
       "response": "📄 **Lecture PDF**\n\nClique sur le bouton 📄 dans la barre de saisie → envoie ton PDF → le bot l'analyse et répond !\n\nFonctionne avec : contrats, CV, rapports, documents texte.\nBoudoum ! 🇬🇵"
     },
@@ -165,10 +153,6 @@
     {
       "trigger": "aide utilisation",
       "response": "🤖 **GUIDE REUSSITESS AI — Tout ce que tu peux faire**\n\n🌍 **ÉCOSYSTÈME COMPLET :**\n\n📊 **Observatoire** → reussitess.fr/observatoire-antilles\nDonnées économiques DOM-TOM en temps réel\n\n🗺️ **Carte Caribéenne** → reussitess.fr/carte-caribeenne\n15 lieux historiques afro-caribéens\n\n📅 **Événements** → reussitess.fr/evenements\nFestivals, commémorations, carnavals\n\n🤝 **Communauté** → reussitess.fr/communaute\nForum diaspora afro-caribéenne\n\n🎙️ **Podcasts** → reussitess.fr/podcasts-creoles\nVoix caribéennes en audio\n\n🎓 **Académie** → reussitess.fr/academie\n6 cours gratuits créole, culture, business, IA\n\n🛒 **Marketplace** → reussitess.fr/marketplace\nProduits locaux caribéens\n\n📻 **Radio** → reussitess.fr/radio\nStations caribéennes en direct\n\n🌍 **Visa Universel** → reussitess.fr/visa-universel\nPasseport numérique mondial REUSSITESS\n\n💎 **Token REUSS** → reussitess.fr/investir-reuss\nBlockchain Polygon — acheter REUSS\n\n🛍️ **Boutiques Amazon** → reussitess.fr/boutiques\n26 boutiques dans 14 pays\n\n📱 **Télécharger APK** → reussitess.fr/telecharger\nApplication Android avec voix\n\n🏆 **Champions** → reussitess.fr/champions\nPasseport de Réussite certifié\n\n🔮 **Oracle 971** → reussitess.fr/oracle-971\nSagesse caribéenne mystique\n\n📚 **Bibliothèque** → reussitess.fr/bibliotheque\n1,5M+ livres gratuits\n\n💬 **Bot Telegram** → t.me/Reussitessbot\nToutes les fonctions sur Telegram\n\nBoudoum ! 🇬🇵✨"
-    },
-    {
-      "trigger": "menu",
-      "response": "📋 Tape **aide utilisation** pour voir tous les liens et fonctions de REUSSITESS AI !\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "écosystème reussitess",
