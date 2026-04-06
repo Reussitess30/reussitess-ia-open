@@ -375,7 +375,7 @@ async function groqFetchWithTools(messages, systemPrompt) {
       const args = JSON.parse(toolCall.function.arguments || '{}')
       
       let toolResult = ""
-      if (fnName === "get_meteo") toolResult = await getMeteoDOMTOM(args.commune)
+      if (fnName === "get_meteo") toolResult = await getMeteoMonde(args.commune)
       else if (fnName === "get_seismes") toolResult = await getSeismesAntilles()
       else if (fnName === "get_cyclones") toolResult = await getCyclones()
       else if (fnName === "get_devises") toolResult = await getDevisesAfriqueCaraibe()
@@ -5102,7 +5102,7 @@ export default async function handler(req, res) {
   if (msgLow.includes('meteo') || msgLow.includes('météo') || msgLow.includes('température') || msgLow.includes('temperature') || msgLow.includes('quel temps') || msgLow.includes('climat')) {
     const commune_raw = message.replace(/meteo|météo|température|temperature|quel temps|climat|open|api|data/gi,'').trim()
     const commune = commune_raw.length > 2 ? commune_raw : 'Pointe-à-Pitre'
-    const data = await getMeteoDOMTOM(commune)
+    const data = await getMeteoMonde(commune)
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
@@ -5443,7 +5443,7 @@ Boudoum ! 🇬🇵`})
   // ============ METEO COMMUNES ============
   if (msgLow.includes('meteo') || msgLow.includes('temperature') || msgLow.includes('quel temps')) {
     const commune = msgLow.includes('fort-de-france')||msgLow.includes('martinique') ? 'fort-de-france' : msgLow.includes('cayenne')||msgLow.includes('guyane') ? 'cayenne' : msgLow.includes('saint-denis')||msgLow.includes('reunion') ? 'saint-denis' : msgLow.includes('basse-terre') ? 'basse-terre' : 'pointe-a-pitre'
-    const data = await getMeteoDOMTOM(commune)
+    const data = await getMeteoMonde(commune)
     return res.status(200).json({ pdfAction: null, response: "Meteo DOM-TOM\n\n"+(data||"Info en chargement — réessaie ! Boudoum 🇬🇵")+"\n\nSource: Open-Meteo\nBoudoum ! 🇬🇵" })
   }
     // NASA PHOTO DU JOUR
