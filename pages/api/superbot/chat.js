@@ -5497,14 +5497,51 @@ Boudoum ! 🇬🇵`})
 
   // ============ ACTUALITES GUADELOUPE ============
   if (msgLow.includes('actualite guadeloupe') || msgLow.includes('actualités guadeloupe') || msgLow.includes('news guadeloupe') || msgLow.includes('info guadeloupe')) {
-    const data = await getActualitesOutremerComplet()
-    return res.status(200).json({ pdfAction: null, response: data+"Boudoum ! 🇬🇵" })
+    const actu = await getActualitesGuadeloupe()
+    const meteo = await getMeteoMonde('Guadeloupe')
+    const response = `🇬🇵 **ENCYCLOPÉDIE REUSSITESS — Guadeloupe**
+
+${meteo || ''}
+
+📰 **Actualités :**
+${actu || ''}
+
+🏛️ **Élus :**
+• Région : Ary Chalus
+• Département : Guy Losbar  
+• Maire PAP : Harry Durimel
+
+🌐 **Liens utiles :**
+• regionguadeloupe.fr
+• la1ere.francetvinfo.fr/guadeloupe
+• rci.fm/guadeloupe
+
+Boudoum ! 🇬🇵`
+    return res.status(200).json({ pdfAction: null, response })
   }
 
   // ============ ACTUALITES MARTINIQUE ============
   if (msgLow.includes('actualite martinique') || msgLow.includes('actualités martinique') || msgLow.includes('news martinique') || msgLow.includes('info martinique')) {
-    const data = await getActualitesOutremerComplet()
-    return res.status(200).json({ pdfAction: null, response: data+"Boudoum ! 🇬🇵" })
+    const actu = await getActualitesMartinique()
+    const meteo = await getMeteoMonde('Martinique')
+    const response = `🇲🇶 **ENCYCLOPÉDIE REUSSITESS — Martinique**
+
+${meteo || ''}
+
+📰 **Actualités :**
+${actu || ''}
+
+🏛️ **Élus :**
+• CTM : Serge Letchimy
+• Assemblée : Lucien Saliber
+
+🌐 **Liens utiles :**
+• collectivitedemartinique.mq
+• la1ere.francetvinfo.fr/martinique
+• rci.fm/martinique
+
+Boudoum ! 🇬🇵`
+    return res.status(200).json({ pdfAction: null, response })
   }
 
   // ============ ACTUALITES DOM-TOM ============
