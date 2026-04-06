@@ -1,21 +1,27 @@
 {
-  "afrocaraibeen_knowledge": {
-    "limitations_bot": "Bonjour ! En tant que REUSSITESS AI... Contact : influenceur@reussitess.fr",
-    "data_add": "Utilise 'Donnée Ajoutée :' pour enrichir le bot.",
-    "feedback": "Merci pour ton retour ! Il sera utilisé pour améliorer REUSSITESS AI.",
-    "update_info": "Merci pour la mise à jour, elle est prise en compte.",
-    "resources": "Ressource enregistrée avec succès.",
-    "questions": "Ta question est enregistrée pour améliorer le système."
-  },
-  "user_contributions": [],
-  "user_feedback": [],
-  "user_updates": [],
-  "user_resources": [],
-  "user_questions": [],
-  "reussitess_ai_info": [
-    {
-      "title": "Donnée Ajoutée",
-      "url": "https://lien.vers.la.ressource"
-    }
-  ]
+    "afrocaraibeen_knowledge": {
+        "limitations_bot": "Bonjour ! En tant que REUSSITESS AI... Contact : influenceur@reussitess.fr",
+        "data_add": "Utilise 'Donnée Ajoutée :' pour enrichir le bot.",
+        "feedback": "Merci pour ton retour ! Il sera utilisé pour améliorer REUSSITESS AI.",
+        "update_info": "Merci pour la mise à jour, elle est prise en compte.",
+        "resources": "Ressource enregistrée avec succès.",
+        "questions": "Ta question est enregistrée pour améliorer le système.",
+        "afro_cineverse": "AfroCineVerse : plateforme d'apprentissage interactive sur le cinéma caribéen, avec films, acteurs, réalisateurs, jeux et défis.",
+        "ia_caribeenne": "IA Caribéenne : intelligence artificielle conversationnelle répondant aux questions et fournissant recommandations sur le cinéma caribéen.",
+        "realite_virtuelle_caribeenne": "Réalité Virtuelle Caribéenne : espace immersif pour explorer paysages, lieux mythiques, festivals et événements culturels caribéens.",
+        "cine_cahier": "Cinécahier : collection numérique de documents et ressources audiovisuelles sur le cinéma caribéen, interviews, documentaires et films rares.",
+        "caribbean_film_festival": "Caribbean Film Festival : événement annuel en ligne où films, documentaires et courts-métrages caribéens sont projetés et discutés en temps réel.",
+        "caribbean_film_academy": "Caribbean Film Academy : programme de formation et de mentorat pour jeunes créateurs de cinéma caribéen, apprentissage des techniques et élaboration de projets."
+    },
+    "user_contributions": [],
+    "user_feedback": [],
+    "user_updates": [],
+    "user_resources": [],
+    "user_questions": [],
+    "reussitess_ai_info": [
+        {
+            "title": "Donnée Ajoutée",
+            "url": "https://lien.vers.la.ressource"
+        }
+    ]
 }
