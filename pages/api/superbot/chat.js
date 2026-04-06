@@ -2060,6 +2060,21 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // RECETTE ANTILLAISE
+  if (msgLow.includes("musique caribéenne") || msgLow.includes("gwoka") || msgLow.includes("zouk history") || msgLow.includes("biguine") || msgLow.includes("kompa") || msgLow.includes("genre musical caribéen")) {
+    const genre = message.replace(/musique caribéenne|genre musical caribéen/gi, "").trim()
+    return res.status(200).json({ pdfAction: null, response: getMusiqueCaribéenne(genre) })
+  }
+
+  if (msgLow.includes("bibliothèque caribéenne") || msgLow.includes("césaire") || msgLow.includes("fanon") || msgLow.includes("glissant") || msgLow.includes("mckay") || msgLow.includes("condé auteur")) {
+    const auteur = message.replace(/bibliothèque caribéenne|auteur caribéen/gi, "").trim()
+    const data = await getBibliothèqueCaribéenne(auteur)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  if (msgLow.includes("événements caribéens") || msgLow.includes("evenements caribéens") || msgLow.includes("agenda caribéen") || msgLow.includes("festival caraïbes") || msgLow.includes("calendrier culturel")) {
+    return res.status(200).json({ pdfAction: null, response: getEvenementsCaribéens() })
+  }
+
   if (msgLow.includes("recette") || msgLow.includes("comment cuisiner") || msgLow.includes("comment préparer") || msgLow.includes("accras") || msgLow.includes("colombo") || msgLow.includes("blaff") || msgLow.includes("court-bouillon")) {
     try {
       const groqText = await groqFetch([
@@ -7008,6 +7023,21 @@ Boudoum ! 🇬🇵`})
   }
 
   // RECETTE ANTILLAISE
+  if (msgLow.includes("musique caribéenne") || msgLow.includes("gwoka") || msgLow.includes("zouk history") || msgLow.includes("biguine") || msgLow.includes("kompa") || msgLow.includes("genre musical caribéen")) {
+    const genre = message.replace(/musique caribéenne|genre musical caribéen/gi, "").trim()
+    return res.status(200).json({ pdfAction: null, response: getMusiqueCaribéenne(genre) })
+  }
+
+  if (msgLow.includes("bibliothèque caribéenne") || msgLow.includes("césaire") || msgLow.includes("fanon") || msgLow.includes("glissant") || msgLow.includes("mckay") || msgLow.includes("condé auteur")) {
+    const auteur = message.replace(/bibliothèque caribéenne|auteur caribéen/gi, "").trim()
+    const data = await getBibliothèqueCaribéenne(auteur)
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
+  if (msgLow.includes("événements caribéens") || msgLow.includes("evenements caribéens") || msgLow.includes("agenda caribéen") || msgLow.includes("festival caraïbes") || msgLow.includes("calendrier culturel")) {
+    return res.status(200).json({ pdfAction: null, response: getEvenementsCaribéens() })
+  }
+
   if (msgLow.includes("recette") || msgLow.includes("comment cuisiner") || msgLow.includes("comment préparer") || msgLow.includes("accras") || msgLow.includes("colombo") || msgLow.includes("blaff") || msgLow.includes("court-bouillon")) {
     try {
       const groqText = await groqFetch([
@@ -10052,4 +10082,250 @@ Boudoum ! 🇬🇵`
   } catch(e) {
     return `⛓️ **Blockchain REUSSITESS**\n\n💎 Token REUSS sur Polygon\n🔗 reussitess.fr/investir-reuss\n\nBoudoum ! 🇬🇵`
   }
+}
+
+// ===== MUSIQUE CARIBÉENNE ENRICHIE =====
+function getMusiqueCaribéenne(genre = '') {
+  const musiques = {
+    gwoka: `🥁 **Gwoka — Patrimoine UNESCO Guadeloupe**
+
+🎵 **Histoire :**
+Le Gwoka est né de la résistance des esclaves africains en Guadeloupe. Classé au patrimoine immatériel UNESCO en 2014.
+
+🎶 **Les 7 rythmes :**
+• Lewoz — célébration, liberté
+• Kaladja — travail des champs
+• Toumblak — combat, résistance
+• Graj — séduction
+• Mendé — deuil, spiritualité
+• Padjanbèl — joie, fête
+• Woulé — danse collective
+
+🎤 **Artistes emblématiques :**
+• Jacob Desvarieux (Kassav)
+• Gwo Ka Masters
+• Vélo, Carnot, Hector Pibo
+
+🔗 gwoka.org
+Boudoum ! 🇬🇵`,
+
+    zouk: `🎵 **Zouk — La Musique des Antilles**
+
+🎶 **Histoire :**
+Né en 1979 avec le groupe Kassav fondé par Jacob Desvarieux et Georges Décimus. Le mot "zouk" signifie "fête" en créole.
+
+🎤 **Artistes légendaires :**
+• Kassav — créateurs du zouk
+• Francky Vincent — zouk love
+• Edith Lefel — voix d'or
+• Jocelyne Béroard — diva du zouk
+• Admiral T — zouk moderne
+
+💿 **Albums incontournables :**
+• Kassav — Zouk la sé sèl médikaman (1984)
+• Francky Vincent — Zouk is the only medicine
+• Jacob Desvarieux — Ambassadeur du zouk
+
+🌍 Présent dans 50+ pays !
+Boudoum ! 🇬🇵`,
+
+    kompa: `🎺 **Kompa — Rythme National Haïtien**
+
+🎶 **Histoire :**
+Créé par Nemours Jean-Baptiste en 1955 en Haïti. Le kompa est le rythme national haïtien influencé par le merengue et la biguine.
+
+🎤 **Artistes :**
+• Nemours Jean-Baptiste — fondateur
+• Tabou Combo — légende mondiale
+• Sweet Micky (Michel Martelly) — ex-président Haïti
+• Nu Look — kompa moderne
+• BélO — kompa fusion
+
+🌍 Influencé : Guadeloupe, Martinique, diaspora mondiale
+Boudoum ! 🇬🇵`,
+
+    reggae: `🌿 **Reggae — Voix de la Résistance**
+
+🎶 **Histoire :**
+Né en Jamaïque dans les années 1960. Bob Marley en est l'ambassadeur mondial. Classé UNESCO en 2018.
+
+🎤 **Artistes caribéens :**
+• Bob Marley — légende mondiale
+• Peter Tosh — militant
+• Jimmy Cliff — The Harder They Come
+• Burning Spear — roots reggae
+• Sizzla — dancehall roots
+
+🌍 **Influence caribéenne :**
+• Guadeloupe : Admiral T, Yaniss Odua
+• Martinique : Dub Incorporation
+• Réunion : Ti-Coconut
+
+Boudoum ! 🇬🇵`,
+
+    biguine: `🎷 **Biguine — Jazz Antillais**
+
+🎶 **Histoire :**
+Née en Martinique au XIXe siècle, la biguine est arrivée à Paris dans les années 1920 avec Alexandre Stellio.
+
+🎤 **Artistes :**
+• Alexandre Stellio — père de la biguine
+• Léona Gabriel-Soïme — voix légendaire
+• Robert Mavounzy — clarinettiste
+• Malavoi — biguine moderne
+
+📍 **Lieux cultes :**
+• Tropiques Atrium — Fort-de-France
+• Festival Biguine Jazz Martinique (Mai)
+
+Boudoum ! 🇬🇵`
+  }
+
+  const genreLow = genre.toLowerCase().trim()
+  for (const [key, content] of Object.entries(musiques)) {
+    if (genreLow.includes(key)) return content
+  }
+
+  return `🎵 **Musique Caribéenne — Guide Complet**
+
+🥁 **Genres emblématiques :**
+• Gwoka — Guadeloupe (UNESCO 2014)
+• Zouk — Antilles françaises (Kassav 1979)
+• Biguine — Martinique (XIXe siècle)
+• Kompa — Haïti (Nemours Jean-Baptiste)
+• Soca — Trinidad & Tobago
+• Reggae — Jamaïque (UNESCO 2018)
+• Calypso — Trinidad
+• Gwo Ka — Guadeloupe
+
+🎤 **Légendes :**
+• Kassav, Bob Marley, Mighty Sparrow
+• Edith Lefel, Jocelyne Béroard
+• Jacob Desvarieux, Tabou Combo
+
+💡 Demandez "musique [genre]" pour plus d'infos !
+Boudoum ! 🇬🇵`
+}
+
+// ===== BIBLIOTHÈQUE CARIBÉENNE ENRICHIE =====
+async function getBibliothèqueCaribéenne(auteur = '') {
+  const auteurs = {
+    'césaire': {
+      nom: 'Aimé Césaire (1913-2008)',
+      origine: 'Martinique 🇲🇶',
+      oeuvres: ['Cahier d\'un retour au pays natal (1939)', 'Discours sur le colonialisme (1950)', 'La Tragédie du roi Christophe (1963)'],
+      concept: 'Négritude — revalorisation de la culture et identité noire',
+      citation: '"Ma bouche sera la bouche des malheurs qui n\'ont point de bouche"'
+    },
+    'fanon': {
+      nom: 'Frantz Fanon (1925-1961)',
+      origine: 'Martinique 🇲🇶',
+      oeuvres: ['Peau noire, masques blancs (1952)', 'Les Damnés de la Terre (1961)', 'L\'An V de la révolution algérienne (1959)'],
+      concept: 'Décolonisation, psychologie du colonisé',
+      citation: '"Chaque génération doit, dans une relative opacité, découvrir sa mission"'
+    },
+    'glissant': {
+      nom: 'Édouard Glissant (1928-2011)',
+      origine: 'Martinique 🇲🇶',
+      oeuvres: ['Le Discours Antillais (1981)', 'Poétique de la Relation (1990)', 'Tout-Monde (1993)'],
+      concept: 'Créolisation, Tout-Monde, identité rhizome',
+      citation: '"Le droit à l\'opacité, c\'est le droit à ne pas être compris"'
+    },
+    'mckay': {
+      nom: 'Claude McKay (1889-1948)',
+      origine: 'Jamaïque 🇯🇲',
+      oeuvres: ['Banjo (1929)', 'Home to Harlem (1928)', 'Harlem Shadows (1922)'],
+      concept: 'Harlem Renaissance, identité noire américaine',
+      citation: '"If we must die, let it not be like hogs"'
+    },
+    'condé': {
+      nom: 'Maryse Condé (1934-2024)',
+      origine: 'Guadeloupe 🇬🇵',
+      oeuvres: ['Ségou (1984)', 'Moi, Tituba sorcière (1986)', 'La Vie scélérate (1987)'],
+      concept: 'Identité caribéenne, diaspora africaine',
+      citation: '"Je suis une nomade. Je n\'appartiens à aucun pays"'
+    }
+  }
+
+  const auteurLow = auteur.toLowerCase().trim()
+  for (const [key, data] of Object.entries(auteurs)) {
+    if (auteurLow.includes(key)) {
+      return `📚 **${data.nom}**
+🌍 Origine : ${data.origine}
+
+📖 **Œuvres majeures :**
+${data.oeuvres.map(o => `• ${o}`).join('\n')}
+
+💡 **Concept clé :** ${data.concept}
+
+✍️ **Citation :** ${data.citation}
+
+🔗 OpenLibrary : openlibrary.org
+Boudoum ! 🇬🇵`
+    }
+  }
+
+  return `📚 **Bibliothèque Caribéenne & Africaine REUSSITESS**
+
+✊ **Penseurs de la Négritude :**
+• Aimé Césaire (Martinique) — Cahier d\'un retour au pays natal
+• Léon-Gontran Damas (Guyane) — Pigments
+• Léopold Sédar Senghor (Sénégal) — fondateur Négritude
+
+🌍 **Décolonisation :**
+• Frantz Fanon (Martinique) — Les Damnés de la Terre
+• Cheikh Anta Diop (Sénégal) — Nations nègres et Culture
+• Patrice Lumumba (Congo) — discours indépendance
+
+🌺 **Créolité & Tout-Monde :**
+• Édouard Glissant (Martinique) — Tout-Monde
+• Patrick Chamoiseau (Martinique) — Texaco
+• Raphaël Confiant (Martinique) — Éloge de la créolité
+
+🇬🇵 **Auteurs Guadeloupéens :**
+• Maryse Condé — Ségou
+• Ernest Pépin — L\'Homme-au-Bâton
+• Simone Schwarz-Bart — Pluie et Vent sur Télumée Miracle
+
+💡 Demandez "bibliothèque [auteur]" pour plus d\'infos !
+🔗 reussitess.fr/bibliotheque
+Boudoum ! 🇬🇵`
+}
+
+// ===== ÉVÉNEMENTS CULTURELS CARIBÉENS =====
+function getEvenementsCaribéens() {
+  const mois = new Date().getMonth() + 1
+  const evenements = {
+    1: ['🎉 Jour de l\'An créole — Guadeloupe, Martinique', '🎭 Début saison carnaval'],
+    2: ['🎭 Carnaval Guadeloupe & Martinique (Mardi Gras)', '🎵 Festival Biguine Jazz Martinique'],
+    3: ['🎭 Mercredi des Cendres — fin carnaval', '🌿 Semaine de l\'environnement DOM-TOM'],
+    4: ['🌺 Fête des jardins créoles', '⛵ Saison voile Caraïbes'],
+    5: ['✊ Commémoration abolition esclavage Martinique (22 mai)', '🎵 Festival Jazz Martinique'],
+    6: ['✊ Commémoration abolition esclavage Guadeloupe (27 mai)', '🌊 Début saison cyclones'],
+    7: ['🥁 Festival Gwoka Guadeloupe', '🚴 Tour Cycliste Guadeloupe', '🎵 Festival Kreol Réunion'],
+    8: ['👩‍🍳 Fête des Cuisinières Guadeloupe', '🎵 Sakifo Musik Festival Réunion'],
+    9: ['🌊 Pic saison cyclones Caraïbes', '📚 Rentrée scolaire DOM-TOM'],
+    10: ['🎭 Festival Creole Seychelles', '🌺 Fête du rhum Martinique'],
+    11: ['🕯️ Toussaint lumineuse Guadeloupe', '🎵 Congrès Mondial Créole'],
+    12: ['🎄 Noël créole — traditions antillaises', '🍹 Fêtes de fin d\'année DOM-TOM']
+  }
+
+  const evMois = evenements[mois] || []
+  return `📅 **Événements Culturels Caribéens**
+
+🗓️ **Ce mois-ci :**
+${evMois.map(e => `• ${e}`).join('\n') || '• Consultez l\'agenda local'}
+
+📆 **Événements annuels incontournables :**
+• 🎭 Carnaval — Février/Mars (Guadeloupe, Martinique)
+• ✊ Abolition esclavage — 22 mai (MQ), 27 mai (GP)
+• 🥁 Festival Gwoka — Juillet (Guadeloupe, UNESCO)
+• 👩‍🍳 Fête des Cuisinières — Août (Guadeloupe)
+• 🕯️ Toussaint lumineuse — Novembre (Guadeloupe)
+• 🎵 Sakifo Musik — Juin (Réunion)
+• 🚴 Tour Cycliste Guadeloupe — Juillet
+• 🎺 Festival Biguine Jazz — Mai (Martinique)
+
+🔗 reussitess.fr/evenements
+Boudoum ! 🇬🇵`
 }
