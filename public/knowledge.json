@@ -185,18 +185,6 @@
     {
       "trigger": "économie dom-tom",
       "response": "📊 **Économie DOM-TOM**\n\nLes principaux secteurs :\n1️⃣ Tourisme\n2️⃣ Agriculture & rhum\n3️⃣ Pêche & aquaculture\n4️⃣ Industrie locale\n5️⃣ Services & banque\n6️⃣ Énergie renouvelable\n7️⃣ Construction & immobilier\n\n📌 Plus d'infos : https://reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "médecine naturelle",
-      "response": "🌿 Tape 'médecine naturelle [plante]' pour les remèdes caribéens!\nExemple: médecine naturelle gingembre\n\nPlantes disponibles: citronnelle, verveine, gingembre, moringa, aloe vera, corossol, basilic, curcuma\n\nBoudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "traduction",
-      "response": "🌍 Tape 'traduis [texte] en [langue]' pour traduire!\nLangues: anglais, espagnol, portugais, allemand, chinois, arabe, créole haïtien\n\nExemple: traduis bonjour en espagnol\n\nBoudoum ! 🇬🇵"
-    },
-    {
-      "trigger": "dashboard crypto",
-      "response": "⛓️ Chargement du dashboard blockchain en cours...\n\nTape 'dashboard crypto' pour voir:\n• Prix Token REUSS\n• BTC, ETH, Polygon temps réel\n• Outils blockchain\n\nBoudoum ! 🇬🇵"
     }
   ]
 }
