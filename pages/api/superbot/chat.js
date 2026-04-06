@@ -5499,49 +5499,26 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes('actualite guadeloupe') || msgLow.includes('actualités guadeloupe') || msgLow.includes('news guadeloupe') || msgLow.includes('info guadeloupe')) {
     const actu = await getActualitesGuadeloupe()
     const meteo = await getMeteoMonde('Guadeloupe')
-    const response = `🇬🇵 **ENCYCLOPÉDIE REUSSITESS — Guadeloupe**
+    const groqText = await groqFetch([
+      { role: "system", content: "Tu es REUSSITESS AI, encyclopédie caribéenne. Réponds comme une encyclopédie vivante sur la Guadeloupe. Inclus géographie, histoire, économie, culture, politique. Style chaleureux et positif. Termine par Boudoum ! 🇬🇵" },
+      { role: "user", content: "Info Guadeloupe — inclus ces données temps réel: Météo: " + (meteo||'') + " | Actualités récentes: " + (actu||'') }
+    ], 1024)
+    return res.status(200).json({ pdfAction: null, response: groqText || "📚 Encyclopédie REUSSITESS — Guadeloupe
 
-${meteo || ''}
-
-📰 **Actualités :**
-${actu || ''}
-
-🏛️ **Élus :**
-• Région : Ary Chalus
-• Département : Guy Losbar  
-• Maire PAP : Harry Durimel
-
-🌐 **Liens utiles :**
-• regionguadeloupe.fr
-• la1ere.francetvinfo.fr/guadeloupe
-• rci.fm/guadeloupe
-
-Boudoum ! 🇬🇵`
-    return res.status(200).json({ pdfAction: null, response })
+Boudoum ! 🇬🇵" })
   }
 
   // ============ ACTUALITES MARTINIQUE ============
   if (msgLow.includes('actualite martinique') || msgLow.includes('actualités martinique') || msgLow.includes('news martinique') || msgLow.includes('info martinique')) {
     const actu = await getActualitesMartinique()
     const meteo = await getMeteoMonde('Martinique')
-    const response = `🇲🇶 **ENCYCLOPÉDIE REUSSITESS — Martinique**
+    const groqText = await groqFetch([
+      { role: "system", content: "Tu es REUSSITESS AI, encyclopédie caribéenne. Réponds comme une encyclopédie vivante sur la Martinique. Inclus géographie, histoire, économie, culture, politique. Style chaleureux et positif. Termine par Boudoum ! 🇬🇵" },
+      { role: "user", content: "Info Martinique — inclus ces données temps réel: Météo: " + (meteo||'') + " | Actualités récentes: " + (actu||'') }
+    ], 1024)
+    return res.status(200).json({ pdfAction: null, response: groqText || "📚 Encyclopédie REUSSITESS — Martinique
 
-${meteo || ''}
-
-📰 **Actualités :**
-${actu || ''}
-
-🏛️ **Élus :**
-• CTM : Serge Letchimy
-• Assemblée : Lucien Saliber
-
-🌐 **Liens utiles :**
-• collectivitedemartinique.mq
-• la1ere.francetvinfo.fr/martinique
-• rci.fm/martinique
-
-Boudoum ! 🇬🇵`
-    return res.status(200).json({ pdfAction: null, response })
+Boudoum ! 🇬🇵" })
   }
 
   // ============ ACTUALITES DOM-TOM ============
