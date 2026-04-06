@@ -11,5 +11,11 @@
   "user_feedback": [],
   "user_updates": [],
   "user_resources": [],
-  "user_questions": []
+  "user_questions": [],
+  "reussitess_ai_info": [
+    {
+      "title": "Donnée Ajoutée",
+      "url": "https://lien.vers.la.ressource"
+    }
+  ]
 }
