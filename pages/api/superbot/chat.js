@@ -2612,11 +2612,11 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
 
   // ============ ACTUALITES SPECIFIQUES DOM-TOM ============
   if ((msgLow.includes('actualite') || msgLow.includes('news') || msgLow.includes('info')) && msgLow.includes('guadeloupe')) {
-    const data = await getActualitesGuadeloupe()
+    const data = await getActualitesOutremerComplet()
     return res.status(200).json({ pdfAction: null, response: data+"Boudoum ! 🇬🇵" })
   }
   if ((msgLow.includes('actualite') || msgLow.includes('news') || msgLow.includes('info')) && msgLow.includes('martinique')) {
-    const data = await getActualitesMartinique()
+    const data = await getActualitesOutremerComplet()
     return res.status(200).json({ pdfAction: null, response: data+"Boudoum ! 🇬🇵" })
   }
   if (msgLow.includes('actualite outremer complet') || msgLow.includes('toutes les actus outremer') || msgLow.includes('actualites outremer')) {
@@ -5331,11 +5331,11 @@ Boudoum ! 🇬🇵`})
 
   // ACTUALITES GUADELOUPE/MARTINIQUE
   if ((msgLow.includes('actualite') || msgLow.includes('actu') || msgLow.includes('news') || msgLow.includes('info')) && msgLow.includes('guadeloupe')) {
-    const data = await getActualitesGuadeloupe()
+    const data = await getActualitesOutremerComplet()
     return res.status(200).json({ pdfAction: null, response: data })
   }
   if ((msgLow.includes('actualite') || msgLow.includes('actu') || msgLow.includes('news') || msgLow.includes('info')) && msgLow.includes('martinique')) {
-    const data = await getActualitesMartinique()
+    const data = await getActualitesOutremerComplet()
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
@@ -5497,13 +5497,13 @@ Boudoum ! 🇬🇵`})
 
   // ============ ACTUALITES GUADELOUPE ============
   if (msgLow.includes('actualite guadeloupe') || msgLow.includes('actualités guadeloupe') || msgLow.includes('news guadeloupe') || msgLow.includes('info guadeloupe')) {
-    const data = await getActualitesGuadeloupe()
+    const data = await getActualitesOutremerComplet()
     return res.status(200).json({ pdfAction: null, response: data+"Boudoum ! 🇬🇵" })
   }
 
   // ============ ACTUALITES MARTINIQUE ============
   if (msgLow.includes('actualite martinique') || msgLow.includes('actualités martinique') || msgLow.includes('news martinique') || msgLow.includes('info martinique')) {
-    const data = await getActualitesMartinique()
+    const data = await getActualitesOutremerComplet()
     return res.status(200).json({ pdfAction: null, response: data+"Boudoum ! 🇬🇵" })
   }
 
