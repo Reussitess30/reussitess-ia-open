@@ -40,11 +40,40 @@ def handle_prompt(prompt):
             data.setdefault("user_contributions", []).append(prompt)
             f.seek(0)
             json.dump(data, f, indent=2, ensure_ascii=False)
+    with open("activity.log", "a") as log:
+        log.write(prompt + "\n")
+
         with open("notifications.log", "a") as log:
             log.write("Donnée Ajoutée: " + prompt + "\n")
 
             f.truncate()
 
         result = "✅ Donnée reçue et ajoutée au système REUSSITESS AI. Merci pour ta contribution."
+
+    elif "donnée ajoutée" in prompt.lower():
+        result = cache["afrocaraibeen_knowledge"]["data_add"]
+        cache.setdefault("user_contributions", []).append(prompt)
+
+    elif "feedback" in prompt.lower() or "retour" in prompt.lower():
+        result = cache["afrocaraibeen_knowledge"]["feedback"]
+        cache.setdefault("user_feedback", []).append(prompt)
+
+    elif "mise à jour" in prompt.lower():
+        result = cache["afrocaraibeen_knowledge"]["update_info"]
+        cache.setdefault("user_updates", []).append(prompt)
+
+    elif "ressource" in prompt.lower() or "lien" in prompt.lower():
+        result = cache["afrocaraibeen_knowledge"]["resources"]
+        cache.setdefault("user_resources", []).append(prompt)
+
+    elif "question" in prompt.lower():
+        result = cache["afrocaraibeen_knowledge"]["questions"]
+        cache.setdefault("user_questions", []).append(prompt)
+
+    with open(CACHE_FILE, "w", encoding="utf-8") as f:
+        json.dump(cache, f, indent=2, ensure_ascii=False)
+    with open("activity.log", "a") as log:
+        log.write(prompt + "\n")
+
 
     return result

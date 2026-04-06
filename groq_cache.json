@@ -1,6 +1,15 @@
 {
   "afrocaraibeen_knowledge": {
     "limitations_bot": "Bonjour ! En tant que REUSSITESS AI... Contact : influenceur@reussitess.fr",
-    "data_add": "Pour ajouter une donnée : envoie un lien ou texte avec 'Donnée Ajoutée'. Elle sera intégrée pour améliorer le bot REUSSITESS AI."
-  }
+    "data_add": "Utilise 'Donnée Ajoutée :' pour enrichir le bot.",
+    "feedback": "Merci pour ton retour ! Il sera utilisé pour améliorer REUSSITESS AI.",
+    "update_info": "Merci pour la mise à jour, elle est prise en compte.",
+    "resources": "Ressource enregistrée avec succès.",
+    "questions": "Ta question est enregistrée pour améliorer le système."
+  },
+  "user_contributions": [],
+  "user_feedback": [],
+  "user_updates": [],
+  "user_resources": [],
+  "user_questions": []
 }
