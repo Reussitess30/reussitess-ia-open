@@ -5503,9 +5503,8 @@ Boudoum ! 🇬🇵`})
       { role: "system", content: "Tu es REUSSITESS AI, encyclopédie caribéenne. Réponds comme une encyclopédie vivante sur la Guadeloupe. Inclus géographie, histoire, économie, culture, politique. Style chaleureux et positif. Termine par Boudoum ! 🇬🇵" },
       { role: "user", content: "Info Guadeloupe — inclus ces données temps réel: Météo: " + (meteo||'') + " | Actualités récentes: " + (actu||'') }
     ], 1024)
-    return res.status(200).json({ pdfAction: null, response: groqText || "📚 Encyclopédie REUSSITESS — Guadeloupe
+    return res.status(200).json({ pdfAction: null, response: groqText || "📚 Encyclopédie REUSSITESS — Guadeloupe\n\nBoudoum ! 🇬🇵" })
 
-Boudoum ! 🇬🇵" })
   }
 
   // ============ ACTUALITES MARTINIQUE ============
@@ -5516,9 +5515,8 @@ Boudoum ! 🇬🇵" })
       { role: "system", content: "Tu es REUSSITESS AI, encyclopédie caribéenne. Réponds comme une encyclopédie vivante sur la Martinique. Inclus géographie, histoire, économie, culture, politique. Style chaleureux et positif. Termine par Boudoum ! 🇬🇵" },
       { role: "user", content: "Info Martinique — inclus ces données temps réel: Météo: " + (meteo||'') + " | Actualités récentes: " + (actu||'') }
     ], 1024)
-    return res.status(200).json({ pdfAction: null, response: groqText || "📚 Encyclopédie REUSSITESS — Martinique
+    return res.status(200).json({ pdfAction: null, response: groqText || "📚 Encyclopédie REUSSITESS — Martinique\n\nBoudoum ! 🇬🇵" })
 
-Boudoum ! 🇬🇵" })
   }
 
   // ============ ACTUALITES DOM-TOM ============
