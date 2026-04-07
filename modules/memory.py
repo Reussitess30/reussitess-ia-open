@@ -1,9 +1,9 @@
 
 memory = {}
 
-def remember(user, question):
-    memory[user] = question
+def save_context(user_id, question):
+    memory[user_id] = question
 
-def recall(user):
-    return memory.get(user, "Aucune mémoire")
+def get_context(user_id):
+    return memory.get(user_id, None)
 

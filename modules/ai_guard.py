@@ -1,6 +1,6 @@
 
-def validate_response(text):
-    if not text or len(text) < 10:
-        return "Réponse en amélioration, reviens bientôt 💡"
+def clean_response(text):
+    if "indisponible" in text.lower():
+        return "Donnée en cours de mise à jour 📡 Boudoum ! 🇬🇵"
     return text
 
