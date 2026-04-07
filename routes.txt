@@ -1,0 +1,161 @@
+Route (app)                                        Revalidate  Expire   ┌ ○ /_not-found
+├ ○ /api/ai-status                                        10s      1y   ├ ƒ /api/amazon-deals               ├ ƒ /api/generate-report            ├ ƒ /api/superbot-reussitess        ├ ƒ /api/superbot-reussitess/data   ├ ƒ /api/token-info
+├ ○ /ia-passport                    ├ ○ /monitoring-ia
+└ ○ /transparency                   
+Route (pages)
+┌ ○ /
+├   /_app
+├ ○ /404 (922 ms)
+├ ○ /a-propos (913 ms)
+├ ○ /academie (911 ms)
+├ ○ /affiliation (911 ms)
+├ ○ /agents-dashboard (910 ms)
+├ ○ /airpods (910 ms)
+├ ○ /amazon (909 ms)
+├ ○ /analytics (909 ms)
+├ ƒ /api/agents/orchestrate
+├ ƒ /api/auto-update
+├ ƒ /api/autocomplete
+├ ƒ /api/bot
+├ ƒ /api/chat
+├ ƒ /api/conversations
+├ ƒ /api/full-knowledge
+├ ƒ /api/gemini
+├ ƒ /api/generate-pdf
+├ ƒ /api/health
+├ ƒ /api/knowledge
+├ ƒ /api/observatoire
+├ ƒ /api/passeport/register
+├ ƒ /api/passeport/stats
+├ ƒ /api/podcasts-rss
+├ ƒ /api/read-pdf
+├ ƒ /api/rss-experts
+├ ƒ /api/sitemap.xml
+├ ƒ /api/suggestions
+├ ƒ /api/superbot/chat
+├ ƒ /api/superbot/compagnon-creole
+├ ƒ /api/superbot/creole-tts
+├ ƒ /api/superbot/debug
+├ ƒ /api/superbot/extensions
+├ ƒ /api/superbot/langchain
+├ ƒ /api/superbot/whisper
+├ ƒ /api/superbot/wikipedia
+├ ƒ /api/telegram-webhook
+├ ƒ /api/visa/generate-pdf
+├ ƒ /api/visa/register
+├ ƒ /api/visitors
+├ ƒ /api/zenquote
+├ ○ /astuces
+├ ○ /bibliotheque
+├ ○ /bibliotheque/actu
+├ ○ /bibliotheque/afrique/cameroun
+├ ○ /bibliotheque/afrique/cote-ivoire
+├ ○ /bibliotheque/afrique/madagascar
+├ ○ /bibliotheque/afrique/mali
+├ ○ /bibliotheque/afrique/rdc
+├ ○ /bibliotheque/afrique/rwanda
+├ ○ /bibliotheque/afrique/senegal
+├ ○ /bibliotheque/amerique-sud/bresil
+├ ○ /bibliotheque/ameriques/haiti
+├ ○ /bibliotheque/ameriques/louisiane
+├ ○ /bibliotheque/ameriques/quebec
+├ ○ /bibliotheque/asie-pacifique/australie
+├ ○ /bibliotheque/asie-pacifique/cambodge
+├ ○ /bibliotheque/asie-pacifique/inde
+├ ○ /bibliotheque/asie-pacifique/laos
+├ ○ /bibliotheque/asie-pacifique/nouvelle-zelande
+├ ○ /bibliotheque/asie-pacifique/singapour
+├ ○ /bibliotheque/asie-pacifique/vanuatu
+├ ○ /bibliotheque/asie-pacifique/vietnam
+├ ○ /bibliotheque/dom-tom/guadeloupe
+├ ○ /bibliotheque/dom-tom/guyane
+├ ○ /bibliotheque/dom-tom/martinique
+├ ○ /bibliotheque/dom-tom/mayotte
+├ ○ /bibliotheque/dom-tom/nouvelle-caledonie
+├ ○ /bibliotheque/dom-tom/polynesie
+├ ○ /bibliotheque/dom-tom/reunion
+├ ○ /bibliotheque/dom-tom/saint-barthelemy
+├ ○ /bibliotheque/dom-tom/saint-martin
+├ ○ /bibliotheque/dom-tom/saint-pierre
+├ ○ /bibliotheque/dom-tom/wallis-futuna
+├ ○ /bibliotheque/europe/allemagne
+├ ○ /bibliotheque/europe/belgique
+├ ○ /bibliotheque/europe/espagne
+├ ○ /bibliotheque/europe/france
+├ ○ /bibliotheque/europe/italie
+├ ○ /bibliotheque/europe/luxembourg
+├ ○ /bibliotheque/europe/monaco
+├ ○ /bibliotheque/europe/royaume-uni
+├ ○ /bibliotheque/europe/suede
+├ ○ /bibliotheque/europe/suisse
+├ ○ /bibliotheque/histoire
+├ ○ /bibliotheque/maghreb/algerie
+├ ○ /bibliotheque/maghreb/liban
+├ ○ /bibliotheque/maghreb/maroc
+├ ○ /bibliotheque/maghreb/tunisie
+├ ○ /bibliotheque/outils
+├ ○ /bibliotheque/pays/fr
+├ ○ /bibliotheque/pays/guadeloupe
+├ ○ /bibliotheque/pays/guyane
+├ ○ /bibliotheque/pays/martinique
+├ ○ /bibliotheque/prof
+├ ○ /bibliotheque/reglementation
+├ ○ /booster-reussitess-amazon
+├ ○ /boutiques (339 ms)
+├ ○ /calculateur-amazon (339 ms)
+├ ○ /carte-caribeenne (338 ms)
+├ ○ /certificat (338 ms)
+├ ○ /champions (338 ms)
+├ ○ /communaute (337 ms)
+├ ○ /contact (337 ms)
+├ ○ /creole (337 ms)
+├ ○ /de
+├ ○ /en
+├ ○ /es
+├ ○ /evenements
+├ ○ /fr
+├ ○ /guadeloupe
+├ ○ /guide-complet
+├ ○ /guyane
+├ ○ /hub-central
+├ ○ /hub-international
+├ ○ /hub-regional
+├ ○ /hub-regional/creole
+├ ○ /hub-regional/douanes
+├ ○ /hub-regional/marketing-seo
+├ ○ /hub-regional/opportunites
+├ ○ /index.before-coach
+├ ○ /investir-reuss
+├ ○ /legal
+├ ○ /ma-revolution-ia
+├ ○ /marketplace
+├ ○ /martinique
+├ ○ /mentions-legales
+├ ○ /mon-adn
+├ ○ /mon-compte
+├ ○ /neuro-x
+├ ○ /observatoire-antilles
+├ ○ /oracle-971
+├ ○ /outils
+├ ○ /outils-calculateurs
+├ ○ /passe-port-mondial
+├ ○ /podcasts-creoles
+├ ○ /politique-confidentialite
+├ ○ /presse
+├ ○ /pwa-app
+├ ○ /quiz
+├ ○ /quiz/[id]
+├ ○ /radio
+├ ○ /ressources/culture-guadeloupe
+├ ○ /ressources/histoire-afrique
+├ ○ /ressources/patrimoine-martinique (712 ms)
+├ ○ /reunion (712 ms)
+├ ○ /savoir-culture (719 ms)
+├ ○ /telecharger (719 ms)
+├ ○ /test-connexion (718 ms)
+├ ƒ /vamazon
+└ ○ /visa-universel (718 ms)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
