@@ -3,7 +3,7 @@
 - **Projet :** REUSSITESS®
 - **Origine :** Guadeloupe / Gourbeyre
 - **Fondateur :** Rony Porinus (SIRET : 444699979700031)
-- **Protection IP :** Dépôt INPI eSoleau DSO2026008921 (Mars 2026)
+- **Protection IP :** Dépôt INPI eSoleau DSO2026012614 (Avril 2026)
 - **Objectif :** Fournir un écosystème digital utile, fiable et Afrocaraïbéen pour la communauté Outre-mer
 
 ## 2️⃣ Écosystème Réel et Fonctionnel
