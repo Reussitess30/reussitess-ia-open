@@ -1,37 +1,43 @@
 
 from modules.region_info import get_region_info
-from modules.ai_guard import validate_response
 
 def afro_response(query):
     q = query.lower()
 
-    # Détection région
-    if "guadeloupe" in q:
-        region = "guadeloupe"
-    elif "martinique" in q:
-        region = "martinique"
-    elif "guyane" in q:
-        region = "guyane"
-    elif "reunion" in q:
-        region = "reunion"
-    elif "mayotte" in q:
-        region = "mayotte"
-    else:
-        return "An nou ! Pose moi une question claire sur la Caraïbe 🇬🇵"
+    # Détection région propre
+    regions = ["guadeloupe", "martinique", "guyane", "reunion", "mayotte"]
+    region = None
+
+    for r in regions:
+        if r in q:
+            region = r
+            break
+
+    if not region:
+        return "An nou ! Pose une question claire sur la Caraïbe 🌍 Boudoum ! 🇬🇵"
 
     info = get_region_info(region)
 
-    # Mode encyclopédie (style humain)
+    # MODE INFO = encyclopédie intelligente
     if "info" in q:
-        text = f"📚 ****Encyclopédie REUSSITESS — {region.capitalize()}****\n"
 
+        texte = f"📚 ****Encyclopédie REUSSITESS — {region.capitalize()}****\n"
+
+        # Si encyclopédie existe → prioritaire
         if "encyclopedie" in info:
-            text += info["encyclopedie"]
+            texte += info["encyclopedie"]
+
+        # Sinon fallback intelligent (PAS VIDE)
         else:
-            text += f"La {region.capitalize()} est un territoire majeur de la Caraïbe avec une culture riche, un patrimoine fort et une population dynamique. Les données évoluent en temps réel dans REUSSITESS."
+            texte += (
+                f"La {region.capitalize()} est un territoire clé de la Caraïbe. "
+                f"Elle possède un patrimoine riche, une culture forte et une population dynamique. "
+                f"Les données évoluent en temps réel dans REUSSITESS pour rester toujours à jour."
+            )
 
-        text += "\nBoudoum ! 🇬🇵"
-        return validate_response(text)
+        texte += "\nBoudoum ! 🇬🇵"
+        return texte
 
-    return validate_response("Demande-moi info + pays pour activer l’encyclopédie 🌍")
+    # AUTRES CAS → réponse utile
+    return f"An nou ! Tape info {region} pour voir les données complètes 📊 Boudoum ! 🇬🇵"
 
