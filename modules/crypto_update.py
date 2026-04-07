@@ -1,12 +1,17 @@
-import requests
+
+import requests, time
 
 def get_crypto_prices():
-    url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,polygon,matic-network&vs_currencies=eur,usd"
-    data = requests.get(url).json()
-    BTC = data.get("bitcoin", {})
-    ETH = data.get("ethereum", {})
-    POLY = data.get("polygon") or data.get("matic-network", {})
-    return BTC, ETH, POLY
+    try:
+        url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=eur,usd"
+        r = requests.get(url, timeout=5)
+        data = r.json()
 
-BTC, ETH, POLY = get_crypto_prices()
+        return {
+            "BTC": data.get("bitcoin", {}),
+            "ETH": data.get("ethereum", {}),
+            "POLY": data.get("matic-network", {})
+        }
+    except:
+        return {"error": "API indisponible"}
 
