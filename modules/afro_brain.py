@@ -1,3 +1,4 @@
+from modules.meteo_update import get_meteo_data
 from modules.region_info import get_region_info
 from modules.memory import get_context, save_context
 from modules.crypto_api import crypto_reuss_token
