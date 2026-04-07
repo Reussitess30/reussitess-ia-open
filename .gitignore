@@ -56,3 +56,7 @@ pages/*.bak_*
 *.config.js.backup
 __pycache__/
 *.pyc
+__pycache__/
+*.pyc
+*.log
+.env
