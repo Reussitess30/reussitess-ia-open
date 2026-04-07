@@ -4,11 +4,11 @@ import Link from 'next/link'
 
 const PODCASTS = [
   { id: 1, nom: "REUSSITESS Radio", desc: "Entrepreneuriat, IA et innovation caribéenne", emoji: "🤖", url: "https://reussitess.fr", pays: "Guadeloupe 🇬🇵", tags: ["Business", "IA"] },
-  { id: 2, nom: "Gwoka Session", desc: "Histoire et culture du Gwoka, patrimoine UNESCO", emoji: "🥁", url: "https://la1ere.francetvinfo.fr/guadeloupe/rss.xml", pays: "Guadeloupe 🇬🇵", tags: ["Culture", "Musique"] },
-  { id: 3, nom: "Caraïbes Business", desc: "Actualité économique et entrepreneuriale des Antilles", emoji: "💼", url: "https://la1ere.francetvinfo.fr/rss.xml", pays: "DOM-TOM 🌴", tags: ["Business", "Économie"] },
-  { id: 4, nom: "Diasporas Africa", desc: "Voix de la diaspora africaine en France et dans le monde", emoji: "🌍", url: "https://www.rfi.fr/fr/rss", pays: "Afrique 🌍", tags: ["Diaspora", "Culture"] },
+  { id: 2, nom: "Gwoka Session", desc: "Histoire et culture du Gwoka, patrimoine UNESCO", emoji: "🥁", url: "https://la1ere.francetvinfo.fr/guadeloupe/programmes", pays: "Guadeloupe 🇬🇵", tags: ["Culture", "Musique"] },
+  { id: 3, nom: "Caraïbes Business", desc: "Actualité économique et entrepreneuriale des Antilles", emoji: "💼", url: "https://la1ere.francetvinfo.fr", pays: "DOM-TOM 🌴", tags: ["Business", "Économie"] },
+  { id: 4, nom: "Diasporas Africa", desc: "Voix de la diaspora africaine en France et dans le monde", emoji: "🌍", url: "https://www.rfi.fr/fr/podcasts", pays: "Afrique 🌍", tags: ["Diaspora", "Culture"] },
   { id: 5, nom: "Créole Talk", desc: "Langue et culture créole — apprendre et préserver", emoji: "🗣️", url: "#", pays: "Caraïbes 🌴", tags: ["Langue", "Culture"] },
-  { id: 6, nom: "RFI Afrique", desc: "Actualités africaines et caribéennes en temps réel", emoji: "📻", url: "https://www.rfi.fr/fr/rss", pays: "Afrique 🌍", tags: ["Actualités"] },
+  { id: 6, nom: "RFI Afrique", desc: "Actualités africaines et caribéennes en temps réel", emoji: "📻", url: "https://www.rfi.fr/fr/podcasts", pays: "Afrique 🌍", tags: ["Actualités"] },
 ]
 
 export default function PodcastsCreoles() {
