@@ -85,6 +85,9 @@ export default async function handler(req, res) {
           { text: '📊 Dashboard', callback_data: 'dashboard stats' }
                         ],
                         [
+                          { text: '🌍 Écosystème REUSSITESS', callback_data: 'écosystème reussitess' }
+                        ],
+                        [
                           { text: '🎶 Musique Afro-Caribéenne', callback_data: 'musique afro-caribéenne' },
                           { text: '🥁 Gwoka & Festivals', callback_data: 'festival gwoka' },
                           { text: '📅 Événements', callback_data: 'événements' }
