@@ -63,3 +63,4 @@ __pycache__/
 .env.local
 bot:knowledge:*
 services/*.backup
+dump.rdb
