@@ -119,3 +119,18 @@ bot.on('quiz:answer', async (ctx, answer) => {
     ctx.reply(feedback + ` Essaie encore ! Score: ${userScore}/10`);
   }
 });
+// Conversation Memory Handler
+bot.use(async (ctx, next) => {
+  const userId = ctx.from.id;
+  const history = await get_memory(userId, 5);
+  
+  if (history.length > 0) {
+    const lastTopic = history[0].user_msg.slice(0, 50);
+    console.log(`🧠 Mémoire: ${userId} parle de "${lastTopic}"`);
+  }
+  
+  await next();
+  
+  // Sauvegarde après réponse
+  save_conversation(userId, ctx.message.text, ctx.message.reply_to_message?.text || 'Réponse');
+});
