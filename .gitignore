@@ -64,3 +64,4 @@ __pycache__/
 bot:knowledge:*
 services/*.backup
 dump.rdb
+dump.rdb
