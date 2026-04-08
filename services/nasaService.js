@@ -1,11 +1,13 @@
-const fetch = require('node-fetch');
-
 async function getNasaApod() {
   try {
     const apiKey = process.env.NASA_API_KEY || 'DEMO_KEY';
-    const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`);
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
     
-    console.log(`NASA HTTP ${response.status}`);
+    const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`, {
+      signal: controller.signal
+    });
+    clearTimeout(timeoutId);
     
     const data = await response.json();
     
@@ -16,7 +18,7 @@ async function getNasaApod() {
       date: data.date || new Date().toISOString().split('T')[0]
     };
   } catch (error) {
-    console.error('NASA error:', error.message);
+    console.error('NASA:', error.message);
     return {
       title: '🚀 NASA indisponible',
       image: 'https://apod.nasa.gov/apod/image/2604/art002e000192.jpg',

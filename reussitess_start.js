@@ -8,7 +8,6 @@ const { getCountryInfo } = require("./services/countryService");
 const { getRandomQuote } = require("./services/quoteService");
 const { searchShow } = require("./services/tvmazeService");
 const { getArtwork } = require("./services/artService");
-const { getNasaApod } = require("./services/nasaService");
 const { getFirstDefinition } = require("./services/dictionaryService");
 const { getNumberFact } = require("./services/numberFactService");
 const { getWeather } = require("./services/weatherService");
@@ -18,7 +17,6 @@ const { getCountryInfo } = require("./services/countryService");
 const { getRandomQuote } = require("./services/quoteService");
 const { searchShow } = require("./services/tvmazeService");
 const { getArtwork } = require("./services/artService");
-const { getNasaApod } = require("./services/nasaService");
 const { getFirstDefinition2 } = require("./services/dictionaryService");
 const { getNumberFact } = require("./services/numberFactService");
 const { getWeather } = require("./services/weatherService");
@@ -28,7 +26,6 @@ const { getCountryInfo } = require("./services/countryService");
 const { getRandomQuote } = require("./services/quoteService");
 const { searchShow } = require("./services/tvmazeService");
 const { getArtwork } = require("./services/artService");
-const { getNasaApod } = require("./services/nasaService");
 // REUSSITESS© GHOST STARTER - Architecture Haute-Vitesse
 // AUCUN IMPACT VISUEL - FONCTIONNEMENT EN ARRIÈRE-PLAN
 // STATUT : ACCÈS MONDIAL ACTIVÉ
@@ -76,7 +73,6 @@ const { getNasaApod } = require("./services/nasaService");
 })();
 
 // NASA Service
-const { getNasaApod } = require('./services/nasaService');
 bot.on('command:nasa', async (ctx) => {
   try {
     const nasaData = await getNasaApod();
