@@ -66,3 +66,4 @@ services/*.backup
 dump.rdb
 dump.rdb
 dump.rdb
+dump.rdb
