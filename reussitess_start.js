@@ -98,3 +98,24 @@ Routes: ${routesLen} chars JSON
 Tout indexé Redis → Bot omniscient!
 `);
 });
+// Quiz Training Amplifier
+const quizTraining = {
+  correct: await redisClient.json().get('quiz:training:correct'),
+  wrong: await redisClient.json().get('quiz:training:wrong'),
+  memory: await redisClient.json().get('quiz:training:memory')
+};
+
+// Dans tous les handlers quiz
+bot.on('quiz:answer', async (ctx, answer) => {
+  const userScore = await redisClient.get(`user:${ctx.from.id}:quiz:score`) || 0;
+  const isCorrect = checkAnswer(answer);
+  
+  if (isCorrect) {
+    await redisClient.incr(`user:${ctx.from.id}:quiz:score`);
+    const feedback = quizTraining.correct[Math.floor(Math.random() * quizTraining.correct.length)];
+    ctx.reply(feedback + ` Score: ${userScore + 1}/10`);
+  } else {
+    const feedback = quizTraining.wrong[Math.floor(Math.random() * quizTraining.wrong.length)];
+    ctx.reply(feedback + ` Essaie encore ! Score: ${userScore}/10`);
+  }
+});
