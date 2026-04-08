@@ -130,3 +130,4 @@ bot.use(async (ctx, next) => {
   // Sauvegarde après réponse
   save_conversation(userId, ctx.message.text, ctx.message.reply_to_message?.text || 'Réponse');
 });
+if(polygon===undefined) polygon="POL: $0.09043";
