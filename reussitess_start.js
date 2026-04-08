@@ -89,3 +89,12 @@ Source: NASA APOD`);
     ctx.reply(`❌ NASA error: ${error.message}`);
   }
 });
+bot.on('command:base', async (ctx) => {
+  const whitepaper = await redisClient.get('bot:knowledge:whitepaper');
+  const routesLen = await redisClient.strlen('bot:knowledge:routes_txt');
+  ctx.reply(`📚 Base REUSSITESS® complète:
+Whitepaper: ${whitepaper?.slice(0,200)}...
+Routes: ${routesLen} chars JSON
+Tout indexé Redis → Bot omniscient!
+`);
+});
