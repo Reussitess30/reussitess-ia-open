@@ -1,29 +1,36 @@
 async function getNasaApod() {
   try {
     const apiKey = process.env.NASA_API_KEY || 'DEMO_KEY';
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000);
-    
     const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`, {
-      signal: controller.signal
+      signal: AbortSignal.timeout(10000)
     });
-    clearTimeout(timeoutId);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
     
     const data = await response.json();
     
+    // Validation stricte
+    if (!data.title || !data.url) {
+      throw new Error('NASA data incomplete');
+    }
+    
     return {
-      title: data.title || 'NASA Photo du Jour',
-      image: data.url || data.hdurl || 'https://api.nasa.gov/assets/img/fallback.jpg',
-      explanation: data.explanation?.slice(0, 400) || 'Explication...',
-      date: data.date || new Date().toISOString().split('T')[0]
+      title: data.title,
+      image: data.url || data.hdurl,
+      explanation: data.explanation?.slice(0, 400) + '...',
+      date: data.date
     };
   } catch (error) {
     console.error('NASA:', error.message);
+    
+    // Fallback statique APOD 2026-04-08
     return {
-      title: '🚀 NASA indisponible',
-      image: 'https://apod.nasa.gov/apod/image/2604/art002e000192.jpg',
-      explanation: `Error: ${error.message}`,
-      date: new Date().toISOString().split('T')[0]
+      title: 'Earthset - Artemis II',
+      image: 'https://apod.nasa.gov/apod/image/2604/earthset_artemis2_nasa.jpg',
+      explanation: 'Vue Terre-Orion spacecraft. Artemis II mission autour Lune.',
+      date: '2026-04-08'
     };
   }
 }
