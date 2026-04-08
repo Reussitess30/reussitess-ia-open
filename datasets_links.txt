@@ -1,0 +1,4 @@
+kaggle|chatbot_datasets|https://www.google.com/search?q=https://www.kaggle.com/datasets%3Fsearch%3Dchatbot%2Bdialogue
+huggingface|nlp_datasets|https://huggingface.co/datasets?task_categories=task_categories:text-generation&sort=downloads
+github|chatbot_training_data|https://www.google.com/search?q=https://github.com/search%3Fq%3Dchatbot%2Btraining%2Bdata
+cornell|movie_dialogs|https://www.cs.cornell.edu/~cristian/Cornell_Movie-Dialogs_Corpus.html
