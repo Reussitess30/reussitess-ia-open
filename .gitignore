@@ -65,3 +65,4 @@ bot:knowledge:*
 services/*.backup
 dump.rdb
 dump.rdb
+dump.rdb
