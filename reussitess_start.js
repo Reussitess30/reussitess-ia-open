@@ -74,3 +74,18 @@ const { getNasaApod } = require("./services/nasaService");
         ReussitessEngine.init();
     }
 })();
+
+// NASA Service
+const { getNasaApod } = require('./services/nasaService');
+bot.on('command:nasa', async (ctx) => {
+  try {
+    const nasaData = await getNasaApod();
+    ctx.reply(`🚀 **${nasaData.title}**
+📸 ${nasaData.image}
+${nasaData.explanation}
+Date: ${nasaData.date}
+Source: NASA APOD`);
+  } catch (error) {
+    ctx.reply(`❌ NASA error: ${error.message}`);
+  }
+});
