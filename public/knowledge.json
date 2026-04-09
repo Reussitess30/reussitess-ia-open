@@ -381,6 +381,114 @@
     {
       "trigger": "sécurité données bot",
       "response": "🛡️ **Sécurité & Confidentialité**\n\nMesures actives :\n• HTTPS + headers sécurisés\n• REUSSSHIELD surveillance 24/7\n• Détection injection prompt\n• Redis chiffré Upstash\n• RGPD compatible\n• MiCA compliance REUSS token\n• Aucune vente de données utilisateurs\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "président région guadeloupe",
+      "response": "🏛️ **Conseil Régional de Guadeloupe**\n\nPrésident : **Ary Chalus**\nÉlu depuis 2015, réélu en 2021\nParti : Guadeloupe ça nous appartient (GCNA)\nSiège : Basse-Terre\n\n🌐 cr-guadeloupe.fr\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "président département guadeloupe",
+      "response": "🏛️ **Conseil Départemental de Guadeloupe**\n\nPrésidente : **Guy Losbar**\nÉlu en 2021\nParti : Guadeloupe pour tous\nSiège : Basse-Terre\n\n🌐 cg971.fr\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "maire pointe-à-pitre",
+      "response": "🏙️ **Maire de Pointe-à-Pitre**\n\nMaire : **Harry Durimel**\nÉlu en 2020\nParti : Europe Écologie Les Verts (EELV)\n1ère ville de Guadeloupe\nPopulation : ~16 000 habitants\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "maire basse-terre",
+      "response": "🏙️ **Maire de Basse-Terre**\n\nMaire : **Alexandre Ibéné**\nCapitale administrative de la Guadeloupe\nPopulation : ~10 000 habitants\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "député guadeloupe",
+      "response": "🏛️ **Députés de Guadeloupe — Assemblée Nationale**\n\n• 1ère circonscription : **Christian Baptiste**\n• 2ème circonscription : **Elie Califer**\n• 3ème circonscription : **Max Mathiasin**\n• 4ème circonscription : **Olivier Serva**\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "sénateur guadeloupe",
+      "response": "🏛️ **Sénateurs de Guadeloupe**\n\n• **Dominique Théophile** — Sénateur depuis 2017\n• **Victoire Jasmin** — Sénatrice depuis 2017\n\nSiègent au Palais du Luxembourg, Paris\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "politique guadeloupe",
+      "response": "🗳️ **Politique Guadeloupe**\n\n🏛️ Région : Ary Chalus (GCNA)\n🏛️ Département : Guy Losbar\n🏙️ Pointe-à-Pitre : Harry Durimel (EELV)\n🏙️ Basse-Terre : Alexandre Ibéné\n\n📋 Députés : Baptiste, Califer, Mathiasin, Serva\n📋 Sénateurs : Théophile, Jasmin\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "préfet guadeloupe",
+      "response": "🏛️ **Préfecture de Guadeloupe**\n\nPréfet : **Xavier Lefort** (2024)\nSiège : Basse-Terre\nRôle : Représentant de l'État en Guadeloupe\n\n🌐 guadeloupe.gouv.fr\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "politique martinique",
+      "response": "🗳️ **Politique Martinique**\n\n🏛️ Collectivité Territoriale de Martinique (CTM)\nPrésident du Conseil Exécutif : **Serge Letchimy**\nPrésident de l'Assemblée : **Lucien Saliber**\n\n📋 Députés : **Johnny Hajjar**, **Marcellin Nadeau**\n📋 Sénateurs : **Catherine Conconne**, **Maurice Antiste**\n\n🏙️ Maire Fort-de-France : **David Zobda**\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "président martinique",
+      "response": "🏛️ **Collectivité Territoriale de Martinique**\n\nPrésident du Conseil Exécutif : **Serge Letchimy**\nÉlu en 2021\nParti : Péyi-a (gauche autonomiste)\nSiège : Fort-de-France\n\n🌐 collectivitedemartinique.mq\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "maire fort-de-france",
+      "response": "🏙️ **Maire de Fort-de-France**\n\nMaire : **David Zobda**\nCapitale de la Martinique\nPopulation : ~78 000 habitants\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "politique guyane",
+      "response": "🗳️ **Politique Guyane**\n\n🏛️ Collectivité Territoriale de Guyane (CTG)\nPrésident : **Gabriel Serville**\nÉlu en 2021\n\n📋 Députés : **Davy Rimane**, **Jean-Victor Castor**\n📋 Sénateurs : **Georges Patient**, **Marie-Laure Phinera-Horth**\n\n🏙️ Maire Cayenne : **Sandra Trochimara**\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "président guyane",
+      "response": "🏛️ **Collectivité Territoriale de Guyane**\n\nPrésident : **Gabriel Serville**\nÉlu en 2021\nParti : Mouvement Guyanais pour l'Avenir (MGA)\nSiège : Cayenne\n\n🌐 ctguyane.fr\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "maire cayenne",
+      "response": "🏙️ **Maire de Cayenne**\n\nMaire : **Sandra Trochimara**\nCapitale de la Guyane\nPopulation : ~61 000 habitants\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "politique réunion",
+      "response": "🗳️ **Politique La Réunion**\n\n🏛️ Région : **Huguette Bello** (Présidente)\n🏛️ Département : **Cyrille Melchior** (Président)\n\n📋 Députés : **Jean-Hugues Ratenon**, **Perceval Gaillard**, **Philippe Naillet**, **David Lorion**, **Nadia Ramassamy**, **Karine Lebon**\n\n🏙️ Maire Saint-Denis : **Ericka Bareigts**\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "président région réunion",
+      "response": "🏛️ **Région Réunion**\n\nPrésidente : **Huguette Bello**\nÉlue en 2021\nParti : Rassemblement (gauche)\nSiège : Saint-Denis\n\n🌐 regionreunion.com\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "maire saint-denis réunion",
+      "response": "🏙️ **Maire de Saint-Denis — La Réunion**\n\nMaire : **Ericka Bareigts**\nCapitale de La Réunion\nPopulation : ~145 000 habitants\nAncienne Ministre des Outre-mer (2016)\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "politique mayotte",
+      "response": "🗳️ **Politique Mayotte**\n\n🏛️ Département de Mayotte (101ème département)\nPrésident du Conseil Départemental : **Ben Issa Ousseni**\n\n📋 Députés : **Estelle Youssouffa**, **Mansour Kamardine**\n📋 Sénateurs : **Saïd Omar Oili**, **Thani Mohamed Soilihi**\n\n🏙️ Maire Mamoudzou : **Ambdilwahedou Soumaila**\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "président mayotte",
+      "response": "🏛️ **Conseil Départemental de Mayotte**\n\nPrésident : **Ben Issa Ousseni**\nSiège : Mamoudzou\n101ème département français depuis 2011\n\n🌐 mairie-mamoudzou.fr\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "politique nouvelle-calédonie",
+      "response": "🗳️ **Politique Nouvelle-Calédonie**\n\n🏛️ Gouvernement de Nouvelle-Calédonie\nPrésident : **Louis Mapou** (2021-2024)\n\n📋 Statut : Collectivité sui generis\n📋 Congrès de Nouvelle-Calédonie\n📋 Référendums indépendance : 2018, 2020, 2021 (NON)\n\n🏙️ Maire Nouméa : **Sonia Lagarde**\n\n⚠️ Situation politique instable en 2024 suite aux émeutes\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "président nouvelle-calédonie",
+      "response": "🏛️ **Gouvernement Nouvelle-Calédonie**\n\nStatut : Collectivité sui generis (autonomie étendue)\nSiège : Nouméa\n\n⚠️ Situation politique instable depuis mai 2024\nÉmeutes suite à la réforme électorale\nIntervention de l'État français\n\n🌐 gouv.nc\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "politique haïti",
+      "response": "🗳️ **Politique Haïti**\n\n🏛️ Premier Ministre : **Garry Conille** (2024)\n👤 Conseil Présidentiel de Transition (2024)\n\n⚠️ Situation sécuritaire critique\n• Gangs contrôlent ~80% de Port-au-Prince\n• Mission multinationale de sécurité (Kenya)\n• Élections prévues fin 2025\n\n🏙️ Capitale : Port-au-Prince\nPopulation : ~12 millions\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "premier ministre haïti",
+      "response": "🏛️ **Haïti — Gouvernement de Transition**\n\nPremier Ministre : **Garry Conille** (juin 2024)\nConseil Présidentiel de Transition : 7 membres\n\n⚠️ Contexte : assassinat du président Jovenel Moïse (2021)\nCrise politique et sécuritaire majeure\nMission Kenya ONU pour stabilisation\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "chefs état caraïbes",
+      "response": "🌍 **Chefs d'État — Caraïbes**\n\n🇯🇲 Jamaïque : PM **Andrew Holness**\n🇹🇹 Trinidad : PM **Keith Rowley**\n🇧🇧 Barbade : PM **Mia Mottley**\n🇩🇴 Rép. Dominicaine : Pdt **Luis Abinader**\n🇨🇺 Cuba : Pdt **Miguel Díaz-Canel**\n🇭🇹 Haïti : Transition (CPT 2024)\n🇬🇾 Guyana : Pdt **Irfaan Ali**\n🇸🇷 Suriname : Pdt **Chan Santokhi**\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "caricom",
+      "response": "🌍 **CARICOM — Communauté Caribéenne**\n\nFondée en 1973\n15 États membres + 5 membres associés\nSiège : Georgetown, Guyana\nSecrétaire Général : **Carla Barnett**\n\n🎯 Objectifs :\n• Intégration économique\n• Politique étrangère commune\n• Développement humain\n\nMembres : Jamaïque, Trinidad, Barbade, Guyana, Suriname, Haïti, Belize...\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "politique saint-martin",
+      "response": "🏝️ **Saint-Martin — Collectivité d'Outre-Mer**\n\nPrésident du Conseil Territorial : **Louis Mussington**\nÉlu en 2022\nPartie française de l'île (partie néerlandaise : Sint Maarten)\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "politique saint-barthélemy",
+      "response": "🏝️ **Saint-Barthélemy — Collectivité d'Outre-Mer**\n\nPrésident du Conseil Territorial : **Xavier Lédée**\nÉlu en 2022\nÎle francophone des Caraïbes\n\nBoudoum ! 🇬🇵"
     }
   ]
 }

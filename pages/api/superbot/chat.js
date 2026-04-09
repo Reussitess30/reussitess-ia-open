@@ -4186,7 +4186,7 @@ async function getVillesPays(pays = "Guadeloupe") {
 async function getActualitesCurrents(query = "Guadeloupe", langue = "fr") {
   try {
     const q = query.toLowerCase()
-    const feedUrl = q.includes('guadeloupe') ? "https://www.faxinfo.fr/feed/" :
+    const feedUrl = q.includes('guadeloupe') ? "https://www.bondamanjak.com/category/guadeloupe/feed/" :
                     q.includes('martinique') ? "https://www.bondamanjak.com/category/martinique/feed/" :
                     q.includes('guyane') ? "https://www.bondamanjak.com/category/guyane/feed/" :
                     q.includes('mayotte') ? "https://www.mayottehebdo.com/feed/" :
