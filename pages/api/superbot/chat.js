@@ -2489,6 +2489,9 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
 
   // CRYPTO PRIX DIRECT
   // ===== ALCHEMY TOKEN METADATA =====
+
+
+  // ===== ALCHEMY TOKEN METADATA =====
   if (msgLow.includes("alchemy") || msgLow.includes("metadata reuss") || msgLow.includes("token metadata")) {
     const alchemyData = await getAlchemyTokenData()
     if (alchemyData) return res.status(200).json({ pdfAction: null, response: alchemyData })
