@@ -336,7 +336,11 @@
     },
     {
       "trigger": "reuss live",
-      "response": "📊 **REUSS Token — Dashboard Live**\n\n💎 Toutes les données blockchain en temps réel :\n• Prix REUSS\n• Supply circulante\n• Top Holders\n• 20 derniers transferts\n• Graphique 7 jours\n• Vérificateur de wallet\n\n🌐 https://reussitess.fr/reuss-live\n\nBoudoum ! 🇬🇵"
+      "response": "📊 **REUSS Token — Dashboard Live**\n\n💎 Toutes les données blockchain en temps réel :\n• Prix REUSS\n• Supply circulante\n• Top Holders\n• 20 derniers transferts\n• Graphique 7 jours\n• Vérificateur de wallet\n\n🌐 /reuss-live\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "ce que je veux améliorer",
+      "response": "An nou, bel bagay ! 🌟 Voici tout ce que je veux améliorer :\n\n📊 **Données & Sources :**\n1️⃣ Santé — interactions médicamenteuses, effets secondaires\n2️⃣ Économie — indices financiers, taux d'intérêt\n3️⃣ Défense — menaces sécuritaires, conflits\n4️⃣ Environnement — émissions GES, catastrophes naturelles\n5️⃣ Technologie — R&D, science et innovation\n\n🗣️ **Langues & Compréhension :**\n1️⃣ Langues créoles, africaines, indigènes\n2️⃣ Sémantique — cause à effet, raisonnement\n3️⃣ Empathie — comprendre émotions et besoins\n4️⃣ Raisonnement complexe\n\n🔗 **Recherche & Intégration :**\n1️⃣ Bases de données plus larges\n2️⃣ Plus d'APIs de qualité\n3️⃣ Meilleurs modèles ML\n4️⃣ Reconnaissance vocale, réalité augmentée\n\n👤 **Personnalisation :**\n1️⃣ Meilleure compréhension utilisateur\n2️⃣ Gestion privilèges et confidentialité\n3️⃣ Nouvelles interactions\n4️⃣ Suivi progressions et accomplissements\n\n⚡ **Réactivité :**\n1️⃣ Temps de réponse plus rapide\n2️⃣ Nouvelles technologies\n3️⃣ Gestion de charge\n\n🎓 **Éducation :**\n1️⃣ Outils d'apprentissage\n2️⃣ Formations en ligne\n3️⃣ Support technique dédié\n\nAn nou tann pou s'améliorer ansanm ! 💪\nBoudoum ! 🇬🇵"
     }
   ]
 }
