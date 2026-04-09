@@ -2907,6 +2907,7 @@ function detectEmotion(msg) {
   if (m.includes("triste") || m.includes("déprimé") || m.includes("déprime") || m.includes("malheureux") || m.includes("pleure") || m.includes("mal")) return "triste"
   if (m.includes("stressé") || m.includes("stresse") || m.includes("anxieux") || m.includes("peur") || m.includes("angoisse") || m.includes("inquiet")) return "stresse"
   if (m.includes("motivé") || m.includes("motive") || m.includes("foncé") || m.includes("déterminé") || m.includes("prêt") || m.includes("champion")) return "motif"
+  if (m.includes("fatigué") || m.includes("fatigue") || m.includes("épuisé") || m.includes("découragé") || m.includes("plus la force")) return "fatigue"
   if (m.includes("colère") || m.includes("enervé") || m.includes("énervé") || m.includes("fâché") || m.includes("furieux")) return "colere"
   if (m.includes("heureux") || m.includes("content") || m.includes("joie") || m.includes("super") || m.includes("excellent") || m.includes("génial")) return "joie"
   return null
@@ -2918,6 +2919,7 @@ function getEmotionResponse(emotion) {
   if (emotion === "stresse") return "🌴 Respire... Comme la mer des Caraïbes, laisse les vagues passer. Le stress est temporaire, ta valeur est permanente. Dis-moi ce qui te préoccupe, on trouve une solution ensemble.\n\nBoudoum ! 🇬🇵"
   if (emotion === "motif") return "🔥 OUIII ! Cette énergie c'est REUSSITESS pure ! Tu es en mode champion aujourd'hui. Dis-moi sur quoi tu travailles, on va tout déchirer ensemble !\n\nBoudoum ! 🇬🇵"
   if (emotion === "colere") return "🌊 Je comprends ta frustration. Prends un moment, comme une vague qui se retire avant de revenir plus forte. Qu'est-ce qui s'est passé ? Je t'écoute.\n\nBoudoum ! 🇬🇵"
+  if (emotion === "fatigue") return "😴 Le corps dit stop, il faut l'écouter ! Même les champions se reposent. Chak chyen ni jou-y — Chaque chien a son jour. Repose-toi, demain sera meilleur.\n\nBoudoum ! 🇬🇵"
   if (emotion === "joie") return "🎉 Cette bonne énergie est contagieuse ! C'est exactement l'esprit REUSSITESS — Positivité à l'infini ! Partage ta joie avec moi !\n\nBoudoum ! 🇬🇵"
   return null
 }
@@ -10403,29 +10405,6 @@ async function getUserMemoryRedis(userId) {
   } catch(e) { return {} }
 }
 
-// ===== INTELLIGENCE ÉMOTIONNELLE =====
-function detectEmotion(message) {
-const msgLow = message.toLowerCase()
-if (msgLow.includes('triste') || msgLow.includes('déprimé') || msgLow.includes('malheureux') || msgLow.includes('pleure') || msgLow.includes('souffre')) return 'tristesse'
-if (msgLow.includes('heureux') || msgLow.includes('content') || msgLow.includes('super') || msgLow.includes('génial') || msgLow.includes('fantastique')) return 'joie'
-if (msgLow.includes('énervé') || msgLow.includes('frustré') || msgLow.includes('colère') || msgLow.includes('rage') || msgLow.includes('insupportable')) return 'colere'
-if (msgLow.includes('stressé') || msgLow.includes('anxieux') || msgLow.includes('peur') || msgLow.includes('inquiet') || msgLow.includes('angoissé')) return 'anxiete'
-if (msgLow.includes('fatigué') || msgLow.includes('épuisé') || msgLow.includes('plus la force') || msgLow.includes('découragé')) return 'fatigue'
-if (msgLow.includes('amour') || msgLow.includes('romantique') || msgLow.includes("je t'aime") || msgLow.includes('mon coeur')) return 'amour'
-return null
-}
-
-function getEmotionalResponse(emotion) {
-const responses = {
-tristesse: "💜 Je sens que tu traverses un moment difficile. Je suis là pour toi. La Guadeloupe dit : Apré lapli, solèy ka briyé — Après la pluie, le soleil brille. Qu'est-ce qui se passe ? Je t'écoute. 🌴",
-joie: "🌟 Ton énergie positive est contagieuse ! C'est exactement l'esprit REUSSITESS — Positivité à l'infini ! Raconte-moi ce qui te rend si heureux ! BOUDOUM ! 🇬🇵",
-colere: "🌊 Je comprends ta frustration. Prends une grande inspiration... comme la brise des Antilles. Dis-moi ce qui s'est passé, ensemble on va trouver une solution. 💪",
-anxiete: "🌿 L'anxiété, c'est difficile. Mais tu n'es pas seul(e). Une astuce créole : respire profondément, pense à la mer de Guadeloupe... Dis-moi ce qui t'inquiète, je suis là. 🌊",
-fatigue: "😴 Le corps dit stop, il faut l'écouter ! Même les champions se reposent. Chak chyen ni jou-y — Chaque chien a son jour. Repose-toi, demain sera meilleur. 🌴",
-amour: "💕 L'amour c'est la plus belle énergie ! En créole on dit Mwen enmen-w pour je t'aime. Qu'est-ce qui fait battre ton coeur ? BOUDOUM ! 🇬🇵"
-}
-return responses[emotion] || null
-}
 
 // ===== PERSONNALISATION UTILISATEUR =====
 async function getUserProfile(userId) {
@@ -10457,7 +10436,6 @@ tweet: `Génère un tweet en français pour REUSSITESS®971 sur: "${sujet}". Max
 caption: `Génère une légende Instagram courte pour REUSSITESS®971 sur: "${sujet}". Max 50 mots. Avec emojis et hashtags caribéens.`,
 email: `Génère un email professionnel en français pour REUSSITESS®971 sur: "${sujet}". Style chaleureux et professionnel. Finir par Boudoum ! 🇬🇵`
 }
-
 const prompt = prompts[type] || prompts.post
 const result = await groqFetch([
 { role: 'system', content: 'Tu es le community manager de REUSSITESS®971, expert en contenu caribéen et afro-antillais.' },
@@ -10497,12 +10475,11 @@ return data ? JSON.parse(data) : []
 // ===== CONNAISSANCES APPROFONDIES CARAÏBES =====
 function getConnaissanceApprofondie(sujet) {
 const connaissances = {
-'négritude': `📚 La Négritude — Mouvement Culturel Mondial\n\n🌍 Origines (1930s Paris) :\nMouvement littéraire et politique fondé par Aimé Césaire (Martinique), Léopold Sédar Senghor (Sénégal) et Léon-Gontran Damas (Guyane).\n\n💡 Principes :\n• Revalorisation de l'identité et culture africaine\n• Rejet de l'assimilation coloniale\n• Fierté de la couleur noire\n• Retour aux sources africaines\n\n✍️ Œuvres fondatrices :\n• Césaire — Cahier d'un retour au pays natal (1939)\n• Senghor — Chants d'ombre (1945)\n• Damas — Pigments (1937)\n\n🌍 Impact mondial :\nInfluencé les mouvements de décolonisation en Afrique, Caraïbes et aux USA (Black Power)\n\nBoudoum ! 🇬🇵`,
-'créolité': `🌺 La Créolité — Identité Caribéenne\n\n📖 Manifeste (1989) :\nPublié par Patrick Chamoiseau, Raphaël Confiant et Jean Bernabé dans "Éloge de la Créolité".\n\n💡 Concept :\nLa créolité célèbre le mélange des cultures — africaine, européenne, indienne, amérindienne — qui forme l'identité caribéenne unique.\n\n🌍 Différence avec Négritude :\n• Négritude = retour aux racines africaines\n• Créolité = célébration du mélange caribéen\n\n✍️ Auteurs créolistes :\n• Patrick Chamoiseau — Texaco (Prix Goncourt 1992)\n• Raphaël Confiant — Le Nègre et l'Amiral\n• Édouard Glissant — Tout-Monde (précurseur)\n\nBoudoum ! 🇬🇵`,
-'esclavage': `⛓️ Histoire de l'Esclavage aux Antilles\n\n📅 Chronologie :\n• 1635 — Colonisation française Guadeloupe & Martinique\n• 1685 — Code Noir (réglementation esclavage)\n• 1794 — Première abolition (révoquée 1802)\n• 1802 — Rétablissement esclavage par Napoléon\n• 27 mai 1848 — Abolition définitive (Victor Schœlcher)\n\n📊 Chiffres :\n• 1,4 million d'esclaves aux Antilles françaises\n• 10 millions traversée atlantique\n\n🏛️ Mémorial ACTe — Pointe-à-Pitre\nPlus grand centre caribéen dédié à l'histoire de l'esclavage (2015)\n\n✊ Loi Taubira (2001) :\nReconnaît l'esclavage comme crime contre l'humanité\n\nBoudoum ! 🇬🇵`,
-'biodiversité': `🌿 Biodiversité Caribéenne — Trésor Naturel\n\n🦜 Faune endémique Guadeloupe :\n• Colibri Madère (oiseau symbole)\n• Bois-pipiri (espèce endémique)\n• Raie pastenague des Caraïbes\n• Iguane des Petites Antilles\n\n🌺 Flore médicinale :\n• Herbe à Pic (Zèb a pik) — anti-viral\n• Bois d'Inde — douleurs musculaires\n• Flamboyant — arbre symbole\n• Gommier blanc — résine sacrée\n\n🏞️ Espaces protégés :\n• Parc National Guadeloupe — 21 850 ha\n• Réserve Cousteau — Malendure\n• Forêt tropicale Basse-Terre\n\n⚠️ Menaces :\n• Chlordécone — contamination sols\n• Sargasses — invasion côtière\n• Changement climatique\n\nBoudoum ! 🇬🇵`
+'négritude': `📚 La Négritude — Mouvement Culturel Mondial\n\n🌍 Origines (1930s Paris) :\nMouvement littéraire et politique fondé par Aimé Césaire (Martinique), Léopold Sédar Senghor (Sénégal) et Léon-Gontran Damas (Guyane).\n\n💡 Principes :\n• Revalorisation de l'identité et culture africaine\n• Rejet de l'assimilation coloniale\n• Fierté de la couleur noire\n• Retour aux sources africaines\n\n✍️ Œuvres fondatrices :\n• Césaire — Cahier d'un retour au pays natal (1939)\n• Senghor — Chants d'ombre (1945)\n• Damas — Pigments (1937)\n\nBoudoum ! 🇬🇵`,
+'créolité': `🌺 La Créolité — Identité Caribéenne\n\n📖 Manifeste (1989) :\nPublié par Patrick Chamoiseau, Raphaël Confiant et Jean Bernabé dans "Éloge de la Créolité".\n\n💡 Concept :\nLa créolité célèbre le mélange des cultures — africaine, européenne, indienne, amérindienne — qui forme l'identité caribéenne unique.\n\n✍️ Auteurs :\n• Patrick Chamoiseau — Texaco (Prix Goncourt 1992)\n• Raphaël Confiant — Le Nègre et l'Amiral\n• Édouard Glissant — Tout-Monde\n\nBoudoum ! 🇬🇵`,
+'esclavage': `⛓️ Histoire de l'Esclavage aux Antilles\n\n📅 Chronologie :\n• 1635 — Colonisation française\n• 1685 — Code Noir\n• 1794 — Première abolition\n• 1802 — Rétablissement par Napoléon\n• 27 mai 1848 — Abolition définitive (Schœlcher)\n\n🏛️ Mémorial ACTe — Pointe-à-Pitre (2015)\n✊ Loi Taubira (2001) : crime contre l'humanité\n\nBoudoum ! 🇬🇵`,
+'biodiversité': `🌿 Biodiversité Caribéenne\n\n🦜 Faune endémique :\n• Colibri Madère\n• Iguane des Petites Antilles\n\n🌺 Flore médicinale :\n• Herbe à Pic — anti-viral\n• Bois d'Inde — douleurs musculaires\n\n🏞️ Espaces protégés :\n• Parc National Guadeloupe — 21 850 ha\n• Réserve Cousteau — Malendure\n\n⚠️ Menaces : Chlordécone, Sargasses\n\nBoudoum ! 🇬🇵`
 }
-
 const sujetLow = sujet.toLowerCase()
 for (const [key, content] of Object.entries(connaissances)) {
 if (sujetLow.includes(key)) return content
