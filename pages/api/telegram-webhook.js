@@ -63,7 +63,8 @@ export default async function handler(req, res) {
         [
           { text: '🛍️ Boutiques', callback_data: 'boutiques amazon 14 pays' },
           { text: '💎 Token REUSS', callback_data: 'token REUSS blockchain supply' },
-            { text: '📊 REUSS Live', callback_data: 'dashboard reuss' },
+            { text: '📊 REUSS Live', callback_data: 'reuss live' },
+            { text: '🏆 Top Holders', callback_data: 'transferts reuss' },
           { text: '🔮 Oracle', callback_data: 'oracle 971 quel est mon destin' }
         ],
         [
