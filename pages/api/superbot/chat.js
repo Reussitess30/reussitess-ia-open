@@ -10536,17 +10536,3 @@ function getProverbeAleatoire() {
   ]
   return proverbes[Math.floor(Math.random() * proverbes.length)]
 }
-
-// ===== PROVERBES CRÉOLES ALÉATOIRES =====
-function getProverbeAleatoire() {
-  const proverbes = [
-    "🌴 *Apré lapli, solèy ka briyé* — Après la pluie, le soleil brille.",
-    "🌊 *Dlo ka kouvè wòch* — L'eau finit par couvrir les roches.",
-    "🥁 *Chak chyen ni jou-y* — Chaque chien a son jour.",
-    "🌺 *Bèl figi pa di bon kè* — Un beau visage ne dit pas un bon cœur.",
-    "🦜 *Zwazo ki chanté bonmatin ka jwenn manje* — L'oiseau qui chante tôt trouve à manger.",
-    "💪 *Sa ki pa twé-w ka fè-w pi fò* — Ce qui ne te tue pas te rend plus fort.",
-    "🎯 *Piti piti, zwazo fè nich-li* — Petit à petit, l'oiseau fait son nid."
-  ]
-  return proverbes[Math.floor(Math.random() * proverbes.length)]
-}
