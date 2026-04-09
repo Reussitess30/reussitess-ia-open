@@ -4638,6 +4638,18 @@ export default async function handler(req, res) {
   }
 
   // NASA PHOTO DU JOUR
+  // ===== GÉNÉRATION CONTENU SOCIAL =====
+  if (msgLow.includes("génère un post") || msgLow.includes("génère post") || msgLow.includes("crée un post") || msgLow.includes("rédige un tweet") || msgLow.includes("génère caption")) {
+    const type = msgLow.includes("tweet") ? "tweet" : msgLow.includes("caption") ? "caption" : msgLow.includes("email") ? "email" : "post"
+    const sujet = message.replace(/génère un post|génère post|crée un post|rédige un tweet|génère caption|pour|sur|à propos de/gi, "").trim()
+    const content = await genererContenuSocial(sujet, type)
+    return res.status(200).json({ pdfAction: null, response: content || "Génération en cours... Boudoum ! 🇬🇵" })
+  }
+  // ===== CONNAISSANCES APPROFONDIES =====
+  if (msgLow.includes("négritude") || msgLow.includes("créolité") || msgLow.includes("histoire esclavage") || msgLow.includes("biodiversité caribéenne")) {
+    const result = getConnaissanceApprofondie(message)
+    if (result) return res.status(200).json({ pdfAction: null, response: result })
+  }
   if (msgLow.includes('nasa') || msgLow.includes('photo nasa') || msgLow.includes('image nasa') || msgLow.includes('photo jour nasa')) {
     const data = await getNASAPhotoJour()
     return res.status(200).json({ pdfAction: null, response: data || '🚀 **NASA — Photo du Jour**\n\nConsulte directement : https://apod.nasa.gov/apod/\n\nDes images époustouflantes de l\'univers chaque jour !\nBoudoum ! 🇬🇵' })
