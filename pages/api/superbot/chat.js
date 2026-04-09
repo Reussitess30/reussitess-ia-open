@@ -2494,7 +2494,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   // ===== ALCHEMY DASHBOARD =====
   if (msgLow.includes("dashboard reuss") || msgLow.includes("stats reuss") || msgLow.includes("reuss live") || msgLow.includes("token onchain")) {
     const dash = await getAlchemyDashboard()
-    if (dash) return res.status(200).json({ pdfAction: null, response: dash })
+    if (dash) return res.status(200).json({ pdfAction: null, response: dash + "\n\n🌐 Dashboard visuel : https://reussitess.fr/reuss-live" })
   }
   // ===== ALCHEMY WALLET =====
   if (msgLow.includes("mon solde reuss") || msgLow.includes("solde reuss") || msgLow.includes("balance reuss") || msgLow.match(/0x[a-fA-F0-9]{40}/)) {
