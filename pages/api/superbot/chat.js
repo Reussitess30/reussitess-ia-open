@@ -616,7 +616,7 @@ async function getWikipedia(term) {
   // ===== GÉNÉRATION CONTENU SOCIAL =====
   if (msgLow.includes("génère un post") || msgLow.includes("génère post") || msgLow.includes("crée un post") || msgLow.includes("rédige un tweet") || msgLow.includes("génère caption")) {
     const type = msgLow.includes("tweet") ? "tweet" : msgLow.includes("caption") ? "caption" : msgLow.includes("email") ? "email" : "post"
-    const sujet = message.replace(/génère un post|génère post|crée un post|rédige un tweet|génère caption|pour|sur|à propos de/gi, "").trim()
+    const sujet = message.replace(/génère un post|génère post|crée un post|rédige un tweet|génère caption|pour|sur|à propos de/gi, "").trim() || "REUSSITESS et la Guadeloupe"
     const content = await genererContenuSocial(sujet, type)
     return res.status(200).json({ pdfAction: null, response: content || "Génération en cours... Boudoum ! 🇬🇵" })
   }
@@ -4641,7 +4641,7 @@ export default async function handler(req, res) {
   // ===== GÉNÉRATION CONTENU SOCIAL =====
   if (msgLow.includes("génère un post") || msgLow.includes("génère post") || msgLow.includes("crée un post") || msgLow.includes("rédige un tweet") || msgLow.includes("génère caption")) {
     const type = msgLow.includes("tweet") ? "tweet" : msgLow.includes("caption") ? "caption" : msgLow.includes("email") ? "email" : "post"
-    const sujet = message.replace(/génère un post|génère post|crée un post|rédige un tweet|génère caption|pour|sur|à propos de/gi, "").trim()
+    const sujet = message.replace(/génère un post|génère post|crée un post|rédige un tweet|génère caption|pour|sur|à propos de/gi, "").trim() || "REUSSITESS et la Guadeloupe"
     const content = await genererContenuSocial(sujet, type)
     return res.status(200).json({ pdfAction: null, response: content || "Génération en cours... Boudoum ! 🇬🇵" })
   }
