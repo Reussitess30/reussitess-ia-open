@@ -2491,8 +2491,26 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   // ===== ALCHEMY TOKEN METADATA =====
 
 
-  // ===== ALCHEMY TOKEN METADATA =====
-  if (msgLow.includes("alchemy polygon") || msgLow.includes("metadata reuss") || msgLow.includes("info contrat reuss") || msgLow.includes("token onchain")) {
+  // ===== ALCHEMY DASHBOARD =====
+  if (msgLow.includes("dashboard reuss") || msgLow.includes("stats reuss") || msgLow.includes("reuss live") || msgLow.includes("token onchain")) {
+    const dash = await getAlchemyDashboard()
+    if (dash) return res.status(200).json({ pdfAction: null, response: dash })
+  }
+  // ===== ALCHEMY WALLET =====
+  if (msgLow.includes("mon solde reuss") || msgLow.includes("solde reuss") || msgLow.includes("balance reuss") || msgLow.match(/0x[a-fA-F0-9]{40}/)) {
+    const addrMatch = message.match(/0x[a-fA-F0-9]{40}/)
+    if (addrMatch) {
+      const bal = await getWalletBalance(addrMatch[0])
+      if (bal) return res.status(200).json({ pdfAction: null, response: bal })
+    }
+  }
+  // ===== ALCHEMY TRANSFERTS =====
+  if (msgLow.includes("transferts reuss") || msgLow.includes("transactions reuss") || msgLow.includes("derniers transferts reuss")) {
+    const tr = await getRecentTransfers()
+    if (tr) return res.status(200).json({ pdfAction: null, response: tr })
+  }
+  // ===== ALCHEMY METADATA =====
+  if (msgLow.includes("alchemy polygon") || msgLow.includes("metadata reuss") || msgLow.includes("info contrat reuss")) {
     const alchemyData = await getAlchemyTokenData()
     if (alchemyData) return res.status(200).json({ pdfAction: null, response: alchemyData })
   }
@@ -10569,3 +10587,66 @@ return `💎 **${meta.name || 'REUSSITESS Token'} ($${meta.symbol || 'REUSS'}) �
 } catch(e) { return null }
 }
 
+
+// ===== ALCHEMY — WALLET BALANCE REUSS =====
+async function getWalletBalance(address) {
+try {
+const alchemyKey = process.env.ALCHEMY_API_KEY
+const CONTRACT = '0xB37531727fC07c6EED4f97F852A115B428046EB2'
+const r = await fetch(`https://polygon-mainnet.g.alchemy.com/v2/${alchemyKey}`, {
+method: 'POST', headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'alchemy_getTokenBalances', params: [address, [CONTRACT]] }),
+signal: AbortSignal.timeout(5000)
+})
+const d = await r.json()
+const raw = d.result?.tokenBalances?.[0]?.tokenBalance || '0x0'
+const balance = parseInt(raw, 16) / 1e18
+return `👛 **Wallet REUSS — Solde**\n\n📍 Adresse : ${address.substring(0,8)}...${address.slice(-6)}\n💎 Solde : ${balance.toFixed(2)} REUSS\n⛓️ Réseau : Polygon\n\n🔍 https://polygonscan.com/address/${address}\n\nBoudoum ! 🇬🇵`
+} catch(e) { console.error('Alchemy wallet:', e.message); return null }
+}
+
+// ===== ALCHEMY — TRANSFERTS RÉCENTS REUSS =====
+async function getRecentTransfers() {
+try {
+const alchemyKey = process.env.ALCHEMY_API_KEY
+const CONTRACT = '0xB37531727fC07c6EED4f97F852A115B428046EB2'
+const r = await fetch(`https://polygon-mainnet.g.alchemy.com/v2/${alchemyKey}`, {
+method: 'POST', headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({
+jsonrpc: '2.0', id: 1, method: 'alchemy_getAssetTransfers',
+params: [{ contractAddresses: [CONTRACT], category: ['erc20'], maxCount: '0x5', order: 'desc', withMetadata: true }]
+}), signal: AbortSignal.timeout(5000)
+})
+const d = await r.json()
+const transfers = d.result?.transfers || []
+if (!transfers.length) return null
+const lines = transfers.map(t => `• ${t.from.substring(0,6)}...→ ${t.to.substring(0,6)}... : ${parseFloat(t.value||0).toFixed(2)} REUSS`).join('\n')
+return `📊 **REUSS Token — 5 Derniers Transferts**\n\n${lines}\n\n🔍 https://polygonscan.com/token/${CONTRACT}\n\nBoudoum ! 🇬🇵`
+} catch(e) { console.error('Alchemy transfers:', e.message); return null }
+}
+
+// ===== ALCHEMY — DASHBOARD COMPLET =====
+async function getAlchemyDashboard() {
+try {
+const alchemyKey = process.env.ALCHEMY_API_KEY
+const CONTRACT = '0xB37531727fC07c6EED4f97F852A115B428046EB2'
+const [metaRes, transfersRes] = await Promise.all([
+fetch(`https://polygon-mainnet.g.alchemy.com/v2/${alchemyKey}`, {
+method: 'POST', headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'alchemy_getTokenMetadata', params: [CONTRACT] }),
+signal: AbortSignal.timeout(5000)
+}),
+fetch(`https://polygon-mainnet.g.alchemy.com/v2/${alchemyKey}`, {
+method: 'POST', headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({
+jsonrpc: '2.0', id: 2, method: 'alchemy_getAssetTransfers',
+params: [{ contractAddresses: [CONTRACT], category: ['erc20'], maxCount: '0x3', order: 'desc' }]
+}), signal: AbortSignal.timeout(5000)
+})
+])
+const meta = (await metaRes.json()).result
+const transfers = (await transfersRes.json()).result?.transfers || []
+const lines = transfers.map(t => `• ${t.from.substring(0,6)}...→ ${t.to.substring(0,6)}... : ${parseFloat(t.value||0).toFixed(2)} REUSS`).join('\n')
+return `💎 **Dashboard REUSS Token — Live**\n\n📛 Nom : ${meta.name}\n🔤 Symbole : $${meta.symbol}\n📊 Décimales : ${meta.decimals}\n⛓️ Réseau : Polygon Mainnet\n🔗 Contrat : ${CONTRACT.substring(0,10)}...\n\n📈 **3 Derniers Transferts :**\n${lines || 'Aucun transfert récent'}\n\n🔍 https://polygonscan.com/token/${CONTRACT}\n\nBoudoum ! 🇬🇵`
+} catch(e) { console.error('Alchemy dashboard:', e.message); return null }
+}
