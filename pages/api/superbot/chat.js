@@ -612,6 +612,20 @@ async function getWikipedia(term) {
   try {
   // GUIDE CRYPTOART
   if (msgLow.includes("crypto art") || msgLow.includes("generative art") || msgLow.includes("art génératif") || msgLow.includes("créer avec ia") || msgLow.includes("midjourney")) {
+
+  // ===== GÉNÉRATION CONTENU SOCIAL =====
+  if (msgLow.includes("génère un post") || msgLow.includes("génère post") || msgLow.includes("crée un post") || msgLow.includes("rédige un tweet") || msgLow.includes("génère caption")) {
+    const type = msgLow.includes("tweet") ? "tweet" : msgLow.includes("caption") ? "caption" : msgLow.includes("email") ? "email" : "post"
+    const sujet = message.replace(/génère un post|génère post|crée un post|rédige un tweet|génère caption|pour|sur|à propos de/gi, "").trim()
+    const content = await genererContenuSocial(sujet, type)
+    return res.status(200).json({ pdfAction: null, response: content || "Génération en cours... Boudoum ! 🇬🇵" })
+  }
+
+  // ===== CONNAISSANCES APPROFONDIES =====
+  if (msgLow.includes("négritude") || msgLow.includes("créolité") || msgLow.includes("histoire esclavage") || msgLow.includes("biodiversité caribéenne")) {
+    const result = getConnaissanceApprofondie(message)
+    if (result) return res.status(200).json({ pdfAction: null, response: result })
+  }
     try {
       const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Créatif, expert art génératif IA et NFT caribéen. Boudoum!" },
