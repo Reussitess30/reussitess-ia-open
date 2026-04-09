@@ -173,6 +173,82 @@
     {
       "trigger": "whitepaper reussitess",
       "response": "📄 **Whitepaper REUSSITESS® v2.0**\n\n🇬🇵 **Identité :**\n• Fondateur : Rony Porinus\n• Origine : Gourbeyre, Guadeloupe\n• SIRET : 444699979700031\n• Protection INPI : DSO2026008921 (Mars 2026)\n\n🤖 **Bot REUSSITESS — Modules :**\n• afro_brain.py → réponses régionales DOM-TOM\n• final_brain.py → coordination modules\n• crypto_api.py → prix REUSS temps réel\n• region_info.py → infos locales & météo\n• memory.py → contexte utilisateur\n\n💎 **Token REUSS (Polygon) :**\n• Contrat : 0xB37531727fC07c6EED4f97F852A115B428046EB2\n• Supply : 999 999 999 REUSS\n• +50 REUSS → achats locaux TERRA GROW\n• +10 REUSS → signalement incidents locaux\n\n🗓️ **Roadmap :**\n• Q2 2026 : Bot complet Guadeloupe\n• Q3 2026 : Extension DOM-TOM\n• Q4 2026 : Modules optionnels\n\n🎯 Vision : Hub Afrocaraïbéen numérique sûr et fonctionnel\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "henry joseph",
+      "response": "🌿 **Dr Henry Joseph — Champion de la Biodiversité Guadeloupéenne**\n\n👨‍🔬 **Qui est-il ?**\nPharmacien et Docteur en Pharmacognosie, né en Guadeloupe. Pionnier de la valorisation des plantes médicinales caribéennes.\n\n🏆 **Réalisations majeures :**\n• Co-fondateur du Laboratoire **Phytobôkaz** (2005) avec le Pr Paul Bourgeois\n• A fait reconnaître **46+ plantes** de Guadeloupe, Martinique et Réunion dans la pharmacopée française (combat de 12 ans)\n• Membre fondateur de **TRAMIL** (Traditional Medicine of the Islands) — 200 chercheurs, 30 pays Caraïbes\n• **5 brevets mondiaux** dont un sur l'Herbe à Pic (Zèb a pik) contre les virus ARN\n• Président fondateur de l'**APLAMEDAROM** Guadeloupe\n• Cité par Emmanuel Macron comme exemple d'innovation!\n\n🌿 **Plante phare : Herbe à Pic (Neurolaena lobata)**\n• Inhibe la réplication des virus ARN (grippe, dengue, coronavirus)\n• Produit phare : **Virapic**\n\n💡 **Sa vision :**\n\"Faire de la Guadeloupe un oasis planétaire exemplaire — protéger la diversité de vie\"\n\n🔗 phytobokaz.fr\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "chlordecone guadeloupe",
+      "response": "⚖️ **Chlordécone — Scandale Guadeloupe & Martinique**\n\nLe chlordécone est un pesticide utilisé dans les bananeraies de 1972 à 1993 en Guadeloupe et Martinique, malgré son interdiction en France métropolitaine.\n\n🏥 **Impacts santé :**\n• Cancer de la prostate — taux le plus élevé au monde en Guadeloupe\n• Contamination sols et eaux pour 700 ans\n• 90% de la population antillaise contaminée\n\n⚖️ **Justice :**\n• Procès en cours — non-lieu contesté\n• Associations victimes : Lyannaj pou dépolye Matinik\n• Demande d'indemnisation État français\n\n🔗 chlordecone-infos.fr\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "vie chere martinique",
+      "response": "💸 **Vie Chère — Martinique & DOM-TOM**\n\nLa vie chère est un problème structurel dans les DOM-TOM. Les prix y sont 40% plus élevés qu'en métropole.\n\n📊 **Causes :**\n• Octroi de mer (taxe locale)\n• Monopoles de distribution\n• Coût du transport maritime\n• Dépendance aux importations\n\n✊ **Mouvements sociaux :**\n• LKP 2009 — Lyannaj Kont Pwofitasyon (Guadeloupe)\n• Protocole vie chère 2024 suspendu\n• Manifestations 2025 Martinique\n\n📞 DGCCRF Guadeloupe : 0590 99 09 00\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "autonomie martinique",
+      "response": "🏛️ **Autonomie Martinique — Débat Politique**\n\nLa Collectivité Territoriale de Martinique (CTM) dirigée par Serge Letchimy milite pour une évolution institutionnelle vers plus d'autonomie.\n\n📋 **Positions :**\n• CTM : demande d'autonomie dans la République française\n• Débat Article 73 vs Article 74 Constitution\n• Référendum souhaité par certains élus\n\n🏛️ **Élus :**\n• Serge Letchimy (CTM)\n• Lucien Saliber (Assemblée de Martinique)\n\n🔗 collectivitedemartinique.mq\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "bonsoir",
+      "response": "Bonsoir ! 🌙 Merci d'être là. Guadeloupe Terres de Champions — Excellence & Innovation ! Comment puis-je vous aider ce soir ?\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "au revoir",
+      "response": "Au revoir ! 🚀 À bientôt pour plus de succès. Positivité à l'infini !\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "cours reussitess",
+      "response": "🎓 **Cours Gratuits REUSSITESS — Académie**\n\n📚 **6 cours disponibles :**\n• 🗣️ Créole Guadeloupéen (971)\n• 🌴 Culture DOM-TOM\n• 💼 Business DOM-TOM\n• 🤖 IA & Groq\n• ⛓️ Blockchain & Token REUSS\n• 📊 Entrepreneuriat Caribéen\n\n👉 reussitess.fr/academie\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "joseph zobel",
+      "response": "📚 **Joseph Zobel — Écrivain Martiniquais**\n\nNé en 1915 à Rivière-Salée, Martinique. Auteur du célèbre roman **La Rue Cases-Nègres** (1950), adapté au cinéma par Euzhan Palcy en 1983 (Ours d'Argent Berlin).\n\n✍️ Œuvres : La Rue Cases-Nègres, Diab'la, La Fête à Paris\n🏆 Prix littéraires nombreux\n🔗 wikipedia.org/wiki/Joseph_Zobel\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "christiane taubira",
+      "response": "⚖️ **Christiane Taubira — Femme Politique Guyanaise**\n\nNée en 1952 à Cayenne, Guyane. Ancienne Garde des Sceaux (2012-2016). Auteure de la **Loi Taubira** (2001) reconnaissant l'esclavage comme crime contre l'humanité.\n\n🏛️ Candidate présidentielle 2022\n📚 Auteure de plusieurs ouvrages\n🔗 wikipedia.org/wiki/Christiane_Taubira\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "indira ampiot",
+      "response": "👑 **Indira Ampiot — Miss Univers 2023**\n\nNée en 2003 à Guadeloupe. Élue **Miss France 2023** puis représentante française à Miss Univers. Ambassadrice de la Guadeloupe dans le monde entier !\n\n🇬🇵 Fierté guadeloupéenne\n🌍 Représente la diversité caribéenne\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "corinne coman",
+      "response": "🏐 **Corinne Coman — Championne du Monde Volley**\n\nVolleyeuse guadeloupéenne, Championne du Monde avec l'équipe de France en 2006. Icône du sport féminin français et de la Guadeloupe.\n\n🥇 Championne du Monde 2006\n🏐 Joueuse internationale\n🇬🇵 Fierté Guadeloupe\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "elie domota",
+      "response": "✊ **Élie Domota — Leader Syndical Guadeloupe**\n\nSecrétaire général de l'UGTG (Union Générale des Travailleurs de Guadeloupe). Figura central du mouvement **LKP** (Lyannaj Kont Pwofitasyon) lors de la grève générale de 2009.\n\n✊ Défenseur des droits des travailleurs\n🇬🇵 Figure politique Guadeloupe\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "gaston monnerville",
+      "response": "🏛️ **Gaston Monnerville — Père de la République**\n\nNé en 1897 en Guyane. Président du Sénat français de 1947 à 1968 — le plus long mandat de l'histoire. Premier homme de couleur à présider une assemblée française.\n\n🏛️ Président du Sénat 21 ans\n⚖️ Résistant pendant WW2\n🔗 wikipedia.org/wiki/Gaston_Monnerville\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "henri salvador",
+      "response": "🎵 **Henri Salvador — Légende de la Chanson**\n\nNé en 1917 à Cayenne, Guyane. Chanteur, guitariste et humoriste français légendaire. Connu pour **Zorro est arrivé**, **Syracuse**, **Dans mon île**.\n\n🎤 70 ans de carrière\n🎶 Albums : Chambre avec vue (2004) — succès mondial\n🔗 wikipedia.org/wiki/Henri_Salvador\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "patrick chamoiseau",
+      "response": "📚 **Patrick Chamoiseau — Prix Goncourt Martinique**\n\nNé en 1953 à Fort-de-France. Écrivain martiniquais, Prix Goncourt 1992 pour **Texaco**. Co-auteur de **Éloge de la Créolité** avec Confiant et Bernabé.\n\n📖 Œuvres : Texaco, Solibo Magnifique, L'Esclave vieil homme\n🏆 Prix Goncourt 1992\n🔗 wikipedia.org/wiki/Patrick_Chamoiseau\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "frantz fanon",
+      "response": "✊ **Frantz Fanon — Révolutionnaire Martiniquais**\n\nNé en 1925 à Fort-de-France. Psychiatre, philosophe et militant anticolonialiste. Auteur des **Damnés de la Terre** (1961), bible de la décolonisation mondiale.\n\n📚 Œuvres : Peau noire masques blancs, Les Damnés de la Terre\n🌍 Influencé Malcolm X, Nelson Mandela\n🔗 wikipedia.org/wiki/Frantz_Fanon\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "louis delgrès",
+      "response": "⚔️ **Louis Delgrès — Héros de la Résistance Guadeloupe**\n\nNé en 1766 à la Martinique. Officier mulâtre qui résista à la restauration de l'esclavage par Napoléon en 1802. Mourut avec ses compagnons à la **Matouba** en choisissant la mort plutôt que l'esclavage.\n\n🏰 Fort Delgrès — Basse-Terre\n✊ Symbole de la résistance\n📅 23 mai 1802 — Matouba\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "maryse condé",
+      "response": "📚 **Maryse Condé — Grande Dame des Lettres Caribéennes**\n\nNée en 1934 à Pointe-à-Pitre, Guadeloupe. Décédée en 2024. Auteure de **Ségou**, **Moi Tituba Sorcière**, **La Vie Scélérate**. Prix Nobel Alternatif de Littérature 2018.\n\n🏆 Prix Nobel Alternatif 2018\n📖 30+ romans traduits dans le monde\n🇬🇵 Fierté Guadeloupe\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "rene maran",
+      "response": "📚 **René Maran — Premier Prix Goncourt Noir**\n\nNé en 1887 en Guyane. Premier auteur noir à remporter le Prix Goncourt en 1921 pour **Batouala**. Roman qui dénonçait le colonialisme français en Afrique.\n\n🏆 Prix Goncourt 1921\n📖 Batouala — roman anticolonialiste\n🔗 wikipedia.org/wiki/René_Maran\nBoudoum ! 🇬🇵"
     }
   ]
 }

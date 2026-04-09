@@ -2060,6 +2060,11 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // RECETTE ANTILLAISE
+  if (msgLow.includes("dashboard redis") || msgLow.includes("stats redis") || msgLow.includes("statistiques bot") || msgLow.includes("combien de visiteurs")) {
+    const data = await getRedisDashboard()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
   if (msgLow.includes("musique caribéenne") || msgLow.includes("gwoka") || msgLow.includes("zouk history") || msgLow.includes("biguine") || msgLow.includes("kompa") || msgLow.includes("genre musical caribéen")) {
     const genre = message.replace(/musique caribéenne|genre musical caribéen/gi, "").trim()
     return res.status(200).json({ pdfAction: null, response: getMusiqueCaribéenne(genre) })
@@ -7023,6 +7028,11 @@ Boudoum ! 🇬🇵`})
   }
 
   // RECETTE ANTILLAISE
+  if (msgLow.includes("dashboard redis") || msgLow.includes("stats redis") || msgLow.includes("statistiques bot") || msgLow.includes("combien de visiteurs")) {
+    const data = await getRedisDashboard()
+    return res.status(200).json({ pdfAction: null, response: data })
+  }
+
   if (msgLow.includes("musique caribéenne") || msgLow.includes("gwoka") || msgLow.includes("zouk history") || msgLow.includes("biguine") || msgLow.includes("kompa") || msgLow.includes("genre musical caribéen")) {
     const genre = message.replace(/musique caribéenne|genre musical caribéen/gi, "").trim()
     return res.status(200).json({ pdfAction: null, response: getMusiqueCaribéenne(genre) })
@@ -10329,4 +10339,66 @@ ${evMois.map(e => `• ${e}`).join('\n') || '• Consultez l\'agenda local'}
 
 🔗 reussitess.fr/evenements
 Boudoum ! 🇬🇵`
+}
+
+// ===== REDIS DASHBOARD REUSSITESS =====
+async function getRedisDashboard() {
+  try {
+    const { Redis } = await import('@upstash/redis')
+    const redis = Redis.fromEnv()
+
+    // Lire toutes les données clés
+    const [visitors, quizCount, cryptoPrice, meteo, lastNews] = await Promise.all([
+      redis.get('visiteurs_compteur'),
+      redis.get('compteur_quiz'),
+      redis.get('crypto:last_price'),
+      redis.get('meteo:last_forecast'),
+      redis.get('actualites:last_news'),
+    ])
+
+    return `📊 **Dashboard Redis REUSSITESS®971**
+
+👥 **Visiteurs :** ${visitors || 0}
+🎯 **Quiz réalisés :** ${quizCount || 0}
+💎 **Dernier prix REUSS :** ${cryptoPrice || 'N/A'}
+🌤️ **Météo cache :** ${meteo || 'N/A'}
+📰 **Dernières actus :** ${lastNews || 'N/A'}
+
+✅ Redis Upstash connecté et opérationnel
+🔗 reussitess.fr
+
+Boudoum ! 🇬🇵`
+  } catch(e) {
+    return `📊 **Dashboard Redis**\n\n⚠️ Connexion Redis: ${e.message}\n\nBoudoum ! 🇬🇵`
+  }
+}
+
+// ===== REDIS VISITEURS =====
+async function incrementVisiteurs() {
+  try {
+    const { Redis } = await import('@upstash/redis')
+    const redis = Redis.fromEnv()
+    const count = await redis.incr('visiteurs_compteur')
+    await redis.set('visiteurs_last_update', new Date().toISOString())
+    return count
+  } catch(e) { return null }
+}
+
+// ===== REDIS MÉMOIRE UTILISATEUR =====
+async function saveUserMemoryRedis(userId, data) {
+  try {
+    const { Redis } = await import('@upstash/redis')
+    const redis = Redis.fromEnv()
+    await redis.set(`users:${userId}:memory`, JSON.stringify(data), { ex: 30 * 24 * 60 * 60 })
+    return true
+  } catch(e) { return false }
+}
+
+async function getUserMemoryRedis(userId) {
+  try {
+    const { Redis } = await import('@upstash/redis')
+    const redis = Redis.fromEnv()
+    const data = await redis.get(`users:${userId}:memory`)
+    return data ? JSON.parse(data) : {}
+  } catch(e) { return {} }
 }
