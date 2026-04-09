@@ -2488,6 +2488,12 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // CRYPTO PRIX DIRECT
+  // ===== ALCHEMY TOKEN METADATA =====
+  if (msgLow.includes("alchemy") || msgLow.includes("metadata reuss") || msgLow.includes("token metadata")) {
+    const alchemyData = await getAlchemyTokenData()
+    if (alchemyData) return res.status(200).json({ pdfAction: null, response: alchemyData })
+  }
+
   if (msgLow.includes('bitcoin') || msgLow.includes('btc') || msgLow.includes('ethereum') || msgLow.includes('eth') || msgLow.includes('crypto') || msgLow.includes('prix') && msgLow.includes('coin')) {
     try {
       const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,polygon-ecosystem-token&vs_currencies=usd")
@@ -4644,15 +4650,9 @@ export default async function handler(req, res) {
     const type = msgLow.includes("tweet") ? "tweet" : msgLow.includes("caption") ? "caption" : msgLow.includes("email") ? "email" : "post"
     const sujet = message.replace(/génère un post|génère post|crée un post|rédige un tweet|génère caption|pour|sur|à propos de/gi, "").trim() || "REUSSITESS et la Guadeloupe"
   // ===== ALCHEMY TOKEN =====
-  if (msgLow.includes("alchemy") || msgLow.includes("metadata reuss") || msgLow.includes("token metadata")) {
-    const alchemyData = await getAlchemyTokenData()
-    if (alchemyData) return res.status(200).json({ pdfAction: null, response: alchemyData })
-  }
+
   // ===== ALCHEMY TOKEN =====
-  if (msgLow.includes("alchemy") || msgLow.includes("metadata reuss") || msgLow.includes("token metadata")) {
-    const alchemyData = await getAlchemyTokenData()
-    if (alchemyData) return res.status(200).json({ pdfAction: null, response: alchemyData })
-  }
+
   if (msgLow.includes("proverbe aléatoire") || msgLow === "proverbe") {
     return res.status(200).json({ pdfAction: null, response: "🌴 **Proverbe Créole du Moment**\n\n" + getProverbeAleatoire() + "\n\nBoudoum ! 🇬🇵" })
   }
