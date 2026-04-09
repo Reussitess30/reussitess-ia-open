@@ -4664,12 +4664,10 @@ export default async function handler(req, res) {
     if (dash) return res.status(200).json({ pdfAction: null, response: dash })
   }
   // ===== ALCHEMY WALLET =====
-  if (msgLow.match(/0x[a-fA-F0-9]{40}/)) {
-    const addrMatch = message.match(/0x[a-fA-F0-9]{40}/)
-    if (addrMatch) {
-      const bal = await getWalletBalance(addrMatch[0])
-      if (bal) return res.status(200).json({ pdfAction: null, response: bal })
-    }
+  const walletMatch = message.match(/0x[a-fA-F0-9]{40}/)
+  if (walletMatch) {
+    const bal = await getWalletBalance(walletMatch[0])
+    if (bal) return res.status(200).json({ pdfAction: null, response: bal })
   }
   // ===== ALCHEMY TRANSFERTS =====
   if (msgLow.includes("transferts reuss") || msgLow.includes("transactions reuss") || msgLow.includes("derniers transferts reuss")) {
