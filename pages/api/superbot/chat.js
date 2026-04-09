@@ -4648,11 +4648,7 @@ export default async function handler(req, res) {
   }
   // ===== PROVERBE ALÉATOIRE =====
   if (msgLow.includes("proverbe aléatoire") || msgLow.includes("surprise créole") || msgLow === "proverbe") {
-    return res.status(200).json({ pdfAction: null, response: "🌴 **Proverbe Créole du Moment**
-
-" + getProverbeAleatoire() + "
-
-Boudoum ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: null, response: "🌴 **Proverbe Créole du Moment**\n\n" + getProverbeAleatoire() + "\n\nBoudoum ! 🇬🇵" })
   }
     const content = await genererContenuSocial(sujet, type)
     return res.status(200).json({ pdfAction: null, response: content || "Génération en cours... Boudoum ! 🇬🇵" })
