@@ -20,7 +20,13 @@ export default async function handler(req, res) {
       })
     }
 
-    async function typing(chatId) {
+    async function sendPhoto(chatId, photoUrl, caption, keyboard = null) {
+    const payload = { chat_id: chatId, photo: photoUrl, caption: caption.substring(0, 1024), parse_mode: "Markdown" }
+    if (keyboard) payload.reply_markup = keyboard
+    await fetch(`https://api.telegram.org/bot${token}/sendPhoto`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
+  }
+
+  async function typing(chatId) {
       await fetch(`https://api.telegram.org/bot${token}/sendChatAction`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -144,7 +150,17 @@ export default async function handler(req, res) {
                     { text: '🏝️ DOM-TOM Info', callback_data: 'dom-tom guadeloupe' }
                   ],
                   [
-                    { text: '⛓️ Blockchain', callback_data: 'dashboard crypto' },
+                    { text: '🧠 Émotion', callback_data: 'je suis fatigué et découragé' },
+            { text: '📱 Génère Post', callback_data: 'génère post sur la Guadeloupe' },
+            { text: '📚 Négritude', callback_data: 'parle-moi de la négritude' }
+          ],
+          [
+            { text: '🔢 Calculateur IMC', callback_data: 'calculateur imc' },
+            { text: '🌟 Horoscope', callback_data: 'horoscope du jour' },
+            { text: '🛸 Quantum Nexus', callback_data: 'agents ia' }
+          ],
+          [
+            { text: '⛓️ Blockchain', callback_data: 'dashboard crypto' },
                     { text: '🌋 Séismes Historiques', callback_data: 'séismes historiques caraïbes' },
                     { text: '🗺️ Carnet Route', callback_data: 'carnet de route guadeloupe' }
         ]
@@ -236,7 +252,13 @@ Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
       const msgToSend = TEXT_COMMANDS[text] || text
       await typing(chatId)
       const response = await askAI(msgToSend)
-      await sendMsg(chatId, response, { inline_keyboard: [[{ text: '🔄 Menu Principal', callback_data: 'menu' }]] })
+      const nasaMatch = response.match(/🔗 (https?://[^s\\n]+.(jpg|jpeg|png|gif))/i)
+      if (nasaMatch) {
+        const caption = response.replace(nasaMatch[0], "").trim()
+        await sendPhoto(chatId, nasaMatch[1], caption, { inline_keyboard: [[{ text: "🔄 Menu Principal", callback_data: "menu" }]] })
+      } else {
+        await sendMsg(chatId, response, { inline_keyboard: [[{ text: "🔄 Menu Principal", callback_data: "menu" }]] })
+      }
     }
 
     // Gestion callback (boutons inline)
@@ -258,7 +280,13 @@ Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
 
       await typing(chatId)
       const response = await askAI(data)
-      await sendMsg(chatId, response, { inline_keyboard: [[{ text: '🔄 Menu Principal', callback_data: 'menu' }]] })
+      const nasaMatch = response.match(/🔗 (https?://[^s\\n]+.(jpg|jpeg|png|gif))/i)
+      if (nasaMatch) {
+        const caption = response.replace(nasaMatch[0], "").trim()
+        await sendPhoto(chatId, nasaMatch[1], caption, { inline_keyboard: [[{ text: "🔄 Menu Principal", callback_data: "menu" }]] })
+      } else {
+        await sendMsg(chatId, response, { inline_keyboard: [[{ text: "🔄 Menu Principal", callback_data: "menu" }]] })
+      }
     }
 
     return res.status(200).json({ ok: true })
