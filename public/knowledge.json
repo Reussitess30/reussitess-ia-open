@@ -169,6 +169,10 @@
     {
       "trigger": "économie dom-tom",
       "response": "📊 **Économie DOM-TOM**\n\nLes principaux secteurs :\n1️⃣ Tourisme\n2️⃣ Agriculture & rhum\n3️⃣ Pêche & aquaculture\n4️⃣ Industrie locale\n5️⃣ Services & banque\n6️⃣ Énergie renouvelable\n7️⃣ Construction & immobilier\n\n📌 Plus d'infos : https://reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "whitepaper reussitess",
+      "response": "📄 **Whitepaper REUSSITESS® v2.0**\n\n🇬🇵 **Identité :**\n• Fondateur : Rony Porinus\n• Origine : Gourbeyre, Guadeloupe\n• SIRET : 444699979700031\n• Protection INPI : DSO2026008921 (Mars 2026)\n\n🤖 **Bot REUSSITESS — Modules :**\n• afro_brain.py → réponses régionales DOM-TOM\n• final_brain.py → coordination modules\n• crypto_api.py → prix REUSS temps réel\n• region_info.py → infos locales & météo\n• memory.py → contexte utilisateur\n\n💎 **Token REUSS (Polygon) :**\n• Contrat : 0xB37531727fC07c6EED4f97F852A115B428046EB2\n• Supply : 999 999 999 REUSS\n• +50 REUSS → achats locaux TERRA GROW\n• +10 REUSS → signalement incidents locaux\n\n🗓️ **Roadmap :**\n• Q2 2026 : Bot complet Guadeloupe\n• Q3 2026 : Extension DOM-TOM\n• Q4 2026 : Modules optionnels\n\n🎯 Vision : Hub Afrocaraïbéen numérique sûr et fonctionnel\n\nBoudoum ! 🇬🇵"
     }
   ]
 }
