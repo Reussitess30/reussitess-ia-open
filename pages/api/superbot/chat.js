@@ -10402,3 +10402,110 @@ async function getUserMemoryRedis(userId) {
     return data ? JSON.parse(data) : {}
   } catch(e) { return {} }
 }
+
+// ===== INTELLIGENCE ÉMOTIONNELLE =====
+function detectEmotion(message) {
+const msgLow = message.toLowerCase()
+if (msgLow.includes('triste') || msgLow.includes('déprimé') || msgLow.includes('malheureux') || msgLow.includes('pleure') || msgLow.includes('souffre')) return 'tristesse'
+if (msgLow.includes('heureux') || msgLow.includes('content') || msgLow.includes('super') || msgLow.includes('génial') || msgLow.includes('fantastique')) return 'joie'
+if (msgLow.includes('énervé') || msgLow.includes('frustré') || msgLow.includes('colère') || msgLow.includes('rage') || msgLow.includes('insupportable')) return 'colere'
+if (msgLow.includes('stressé') || msgLow.includes('anxieux') || msgLow.includes('peur') || msgLow.includes('inquiet') || msgLow.includes('angoissé')) return 'anxiete'
+if (msgLow.includes('fatigué') || msgLow.includes('épuisé') || msgLow.includes('plus la force') || msgLow.includes('découragé')) return 'fatigue'
+if (msgLow.includes('amour') || msgLow.includes('romantique') || msgLow.includes("je t'aime") || msgLow.includes('mon coeur')) return 'amour'
+return null
+}
+
+function getEmotionalResponse(emotion) {
+const responses = {
+tristesse: "💜 Je sens que tu traverses un moment difficile. Je suis là pour toi. La Guadeloupe dit : Apré lapli, solèy ka briyé — Après la pluie, le soleil brille. Qu'est-ce qui se passe ? Je t'écoute. 🌴",
+joie: "🌟 Ton énergie positive est contagieuse ! C'est exactement l'esprit REUSSITESS — Positivité à l'infini ! Raconte-moi ce qui te rend si heureux ! BOUDOUM ! 🇬🇵",
+colere: "🌊 Je comprends ta frustration. Prends une grande inspiration... comme la brise des Antilles. Dis-moi ce qui s'est passé, ensemble on va trouver une solution. 💪",
+anxiete: "🌿 L'anxiété, c'est difficile. Mais tu n'es pas seul(e). Une astuce créole : respire profondément, pense à la mer de Guadeloupe... Dis-moi ce qui t'inquiète, je suis là. 🌊",
+fatigue: "😴 Le corps dit stop, il faut l'écouter ! Même les champions se reposent. Chak chyen ni jou-y — Chaque chien a son jour. Repose-toi, demain sera meilleur. 🌴",
+amour: "💕 L'amour c'est la plus belle énergie ! En créole on dit Mwen enmen-w pour je t'aime. Qu'est-ce qui fait battre ton coeur ? BOUDOUM ! 🇬🇵"
+}
+return responses[emotion] || null
+}
+
+// ===== PERSONNALISATION UTILISATEUR =====
+async function getUserProfile(userId) {
+try {
+const { Redis } = await import('@upstash/redis')
+const redis = Redis.fromEnv()
+const profile = await redis.get(`profile:${userId}`)
+return profile ? JSON.parse(profile) : { langue: 'fr', interets: [], visites: 0 }
+} catch(e) { return { langue: 'fr', interets: [], visites: 0 } }
+}
+
+async function updateUserProfile(userId, update) {
+try {
+const { Redis } = await import('@upstash/redis')
+const redis = Redis.fromEnv()
+const profile = await getUserProfile(userId)
+const newProfile = { ...profile, ...update, lastSeen: new Date().toISOString() }
+newProfile.visites = (profile.visites || 0) + 1
+await redis.set(`profile:${userId}`, JSON.stringify(newProfile), { ex: 90 * 24 * 60 * 60 })
+return newProfile
+} catch(e) { return null }
+}
+
+// ===== GÉNÉRATION CONTENU RÉSEAUX SOCIAUX =====
+async function genererContenuSocial(sujet, type = 'post') {
+const prompts = {
+post: `Génère un post Instagram/Facebook en français pour REUSSITESS®971 sur le sujet: "${sujet}". Style: engageant, caribéen, positif. Max 150 mots. Inclure emojis et hashtags. Finir par Boudoum ! 🇬🇵`,
+tweet: `Génère un tweet en français pour REUSSITESS®971 sur: "${sujet}". Max 280 caractères. Style percutant avec emojis. Finir par #BOUDOUM #Guadeloupe`,
+caption: `Génère une légende Instagram courte pour REUSSITESS®971 sur: "${sujet}". Max 50 mots. Avec emojis et hashtags caribéens.`,
+email: `Génère un email professionnel en français pour REUSSITESS®971 sur: "${sujet}". Style chaleureux et professionnel. Finir par Boudoum ! 🇬🇵`
+}
+
+const prompt = prompts[type] || prompts.post
+const result = await groqFetch([
+{ role: 'system', content: 'Tu es le community manager de REUSSITESS®971, expert en contenu caribéen et afro-antillais.' },
+{ role: 'user', content: prompt }
+], 512)
+return result
+}
+
+// ===== MÉMOIRE CONVERSATION ENRICHIE =====
+async function saveConversationMemory(userId, message, response) {
+try {
+const { Redis } = await import('@upstash/redis')
+const redis = Redis.fromEnv()
+const key = `conv:${userId}`
+const existing = await redis.get(key)
+const history = existing ? JSON.parse(existing) : []
+history.push({
+user: message.substring(0, 200),
+bot: response.substring(0, 300),
+ts: new Date().toISOString()
+})
+const recent = history.slice(-10)
+await redis.set(key, JSON.stringify(recent), { ex: 7 * 24 * 60 * 60 })
+return recent
+} catch(e) { return [] }
+}
+
+async function getConversationHistory(userId) {
+try {
+const { Redis } = await import('@upstash/redis')
+const redis = Redis.fromEnv()
+const data = await redis.get(`conv:${userId}`)
+return data ? JSON.parse(data) : []
+} catch(e) { return [] }
+}
+
+// ===== CONNAISSANCES APPROFONDIES CARAÏBES =====
+function getConnaissanceApprofondie(sujet) {
+const connaissances = {
+'négritude': `📚 La Négritude — Mouvement Culturel Mondial\n\n🌍 Origines (1930s Paris) :\nMouvement littéraire et politique fondé par Aimé Césaire (Martinique), Léopold Sédar Senghor (Sénégal) et Léon-Gontran Damas (Guyane).\n\n💡 Principes :\n• Revalorisation de l'identité et culture africaine\n• Rejet de l'assimilation coloniale\n• Fierté de la couleur noire\n• Retour aux sources africaines\n\n✍️ Œuvres fondatrices :\n• Césaire — Cahier d'un retour au pays natal (1939)\n• Senghor — Chants d'ombre (1945)\n• Damas — Pigments (1937)\n\n🌍 Impact mondial :\nInfluencé les mouvements de décolonisation en Afrique, Caraïbes et aux USA (Black Power)\n\nBoudoum ! 🇬🇵`,
+'créolité': `🌺 La Créolité — Identité Caribéenne\n\n📖 Manifeste (1989) :\nPublié par Patrick Chamoiseau, Raphaël Confiant et Jean Bernabé dans "Éloge de la Créolité".\n\n💡 Concept :\nLa créolité célèbre le mélange des cultures — africaine, européenne, indienne, amérindienne — qui forme l'identité caribéenne unique.\n\n🌍 Différence avec Négritude :\n• Négritude = retour aux racines africaines\n• Créolité = célébration du mélange caribéen\n\n✍️ Auteurs créolistes :\n• Patrick Chamoiseau — Texaco (Prix Goncourt 1992)\n• Raphaël Confiant — Le Nègre et l'Amiral\n• Édouard Glissant — Tout-Monde (précurseur)\n\nBoudoum ! 🇬🇵`,
+'esclavage': `⛓️ Histoire de l'Esclavage aux Antilles\n\n📅 Chronologie :\n• 1635 — Colonisation française Guadeloupe & Martinique\n• 1685 — Code Noir (réglementation esclavage)\n• 1794 — Première abolition (révoquée 1802)\n• 1802 — Rétablissement esclavage par Napoléon\n• 27 mai 1848 — Abolition définitive (Victor Schœlcher)\n\n📊 Chiffres :\n• 1,4 million d'esclaves aux Antilles françaises\n• 10 millions traversée atlantique\n\n🏛️ Mémorial ACTe — Pointe-à-Pitre\nPlus grand centre caribéen dédié à l'histoire de l'esclavage (2015)\n\n✊ Loi Taubira (2001) :\nReconnaît l'esclavage comme crime contre l'humanité\n\nBoudoum ! 🇬🇵`,
+'biodiversité': `🌿 Biodiversité Caribéenne — Trésor Naturel\n\n🦜 Faune endémique Guadeloupe :\n• Colibri Madère (oiseau symbole)\n• Bois-pipiri (espèce endémique)\n• Raie pastenague des Caraïbes\n• Iguane des Petites Antilles\n\n🌺 Flore médicinale :\n• Herbe à Pic (Zèb a pik) — anti-viral\n• Bois d'Inde — douleurs musculaires\n• Flamboyant — arbre symbole\n• Gommier blanc — résine sacrée\n\n🏞️ Espaces protégés :\n• Parc National Guadeloupe — 21 850 ha\n• Réserve Cousteau — Malendure\n• Forêt tropicale Basse-Terre\n\n⚠️ Menaces :\n• Chlordécone — contamination sols\n• Sargasses — invasion côtière\n• Changement climatique\n\nBoudoum ! 🇬🇵`
+}
+
+const sujetLow = sujet.toLowerCase()
+for (const [key, content] of Object.entries(connaissances)) {
+if (sujetLow.includes(key)) return content
+}
+return null
+}
