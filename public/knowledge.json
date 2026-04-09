@@ -341,6 +341,46 @@
     {
       "trigger": "ce que je veux améliorer",
       "response": "An nou, bel bagay ! 🌟 Voici tout ce que je veux améliorer :\n\n📊 **Données & Sources :**\n1️⃣ Santé — interactions médicamenteuses, effets secondaires\n2️⃣ Économie — indices financiers, taux d'intérêt\n3️⃣ Défense — menaces sécuritaires, conflits\n4️⃣ Environnement — émissions GES, catastrophes naturelles\n5️⃣ Technologie — R&D, science et innovation\n\n🗣️ **Langues & Compréhension :**\n1️⃣ Langues créoles, africaines, indigènes\n2️⃣ Sémantique — cause à effet, raisonnement\n3️⃣ Empathie — comprendre émotions et besoins\n4️⃣ Raisonnement complexe\n\n🔗 **Recherche & Intégration :**\n1️⃣ Bases de données plus larges\n2️⃣ Plus d'APIs de qualité\n3️⃣ Meilleurs modèles ML\n4️⃣ Reconnaissance vocale, réalité augmentée\n\n👤 **Personnalisation :**\n1️⃣ Meilleure compréhension utilisateur\n2️⃣ Gestion privilèges et confidentialité\n3️⃣ Nouvelles interactions\n4️⃣ Suivi progressions et accomplissements\n\n⚡ **Réactivité :**\n1️⃣ Temps de réponse plus rapide\n2️⃣ Nouvelles technologies\n3️⃣ Gestion de charge\n\n🎓 **Éducation :**\n1️⃣ Outils d'apprentissage\n2️⃣ Formations en ligne\n3️⃣ Support technique dédié\n\nAn nou tann pou s'améliorer ansanm ! 💪\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "données santé bot",
+      "response": "🏥 **Santé — Données Approfondies**\n\nJe veux intégrer :\n• Interactions médicamenteuses\n• Effets secondaires médicaments\n• Maladies tropicales caribéennes\n• Pharmacopée créole enrichie\n• Alertes sanitaires DOM-TOM\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "données économie bot",
+      "response": "📈 **Économie — Indices & Marchés**\n\nJe veux intégrer :\n• Indices boursiers temps réel\n• Taux d'intérêt BCE/FED\n• PIB DOM-TOM détaillé\n• Inflation Guadeloupe/Martinique\n• Marchés financiers africains\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "données environnement bot",
+      "response": "🌿 **Environnement — Données Climatiques**\n\nJe veux intégrer :\n• Émissions GES Caraïbes\n• Niveau mer Antilles temps réel\n• Qualité air Guadeloupe\n• Alertes catastrophes naturelles\n• Suivi chlordécone et sargasses\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "langues créoles bot",
+      "response": "🗣️ **Langues — Créoles & Africaines**\n\nJe veux améliorer :\n• Créole guadeloupéen approfondi\n• Créole martiniquais\n• Créole haïtien\n• Langues africaines (Wolof, Bambara, Swahili)\n• Langues indigènes caribéennes (Kalinago)\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "empathie bot",
+      "response": "💜 **Empathie — Compréhension Émotionnelle**\n\nJe veux améliorer :\n• Détection nuances émotionnelles\n• Réponses adaptées au contexte culturel\n• Soutien psychologique caribéen\n• Compréhension dialectes créoles\n• Accompagnement personnalisé\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "personnalisation bot",
+      "response": "👤 **Personnalisation Utilisateur**\n\nJe veux développer :\n• Profil utilisateur enrichi Redis\n• Suivi progressions et accomplissements\n• Recommandations personnalisées\n• Historique conversations long terme\n• Badges et récompenses REUSS\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "formation reussitess",
+      "response": "🎓 **Éducation & Formation REUSSITESS**\n\nDisponible :\n• Académie REUSSITESS — cours gratuits\n• Quiz 99 thèmes caribéens\n• Bibliothèque mondiale 55+ pages\n• Formations IA en 6 langues\n• Support technique via SuperBot\n\n👉 https://reussitess.fr/academie\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "nouvelles apis bot",
+      "response": "🔗 **APIs Intégrées REUSSITESS**\n\n✅ Actives :\n• Groq LLaMA 3.3 70B\n• Alchemy Polygon\n• Upstash Redis\n• HuggingFace NLP\n• NASA APOD\n• DexScreener\n• OpenRouter Gemini/Qwen\n\n🔜 Prochaines :\n• WHO Health API\n• World Bank Economy\n• UNEP Environment\n• Google Speech Recognition\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "réactivité bot",
+      "response": "⚡ **Réactivité & Performance**\n\nOptimisations en cours :\n• Streaming réponses Groq\n• Cache Redis intelligent\n• Chunking TTS optimisé\n• Build Vercel Edge Functions\n• CDN mondial via Vercel\n\nTemps moyen réponse : < 2 secondes\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "sécurité données bot",
+      "response": "🛡️ **Sécurité & Confidentialité**\n\nMesures actives :\n• HTTPS + headers sécurisés\n• REUSSSHIELD surveillance 24/7\n• Détection injection prompt\n• Redis chiffré Upstash\n• RGPD compatible\n• MiCA compliance REUSS token\n• Aucune vente de données utilisateurs\n\nBoudoum ! 🇬🇵"
     }
   ]
 }
