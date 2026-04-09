@@ -10566,21 +10566,3 @@ return `💎 **${meta.name || 'REUSSITESS Token'} ($${meta.symbol || 'REUSS'}) �
 } catch(e) { return null }
 }
 
-// ===== ALCHEMY — POLYGON REUSS TOKEN =====
-async function getAlchemyTokenData() {
-try {
-const alchemyKey = process.env.ALCHEMY_API_KEY
-const contractAddress = '0xB37531727fC07c6EED4f97F852A115B428046EB2'
-const r = await fetch(`https://polygon-mainnet.g.alchemy.com/v2/${alchemyKey}`, {
-method: 'POST',
-headers: { 'Content-Type': 'application/json' },
-body: JSON.stringify({
-jsonrpc: '2.0', id: 1, method: 'alchemy_getTokenMetadata',
-params: [contractAddress]
-}), signal: AbortSignal.timeout(5000)
-})
-const d = await r.json()
-const meta = d.result
-return `💎 **${meta.name || 'REUSSITESS Token'} ($${meta.symbol || 'REUSS'}) — Blockchain Temps Réel**\n\n📊 Décimales : ${meta.decimals}\n🖼️ Logo : ${meta.logo || 'reussitess.fr'}\n🔗 Contrat : ${contractAddress}\n⛓️ Réseau : Polygon Mainnet\n\n🔍 Explorer : https://polygonscan.com/token/${contractAddress}\n\nBoudoum ! 🇬🇵`
-} catch(e) { return null }
-}
