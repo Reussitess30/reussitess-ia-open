@@ -252,7 +252,7 @@ Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
       const msgToSend = TEXT_COMMANDS[text] || text
       await typing(chatId)
       const response = await askAI(msgToSend)
-      const nasaMatch = response.match(/🔗 (https?://[^s\\n]+.(jpg|jpeg|png|gif))/i)
+      const nasaMatch = response.match(/🔗 (https?:\/\/[^\s\n]+\.(jpg|jpeg|png|gif))/i)
       if (nasaMatch) {
         const caption = response.replace(nasaMatch[0], "").trim()
         await sendPhoto(chatId, nasaMatch[1], caption, { inline_keyboard: [[{ text: "🔄 Menu Principal", callback_data: "menu" }]] })
@@ -280,7 +280,7 @@ Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
 
       await typing(chatId)
       const response = await askAI(data)
-      const nasaMatch = response.match(/🔗 (https?://[^s\\n]+.(jpg|jpeg|png|gif))/i)
+      const nasaMatch = response.match(/🔗 (https?:\/\/[^\s\n]+\.(jpg|jpeg|png|gif))/i)
       if (nasaMatch) {
         const caption = response.replace(nasaMatch[0], "").trim()
         await sendPhoto(chatId, nasaMatch[1], caption, { inline_keyboard: [[{ text: "🔄 Menu Principal", callback_data: "menu" }]] })

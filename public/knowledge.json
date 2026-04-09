@@ -1,6 +1,6 @@
 {
-  "version": "1.0",
-  "updated": "2026-03-21",
+  "version": "2.0",
+  "updated": "2026-04-09",
   "commands": [
     {
       "trigger": "token reuss",
@@ -249,6 +249,26 @@
     {
       "trigger": "rene maran",
       "response": "📚 **René Maran — Premier Prix Goncourt Noir**\n\nNé en 1887 en Guyane. Premier auteur noir à remporter le Prix Goncourt en 1921 pour **Batouala**. Roman qui dénonçait le colonialisme français en Afrique.\n\n🏆 Prix Goncourt 1921\n📖 Batouala — roman anticolonialiste\n🔗 wikipedia.org/wiki/René_Maran\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "whitepaper v2",
+      "response": "📄 **Whitepaper REUSSITESS® v2.0**\n\n🏝️ Origine : Guadeloupe / Gourbeyre\n👤 Fondateur : Rony Porinus (SIRET: 444699979700031)\n🛡️ Protection : Dépôt INPI eSoleau DSO2026008921 (Mars 2026)\n\n🎯 Objectif : Écosystème digital utile, fiable et Afrocaraïbéen pour la communauté Outre-mer\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "écosystème futur",
+      "response": "🚀 **REUSSITESS® — Vision Écosystème**\n\n📅 Q2 2026 : Bot complet et testé en Guadeloupe\n📅 Q3 2026 : Extension aux autres territoires Outre-mer\n📅 Q4 2026 : Enrichissement selon retours utilisateurs\n\n💎 Token REUSS : utilité locale avant spéculation\n+50 REUSS → achats locaux / services TERRA GROW\n+10 REUSS → signalement incidents locaux\n\n🌿 Vision : Hub Afrocaraïbéen numérique sûr et fonctionnel\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "stratégie reussitess",
+      "response": "📊 **Stratégie REUSSITESS® 2026**\n\n✅ Écosystème léger, gratuit et stable\n✅ Modules réels et opérationnels\n✅ Token REUSS — utilité locale\n✅ Coût maîtrisé\n✅ Pas de fonctionnalités coûteuses ou illégales\n\n📅 Q2 2026 : Guadeloupe\n📅 Q3 2026 : Outre-mer\n📅 Q4 2026 : Enrichissement\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "terra grow",
+      "response": "🌿 **TERRA GROW — REUSSITESS®**\n\nProjet d'agriculture verticale intelligente et gestion de l'eau en milieu caribéen.\n\n⚠️ Statut : Prototype local / low-cost\nIntégré au système de récompenses REUSS Token (+50 REUSS pour services)\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "modules bot reussitess",
+      "response": "🤖 **Bot REUSSITESS — Modules Principaux**\n\n🧠 afro_brain → réponses régionales (Guadeloupe, Martinique, Guyane, Réunion, Mayotte)\n⚙️ final_brain → coordination et enrichissement\n💎 crypto_api → prix REUSS Token temps réel\n🗺️ region_info → infos locales et météo\n💾 memory → suivi contexte utilisateur\n\nBoudoum ! 🇬🇵"
     }
   ]
 }
