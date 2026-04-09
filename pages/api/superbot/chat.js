@@ -4608,6 +4608,7 @@ export default async function handler(req, res) {
   }
 
   const { message, personality, context, langue, datetime, image, imageQuestion } = req.body
+  const userId = req.headers["x-forwarded-for"]?.split(",")[0]?.trim() || req.socket?.remoteAddress || "anonymous"
 
   // Incrémenter compteurs Redis
   try {
@@ -8255,6 +8256,7 @@ Boudoum!` },
         finalResponse = `📚 **Wikipedia :** ${wikiData.substring(0, 8000)}${wikiData.length > 8000 ? "..." : ""}`
       }
 
+      await saveConversationMemory(userId, message, finalResponse)
       res.status(200).json({ response: finalResponse })
   } catch (error) {
     console.error('Erreur SuperBot:', error)
