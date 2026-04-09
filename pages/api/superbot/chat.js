@@ -4643,6 +4643,17 @@ export default async function handler(req, res) {
   if (msgLow.includes("génère un post") || msgLow.includes("génère post") || msgLow.includes("crée un post") || msgLow.includes("rédige un tweet") || msgLow.includes("génère caption")) {
     const type = msgLow.includes("tweet") ? "tweet" : msgLow.includes("caption") ? "caption" : msgLow.includes("email") ? "email" : "post"
     const sujet = message.replace(/génère un post|génère post|crée un post|rédige un tweet|génère caption|pour|sur|à propos de/gi, "").trim() || "REUSSITESS et la Guadeloupe"
+  if (msgLow.includes("proverbe aléatoire") || msgLow === "proverbe") {
+    return res.status(200).json({ pdfAction: null, response: "🌴 **Proverbe Créole du Moment**\n\n" + getProverbeAleatoire() + "\n\nBoudoum ! 🇬🇵" })
+  }
+  // ===== PROVERBE ALÉATOIRE =====
+  if (msgLow.includes("proverbe aléatoire") || msgLow.includes("surprise créole") || msgLow === "proverbe") {
+    return res.status(200).json({ pdfAction: null, response: "🌴 **Proverbe Créole du Moment**
+
+" + getProverbeAleatoire() + "
+
+Boudoum ! 🇬🇵" })
+  }
     const content = await genererContenuSocial(sujet, type)
     return res.status(200).json({ pdfAction: null, response: content || "Génération en cours... Boudoum ! 🇬🇵" })
   }
@@ -10513,4 +10524,33 @@ for (const [key, content] of Object.entries(connaissances)) {
 if (sujetLow.includes(key)) return content
 }
 return null
+}
+
+// ===== PROVERBES CRÉOLES ALÉATOIRES =====
+function getProverbeAleatoire() {
+  const proverbes = [
+    "🌴 *Apré lapli, solèy ka briyé* — Après la pluie, le soleil brille.",
+    "🌊 *Dlo ka kouvè wòch* — L'eau finit par couvrir les roches. (La persévérance paye)",
+    "🥁 *Chak chyen ni jou-y* — Chaque chien a son jour. (Tout vient à point)",
+    "🌺 *Bèl figi pa di bon kè* — Un beau visage ne dit pas un bon cœur.",
+    "🦜 *Zwazo ki chanté bonmatin ka jwenn manje* — L'oiseau qui chante tôt trouve à manger.",
+    "🌿 *Doubout vaut mieux que assis* — Mieux vaut être debout que assis.",
+    "💪 *Sa ki pa twé-w ka fè-w pi fò* — Ce qui ne te tue pas te rend plus fort.",
+    "🎯 *Piti piti, zwazo fè nich-li* — Petit à petit, l'oiseau fait son nid."
+  ]
+  return proverbes[Math.floor(Math.random() * proverbes.length)]
+}
+
+// ===== PROVERBES CRÉOLES ALÉATOIRES =====
+function getProverbeAleatoire() {
+  const proverbes = [
+    "🌴 *Apré lapli, solèy ka briyé* — Après la pluie, le soleil brille.",
+    "🌊 *Dlo ka kouvè wòch* — L'eau finit par couvrir les roches.",
+    "🥁 *Chak chyen ni jou-y* — Chaque chien a son jour.",
+    "🌺 *Bèl figi pa di bon kè* — Un beau visage ne dit pas un bon cœur.",
+    "🦜 *Zwazo ki chanté bonmatin ka jwenn manje* — L'oiseau qui chante tôt trouve à manger.",
+    "💪 *Sa ki pa twé-w ka fè-w pi fò* — Ce qui ne te tue pas te rend plus fort.",
+    "🎯 *Piti piti, zwazo fè nich-li* — Petit à petit, l'oiseau fait son nid."
+  ]
+  return proverbes[Math.floor(Math.random() * proverbes.length)]
 }

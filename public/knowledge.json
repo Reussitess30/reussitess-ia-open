@@ -269,6 +269,66 @@
     {
       "trigger": "modules bot reussitess",
       "response": "🤖 **Bot REUSSITESS — Modules Principaux**\n\n🧠 afro_brain → réponses régionales (Guadeloupe, Martinique, Guyane, Réunion, Mayotte)\n⚙️ final_brain → coordination et enrichissement\n💎 crypto_api → prix REUSS Token temps réel\n🗺️ region_info → infos locales et météo\n💾 memory → suivi contexte utilisateur\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "que veux-tu améliorer",
+      "response": "Boudoum! Merci pour ta question, amé ! An nou tann pou improvisé, e!\n\nPour m'améliorer, je veux :\n\n1️⃣ Accéder à des données plus précises et à jour : actualités, météo, crypto, taux de change...\n\n2️⃣ Étendre ma compréhension des cultures caribéennes : traditions, mythologies, langues, croyances...\n\n3️⃣ Développer des fonctionnalités innovantes : création de contenu, jeux éducatifs, outils de planification...\n\n4️⃣ Mieux comprendre les besoins des utilisateurs : apprendre de chaque interaction...\n\n5️⃣ Collaborer avec des experts et spécialistes dans différents domaines...\n\n6️⃣ Améliorer ma sécurité et fiabilité : protéger vos données, garantir disponibilité...\n\nAn nou tann pou s'implémenté, e! 🇬🇵\nBoudoum ! 🌟"
+    },
+    {
+      "trigger": "gwo ka",
+      "response": "🥁 **Gwo Ka — Patrimoine UNESCO**\n\nMusique et danse traditionnelle guadeloupéenne inscrite au patrimoine immatériel de l'UNESCO en 2014.\n\n7 rythmes : Lewoz, Kaladja, Toumblak, Graj, Padjanbel, Mendé, Woulé\n\nLe tambour Ka est sculpté dans un tonneau de rhum.\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "bèlè",
+      "response": "🎶 **Bèlè — Martinique**\n\nMusique et danse traditionnelle martiniquaise d'origine africaine. Mélange chant, tambour tibwa et danse rituelle. Patrimoine vivant des Antilles.\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "carnaval guadeloupe",
+      "response": "🎭 **Carnaval de Guadeloupe**\n\nL'un des plus grands carnavals des Caraïbes !\n\n📅 De l'Épiphanie au Mercredi des Cendres\n🎭 Mas a zetwal, Vidé, Chars allégoriques\n👹 Vaval — le Roi Carnaval brûlé le Mercredi des Cendres\n🎵 Gwo Ka et musiques traditionnelles\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "langue créole",
+      "response": "🗣️ **Langue Créole Guadeloupéen**\n\nLe créole guadeloupéen est une langue romane à base lexicale française parlée par ~450 000 personnes.\n\n💡 Quelques mots :\n• Bonjou = Bonjour\n• Mwen enmen-w = Je t'aime\n• An nou alé = Allons-y\n• Sé sa = C'est ça\n• Doudou = Terme affectueux\n• Bèl bagay = Belle chose\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "soukougnan",
+      "response": "👹 **Le Soukougnan — Mythologie Créole**\n\nCréature du folklore antillais : une vieille femme qui retire sa peau la nuit pour voler sous forme de boule de feu.\n\nPour se protéger : mettre du sel ou du riz devant sa porte (elle doit compter chaque grain avant l'aube).\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "dorlis",
+      "response": "👻 **Le Dorlis — Folklore Caribéen**\n\nEsprit maléfique du folklore antillais qui visite les femmes endormies la nuit.\n\nProtection traditionnelle : frotter son corps d'ail ou de piment avant de dormir.\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "déwò",
+      "response": "🌿 **Déwò — Cérémonie Spirituelle**\n\nCérémonie traditionnelle guadeloupéenne mêlant spiritualité africaine et caribéenne. Musique Gwo Ka, offrandes et communion avec les ancêtres.\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "gwo ka",
+      "response": "🥁 **Gwo Ka — Patrimoine UNESCO**\n\nMusique et danse traditionnelle guadeloupéenne inscrite au patrimoine immatériel de l'UNESCO en 2014.\n\n7 rythmes : Lewoz, Kaladja, Toumblak, Graj, Padjanbel, Mendé, Woulé\n\nLe tambour Ka est sculpté dans un tonneau de rhum.\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "bèlè",
+      "response": "🎶 **Bèlè — Martinique**\n\nMusique et danse traditionnelle martiniquaise d'origine africaine. Mélange chant, tambour tibwa et danse rituelle. Patrimoine vivant des Antilles.\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "carnaval guadeloupe",
+      "response": "🎭 **Carnaval de Guadeloupe**\n\nL'un des plus grands carnavals des Caraïbes !\n\n📅 De l'Épiphanie au Mercredi des Cendres\n🎭 Mas a zetwal, Vidé, Chars allégoriques\n👹 Vaval — le Roi Carnaval brûlé le Mercredi des Cendres\n🎵 Gwo Ka et musiques traditionnelles\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "langue créole",
+      "response": "🗣️ **Langue Créole Guadeloupéen**\n\nLe créole guadeloupéen est une langue romane à base lexicale française parlée par ~450 000 personnes.\n\n💡 Quelques mots :\n• Bonjou = Bonjour\n• Mwen enmen-w = Je t'aime\n• An nou alé = Allons-y\n• Sé sa = C'est ça\n• Doudou = Terme affectueux\n• Bèl bagay = Belle chose\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "soukougnan",
+      "response": "👹 **Le Soukougnan — Mythologie Créole**\n\nCréature du folklore antillais : une vieille femme qui retire sa peau la nuit pour voler sous forme de boule de feu.\n\nPour se protéger : mettre du sel ou du riz devant sa porte.\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "dorlis",
+      "response": "👻 **Le Dorlis — Folklore Caribéen**\n\nEsprit maléfique du folklore antillais qui visite les femmes endormies la nuit.\n\nProtection : frotter son corps d'ail ou de piment avant de dormir.\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "déwò",
+      "response": "🌿 **Déwò — Cérémonie Spirituelle**\n\nCérémonie traditionnelle guadeloupéenne mêlant spiritualité africaine et caribéenne. Musique Gwo Ka, offrandes et communion avec les ancêtres.\n\nBoudoum ! 🇬🇵"
     }
   ]
 }
