@@ -2492,7 +2492,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
 
 
   // ===== ALCHEMY TOKEN METADATA =====
-  if (msgLow.includes("alchemy") || msgLow.includes("metadata reuss") || msgLow.includes("token metadata")) {
+  if (msgLow.includes("alchemy polygon") || msgLow.includes("metadata reuss") || msgLow.includes("info contrat reuss") || msgLow.includes("token onchain")) {
     const alchemyData = await getAlchemyTokenData()
     if (alchemyData) return res.status(200).json({ pdfAction: null, response: alchemyData })
   }
