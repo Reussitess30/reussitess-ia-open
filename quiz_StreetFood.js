@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizStreetFood = {
   title: "Street Food Mondiale — Saveurs des Rues",
   description: "Tour du monde des meilleures cuisines de rue — culture, histoire et secrets des plats emblématiques !",

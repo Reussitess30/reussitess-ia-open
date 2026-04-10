@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizGoMining = {
   title: "Bitcoin Mining & GoMining",
   description: "Découvrez comment miner du Bitcoin depuis chez vous grâce aux NFT mineurs !",

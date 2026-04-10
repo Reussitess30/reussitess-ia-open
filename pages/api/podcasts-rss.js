@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 export default async function handler(req, res) {
   const sources = [
     { name: 'La 1ère Guadeloupe', url: 'https://la1ere.francetvinfo.fr/guadeloupe/rss.xml', emoji: '🇬🇵' },

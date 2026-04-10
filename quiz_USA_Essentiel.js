@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizUSAEssentiel = {
   title: "USA — Essentiel Voyage & Culture",
   description: "Droits, règles, culture et bons à savoir avant d'aller aux États-Unis !",

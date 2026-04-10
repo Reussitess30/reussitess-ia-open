@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizPlantesAntilles = {
   title: "Plantes des Antilles & Remèdes Créoles",
   description: "Redécouvrez la pharmacopée végétale extraordinaire de la Guadeloupe et de la Martinique !",

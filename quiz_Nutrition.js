@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizNutrition = {
   title: "Nutrition & Alimentation Saine",
   description: "Découvrez les secrets d'une alimentation optimale pour votre santé et votre énergie !",

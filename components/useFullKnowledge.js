@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 import { useEffect, useState } from "react";
 
 const CACHE_KEY = "full_knowledge_v1";

@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizDroitsNumeriques = {
   title: "Droits Numériques & RGPD",
   description: "Maîtrisez vos droits sur internet, vos données personnelles et la protection numérique !",

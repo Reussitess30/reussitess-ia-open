@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizNumerologie = {
   title: "Numérologie — Chiffres & Destinées",
   description: "Découvrez les secrets des chiffres et leur influence sur votre vie !",

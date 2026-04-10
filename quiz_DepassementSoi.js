@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizDepassementSoi = {
   title: "Dépassement de Soi — Psychologie de la Performance",
   description: "Les secrets mentaux des champions, explorateurs et leaders qui ont repoussé les limites humaines !",

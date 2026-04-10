@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizAstrologie = {
   title: "Astrologie — Les 12 Signes & Leurs Secrets",
   description: "Découvrez les secrets des 12 signes du zodiaque, leurs planètes et leur influence !",

@@ -18,8 +18,11 @@
     "@prisma/client": "^7.1.0",
     "@stripe/stripe-js": "^8.5.3",
     "@upstash/redis": "^1.37.0",
+    "axios": "^1.15.0",
     "busboy": "^1.6.0",
-    "dotenv": "^17.2.3",
+    "cheerio": "^1.2.0",
+    "cron": "^4.4.0",
+    "dotenv": "^17.4.1",
     "ethers": "^6.16.0",
     "expo": "^55.0.8",
     "formidable": "^3.5.4",
@@ -37,11 +40,13 @@
     "paapi5-nodejs-sdk": "^1.1.0",
     "pdf-parse": "^1.1.1",
     "pdfkit": "^0.17.2",
+    "pm2": "^6.0.14",
     "prisma": "^7.1.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "redis": "^5.11.0",
-    "stripe": "^20.0.0"
+    "stripe": "^20.0.0",
+    "ws": "^8.20.0"
   },
   "engines": {
     "node": ">=18.18.0"

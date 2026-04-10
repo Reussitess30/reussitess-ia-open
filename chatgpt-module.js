@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 // const { Configuration, OpenAIApi } = require("openai");
 
 // Ajoutez ici une exportation vide ou factice pour éviter une erreur

@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const DICTIONARY_API_BASE =
   process.env.DICTIONARY_API_BASE ?? "https://api.dictionaryapi.dev";
 

@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizMedecine = {
   title: "Médecine",
   description: "Explorez les connaissances médicales fondamentales pour prendre soin de votre santé !",

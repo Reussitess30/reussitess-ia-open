@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 export const amazonQuiz = [
   {
     question: "Quel est le produit le plus vendu sur Amazon en 2021 ?",

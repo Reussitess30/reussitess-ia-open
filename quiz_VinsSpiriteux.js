@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizVinsSpiriteux = {
   title: "Vins & Spiritueux du Monde",
   description: "Découvrez l'univers fascinant des vins, rhums, whisky et spiritueux du monde entier !",

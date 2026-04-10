@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const POETRY_API_BASE =
   process.env.POETRY_API_BASE ?? "https://poetrydb.org";
 

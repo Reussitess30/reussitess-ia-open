@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizMarketingDigital = {
   title: "Marketing Digital",
   description: "Maîtrisez les outils pour développer votre présence en ligne !",

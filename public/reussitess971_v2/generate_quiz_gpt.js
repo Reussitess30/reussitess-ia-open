@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const fs = require("fs");
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({ apiKey: process.env.OPENAI_API_KEY });

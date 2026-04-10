@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const { ethers } = require('ethers');
 const ADDRESS_GAMMA = '0xB37531727fC07c6EED4f97F852A115B428046EB2';
 const ADDRESS_2 = '0x5d77d520a82447d2148ac799b2ef8e7ee0ec20ec';

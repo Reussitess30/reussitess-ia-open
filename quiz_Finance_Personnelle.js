@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 // Ce fichier contient tous les quiz restants — à séparer en fichiers individuels
 
 const quizFinancePersonnelle = {

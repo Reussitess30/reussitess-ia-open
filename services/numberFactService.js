@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const NUMBERS_API_BASE =
   process.env.NUMBERS_API_BASE ?? "https://numbersapi.com";
 

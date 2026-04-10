@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizDeveloppementSoi = {
   title: "Développement de Soi — Mindset Gagnant",
   description: "Les clés mentales et psychologiques pour transformer votre vie et atteindre vos objectifs !",

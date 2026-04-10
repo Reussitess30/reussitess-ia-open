@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizJeuxVideo = {
   title: "Jeux Vidéo",
   description: "Testez vos connaissances sur l'univers du gaming !",

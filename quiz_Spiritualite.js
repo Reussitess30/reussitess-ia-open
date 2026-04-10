@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizSpiritualite = {
   title: "Spiritualité & Méditation Mondiale",
   description: "Explorez les grandes traditions spirituelles, la méditation et la conscience du monde !",

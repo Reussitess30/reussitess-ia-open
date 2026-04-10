@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizMedecinesDouces = {
   title: "Médecines Douces du Monde",
   description: "Explorez les grandes traditions médicales alternatives reconnues mondialement !",

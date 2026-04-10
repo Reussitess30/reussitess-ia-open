@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');

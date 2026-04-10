@@ -1,6 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /api/sentinelle-protect
-Disallow: /.env
-
-Sitemap: /sitemap.xml
+Sitemap: https://reussitess.fr/sitemap.xml

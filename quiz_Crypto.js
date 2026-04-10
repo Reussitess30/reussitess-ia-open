@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizCrypto = {
   title: "Cryptomonnaies & Blockchain pour Tous",
   description: "Comprendre la blockchain, Bitcoin, Ethereum et la révolution financière décentralisée !",

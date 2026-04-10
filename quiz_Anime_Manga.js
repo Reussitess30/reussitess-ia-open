@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizAnimeManga = {
   title: "Anime & Manga",
   description: "Testez vos connaissances sur la culture japonaise animée !",

@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizMythologie = {
   title: "Mythologie",
   description: "Plongez dans les mythes et légendes des civilisations anciennes !",

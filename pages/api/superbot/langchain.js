@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 import { ChatGroq } from "@langchain/groq"
 import { HumanMessage, SystemMessage, AIMessage } from "@langchain/core/messages"
 

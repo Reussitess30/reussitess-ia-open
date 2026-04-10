@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizMarketingDigital = {
   title: "Marketing Digital & Réseaux Sociaux",
   description: "Maîtrisez le marketing en ligne, le SEO et les réseaux sociaux pour développer votre présence digitale !",

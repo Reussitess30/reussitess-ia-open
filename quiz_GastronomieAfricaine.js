@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizGastronomieAfricaine = {
   title: "Gastronomie Africaine & Diaspora",
   description: "Explorez les saveurs extraordinaires de la cuisine africaine et de sa diaspora mondiale !",

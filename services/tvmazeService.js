@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const TVMAZE_API_BASE =
   process.env.TVMAZE_API_BASE ?? "https://api.tvmaze.com";
 

@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizGraphologie = {
   title: "Graphologie — Ce que votre Écriture Révèle",
   description: "L'écriture est le miroir de l'âme — découvrez les secrets de la graphologie !",

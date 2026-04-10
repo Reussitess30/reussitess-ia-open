@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 // components/botStringsInjector.js
 // Injection sûre côté client : importe dynamiquement data/botStrings et merge dans globalThis.
 

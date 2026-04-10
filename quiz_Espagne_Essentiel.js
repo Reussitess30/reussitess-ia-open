@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizEspagneEssentiel = {
   title: "Espagne — Essentiel Voyage & Culture",
   description: "Droits, règles, culture et bons à savoir avant d'aller en Espagne !",

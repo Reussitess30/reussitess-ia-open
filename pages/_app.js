@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 import StructuredData from '../components/StructuredData'
 import VisitorCounter from '../components/VisitorCounter'
 import { useEffect } from "react";

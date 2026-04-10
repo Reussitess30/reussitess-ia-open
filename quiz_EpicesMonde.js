@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizEpicesMonde = {
   title: "Épices du Monde — Saveurs & Secrets",
   description: "Partez à la découverte des épices qui ont changé le monde, de leur histoire à leurs vertus !",

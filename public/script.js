@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 /**
  * REUSSITESS® 971 - Script JavaScript
  * Excellence • Innovation • Succès à l'infini boudoume!

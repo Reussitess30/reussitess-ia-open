@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizDeveloppementPersonnel = {
   title: "Développement Personnel",
   description: "Découvrez les outils pour devenir la meilleure version de vous-même !",

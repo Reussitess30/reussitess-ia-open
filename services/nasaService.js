@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 async function getNasaApod() {
   try {
     const apiKey = process.env.NASA_API_KEY || 'DEMO_KEY';

@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizJeuneDetox = {
   title: "Jeûne Intermittent & Détox",
   description: "Découvrez la science du jeûne, de la détoxification et de la régénération cellulaire !",

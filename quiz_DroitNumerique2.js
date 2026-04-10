@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizDroitNumerique2 = {
   title: "Droits du Numérique — Réseaux & Plateformes",
   description: "Vos droits face aux géants du numérique, aux réseaux sociaux et aux plateformes digitales !",

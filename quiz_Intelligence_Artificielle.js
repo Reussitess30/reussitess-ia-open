@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizIA = {
   title: "Intelligence Artificielle",
   description: "Découvrez le monde fascinant de l'IA qui révolutionne notre quotidien !",

@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizAfrique = {
   title: "Afrique",
   description: "Explorez la richesse et la diversité du continent africain !",

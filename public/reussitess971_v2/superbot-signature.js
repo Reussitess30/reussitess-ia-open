@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 function pronounceSuccessSignature(mode = "standard") {
   let msg = "réussitess971 excellence innovation succes a l'infini boudoume";
   if (mode === "excellence") msg += " — vers le sommet de tes ambitions !";

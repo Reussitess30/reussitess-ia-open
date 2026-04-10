@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizGestionStress = {
   title: "Gestion du Stress & Résilience",
   description: "Apprenez à maîtriser le stress, renforcer votre résilience et retrouver votre équilibre !",

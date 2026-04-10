@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const https = require('https');
 
 const WALLET = '0x69f42Aa645A43A84e1143D416a4C81A88DF01549';

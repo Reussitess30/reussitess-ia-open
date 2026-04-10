@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizDroitEtrangers = {
   title: "Droit des Étrangers & Immigration",
   description: "Comprendre les droits des étrangers en France et les procédures d'immigration !",

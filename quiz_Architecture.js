@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizArchitecture = {
   title: "Architecture",
   description: "Découvrez les grands styles et chefs-d'œuvre de l'architecture mondiale !",

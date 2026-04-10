@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 import { useState, useEffect } from 'react'
 import Head from 'next/head'
 

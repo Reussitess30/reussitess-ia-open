@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const { ethers } = require('ethers');
 
 const OFFICIAL_TOKEN = '0xB37531727fC07c6EED4f97F852A115B428046EB2';

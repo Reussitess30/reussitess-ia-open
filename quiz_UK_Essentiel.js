@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizUKEssentiel = {
   title: "Royaume-Uni — Essentiel Voyage & Culture",
   description: "Droits, règles, culture et bons à savoir avant d'aller au Royaume-Uni !",

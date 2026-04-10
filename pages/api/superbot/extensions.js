@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 // ===== EXTENSIONS REUSSITESS AI =====
 // 1. Multilingue | 2. Juridique | 3. Finance | 4. Données temps réel
 

@@ -1,0 +1,14 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "REUSSITESS®971",
+  "url": "https://reussitess.fr",
+  "description": "Empire IA + Blockchain + Culture Afrocaraibéenne #1 Mondial",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>

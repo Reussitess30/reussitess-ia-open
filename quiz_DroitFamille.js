@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizDroitFamille = {
   title: "Droit de la Famille",
   description: "Mariage, divorce, succession, garde des enfants — connaissez vos droits familiaux !",

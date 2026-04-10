@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizModeBeaute = {
   title: "Mode & Beauté",
   description: "Explorez le monde de la mode, du style et de la beauté !",

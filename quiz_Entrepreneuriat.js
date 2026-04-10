@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizEntrepreneuriat = {
   title: "Astuces pour Réussir en Entrepreneuriat",
   description: "Les secrets des entrepreneurs qui réussissent — mindset, stratégie et exécution !",

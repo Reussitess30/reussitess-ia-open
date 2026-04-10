@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 // Synthèse vocale avec accent créole guadeloupéen
 export const speakGuadeloupean = (text) => {
   if (!('speechSynthesis' in window)) {

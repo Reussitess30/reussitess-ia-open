@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 // ==========================================================
 const { getFirstDefinition } = require("./services/dictionaryService");
 const { getNumberFact } = require("./services/numberFactService");

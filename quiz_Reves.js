@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizReves = {
   title: "Rêves & Leur Interprétation",
   description: "Plongez dans le monde fascinant des rêves — significations, symboles et messages de l'inconscient !",

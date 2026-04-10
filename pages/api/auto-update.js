@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 export default async function handler(req, res) {
   // Sécurité - clé admin requise
   const adminKey = req.headers['x-admin-key'] || req.query.key

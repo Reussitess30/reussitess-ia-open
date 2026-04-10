@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const tokenContract = "0xB37531727fC07c6EED4f97F852A115B428046EB2"; // GAMMA
 const poolAddress = "0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c"; // Quantum Pool
 const owner = "0x69f42aa645a43a84e1143d416a4c81a88df01549";

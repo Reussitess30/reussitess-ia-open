@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 export const config = { api: { bodyParser: { sizeLimit: '10mb' } } }
 
 export default async function handler(req, res) {

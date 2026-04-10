@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 // AUTO-CONVERTED from amazonData.js
 const botStrings = {
   info: "REUSSITESS® REUSSITESS®NEURO-X - 26 boutiques Amazon affiliées dans 14 pays sur 5 continents",

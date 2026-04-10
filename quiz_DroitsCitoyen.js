@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizDroitsCitoyen = {
   title: "Droits & Devoirs du Citoyen Français",
   description: "Connaissez-vous vraiment vos droits et devoirs en tant que citoyen français ?",

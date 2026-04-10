@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizCaraibes = {
   title: "Caraïbes",
   description: "Testez vos connaissances sur l'archipel caribéen, son histoire et sa culture !",

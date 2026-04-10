@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const {Document,Packer,Paragraph,TextRun,Table,TableRow,TableCell,AlignmentType,HeadingLevel,BorderStyle,WidthType,ShadingType,LevelFormat}=require('docx');
 const fs=require('fs');
 const GOLD='D4AF37',DARK='1A1A2E',BLUE='16213E',LIGHT_BLUE='E8F0FE',LIGHT_GOLD='FFF8E7',WHITE='FFFFFF';

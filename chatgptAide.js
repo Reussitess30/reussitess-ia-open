@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 // chatgptAide.js
 export async function callChatGPTAPI(prompt) {
   // À adapter selon ton API ChatGPT déjà intégrée (endpoint, clé, etc.)

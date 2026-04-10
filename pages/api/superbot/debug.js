@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 export default async function handler(req, res) {
   const hasOpenAI = !!process.env.OPENAI_API_KEY
   const keyStart = process.env.OPENAI_API_KEY?.substring(0, 8) || 'vide'

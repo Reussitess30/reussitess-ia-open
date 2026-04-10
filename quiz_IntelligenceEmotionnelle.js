@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizIntelligenceEmotionnelle = {
   title: "Intelligence Émotionnelle",
   description: "Maîtrisez vos émotions, développez votre empathie et transformez vos relations !",

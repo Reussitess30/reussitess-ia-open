@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 import React, { useState, useEffect } from 'react';
 
 export default function ComplianceBot() {

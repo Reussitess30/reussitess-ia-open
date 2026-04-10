@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizPhotographie = {
   title: "Photographie",
   description: "Découvrez l'art de capturer le monde à travers un objectif !",

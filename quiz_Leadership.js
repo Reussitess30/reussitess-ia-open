@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizLeadership = {
   title: "Leadership",
   description: "Découvrez les qualités qui font les grands leaders !",

@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";

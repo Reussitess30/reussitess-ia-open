@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 // utils/i18n.js - Système de traduction automatique
 
 export const languages = {

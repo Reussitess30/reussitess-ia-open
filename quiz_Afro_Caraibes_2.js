@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizAfroCaraibes2 = {
   title: "Grands Hommes Noirs & Inventeurs",
   description: "Découvrez les inventions et les figures noires qui ont marqué l'histoire mondiale !",

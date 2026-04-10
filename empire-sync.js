@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 require('dotenv').config({ path: './.env' });
 const axios = require('axios');
 

@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizAfroCaraibes1 = {
   title: "Afro-Caraïbes & Indépendances",
   description: "Découvrez l'histoire des peuples afro-caribéens, leurs luttes et les dates d'indépendance des ex-colonies !",

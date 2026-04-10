@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizCuisineAntillaise = {
   title: "Cuisine Antillaise — Recettes & Secrets",
   description: "Plongez dans la richesse culinaire de la Guadeloupe, la Martinique et toute la Caraïbe !",

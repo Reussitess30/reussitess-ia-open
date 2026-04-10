@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizAstronomie = {
   title: "Astronomie",
   description: "Explorez l'univers et ses mystères infinis !",

@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const WEATHER_API_BASE =
   process.env.WEATHER_API_BASE ?? "https://wttr.in";
 

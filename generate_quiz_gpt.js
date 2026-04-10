@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 /**
  * Script de génération automatique de quiz via GPT
  * réussitess971 - excellence, innovation, succes à l'infini boudoume

@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizPlantesMediacinales = {
   title: "Se Soigner par les Plantes — Phytothérapie",
   description: "Découvrez les plantes médicinales et leurs vertus thérapeutiques reconnues !",

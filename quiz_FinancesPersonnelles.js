@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizFinancesPersonnelles = {
   title: "Finances Personnelles & Liberté Financière",
   description: "Maîtrisez votre argent, construisez votre patrimoine et atteignez la liberté financière !",

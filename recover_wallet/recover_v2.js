@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const { ethers } = require("ethers");
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY // Clé privée depuis variable d'environnement;  // Remplacez ICI

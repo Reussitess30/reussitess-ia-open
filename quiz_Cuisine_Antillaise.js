@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizCuisineAntillaise = {
   title: "Cuisine Antillaise",
   description: "Découvrez les saveurs et les spécialités culinaires des Antilles !",

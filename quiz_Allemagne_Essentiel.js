@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizAllemagneEssentiel = {
   title: "Allemagne Essentiel",
   description: "Histoire, culture et géographie de l'Allemagne en 25 questions !",

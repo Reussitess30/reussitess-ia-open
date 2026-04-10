@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 export default {
   defaultTitle: 'REUSSITESS® REUSSITESS®NEURO-X - 26 Boutiques Amazon | Passeport de Réussite | VISA Universel',
   titleTemplate: '%s | REUSSITESS®971 Guadeloupe',

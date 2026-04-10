@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 import { useState } from 'react'
 import Layout from '../components/Layout'
 import Link from 'next/link'

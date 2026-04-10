@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizDroit = {
   title: "Droit & Justice",
   description: "Connaissez vos droits et comprenez le système juridique !",

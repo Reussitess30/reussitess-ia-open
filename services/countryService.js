@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const COUNTRY_API_BASE =
   process.env.COUNTRY_API_BASE ?? "https://restcountries.com/v3.1";
 

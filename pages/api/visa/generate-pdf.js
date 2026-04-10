@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
   const visa = req.body

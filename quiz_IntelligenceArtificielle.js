@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizIntelligenceArtificielle = {
   title: "Intelligence Artificielle — Ce que Tout le Monde Doit Savoir",
   description: "Comprendre l'IA, ses applications, ses dangers et son impact sur notre monde !",

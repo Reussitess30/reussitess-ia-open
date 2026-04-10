@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 import Busboy from 'busboy'
 
 export const config = { api: { bodyParser: false, sizeLimit: '10mb' } }

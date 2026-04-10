@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizSymbolisme = {
   title: "Symbolisme & Signes Sacrés du Monde",
   description: "Découvrez la signification profonde des symboles sacrés qui traversent les cultures et les siècles !",

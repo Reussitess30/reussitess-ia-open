@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizDroitConsommateur = {
   title: "Droits du Consommateur",
   description: "Connaissez vos droits d'acheteur et ne vous laissez plus jamais arnaquer !",

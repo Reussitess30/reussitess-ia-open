@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizSingapourEssentiel = {
   title: "Singapour — Essentiel Voyage & Culture",
   description: "Droits, règles, culture et bons à savoir avant d'aller à Singapour — city-state aux lois très strictes !",

@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 "use client";
 import { useState, useEffect } from "react";
 import Layout from "../components/Layout";

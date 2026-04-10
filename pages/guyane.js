@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 import Head from "next/head";
 import Link from "next/link";
 import Layout from "../components/Layout";

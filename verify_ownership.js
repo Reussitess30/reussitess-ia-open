@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const { ethers } = require('ethers');
 
 const TOKEN_CONTRACT = '0xbe8777aB450937bf107090F4F5F7c4834Db079cF'; // REUSS Principal

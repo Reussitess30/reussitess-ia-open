@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 import { useState, useEffect, useRef, useCallback } from "react";
 
 export default function BotUltimate() {

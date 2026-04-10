@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizImmobilier = {
   title: "Immobilier",
   description: "Construisez votre patrimoine grâce à l'investissement immobilier !",

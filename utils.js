@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 async function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }

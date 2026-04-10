@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizLitterature = {
   title: "Littérature",
   description: "Explorez les grandes œuvres et auteurs qui ont marqué l'histoire !",

@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizVoyage = {
   title: "Voyage",
   description: "Explorez le monde à travers ce quiz de géographie et culture du voyage !",

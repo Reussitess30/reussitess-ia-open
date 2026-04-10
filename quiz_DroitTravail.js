@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizDroitTravail = {
   title: "Droit du Travail — Ce que Tout Salarié Doit Savoir",
   description: "Connaissez vos droits en tant que salarié et ne laissez personne les violer !",

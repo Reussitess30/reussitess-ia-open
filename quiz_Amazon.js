@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizAmazon = {
   title: "Amazon & E-commerce — Secrets des Vendeurs",
   description: "Maîtrisez Amazon Associates, le FBA et les secrets du commerce en ligne mondial !",

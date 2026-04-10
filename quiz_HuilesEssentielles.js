@@ -1,3 +1,4 @@
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 const quizHuilesEssentielles = {
   title: "Huiles Essentielles & Aromathérapie",
   description: "Découvrez les secrets des huiles essentielles et leurs incroyables propriétés thérapeutiques !",
