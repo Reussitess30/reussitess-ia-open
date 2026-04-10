@@ -2,48 +2,103 @@
 > reussitess-global-nexus@1.0.1 build
 > next build --webpack
 
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /data/data/com.termux/files/home/package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * /data/data/com.termux/files/home/reussitess-global-nexus/package-lock.json
+
    Skipping creating a lockfile at /data/data/com.termux/files/home/reussitess-global-nexus/.next/lock because we're using WASM bindings
    ▲ Next.js 16.0.7 (webpack)
-   - Environments: .env.local
+   - Environments: .env.local, .env
+   - Experiments (use with caution):
+     ✓ optimizeCss
+     · optimizePackageImports
 
    Creating an optimized production build ...
- ✓ Compiled successfully in 52s
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+ ✓ Compiled successfully in 67s
    Running TypeScript ...
    Collecting page data using 1 worker ...
-   Generating static pages using 1 worker (0/98) ...
-   Generating static pages using 1 worker (24/98) 
-   Generating static pages using 1 worker (48/98) 
-   Generating static pages using 1 worker (73/98) 
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+   Generating static pages using 1 worker (0/130) ...
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+   Generating static pages using 1 worker (32/130) 
+   Generating static pages using 1 worker (64/130) 
+   Generating static pages using 1 worker (97/130) 
+ ✓ Generating static pages using 1 worker (130/130) in 5.8s
  ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
- ✓ Generating static pages using 1 worker (98/98) in 4.1s
    Finalizing page optimization ...
    Collecting build traces ...
 
-Route (app)
+Route (app)                                        Revalidate  Expire
 ┌ ○ /_not-found
-├ ƒ /api/superbot/data
-└ ○ /ia-passport
+├ ○ /api/ai-status                                        10s      1y
+├ ƒ /api/amazon-deals
+├ ƒ /api/generate-report
+├ ƒ /api/superbot-reussitess
+├ ƒ /api/superbot-reussitess/data
+├ ƒ /api/token-info
+├ ○ /ia-passport
+├ ○ /monitoring-ia
+└ ○ /transparency
 
 Route (pages)
 ┌ ○ /
 ├   /_app
-├ ○ /a-propos (490 ms)
-├ ○ /affiliation (477 ms)
-├ ○ /analytics (477 ms)
+├ ○ /404 (825 ms)
+├ ○ /a-propos (815 ms)
+├ ○ /academie (815 ms)
+├ ○ /affiliation (814 ms)
+├ ○ /agents-dashboard (813 ms)
+├ ○ /airpods (813 ms)
+├ ○ /amazon (812 ms)
+├ ○ /analytics (812 ms)
+├ ƒ /api/agents/orchestrate
+├ ƒ /api/auto-update
+├ ƒ /api/autocomplete
 ├ ƒ /api/bot
 ├ ƒ /api/chat
+├ ƒ /api/conversations
 ├ ƒ /api/full-knowledge
+├ ƒ /api/gemini
+├ ƒ /api/generate-pdf
+├ ƒ /api/health
+├ ƒ /api/knowledge
+├ ƒ /api/observatoire
 ├ ƒ /api/passeport/register
 ├ ƒ /api/passeport/stats
+├ ƒ /api/podcasts-rss
+├ ƒ /api/read-pdf
+├ ƒ /api/reuss-dashboard
+├ ƒ /api/reuss-webhook
+├ ƒ /api/rss-experts
 ├ ƒ /api/sitemap.xml
+├ ƒ /api/suggestions
 ├ ƒ /api/superbot/chat
+├ ƒ /api/superbot/compagnon-creole
+├ ƒ /api/superbot/creole-tts
+├ ƒ /api/superbot/debug
+├ ƒ /api/superbot/extensions
+├ ƒ /api/superbot/langchain
+├ ƒ /api/superbot/whisper
+├ ƒ /api/superbot/wikipedia
+├ ƒ /api/telegram-webhook
+├ ƒ /api/visa/generate-pdf
 ├ ƒ /api/visa/register
-├ ○ /astuces (476 ms)
+├ ƒ /api/visitors
+├ ƒ /api/zenquote
+├ ○ /astuces
 ├ ○ /bibliotheque
-├ ○ /bibliotheque/afrique/cameroun (478 ms)
-├ ○ /bibliotheque/afrique/cote-ivoire (477 ms)
-├ ○ /bibliotheque/afrique/madagascar (477 ms)
-├ ○ /bibliotheque/afrique/mali (476 ms)
+├ ○ /bibliotheque/actu
+├ ○ /bibliotheque/afrique/cameroun
+├ ○ /bibliotheque/afrique/cote-ivoire
+├ ○ /bibliotheque/afrique/madagascar
+├ ○ /bibliotheque/afrique/mali
 ├ ○ /bibliotheque/afrique/rdc
 ├ ○ /bibliotheque/afrique/rwanda
 ├ ○ /bibliotheque/afrique/senegal
@@ -91,14 +146,23 @@ Route (pages)
 ├ ○ /bibliotheque/pays/guyane
 ├ ○ /bibliotheque/pays/martinique
 ├ ○ /bibliotheque/prof
-├ ○ /bibliotheque/reglementation (387 ms)
-├ ○ /booster-reussitess-amazon (387 ms)
-├ ○ /boutiques (386 ms)
-├ ○ /champions (386 ms)
-├ ○ /contact (385 ms)
-├ ○ /creole (385 ms)
-├ ○ /guadeloupe (385 ms)
-├ ○ /guide-complet (384 ms)
+├ ○ /bibliotheque/reglementation
+├ ○ /booster-reussitess-amazon
+├ ○ /boutiques (363 ms)
+├ ○ /calculateur-amazon (363 ms)
+├ ○ /carte-caribeenne (362 ms)
+├ ○ /certificat (362 ms)
+├ ○ /champions (362 ms)
+├ ○ /communaute (361 ms)
+├ ○ /contact (362 ms)
+├ ○ /creole (361 ms)
+├ ○ /de
+├ ○ /en
+├ ○ /es
+├ ○ /evenements
+├ ○ /fr
+├ ○ /guadeloupe
+├ ○ /guide-complet
 ├ ○ /guyane
 ├ ○ /hub-central
 ├ ○ /hub-international
@@ -108,25 +172,37 @@ Route (pages)
 ├ ○ /hub-regional/marketing-seo
 ├ ○ /hub-regional/opportunites
 ├ ○ /index.before-coach
+├ ○ /investir-reuss
 ├ ○ /legal
+├ ○ /ma-revolution-ia
+├ ○ /marketplace
 ├ ○ /martinique
 ├ ○ /mentions-legales
+├ ○ /mon-adn
+├ ○ /mon-compte
+├ ○ /neuro-x
+├ ○ /observatoire-antilles
+├ ○ /oracle-971
 ├ ○ /outils
 ├ ○ /outils-calculateurs
+├ ○ /passe-port-mondial
+├ ○ /podcasts-creoles
 ├ ○ /politique-confidentialite
 ├ ○ /presse
 ├ ○ /pwa-app
 ├ ○ /quiz
 ├ ○ /quiz/[id]
+├ ○ /radio
 ├ ○ /ressources/culture-guadeloupe
 ├ ○ /ressources/histoire-afrique
 ├ ○ /ressources/patrimoine-martinique
 ├ ○ /reunion
-├ ○ /savoir-culture (700 ms)
-├ ○ /test-connexion (706 ms)
-├ ○ /test-hub (706 ms)
-├ ○ /vamazon (706 ms)
-└ ○ /visa-universel (705 ms)
+├ ○ /reuss-live
+├ ○ /savoir-culture
+├ ○ /telecharger
+├ ○ /test-connexion
+├ ƒ /vamazon
+└ ○ /visa-universel
 
 ○  (Static)   prerendered as static content
 ƒ  (Dynamic)  server-rendered on demand
