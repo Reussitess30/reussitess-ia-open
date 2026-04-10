@@ -1,3 +1,4 @@
+// Reussitess971 DSO2026012614
 /* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 import { detectLanguage, getSystemPromptForLanguage, getDroitDOMTOM, getFinanceAvancee, getDonneesTempsReel } from "./extensions.js"
 

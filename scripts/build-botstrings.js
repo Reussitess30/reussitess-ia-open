@@ -1,5 +1,5 @@
-/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 #!/usr/bin/env node
+// Reussitess971 DSO2026012614
 "use strict";
 const fs = require("fs");
 const path = require("path");

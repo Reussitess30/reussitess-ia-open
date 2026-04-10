@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-// Reussitess971 DSO2026012614
+/* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
+#!/usr/bin/env node
 "use strict";
 /*
   bot-supervisor.js - non intrusive supervisor/orchestrator
