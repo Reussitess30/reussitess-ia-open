@@ -489,6 +489,18 @@
     {
       "trigger": "politique saint-barthélemy",
       "response": "🏝️ **Saint-Barthélemy — Collectivité d'Outre-Mer**\n\nPrésident du Conseil Territorial : **Xavier Lédée**\nÉlu en 2022\nÎle francophone des Caraïbes\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "langues africaines",
+      "response": "🌍 **Langues Africaines — REUSSITESS**\n\nJe parle et comprends :\n🇸🇳 Wolof (Sénégal) — jërejëf, teranga, nanga def\n🇲🇱 Bambara (Mali) — i ni ce, duguw, ka kène\n🌍 Swahili (Afrique Est) — jambo, asante, karibu, ubuntu\n🇨🇩 Lingala (Congo) — mbote, bokulaka\n🇧🇫 Mooré (Burkina) — laafi\n🇭🇹 Créole haïtien — bonjou, mèsi, map bem\n🏝️ Kalinago/Arawak — langues indigènes caribéennes\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "badges reussitess",
+      "response": "🏆 **Système de Badges REUSSITESS**\n\n🌱 Explorateur — 1ère visite\n⭐ Habitué — 5 visites\n🔥 Fidèle REUSSITESS — 10 visites\n💎 Champion — 25 visites\n👑 Légende Caribéenne — 50 visites\n🌟 Ambassadeur REUSSITESS — 100 visites\n\nTape *mes badges* pour voir ta progression !\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "ubuntu philosophie",
+      "response": "🌍 **Ubuntu — Philosophie Africaine**\n\n*Umuntu ngumuntu ngabantu*\n'Je suis parce que nous sommes'\n\nPhilosophie bantoue fondamentale :\n• L'humanité se définit par les relations\n• La communauté avant l'individu\n• Solidarité, partage, respect mutuel\n\nAdoptée par Nelson Mandela comme vision politique de réconciliation en Afrique du Sud.\n\nBoudoum ! 🇬🇵"
     }
   ]
 }

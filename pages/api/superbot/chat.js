@@ -4660,6 +4660,31 @@ export default async function handler(req, res) {
   }
   const msgLow = message.toLowerCase()
 
+  // ===== LANGUES AFRICAINES =====
+  if (msgLow.includes("en wolof") || msgLow.includes("en bambara") || msgLow.includes("en swahili") || msgLow.includes("en lingala") || msgLow.includes("en créole haïtien") || msgLow.includes("kalinago") || msgLow.includes("arawak") || msgLow.includes("que signifie") && (msgLow.includes("wolof") || msgLow.includes("swahili") || msgLow.includes("bambara"))) {
+    const mot = message.replace(/que signifie|que veut dire|traduis|en wolof|en bambara|en swahili|en lingala|en créole haïtien/gi, '').trim()
+    const africainResult = getDictionnaireAfricain(mot)
+    if (africainResult) return res.status(200).json({ pdfAction: null, response: africainResult })
+  }
+
+  // ===== BADGES ACCOMPLISSEMENTS =====
+  if (msgLow.includes("mes badges") || msgLow.includes("mes accomplissements") || msgLow.includes("mon niveau") || msgLow.includes("mes points") || msgLow.includes("ma progression")) {
+    const badges = await getBadgesUtilisateur(userId)
+    if (badges) return res.status(200).json({ pdfAction: null, response: badges })
+  }
+
+  // ===== CATASTROPHES NATURELLES =====
+  if (msgLow.includes("catastrophe naturelle") || msgLow.includes("désastre naturel") || msgLow.includes("alerte mondiale") || msgLow.includes("gdacs") || msgLow.includes("urgence mondiale")) {
+    const cat = await getCatastrophesNaturelles()
+    if (cat) return res.status(200).json({ pdfAction: null, response: cat })
+  }
+
+  // ===== NASA SCIENCE =====
+  if (msgLow.includes("science nasa") || msgLow.includes("technologie nasa") || msgLow.includes("découverte nasa") || msgLow.includes("recherche spatiale")) {
+    const science = await getNASAScience()
+    if (science) return res.status(200).json({ pdfAction: null, response: science })
+  }
+
   // ===== OPENFDA MÉDICAMENTS =====
   if (msgLow.includes("médicament") || msgLow.includes("medicament") || msgLow.includes("effets secondaires") || msgLow.includes("interactions médicamenteuses") || msgLow.includes("posologie")) {
     const med = message.replace(/médicament|medicament|effets secondaires de|interactions de|posologie de|c'est quoi|qu'est-ce que/gi, '').trim()
@@ -10793,5 +10818,125 @@ fetch(`https://api.worldbank.org/v2/country/${pays}/indicator/${ind}?format=json
 ))
 const paysNom = pays === 'GP' ? 'Guadeloupe' : pays === 'MQ' ? 'Martinique' : pays === 'GF' ? 'Guyane' : pays === 'RE' ? 'Réunion' : pays
 return `📈 **Données Économiques — ${paysNom}**\n\n💰 PIB : ${results[0] !== 'N/A' ? (results[0]/1e9).toFixed(2) + ' Mrd $' : 'N/A'}\n📊 Inflation : ${results[1] !== 'N/A' ? results[1].toFixed(1) + '%' : 'N/A'}\n💼 Chômage : ${results[2] !== 'N/A' ? results[2].toFixed(1) + '%' : 'N/A'}\n\nSource: World Bank\nBoudoum ! 🇬🇵`
+} catch(e) { return null }
+}
+
+// ===== LANGUES AFRICAINES =====
+function getDictionnaireAfricain(mot) {
+const dico = {
+// WOLOF (Sénégal)
+'waaw': '🇸🇳 **Waaw** (Wolof) — "Oui" en wolof, langue principale du Sénégal.',
+'dëgg': '🇸🇳 **Dëgg** (Wolof) — "Comprendre/vrai" en wolof.',
+'jërejëf': '🇸🇳 **Jërejëf** (Wolof) — "Merci" en wolof. Expression de gratitude au Sénégal.',
+'mangi fi': '🇸🇳 **Mangi fi** (Wolof) — "Je suis là/ça va" en wolof.',
+'nanga def': '🇸🇳 **Nanga def** (Wolof) — "Comment vas-tu?" en wolof.',
+'ndank ndank': '🇸🇳 **Ndank ndank** (Wolof) — "Doucement, petit à petit" en wolof.',
+'teranga': '🇸🇳 **Teranga** (Wolof) — "Hospitalité" en wolof. Valeur fondamentale sénégalaise.',
+'inshallah': '🕌 **Inshallah** (Arabe/Wolof) — "Si Dieu le veut". Très utilisé en Afrique de l\'Ouest.',
+
+// BAMBARA (Mali)
+'i ni ce': '🇲🇱 **I ni ce** (Bambara) — "Bonjour/merci" en bambara, langue principale du Mali.',
+'aw ni ce': '🇲🇱 **Aw ni ce** (Bambara) — "Bonjour à vous" en bambara (pluriel).',
+'tôgô': '🇲🇱 **Tôgô** (Bambara) — "Nom" en bambara.',
+'ka kène': '🇲🇱 **Ka kène** (Bambara) — "Être en bonne santé" en bambara.',
+'fari': '🇲🇱 **Fari** (Bambara) — "Corps" en bambara.',
+'duguw': '🇲🇱 **Duguw** (Bambara) — "Village, pays natal" en bambara.',
+
+// SWAHILI (Afrique de l'Est)
+'jambo': '🌍 **Jambo** (Swahili) — "Bonjour" en swahili, parlé en Tanzanie, Kenya, Uganda.',
+'habari': '🌍 **Habari** (Swahili) — "Comment ça va? / Nouvelles" en swahili.',
+'asante': '🌍 **Asante** (Swahili) — "Merci" en swahili.',
+'karibu': '🌍 **Karibu** (Swahili) — "Bienvenue" en swahili.',
+'hakuna matata': '🌍 **Hakuna matata** (Swahili) — "Pas de problème" en swahili. Rendu célèbre par Le Roi Lion.',
+'ubuntu': '🌍 **Ubuntu** (Swahili/Zulu) — "Je suis parce que nous sommes". Philosophie africaine de communauté.',
+'pole pole': '🌍 **Pole pole** (Swahili) — "Doucement, lentement" en swahili.',
+'rafiki': '🌍 **Rafiki** (Swahili) — "Ami" en swahili.',
+'simba': '🦁 **Simba** (Swahili) — "Lion" en swahili.',
+'baba': '👨 **Baba** (Swahili) — "Père" en swahili.',
+
+// LINGALA (Congo)
+'mbote': '🇨🇩 **Mbote** (Lingala) — "Bonjour" en lingala, langue du Congo.',
+'na zali malamu': '🇨🇩 **Na zali malamu** (Lingala) — "Je vais bien" en lingala.',
+'bokulaka': '🇨🇩 **Bokulaka** (Lingala) — "Amour" en lingala.',
+
+// MOORE (Burkina Faso)
+'laafi': '🇧🇫 **Laafi** (Mooré) — "Paix, santé" en mooré, langue du Burkina Faso.',
+
+// HAÏTIEN
+'bonjou': '🇭🇹 **Bonjou** (Créole haïtien) — "Bonjour" en créole haïtien.',
+'mèsi': '🇭🇹 **Mèsi** (Créole haïtien) — "Merci" en créole haïtien.',
+'kijan ou rele': '🇭🇹 **Kijan ou rele** (Créole haïtien) — "Comment tu t\'appelles?" en haïtien.',
+'map bem': '🇭🇹 **Map bem** (Créole haïtien) — "Je vais bien" en créole haïtien.',
+'chèlbè': '🇭🇹 **Chèlbè** (Créole haïtien) — "Stylé, cool" en argot haïtien.',
+
+// KALINAGO (Caraïbes indigènes)
+'kalinago': '🏝️ **Kalinago** — Peuple indigène des Petites Antilles. Présents en Dominique. Langue arawakane.',
+'arawak': '🏝️ **Arawak** — Premiers habitants des Grandes Antilles. Leur langue a donné : tabac, canot, hamac, barbecue.',
+'hamac': '🛌 **Hamac** — Mot d\'origine arawak (hamaka). Invention des peuples indigènes caribéens adoptée mondialement.',
+'canot': '🚣 **Canot** — Mot d\'origine arawak (canoa). Embarcation traditionnelle caribéenne.',
+'tabac': '🌿 **Tabac** — Mot d\'origine arawak (tabako). Plante sacrée des peuples indigènes américains.'
+}
+
+const motLow = mot.toLowerCase().trim()
+for (const [key, val] of Object.entries(dico)) {
+if (motLow.includes(key)) return `🌍 **Dictionnaire Afro-Caribéen REUSSITESS**\n\n${val}\n\nBoudoum ! 🇬🇵`
+}
+return null
+}
+
+// ===== SYSTÈME BADGES & ACCOMPLISSEMENTS =====
+async function getBadgesUtilisateur(userId) {
+try {
+const { Redis } = await import('@upstash/redis')
+const redis = Redis.fromEnv()
+const profile = await redis.get(`profile:${userId}`)
+const data = profile ? JSON.parse(profile) : { visites: 0, badges: [] }
+const visites = data.visites || 0
+const badges = data.badges || []
+
+const nouveauxBadges = []
+if (visites >= 1 && !badges.includes('🌱 Explorateur')) nouveauxBadges.push('🌱 Explorateur')
+if (visites >= 5 && !badges.includes('⭐ Habitué')) nouveauxBadges.push('⭐ Habitué')
+if (visites >= 10 && !badges.includes('🔥 Fidèle REUSSITESS')) nouveauxBadges.push('🔥 Fidèle REUSSITESS')
+if (visites >= 25 && !badges.includes('💎 Champion')) nouveauxBadges.push('💎 Champion')
+if (visites >= 50 && !badges.includes('👑 Légende Caribéenne')) nouveauxBadges.push('👑 Légende Caribéenne')
+if (visites >= 100 && !badges.includes('🌟 Ambassadeur REUSSITESS')) nouveauxBadges.push('🌟 Ambassadeur REUSSITESS')
+
+if (nouveauxBadges.length > 0) {
+data.badges = [...badges, ...nouveauxBadges]
+await redis.set(`profile:${userId}`, JSON.stringify(data), { ex: 90 * 24 * 60 * 60 })
+}
+
+const allBadges = [...badges, ...nouveauxBadges]
+const nextBadge = visites < 5 ? `⭐ Habitué (${5-visites} visites restantes)` :
+visites < 10 ? `🔥 Fidèle (${10-visites} visites restantes)` :
+visites < 25 ? `💎 Champion (${25-visites} visites restantes)` :
+visites < 50 ? `👑 Légende (${50-visites} visites restantes)` :
+visites < 100 ? `🌟 Ambassadeur (${100-visites} visites restantes)` : '🏆 Tous les badges obtenus !'
+
+return `🏆 **Tes Accomplissements REUSSITESS**\n\n👤 Visites : ${visites}\n\n🎖️ **Badges obtenus :**\n${allBadges.length > 0 ? allBadges.join('\n') : 'Aucun badge encore'}\n\n${nouveauxBadges.length > 0 ? '🎉 **Nouveau badge débloqué : ' + nouveauxBadges.join(', ') + '**\n\n' : ''}🎯 **Prochain badge :** ${nextBadge}\n\nBoudoum ! 🇬🇵`
+} catch(e) { return null }
+}
+
+// ===== GDACS — CATASTROPHES NATURELLES =====
+async function getCatastrophesNaturelles() {
+try {
+const r = await fetch('https://www.gdacs.org/xml/rss.xml', { signal: AbortSignal.timeout(5000) })
+const xml = await r.text()
+const items = [...xml.matchAll(/<item>[\s\S]*?<title>([\s\S]*?)<\/title>[\s\S]*?<link>([\s\S]*?)<\/link>[\s\S]*?<\/item>/g)]
+if (!items.length) return null
+const decode = s => s.replace(/<!\[CDATA\[(.*?)\]\]>/g,'$1').trim()
+const events = items.slice(0,5).map((m,i) => `${i+1}. ${decode(m[1])}`).join('\n')
+return `🌍 **Catastrophes Naturelles — Temps Réel**\n\n${events}\n\nSource: GDACS (ONU)\nBoudoum ! 🇬🇵`
+} catch(e) { return null }
+}
+
+// ===== NASA SCIENCE & TECHNOLOGIE =====
+async function getNASAScience() {
+try {
+const apiKey = process.env.NASA_API_KEY || 'DEMO_KEY'
+const r = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`, { signal: AbortSignal.timeout(5000) })
+const d = await r.json()
+return `🔬 **Science & Technologie — NASA**\n\n📸 **${d.title}**\n\n${d.explanation?.substring(0, 400)}...\n\n🔗 ${d.url}\n\nSource: NASA\nBoudoum ! 🇬🇵`
 } catch(e) { return null }
 }
