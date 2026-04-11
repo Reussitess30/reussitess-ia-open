@@ -4660,6 +4660,38 @@ export default async function handler(req, res) {
   }
   const msgLow = message.toLowerCase()
 
+  // ===== OPENFDA MÉDICAMENTS =====
+  if (msgLow.includes("médicament") || msgLow.includes("medicament") || msgLow.includes("effets secondaires") || msgLow.includes("interactions médicamenteuses") || msgLow.includes("posologie")) {
+    const med = message.replace(/médicament|medicament|effets secondaires de|interactions de|posologie de|c'est quoi|qu'est-ce que/gi, '').trim()
+    if (med.length > 2) {
+      const fdaData = await getOpenFDA(med)
+      if (fdaData) return res.status(200).json({ pdfAction: null, response: fdaData })
+    }
+  }
+
+  // ===== QUALITÉ AIR =====
+  if (msgLow.includes("qualité de l'air") || msgLow.includes("qualite air") || msgLow.includes("pollution air") || msgLow.includes("aqi guadeloupe")) {
+    const lat = msgLow.includes("martinique") ? 14.6415 : msgLow.includes("guyane") ? 4.9372 : msgLow.includes("réunion") ? -21.1151 : msgLow.includes("mayotte") ? -12.8275 : 16.2411
+    const lon = msgLow.includes("martinique") ? -61.0242 : msgLow.includes("guyane") ? -52.3262 : msgLow.includes("réunion") ? 55.5364 : msgLow.includes("mayotte") ? 45.1662 : -61.5331
+    const ville = msgLow.includes("martinique") ? "Martinique" : msgLow.includes("guyane") ? "Guyane" : msgLow.includes("réunion") ? "Réunion" : msgLow.includes("mayotte") ? "Mayotte" : "Guadeloupe"
+    const airData = await getQualiteAir(ville, lat, lon)
+    if (airData) return res.status(200).json({ pdfAction: null, response: airData })
+  }
+
+  // ===== DICTIONNAIRE CRÉOLE =====
+  if (msgLow.includes("que veut dire") || msgLow.includes("définition") || msgLow.includes("en créole") || msgLow.includes("traduction créole") || msgLow.includes("signifie")) {
+    const mot = message.replace(/que veut dire|définition de|en créole|traduction créole|signifie|c'est quoi/gi, '').trim()
+    const dicoResult = getDictionnaireCreole(mot)
+    if (dicoResult) return res.status(200).json({ pdfAction: null, response: dicoResult })
+  }
+
+  // ===== ÉCONOMIE WORLD BANK =====
+  if (msgLow.includes("économie guadeloupe") || msgLow.includes("pib guadeloupe") || msgLow.includes("économie martinique") || msgLow.includes("pib dom-tom") || msgLow.includes("indices économiques")) {
+    const pays = msgLow.includes("martinique") ? "MQ" : msgLow.includes("guyane") ? "GF" : msgLow.includes("réunion") ? "RE" : "GP"
+    const ecoData = await getEconomieWorldBank(pays)
+    if (ecoData) return res.status(200).json({ pdfAction: null, response: ecoData })
+  }
+
   // ===== ALCHEMY DASHBOARD =====
   if (msgLow.includes("dashboard reuss") || msgLow.includes("stats reuss") || msgLow.includes("reuss live") || msgLow.includes("token onchain")) {
     const dash = await getAlchemyDashboard()
@@ -10670,4 +10702,96 @@ const transfers = (await transfersRes.json()).result?.transfers || []
 const lines = transfers.map(t => `• ${t.from.substring(0,6)}...→ ${t.to.substring(0,6)}... : ${parseFloat(t.value||0).toFixed(2)} REUSS`).join('\n')
 return `💎 **Dashboard REUSS Token — Live**\n\n📛 Nom : ${meta.name}\n🔤 Symbole : $${meta.symbol}\n📊 Décimales : ${meta.decimals}\n⛓️ Réseau : Polygon Mainnet\n🔗 Contrat : ${CONTRACT.substring(0,10)}...\n\n📈 **3 Derniers Transferts :**\n${lines || 'Aucun transfert récent'}\n\n🔍 https://polygonscan.com/token/${CONTRACT}\n\nBoudoum ! 🇬🇵`
 } catch(e) { console.error('Alchemy dashboard:', e.message); return null }
+}
+
+// ===== OPENFDA — MÉDICAMENTS & INTERACTIONS =====
+async function getOpenFDA(medicament) {
+try {
+const query = encodeURIComponent(medicament)
+const r = await fetch(`https://api.fda.gov/drug/label.json?search=openfda.brand_name:"${query}"&limit=1`, { signal: AbortSignal.timeout(5000) })
+const d = await r.json()
+const drug = d.results?.[0]
+if (!drug) return null
+const warnings = drug.warnings?.[0]?.substring(0, 300) || 'Aucun avertissement disponible'
+const interactions = drug.drug_interactions?.[0]?.substring(0, 300) || 'Aucune interaction connue'
+const sideEffects = drug.adverse_reactions?.[0]?.substring(0, 300) || 'Effets secondaires non listés'
+return `💊 **${medicament.toUpperCase()} — Informations Médicales**\n\n⚠️ **Avertissements :**\n${warnings}...\n\n🔄 **Interactions médicamenteuses :**\n${interactions}...\n\n😷 **Effets secondaires :**\n${sideEffects}...\n\n⚕️ *Consultez toujours un médecin avant toute prise de médicament.*\n\nSource: OpenFDA\nBoudoum ! 🇬🇵`
+} catch(e) { return null }
+}
+
+// ===== OPEN-METEO — QUALITÉ AIR DOM-TOM =====
+async function getQualiteAir(ville = 'Guadeloupe', lat = 16.2411, lon = -61.5331) {
+try {
+const r = await fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,ozone,european_aqi`, { signal: AbortSignal.timeout(5000) })
+const d = await r.json()
+const c = d.current
+const aqi = c.european_aqi
+const qualite = aqi <= 20 ? '🟢 Excellente' : aqi <= 40 ? '🟡 Bonne' : aqi <= 60 ? '🟠 Moyenne' : aqi <= 80 ? '🔴 Mauvaise' : '🟣 Très mauvaise'
+return `🌿 **Qualité de l'Air — ${ville}**\n\n${qualite} (IQA: ${aqi})\n\n📊 Détails :\n• PM2.5 : ${c.pm2_5} μg/m³\n• PM10 : ${c.pm10} μg/m³\n• CO : ${c.carbon_monoxide} μg/m³\n• NO2 : ${c.nitrogen_dioxide} μg/m³\n• Ozone : ${c.ozone} μg/m³\n\nSource: Open-Meteo Air Quality\nBoudoum ! 🇬🇵`
+} catch(e) { return null }
+}
+
+// ===== DICTIONNAIRE CRÉOLE ENRICHI =====
+function getDictionnaireCreole(mot) {
+const dico = {
+'boudoum': '🥁 **Boudoum** — Onomatopée du tambour Ka guadeloupéen. Expression de joie, d\'énergie positive et de fierté caribéenne. Signature de REUSSITESS®971.',
+'an nou': '🌴 **An nou** — "Allons-y" en créole guadeloupéen. Invite à l\'action collective.',
+'bel bagay': '🌺 **Bel bagay** — "Belle chose" en créole. Expression d\'admiration et de positivité.',
+'doudou': '💕 **Doudou** — Terme affectueux en créole antillais. Utilisé pour désigner une personne chère.',
+'mwen': '👤 **Mwen** — "Je/moi" en créole guadeloupéen.',
+'ou': '👥 **Ou** — "Tu/vous" en créole guadeloupéen.',
+'sé sa': '✅ **Sé sa** — "C\'est ça" en créole. Expression d\'accord.',
+'pa ni pwoblèm': '😊 **Pa ni pwoblèm** — "Pas de problème" en créole.',
+'ki jan ou rélé': '❓ **Ki jan ou rélé** — "Comment tu t\'appelles?" en créole guadeloupéen.',
+'mwen enmen-w': '❤️ **Mwen enmen-w** — "Je t\'aime" en créole guadeloupéen.',
+'bonjou': '☀️ **Bonjou** — "Bonjour" en créole guadeloupéen.',
+'bonswa': '🌙 **Bonswa** — "Bonsoir" en créole.',
+'mèsi': '🙏 **Mèsi** — "Merci" en créole guadeloupéen.',
+'chapo ba': '🎩 **Chapo ba** — "Chapeau bas", expression de respect et d\'admiration.',
+'doubout': '💪 **Doubout** — "Debout", expression de fierté et de résistance caribéenne.',
+'péyi': '🏝️ **Péyi** — "Pays, île" en créole. Désigne la Guadeloupe avec affection.',
+'lanmou': '💜 **Lanmou** — "Amour" en créole guadeloupéen.',
+'lapli': '🌧️ **Lapli** — "Pluie" en créole.',
+'solèy': '☀️ **Solèy** — "Soleil" en créole guadeloupéen.',
+'la mè': '🌊 **La mè** — "La mer" en créole.',
+'ti moun': '👶 **Ti moun** — "Enfant, petit" en créole antillais.',
+'fanmi': '👨‍👩‍👧‍👦 **Fanmi** — "Famille" en créole guadeloupéen.',
+'amé': '🤝 **Amé** — "Ami(e)" en créole guadeloupéen.',
+'kò': '💪 **Kò** — "Corps" en créole.',
+'tèt': '🧠 **Tèt** — "Tête" en créole guadeloupéen.',
+'ka': '🥁 **Ka** — Le tambour traditionnel guadeloupéen, instrument central du Gwo Ka.',
+'gwoka': '🎵 **Gwoka** — Musique et danse traditionnelle guadeloupéenne, patrimoine UNESCO 2014.',
+'zouk': '💃 **Zouk** — Genre musical caribéen né en Guadeloupe avec le groupe Kassav dans les années 80.',
+'biguine': '🎺 **Biguine** — Musique traditionnelle antillaise née en Martinique au XIXe siècle.',
+'léwòz': '🥁 **Léwòz** — Cérémonie nocturne guadeloupéenne autour du tambour Ka.',
+'quimbois': '🌿 **Quimbois** — Pratique spirituelle et médicinale créole des Antilles.',
+'gadézafè': '🔮 **Gadézafè** — Voyant, guérisseur traditionnel créole antillais.',
+'bolokos': '🍌 **Bolokos** — Banane plantain en créole guadeloupéen.',
+'accras': '🍽️ **Accras** — Beignets de morue, spécialité culinaire antillaise.',
+'colombo': '🍛 **Colombo** — Curry antillais, plat emblématique des Antilles françaises.',
+'blaff': '🐟 **Blaff** — Poisson cuit dans un court-bouillon épicé, plat traditionnel antillais.',
+'ti punch': '🍹 **Ti punch** — Cocktail traditionnel antillais : rhum, citron vert, sirop de canne.',
+'rhum': '🥃 **Rhum** — Spiritueux emblématique des Antilles, produit depuis le XVIIe siècle.'
+}
+const motLow = mot.toLowerCase().trim()
+for (const [key, val] of Object.entries(dico)) {
+if (motLow.includes(key)) return `📖 **Dictionnaire Créole REUSSITESS**\n\n${val}\n\nBoudoum ! 🇬🇵`
+}
+return null
+}
+
+// ===== WORLD BANK — ÉCONOMIE DOM-TOM =====
+async function getEconomieWorldBank(pays = 'GP') {
+try {
+const indicators = ['NY.GDP.MKTP.CD', 'FP.CPI.TOTL.ZG', 'SL.UEM.TOTL.ZS']
+const names = ['PIB', 'Inflation', 'Chômage']
+const results = await Promise.all(indicators.map(ind =>
+fetch(`https://api.worldbank.org/v2/country/${pays}/indicator/${ind}?format=json&mrv=1`, { signal: AbortSignal.timeout(5000) })
+.then(r => r.json())
+.then(d => d[1]?.[0]?.value || 'N/A')
+.catch(() => 'N/A')
+))
+const paysNom = pays === 'GP' ? 'Guadeloupe' : pays === 'MQ' ? 'Martinique' : pays === 'GF' ? 'Guyane' : pays === 'RE' ? 'Réunion' : pays
+return `📈 **Données Économiques — ${paysNom}**\n\n💰 PIB : ${results[0] !== 'N/A' ? (results[0]/1e9).toFixed(2) + ' Mrd $' : 'N/A'}\n📊 Inflation : ${results[1] !== 'N/A' ? results[1].toFixed(1) + '%' : 'N/A'}\n💼 Chômage : ${results[2] !== 'N/A' ? results[2].toFixed(1) + '%' : 'N/A'}\n\nSource: World Bank\nBoudoum ! 🇬🇵`
+} catch(e) { return null }
 }
