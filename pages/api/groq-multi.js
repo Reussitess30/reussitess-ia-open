@@ -3,16 +3,8 @@ export const config = { api: { bodyParser: true } };
 export default async function handler(req, res) {
   const { msg } = req.body || {};
   
-  // DEBUG COMPLET
-  const debug = {
-    hasKey: !!process.env.GROQ_API_KEY,
-    keyPreview: process.env.GROQ_API_KEY ? process.env.GROQ_API_KEY.slice(0,10)+'...' : 'MISSING',
-    msgReceived: msg,
-    timestamp: new Date().toISOString()
-  };
-  
   if (!process.env.GROQ_API_KEY) {
-    return res.json({ error: 'GROQ_API_KEY MISSING', debug });
+    return res.json({ error: 'GROQ_API_KEY MISSING' });
   }
   
   try {
@@ -27,10 +19,19 @@ export default async function handler(req, res) {
         messages: [{ role: 'user', content: msg || 'test 971' }]
       })
     });
-    
+
     const data = await response.json();
-    res.json({ success: true, data: data.choices[0].message.content, debug });
+    
+    // CHECK ERREUR GROQ
+    if (data.error) {
+      return res.status(400).json({ error: data.error.message });
+    }
+    
+    res.json({ 
+      success: true, 
+      response: data.choices[0].message.content 
+    });
   } catch (error) {
-    res.status(500).json({ error: error.message, debug });
+    res.status(500).json({ error: error.message });
   }
 }
