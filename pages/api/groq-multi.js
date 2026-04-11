@@ -3,10 +3,6 @@ export const config = { api: { bodyParser: true } };
 export default async function handler(req, res) {
   const { msg } = req.body || {};
   
-  if (!process.env.GROQ_API_KEY) {
-    return res.json({ error: 'GROQ_API_KEY MISSING' });
-  }
-  
   try {
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
@@ -15,21 +11,20 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'llama3-8b-8192',
-        messages: [{ role: 'user', content: msg || 'test 971' }]
+        model: 'llama-3.1-8b-instant',  // ← NOUVEAU (remplace 8b-8192)
+        messages: [{ role: 'user', content: `Réponse rapide GP 971: ${msg}` }]
       })
     });
-
+    
     const data = await response.json();
     
-    // CHECK ERREUR GROQ
     if (data.error) {
-      return res.status(400).json({ error: data.error.message });
+      return res.status(400).json(data.error);
     }
     
-    res.json({ 
-      success: true, 
-      response: data.choices[0].message.content 
+    res.json({
+      success: true,
+      response: data.choices[0].message.content
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
