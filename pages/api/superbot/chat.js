@@ -681,7 +681,7 @@ async function getWikipedia(term) {
   // GUIDE CARNAVAL CARAIBE
 
 
-    if (msgLow.includes("carnaval") || msgLow.includes("mas") || msgLow.includes("vidé") || msgLow.includes("chars carnaval") || msgLow.includes("fête guadeloupe")) {
+    if (msgLow.includes("carnaval") || (msgLow.includes("mas ") || msgLow.includes(" mas") || msgLow === "mas" || msgLow.includes("carnaval")) || msgLow.includes("vidé") || msgLow.includes("chars carnaval") || msgLow.includes("fête guadeloupe")) {
     try {
       const agenda = getAgendaCaraibes()
       const groqText = await groqFetch([
@@ -798,7 +798,7 @@ async function getWikipedia(term) {
   }
 
   // GUIDE AIDE SOCIALE
-  if (msgLow.includes("rsa") || msgLow.includes("caf") || msgLow.includes("aides sociales") || msgLow.includes("allocation") || msgLow.includes("apl") || msgLow.includes("aide logement") || msgLow.includes("aide guadeloupe") || msgLow.includes("aide martinique")) {
+  if (msgLow.includes("rsa") || (msgLow === "caf" || msgLow.includes(" caf") || msgLow.includes("caisse allocations") || msgLow.includes("caf ")) || msgLow.includes("aides sociales") || msgLow.includes("allocation") || msgLow.includes("apl") || msgLow.includes("aide logement") || msgLow.includes("aide guadeloupe") || msgLow.includes("aide martinique")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF, AAH, aide logement). Guide précis sur montants, conditions, démarches. Boudoum!" },
@@ -1064,7 +1064,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
 
   // BILAN FINAL ECOSYSTEME
   if (msgLow.includes("que sais-tu faire") || msgLow.includes("tes capacités") || msgLow.includes("liste tes fonctions") || msgLow.includes("tout ce que tu fais") || msgLow.includes("fonctionnalités")) {
-    return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS AI — 150+ Fonctionnalités**\n\n"
+    return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS AI — 200+ Fonctionnalités**\n\n"
     +"🌍 **Données Temps Réel :** Météo monde, Crypto live, Actualités Bondamanjak/RFI/France24, Séismes USGS, Cyclones NHC, ISS, Lune, Taux change, Marées NOAA, PIB World Bank, Nutrition OpenFoodFacts, Communes INSEE, Open Data gouv.fr\n\n"
     +"🧠 **60 Neuro-X :** Finance, Business, Culture, Coach, Tech, Santé, Droit, Voyage, Cuisine, Musique, Sport, Histoire, Agriculture, Tourisme, Astronomie, Géopolitique, SEO, DeFi, NFT, Psychologie, Langues, Énergie, Mode, Gastronomie, Enfants, Seniors, Femmes, Jeunes, Diaspora, Blockchain, Stratégie...\n\n"
     +"🛡️ **40 Sentinelles :** Surveillance 24/7 prix REUSS, site, APIs, sécurité\n\n"
@@ -1740,7 +1740,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // ANALYSE MARCHE CRYPTO
-  if (msgLow.includes("analyse crypto") || msgLow.includes("marché crypto") || msgLow.includes("bull") || msgLow.includes("bear") || msgLow.includes("analyse bitcoin") || msgLow.includes("analyse ethereum")) {
+  if (msgLow.includes("analyse crypto") || msgLow.includes("marché crypto") || (msgLow.includes("bull market") || msgLow.includes("bull run") || msgLow.includes(" bull") || msgLow === "bull") || (msgLow.includes("bear market") || msgLow.includes("bear run") || msgLow.includes(" bear") || msgLow === "bear") || msgLow.includes("analyse bitcoin") || msgLow.includes("analyse ethereum")) {
     try {
       const crypto = await getCryptoPrice()
       const fg = await getFearGreed()
@@ -1891,7 +1891,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // COCKTAILS RHum CARIBEEN
-  if (msgLow.includes("cocktail") || msgLow.includes("rhum") || msgLow.includes("ti punch") || msgLow.includes("planteur") || msgLow.includes("mojito") || msgLow.includes("recette boisson")) {
+  if (msgLow.includes("cocktail") || (msgLow.includes("rhum ") || msgLow.includes(" rhum") || msgLow === "rhum" || msgLow.includes("rhum antilles") || msgLow.includes("rhum agricole")) || msgLow.includes("ti punch") || msgLow.includes("planteur") || msgLow.includes("mojito") || msgLow.includes("recette boisson")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -2274,7 +2274,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // CONVERTISSEUR MONNAIE TEMPS REEL
-  if (msgLow.includes("convertir") && (msgLow.includes("euro") || msgLow.includes("dollar") || msgLow.includes("franc") || msgLow.includes("devise") || msgLow.includes("xcd") || msgLow.includes("htg") || msgLow.includes("caraïbes") || msgLow.includes("monnaie"))) {
+  if (msgLow.includes("convertir") && ((msgLow.includes("euro ") || msgLow.includes(" euro") || msgLow === "euro" || msgLow.includes("euros") || msgLow.includes("taux euro")) || msgLow.includes("dollar") || msgLow.includes("franc") || msgLow.includes("devise") || msgLow.includes("xcd") || msgLow.includes("htg") || msgLow.includes("caraïbes") || msgLow.includes("monnaie"))) {
     try {
       const rateR = await fetch("https://api.exchangerate-api.com/v4/latest/EUR")
       const rateD = await rateR.json()
@@ -2598,7 +2598,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // HOROSCOPE
-  if (msgLow.includes("horoscope") || msgLow.includes("signe") || msgLow.includes("astrologie") || msgLow.includes("belier") || msgLow.includes("taureau") || msgLow.includes("gemeaux") || msgLow.includes("cancer") || msgLow.includes("lion") || msgLow.includes("vierge") || msgLow.includes("balance") || msgLow.includes("scorpion") || msgLow.includes("sagittaire") || msgLow.includes("capricorne") || msgLow.includes("verseau") && !msgLow.includes("coupure") && !msgLow.includes("robinet") && !msgLow.includes("plomberie") || msgLow.includes("poissons")) {
+  if (msgLow.includes("horoscope") || msgLow.includes("signe") || msgLow.includes("astrologie") || msgLow.includes("belier") || msgLow.includes("taureau") || msgLow.includes("gemeaux") || msgLow.includes("cancer") || (msgLow.includes(" lion") || msgLow.includes("lion ") || msgLow === "lion" || msgLow.includes("signe lion")) || msgLow.includes("vierge") || msgLow.includes("balance") || msgLow.includes("scorpion") || msgLow.includes("sagittaire") || msgLow.includes("capricorne") || msgLow.includes("verseau") && !msgLow.includes("coupure") && !msgLow.includes("robinet") && !msgLow.includes("plomberie") || msgLow.includes("poissons")) {
     const h = getHoroscope(msgLow)
     if (h) return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Horoscope du Jour**\n\n"+h.signe+"\n\n"+h.msg+"\n\nBoudoum ! 🇬🇵" })
     return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Horoscope du Jour**\n\nPrécise ton signe : Bélier, Taureau, Gémeaux, Cancer, Lion, Vierge, Balance, Scorpion, Sagittaire, Capricorne, Verseau ou Poissons ?\n\nBoudoum ! 🇬🇵" })
@@ -2658,7 +2658,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   // ============ RECOMMANDATIONS AMAZON ============
   if (msgLow.includes('recommande amazon') || msgLow.includes('boutique tech') || msgLow.includes('boutique mode') || msgLow.includes('boutique sport') || msgLow.includes('boutique maison') || msgLow.includes('boutique beaute') || msgLow.includes('produit amazon')) {
     let domaine = 'tech'
-    if (msgLow.includes('mode') || msgLow.includes('vetement')) domaine = 'mode'
+    if ((msgLow.includes('mode ') || msgLow.includes(' mode') || msgLow.includes('mode:') || msgLow === 'mode') || msgLow.includes('vetement')) domaine = 'mode'
     else if (msgLow.includes('sport') || msgLow.includes('fitness')) domaine = 'sport'
     else if (msgLow.includes('maison') || msgLow.includes('deco')) domaine = 'maison'
     else if (msgLow.includes('beaute') || msgLow.includes('cosmetique')) domaine = 'beaute'
@@ -4661,7 +4661,7 @@ export default async function handler(req, res) {
   const msgLow = message.toLowerCase()
 
   // ===== LANGUES AFRICAINES =====
-  if (msgLow.includes("en wolof") || msgLow.includes("en bambara") || msgLow.includes("en swahili") || msgLow.includes("en lingala") || msgLow.includes("en créole haïtien") || msgLow.includes("kalinago") || msgLow.includes("arawak") || msgLow.includes("que signifie") && (msgLow.includes("wolof") || msgLow.includes("swahili") || msgLow.includes("bambara"))) {
+  if ((msgLow.includes("en wolof") || msgLow.includes("en bambara") || msgLow.includes("en swahili") || msgLow.includes("en lingala") || msgLow.includes("en créole haïtien") || msgLow.includes("kalinago") || msgLow.includes("arawak")) || (msgLow.includes("que signifie") && (msgLow.includes("wolof") || msgLow.includes("swahili") || msgLow.includes("bambara") || msgLow.includes("lingala")))) {
     const mot = message.replace(/que signifie|que veut dire|traduis|en wolof|en bambara|en swahili|en lingala|en créole haïtien/gi, '').trim()
     const africainResult = getDictionnaireAfricain(mot)
     if (africainResult) return res.status(200).json({ pdfAction: null, response: africainResult })
@@ -4686,7 +4686,7 @@ export default async function handler(req, res) {
   }
 
   // ===== OPENFDA MÉDICAMENTS =====
-  if (msgLow.includes("médicament") || msgLow.includes("medicament") || msgLow.includes("effets secondaires") || msgLow.includes("interactions médicamenteuses") || msgLow.includes("posologie")) {
+  if (msgLow.startsWith("effets secondaires") || msgLow.includes("effets secondaires de") || msgLow.includes("effets secondaires du") || msgLow.includes("posologie de") || msgLow.includes("contre-indications de")) {
     const med = message.replace(/médicament|medicament|effets secondaires de|interactions de|posologie de|c'est quoi|qu'est-ce que/gi, '').trim()
     if (med.length > 2) {
       const fdaData = await getOpenFDA(med)
@@ -4695,7 +4695,7 @@ export default async function handler(req, res) {
   }
 
   // ===== QUALITÉ AIR =====
-  if (msgLow.includes("qualité de l'air") || msgLow.includes("qualite air") || msgLow.includes("pollution air") || msgLow.includes("aqi guadeloupe")) {
+  if (msgLow.includes("qualit") && msgLow.includes(" air") || msgLow === "air" || msgLow.startsWith("air ") || msgLow.includes("qualite air") || msgLow.includes("pollution air") || msgLow.includes("aqi") || msgLow.includes("indice air")) {
     const lat = msgLow.includes("martinique") ? 14.6415 : msgLow.includes("guyane") ? 4.9372 : msgLow.includes("réunion") ? -21.1151 : msgLow.includes("mayotte") ? -12.8275 : 16.2411
     const lon = msgLow.includes("martinique") ? -61.0242 : msgLow.includes("guyane") ? -52.3262 : msgLow.includes("réunion") ? 55.5364 : msgLow.includes("mayotte") ? 45.1662 : -61.5331
     const ville = msgLow.includes("martinique") ? "Martinique" : msgLow.includes("guyane") ? "Guyane" : msgLow.includes("réunion") ? "Réunion" : msgLow.includes("mayotte") ? "Mayotte" : "Guadeloupe"
@@ -4711,8 +4711,8 @@ export default async function handler(req, res) {
   }
 
   // ===== ÉCONOMIE WORLD BANK =====
-  if (msgLow.includes("économie guadeloupe") || msgLow.includes("pib guadeloupe") || msgLow.includes("économie martinique") || msgLow.includes("pib dom-tom") || msgLow.includes("indices économiques")) {
-    const pays = msgLow.includes("martinique") ? "MQ" : msgLow.includes("guyane") ? "GF" : msgLow.includes("réunion") ? "RE" : "GP"
+  if (msgLow.includes("économie guadeloupe") || msgLow.includes("pib guadeloupe") || msgLow.includes("économie martinique") || msgLow.includes("pib dom-tom") || msgLow.includes("indices économiques") || msgLow.includes("économie france") || msgLow.includes("pib france") || msgLow.includes("économie sénégal") || msgLow.includes("économie cameroun") || msgLow.includes("économie côte")) {
+    const pays = msgLow.includes("martinique") ? "FR" : msgLow.includes("guyane") ? "FR" : msgLow.includes("réunion") ? "FR" : msgLow.includes("france") ? "FR" : msgLow.includes("sénégal") ? "SN" : msgLow.includes("côte") ? "CI" : msgLow.includes("cameroun") ? "CM" : msgLow.includes("congo") ? "CG" : "FR"
     const ecoData = await getEconomieWorldBank(pays)
     if (ecoData) return res.status(200).json({ pdfAction: null, response: ecoData })
   }
@@ -4808,7 +4808,7 @@ export default async function handler(req, res) {
 
   // AMAZON RECHERCHE PAAPI
   if ((msgLow.includes('cherche') || msgLow.includes('trouve') || msgLow.includes('recherche')) && msgLow.includes('amazon')) {
-    const marketplace = msgLow.includes('usa') ? 'www.amazon.com' : msgLow.includes('canada') ? 'www.amazon.ca' : msgLow.includes('allemagne') ? 'www.amazon.de' : msgLow.includes('espagne') ? 'www.amazon.es' : msgLow.includes('italie') ? 'www.amazon.it' : msgLow.includes('angleterre') ? 'www.amazon.co.uk' : msgLow.includes('australie') ? 'www.amazon.com.au' : msgLow.includes('inde') ? 'www.amazon.in' : msgLow.includes('bresil') ? 'www.amazon.com.br' : 'www.amazon.fr'
+    const marketplace = msgLow.includes('usa') ? 'www.amazon.com' : msgLow.includes('canada') ? 'www.amazon.ca' : msgLow.includes('allemagne') ? 'www.amazon.de' : msgLow.includes('espagne') ? 'www.amazon.es' : msgLow.includes('italie') ? 'www.amazon.it' : msgLow.includes('angleterre') ? 'www.amazon.co.uk' : msgLow.includes('australie') ? 'www.amazon.com.au' : (msgLow.includes(' inde') || msgLow === 'inde' || msgLow.includes('inde ') || msgLow.includes('pays inde')) ? 'www.amazon.in' : msgLow.includes('bresil') ? 'www.amazon.com.br' : 'www.amazon.fr'
     const query = message.replace(/cherche|trouve|recherche|amazon|sur|dans|en|un|une|des|le|la|les|france|usa|canada|allemagne|espagne|italie|angleterre|australie|inde|bresil|singapour|suede|belgique/gi,'').trim() || 'bestsellers'
     const data = await searchAmazonProducts(query, marketplace)
     return res.status(200).json({ pdfAction: null, response: data })
@@ -4829,13 +4829,13 @@ export default async function handler(req, res) {
   }
 
   // 14 PAYS AMAZON REUSSITESS
-  if (msgLow.includes('boutique') && (msgLow.includes('france') || msgLow.includes('usa') || msgLow.includes('canada') || msgLow.includes('australie') || msgLow.includes('inde') || msgLow.includes('allemagne') || msgLow.includes('espagne') || msgLow.includes('italie') || msgLow.includes('bresil') || msgLow.includes('singapour') || msgLow.includes('suede') || msgLow.includes('belgique') || msgLow.includes('angleterre') || msgLow.includes('zelande'))) {
+  if (msgLow.includes('boutique') && (msgLow.includes('france') || msgLow.includes('usa') || msgLow.includes('canada') || msgLow.includes('australie') || (msgLow.includes(' inde') || msgLow === 'inde' || msgLow.includes('inde ') || msgLow.includes('pays inde')) || msgLow.includes('allemagne') || msgLow.includes('espagne') || msgLow.includes('italie') || msgLow.includes('bresil') || msgLow.includes('singapour') || msgLow.includes('suede') || msgLow.includes('belgique') || msgLow.includes('angleterre') || msgLow.includes('zelande'))) {
     const data = await getInfoPaysAmazon(message)
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
   // 14 PAYS AMAZON REUSSITESS
-  if (msgLow.includes('boutique') && (msgLow.includes('france') || msgLow.includes('usa') || msgLow.includes('canada') || msgLow.includes('australie') || msgLow.includes('inde') || msgLow.includes('allemagne') || msgLow.includes('espagne') || msgLow.includes('italie') || msgLow.includes('bresil') || msgLow.includes('singapour') || msgLow.includes('suede') || msgLow.includes('belgique') || msgLow.includes('angleterre') || msgLow.includes('zelande'))) {
+  if (msgLow.includes('boutique') && (msgLow.includes('france') || msgLow.includes('usa') || msgLow.includes('canada') || msgLow.includes('australie') || (msgLow.includes(' inde') || msgLow === 'inde' || msgLow.includes('inde ') || msgLow.includes('pays inde')) || msgLow.includes('allemagne') || msgLow.includes('espagne') || msgLow.includes('italie') || msgLow.includes('bresil') || msgLow.includes('singapour') || msgLow.includes('suede') || msgLow.includes('belgique') || msgLow.includes('angleterre') || msgLow.includes('zelande'))) {
     const data = await getInfoPaysAmazon(message)
     return res.status(200).json({ pdfAction: null, response: data })
   }
@@ -4881,7 +4881,7 @@ export default async function handler(req, res) {
   }
 
   // AIR QUALITY
-  if ((msgLow.includes('qualité') && msgLow.includes('air')) || msgLow.includes('pollution air') || msgLow.includes('indice aqi')) {
+  if ((msgLow.includes('qualité') && msgLow.includes(' air') || msgLow === 'air' || msgLow.startsWith('air ')) || msgLow.includes('pollution air') || msgLow.includes('indice aqi')) {
     const ville = message.replace(/qualité|air|pollution|aqi|de|la|à/gi,'').trim() || 'Guadeloupe'
     const data = await getAirQuality(ville)
     return res.status(200).json({ pdfAction: null, response: data })
@@ -4929,7 +4929,7 @@ export default async function handler(req, res) {
   }
 
   // ISS POSITION
-  if (msgLow === 'iss' || (msgLow.includes('iss') && msgLow.includes('position')) || msgLow.includes('station spatiale internationale') || msgLow.includes('où est l\'iss')) {
+  if (msgLow === 'iss' || ((msgLow.includes(' iss') || msgLow === 'iss' || msgLow.includes('station spatiale') || msgLow.includes('iss ')) && msgLow.includes('position')) || msgLow.includes('station spatiale internationale') || msgLow.includes('où est l\'iss')) {
     const data = await getISSPosition()
     return res.status(200).json({ pdfAction: null, response: data })
   }
@@ -5061,7 +5061,7 @@ export default async function handler(req, res) {
   }
 
   // MODE FASHION
-  if (msgLow.includes('mode') && (msgLow.includes('fashion') || msgLow.includes('tendance') || msgLow.includes('vêtement') || msgLow.includes('style') || msgLow.includes('madras'))) {
+  if ((msgLow.includes('mode ') || msgLow.includes(' mode') || msgLow.includes('mode:') || msgLow === 'mode') && (msgLow.includes('fashion') || msgLow.includes('tendance') || msgLow.includes('vêtement') || msgLow.includes('style') || msgLow.includes('madras'))) {
     const groqText = await groqFetch([
       { role: "system", content: "Tu es Neuro-X Mode, expert fashion et style caribéen, madras, tendances vestimentaires DOM-TOM. Boudoum!" },
       { role: "user", content: message }
@@ -5178,7 +5178,7 @@ export default async function handler(req, res) {
   }
 
   // REUSSSHIELD HEALTH CHECK
-  if (msgLow.includes('reussshield') || msgLow.includes('état du système') || msgLow.includes('etat systeme') || msgLow.includes('santé système') || (msgLow.includes('tout') && msgLow.includes('fonctionne'))) {
+  if (msgLow.includes('reussshield') || msgLow.includes('état du système') || msgLow.includes('etat systeme') || msgLow.includes('santé système') || ((msgLow === 'tout' || msgLow.includes('tout savoir') || msgLow.includes('tout sur') || msgLow.includes('dis tout')) && msgLow.includes('fonctionne'))) {
     const data = await getHealthCheck()
     return res.status(200).json({ pdfAction: null, response: data })
   }
@@ -5218,7 +5218,7 @@ export default async function handler(req, res) {
     msgLow.includes('canada') ? 'CA' :
     msgLow.includes('bresil') || msgLow.includes('brésil') ? 'BR' :
     msgLow.includes('chine') ? 'CN' :
-    msgLow.includes('inde') ? 'IN' :
+    (msgLow.includes(' inde') || msgLow === 'inde' || msgLow.includes('inde ') || msgLow.includes('pays inde')) ? 'IN' :
     'GLP'
     const data = await getWorldBank(pays, indic)
     return res.status(200).json({ pdfAction: null, response: data })
@@ -5252,13 +5252,13 @@ export default async function handler(req, res) {
   }
 
   // VOLS CARAIBES
-  if ((msgLow.includes('vol') || msgLow.includes('avion') || msgLow.includes('aéroport') || msgLow.includes('aeroport')) && (msgLow.includes('caraïbes') || msgLow.includes('caraibes') || msgLow.includes('guadeloupe') || msgLow.includes('martinique') || msgLow.includes('antilles'))) {
+  if (((msgLow.includes('vol ') || msgLow.includes(' vol') || msgLow === 'vol') || msgLow.includes('avion') || msgLow.includes('aéroport') || msgLow.includes('aeroport')) && (msgLow.includes('caraïbes') || msgLow.includes('caraibes') || msgLow.includes('guadeloupe') || msgLow.includes('martinique') || msgLow.includes('antilles'))) {
     const data = await getVolsCaraibes()
     return res.status(200).json({ pdfAction: null, response: data })
   }
 
   // HOPITAUX DOM-TOM
-  if (msgLow.includes('hopital') || msgLow.includes('hôpital') || msgLow.includes('chu') || msgLow.includes('urgences') || msgLow.includes('clinique')) {
+  if (msgLow.includes('hopital') || msgLow.includes('hôpital') || (msgLow === 'chu' || msgLow.includes(' chu') || msgLow.includes('chu ') || msgLow.includes('hôpital')) || msgLow.includes('urgences') || msgLow.includes('clinique')) {
     const data = await getHopitauxDOMTOM()
     return res.status(200).json({ pdfAction: null, response: data })
   }
@@ -5539,7 +5539,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // ============ RCI GUADELOUPE (PRIORITAIRE) ============
-  if (msgLow.includes('rci') || msgLow.includes('rci fm') || msgLow.includes('radio guadeloupe') || msgLow.includes('104.3')) {
+  if ((msgLow.includes(' rci') || msgLow.includes('radio rci') || msgLow === 'rci') || msgLow.includes('rci fm') || msgLow.includes('radio guadeloupe') || msgLow.includes('104.3')) {
     const data = await getRCIGuadeloupe()
     return res.status(200).json({ pdfAction: null, response: data })
   }
@@ -5855,7 +5855,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // GUIDE CARNAVAL CARAIBE
-  if (msgLow.includes("carnaval") || msgLow.includes("mas") || msgLow.includes("vidé") || msgLow.includes("chars carnaval") || msgLow.includes("fête guadeloupe")) {
+  if (msgLow.includes("carnaval") || (msgLow.includes("mas ") || msgLow.includes(" mas") || msgLow === "mas" || msgLow.includes("carnaval")) || msgLow.includes("vidé") || msgLow.includes("chars carnaval") || msgLow.includes("fête guadeloupe")) {
     try {
       const agenda = getAgendaCaraibes()
       const groqText = await groqFetch([
@@ -5972,7 +5972,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // GUIDE AIDE SOCIALE
-  if (msgLow.includes("rsa") || msgLow.includes("caf") || msgLow.includes("aides sociales") || msgLow.includes("allocation") || msgLow.includes("aide guadeloupe")) {
+  if (msgLow.includes("rsa") || (msgLow === "caf" || msgLow.includes(" caf") || msgLow.includes("caisse allocations") || msgLow.includes("caf ")) || msgLow.includes("aides sociales") || msgLow.includes("allocation") || msgLow.includes("aide guadeloupe")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. Boudoum!" },
@@ -6163,7 +6163,7 @@ Boudoum ! 🇬🇵`})
 
   // BILAN FINAL ECOSYSTEME
   if (msgLow.includes("que sais-tu faire") || msgLow.includes("tes capacités") || msgLow.includes("liste tes fonctions") || msgLow.includes("tout ce que tu fais") || msgLow.includes("fonctionnalités")) {
-    return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS AI — 150+ Fonctionnalités**\n\n"
+    return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS AI — 200+ Fonctionnalités**\n\n"
     +"🌍 **Données Temps Réel :** Météo monde, Crypto live, Actualités, Séismes, Cyclones, ISS, Lune, Taux change\n\n"
     +"🧠 **60 Neuro-X :** Finance, Business, Culture, Coach, Tech, Santé, Droit, Voyage, Cuisine, Musique, Sport, Histoire, Agriculture, Tourisme, Astronomie, Géopolitique, SEO, DeFi, NFT, Psychologie, Langues, Énergie, Mode, Gastronomie, Enfants, Seniors, Femmes, Jeunes, Diaspora, Blockchain, Stratégie...\n\n"
     +"🛡️ **40 Sentinelles :** Surveillance 24/7 prix REUSS, site, APIs, sécurité\n\n"
@@ -6837,7 +6837,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // ANALYSE MARCHE CRYPTO
-  if (msgLow.includes("analyse crypto") || msgLow.includes("marché crypto") || msgLow.includes("bull") || msgLow.includes("bear") || msgLow.includes("analyse bitcoin") || msgLow.includes("analyse ethereum")) {
+  if (msgLow.includes("analyse crypto") || msgLow.includes("marché crypto") || (msgLow.includes("bull market") || msgLow.includes("bull run") || msgLow.includes(" bull") || msgLow === "bull") || (msgLow.includes("bear market") || msgLow.includes("bear run") || msgLow.includes(" bear") || msgLow === "bear") || msgLow.includes("analyse bitcoin") || msgLow.includes("analyse ethereum")) {
     try {
       const crypto = await getCryptoPrice()
       const fg = await getFearGreed()
@@ -6988,7 +6988,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // COCKTAILS RHum CARIBEEN
-  if (msgLow.includes("cocktail") || msgLow.includes("rhum") || msgLow.includes("ti punch") || msgLow.includes("planteur") || msgLow.includes("mojito") || msgLow.includes("recette boisson")) {
+  if (msgLow.includes("cocktail") || (msgLow.includes("rhum ") || msgLow.includes(" rhum") || msgLow === "rhum" || msgLow.includes("rhum antilles") || msgLow.includes("rhum agricole")) || msgLow.includes("ti punch") || msgLow.includes("planteur") || msgLow.includes("mojito") || msgLow.includes("recette boisson")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -7574,7 +7574,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // TAUX DE CHANGE DIRECT
-  if (msgLow.includes("taux") || msgLow.includes("change") || (msgLow.includes("euro") && msgLow.includes("dollar"))) {
+  if (msgLow.includes("taux") || msgLow.includes("change") || ((msgLow.includes("euro ") || msgLow.includes(" euro") || msgLow === "euro" || msgLow.includes("euros") || msgLow.includes("taux euro")) && msgLow.includes("dollar"))) {
     try {
       const fr = await fetch("https://open.er-api.com/v6/latest/EUR")
       const fd = await fr.json()
@@ -7623,7 +7623,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // HOROSCOPE
-  if (msgLow.includes("horoscope") || msgLow.includes("signe") || msgLow.includes("astrologie") || msgLow.includes("belier") || msgLow.includes("taureau") || msgLow.includes("gemeaux") || msgLow.includes("cancer") || msgLow.includes("lion") || msgLow.includes("vierge") || msgLow.includes("balance") || msgLow.includes("scorpion") || msgLow.includes("sagittaire") || msgLow.includes("capricorne") || msgLow.includes("verseau") && !msgLow.includes("coupure") && !msgLow.includes("robinet") && !msgLow.includes("plomberie") || msgLow.includes("poissons")) {
+  if (msgLow.includes("horoscope") || msgLow.includes("signe") || msgLow.includes("astrologie") || msgLow.includes("belier") || msgLow.includes("taureau") || msgLow.includes("gemeaux") || msgLow.includes("cancer") || (msgLow.includes(" lion") || msgLow.includes("lion ") || msgLow === "lion" || msgLow.includes("signe lion")) || msgLow.includes("vierge") || msgLow.includes("balance") || msgLow.includes("scorpion") || msgLow.includes("sagittaire") || msgLow.includes("capricorne") || msgLow.includes("verseau") && !msgLow.includes("coupure") && !msgLow.includes("robinet") && !msgLow.includes("plomberie") || msgLow.includes("poissons")) {
     const h = getHoroscope(msgLow)
     if (h) return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Horoscope du Jour**\n\n"+h.signe+"\n\n"+h.msg+"\n\nBoudoum ! 🇬🇵" })
     return res.status(200).json({ pdfAction: pdfType, response: "🔮 **Horoscope du Jour**\n\nPrécise ton signe : Bélier, Taureau, Gémeaux, Cancer, Lion, Vierge, Balance, Scorpion, Sagittaire, Capricorne, Verseau ou Poissons ?\n\nBoudoum ! 🇬🇵" })
