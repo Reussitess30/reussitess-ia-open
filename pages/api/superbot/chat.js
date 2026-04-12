@@ -2243,7 +2243,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // GENERATEUR CV
-  if ((msgLow === "cv" || msgLow.includes("mon cv") || msgLow.includes("le cv") || msgLow.includes("curriculum")) || msgLow.includes("curriculum") || msgLow.includes("génère mon cv") || msgLow.includes("aide cv") || msgLow.includes("rédige cv")) {
+  if ((msgLow === "cv" || ((msgLow.includes("mon cv") && (msgLow.includes("créer") || msgLow.includes("faire") || msgLow.includes("générer") || msgLow.includes("pdf"))) && (msgLow.includes("créer") || msgLow.includes("faire") || msgLow.includes("générer") || msgLow.includes("pdf"))) || msgLow.includes("le cv") || msgLow.includes("curriculum")) || msgLow.includes("curriculum") || msgLow.includes("génère mon cv") || msgLow.includes("aide cv") || msgLow.includes("rédige cv")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -6025,10 +6025,10 @@ Boudoum ! 🇬🇵`})
   }
 
   // DETECTION PDF TRIGGERS
-  if (msgLow.includes("creer mon cv") || msgLow.includes("créer mon cv") || msgLow.includes("cv pdf") || msgLow.includes("mon cv")) pdfType = "cv"
+  if (msgLow.includes("creer mon cv") || msgLow.includes("créer mon cv") || msgLow.includes("cv pdf") || ((msgLow.includes("mon cv") && (msgLow.includes("créer") || msgLow.includes("faire") || msgLow.includes("générer") || msgLow.includes("pdf"))) && (msgLow.includes("créer") || msgLow.includes("faire") || msgLow.includes("générer") || msgLow.includes("pdf")))) pdfType = "cv"
   else if (msgLow.includes("certificat champion") || msgLow.includes("mon certificat") || msgLow.includes("certificat pdf")) pdfType = "certificat"
   else if (msgLow.includes("contrat freelance") || msgLow.includes("contrat pdf") || msgLow.includes("mon contrat")) pdfType = "contrat"
-  else if (msgLow.includes("business plan pdf") || msgLow.includes("business plan")) pdfType = "business-plan"
+  else if (msgLow.includes("business plan pdf") || (msgLow.includes("business plan") && (msgLow.includes("créer") || msgLow.includes("générer") || msgLow.includes("faire") || msgLow.includes("pdf")))) pdfType = "business-plan"
 
   // GUIDE CRYPTOART
   if (msgLow.includes("crypto art") || msgLow.includes("generative art") || msgLow.includes("art génératif") || msgLow.includes("créer avec ia") || msgLow.includes("midjourney")) {
@@ -7556,7 +7556,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // GENERATEUR CV
-  if ((msgLow === "cv" || msgLow.includes("mon cv") || msgLow.includes("le cv") || msgLow.includes("curriculum")) || msgLow.includes("curriculum") || msgLow.includes("génère mon cv") || msgLow.includes("aide cv") || msgLow.includes("rédige cv")) {
+  if ((msgLow === "cv" || ((msgLow.includes("mon cv") && (msgLow.includes("créer") || msgLow.includes("faire") || msgLow.includes("générer") || msgLow.includes("pdf"))) && (msgLow.includes("créer") || msgLow.includes("faire") || msgLow.includes("générer") || msgLow.includes("pdf"))) || msgLow.includes("le cv") || msgLow.includes("curriculum")) || msgLow.includes("curriculum") || msgLow.includes("génère mon cv") || msgLow.includes("aide cv") || msgLow.includes("rédige cv")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -8251,7 +8251,7 @@ Accédez à notre **réseau mondial** d'affiliations vérifiées !
     }
 
     // 🆕 BLOC BIBLIOTHÈQUE - AJOUTÉ
-    if (lowerMessage.includes('bibliothèque') || lowerMessage.includes('livre') || lowerMessage.includes('lecture') || lowerMessage.includes('francophonie') || lowerMessage.includes('culture francophone')) {
+    if (lowerMessage.includes('bibliothèque') || (lowerMessage.includes('livre sur') || lowerMessage.includes('un livre') || lowerMessage.includes('mes livres') || lowerMessage.includes('livre caribéen') || lowerMessage.includes('cherche livre')) || (lowerMessage.includes('en lecture') || lowerMessage.includes('lecture caribéenne') || lowerMessage.includes('liste lecture') || lowerMessage.includes('club lecture')) || lowerMessage.includes('francophonie') || lowerMessage.includes('culture francophone')) {
       return `📚 **Bibliothèque Francophone Mondiale**
 
 La plus grande collection culturelle francophone digitale !
