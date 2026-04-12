@@ -2018,6 +2018,21 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
 
   // SANTE NATURELLE CARIBEENNE
   if (msgLow.includes("plante médicinale") || msgLow.includes("remède naturel") || msgLow.includes("médecine naturelle") || msgLow.includes("herbe") || msgLow.includes("soigner naturellement")) {
+  if (msgLow.includes("crypto") || msgLow.includes("bitcoin")) {
+    const country = msgLow.includes("haiti") ? "haiti" : msgLow.includes("rwanda") ? "rwanda" : "global"
+    const data = await fetch(`https://reussitess.fr/api/world-data?type=crypto&country=${country}`).then(r=>r.json())
+    return res.status(200).json(data)
+  }
+  if (msgLow.includes("meteo") || msgLow.includes("météo") || msgLow.includes("temps")) {
+    const country = msgLow.includes("mali") ? "mali" : msgLow.includes("niger") ? "niger" : msgLow.includes("haiti") ? "haiti" : "guadeloupe"
+    const data = await fetch(`https://reussitess.fr/api/world-data?type=meteo&country=${country}`).then(r=>r.json())
+    return res.status(200).json(data)
+  }
+  if (msgLow.includes("devises") || msgLow.includes("change")) {
+    const country = msgLow.includes("haiti") ? "haiti" : msgLow.includes("rwanda") ? "rwanda" : "guadeloupe"
+    const data = await fetch(`https://reussitess.fr/api/world-data?type=devises&country=${country}`).then(r=>r.json())
+    return res.status(200).json(data)
+  }
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -7115,6 +7130,21 @@ Boudoum ! 🇬🇵`})
 
   // SANTE NATURELLE CARIBEENNE
   if (msgLow.includes("plante médicinale") || msgLow.includes("remède naturel") || msgLow.includes("médecine naturelle") || msgLow.includes("herbe") || msgLow.includes("soigner naturellement")) {
+  if (msgLow.includes("crypto") || msgLow.includes("bitcoin")) {
+    const country = msgLow.includes("haiti") ? "haiti" : msgLow.includes("rwanda") ? "rwanda" : "global"
+    const data = await fetch(`https://reussitess.fr/api/world-data?type=crypto&country=${country}`).then(r=>r.json())
+    return res.status(200).json(data)
+  }
+  if (msgLow.includes("meteo") || msgLow.includes("météo") || msgLow.includes("temps")) {
+    const country = msgLow.includes("mali") ? "mali" : msgLow.includes("niger") ? "niger" : msgLow.includes("haiti") ? "haiti" : "guadeloupe"
+    const data = await fetch(`https://reussitess.fr/api/world-data?type=meteo&country=${country}`).then(r=>r.json())
+    return res.status(200).json(data)
+  }
+  if (msgLow.includes("devises") || msgLow.includes("change")) {
+    const country = msgLow.includes("haiti") ? "haiti" : msgLow.includes("rwanda") ? "rwanda" : "guadeloupe"
+    const data = await fetch(`https://reussitess.fr/api/world-data?type=devises&country=${country}`).then(r=>r.json())
+    return res.status(200).json(data)
+  }
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
