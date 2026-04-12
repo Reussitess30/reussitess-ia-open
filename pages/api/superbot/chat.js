@@ -2231,7 +2231,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // GENERATEUR CV
-  if (msgLow.includes("cv") || msgLow.includes("curriculum") || msgLow.includes("génère mon cv") || msgLow.includes("aide cv") || msgLow.includes("rédige cv")) {
+  if ((msgLow === "cv" || msgLow.includes("mon cv") || msgLow.includes("le cv") || msgLow.includes("curriculum")) || msgLow.includes("curriculum") || msgLow.includes("génère mon cv") || msgLow.includes("aide cv") || msgLow.includes("rédige cv")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -7544,7 +7544,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // GENERATEUR CV
-  if (msgLow.includes("cv") || msgLow.includes("curriculum") || msgLow.includes("génère mon cv") || msgLow.includes("aide cv") || msgLow.includes("rédige cv")) {
+  if ((msgLow === "cv" || msgLow.includes("mon cv") || msgLow.includes("le cv") || msgLow.includes("curriculum")) || msgLow.includes("curriculum") || msgLow.includes("génère mon cv") || msgLow.includes("aide cv") || msgLow.includes("rédige cv")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -7979,7 +7979,7 @@ Boudoum ! 🇬🇵`})
     const lowerMessage = message.toLowerCase()
     
     // Détection contextuelle intelligente
-    if (lowerMessage.includes('ia') || lowerMessage.includes('intelligence') || lowerMessage.includes('chatgpt') || lowerMessage.includes('claude')) {
+    if (( lowerMessage === 'ia' || lowerMessage.includes(' ia ') || lowerMessage.includes('ia ') || lowerMessage.startsWith('ia')) || lowerMessage.includes('intelligence') || lowerMessage.includes('chatgpt') || lowerMessage.includes('claude')) {
       return `🤖 **Excellence IA Mondiale**
 
 Excellent question sur l'intelligence artificielle ! Laissez-moi vous éclairer avec des **données réelles et vérifiées** :
@@ -8713,7 +8713,7 @@ Boudoum ! 🇬🇵`
 Boudoum ! 🇬🇵`
   }
 
-  if (c.includes('agent') || c.includes('ia') || c.includes('nexus')) {
+  if (c.includes('agent') || (c === 'ia' || c.includes(' ia') || c.includes('ia ')) || c.includes('nexus')) {
     return `🤖 SYSTÈME 200 AGENTS IA — QUANTUM NEXUS
 
 🛡️ Sentinelles (50) : Surveillance sécurité 24h/24
@@ -10837,8 +10837,15 @@ return result
 // ===== MÉMOIRE CONVERSATION ENRICHIE =====
 async function saveConversationMemory(userId, message, response) {
 try {
+let redis
+try {
 const { Redis } = await import('@upstash/redis')
-const redis = Redis.fromEnv()
+redis = Redis.fromEnv()
+} catch(e) {
+const { createClient } = await import('redis')
+redis = createClient({ url: process.env.REDIS_URL })
+await redis.connect()
+}
 const key = `conv:${userId}`
 const existing = await redis.get(key)
 const history = existing ? JSON.parse(existing) : []
