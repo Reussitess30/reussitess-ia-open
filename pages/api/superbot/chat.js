@@ -4755,7 +4755,7 @@ export default async function handler(req, res) {
     }
     for (const [ville, coords] of Object.entries(capitales)) {
       if (msgLow.includes(ville)) {
-        const meteo = await getMeteoMonde(ville.charAt(0).toUpperCase() + ville.slice(1), coords[0], coords[1])
+        const meteo = await getMeteoMonde(ville.charAt(0).toUpperCase() + ville.slice(1))
         if (meteo) return res.status(200).json({ pdfAction: null, response: meteo })
       }
     }
@@ -11217,24 +11217,6 @@ const articles = items.slice(0,5).map((m,i) => `${i+1}. **${decode(m[1])}**\n   
 return `📰 **Actualités — ${pays}**\n\n${articles}\n\nSource: RFI/France24/Bondamanjak\nBoudoum ! 🇬🇵`
 } catch(e) { return null }
 }
-
-// ===== MÉTÉO MONDIALE ÉLARGIE — Open-Meteo =====
-async function getMeteoMonde(ville, lat, lon) {
-try {
-const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=relative_humidity_2m&timezone=auto`, { signal: AbortSignal.timeout(5000) })
-const d = await r.json()
-const w = d.current_weather
-const conditions = {0:'☀️ Ensoleillé',1:'🌤️ Peu nuageux',2:'⛅ Partiellement nuageux',3:'☁️ Nuageux',45:'🌫️ Brouillard',48:'🌫️ Brouillard givrant',51:'🌦️ Bruine légère',61:'🌧️ Pluie légère',63:'🌧️ Pluie modérée',65:'🌧️ Pluie forte',80:'🌦️ Averses',81:'🌧️ Averses modérées',95:'⛈️ Orage',96:'⛈️ Orage avec grêle'}
-const cond = conditions[w.weathercode] || '🌡️ Variable'
-return `🌍 **Météo — ${ville}**\n\n${cond}\n🌡️ Température : ${w.temperature}°C\n💨 Vent : ${w.windspeed} km/h\n\nSource: Open-Meteo\nBoudoum ! 🇬🇵`
-} catch(e) { return null }
-}
-
-// ===== DEVISES MONDIALES ÉLARGIES =====
-async function getDevisePays(devise1, devise2 = 'EUR') {
-try {
-const r = await fetch(`https://open.er-api.com/v6/latest/${devise1.toUpperCase()}`, { signal: AbortSignal.timeout(5000) })
-const d = await r.json()
 if (!d.rates) return null
 const rate = d.rates[devise2.toUpperCase()]
 const eur = d.rates['EUR']
