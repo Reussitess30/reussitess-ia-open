@@ -2018,6 +2018,11 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
 
   // SANTE NATURELLE CARIBEENNE
   if (msgLow.includes("plante médicinale") || msgLow.includes("remède naturel") || msgLow.includes("médecine naturelle") || msgLow.includes("herbe") || msgLow.includes("soigner naturellement")) {
+
+  // PRÉSIDENT USA FIX
+  if (msgLow.includes("président usa") || msgLow.includes("président etats-unis") || msgLow.includes("president usa")) {
+    return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Donald Trump** réélu Nov 2024, investi 20/01/2025. Actuel président USA. Boudoum ! 📱" });
+  }
   if (msgLow.includes("crypto") || msgLow.includes("bitcoin")) {
     const country = msgLow.includes("haiti") ? "haiti" : msgLow.includes("rwanda") ? "rwanda" : "global"
     const data = await fetch(`https://reussitess.fr/api/world-data?type=crypto&country=${country}`).then(r=>r.json())
@@ -7130,6 +7135,11 @@ Boudoum ! 🇬🇵`})
 
   // SANTE NATURELLE CARIBEENNE
   if (msgLow.includes("plante médicinale") || msgLow.includes("remède naturel") || msgLow.includes("médecine naturelle") || msgLow.includes("herbe") || msgLow.includes("soigner naturellement")) {
+
+  // PRÉSIDENT USA FIX
+  if (msgLow.includes("président usa") || msgLow.includes("président etats-unis") || msgLow.includes("president usa")) {
+    return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Donald Trump** réélu Nov 2024, investi 20/01/2025. Actuel président USA. Boudoum ! 📱" });
+  }
   if (msgLow.includes("crypto") || msgLow.includes("bitcoin")) {
     const country = msgLow.includes("haiti") ? "haiti" : msgLow.includes("rwanda") ? "rwanda" : "global"
     const data = await fetch(`https://reussitess.fr/api/world-data?type=crypto&country=${country}`).then(r=>r.json())
