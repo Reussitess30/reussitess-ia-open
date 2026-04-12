@@ -4689,6 +4689,120 @@ export default async function handler(req, res) {
   }
   const msgLow = message.toLowerCase()
 
+  // ===== ACTUALITÉS PAYS MANQUANTS =====
+  if ((msgLow.includes("actualité") || msgLow.includes("actu") || msgLow.includes("news") || msgLow.includes("info")) && (
+    msgLow.includes("sénégal") || msgLow.includes("mali") || msgLow.includes("burkina") || msgLow.includes("niger") ||
+    msgLow.includes("togo") || msgLow.includes("bénin") || msgLow.includes("guinée") || msgLow.includes("gambie") ||
+    msgLow.includes("liberia") || msgLow.includes("mauritanie") || msgLow.includes("cap-vert") ||
+    msgLow.includes("cameroun") || msgLow.includes("gabon") || msgLow.includes("congo") || msgLow.includes("tchad") ||
+    msgLow.includes("centrafrique") || msgLow.includes("rwanda") || msgLow.includes("burundi") || msgLow.includes("comores") ||
+    msgLow.includes("tanzanie") || msgLow.includes("kenya") || msgLow.includes("éthiopie") || msgLow.includes("somalie") ||
+    msgLow.includes("djibouti") || msgLow.includes("érythrée") || msgLow.includes("madagascar") || msgLow.includes("seychelles") ||
+    msgLow.includes("mozambique") || msgLow.includes("zambie") || msgLow.includes("zimbabwe") || msgLow.includes("malawi") ||
+    msgLow.includes("namibie") || msgLow.includes("botswana") || msgLow.includes("lesotho") || msgLow.includes("angola") ||
+    msgLow.includes("chili") || msgLow.includes("colombie") || msgLow.includes("pérou") || msgLow.includes("bolivie") ||
+    msgLow.includes("équateur") || msgLow.includes("paraguay") || msgLow.includes("guyana") || msgLow.includes("suriname") ||
+    msgLow.includes("cambodge") || msgLow.includes("laos") || msgLow.includes("thaïlande") || msgLow.includes("indonésie") ||
+    msgLow.includes("mongolie") || msgLow.includes("timor") || msgLow.includes("vanuatu") || msgLow.includes("samoa") ||
+    msgLow.includes("qatar") || msgLow.includes("émirats") || msgLow.includes("bahreïn") || msgLow.includes("koweït") ||
+    msgLow.includes("liban") || msgLow.includes("ukraine") || msgLow.includes("hongrie") || msgLow.includes("tunisie") ||
+    msgLow.includes("jamaïque") || msgLow.includes("trinité") || msgLow.includes("barbade") || msgLow.includes("bahamas")
+  )) {
+    const pays = message.replace(/actualité|actu|news|info|de|du|en|pour|les|des/gi, '').trim()
+    const actu = await getActualitesPays(pays)
+    if (actu) return res.status(200).json({ pdfAction: null, response: actu })
+  }
+
+  // ===== MÉTÉO CAPITALES MONDE =====
+  if ((msgLow.includes("météo") || msgLow.includes("meteo") || msgLow.includes("temps") && msgLow.includes("ville")) && (
+    msgLow.includes("dakar") || msgLow.includes("bamako") || msgLow.includes("ouagadougou") || msgLow.includes("niamey") ||
+    msgLow.includes("lomé") || msgLow.includes("cotonou") || msgLow.includes("conakry") || msgLow.includes("banjul") ||
+    msgLow.includes("monrovia") || msgLow.includes("nouakchott") || msgLow.includes("praia") || msgLow.includes("yaoundé") ||
+    msgLow.includes("libreville") || msgLow.includes("brazzaville") || msgLow.includes("kinshasa") || msgLow.includes("ndjamena") ||
+    msgLow.includes("bangui") || msgLow.includes("kigali") || msgLow.includes("bujumbura") || msgLow.includes("moroni") ||
+    msgLow.includes("dodoma") || msgLow.includes("nairobi") || msgLow.includes("addis") || msgLow.includes("mogadiscio") ||
+    msgLow.includes("antananarivo") || msgLow.includes("maputo") || msgLow.includes("lusaka") || msgLow.includes("harare") ||
+    msgLow.includes("lilongwe") || msgLow.includes("windhoek") || msgLow.includes("gaborone") || msgLow.includes("maseru") ||
+    msgLow.includes("luanda") || msgLow.includes("bangkok") || msgLow.includes("jakarta") || msgLow.includes("phnom penh") ||
+    msgLow.includes("vientiane") || msgLow.includes("ulan-bator") || msgLow.includes("dili") || msgLow.includes("doha") ||
+    msgLow.includes("abu dhabi") || msgLow.includes("manama") || msgLow.includes("koweït city") || msgLow.includes("beyrouth") ||
+    msgLow.includes("kiev") || msgLow.includes("budapest") || msgLow.includes("tunis") || msgLow.includes("singapour") ||
+    msgLow.includes("séoul") || msgLow.includes("hanoï") || msgLow.includes("lima") || msgLow.includes("bogota") ||
+    msgLow.includes("santiago") || msgLow.includes("la paz") || msgLow.includes("quito") || msgLow.includes("asuncion") ||
+    msgLow.includes("georgetown") || msgLow.includes("paramaribo") || msgLow.includes("kingston") || msgLow.includes("port of spain")
+  )) {
+    const capitales = {
+      'dakar': [14.7167, -17.4677], 'bamako': [12.6392, -8.0029], 'ouagadougou': [12.3714, -1.5197],
+      'niamey': [13.5137, 2.1098], 'lomé': [6.1375, 1.2123], 'cotonou': [6.3654, 2.4183],
+      'conakry': [9.5370, -13.6773], 'banjul': [13.4531, -16.5775], 'monrovia': [6.3106, -10.8047],
+      'nouakchott': [18.0858, -15.9785], 'praia': [14.9305, -23.5133], 'yaoundé': [3.8480, 11.5021],
+      'libreville': [0.3924, 9.4536], 'brazzaville': [-4.2634, 15.2429], 'kinshasa': [-4.3317, 15.3272],
+      'ndjamena': [12.1048, 15.0440], 'bangui': [4.3947, 18.5582], 'kigali': [-1.9441, 30.0619],
+      'bujumbura': [-3.3870, 29.3622], 'moroni': [-11.7022, 43.2551], 'dodoma': [-6.1630, 35.7516],
+      'nairobi': [-1.2921, 36.8219], 'addis': [9.0320, 38.7469], 'mogadiscio': [2.0469, 45.3182],
+      'antananarivo': [-18.9137, 47.5361], 'maputo': [-25.9692, 32.5732], 'lusaka': [-15.4167, 28.2833],
+      'harare': [-17.8252, 31.0335], 'lilongwe': [-13.9669, 33.7873], 'windhoek': [-22.5597, 17.0832],
+      'gaborone': [-24.6282, 25.9231], 'maseru': [-29.3167, 27.4833], 'luanda': [-8.8368, 13.2343],
+      'bangkok': [13.7563, 100.5018], 'jakarta': [-6.2088, 106.8456], 'phnom penh': [11.5564, 104.9282],
+      'vientiane': [17.9757, 102.6331], 'ulan-bator': [47.8864, 106.9057], 'dili': [-8.5569, 125.5788],
+      'doha': [25.2854, 51.5310], 'abu dhabi': [24.4539, 54.3773], 'manama': [26.2235, 50.5876],
+      'koweït city': [29.3759, 47.9774], 'beyrouth': [33.8938, 35.5018], 'kiev': [50.4501, 30.5234],
+      'budapest': [47.4979, 19.0402], 'tunis': [36.8065, 10.1815], 'singapour': [1.3521, 103.8198],
+      'séoul': [37.5665, 126.9780], 'hanoï': [21.0285, 105.8542], 'lima': [-12.0464, -77.0428],
+      'bogota': [4.7110, -74.0721], 'santiago': [-33.4489, -70.6693], 'la paz': [-16.5000, -68.1193],
+      'quito': [-0.1807, -78.4678], 'asuncion': [-25.2867, -57.6470], 'georgetown': [6.8013, -58.1553],
+      'paramaribo': [5.8664, -55.1670], 'kingston': [17.9970, -76.7936], 'port of spain': [10.6596, -61.5086]
+    }
+    for (const [ville, coords] of Object.entries(capitales)) {
+      if (msgLow.includes(ville)) {
+        const meteo = await getMeteoMonde(ville.charAt(0).toUpperCase() + ville.slice(1), coords[0], coords[1])
+        if (meteo) return res.status(200).json({ pdfAction: null, response: meteo })
+      }
+    }
+  }
+
+  // ===== DEVISES PAYS MANQUANTS =====
+  if (msgLow.includes("taux") || msgLow.includes("devise") || msgLow.includes("monnaie") || msgLow.includes("change")) {
+    const devisesMap = {
+      'won': 'KRW', 'baht': 'THB', 'dong': 'VND', 'rupiah': 'IDR', 'ringgit': 'MYR',
+      'peso colombien': 'COP', 'peso chilien': 'CLP', 'real brésilien': 'BRL', 'rand': 'ZAR',
+      'naira': 'NGN', 'cedi': 'GHS', 'shilling kenyan': 'KES', 'franc cfa': 'XOF',
+      'dinar tunisien': 'TND', 'dirham': 'AED', 'riyal': 'SAR', 'livre libanaise': 'LBP',
+      'hryvnia': 'UAH', 'forint': 'HUF', 'dram': 'AMD', 'som': 'KGS', 'lek': 'ALL',
+      'dollar singapourien': 'SGD', 'dollar hong-kongais': 'HKD', 'pataca': 'MOP',
+      'guarani': 'PYG', 'sol péruvien': 'PEN', 'boliviano': 'BOB', 'dollar guyanais': 'GYD',
+      'dollar surinamais': 'SRD', 'dollar jamaïcain': 'JMD', 'dollar barbadien': 'BBD',
+      'dollar des bahamas': 'BSD', 'franc rwandais': 'RWF', 'franc burundais': 'BIF',
+      'ariary': 'MGA', 'metical': 'MZN', 'kwacha': 'ZMW', 'dollar zimbabwéen': 'ZWL',
+      'kwacha malawien': 'MWK', 'dollar namibien': 'NAD', 'pula': 'BWP', 'loti': 'LSL',
+      'kwanza': 'AOA', 'dalasi': 'GMD', 'leone': 'SLL', 'franc guinéen': 'GNF',
+      'franc congolais': 'CDF', 'franc djiboutien': 'DJF', 'birr': 'ETB', 'nakfa': 'ERN',
+      'franc comorien': 'KMF', 'franc cfp': 'XPF', 'couronne tchèque': 'CZK',
+      'zloty': 'PLN', 'leu': 'RON', 'lev': 'BGN', 'couronne suédoise': 'SEK'
+    }
+    for (const [nom, code] of Object.entries(devisesMap)) {
+      if (msgLow.includes(nom)) {
+        const devise = await getDevisePays(code)
+        if (devise) return res.status(200).json({ pdfAction: null, response: devise })
+      }
+    }
+  }
+
+  // ===== CRYPTO EN DEVISES LOCALES =====
+  if ((msgLow.includes("bitcoin") || msgLow.includes("btc") || msgLow.includes("ethereum") || msgLow.includes("crypto")) && (
+    msgLow.includes("won") || msgLow.includes("baht") || msgLow.includes("dong") || msgLow.includes("rupiah") ||
+    msgLow.includes("rand") || msgLow.includes("naira") || msgLow.includes("cedi") || msgLow.includes("franc cfa") ||
+    msgLow.includes("dirham") || msgLow.includes("riyal") || msgLow.includes("forint") || msgLow.includes("hryvnia") ||
+    msgLow.includes("dollar singapour") || msgLow.includes("ringgit") || msgLow.includes("peso")
+  )) {
+    const cryptos = ['bitcoin','ethereum','bnb','solana','reuss']
+    const devises = ['won','baht','dong','rupiah','rand','naira','cedi','franc cfa','dirham','riyal','forint','hryvnia','dollar singapour','ringgit','peso']
+    let crypto = cryptos.find(c => msgLow.includes(c)) || 'bitcoin'
+    let devise = devises.find(d => msgLow.includes(d)) || 'rand'
+    const result = await getCryptoPaysDevise(crypto, devise)
+    if (result) return res.status(200).json({ pdfAction: null, response: result })
+  }
+
   // ===== PRÉSIDENTS / CHEFS D'ÉTAT À JOUR =====
   if ((msgLow.includes("président") || msgLow.includes("president") || msgLow.includes("premier ministre") || msgLow.includes("chef état")) && (msgLow.includes("usa") || msgLow.includes("états-unis") || msgLow.includes("amerique") || msgLow.includes("amérique") || msgLow.includes("america"))) {
     return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Président des États-Unis**\n\n**Donald Trump** — 47ème président\nInvesti le 20 janvier 2025\nParti : Républicain\nVice-président : JD Vance\n\n⚠️ Joe Biden était le 46ème président (2021-2025)\n\nBoudoum ! 🇬🇵" })
@@ -11016,3 +11130,144 @@ return `🔬 **Science & Technologie — NASA**\n\n📸 **${d.title}**\n\n${d.ex
 } catch(e) { return null }
 }
   
+
+// ===== ACTUALITÉS MONDE ÉLARGI — RSS PAR RÉGION =====
+async function getActualitesPays(pays) {
+try {
+const feeds = {
+// Afrique de l'Ouest
+'sénégal': 'https://www.rfi.fr/fr/afrique/rss', 'senegal': 'https://www.rfi.fr/fr/afrique/rss',
+'mali': 'https://www.rfi.fr/fr/afrique/rss', 'burkina': 'https://www.rfi.fr/fr/afrique/rss',
+'niger': 'https://www.rfi.fr/fr/afrique/rss', 'togo': 'https://www.rfi.fr/fr/afrique/rss',
+'bénin': 'https://www.rfi.fr/fr/afrique/rss', 'benin': 'https://www.rfi.fr/fr/afrique/rss',
+'guinée': 'https://www.rfi.fr/fr/afrique/rss', 'guinee': 'https://www.rfi.fr/fr/afrique/rss',
+'gambie': 'https://www.rfi.fr/fr/afrique/rss', 'liberia': 'https://www.rfi.fr/fr/afrique/rss',
+'sierra': 'https://www.rfi.fr/fr/afrique/rss', 'mauritanie': 'https://www.rfi.fr/fr/afrique/rss',
+'cap-vert': 'https://www.rfi.fr/fr/afrique/rss', 'capvert': 'https://www.rfi.fr/fr/afrique/rss',
+// Afrique Centrale
+'cameroun': 'https://www.rfi.fr/fr/afrique/rss', 'gabon': 'https://www.rfi.fr/fr/afrique/rss',
+'congo': 'https://www.rfi.fr/fr/afrique/rss', 'tchad': 'https://www.rfi.fr/fr/afrique/rss',
+'centrafrique': 'https://www.rfi.fr/fr/afrique/rss', 'rwanda': 'https://www.rfi.fr/fr/afrique/rss',
+'burundi': 'https://www.rfi.fr/fr/afrique/rss', 'comores': 'https://www.rfi.fr/fr/afrique/rss',
+// Afrique de l'Est
+'tanzanie': 'https://www.rfi.fr/fr/afrique/rss', 'kenya': 'https://www.rfi.fr/fr/afrique/rss',
+'éthiopie': 'https://www.rfi.fr/fr/afrique/rss', 'ethiopie': 'https://www.rfi.fr/fr/afrique/rss',
+'somalie': 'https://www.rfi.fr/fr/afrique/rss', 'djibouti': 'https://www.rfi.fr/fr/afrique/rss',
+'érythrée': 'https://www.rfi.fr/fr/afrique/rss', 'eritree': 'https://www.rfi.fr/fr/afrique/rss',
+'madagascar': 'https://www.rfi.fr/fr/afrique/rss', 'seychelles': 'https://www.rfi.fr/fr/afrique/rss',
+'maurice': 'https://www.rfi.fr/fr/afrique/rss', 'mozambique': 'https://www.rfi.fr/fr/afrique/rss',
+// Afrique du Sud
+'zambie': 'https://www.rfi.fr/fr/afrique/rss', 'zimbabwe': 'https://www.rfi.fr/fr/afrique/rss',
+'malawi': 'https://www.rfi.fr/fr/afrique/rss', 'namibie': 'https://www.rfi.fr/fr/afrique/rss',
+'botswana': 'https://www.rfi.fr/fr/afrique/rss', 'lesotho': 'https://www.rfi.fr/fr/afrique/rss',
+'angola': 'https://www.rfi.fr/fr/afrique/rss', 'sao tome': 'https://www.rfi.fr/fr/afrique/rss',
+// Moyen-Orient
+'émirats': 'https://www.france24.com/fr/rss', 'emirats': 'https://www.france24.com/fr/rss',
+'qatar': 'https://www.france24.com/fr/rss', 'bahreïn': 'https://www.france24.com/fr/rss',
+'koweït': 'https://www.france24.com/fr/rss', 'oman': 'https://www.france24.com/fr/rss',
+'liban': 'https://www.france24.com/fr/rss',
+// Asie
+'cambodge': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'laos': 'https://www.rfi.fr/fr/asie-pacifique/rss',
+'vietnam': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'viêt': 'https://www.rfi.fr/fr/asie-pacifique/rss',
+'thaïlande': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'indonésie': 'https://www.rfi.fr/fr/asie-pacifique/rss',
+'mongolie': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'bhoutan': 'https://www.rfi.fr/fr/asie-pacifique/rss',
+'timor': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'maldives': 'https://www.rfi.fr/fr/asie-pacifique/rss',
+'sri lanka': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'brunei': 'https://www.rfi.fr/fr/asie-pacifique/rss',
+// Pacifique
+'samoa': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'tonga': 'https://www.rfi.fr/fr/asie-pacifique/rss',
+'vanuatu': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'kiribati': 'https://www.rfi.fr/fr/asie-pacifique/rss',
+'nauru': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'tuvalu': 'https://www.rfi.fr/fr/asie-pacifique/rss',
+'salomon': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'papouasie': 'https://www.rfi.fr/fr/asie-pacifique/rss',
+// Amérique Latine
+'chili': 'https://www.rfi.fr/fr/ameriques/rss', 'colombie': 'https://www.rfi.fr/fr/ameriques/rss',
+'pérou': 'https://www.rfi.fr/fr/ameriques/rss', 'peru': 'https://www.rfi.fr/fr/ameriques/rss',
+'bolivie': 'https://www.rfi.fr/fr/ameriques/rss', 'équateur': 'https://www.rfi.fr/fr/ameriques/rss',
+'equateur': 'https://www.rfi.fr/fr/ameriques/rss', 'paraguay': 'https://www.rfi.fr/fr/ameriques/rss',
+'guyana': 'https://www.rfi.fr/fr/ameriques/rss', 'suriname': 'https://www.rfi.fr/fr/ameriques/rss',
+'nicaragua': 'https://www.rfi.fr/fr/ameriques/rss', 'belize': 'https://www.rfi.fr/fr/ameriques/rss',
+'panama': 'https://www.rfi.fr/fr/ameriques/rss',
+// Caraïbes
+'jamaïque': 'https://www.bondamanjak.com/feed/', 'jamaique': 'https://www.bondamanjak.com/feed/',
+'trinité': 'https://www.bondamanjak.com/feed/', 'trinite': 'https://www.bondamanjak.com/feed/',
+'barbade': 'https://www.bondamanjak.com/feed/', 'bahamas': 'https://www.bondamanjak.com/feed/',
+'sainte-lucie': 'https://www.bondamanjak.com/feed/', 'saint-vincent': 'https://www.bondamanjak.com/feed/',
+'grenade': 'https://www.bondamanjak.com/feed/', 'antigua': 'https://www.bondamanjak.com/feed/',
+'dominique': 'https://www.bondamanjak.com/feed/', 'saint-kitts': 'https://www.bondamanjak.com/feed/',
+'corée': 'https://www.france24.com/fr/rss', 'singapour': 'https://www.france24.com/fr/rss',
+'andorre': 'https://www.france24.com/fr/rss', 'macao': 'https://www.france24.com/fr/rss',
+'ukraine': 'https://www.france24.com/fr/rss', 'hongrie': 'https://www.france24.com/fr/rss',
+'lituanie': 'https://www.france24.com/fr/rss', 'arménie': 'https://www.france24.com/fr/rss',
+'kirghizistan': 'https://www.france24.com/fr/rss', 'albanie': 'https://www.france24.com/fr/rss',
+'tunisie': 'https://www.france24.com/fr/rss'
+}
+
+const paysLow = pays.toLowerCase()
+let feedUrl = null
+for (const [key, url] of Object.entries(feeds)) {
+if (paysLow.includes(key)) { feedUrl = url; break }
+}
+if (!feedUrl) feedUrl = 'https://www.rfi.fr/fr/rss'
+
+const res = await fetch(feedUrl, { signal: AbortSignal.timeout(5000) })
+const xml = await res.text()
+const items = [...xml.matchAll(/<item>[\s\S]*?<title>([\s\S]*?)<\/title>[\s\S]*?<link>([\s\S]*?)<\/link>[\s\S]*?<\/item>/g)]
+if (!items.length) return null
+const decode = s => s.replace(/<!\[CDATA\[(.*?)\]\]>/g,'$1').replace(/&#(\d+);/g,(_,n)=>String.fromCharCode(n)).replace(/&amp;/g,'&').trim()
+const articles = items.slice(0,5).map((m,i) => `${i+1}. **${decode(m[1])}**\n   🔗 ${decode(m[2]).trim()}`).join('\n\n')
+return `📰 **Actualités — ${pays}**\n\n${articles}\n\nSource: RFI/France24/Bondamanjak\nBoudoum ! 🇬🇵`
+} catch(e) { return null }
+}
+
+// ===== MÉTÉO MONDIALE ÉLARGIE — Open-Meteo =====
+async function getMeteoMonde(ville, lat, lon) {
+try {
+const r = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=relative_humidity_2m&timezone=auto`, { signal: AbortSignal.timeout(5000) })
+const d = await r.json()
+const w = d.current_weather
+const conditions = {0:'☀️ Ensoleillé',1:'🌤️ Peu nuageux',2:'⛅ Partiellement nuageux',3:'☁️ Nuageux',45:'🌫️ Brouillard',48:'🌫️ Brouillard givrant',51:'🌦️ Bruine légère',61:'🌧️ Pluie légère',63:'🌧️ Pluie modérée',65:'🌧️ Pluie forte',80:'🌦️ Averses',81:'🌧️ Averses modérées',95:'⛈️ Orage',96:'⛈️ Orage avec grêle'}
+const cond = conditions[w.weathercode] || '🌡️ Variable'
+return `🌍 **Météo — ${ville}**\n\n${cond}\n🌡️ Température : ${w.temperature}°C\n💨 Vent : ${w.windspeed} km/h\n\nSource: Open-Meteo\nBoudoum ! 🇬🇵`
+} catch(e) { return null }
+}
+
+// ===== DEVISES MONDIALES ÉLARGIES =====
+async function getDevisePays(devise1, devise2 = 'EUR') {
+try {
+const r = await fetch(`https://open.er-api.com/v6/latest/${devise1.toUpperCase()}`, { signal: AbortSignal.timeout(5000) })
+const d = await r.json()
+if (!d.rates) return null
+const rate = d.rates[devise2.toUpperCase()]
+const eur = d.rates['EUR']
+const usd = d.rates['USD']
+return `💱 **Taux de Change — ${devise1.toUpperCase()}**\n\n1 ${devise1.toUpperCase()} =\n• ${eur?.toFixed(4) || 'N/A'} EUR\n• ${usd?.toFixed(4) || 'N/A'} USD\n${rate ? `• ${rate.toFixed(4)} ${devise2.toUpperCase()}` : ''}\n\nSource: Open Exchange Rates\nBoudoum ! 🇬🇵`
+} catch(e) { return null }
+}
+
+// ===== CRYPTO PAR PAYS/DEVISE LOCALE =====
+async function getCryptoPaysDevise(crypto, devise) {
+try {
+const cryptoIds = {
+'btc': 'bitcoin', 'bitcoin': 'bitcoin', 'eth': 'ethereum', 'ethereum': 'ethereum',
+'bnb': 'binancecoin', 'sol': 'solana', 'xrp': 'ripple', 'ada': 'cardano',
+'doge': 'dogecoin', 'pol': 'matic-network', 'matic': 'matic-network', 'reuss': 'reussitess'
+}
+const devises_map = {
+'won': 'krw', 'baht': 'thb', 'dong': 'vnd', 'rupiah': 'idr', 'ringgit': 'myr',
+'peso': 'mxn', 'real': 'brl', 'rand': 'zar', 'naira': 'ngn', 'cedi': 'ghs',
+'shilling': 'kes', 'franc cfa': 'xof', 'dinar': 'tnd', 'dirham': 'aed',
+'riyal': 'sar', 'livre': 'lbp', 'hryvnia': 'uah', 'forint': 'huf',
+'litas': 'ltl', 'dram': 'amd', 'som': 'kgs', 'lek': 'all',
+'dollar singapour': 'sgd', 'dollar hong kong': 'hkd', 'pataca': 'mop'
+}
+
+const cryptoId = cryptoIds[crypto.toLowerCase()] || 'bitcoin'
+const deviseCode = devises_map[devise.toLowerCase()] || devise.toLowerCase()
+
+const r = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${cryptoId}&vs_currencies=${deviseCode},eur,usd`, { signal: AbortSignal.timeout(5000) })
+const d = await r.json()
+const prices = d[cryptoId]
+if (!prices) return null
+
+return `💎 **${crypto.toUpperCase()} — Prix en ${devise}**\n\n💵 USD : $${prices.usd?.toLocaleString() || 'N/A'}\n💶 EUR : €${prices.eur?.toLocaleString() || 'N/A'}\n🏦 ${devise} : ${prices[deviseCode]?.toLocaleString() || 'N/A'} ${deviseCode.toUpperCase()}\n\nSource: CoinGecko\nBoudoum ! 🇬🇵`
+} catch(e) { return null }
+}
