@@ -11217,6 +11217,12 @@ const articles = items.slice(0,5).map((m,i) => `${i+1}. **${decode(m[1])}**\n   
 return `📰 **Actualités — ${pays}**\n\n${articles}\n\nSource: RFI/France24/Bondamanjak\nBoudoum ! 🇬🇵`
 } catch(e) { return null }
 }
+
+// ===== DEVISES MONDIALES ÉLARGIES =====
+async function getDevisePays(devise1, devise2 = 'EUR') {
+try {
+const r = await fetch(`https://open.er-api.com/v6/latest/${devise1.toUpperCase()}`, { signal: AbortSignal.timeout(5000) })
+const d = await r.json()
 if (!d.rates) return null
 const rate = d.rates[devise2.toUpperCase()]
 const eur = d.rates['EUR']
