@@ -4689,6 +4689,12 @@ export default async function handler(req, res) {
   }
   const msgLow = message.toLowerCase()
 
+  // ===== STATS SATISFACTION =====
+  if (msgLow.includes("stats satisfaction") || msgLow.includes("score bot") || msgLow.includes("performance bot") || msgLow.includes("evaluation bot")) {
+    const stats = await getSatisfactionStats()
+    if (stats) return res.status(200).json({ pdfAction: null, response: stats })
+  }
+
   // ===== ACTUALITÉS PAYS MANQUANTS =====
   if ((msgLow.includes("actualité") || msgLow.includes("actu") || msgLow.includes("news") || msgLow.includes("info")) && (
     msgLow.includes("sénégal") || msgLow.includes("mali") || msgLow.includes("burkina") || msgLow.includes("niger") ||
@@ -8562,6 +8568,7 @@ Boudoum!` },
       }
 
       await saveConversationMemory(userId, message, finalResponse)
+      await saveSatisfactionScore(userId, message, finalResponse)
       res.status(200).json({ response: finalResponse })
   } catch (error) {
     console.error('Erreur SuperBot:', error)
@@ -11257,5 +11264,78 @@ const prices = d[cryptoId]
 if (!prices) return null
 
 return `💎 **${crypto.toUpperCase()} — Prix en ${devise}**\n\n💵 USD : $${prices.usd?.toLocaleString() || 'N/A'}\n💶 EUR : €${prices.eur?.toLocaleString() || 'N/A'}\n🏦 ${devise} : ${prices[deviseCode]?.toLocaleString() || 'N/A'} ${deviseCode.toUpperCase()}\n\nSource: CoinGecko\nBoudoum ! 🇬🇵`
+} catch(e) { return null }
+}
+
+// ===== SELF-CONSISTENCY — 3 réponses Groq → meilleure =====
+async function groqSelfConsistency(messages, maxTokens = 512) {
+try {
+const [r1, r2, r3] = await Promise.all([
+groqFetch(messages, maxTokens),
+groqFetch(messages, maxTokens),
+groqFetch(messages, maxTokens)
+])
+const responses = [r1, r2, r3].filter(Boolean)
+if (responses.length === 0) return null
+const best = responses.reduce((a, b) => {
+const scoreA = a.length + (a.includes('Boudoum') ? 50 : 0) + (a.includes('🇬🇵') ? 30 : 0)
+const scoreB = b.length + (b.includes('Boudoum') ? 50 : 0) + (b.includes('🇬🇵') ? 30 : 0)
+return scoreA >= scoreB ? a : b
+})
+return best
+} catch(e) { return await groqFetch(messages, maxTokens) }
+}
+
+// ===== RERANKING knowledge.json =====
+function rerankKnowledge(query, commands) {
+const q = query.toLowerCase()
+const scored = commands.map(cmd => {
+const trigger = (cmd.trigger || '').toLowerCase()
+let score = 0
+if (q === trigger) score += 100
+if (q.includes(trigger)) score += 50
+if (trigger.includes(q)) score += 40
+const qWords = q.split(' ')
+const tWords = trigger.split(' ')
+qWords.forEach(w => { if (tWords.includes(w) && w.length > 3) score += 10 })
+score += trigger.length * 0.5
+return { cmd, score }
+})
+return scored.sort((a, b) => b.score - a.score).filter(x => x.score > 0)
+}
+
+// ===== SCORE SATISFACTION =====
+async function saveSatisfactionScore(userId, message, response) {
+try {
+const { Redis } = await import('@upstash/redis')
+const redis = Redis.fromEnv()
+const key = `satisfaction:${new Date().toISOString().substring(0,10)}`
+const existing = await redis.get(key)
+const data = existing ? JSON.parse(existing) : { total: 0, count: 0 }
+data.total += response.length > 100 ? 1 : 0.5
+data.count++
+await redis.set(key, JSON.stringify(data), { ex: 30 * 24 * 60 * 60 })
+} catch(e) {}
+}
+
+async function getSatisfactionStats() {
+try {
+const { Redis } = await import('@upstash/redis')
+const redis = Redis.fromEnv()
+const days = []
+for (let i = 0; i < 7; i++) {
+const d = new Date()
+d.setDate(d.getDate() - i)
+const key = `satisfaction:${d.toISOString().substring(0,10)}`
+const data = await redis.get(key)
+if (data) {
+const parsed = JSON.parse(data)
+days.push({ date: d.toISOString().substring(0,10), score: (parsed.total/parsed.count).toFixed(2), count: parsed.count })
+}
+}
+if (!days.length) return null
+const avgScore = (days.reduce((a,b) => a + parseFloat(b.score), 0) / days.length).toFixed(2)
+const totalReq = days.reduce((a,b) => a + b.count, 0)
+return `📊 **Évaluation REUSSITESS AI — 7 derniers jours**\n\n⭐ Score moyen : ${avgScore}/1.00\n📨 Total requêtes : ${totalReq}\n\n${days.map(d => `• ${d.date} : ${d.score} (${d.count} req)`).join('\n')}\n\nBoudoum ! 🇬🇵`
 } catch(e) { return null }
 }
