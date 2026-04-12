@@ -545,6 +545,10 @@
     {
       "trigger": "améliorer mémoire reussitess",
       "response": "🧠 **Mémoire REUSSITESS AI — État Actuel**\n\n✅ **Ce qui est en place :**\n• Redis — 20 échanges mémorisés par utilisateur\n• Durée — 30 jours de rétention\n• knowledge.json — 130+ commandes mémorisées\n• Reranking — trouve la meilleure réponse automatiquement\n• Self-consistency — 3 réponses Groq → meilleure sélectionnée\n• Score satisfaction — suivi 7 jours\n• Profil utilisateur — langue, intérêts, visites, badges\n\n📈 **Améliorations récentes :**\n• Mémoire augmentée : 10 → 20 échanges\n• Durée augmentée : 7 → 30 jours\n• Fix Redis Labs + Upstash dual fallback\n• Triggers dangereux corrigés (ia, cv, j, s, c)\n\n💡 **Comment encore améliorer :**\n1️⃣ Poser des questions précises\n2️⃣ Corriger mes erreurs directement\n3️⃣ Utiliser les mêmes sessions\n4️⃣ Enrichir knowledge.json régulièrement\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "nouveaux médias reussitess",
+      "response": "📺 **Nouveaux Médias Intégrés — REUSSITESS AI**\n\n✅ **Médias internationaux francophones :**\n• 🌍 RFI — Radio France Internationale\n• 📺 France24 — Actualités monde\n• 📡 TV5Monde — information.tv5monde.com\n• 🌐 Euronews FR — euronews.com\n• 🇩🇪 Deutsche Welle FR — dw.com\n• 🎙️ VOA Afrique — voaafrique.com\n• 🌐 ONU News — news.un.org\n• 📡 Al Jazeera — aljazeera.com\n• 🌴 Bondamanjak — DOM-TOM\n• 🇲🇾 Mayotte Hebdo\n• 🌍 BBC Afrique\n\n💡 **Comment les utiliser :**\n• 'actualités tv5monde'\n• 'news euronews'\n• 'actualité deutsche welle'\n• 'info voa afrique'\n• 'onu news'\n• 'al jazeera actualités'\n\nBoudoum ! 🇬🇵"
     }
   ]
 }
