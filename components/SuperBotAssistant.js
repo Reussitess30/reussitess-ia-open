@@ -717,8 +717,6 @@ export default function SuperBotAssistant() {
                 style={{padding:'0.6rem 1.1rem',borderRadius:'12px',border:'none',background:isListening?'linear-gradient(135deg,#ef4444,#dc2626)':'linear-gradient(135deg,#7c3aed,#5b21b6)',color:'white',cursor:'pointer',fontSize:'1rem',opacity:isLoading?0.5:1,display:'flex',alignItems:'center',gap:'0.4rem'}}>
                 {isListening ? '⏹' : '🎤'} <span style={{fontSize:'0.8rem'}}>{isListening ? 'Stop' : 'Micro'}</span>
               </button>
-            <div style={{display:'none'}}>
-              </button>
             </div>
             {imagePreview && (
                 <div style={{display:'flex',alignItems:'center',gap:'0.5rem',marginTop:'0.5rem',background:'rgba(245,158,11,0.1)',padding:'0.5rem',borderRadius:'10px'}}>
