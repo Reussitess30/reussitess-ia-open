@@ -11485,3 +11485,43 @@ const coords = Object.entries(coordonnees).find(([k]) => ileLow.includes(k))?.[1
 if (!coords) return null
 return await getMeteoMonde(ile)
 }
+
+// ===== CACHE INTELLIGENT =====
+async function getCacheIntelligent(key) {
+  try {
+    const { Redis } = await import('@upstash/redis')
+    const redis = Redis.fromEnv()
+    const cached = await redis.get(`cache:${key}`)
+    return cached ? JSON.parse(cached) : null
+  } catch(e) { return null }
+}
+
+async function setCacheIntelligent(key, value, ttlSeconds = 300) {
+  try {
+    const { Redis } = await import('@upstash/redis')
+    const redis = Redis.fromEnv()
+    await redis.set(`cache:${key}`, JSON.stringify(value), { ex: ttlSeconds })
+  } catch(e) {}
+}
+
+// ===== MÉMOIRE LONGUE DURÉE =====
+async function saveMemoreLongueDuree(userId, data) {
+  try {
+    const { Redis } = await import('@upstash/redis')
+    const redis = Redis.fromEnv()
+    const existing = await redis.get(`memory:long:${userId}`) 
+    const current = existing ? JSON.parse(existing) : {}
+    const updated = { ...current, ...data, updatedAt: new Date().toISOString() }
+    await redis.set(`memory:long:${userId}`, JSON.stringify(updated), { ex: 90 * 24 * 60 * 60 })
+    return updated
+  } catch(e) { return null }
+}
+
+async function getMemoreLongueDuree(userId) {
+  try {
+    const { Redis } = await import('@upstash/redis')
+    const redis = Redis.fromEnv()
+    const data = await redis.get(`memory:long:${userId}`)
+    return data ? JSON.parse(data) : {}
+  } catch(e) { return {} }
+}
