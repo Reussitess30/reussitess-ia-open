@@ -10799,8 +10799,9 @@ async function getUserMemoryRedis(userId) {
 // ===== PERSONNALISATION UTILISATEUR =====
 async function getUserProfile(userId) {
 try {
-const { Redis } = await import('@upstash/redis')
-const redis = Redis.fromEnv()
+const { createClient } = await import('redis')
+const redis = createClient({ url: process.env.REDIS_URL })
+await redis.connect()
 const profile = await redis.get(`profile:${userId}`)
 return profile ? JSON.parse(profile) : { langue: 'fr', interets: [], visites: 0 }
 } catch(e) { return { langue: 'fr', interets: [], visites: 0 } }
@@ -10808,8 +10809,9 @@ return profile ? JSON.parse(profile) : { langue: 'fr', interets: [], visites: 0 
 
 async function updateUserProfile(userId, update) {
 try {
-const { Redis } = await import('@upstash/redis')
-const redis = Redis.fromEnv()
+const { createClient } = await import('redis')
+const redis = createClient({ url: process.env.REDIS_URL })
+await redis.connect()
 const profile = await getUserProfile(userId)
 const newProfile = { ...profile, ...update, lastSeen: new Date().toISOString() }
 newProfile.visites = (profile.visites || 0) + 1
@@ -10862,8 +10864,9 @@ return recent
 
 async function getConversationHistory(userId) {
 try {
-const { Redis } = await import('@upstash/redis')
-const redis = Redis.fromEnv()
+const { createClient } = await import('redis')
+const redis = createClient({ url: process.env.REDIS_URL })
+await redis.connect()
 const data = await redis.get(`conv:${userId}`)
 return data ? JSON.parse(data) : []
 } catch(e) { return [] }
@@ -11140,8 +11143,9 @@ return null
 // ===== SYSTÈME BADGES & ACCOMPLISSEMENTS =====
 async function getBadgesUtilisateur(userId) {
 try {
-const { Redis } = await import('@upstash/redis')
-const redis = Redis.fromEnv()
+const { createClient } = await import('redis')
+const redis = createClient({ url: process.env.REDIS_URL })
+await redis.connect()
 const profile = await redis.get(`profile:${userId}`)
 const data = profile ? JSON.parse(profile) : { visites: 0, badges: [] }
 const visites = data.visites || 0
@@ -11364,8 +11368,9 @@ return scored.sort((a, b) => b.score - a.score).filter(x => x.score > 0)
 // ===== SCORE SATISFACTION =====
 async function saveSatisfactionScore(userId, message, response) {
 try {
-const { Redis } = await import('@upstash/redis')
-const redis = Redis.fromEnv()
+const { createClient } = await import('redis')
+const redis = createClient({ url: process.env.REDIS_URL })
+await redis.connect()
 const key = `satisfaction:${new Date().toISOString().substring(0,10)}`
 const existing = await redis.get(key)
 const data = existing ? JSON.parse(existing) : { total: 0, count: 0 }
@@ -11377,8 +11382,9 @@ await redis.set(key, JSON.stringify(data), { ex: 30 * 24 * 60 * 60 })
 
 async function getSatisfactionStats() {
 try {
-const { Redis } = await import('@upstash/redis')
-const redis = Redis.fromEnv()
+const { createClient } = await import('redis')
+const redis = createClient({ url: process.env.REDIS_URL })
+await redis.connect()
 const days = []
 for (let i = 0; i < 7; i++) {
 const d = new Date()
