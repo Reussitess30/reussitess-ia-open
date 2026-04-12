@@ -4689,6 +4689,23 @@ export default async function handler(req, res) {
   }
   const msgLow = message.toLowerCase()
 
+  // ===== PRÉSIDENTS / CHEFS D'ÉTAT À JOUR =====
+  if ((msgLow.includes("président") || msgLow.includes("president") || msgLow.includes("premier ministre") || msgLow.includes("chef état")) && (msgLow.includes("usa") || msgLow.includes("états-unis") || msgLow.includes("amerique") || msgLow.includes("amérique") || msgLow.includes("america"))) {
+    return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Président des États-Unis**\n\n**Donald Trump** — 47ème président\nInvesti le 20 janvier 2025\nParti : Républicain\nVice-président : JD Vance\n\n⚠️ Joe Biden était le 46ème président (2021-2025)\n\nBoudoum ! 🇬🇵" })
+  }
+  if ((msgLow.includes("président") || msgLow.includes("president")) && (msgLow.includes("france") || msgLow.includes("français") || msgLow.includes("elysée") || msgLow.includes("élysée"))) {
+    return res.status(200).json({ pdfAction: null, response: "🇫🇷 **Président de la République Française**\n\n**Emmanuel Macron** — Président depuis 2017, réélu 2022\nParti : Renaissance (centre)\nPremier Ministre : **François Bayrou** (depuis janvier 2025)\n\nBoudoum ! 🇬🇵" })
+  }
+  if ((msgLow.includes("président") || msgLow.includes("president")) && (msgLow.includes("russie") || msgLow.includes("russia") || msgLow.includes("poutine"))) {
+    return res.status(200).json({ pdfAction: null, response: "🇷🇺 **Président de la Russie**\n\n**Vladimir Poutine** — Président depuis 2000 (sauf 2008-2012)\nRéélu en mars 2024\n\nBoudoum ! 🇬🇵" })
+  }
+  if ((msgLow.includes("président") || msgLow.includes("president")) && (msgLow.includes("chine") || msgLow.includes("china") || msgLow.includes("xi jinping"))) {
+    return res.status(200).json({ pdfAction: null, response: "🇨🇳 **Président de la Chine**\n\n**Xi Jinping** — Président depuis 2013\nSecrétaire général du PCC\nRéélu pour un 3ème mandat en 2023\n\nBoudoum ! 🇬🇵" })
+  }
+  if ((msgLow.includes("président") || msgLow.includes("premier ministre")) && (msgLow.includes("royaume-uni") || msgLow.includes("angleterre") || msgLow.includes("royaume uni") || msgLow.includes("uk") || msgLow.includes("british"))) {
+    return res.status(200).json({ pdfAction: null, response: "🇬🇧 **Royaume-Uni**\n\nRoi : **Charles III** — depuis septembre 2022\nPremier Ministre : **Keir Starmer** — depuis juillet 2024\nParti : Travailliste (Labour)\n\nBoudoum ! 🇬🇵" })
+  }
+
   // ===== LANGUES AFRICAINES =====
   if ((msgLow.includes("en wolof") || msgLow.includes("en bambara") || msgLow.includes("en swahili") || msgLow.includes("en lingala") || msgLow.includes("en créole haïtien") || msgLow.includes("kalinago") || msgLow.includes("arawak")) || (msgLow.includes("que signifie") && (msgLow.includes("wolof") || msgLow.includes("swahili") || msgLow.includes("bambara") || msgLow.includes("lingala")))) {
     const mot = message.replace(/que signifie|que veut dire|traduis|en wolof|en bambara|en swahili|en lingala|en créole haïtien/gi, '').trim()
