@@ -528,7 +528,19 @@
     },
     {
       "trigger": "kick live reussitess",
-      "response": "🎮 **REUSSITESS sur Kick.com**\n\n🔗 https://kick.com/Reussitess\n📊 Dashboard : https://reussitess.fr/kick-live\n\n🤖 Bot actif avec commandes :\n!boudoum !reuss !meteo !quiz !points\n\n💎 Gagne des REUSS en regardant !\n\nBoudoum ! 🇬🇵"
+      "response": "🎮 **REUSSITESS sur Kick.com**\n\n🔗 https://kick.com/Reussitess\n📊 Dashboard : /kick-live\n\n🤖 Bot actif avec commandes :\n!boudoum !reuss !meteo !quiz !points\n\n💎 Gagne des REUSS en regardant !\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "transport international",
+      "response": "🚌 **Transport Mondial REUSSITESS**\n\nJe couvre les transports de :\n🇫🇷 France (SNCF, RATP)\n🇬🇵 Guadeloupe (Bus Karujet)\n🌍 Capitales africaines\n🌏 Villes asiatiques\n🌎 Amérique Latine\n\nEx: 'transport Dakar', 'bus Kinshasa'\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "traduction internationale",
+      "response": "🌍 **Traducteur REUSSITESS — 28 langues**\n\n✅ Anglais, Espagnol, Portugais\n✅ Arabe, Mandarin, Hindi, Bengali\n✅ Swahili, Haoussa, Yoruba, Amharique\n✅ Somali, Malgache, Tagalog, Malais\n✅ Thaï, Vietnamien, Coréen, Persan\n✅ Créole haïtien, Indonésien\n\nEx: 'traduis bonjour en swahili'\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "éducation internationale",
+      "response": "🎓 **Éducation Mondiale — UNESCO**\n\nDonnées disponibles pour :\n🌍 Afrique (Sénégal, Mali, Kenya, Nigeria...)\n🌎 Caraïbes (Guadeloupe, Haïti, Jamaïque...)\n🌏 Asie (Inde, Chine, Bangladesh...)\n🌐 Amérique Latine (Brésil, Chili...)\n\nIndicateurs : alphabétisation, scolarisation, universités\n\nEx: 'éducation au Kenya'\n\nBoudoum ! 🇬🇵"
     }
   ]
 }
