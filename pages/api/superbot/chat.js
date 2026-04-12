@@ -1,4 +1,16 @@
 // Reussitess971 DSO2026012614
+
+// ===== REDIS SINGLETON =====
+let _redisClient = null
+async function getRedisClient() {
+  if (_redisClient) return _redisClient
+  const { createClient } = await import('redis')
+  _redisClient = createClient({ url: process.env.REDIS_URL })
+  _redisClient.on('error', () => { _redisClient = null })
+  await _redisClient.connect()
+  return _redisClient
+}
+
 /* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
 import { detectLanguage, getSystemPromptForLanguage, getDroitDOMTOM, getFinanceAvancee, getDonneesTempsReel } from "./extensions.js"
 
@@ -921,7 +933,7 @@ async function getWikipedia(term) {
     return res.status(200).json({ response: sections.join("\n\n---\n\n") })
   }
 
-    if (msgLow.includes("actualité monde") || msgLow.includes("news monde") || msgLow.includes("actualité internationale") || msgLow.includes("info monde")) {
+    if (msgLow.includes("actualité monde") || msgLow.includes("news monde") || msgLow.includes("actualité internationale") || msgLow.includes("info monde") || msgLow.includes("tv5monde") || msgLow.includes("euronews") || msgLow.includes("deutsche welle") || msgLow.includes("voa afrique") || msgLow.includes("onu news") || msgLow.includes("al jazeera")) {
     try {
       const rssR = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.rfi.fr/fr/rss-services/html/rss-services.html&count=5")
       const rssD = await rssR.json()
@@ -1476,7 +1488,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   // ACTUALITES CARAIBES LOCALES
   if (msgLow.includes("actualité guadeloupe") || msgLow.includes("news guadeloupe") || msgLow.includes("info antilles") || msgLow.includes("actualité martinique") || msgLow.includes("actu caraïbes")) {
     try {
-      const r = await fetch("https://rss2json.com/api.json?rss_url=https://la1ere.francetvinfo.fr/guadeloupe/rss.xml&count=5", {timeout:8000})
+      const r = await fetch("https://rss2json.com/api.json?rss_url=https://la1ere.francetvinfo.fr/guadeloupe/rss.xml&count=5", {...({timeout:8000}), signal: AbortSignal.timeout(5000)})
       const d = await r.json()
       if (d.items?.length) {
         const news = d.items.slice(0,5).map(i => "📰 "+i.title).join("\n")
@@ -2424,7 +2436,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   // GRAPHIQUE PRIX REUSS
   if (msgLow.includes("graphique") || msgLow.includes("chart") || msgLow.includes("évolution prix") || msgLow.includes("historique reuss") || msgLow.includes("evolution prix")) {
     try {
-      const r = await fetch("https://api.dexscreener.com/latest/dex/tokens/0xB37531727fC07c6EED4f97F852A115B428046EB2", {timeout:10})
+      const r = await fetch("https://api.dexscreener.com/latest/dex/tokens/0xB37531727fC07c6EED4f97F852A115B428046EB2", {...({timeout:10}), signal: AbortSignal.timeout(5000)})
       const d = await r.json()
       const pair = d.pairs?.[0]
       if (pair) {
@@ -6789,7 +6801,7 @@ Boudoum ! 🇬🇵`})
   // ACTUALITES CARAIBES LOCALES
   if (msgLow.includes("actualité guadeloupe") || msgLow.includes("news guadeloupe") || msgLow.includes("info antilles") || msgLow.includes("actualité martinique") || msgLow.includes("actu caraïbes")) {
     try {
-      const r = await fetch("https://rss2json.com/api.json?rss_url=https://la1ere.francetvinfo.fr/guadeloupe/rss.xml&count=5", {timeout:8000})
+      const r = await fetch("https://rss2json.com/api.json?rss_url=https://la1ere.francetvinfo.fr/guadeloupe/rss.xml&count=5", {...({timeout:8000}), signal: AbortSignal.timeout(5000)})
       const d = await r.json()
       if (d.items?.length) {
         const news = d.items.slice(0,5).map(i => "📰 "+i.title).join("\n")
@@ -7725,7 +7737,7 @@ Boudoum ! 🇬🇵`})
   // GRAPHIQUE PRIX REUSS
   if (msgLow.includes("graphique") || msgLow.includes("chart") || msgLow.includes("évolution prix") || msgLow.includes("historique reuss") || msgLow.includes("evolution prix")) {
     try {
-      const r = await fetch("https://api.dexscreener.com/latest/dex/tokens/0xB37531727fC07c6EED4f97F852A115B428046EB2", {timeout:10})
+      const r = await fetch("https://api.dexscreener.com/latest/dex/tokens/0xB37531727fC07c6EED4f97F852A115B428046EB2", {...({timeout:10}), signal: AbortSignal.timeout(5000)})
       const d = await r.json()
       const pair = d.pairs?.[0]
       if (pair) {
@@ -10799,9 +10811,7 @@ async function getUserMemoryRedis(userId) {
 // ===== PERSONNALISATION UTILISATEUR =====
 async function getUserProfile(userId) {
 try {
-const { createClient } = await import('redis')
-const redis = createClient({ url: process.env.REDIS_URL })
-await redis.connect()
+const redis = await getRedisClient()
 const profile = await redis.get(`profile:${userId}`)
 return profile ? JSON.parse(profile) : { langue: 'fr', interets: [], visites: 0 }
 } catch(e) { return { langue: 'fr', interets: [], visites: 0 } }
@@ -10809,9 +10819,7 @@ return profile ? JSON.parse(profile) : { langue: 'fr', interets: [], visites: 0 
 
 async function updateUserProfile(userId, update) {
 try {
-const { createClient } = await import('redis')
-const redis = createClient({ url: process.env.REDIS_URL })
-await redis.connect()
+const redis = await getRedisClient()
 const profile = await getUserProfile(userId)
 const newProfile = { ...profile, ...update, lastSeen: new Date().toISOString() }
 newProfile.visites = (profile.visites || 0) + 1
@@ -10864,9 +10872,7 @@ return recent
 
 async function getConversationHistory(userId) {
 try {
-const { createClient } = await import('redis')
-const redis = createClient({ url: process.env.REDIS_URL })
-await redis.connect()
+const redis = await getRedisClient()
 const data = await redis.get(`conv:${userId}`)
 return data ? JSON.parse(data) : []
 } catch(e) { return [] }
@@ -11143,9 +11149,7 @@ return null
 // ===== SYSTÈME BADGES & ACCOMPLISSEMENTS =====
 async function getBadgesUtilisateur(userId) {
 try {
-const { createClient } = await import('redis')
-const redis = createClient({ url: process.env.REDIS_URL })
-await redis.connect()
+const redis = await getRedisClient()
 const profile = await redis.get(`profile:${userId}`)
 const data = profile ? JSON.parse(profile) : { visites: 0, badges: [] }
 const visites = data.visites || 0
@@ -11368,9 +11372,7 @@ return scored.sort((a, b) => b.score - a.score).filter(x => x.score > 0)
 // ===== SCORE SATISFACTION =====
 async function saveSatisfactionScore(userId, message, response) {
 try {
-const { createClient } = await import('redis')
-const redis = createClient({ url: process.env.REDIS_URL })
-await redis.connect()
+const redis = await getRedisClient()
 const key = `satisfaction:${new Date().toISOString().substring(0,10)}`
 const existing = await redis.get(key)
 const data = existing ? JSON.parse(existing) : { total: 0, count: 0 }
@@ -11382,9 +11384,7 @@ await redis.set(key, JSON.stringify(data), { ex: 30 * 24 * 60 * 60 })
 
 async function getSatisfactionStats() {
 try {
-const { createClient } = await import('redis')
-const redis = createClient({ url: process.env.REDIS_URL })
-await redis.connect()
+const redis = await getRedisClient()
 const days = []
 for (let i = 0; i < 7; i++) {
 const d = new Date()
