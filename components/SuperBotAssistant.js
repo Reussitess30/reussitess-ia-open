@@ -694,26 +694,30 @@ export default function SuperBotAssistant() {
                   reader.readAsDataURL(file)
                 }
               }} />
-              <button type="button" onClick={() => document.getElementById('pdf-upload').click()} disabled={isLoading}
-                      style={{padding:'0.4rem 0.6rem',borderRadius:'10px',border:'none',background:'rgba(55,65,81,0.8)',color:'white',cursor:'pointer',fontSize:'0.85rem',flexShrink:0,opacity:isLoading?0.5:1}}
-                      title="Envoyer un PDF">
-                    📄
-                </button>
-                <button type="button" onClick={() => document.getElementById('img-upload').click()} disabled={isLoading}
-                style={{padding:'0.4rem 0.6rem',borderRadius:'10px',border:'none',background:selectedImage?'linear-gradient(135deg,#f59e0b,#d97706)':'rgba(55,65,81,0.8)',color:'white',cursor:'pointer',fontSize:'0.85rem',flexShrink:0,opacity:isLoading?0.5:1}}
-                title="Envoyer une image">
-                📷
-              </button>
-              <button type="button" onClick={isListening ? stopListening : startListening} disabled={isLoading}
-                style={{padding:'0.4rem 0.6rem',borderRadius:'10px',border:'none',background:isListening?'linear-gradient(135deg,#ef4444,#dc2626)':'linear-gradient(135deg,#7c3aed,#5b21b6)',color:'white',cursor:'pointer',fontSize:'0.85rem',flexShrink:0,opacity:isLoading?0.5:1}}>
-                {isListening ? '⏹' : '🎤'}
-              </button>
               <input type="text" value={input} onChange={e => setInput(e.target.value)}
-                placeholder={`Parlez ou écrivez en ${LANGUES[langue].label.split(' ')[1]}...`}
-                disabled={isLoading || isListening}
-                style={{flex:1,minWidth:0,padding:'0.8rem 1rem',borderRadius:'15px',border:'2px solid rgba(16,185,129,0.3)',background:'rgba(15,23,42,0.8)',color:'white',fontSize:'0.9rem',outline:'none'}} />
+                     placeholder={`Parlez ou écrivez en ${LANGUES[langue].label.split(' ')[1]}...`}
+              disabled={isLoading || isListening}
+                     style={{flex:1,minWidth:0,padding:'1rem 1.2rem',borderRadius:'15px',border:'2px solid rgba(16,185,129,0.3)',background:'rgba(15,23,42,0.8)',color:'white',fontSize:'1rem',outline:'none'}} />
               <button type="submit" disabled={isLoading || !input.trim()} style={btnStyle('linear-gradient(135deg,#10b981,#059669)', isLoading || !input.trim())}>
                 ➤
+              </button>
+            </div>
+            <div style={{display:'flex',gap:'0.8rem',marginTop:'0.6rem',justifyContent:'flex-start',alignItems:'center'}}>
+              <button type="button" onClick={() => document.getElementById('pdf-upload').click()} disabled={isLoading}
+                style={{padding:'0.6rem 1.1rem',borderRadius:'12px',border:'none',background:'rgba(55,65,81,0.9)',color:'white',cursor:'pointer',fontSize:'1rem',opacity:isLoading?0.5:1,display:'flex',alignItems:'center',gap:'0.4rem'}}
+                title="Envoyer un PDF">
+                📄 <span style={{fontSize:'0.8rem'}}>PDF</span>
+              </button>
+              <button type="button" onClick={() => document.getElementById('img-upload').click()} disabled={isLoading}
+                style={{padding:'0.6rem 1.1rem',borderRadius:'12px',border:'none',background:selectedImage?'linear-gradient(135deg,#f59e0b,#d97706)':'rgba(55,65,81,0.9)',color:'white',cursor:'pointer',fontSize:'1rem',opacity:isLoading?0.5:1,display:'flex',alignItems:'center',gap:'0.4rem'}}
+                title="Envoyer une image">
+                📷 <span style={{fontSize:'0.8rem'}}>Image</span>
+              </button>
+              <button type="button" onClick={isListening ? stopListening : startListening} disabled={isLoading}
+                style={{padding:'0.6rem 1.1rem',borderRadius:'12px',border:'none',background:isListening?'linear-gradient(135deg,#ef4444,#dc2626)':'linear-gradient(135deg,#7c3aed,#5b21b6)',color:'white',cursor:'pointer',fontSize:'1rem',opacity:isLoading?0.5:1,display:'flex',alignItems:'center',gap:'0.4rem'}}>
+                {isListening ? '⏹' : '🎤'} <span style={{fontSize:'0.8rem'}}>{isListening ? 'Stop' : 'Micro'}</span>
+              </button>
+            <div style={{display:'none'}}>
               </button>
             </div>
             {imagePreview && (
