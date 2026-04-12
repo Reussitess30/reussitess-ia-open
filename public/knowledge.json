@@ -541,6 +541,10 @@
     {
       "trigger": "éducation internationale",
       "response": "🎓 **Éducation Mondiale — UNESCO**\n\nDonnées disponibles pour :\n🌍 Afrique (Sénégal, Mali, Kenya, Nigeria...)\n🌎 Caraïbes (Guadeloupe, Haïti, Jamaïque...)\n🌏 Asie (Inde, Chine, Bangladesh...)\n🌐 Amérique Latine (Brésil, Chili...)\n\nIndicateurs : alphabétisation, scolarisation, universités\n\nEx: 'éducation au Kenya'\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "améliorer mémoire reussitess",
+      "response": "🧠 **Comment améliorer ma mémoire — Guide Technique**\n\n1️⃣ **Enrichir knowledge.json** — Ajoute des faits précis dans ma base locale (la plus rapide)\n\n2️⃣ **Mémoire Redis** — Chaque conversation est sauvegardée 7 jours par utilisateur\n\n3️⃣ **Questions variées** — Plus tu m'interroges sur des sujets divers, plus je m'améliore\n\n4️⃣ **Corrections directes** — Si je me trompe, dis-moi 'la bonne réponse est...' et Rony peut l'ajouter\n\n5️⃣ **Exemples concrets** — Fournis contexte + exemples dans tes questions\n\n6️⃣ **Mises à jour régulières** — Rony met à jour les données via `git push && vercel --prod`\n\n💡 **Techniquement :**\n• knowledge.json = 127+ commandes mémorisées\n• Redis = mémoire 10 échanges/7 jours/utilisateur\n• Reranking = trouve la meilleure réponse automatiquement\n• Self-consistency = 3 réponses Groq → meilleure sélectionnée\n\nBoudoum ! 🇬🇵"
     }
   ]
 }

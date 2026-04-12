@@ -10847,8 +10847,8 @@ user: message.substring(0, 200),
 bot: response.substring(0, 300),
 ts: new Date().toISOString()
 })
-const recent = history.slice(-10)
-await redis.set(key, JSON.stringify(recent), { ex: 7 * 24 * 60 * 60 })
+const recent = history.slice(-20)
+await redis.set(key, JSON.stringify(recent), { ex: 30 * 24 * 60 * 60 })
 return recent
 } catch(e) { return [] }
 }
