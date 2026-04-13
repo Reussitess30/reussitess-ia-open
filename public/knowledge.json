@@ -549,6 +549,10 @@
     {
       "trigger": "nouveaux médias reussitess",
       "response": "📺 **Nouveaux Médias Intégrés — REUSSITESS AI**\n\n✅ **Médias internationaux francophones :**\n• 🌍 RFI — Radio France Internationale\n• 📺 France24 — Actualités monde\n• 📡 TV5Monde — information.tv5monde.com\n• 🌐 Euronews FR — euronews.com\n• 🇩🇪 Deutsche Welle FR — dw.com\n• 🎙️ VOA Afrique — voaafrique.com\n• 🌐 ONU News — news.un.org\n• 📡 Al Jazeera — aljazeera.com\n• 🌴 Bondamanjak — DOM-TOM\n• 🇲🇾 Mayotte Hebdo\n• 🌍 BBC Afrique\n\n💡 **Comment les utiliser :**\n• 'actualités tv5monde'\n• 'news euronews'\n• 'actualité deutsche welle'\n• 'info voa afrique'\n• 'onu news'\n• 'al jazeera actualités'\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "amélioration redis reussitess",
+      "response": "🗄️ **Améliorations Redis REUSSITESS — Implémentées**\n\n✅ **1. Cache Météo** — Config DOM-TOM 30min (Guadeloupe, Martinique, Guyane, Réunion, Mayotte)\n\n✅ **2. Profil Utilisateur** — Template complet (langue, région, intérêts, niveau, badges, topics fréquents)\n\n✅ **3. Santé Antilles** — Cache maladies locales (Chlordécone, Sargasses, Dengue, Chikungunya)\n\n✅ **4. Finance Locale** — SMIC, RSA, APL, chômage Guadeloupe\n\n✅ **5. Sécurité** — Config anti-injection, limite requêtes, bannissement\n\n✅ **6. Taux de Change** — Cache EUR/USD/XOF/HTG/JMD/BRL (1h)\n\n✅ **7. Stats Globales** — Compteurs par catégorie, langues, heures pic\n\nBoudoum ! 🇬🇵"
     }
   ]
 }

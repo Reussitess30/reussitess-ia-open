@@ -4701,6 +4701,31 @@ export default async function handler(req, res) {
   }
   const msgLow = message.toLowerCase()
 
+  // ===== CACHE REDIS — FOREX TEMPS RÉEL =====
+  if (msgLow.includes("taux") && (msgLow.includes("euro") || msgLow.includes("eur"))) {
+    try {
+      const redis = await getRedisClient()
+      const cached = await redis.get('cache:forex')
+      if (cached) {
+        const forex = JSON.parse(cached)
+        return res.status(200).json({ pdfAction: null, response: `💱 **Taux de Change EUR — Temps Réel**\n\n🇺🇸 USD : ${forex.EUR_USD}\n🇬🇧 GBP : ${forex.EUR_GBP}\n🌍 XOF (CFA) : ${forex.EUR_XOF}\n🇭🇹 HTG : ${forex.EUR_HTG}\n🇯🇲 JMD : ${forex.EUR_JMD}\n🇧🇷 BRL : ${forex.EUR_BRL}\n🇨🇦 CAD : ${forex.EUR_CAD}\n\nBoudoum ! 🇬🇵` })
+      }
+    } catch(e) {}
+  }
+
+  // ===== CACHE SANTÉ ANTILLES =====
+  if (msgLow.includes("chlordécone") || msgLow.includes("chlordecone") || msgLow.includes("sargasses") || (msgLow.includes("dengue") && msgLow.includes("guadeloupe")) || msgLow.includes("chikungunya")) {
+    try {
+      const redis = await getRedisClient()
+      const cached = await redis.get('cache:sante:maladies_antilles')
+      if (cached) {
+        const sante = JSON.parse(cached)
+        const key = msgLow.includes("chlord") ? "chlordecone" : msgLow.includes("sargasse") ? "sargasses" : msgLow.includes("dengue") ? "dengue" : msgLow.includes("chikungunya") ? "chikungunya" : "covid"
+        if (sante[key]) return res.status(200).json({ pdfAction: null, response: `🏥 **Santé Antilles — REUSSITESS**\n\n${sante[key]}\n\nBoudoum ! 🇬🇵` })
+      }
+    } catch(e) {}
+  }
+
   // ===== TRANSPORT MONDIAL =====
   if (msgLow.includes("transport") && (msgLow.includes("comment") || msgLow.includes("bus") || msgLow.includes("metro") || msgLow.includes("train") || msgLow.includes("trafic"))) {
     const ville = message.replace(/transport|comment|aller|bus|metro|train|trafic|public|à|en|de|du|la|le|les/gi, '').trim()
