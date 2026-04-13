@@ -2049,8 +2049,8 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
     const data = await fetch(`https://reussitess.fr/api/world-data?type=crypto&country=${country}`).then(r=>r.json())
     return res.status(200).json(data)
   }
-  if (msgLow.includes("meteo") || msgLow.includes("météo") || msgLow.includes("temps")) {
-    const country = msgLow.includes("mali") ? "mali" : msgLow.includes("niger") ? "niger" : msgLow.includes("haiti") ? "haiti" : "guadeloupe"
+  if (msgLow.includes("meteo") || msgLow.includes("météo") || (msgLow.includes("temps") && (msgLow.includes("quel") || msgLow.includes("faire") || msgLow.includes("aujourd") || msgLow.includes("demain")))) {
+    const country = msgLow === "mali" || msgLow.includes("mali ") || msgLow.includes(" mali") ? "mali" : msgLow.includes("niger") ? "niger" : msgLow.includes("haiti") ? "haiti" : "guadeloupe"
     const data = await fetch(`https://reussitess.fr/api/world-data?type=meteo&country=${country}`).then(r=>r.json())
     return res.status(200).json(data)
   }
@@ -2279,7 +2279,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // DAO GOUVERNANCE
-  if (msgLow.includes("dao") || msgLow.includes("gouvernance") || msgLow.includes("voter") || msgLow.includes("proposition")) {
+  if ((msgLow.includes("dao") && (msgLow.includes("reuss") || msgLow.includes("vote") || msgLow.includes("gouvernance") || msgLow.includes("décentralis"))) || msgLow.includes("gouvernance décentralisée") || msgLow.includes("voter") || msgLow.includes("proposition")) {
     return res.status(200).json({ pdfAction: pdfType, response: "🏛️ **REUSSITESS DAO — Gouvernance Décentralisée**\n\nTu as du REUSS = Tu as le pouvoir !\n\n🗳️ Droits de vote :\n• 1 REUSS = 1 vote\n• Propositions communautaires\n• Décisions sur l'écosystème\n\n📋 Prochains votes :\n• Expansion vers 5 nouveaux pays\n• Ajout 40 Neuro-X supplémentaires\n• Nouveau partenariat Amazon\n\n💡 DELTA-4 : Gouvernance DAO active\n\nBoudoum ! 🇬🇵" })
   }
 
@@ -2682,7 +2682,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // PHASE DE LUNE
-  if (msgLow.includes("lune") || msgLow.includes("moon") || msgLow.includes("pleine lune") || msgLow.includes("phase")) {
+  if (msgLow.includes("pleine lune") || msgLow.includes("phase lune") || msgLow.includes("calendrier lunaire") || msgLow === "lune" || msgLow === "moon" || msgLow.includes("lune aujourd") || msgLow.includes("lune ce soir") || msgLow.includes("phase")) {
     const lune = getLunePhase()
     return res.status(200).json({ pdfAction: pdfType, response: "🌙 **Phase de la Lune**\n\n"+lune+"\n\nBoudoum ! 🇬🇵" })
   }
@@ -2715,7 +2715,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // ============ ACTUALITES SPECIFIQUES DOM-TOM ============
-  if ((msgLow.includes('actualite') || msgLow.includes('news') || msgLow.includes('info')) && msgLow.includes('guadeloupe')) {
+  if ((msgLow.includes('actualite') || msgLow.includes('actualité') || (msgLow.includes('news') && msgLow.length > 8) || (msgLow.includes('info') && msgLow.length > 8)) && msgLow.includes('guadeloupe')) {
     const data = await getActualitesOutremerComplet()
     return res.status(200).json({ pdfAction: null, response: data+"Boudoum ! 🇬🇵" })
   }
@@ -4830,7 +4830,7 @@ export default async function handler(req, res) {
   }
 
   // ===== DEVISES PAYS MANQUANTS =====
-  if (msgLow.includes("taux") || msgLow.includes("devise") || msgLow.includes("monnaie") || msgLow.includes("change")) {
+  if ((msgLow.includes("taux") && (msgLow.includes("change") || msgLow.includes("intérêt") || msgLow.includes("euro") || msgLow.includes("dollar") || msgLow.includes("devise"))) || (msgLow.includes("devise") && msgLow.length > 8) || (msgLow.includes("monnaie") && msgLow.length > 10) || msgLow.includes("change")) {
     const devisesMap = {
       'won': 'KRW', 'baht': 'THB', 'dong': 'VND', 'rupiah': 'IDR', 'ringgit': 'MYR',
       'peso colombien': 'COP', 'peso chilien': 'CLP', 'real brésilien': 'BRL', 'rand': 'ZAR',
@@ -5186,7 +5186,7 @@ export default async function handler(req, res) {
   }
 
   // KICK.COM
-  if (msgLow.includes('kick') || msgLow.includes('stream') || msgLow.includes('streaming') || msgLow.includes('live reussitess')) {
+  if (msgLow.includes('kick.com') || msgLow.includes('kick reussitess') || msgLow.includes('stream reussitess') || msgLow.includes('live kick') || (msgLow.includes('kick') && msgLow.length < 15) || msgLow.includes('live reussitess')) {
     const data = await getKickStats()
     if (data) return res.status(200).json({ pdfAction: null, response: data })
   }
@@ -5434,7 +5434,7 @@ export default async function handler(req, res) {
     msgLow.includes('dominicaine') ? 'DOM' :
     msgLow.includes('martinique') ? 'MTQ' :
     msgLow.includes('senegal') || msgLow.includes('sénégal') ? 'SEN' :
-    msgLow.includes('cote ivoire') || msgLow.includes('côte') ? 'CIV' :
+    msgLow.includes('cote ivoire') || msgLow.includes('côte ivoire') || msgLow.includes('côte d') ? 'CIV' :
     msgLow.includes('cameroun') ? 'CMR' :
     msgLow.includes('maroc') ? 'MAR' :
     msgLow.includes('madagascar') ? 'MDG' :
@@ -7362,8 +7362,8 @@ Boudoum ! 🇬🇵`})
     const data = await fetch(`https://reussitess.fr/api/world-data?type=crypto&country=${country}`).then(r=>r.json())
     return res.status(200).json(data)
   }
-  if (msgLow.includes("meteo") || msgLow.includes("météo") || msgLow.includes("temps")) {
-    const country = msgLow.includes("mali") ? "mali" : msgLow.includes("niger") ? "niger" : msgLow.includes("haiti") ? "haiti" : "guadeloupe"
+  if (msgLow.includes("meteo") || msgLow.includes("météo") || (msgLow.includes("temps") && (msgLow.includes("quel") || msgLow.includes("faire") || msgLow.includes("aujourd") || msgLow.includes("demain")))) {
+    const country = msgLow === "mali" || msgLow.includes("mali ") || msgLow.includes(" mali") ? "mali" : msgLow.includes("niger") ? "niger" : msgLow.includes("haiti") ? "haiti" : "guadeloupe"
     const data = await fetch(`https://reussitess.fr/api/world-data?type=meteo&country=${country}`).then(r=>r.json())
     return res.status(200).json(data)
   }
@@ -7592,7 +7592,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // DAO GOUVERNANCE
-  if (msgLow.includes("dao") || msgLow.includes("gouvernance") || msgLow.includes("voter") || msgLow.includes("proposition")) {
+  if ((msgLow.includes("dao") && (msgLow.includes("reuss") || msgLow.includes("vote") || msgLow.includes("gouvernance") || msgLow.includes("décentralis"))) || msgLow.includes("gouvernance décentralisée") || msgLow.includes("voter") || msgLow.includes("proposition")) {
     return res.status(200).json({ pdfAction: pdfType, response: "🏛️ **REUSSITESS DAO — Gouvernance Décentralisée**\n\nTu as du REUSS = Tu as le pouvoir !\n\n🗳️ Droits de vote :\n• 1 REUSS = 1 vote\n• Propositions communautaires\n• Décisions sur l'écosystème\n\n📋 Prochains votes :\n• Expansion vers 5 nouveaux pays\n• Ajout 40 Neuro-X supplémentaires\n• Nouveau partenariat Amazon\n\n💡 DELTA-4 : Gouvernance DAO active\n\nBoudoum ! 🇬🇵" })
   }
 
@@ -7923,7 +7923,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // PHASE DE LUNE
-  if (msgLow.includes("lune") || msgLow.includes("moon") || msgLow.includes("pleine lune") || msgLow.includes("phase")) {
+  if (msgLow.includes("pleine lune") || msgLow.includes("phase lune") || msgLow.includes("calendrier lunaire") || msgLow === "lune" || msgLow === "moon" || msgLow.includes("lune aujourd") || msgLow.includes("lune ce soir") || msgLow.includes("phase")) {
     const lune = getLunePhase()
     return res.status(200).json({ pdfAction: pdfType, response: "🌙 **Phase de la Lune**\n\n"+lune+"\n\nBoudoum ! 🇬🇵" })
   }
@@ -8075,7 +8075,7 @@ La sécurité n'est PAS négociable ! Voici notre technologie **éprouvée** :
 Questions sur un aspect sécurité ?`
     }
     
-    if (lowerMessage.includes('prix') || lowerMessage.includes('coût') || lowerMessage.includes('price') || lowerMessage.includes('token')) {
+    if ((lowerMessage.includes('prix') && (lowerMessage.includes('crypto') || lowerMessage.includes('token') || lowerMessage.includes('reuss') || lowerMessage.includes('bitcoin') || lowerMessage.includes('immobilier'))) || (lowerMessage.includes('coût') && lowerMessage.length > 10) || lowerMessage.includes('price crypto') || lowerMessage.includes('token')) {
       return `💎 **Économie Intelligente - Tokens REUSSITESS**
 
 Parlons finances avec **transparence totale** !
