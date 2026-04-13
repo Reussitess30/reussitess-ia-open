@@ -553,6 +553,10 @@
     {
       "trigger": "amélioration redis reussitess",
       "response": "🗄️ **Améliorations Redis REUSSITESS — Implémentées**\n\n✅ **1. Cache Météo** — Config DOM-TOM 30min (Guadeloupe, Martinique, Guyane, Réunion, Mayotte)\n\n✅ **2. Profil Utilisateur** — Template complet (langue, région, intérêts, niveau, badges, topics fréquents)\n\n✅ **3. Santé Antilles** — Cache maladies locales (Chlordécone, Sargasses, Dengue, Chikungunya)\n\n✅ **4. Finance Locale** — SMIC, RSA, APL, chômage Guadeloupe\n\n✅ **5. Sécurité** — Config anti-injection, limite requêtes, bannissement\n\n✅ **6. Taux de Change** — Cache EUR/USD/XOF/HTG/JMD/BRL (1h)\n\n✅ **7. Stats Globales** — Compteurs par catégorie, langues, heures pic\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "architecture reussitess",
+      "response": "🏗️ **Architecture REUSSITESS AI — Mise à jour**\n\n✅ **Services créés :**\n\n📁 `services/memory.js`\n• getRedisClient() — singleton Redis\n• saveConversation() — historique 20 échanges/30j\n• getConversation() — récupération historique\n• saveUserProfile() — profil Redis 90j\n• getUserProfile() — lecture profil\n• saveSatisfaction() — score qualité\n\n📁 `services/ai.js`\n• groqCall() — appel Groq avec fallback OpenRouter+Cerebras\n• rerankKnowledge() — classement knowledge.json\n\n📁 `services/router.js`\n• detectEmotion() — 6 émotions détectées\n• getEmotionResponse() — réponses empathiques créoles\n• buildSystemPrompt() — prompt dynamique langue/région\n\n📊 **Résultat :**\n• Code modulaire et maintenable\n• Séparation des responsabilités\n• Réutilisable par d'autres APIs\n\nBoudoum ! 🇬🇵"
     }
   ]
 }
