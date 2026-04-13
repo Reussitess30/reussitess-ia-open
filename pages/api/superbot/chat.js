@@ -4701,6 +4701,20 @@ export default async function handler(req, res) {
   }
   const msgLow = message.toLowerCase()
 
+  // ===== PRÉSIDENTS À JOUR 2025 =====
+  if (msgLow.includes("président") || msgLow.includes("premier ministre")) {
+    if (msgLow.includes("américain") || msgLow.includes("usa") || msgLow.includes("états-unis") || msgLow.includes("america") || msgLow.includes("trump") || msgLow.includes("biden"))
+      return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Président des États-Unis**\n\n**Donald Trump** — 47ème président\nEn fonction depuis le 20 janvier 2025\nParti : Républicain\nVice-président : JD Vance\n\n(Joe Biden était le 46ème président, 2021-2025)\n\nBoudoum ! 🇬🇵" })
+    if (msgLow.includes("france") || msgLow.includes("français") || msgLow.includes("macron") || msgLow.includes("élysée"))
+      return res.status(200).json({ pdfAction: null, response: "🇫🇷 **Président de la République Française**\n\n**Emmanuel Macron** — Depuis 2017, réélu 2022\nPremier Ministre : **François Bayrou** (depuis janvier 2025)\n\nBoudoum ! 🇬🇵" })
+    if (msgLow.includes("russie") || msgLow.includes("poutine"))
+      return res.status(200).json({ pdfAction: null, response: "🇷🇺 **Président de la Russie**\n\n**Vladimir Poutine** — Réélu mars 2024\n\nBoudoum ! 🇬🇵" })
+    if (msgLow.includes("chine") || msgLow.includes("xi jinping"))
+      return res.status(200).json({ pdfAction: null, response: "🇨🇳 **Président de la Chine**\n\n**Xi Jinping** — Depuis 2013, 3ème mandat 2023\n\nBoudoum ! 🇬🇵" })
+    if (msgLow.includes("royaume-uni") || msgLow.includes("uk") || msgLow.includes("angleterre") || msgLow.includes("starmer"))
+      return res.status(200).json({ pdfAction: null, response: "🇬🇧 **Royaume-Uni**\n\nRoi : **Charles III**\nPremier Ministre : **Keir Starmer** (depuis juillet 2024)\n\nBoudoum ! 🇬🇵" })
+  }
+
   // ===== CACHE REDIS — FOREX TEMPS RÉEL =====
   if (msgLow.includes("taux") && (msgLow.includes("euro") || msgLow.includes("eur"))) {
     try {
