@@ -11563,3 +11563,25 @@ async function getMemoreLongueDuree(userId) {
     return data ? JSON.parse(data) : {}
   } catch(e) { return {} }
 }
+
+// ===== REDIS OPTIMISÉ =====
+const REDIS_TTL = {
+  conversation: 7 * 24 * 60 * 60,
+  profile: 90 * 24 * 60 * 60,
+  cache_meteo: 10 * 60,
+  cache_crypto: 5 * 60,
+  satisfaction: 30 * 24 * 60 * 60
+}
+
+async function redisOptimise(operations) {
+  try {
+    const { Redis } = await import('@upstash/redis')
+    const redis = Redis.fromEnv()
+    const pipeline = redis.pipeline()
+    operations.forEach(op => {
+      if (op.type === 'set') pipeline.set(op.key, JSON.stringify(op.value), { ex: op.ttl || 3600 })
+      if (op.type === 'get') pipeline.get(op.key)
+    })
+    return await pipeline.exec()
+  } catch(e) { return null }
+}
