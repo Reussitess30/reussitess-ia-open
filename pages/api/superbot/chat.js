@@ -4701,6 +4701,56 @@ export default async function handler(req, res) {
   }
   const msgLow = message.toLowerCase()
 
+  // ===== GARDE-FOU JURIDIQUE =====
+  if (msgLow.includes("loi") || msgLow.includes("article") || msgLow.includes("code civil") || 
+      msgLow.includes("juridique") || msgLow.includes("tribunal") || msgLow.includes("jugement") ||
+      msgLow.includes("condamné") || msgLow.includes("arrêté") || msgLow.includes("décret") ||
+      msgLow.includes("procès") || msgLow.includes("avocat") || msgLow.includes("contrat légal")) {
+    // Injecter avertissement dans le system prompt
+    const legalWarning = "IMPORTANT: Pour toute question juridique, tu dois TOUJOURS: 1) Donner uniquement des informations générales vérifiables 2) Préciser que tu n'es pas avocat 3) Recommander de consulter un professionnel 4) Ne JAMAIS inventer des articles de loi ou numéros de textes juridiques précis"
+    // Le warning sera ajouté au prompt Groq ci-dessous
+    content_juridique_warning = true
+  }
+
+  // ===== GARDE-FOU PERSONNES CONNUES =====
+  const PERSONNES_VERIFIEES = {
+    // Guadeloupe
+    "maire pointe-à-pitre": "Harry Durimel",
+    "maire basse-terre": "Alexandre Ibéné", 
+    "président région guadeloupe": "Ary Chalus",
+    "président département guadeloupe": "Guy Losbar",
+    "préfet guadeloupe": "Xavier Lefort",
+    // Martinique
+    "président martinique": "Serge Letchimy",
+    "maire fort-de-france": "David Zobda",
+    // Guyane
+    "président guyane": "Gabriel Serville",
+    "maire cayenne": "Sandra Trochimara",
+    // Réunion
+    "présidente réunion": "Huguette Bello",
+    "maire saint-denis": "Ericka Bareigts",
+    // France
+    "président france": "Emmanuel Macron",
+    "premier ministre france": "François Bayrou",
+    // Monde
+    "président usa": "Donald Trump",
+    "président russie": "Vladimir Poutine",
+    "président chine": "Xi Jinping",
+    "premier ministre uk": "Keir Starmer",
+    "roi angleterre": "Charles III",
+    // Artistes vérifiés
+    "chanteur kassav": "Jacob Desvarieux et Jocelyne Béroard",
+    "fondateur kassav": "Jacob Desvarieux",
+    "prix goncourt martinique": "Patrick Chamoiseau (Texaco 1992)",
+    "prix nobel guadeloupe": "Maryse Condé (Nobel alternatif 2018)"
+  }
+
+  // Vérifier si question sur personne connue
+  const personneQuery = Object.keys(PERSONNES_VERIFIEES).find(k => msgLow.includes(k))
+  if (personneQuery) {
+    return res.status(200).json({ pdfAction: null, response: \`✅ **Information vérifiée**\n\n\${personneQuery.charAt(0).toUpperCase() + personneQuery.slice(1)} : **\${PERSONNES_VERIFIEES[personneQuery]}**\n\nBoudoum ! 🇬🇵\` })
+  }
+
   // ===== PRÉSIDENTS À JOUR 2025 =====
   if (msgLow.includes("président") || msgLow.includes("premier ministre")) {
     if (msgLow.includes("américain") || msgLow.includes("usa") || msgLow.includes("états-unis") || msgLow.includes("america") || msgLow.includes("trump") || msgLow.includes("biden"))
