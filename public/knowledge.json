@@ -561,6 +561,94 @@
     {
       "trigger": "mode strict reussitess",
       "response": "🔒 **REUSSITESS AI — Mode Production Grade**\n\n✅ **Redis STRICT activé :**\n• Données vérifiées avec TTL et source\n• Cache météo 30min — open-meteo.com\n• Cache crypto 5min — coingecko.com\n• Cache forex 1h — open.er-api.com\n• Cache séismes 2min — usgs.gov\n\n🛡️ **Anti-hallucination :**\n• Détection patterns Biden/Trump\n• Validation données avant réponse\n• Badge source sur chaque donnée\n\n📊 **Debug AWS/Stripe style :**\n• Logs Redis 7 jours\n• Timestamps précis\n• Traçabilité complète\n\n🔗 **Sources vérifiées :**\n• Météo : open-meteo.com\n• Crypto : coingecko + dexscreener\n• Séismes : usgs.gov\n• Emploi : francetravail.fr\n• Blockchain : alchemy + polygonscan\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "politiciens guadeloupe histoire",
+      "response": "🏛️ **Grands Politiciens Guadeloupe**\n\n👑 **Figures historiques :**\n• **Gerty Archimède** (1909-1980) — 1ère femme avocate et élue Guadeloupe\n• **Félix Éboué** (1884-1944) — Gouverneur, héros Résistance, Panthéon\n• **Hégésippe Jean Légitimus** (1868-1944) — 1er élu noir Guadeloupe\n• **Absohlom Fercondé** — Militant anticolonialiste\n\n🗳️ **Contemporains :**\n• **Ary Chalus** — Président Région\n• **Guy Losbar** — Président Département\n• **Harry Durimel** — Maire Pointe-à-Pitre\n• **Victorin Lurel** — Ancien Ministre Outre-mer\n• **Gabrielle Louis-Carabin** — Sénatrice\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "politiciens martinique histoire",
+      "response": "🏛️ **Grands Politiciens Martinique**\n\n👑 **Figures historiques :**\n• **Aimé Césaire** (1913-2008) — Poète, député, maire Fort-de-France 56 ans, père de la Négritude\n• **Frantz Fanon** (1925-1961) — Psychiatre, militant anticolonialiste, *Les Damnés de la Terre*\n• **Edouard Glissant** (1928-2011) — Philosophe, théoricien de la Créolité\n\n🗳️ **Contemporains :**\n• **Serge Letchimy** — Président CTM\n• **David Zobda** — Maire Fort-de-France\n• **Catherine Conconne** — Sénatrice\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "politiciens guyane histoire",
+      "response": "🏛️ **Grands Politiciens Guyane**\n\n👑 **Figures historiques :**\n• **Félix Éboué** (1884-1944) — né à Cayenne, Gouverneur AEF, héros Résistance française\n• **Justin Catayée** (1916-1962) — Fondateur PSAG, défenseur autonomie\n• **Léon-Gontran Damas** (1912-1978) — Cofondateur Négritude avec Césaire et Senghor\n\n🗳️ **Contemporains :**\n• **Gabriel Serville** — Président CTG\n• **Sandra Trochimara** — Maire Cayenne\n• **Georges Patient** — Sénateur\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "politiciens réunion histoire",
+      "response": "🏛️ **Grands Politiciens La Réunion**\n\n👑 **Figures historiques :**\n• **Raymond Vergès** (1882-1957) — Député communiste, défenseur droits réunionnais\n• **Paul Vergès** (1925-2016) — Fondateur PCR, sénateur, président Région\n• **Michel Debré** (1912-1996) — Ancien PM, longtemps député Réunion\n\n🗳️ **Contemporains :**\n• **Huguette Bello** — Présidente Région\n• **Cyrille Melchior** — Président Département\n• **Ericka Bareigts** — Maire Saint-Denis\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "politiciens nouvelle-calédonie histoire",
+      "response": "🏛️ **Grands Politiciens Nouvelle-Calédonie**\n\n👑 **Figures historiques :**\n• **Jean-Marie Tjibaou** (1936-1989) — Leader indépendantiste Kanak, assassiné\n• **Jacques Lafleur** (1932-2010) — Leader loyaliste, Accords de Matignon\n• **Dick Ukeiwé** — Président Congrès, loyaliste\n\n🗳️ **Contemporains :**\n• **Louis Mapou** — Président Gouvernement (indépendantiste)\n• **Sonia Lagarde** — Maire Nouméa\n\n⚠️ Situation instable depuis émeutes mai 2024\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "politiciens mayotte histoire",
+      "response": "🏛️ **Grands Politiciens Mayotte**\n\n👑 **Figures historiques :**\n• **Younoussa Bamana** (1935-2012) — 1er président Conseil Général, partisan départementalisation\n• **Marcel Henry** — Sénateur, artisan 101ème département\n• **Zakia Madi** — 1ère femme présidente Conseil Général\n\n🗳️ **Contemporains :**\n• **Ben Issa Ousseni** — Président Département\n• **Estelle Youssouffa** — Députée, militante contre immigration clandestine\n• **Mansour Kamardine** — Député\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "politiciens tahiti polynésie",
+      "response": "🏛️ **Grands Politiciens Polynésie Française**\n\n👑 **Figures historiques :**\n• **Pouvanaa a Oopa** (1895-1977) — Père de la Nation polynésienne, député\n• **Francis Sanford** — Fondateur parti autonomiste\n\n🗳️ **Contemporains :**\n• **Moetai Brotherson** — Président Polynésie (indépendantiste Tavini)\n• **Édouard Fritch** — Ancien Président (Tahoeraa)\n• **Nicole Sanquer** — Députée\n\n🏝️ Statut : Collectivité d'Outre-Mer (COM) autonome\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "artistes guadeloupe",
+      "response": "🎵 **Artistes & Chanteurs Guadeloupe**\n\n🎶 **Musique :**\n• **Kassav** — Groupe zouk mondial, Jacob Desvarieux, Jacob F. Desvarieux\n• **Jacob Desvarieux** (1955-2021) — Guitare, fondateur Kassav\n• **Jocelyne Béroard** — Voix du zouk, *Siwo*\n• **Gilles Floro** — Gwo Ka\n• **Tanya Saint-Val** — Zouk moderne\n• **Admiral T** — Dancehall/ragga\n• **Kalash** — Trap antillais international\n• **Leïla Chicot** — Actrice, *Emily in Paris*\n\n🎨 **Arts visuels :**\n• **Michel Rovelas** — Peintre caribéen\n• **Christian Bracy** — Sculpteur\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "artistes martinique",
+      "response": "🎵 **Artistes & Chanteurs Martinique**\n\n🎶 **Musique :**\n• **Aimé Césaire** — Poète universel\n• **Edouard Glissant** — Poète philosophe\n• **Simone Schwarz-Bart** — Romancière, *Pluie et Vent sur Télumée Miracle*\n• **Patrick Chamoiseau** — Prix Goncourt 1992, *Texaco*\n• **Raphaël Confiant** — Romancier créoliste\n• **Kali** — Chanteur biguine/zouk\n• **Malavoi** — Orchestre biguine légendaire\n• **Dédé Saint-Prix** — Biguine, ti-bois\n• **Eugène Mona** — Légende biguine\n• **Yaniss Odua** — Reggae\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "artistes réunion",
+      "response": "🎵 **Artistes & Chanteurs La Réunion**\n\n🎶 **Musique :**\n• **Danyèl Waro** — Maloya, militant culturel\n• **Ziskakan** — Groupe maloya, Gilbert Pounia\n• **Lo Rwa Kaf** — Maloya engagé\n• **Baster** — Séga/maloya moderne\n• **Christine Salem** — Maloya féminin\n• **Natty Jean** — Reggae réunionnais\n• **Sega Tipik** — Patrimoine UNESCO 2021\n\n📚 **Littérature :**\n• **Axel Gauvin** — Romancier créole réunionnais\n• **Boris Gamaleya** — Poète\n\n🎨 **Arts :**\n• **Hervé Deluge** — Peintre\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "artistes guyane",
+      "response": "🎵 **Artistes & Chanteurs Guyane**\n\n🎶 **Musique :**\n• **Léon-Gontran Damas** — Poète de la Négritude\n• **Véronique Kancel** — Chanteuse\n• **Gracias** — Musique guyanaise\n• **Awadi** — Rap Guyane\n\n📚 **Littérature :**\n• **Léon-Gontran Damas** (1912-1978) — Poète, cofondateur Négritude\n• **Elie Stephenson** — Dramaturge\n• **Bertène Juminer** — Romancier\n\n🎨 **Arts :**\n• **Ronald Cyrille** — Sculpteur\n• Communautés Bushinengué — art traditionnel marron\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "artistes nouvelle-calédonie",
+      "response": "🎵 **Artistes Nouvelle-Calédonie**\n\n🎶 **Musique :**\n• **Edou** — Chanteur kanak\n• **Malia** — Pop kanak\n• **Bwanjep** — Musique traditionnelle kanak\n• **Lapwas** — Groupe local\n\n🎨 **Arts :**\n• **Sculpture kanak** — Flèche faîtière, cases traditionnelles\n• **Tjibaou Cultural Centre** — Centre culturel Renzo Piano\n\n📚 **Littérature :**\n• **Déwé Gorodé** (1949-2022) — Poétesse kanak, militante\n• **Nicolas Kurtovitch** — Romancier\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "artistes tahiti polynésie",
+      "response": "🎵 **Artistes Polynésie Française**\n\n🎶 **Musique :**\n• **Bobby Holcomb** (1947-1991) — Artiste multiculturel, *Polynésie*\n• **Angelo Neuffer** — Chanteur tahitien\n• **Heiva i Tahiti** — Festival culturel annuel\n• **Himene tarava** — Chant polynésien traditionnel\n• **Ori Tahiti** — Danse traditionnelle\n\n🎨 **Arts :**\n• **Paul Gauguin** — Peintre français inspiré Polynésie\n• **Musée Gauguin** — Papeari\n\n🌺 **Artisanat :**\n• Tapa, tressage pandanus, tatouage polynésien\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "économie guadeloupe",
+      "response": "📈 **Économie Guadeloupe**\n\n💰 **Chiffres clés :**\n• PIB : ~10 Mrd €\n• PIB/habitant : ~24 000 €\n• Taux chômage : ~17%\n• Population : ~380 000\n\n🏭 **Secteurs principaux :**\n• Tourisme — 700 000 visiteurs/an\n• Agriculture — Banane, canne à sucre, rhum\n• Commerce — Zone franche\n• Pêche — Langouste, poissons tropicaux\n• BTP — Construction\n\n💊 **Défis :**\n• Chlordécone — contamination sols\n• Chômage jeunes — 45%\n• Dépendance imports France\n• Coût vie élevé (+30% vs France)\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "économie martinique",
+      "response": "📈 **Économie Martinique**\n\n💰 **Chiffres clés :**\n• PIB : ~9.8 Mrd €\n• PIB/habitant : ~26 000 €\n• Taux chômage : ~15%\n• Population : ~360 000\n\n🏭 **Secteurs :**\n• Tourisme — Escales croisières\n• Rhum agricole — AOC Martinique\n• Banane — Export Europe\n• Raffinage pétrole — SARA\n• Services — Dominant\n\n💊 **Défis :**\n• Chlordécone — contamination\n• Déclin démographique\n• Dépendance métropole\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "économie guyane",
+      "response": "📈 **Économie Guyane**\n\n💰 **Chiffres clés :**\n• PIB : ~5.5 Mrd €\n• PIB/habitant : ~16 000 €\n• Taux chômage : ~22%\n• Population : ~300 000\n\n🏭 **Secteurs :**\n• Centre Spatial Guyanais (CSG) — Ariane, 15% PIB\n• Or — Orpaillage légal et illégal\n• Forêt tropicale — 96% territoire\n• Pêche — Crevettes\n• Agriculture — Vivrier\n\n💊 **Défis :**\n• Immigration clandestine\n• Orpaillage illégal\n• Enclavement\n• Pauvreté 40% population\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "économie réunion",
+      "response": "📈 **Économie La Réunion**\n\n💰 **Chiffres clés :**\n• PIB : ~19 Mrd €\n• PIB/habitant : ~22 000 €\n• Taux chômage : ~20%\n• Population : ~900 000\n\n🏭 **Secteurs :**\n• Tourisme — Volcan, randonnée\n• Canne à sucre — Rhum Charrette\n• Vanille — Production locale\n• Énergies renouvelables — 40% mix\n• Services — Administration\n\n💊 **Défis :**\n• Chômage jeunes — 45%\n• Coût logement\n• Dépendance imports\n• Cyclones et éruptions\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "économie nouvelle-calédonie",
+      "response": "📈 **Économie Nouvelle-Calédonie**\n\n💰 **Chiffres clés :**\n• PIB : ~9.4 Mrd €\n• PIB/habitant : ~32 000 €\n• Taux chômage : ~12%\n• Population : ~270 000\n\n🏭 **Secteurs :**\n• Nickel — 25% réserves mondiales\n• SLN (Société Le Nickel) — Principal employeur\n• Tourisme — Lagon UNESCO\n• Agriculture — Élevage bovin\n• Pêche — Thon, crevettes\n\n💊 **Défis :**\n• Dépendance nickel (volatilité prix)\n• Tensions indépendance\n• Émeutes 2024 — impact économique majeur\n• Inégalités Kanak/Caldoches\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "économie mayotte",
+      "response": "📈 **Économie Mayotte**\n\n💰 **Chiffres clés :**\n• PIB : ~2.8 Mrd €\n• PIB/habitant : ~10 000 €\n• Taux chômage : ~35%\n• Population : ~350 000 (dont ~50% étrangers)\n\n🏭 **Secteurs :**\n• Administration publique — 40% emplois\n• Agriculture — Ylang-ylang, vanille\n• Pêche — Artisanale\n• BTP — En développement\n\n💊 **Défis :**\n• Immigration massive (Comores)\n• Pauvreté — 77% sous seuil pauvreté\n• Manque infrastructure\n• Pression démographique\n• Crise sécuritaire 2024\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "économie tahiti polynésie",
+      "response": "📈 **Économie Polynésie Française**\n\n💰 **Chiffres clés :**\n• PIB : ~6.2 Mrd €\n• PIB/habitant : ~22 000 €\n• Taux chômage : ~12%\n• Population : ~280 000\n\n🏭 **Secteurs :**\n• Tourisme — 220 000 visiteurs/an\n• Perle de Tahiti — Export mondial\n• Pêche — Thon, poissons lagon\n• Agriculture — Vanille, coprah, noni\n• Nucléaire — Indemnisations CEP\n\n💊 **Défis :**\n• Isolement géographique\n• Coût transport\n• Dépendance France\n• Montée eaux (atolls)\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "économie saint-martin saint-barthélemy",
+      "response": "📈 **Économie Saint-Martin & Saint-Barthélemy**\n\n🏝️ **Saint-Martin :**\n• PIB/habitant : ~20 000 €\n• Tourisme — Principal moteur\n• Jeux, casino\n• Commerce duty-free\n• Reconstruction post-Irma 2017\n\n💎 **Saint-Barthélemy :**\n• PIB/habitant : ~35 000 € (élevé)\n• Tourisme luxe — Celebrities\n• Yachting, villas\n• Commerce haut de gamme\n• Fiscalité avantageuse\n• Population : ~10 000\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "grands hommes dom-tom",
+      "response": "🏆 **Grands Hommes & Femmes DOM-TOM**\n\n✊ **Résistance & Politique :**\n• **Félix Éboué** (Guyane) — Gouverneur Résistance, Panthéon 1949\n• **Louis Delgrès** (Guadeloupe) — Héros résistance 1802 contre Napoléon\n• **Solitude** (Guadeloupe) — Résistante esclave métisse\n• **Aimé Césaire** (Martinique) — Poète, député, père Négritude\n• **Jean-Marie Tjibaou** (Calédonie) — Leader kanak\n• **Pouvanaa a Oopa** (Polynésie) — Père Nation polynésienne\n\n📚 **Littérature & Pensée :**\n• **Frantz Fanon** (Martinique) — Psychiatre anticolonialiste\n• **Édouard Glissant** (Martinique) — Philosophe Créolité\n• **Léon-Gontran Damas** (Guyane) — Négritude\n• **Simone Schwarz-Bart** (Guadeloupe) — Romancière\n• **Maryse Condé** (Guadeloupe) — Prix Nobel alternatif\n\n🎵 **Culture :**\n• **Jacob Desvarieux** (Guadeloupe) — Zouk mondial\n• **Danyèl Waro** (Réunion) — Maloya\n\nBoudoum ! 🇬🇵"
     }
   ]
 }
