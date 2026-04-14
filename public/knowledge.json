@@ -557,6 +557,10 @@
     {
       "trigger": "architecture reussitess",
       "response": "🏗️ **Architecture REUSSITESS AI — Mise à jour**\n\n✅ **Services créés :**\n\n📁 `services/memory.js`\n• getRedisClient() — singleton Redis\n• saveConversation() — historique 20 échanges/30j\n• getConversation() — récupération historique\n• saveUserProfile() — profil Redis 90j\n• getUserProfile() — lecture profil\n• saveSatisfaction() — score qualité\n\n📁 `services/ai.js`\n• groqCall() — appel Groq avec fallback OpenRouter+Cerebras\n• rerankKnowledge() — classement knowledge.json\n\n📁 `services/router.js`\n• detectEmotion() — 6 émotions détectées\n• getEmotionResponse() — réponses empathiques créoles\n• buildSystemPrompt() — prompt dynamique langue/région\n\n📊 **Résultat :**\n• Code modulaire et maintenable\n• Séparation des responsabilités\n• Réutilisable par d'autres APIs\n\nBoudoum ! 🇬🇵"
+    },
+    {
+      "trigger": "mode strict reussitess",
+      "response": "🔒 **REUSSITESS AI — Mode Production Grade**\n\n✅ **Redis STRICT activé :**\n• Données vérifiées avec TTL et source\n• Cache météo 30min — open-meteo.com\n• Cache crypto 5min — coingecko.com\n• Cache forex 1h — open.er-api.com\n• Cache séismes 2min — usgs.gov\n\n🛡️ **Anti-hallucination :**\n• Détection patterns Biden/Trump\n• Validation données avant réponse\n• Badge source sur chaque donnée\n\n📊 **Debug AWS/Stripe style :**\n• Logs Redis 7 jours\n• Timestamps précis\n• Traçabilité complète\n\n🔗 **Sources vérifiées :**\n• Météo : open-meteo.com\n• Crypto : coingecko + dexscreener\n• Séismes : usgs.gov\n• Emploi : francetravail.fr\n• Blockchain : alchemy + polygonscan\n\nBoudoum ! 🇬🇵"
     }
   ]
 }

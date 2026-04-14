@@ -8668,6 +8668,20 @@ Boudoum!` },
         finalResponse = `📚 **Wikipedia :** ${wikiData.substring(0, 8000)}${wikiData.length > 8000 ? "..." : ""}`
       }
 
+      // ===== ANTI-HALLUCINATION CHECK =====
+      const hallucination_patterns = [
+        /biden.*président.*actuel/i,
+        /joe biden.*2025/i,
+        /trump.*perdu/i,
+        /il me semble que.*prix/i,
+        /je pense que.*président/i,
+        /probablement.*température/i
+      ]
+      const hasHallucination = hallucination_patterns.some(p => p.test(finalResponse))
+      if (hasHallucination) {
+        finalResponse = "⚠️ **Donnée non vérifiée détectée**\n\nJe préfère ne pas te donner une information incorrecte. Voici ce que je sais avec certitude :\n\n🇺🇸 Président USA : **Donald Trump** (depuis jan 2025)\n🇫🇷 Président France : **Emmanuel Macron**\n\nPour toute info en temps réel : reussitess.fr\n\nBoudoum ! 🇬🇵"
+      }
+
       await saveConversationMemory(userId, message, finalResponse)
       await saveSatisfactionScore(userId, message, finalResponse)
       res.status(200).json({ response: finalResponse })
