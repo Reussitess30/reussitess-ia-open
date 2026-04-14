@@ -4731,7 +4731,6 @@ export default async function handler(req, res) {
     // Injecter avertissement dans le system prompt
     const legalWarning = "IMPORTANT: Pour toute question juridique, tu dois TOUJOURS: 1) Donner uniquement des informations générales vérifiables 2) Préciser que tu n'es pas avocat 3) Recommander de consulter un professionnel 4) Ne JAMAIS inventer des articles de loi ou numéros de textes juridiques précis"
     // Le warning sera ajouté au prompt Groq ci-dessous
-    content_juridique_warning = true
   }
 
   // ===== GARDE-FOU PERSONNES CONNUES =====
@@ -4770,7 +4769,7 @@ export default async function handler(req, res) {
   // Vérifier si question sur personne connue
   const personneQuery = Object.keys(PERSONNES_VERIFIEES).find(k => msgLow.includes(k))
   if (personneQuery) {
-    return res.status(200).json({ pdfAction: null, response: \`✅ **Information vérifiée**\n\n\${personneQuery.charAt(0).toUpperCase() + personneQuery.slice(1)} : **\${PERSONNES_VERIFIEES[personneQuery]}**\n\nBoudoum ! 🇬🇵\` })
+    return res.status(200).json({ pdfAction: null, response: "✅ **Information vérifiée**\n\n" + personneQuery.charAt(0).toUpperCase() + personneQuery.slice(1) + " : **" + PERSONNES_VERIFIEES[personneQuery] + "**\n\nBoudoum ! 🇬🇵" })
   }
 
   // ===== PRÉSIDENTS À JOUR 2025 =====
