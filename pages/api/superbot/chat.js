@@ -4699,7 +4699,29 @@ export default async function handler(req, res) {
       return res.status(200).json({ pdfAction: null, response: "⚠️ Erreur analyse image : " + e.message + "\n\nBoudoum ! 🇬🇵" })
     }
   }
-  const msgLow = message.toLowerCase()
+  const msgLow = message.toLowerCase()  // ===== GARDE-FOU JURIDIQUE =====
+  let content_juridique_warning = false;  // ✅ FIX 1
+  if (msgLow.includes("loi") || msgLow.includes("article") || msgLow.includes("code civil") || 
+      msgLow.includes("juridique") || msgLow.includes("tribunal") || msgLow.includes("jugement") ||
+      msgLow.includes("condamné") || msgLow.includes("arrêté") || msgLow.includes("décret") ||
+      msgLow.includes("procès") || msgLow.includes("avocat") || msgLow.includes("contrat légal")) {
+    const legalWarning = "IMPORTANT: Pour toute question juridique, tu dois TOUJOURS: 1) Donner uniquement des informations générales vérifiables 2) Préciser que tu n'\''es pas avocat 3) Recommander de consulter un professionnel 4) Ne JAMAIS inventer des articles de loi ou numéros de textes juridiques précis";
+    content_juridique_warning = true;
+  }
+
+  // ===== GARDE-FOU PERSONNES CONNUES =====
+  const PERSONNES_VERIFIEES = {
+    "maire pointe-à-pitre": "Harry Durimel",
+    "président usa": "Donald Trump",
+    "président france": "Emmanuel Macron"
+    // ... reste identique
+  }
+
+  const personneQuery = Object.keys(PERSONNES_VERIFIEES).find(k => msgLow.includes(k))
+  if (personneQuery) {
+    return res.status(200).json({ pdfAction: null, response: "✅ **Information vérifiée**\\" + personneQuery.charAt(0).toUpperCase() + personneQuery.slice(1) + " : **" + PERSONNES_VERIFIEES[personneQuery] + "**\\Boudoum ! 🇬🇵" });  // ✅ FIX 2
+  }
+
 
   // ===== GARDE-FOU JURIDIQUE =====
   if (msgLow.includes("loi") || msgLow.includes("article") || msgLow.includes("code civil") || 
