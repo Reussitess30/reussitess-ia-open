@@ -184,6 +184,9 @@ export default function Home() {
           ))}
         </div>
       </div>
-    </Layout>
+    <div style={{ textAlign:"center", padding:"10px 0 20px" }}>
+        <Link href="/admin/telegram" style={{ color:"#64748b", fontSize:"0.75rem", opacity:0.6, textDecoration:"none" }}>©</Link>
+      </div>
+</Layout>
   );
 }
