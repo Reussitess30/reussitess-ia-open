@@ -36,11 +36,11 @@ export default async function handler(req, res) {
       })
     }
 
-    async function askAI(message) {
+    async function askAI(message, telegramId) {
       const aiRes = await fetch('https://reussitess.fr/api/superbot/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, langue: 'fr' })
+        body: JSON.stringify({ message, langue: "fr", telegramId })
       })
       const d = await aiRes.json()
       return (d.response || 'Boudoum ! 🇬🇵')
@@ -255,7 +255,7 @@ Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
 
       const msgToSend = TEXT_COMMANDS[text] || text
       await typing(chatId)
-      const response = await askAI(msgToSend)
+      const response = await askAI(msgToSend, message.from?.id)
       const nasaMatch = response.match(/🔗 (https?:\/\/[^\s\n]+\.(jpg|jpeg|png|gif))/i)
       if (nasaMatch) {
         const caption = response.replace(nasaMatch[0], "").trim()
@@ -283,7 +283,7 @@ Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
       }
 
       await typing(chatId)
-      const response = await askAI(data)
+      const response = await askAI(data, callback.message.chat.id)
       const nasaMatch = response.match(/🔗 (https?:\/\/[^\s\n]+\.(jpg|jpeg|png|gif))/i)
       if (nasaMatch) {
         const caption = response.replace(nasaMatch[0], "").trim()

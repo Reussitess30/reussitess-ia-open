@@ -4678,7 +4678,8 @@ export default async function handler(req, res) {
   }
 
   const { message, personality, context, langue, datetime, image, imageQuestion } = req.body
-  const userId = req.headers["x-forwarded-for"]?.split(",")[0]?.trim() || req.socket?.remoteAddress || "anonymous"
+  const telegramId = req.body?.telegramId || req.body?.userId || null
+  const userId = telegramId ? `telegram:${telegramId}` : req.headers["x-forwarded-for"]?.split(",")[0]?.trim() || req.socket?.remoteAddress || "anonymous"
 
   // Incrémenter compteurs Redis
   try {
