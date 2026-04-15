@@ -1,10 +1,12 @@
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 export default function TelegramDashboard() {
   const [data, setData] = useState(null)
   const [pwd, setPwd] = useState('')
   const [auth, setAuth] = useState(false)
   const [error, setError] = useState('')
+  const router = useRouter()
 
   async function login() {
     const res = await fetch(`/api/admin/telegram-dashboard?pwd=${pwd}`)
@@ -19,6 +21,9 @@ export default function TelegramDashboard() {
   if (!auth) return (
     <div style={{ minHeight:'100vh', background:'#0a0a0a', display:'flex', alignItems:'center', justifyContent:'center', fontFamily:'monospace' }}>
       <div style={{ background:'#111', padding:'40px', borderRadius:'12px', border:'1px solid #333', textAlign:'center', width:'300px' }}>
+        <button onClick={() => router.push('/')} style={{ background:'transparent', border:'1px solid #444', color:'#888', padding:'8px 16px', borderRadius:'8px', cursor:'pointer', marginBottom:'20px', fontFamily:'monospace' }}>
+          ← Accueil
+        </button>
         <div style={{ fontSize:'2rem', marginBottom:'10px' }}>🇬🇵</div>
         <h2 style={{ color:'#fff', marginBottom:'20px' }}>Admin REUSSITESS</h2>
         <input
@@ -39,7 +44,12 @@ export default function TelegramDashboard() {
 
   return (
     <div style={{ minHeight:'100vh', background:'#0a0a0a', color:'#fff', fontFamily:'monospace', padding:'30px' }}>
-      <h1 style={{ color:'#00c853' }}>📊 Dashboard Telegram REUSSITESS 🇬🇵</h1>
+      <div style={{ display:'flex', alignItems:'center', gap:'20px', marginBottom:'20px' }}>
+        <button onClick={() => router.push('/')} style={{ background:'transparent', border:'1px solid #444', color:'#888', padding:'8px 16px', borderRadius:'8px', cursor:'pointer', fontFamily:'monospace' }}>
+          ← Accueil
+        </button>
+        <h1 style={{ color:'#00c853', margin:0 }}>📊 Dashboard Telegram REUSSITESS 🇬🇵</h1>
+      </div>
       <div style={{ display:'flex', gap:'20px', marginBottom:'30px', flexWrap:'wrap' }}>
         {[
           { label:'👥 Visiteurs total', value: data?.stats?.visitors },
