@@ -253,6 +253,20 @@ Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
         '🗣️ Créole': 'dictionnaire créole',
       }
 
+    if (text === '/premium') {
+      const subRes = await fetch('https://reussitess.fr/api/paypal/create-subscription', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ telegramId: message.from?.id })
+      })
+      const subData = await subRes.json()
+      if (subData.url) {
+        return await sendMsg(chatId, '💎 *REUSSITESS Premium 4,99EUR/mois*\n\n✅ Agents IA spécialisés\n🧠 Mémoire longue\n💰 Crypto expert\n🌍 Visa et Business\n\nClique pour souscrire 👇', {
+          inline_keyboard: [[{ text: '💳 Souscrire 4,99EUR/mois', url: subData.url }]]
+        })
+      }
+      return await sendMsg(chatId, '⚠️ Erreur paiement. Reessaie.')
+    }
       const msgToSend = TEXT_COMMANDS[text] || text
       await typing(chatId)
       const response = await askAI(msgToSend, message.from?.id)
