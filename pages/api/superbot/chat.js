@@ -4650,6 +4650,33 @@ async function generateFollowUp(response, message) {
 
 export const config = { api: { responseLimit: false } }
 
+
+// ===== MODULES PREMIUM =====
+async function checkPremium(userId) {
+  try {
+    const { Redis } = await import('@upstash/redis')
+    const redis = Redis.fromEnv()
+    const data = await redis.get(`premium:${userId}`)
+    return !!data
+  } catch(e) { return false }
+}
+
+const PREMIUM_TRIGGERS = {
+  creole: ['traduis en créole','traduction créole','créole guadeloupéen','créole martiniquais','créole haïtien','an kreol','an kréyòl'],
+  transfert: ['envoyer argent','transfert argent','western union','wise','remitly','envoyer euros','frais transfert'],
+  cv: ['génère mon cv','créer cv','lettre motivation','dossier caf','demande rsa','logement social','apl'],
+  visa: ['visa canada','visa usa','visa uk','visa schengen','visa pour','demande visa','passeport'],
+  coach: ['coach premium','mon coach','souviens-toi','rappelle toi','mon projet','objectif personnel']
+}
+
+function detectPremiumModule(msg) {
+  const m = msg.toLowerCase()
+  for (const [module, keywords] of Object.entries(PREMIUM_TRIGGERS)) {
+    if (keywords.some(k => m.includes(k))) return module
+  }
+  return null
+}
+
 export default async function handler(req, res) {
 
   // KNOWLEDGE EXTERNE — commandes depuis /api/knowledge
@@ -4689,6 +4716,37 @@ export default async function handler(req, res) {
     const today = new Date().toISOString().substring(0,10)
     await redis.incr('requests:' + today)
   } catch(e) {}
+
+  
+  // ===== PREMIUM MODULE HANDLER =====
+  const premiumModule = detectPremiumModule(message)
+  if (premiumModule) {
+    const isPremium = await checkPremium(userId)
+    if (!isPremium) {
+      return res.status(200).json({ 
+        pdfAction: null, 
+        response: `👑 *Fonctionnalité Premium*\n\nCe module fait partie de REUSSITESS Premium.\n\n✅ Traducteur Créole IA\n💰 Comparateur Transfert Argent\n📋 Générateur CV + Admin\n🛂 Assistant Visa\n🧠 Coach IA Mémoire Longue\n\n**4,99€/mois** — Sans engagement\n\n👉 [Souscrire sur reussitess.fr/premium](https://reussitess.fr/premium)\n\nBoudoum ! 🇬🇵` 
+      })
+    }
+
+    const endpoints = {
+      creole: '/api/premium/traducteur-creole',
+      transfert: '/api/premium/transfert-argent',
+      cv: '/api/premium/cv-admin',
+      visa: '/api/premium/visa',
+      coach: '/api/premium/coach'
+    }
+
+    const premRes = await fetch(`https://reussitess.fr${endpoints[premiumModule]}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, text: message, userId, telegramId: userId })
+    })
+    const premData = await premRes.json()
+    if (premData.result) {
+      return res.status(200).json({ pdfAction: null, response: premData.result + '\n\n👑 *REUSSITESS Premium* | Boudoum ! 🇬🇵' })
+    }
+  }
 
   // ===== MULTIMODAL — Analyse Image =====
   if (image) {
