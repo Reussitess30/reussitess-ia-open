@@ -6,7 +6,7 @@ async function isPremium(userId) {
     const keys = await redis.keys(`paypal:*:premium`)
     for (const key of keys) {
       const data = await redis.get(key)
-      if (data && console.log("DEBUG:", data, userId); data.customId === String(userId)) return true
+      if (data && data.customId === String(userId)) return true
     }
     const direct = await redis.get(`premium:${userId}`)
     return !!direct
@@ -15,7 +15,7 @@ async function isPremium(userId) {
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
-  let body = typeof req.body === string ? JSON.parse(req.body) : req.body; const { text, from_lang, to_lang, userId } = body
+  const { text, from_lang, to_lang, userId } = req.body
 
   const premium = await isPremium(userId)
   if (!premium) return res.status(403).json({ error: 'Premium requis', upgrade: true })
