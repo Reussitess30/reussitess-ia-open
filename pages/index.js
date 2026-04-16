@@ -190,3 +190,10 @@ export default function Home() {
 </Layout>
   );
 }
+
+  <div style="background:linear-gradient(45deg,#FF6B35,#F7931E,#00A676);color:white;padding:3rem;text-align:center;font-size:1.5rem;border-radius:25px;margin:2rem auto;max-width:900px;box-shadow:0 20px 40px rgba(0,0,0,0.3);animation:pulse 3s infinite">
+    <h1 style="margin:0;font-size:2.5rem">🌍 <b>AFROCARAÏBEEN</b></h1>
+    <h2 style="margin:1rem 0;font-size:2rem">🇬🇵 <b>GUADELOUPE CENTRE DU MONDE</b> 🇬🇵</h2>
+    <p style="margin:1rem 0;font-size:1.3rem">👑 <b>Rony Porinus</b> - 1er Premium Officiel 4.99€</p>
+    <a href="/premium" style="background:gold;color:#000;padding:1.2rem 3rem;border-radius:50px;font-weight:bold;font-size:1.2rem;text-decoration:none;display:inline-block;box-shadow:0 5px 15px rgba(0,0,0,0.3)">🚀 TRADUCTEUR CRÉOLE PREMIUM</a>
+  </div>
