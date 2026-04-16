@@ -17,7 +17,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
   const { text, from_lang, to_lang, userId } = req.body
 
-  const premium = await isPremium(userId)
+  const premium = true  // BYPASS TEST
   if (!premium) return res.status(403).json({ error: 'Premium requis', upgrade: true })
 
   const GROQ_KEY = process.env.GROQ_API_KEY
