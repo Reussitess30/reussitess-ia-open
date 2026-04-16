@@ -292,6 +292,31 @@ Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
         body: JSON.stringify({ callback_query_id: callback.id, text: '⏳ Chargement...' })
       })
 
+
+      if (data === 'premium_menu') {
+        return await sendMsg(chatId, '👑 *REUSSITESS PREMIUM*\n\n🌍 Traducteur Créole IA\n💰 Comparateur Transfert Argent\n📋 Générateur CV + Dossier Admin\n🛂 Assistant Visa 14 pays\n🧠 Coach IA Mémoire Longue\n\n4,99€/mois — Sans engagement', {
+          inline_keyboard: [
+            [{ text: '🌍 Traducteur Créole', callback_data: 'pm_creole' }, { text: '💰 Transfert Argent', callback_data: 'pm_transfert' }],
+            [{ text: '📋 CV + Admin', callback_data: 'pm_cv' }, { text: '🛂 Visa', callback_data: 'pm_visa' }],
+            [{ text: '🧠 Coach IA', callback_data: 'pm_coach' }],
+            [{ text: '💳 Souscrire 4,99€/mois', callback_data: 'premium' }]
+          ]
+        })
+      }
+
+      if (['pm_creole','pm_transfert','pm_cv','pm_visa','pm_coach'].includes(data)) {
+        const demos = {
+          pm_creole: '🌍 *Traducteur Créole IA*\n\nExemple:\nFR: "Je t amour beaucoup"\nCréole GWA: "An rinmé w anpil"\nCréole HAI: "Mwen renmen ou anpil"\n\n👑 *Fonctionnalité Premium*\nTraduis en temps réel Français/Anglais vers Créole Guadeloupéen, Martiniquais, Haïtien, Jamaïcain.',
+          pm_transfert: '💰 *Comparateur Transfert Argent*\n\nExemple pour 300€ vers Guadeloupe:\n1. Wise: 298,50€ reçus (frais 1,50€)\n2. Remitly: 295€ reçus (frais 5€)\n3. Western Union: 288€ reçus (frais 12€)\n\n👑 *Fonctionnalité Premium*\nÉconomise jusqu à 8% sur chaque transfert.',
+          pm_cv: '📋 *Générateur CV + Dossier Admin*\n\nGénère:\n• CV professionnel adapté France/Canada/DOM-TOM\n• Lettre de motivation\n• Dossier CAF/RSA/APL\n• Demande logement social\n\n👑 *Fonctionnalité Premium*',
+          pm_visa: '🛂 *Assistant Visa 14 Pays*\n\nCanada, USA, UK, Schengen, Caraïbes...\nDocuments requis, délais, frais\nÉtape par étape selon ta nationalité\n\n👑 *Fonctionnalité Premium*',
+          pm_coach: '🧠 *Coach IA Mémoire Longue*\n\nTon IA se souvient de toi:\n• Tes projets et objectifs\n• Ta situation personnelle\n• Tes préférences\n\nComme un mentor 24h/24\n\n👑 *Fonctionnalité Premium*'
+        }
+        return await sendMsg(chatId, demos[data], {
+          inline_keyboard: [[{ text: '💳 Souscrire 4,99€/mois', callback_data: 'premium' }],
+          [{ text: '◀️ Menu Premium', callback_data: 'premium_menu' }]]
+        })
+      }
       if (data === 'menu') {
         return await sendMsg(chatId, '🌟 *Menu REUSSITESS AI*', { inline_keyboard: MAIN_MENU.inline_keyboard })
       }
