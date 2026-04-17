@@ -317,6 +317,25 @@ Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
           [{ text: '◀️ Menu Premium', callback_data: 'premium_menu' }]]
         })
       }
+      
+      if (data === 'communauté reussitess forum' || data === 'communaute') {
+        return await sendMsg(chatId, '🤝 *COMMUNAUTE REUSSITESS*\n\nRejois le reseau afro-caribeen !\n\n📺 Live Kick - Stream en direct\n💬 Discussions thematiques\n🌴 Entrepreneuriat, Culture, IA, Creole\n\nBOUDOUM 🥁', {
+          inline_keyboard: [
+            [{ text: '📺 Rejoindre le Live Kick', url: 'https://reussitess.fr/communaute' }],
+            [{ text: '◀️ Menu', callback_data: 'menu' }]
+          ]
+        })
+      }
+
+      if (data === 'coach' || data === 'coach de vie') {
+        return await sendMsg(chatId, '💪 *COACH DE VIE REUSSITESS*\n\nTon defi quotidien caribeen\n\n🔥 Streak journalier\n💎 Recompenses REUSS tokens\n🎯 Profils : Entrepreneur, Etudiant, Sportif, General\n🌴 Defis inspires de la culture caribeenne\n\nDeviens un Champion - Te a chanpion yo', {
+          inline_keyboard: [
+            [{ text: '💪 Acceder au Coach de Vie', url: 'https://reussitess.fr/coach' }],
+            [{ text: '◀️ Menu', callback_data: 'menu' }]
+          ]
+        })
+      }
+
       if (data === 'menu') {
         return await sendMsg(chatId, '🌟 *Menu REUSSITESS AI*', { inline_keyboard: MAIN_MENU.inline_keyboard })
       }
