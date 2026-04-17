@@ -625,6 +625,11 @@ Fondateur : Rony Porinus • Guadeloupe 🇬🇵 • Boudoum !
 async function getWikipedia(term) {
   try {
   // GUIDE CRYPTOART
+  // TRIGGER QUIZ THEMES — priorité haute
+  if ((msgLow.includes("quiz") && (msgLow.includes("thème") || msgLow.includes("theme") || msgLow.includes("categorie") || msgLow.includes("catégorie") || msgLow.includes("liste") || msgLow.includes("reussitess") || msgLow.includes("99"))) || msgLow === "quiz" || msgLow.includes("quels quiz") || msgLow.includes("les quiz")) {
+    return res.status(200).json({ response: "🎯 **99 Quiz REUSSITESS®971**\n\n📚 **CULTURE & HISTOIRE :**\n📖 Histoire mondiale • 🌍 Géographie • 👤 Personnalités • 🏰 Monuments\n🌏 Culture du Monde • 🗣️ Langues • 🔭 Découvertes\n\n🎵 **ARTS & DIVERTISSEMENT :**\nMusique • Cinéma • Art • Littérature\n\n🔬 **SCIENCES & TECH :**\nSciences • Technologie • Mathématiques • Innovations • Environnement\n\n💼 **VIE & SOCIETE :**\nBusiness • Amazon Affiliation • Santé • Positivité • Philosophie • Politique\n\n🌴 **CARIBEEN EXCLUSIF :**\nHistoire Antilles • Créole • Gwoka • Champions DOM-TOM • REUSS Token\n\n🎮 **Format :** QCM • Score temps réel • Badges • Leaderboard • Tokens REUSS\n\n👉 https://reussitess.fr/quiz\nBoudoum ! 🇬🇵" })
+  }
+
   if (msgLow.includes("crypto art") || msgLow.includes("generative art") || msgLow.includes("art génératif") || msgLow.includes("créer avec ia") || msgLow.includes("midjourney")) {
 
   // ===== GÉNÉRATION CONTENU SOCIAL =====
@@ -2044,7 +2049,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   if (msgLow.includes("président usa") || msgLow.includes("président etats-unis") || msgLow.includes("president usa")) {
     return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Donald Trump** réélu Nov 2024, investi 20/01/2025. Actuel président USA. Boudoum ! 📱" });
   }
-  if (msgLow.includes("crypto") || msgLow.includes("bitcoin")) {
+  if ((msgLow.includes("crypto") || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme")) {
     const country = msgLow.includes("haiti") ? "haiti" : msgLow.includes("rwanda") ? "rwanda" : "global"
     const data = await fetch(`https://reussitess.fr/api/world-data?type=crypto&country=${country}`).then(r=>r.json())
     return res.status(200).json(data)
@@ -7495,7 +7500,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("président usa") || msgLow.includes("président etats-unis") || msgLow.includes("president usa")) {
     return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Donald Trump** réélu Nov 2024, investi 20/01/2025. Actuel président USA. Boudoum ! 📱" });
   }
-  if (msgLow.includes("crypto") || msgLow.includes("bitcoin")) {
+  if ((msgLow.includes("crypto") || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme")) {
     const country = msgLow.includes("haiti") ? "haiti" : msgLow.includes("rwanda") ? "rwanda" : "global"
     const data = await fetch(`https://reussitess.fr/api/world-data?type=crypto&country=${country}`).then(r=>r.json())
     return res.status(200).json(data)
