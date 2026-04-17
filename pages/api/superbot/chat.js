@@ -9802,7 +9802,9 @@ const REUSSITESS_KB = {
   quiz: "99 quiz éducatifs sur reussitess.fr/quiz. Tous thèmes: histoire, culture, crypto, science...",
   bibliotheque: "Bibliothèque mondiale 50+ pays sur reussitess.fr/bibliotheque. Auteurs caribéens: Césaire, Fanon, Condé, Glissant.",
   securite: "HTTPS + headers A+ SecurityHeaders.com. REUSSSHIELD. Anti-injection. 3 clés Groq rotation.",
-  contact: "reussitess.fr | shop.reussitess.fr | kick.com/Reussitess | github.com/Reussitess30"
+  contact: "reussitess.fr | shop.reussitess.fr | kick.com/Reussitess | github.com/Reussitess30",
+  coach: "reussitess.fr/coach — Coach de Vie quotidien, defis personnalises, streak journalier, recompenses REUSS tokens, profils entrepreneur/etudiant/sportif/general",
+  communaute: "reussitess.fr/communaute — Live Kick integre, chat en direct, discussions afro-caribeennes, entrepreneuriat, culture, IA"
 }
 
 function getRAGContext(message) {
@@ -9818,6 +9820,8 @@ function getRAGContext(message) {
   if (msgL.includes('bibliotheque') || msgL.includes('cesaire') || msgL.includes('fanon')) context.push(REUSSITESS_KB.bibliotheque)
   if (msgL.includes('securite') || msgL.includes('sécurité') || msgL.includes('shield')) context.push(REUSSITESS_KB.securite)
   if (msgL.includes('contact') || msgL.includes('kick') || msgL.includes('github')) context.push(REUSSITESS_KB.contact)
+  if (msgL.includes('coach') || msgL.includes('defi') || msgL.includes('streak') || msgL.includes('motivation quotidienne')) context.push(REUSSITESS_KB.coach)
+  if (msgL.includes('communaute') || msgL.includes('live') || msgL.includes('stream') || msgL.includes('forum')) context.push(REUSSITESS_KB.communaute)
   return context.join(' | ')
 }
 
