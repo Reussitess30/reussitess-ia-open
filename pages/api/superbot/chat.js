@@ -636,7 +636,7 @@ async function getWikipedia(term) {
   }
 
   // RELIEFWEB — Crises et conflits mondiaux
-  if (msgLow.includes("crise") || msgLow.includes("conflit") || msgLow.includes("guerre") || msgLow.includes("humanitaire") || msgLow.includes("refugie") || msgLow.includes("réfugié") || msgLow.includes("urgence humanitaire")) {
+  if ((msgLow.includes("crise") && (msgLow.includes("humanitaire") || msgLow.includes("mondiale") || msgLow.includes("économique"))) || (msgLow.includes("conflit") && msgLow.includes("international")) || (msgLow.includes("guerre") && (msgLow.includes("mondiale") || msgLow.includes("civile") || msgLow.includes("ukraine") || msgLow.includes("afrique"))) || msgLow.includes("humanitaire") || msgLow.includes("refugie") || msgLow.includes("réfugié") || msgLow.includes("urgence humanitaire")) {
     try {
       const r = await fetch("https://api.reliefweb.int/v1/reports?appname=reussitess&filter[field]=primary_country&profile=minimal&limit=5&sort[]=date:desc").then(r=>r.json()).catch(()=>null)
       if (r?.data?.length) {
@@ -675,7 +675,7 @@ async function getWikipedia(term) {
   }
 
   // ELECTIONS / POLITIQUE — Wikipedia + RSS
-  if (msgLow.includes("election") || msgLow.includes("élection") || msgLow.includes("vote") || msgLow.includes("scrutin") || msgLow.includes("parti politique") || msgLow.includes("president") && msgLow.includes("pays") || msgLow.includes("democratie")) {
+  if ((msgLow.includes("election") || msgLow.includes("élection") || msgLow.includes("scrutin") || (msgLow.includes("vote") && (msgLow.includes("election") || msgLow.includes("politique") || msgLow.includes("parti")))) || msgLow.includes("parti politique") || msgLow.includes("president") && msgLow.includes("pays") || msgLow.includes("democratie")) {
     try {
       const query = encodeURIComponent("elections 2025 2026 monde")
       const r = await fetch("https://fr.wikipedia.org/api/rest_v1/page/summary/"+encodeURIComponent("Élections en 2026")).then(r=>r.json()).catch(()=>null)
@@ -710,7 +710,7 @@ async function getWikipedia(term) {
   }
 
   // WORLD BANK — économie par pays
-  if (msgLow.includes("inflation") || msgLow.includes("pib") || msgLow.includes("gdp") || msgLow.includes("croissance économique") || msgLow.includes("economie") || msgLow.includes("économie") && msgLow.includes("pays")) {
+  if (msgLow.includes("inflation") || msgLow.includes("pib") || msgLow.includes("gdp") || msgLow.includes("croissance économique") || (msgLow.includes("economie mondiale") || msgLow.includes("économie mondiale") || (msgLow.includes("économie") && msgLow.includes("pays")))) {
     const pays = { france:"FR", guadeloupe:"GP", martinique:"MQ", haiti:"HT", senegal:"SN", cameroun:"CM", maroc:"MA", bresil:"BR", canada:"CA", "etats-unis":"US", usa:"US" }
     const p = Object.keys(pays).find(k => msgLow.includes(k)) || "GP"
     const code = pays[p] || "GP"
@@ -727,7 +727,7 @@ async function getWikipedia(term) {
   }
 
   // OPENAQ — qualité de l'air
-  if (msgLow.includes("qualité de l air") || msgLow.includes("qualite air") || msgLow.includes("pollution") || msgLow.includes("aqi") || msgLow.includes("air guadeloupe") || msgLow.includes("air martinique")) {
+  if (msgLow.includes("qualité de l air") || msgLow.includes("qualite air") || (msgLow.includes("pollution") && (msgLow.includes("guadeloupe") || msgLow.includes("martinique") || msgLow.includes("dom") || msgLow.includes("antilles") || msgLow.includes("air"))) || msgLow.includes("aqi") || msgLow.includes("air guadeloupe") || msgLow.includes("air martinique")) {
     try {
       const ville = msgLow.includes("martinique") ? "Fort-de-France" : "Pointe-a-Pitre"
       const r = await fetch("https://api.openaq.org/v2/latest?city="+encodeURIComponent(ville)+"&limit=3", {headers:{"X-API-Key":""}}).then(r=>r.json()).catch(()=>null)
@@ -754,7 +754,7 @@ async function getWikipedia(term) {
   }
 
   // WHO RSS — santé mondiale
-  if (msgLow.includes("epidemie") || msgLow.includes("épidémie") || msgLow.includes("pandemie") || msgLow.includes("pandémie") || msgLow.includes("sante mondiale") || msgLow.includes("santé mondiale") || msgLow.includes("who") || msgLow.includes("oms")) {
+  if (msgLow.includes("epidemie") || msgLow.includes("épidémie") || msgLow.includes("pandemie") || msgLow.includes("pandémie") || msgLow.includes("sante mondiale") || msgLow.includes("santé mondiale") || (msgLow.includes("who") && (msgLow.includes("santé") || msgLow.includes("épidémie") || msgLow.includes("vaccin"))) || msgLow.includes("oms")) {
     try {
       const r = await fetch("https://www.who.int/rss-feeds/news-english.xml").then(r=>r.text()).catch(()=>null)
       if (r) {
@@ -767,7 +767,7 @@ async function getWikipedia(term) {
   }
 
   // CO2 / CLIMAT
-  if (msgLow.includes("co2") || msgLow.includes("carbone") || msgLow.includes("climat") || msgLow.includes("rechauffement") || msgLow.includes("réchauffement") || msgLow.includes("greenhouse")) {
+  if (msgLow.includes("co2") || msgLow.includes("carbone") || (msgLow.includes("climat") && (msgLow.includes("caribé") || msgLow.includes("antilles") || msgLow.includes("dom") || msgLow.includes("réchauffement") || msgLow.includes("changement"))) || msgLow.includes("rechauffement") || msgLow.includes("réchauffement") || msgLow.includes("greenhouse")) {
     try {
       const r = await fetch("https://global-warming.org/api/co2-api").then(r=>r.json()).catch(()=>null)
       const last = r?.co2?.slice(-1)[0]
@@ -879,7 +879,7 @@ async function getWikipedia(term) {
   }
 
   // GUIDE GESTION TEMPS
-  if (msgLow.includes("gestion du temps") || msgLow.includes("productivité") || msgLow.includes("organisation") || msgLow.includes("procrastination") || msgLow.includes("planning")) {
+  if (msgLow.includes("gestion du temps") || (msgLow.includes("productivité") && !msgLow.includes("agricole")) || (msgLow.includes("organisation") && (msgLow.includes("travail") || msgLow.includes("temps") || msgLow.includes("projet") || msgLow.includes("planning"))) || msgLow.includes("procrastination") || msgLow.includes("planning")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Coach, expert productivité et gestion du temps. Boudoum!" },
@@ -892,7 +892,7 @@ async function getWikipedia(term) {
   }
 
   // GUIDE INTELLIGENCE COLLECTIVE
-  if (msgLow.includes("intelligence collective") || msgLow.includes("travailler ensemble") || msgLow.includes("synergie") || msgLow.includes("collaboration") || msgLow.includes("réseau caribéen")) {
+  if (msgLow.includes("intelligence collective") || msgLow.includes("travailler ensemble") || msgLow.includes("synergie") || (msgLow.includes("collaboration") && (msgLow.includes("équipe") || msgLow.includes("projet") || msgLow.includes("caribéen") || msgLow.includes("réseau"))) || msgLow.includes("réseau caribéen")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Stratégie, expert intelligence collective et leadership. Boudoum!" },
@@ -1197,7 +1197,7 @@ async function getWikipedia(term) {
   }
 
   // PASSEPORT DE REUSSITE 🏆
-  if (msgLow.includes("passeport de réussite") || msgLow.includes("passeport reussite") || msgLow.includes("certificat champion") || msgLow.includes("devenir champion") || msgLow.includes("passeport champion") || msgLow.includes("champions")) {
+  if (msgLow.includes("passeport de réussite") || msgLow.includes("passeport reussite") || msgLow.includes("certificat champion") || msgLow.includes("devenir champion") || msgLow.includes("passeport champion") || (msgLow.includes("passeport de réussite") || msgLow.includes("champions reussitess") || msgLow.includes("devenir champion"))) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -1254,7 +1254,7 @@ async function getWikipedia(term) {
   }
 
   // ORACLE 971
-  if (msgLow.includes("oracle") || msgLow.includes("oracle 971") || msgLow.includes("prédiction") || msgLow.includes("avenir caribéen") || msgLow.includes("destin")) {
+  if (msgLow.includes("oracle") || msgLow.includes("oracle 971") || msgLow.includes("prédiction") || msgLow.includes("avenir caribéen") || (msgLow.includes("destin") && (msgLow.includes("oracle") || msgLow.includes("avenir") || msgLow.includes("prédit") || msgLow.includes("caribéen") || msgLow.includes("971")))) {
     try {
       const groqText = await groqFetch([
         { role: "system", content: `Tu es l'ORACLE 971 — Voix mystique et sagesse ancestrale de la Guadeloupe et des Caraïbes.
@@ -1443,7 +1443,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // GUIDE LEADERSHIP
-  if (msgLow.includes("leadership") || msgLow.includes("manager mon équipe") || msgLow.includes("diriger") || msgLow.includes("management") || msgLow.includes("gérer mon équipe")) {
+  if (msgLow.includes("leadership") || msgLow.includes("manager mon équipe") || msgLow.includes("diriger") || (msgLow.includes("management") && (msgLow.includes("équipe") || msgLow.includes("caribéen") || msgLow.includes("manager"))) || msgLow.includes("gérer mon équipe")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -1496,7 +1496,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // GUIDE SANTE MENTALE
-  if (msgLow.includes("anxiété") || msgLow.includes("anxiete") || msgLow.includes("dépression") || msgLow.includes("depression") || msgLow.includes("santé mentale") || msgLow.includes("burn out")) {
+  if ((msgLow.includes("anxiété") || msgLow.includes("anxiete") || msgLow.includes("dépression") || msgLow.includes("depression") || msgLow.includes("burn out") || (msgLow.includes("santé mentale") && !msgLow.includes("quiz")))) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -1509,7 +1509,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // GUIDE EXPORT INTERNATIONAL
-  if (msgLow.includes("exporter") || msgLow.includes("export") || msgLow.includes("vendre à l'international") || msgLow.includes("marché international") || msgLow.includes("14 pays")) {
+  if ((msgLow.includes("exporter") || msgLow.includes("export")) && (msgLow.includes("produit") || msgLow.includes("international") || msgLow.includes("pays") || msgLow.includes("14 pays")) || msgLow.includes("vendre à l'international") || msgLow.includes("marché international") || msgLow.includes("14 pays")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -1522,7 +1522,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // GUIDE PODCASTING
-  if (msgLow.includes("podcast") || msgLow.includes("créer un podcast") || msgLow.includes("lancer podcast") || msgLow.includes("micro") && msgLow.includes("enregistrer")) {
+  if ((msgLow.includes("podcast") && (msgLow.includes("créer") || msgLow.includes("lancer") || msgLow.includes("guadeloupe") || msgLow.includes("écouter") || msgLow.includes("reussitess"))) || msgLow.includes("créer un podcast") || msgLow.includes("lancer podcast") || msgLow.includes("micro") && msgLow.includes("enregistrer")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Marketing, expert création podcast et contenu audio. Boudoum!" },
@@ -1548,7 +1548,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // GUIDE BIEN-ETRE SENIOR
-  if (msgLow.includes("senior") || msgLow.includes("personnes âgées") || msgLow.includes("vieillir bien") || msgLow.includes("ehpad") || msgLow.includes("aide à domicile")) {
+  if ((msgLow.includes("senior") && (msgLow.includes("aide") || msgLow.includes("vieillir") || msgLow.includes("ehpad") || msgLow.includes("domicile") || msgLow.includes("caribé"))) || msgLow.includes("personnes âgées") || msgLow.includes("vieillir bien") || msgLow.includes("ehpad") || msgLow.includes("aide à domicile")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Seniors, expert bien-vieillir et activités pour seniors DOM-TOM. Boudoum!" },
@@ -1639,7 +1639,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // RAPPEL MEDICAMENT
-  if (msgLow.includes("médicament") || msgLow.includes("medicament") || msgLow.includes("ordonnance") || msgLow.includes("posologie") || msgLow.includes("traitement médical")) {
+  if ((msgLow.includes("médicament") || msgLow.includes("medicament")) && (msgLow.includes("naturel") || msgLow.includes("plante") || msgLow.includes("caribé") || msgLow.includes("info")) || msgLow.includes("posologie naturelle") || msgLow.includes("traitement médical")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -1797,7 +1797,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // GUIDE DIASPORA
-  if (msgLow.includes("diaspora") || msgLow.includes("guadeloupéen à paris") || msgLow.includes("antillais en france") || msgLow.includes("retour au pays") || msgLow.includes("double culture")) {
+  if ((msgLow.includes("diaspora") && (msgLow.includes("caribé") || msgLow.includes("afric") || msgLow.includes("guadeloupe") || msgLow.includes("antilles") || msgLow.includes("france") || msgLow.includes("retour"))) || msgLow.includes("guadeloupéen à paris") || msgLow.includes("antillais en france") || msgLow.includes("retour au pays") || msgLow.includes("double culture")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -1823,7 +1823,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // GENERATEUR PITCH INVESTISSEUR
-  if (msgLow.includes("pitch") || msgLow.includes("lever des fonds") || msgLow.includes("investisseur") || msgLow.includes("présentation investisseur") || msgLow.includes("seed funding")) {
+  if (msgLow.includes("pitch") || msgLow.includes("lever des fonds") || (msgLow.includes("investisseur") && (msgLow.includes("pitch") || msgLow.includes("lever") || msgLow.includes("startup") || msgLow.includes("présentation"))) || msgLow.includes("présentation investisseur") || msgLow.includes("seed funding")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Stratégie, expert pitch investisseur et levée de fonds pour startups caribéennes. Boudoum!" },
@@ -1888,7 +1888,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // GENERATEUR CHANSON CREOLE
-  if (msgLow.includes("chanson") || msgLow.includes("zouk") || msgLow.includes("gwo ka") || msgLow.includes("paroles") || msgLow.includes("compose une chanson")) {
+  if ((msgLow.includes("chanson") && (msgLow.includes("créole") || msgLow.includes("caribé") || msgLow.includes("compose") || msgLow.includes("zouk") || msgLow.includes("gwo ka"))) || msgLow.includes("zouk") || msgLow.includes("gwo ka") || msgLow.includes("paroles") || msgLow.includes("compose une chanson")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -5881,7 +5881,7 @@ export default async function handler(req, res) {
   }
 
   // PLAGES DOM-TOM
-  if (msgLow.includes('plage') || msgLow.includes('baignade') || msgLow.includes('plages dom')) {
+  if (msgLow.includes('plages dom') || msgLow.includes('plage guadeloupe') || msgLow.includes('plage martinique') || msgLow.includes('plage caraïbe') || msgLow.includes('plage antilles') || msgLow.includes('meilleure plage') || (msgLow.includes('plage') && (msgLow.includes('dom-tom') || msgLow.includes('antilles') || msgLow.includes('guadeloupe') || msgLow.includes('martinique') || msgLow.includes('caraïbe') || msgLow.includes('reunion') || msgLow.includes('réunion'))) || (msgLow.includes('baignade') && msgLow.includes('dom'))) {
     const data = await getQualitePlages()
     return res.status(200).json({ pdfAction: null, response: data })
   }
@@ -6411,7 +6411,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // GUIDE GESTION TEMPS
-  if (msgLow.includes("gestion du temps") || msgLow.includes("productivité") || msgLow.includes("organisation") || msgLow.includes("procrastination") || msgLow.includes("planning")) {
+  if (msgLow.includes("gestion du temps") || (msgLow.includes("productivité") && !msgLow.includes("agricole")) || (msgLow.includes("organisation") && (msgLow.includes("travail") || msgLow.includes("temps") || msgLow.includes("projet") || msgLow.includes("planning"))) || msgLow.includes("procrastination") || msgLow.includes("planning")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Coach, expert productivité et gestion du temps. Boudoum!" },
@@ -6424,7 +6424,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // GUIDE INTELLIGENCE COLLECTIVE
-  if (msgLow.includes("intelligence collective") || msgLow.includes("travailler ensemble") || msgLow.includes("synergie") || msgLow.includes("collaboration") || msgLow.includes("réseau caribéen")) {
+  if (msgLow.includes("intelligence collective") || msgLow.includes("travailler ensemble") || msgLow.includes("synergie") || (msgLow.includes("collaboration") && (msgLow.includes("équipe") || msgLow.includes("projet") || msgLow.includes("caribéen") || msgLow.includes("réseau"))) || msgLow.includes("réseau caribéen")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Stratégie, expert intelligence collective et leadership. Boudoum!" },
@@ -6661,7 +6661,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // PASSEPORT DE REUSSITE 🏆
-  if (msgLow.includes("passeport de réussite") || msgLow.includes("passeport reussite") || msgLow.includes("certificat champion") || msgLow.includes("devenir champion") || msgLow.includes("passeport champion") || msgLow.includes("champions")) {
+  if (msgLow.includes("passeport de réussite") || msgLow.includes("passeport reussite") || msgLow.includes("certificat champion") || msgLow.includes("devenir champion") || msgLow.includes("passeport champion") || (msgLow.includes("passeport de réussite") || msgLow.includes("champions reussitess") || msgLow.includes("devenir champion"))) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -6718,7 +6718,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // ORACLE 971
-  if (msgLow.includes("oracle") || msgLow.includes("oracle 971") || msgLow.includes("prédiction") || msgLow.includes("avenir caribéen") || msgLow.includes("destin")) {
+  if (msgLow.includes("oracle") || msgLow.includes("oracle 971") || msgLow.includes("prédiction") || msgLow.includes("avenir caribéen") || (msgLow.includes("destin") && (msgLow.includes("oracle") || msgLow.includes("avenir") || msgLow.includes("prédit") || msgLow.includes("caribéen") || msgLow.includes("971")))) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: "Tu es l'ORACLE 971 — Sagesse ancestrale caribéenne. Vision: Libérer la communauté afro-caribéenne grâce à l'IA et au savoir. Montre comment REUSSITESS aide : emploi, savoir, Token REUSS, Amazon 14 pays. Parle avec poésie et sagesse créole. Boudoum !" },
@@ -6894,7 +6894,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // GUIDE LEADERSHIP
-  if (msgLow.includes("leadership") || msgLow.includes("manager mon équipe") || msgLow.includes("diriger") || msgLow.includes("management") || msgLow.includes("gérer mon équipe")) {
+  if (msgLow.includes("leadership") || msgLow.includes("manager mon équipe") || msgLow.includes("diriger") || (msgLow.includes("management") && (msgLow.includes("équipe") || msgLow.includes("caribéen") || msgLow.includes("manager"))) || msgLow.includes("gérer mon équipe")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -6947,7 +6947,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // GUIDE SANTE MENTALE
-  if (msgLow.includes("anxiété") || msgLow.includes("anxiete") || msgLow.includes("dépression") || msgLow.includes("depression") || msgLow.includes("santé mentale") || msgLow.includes("burn out")) {
+  if ((msgLow.includes("anxiété") || msgLow.includes("anxiete") || msgLow.includes("dépression") || msgLow.includes("depression") || msgLow.includes("burn out") || (msgLow.includes("santé mentale") && !msgLow.includes("quiz")))) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -6960,7 +6960,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // GUIDE EXPORT INTERNATIONAL
-  if (msgLow.includes("exporter") || msgLow.includes("export") || msgLow.includes("vendre à l'international") || msgLow.includes("marché international") || msgLow.includes("14 pays")) {
+  if ((msgLow.includes("exporter") || msgLow.includes("export")) && (msgLow.includes("produit") || msgLow.includes("international") || msgLow.includes("pays") || msgLow.includes("14 pays")) || msgLow.includes("vendre à l'international") || msgLow.includes("marché international") || msgLow.includes("14 pays")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -6973,7 +6973,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // GUIDE PODCASTING
-  if (msgLow.includes("podcast") || msgLow.includes("créer un podcast") || msgLow.includes("lancer podcast") || msgLow.includes("micro") && msgLow.includes("enregistrer")) {
+  if ((msgLow.includes("podcast") && (msgLow.includes("créer") || msgLow.includes("lancer") || msgLow.includes("guadeloupe") || msgLow.includes("écouter") || msgLow.includes("reussitess"))) || msgLow.includes("créer un podcast") || msgLow.includes("lancer podcast") || msgLow.includes("micro") && msgLow.includes("enregistrer")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Marketing, expert création podcast et contenu audio. Boudoum!" },
@@ -6999,7 +6999,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // GUIDE BIEN-ETRE SENIOR
-  if (msgLow.includes("senior") || msgLow.includes("personnes âgées") || msgLow.includes("vieillir bien") || msgLow.includes("ehpad") || msgLow.includes("aide à domicile")) {
+  if ((msgLow.includes("senior") && (msgLow.includes("aide") || msgLow.includes("vieillir") || msgLow.includes("ehpad") || msgLow.includes("domicile") || msgLow.includes("caribé"))) || msgLow.includes("personnes âgées") || msgLow.includes("vieillir bien") || msgLow.includes("ehpad") || msgLow.includes("aide à domicile")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Seniors, expert bien-vieillir et activités pour seniors DOM-TOM. Boudoum!" },
@@ -7090,7 +7090,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // RAPPEL MEDICAMENT
-  if (msgLow.includes("médicament") || msgLow.includes("medicament") || msgLow.includes("ordonnance") || msgLow.includes("posologie") || msgLow.includes("traitement médical")) {
+  if ((msgLow.includes("médicament") || msgLow.includes("medicament")) && (msgLow.includes("naturel") || msgLow.includes("plante") || msgLow.includes("caribé") || msgLow.includes("info")) || msgLow.includes("posologie naturelle") || msgLow.includes("traitement médical")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -7248,7 +7248,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // GUIDE DIASPORA
-  if (msgLow.includes("diaspora") || msgLow.includes("guadeloupéen à paris") || msgLow.includes("antillais en france") || msgLow.includes("retour au pays") || msgLow.includes("double culture")) {
+  if ((msgLow.includes("diaspora") && (msgLow.includes("caribé") || msgLow.includes("afric") || msgLow.includes("guadeloupe") || msgLow.includes("antilles") || msgLow.includes("france") || msgLow.includes("retour"))) || msgLow.includes("guadeloupéen à paris") || msgLow.includes("antillais en france") || msgLow.includes("retour au pays") || msgLow.includes("double culture")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
@@ -7274,7 +7274,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // GENERATEUR PITCH INVESTISSEUR
-  if (msgLow.includes("pitch") || msgLow.includes("lever des fonds") || msgLow.includes("investisseur") || msgLow.includes("présentation investisseur") || msgLow.includes("seed funding")) {
+  if (msgLow.includes("pitch") || msgLow.includes("lever des fonds") || (msgLow.includes("investisseur") && (msgLow.includes("pitch") || msgLow.includes("lever") || msgLow.includes("startup") || msgLow.includes("présentation"))) || msgLow.includes("présentation investisseur") || msgLow.includes("seed funding")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: "Tu es Neuro-X Stratégie, expert pitch investisseur et levée de fonds pour startups caribéennes. Boudoum!" },
@@ -7339,7 +7339,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // GENERATEUR CHANSON CREOLE
-  if (msgLow.includes("chanson") || msgLow.includes("zouk") || msgLow.includes("gwo ka") || msgLow.includes("paroles") || msgLow.includes("compose une chanson")) {
+  if ((msgLow.includes("chanson") && (msgLow.includes("créole") || msgLow.includes("caribé") || msgLow.includes("compose") || msgLow.includes("zouk") || msgLow.includes("gwo ka"))) || msgLow.includes("zouk") || msgLow.includes("gwo ka") || msgLow.includes("paroles") || msgLow.includes("compose une chanson")) {
     try {
       const groqText = await groqFetch([
             { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
