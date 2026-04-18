@@ -1358,6 +1358,68 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   }
 
   // IDENTITE DU BOT
+  if (msgLow.includes("40 sentinelles") || msgLow.includes("montre les sentinelles") || msgLow.includes("liste sentinelles") || msgLow.includes("sentinelles ia") || msgLow.includes("voir sentinelles")) {
+    return res.status(200).json({ pdfAction: pdfType, response: `🛡️ **40 SENTINELLES REUSSITESS — Surveillance 24/7**
+
+**🔴 SURVEILLANCE TEMPS RÉEL**
+• ST-001 Prix REUSS — [DexScreener](https://dexscreener.com/polygon/0xB37531727fC07c6EED4f97F852A115B428046EB2)
+• ST-002 Actualités — [RFI](https://www.rfi.fr) | [BBC](https://www.bbc.com/afrique) | [France24](https://www.france24.com)
+• ST-003 Météo Guadeloupe — [OpenMeteo](https://open-meteo.com) | [Météo France](https://meteofrance.gp)
+• ST-004 ISS Position — [NASA ISS](https://api.wheretheiss.at/v1/satellites/25544)
+• ST-005 Crypto BTC/ETH — [CoinGecko](https://www.coingecko.com)
+• ST-006 Site REUSSITESS — [reussitess.fr](https://reussitess.fr)
+
+**🌊 SURVEILLANCE NATURELLE**
+• ST-007 Séismes Caraïbes — [USGS](https://earthquake.usgs.gov)
+• ST-008 Cyclones Atlantique — [NHC NOAA](https://www.nhc.noaa.gov)
+• ST-009 Météo Marine — [Windguru](https://www.windguru.cz)
+• ST-010 Tsunamis — [PTWC](https://ptwc.weather.gov)
+• ST-011 Volcans — [Observatoire Volcanologique](https://www.ipgp.fr)
+• ST-012 Éruptions — [VAAC Toulouse](https://www.meteo.fr)
+
+**💰 SURVEILLANCE FINANCIÈRE**
+• ST-013 Token REUSS — [QuickSwap](https://quickswap.exchange)
+• ST-014 Taux Change EUR/XCD — [ExchangeRate API](https://exchangerate-api.com)
+• ST-015 Bourse CAC40 — [Boursorama](https://www.boursorama.com)
+• ST-016 Or/Matières — [Investing.com](https://www.investing.com)
+• ST-017 Fear & Greed — [Alternative.me](https://alternative.me/crypto/fear-and-greed-index)
+• ST-018 Carburant DOM — [Prix Carburant](https://www.prix-carburants.gouv.fr)
+
+**📰 SURVEILLANCE MÉDIAS**
+• ST-019 La 1ère Guadeloupe — [la1ere.francetvinfo.fr](https://la1ere.francetvinfo.fr/guadeloupe)
+• ST-020 Bondamanjak — [bondamanjak.com](https://www.bondamanjak.com)
+• ST-021 Outremers360 — [outremers360.com](https://outremers360.com)
+• ST-022 RCI Guadeloupe — [rci.fm](https://www.rci.fm/guadeloupe)
+• ST-023 France-Antilles — [france-antilles.fr](https://www.france-antilles.fr)
+• ST-024 Zinfos974 — [zinfos974.com](https://www.zinfos974.com)
+
+**💼 SURVEILLANCE EMPLOI**
+• ST-025 France Travail — [francetravail.fr](https://www.francetravail.fr)
+• ST-026 Caribbean Jobs — [caribbeanjobs.com](https://www.caribbeanjobs.com)
+• ST-027 RemoteOK — [remoteok.com](https://remoteok.com)
+• ST-028 Emploi.re — [emploi.re](https://www.emploi.re)
+
+**🔒 SURVEILLANCE SÉCURITÉ**
+• ST-029 REUSSSHIELD — Protection IA temps réel
+• ST-030 Bot Destroyer — Détection bots malveillants
+• ST-031 Honeypot — Détection intrusions
+• ST-032 RGPD Monitor — Conformité données
+• ST-033 SSL Monitor — Certificat reussitess.fr
+
+**🏥 SURVEILLANCE SANTÉ**
+• ST-034 OMS Alertes — [who.int](https://www.who.int/fr)
+• ST-035 Épidémies — [Santé Publique France](https://www.santepubliquefrance.fr)
+• ST-036 Psychiatrie DOM — [CPA Martinique](https://www.chu-martinique.fr)
+
+**📚 SURVEILLANCE ÉDUCATION**
+• ST-037 CROUS DOM — [crous-antilles-guyane.fr](https://www.crous-antilles-guyane.fr)
+• ST-038 Académie Guadeloupe — [ac-guadeloupe.fr](https://www.ac-guadeloupe.fr)
+• ST-039 LADOM — [ladom.fr](https://www.ladom.fr)
+• ST-040 Guardian Supreme — Orchestration générale 24/7
+
+Boudoum ! 🇬🇵` })
+  }
+
   if (msgLow.includes("qui est reussitess") || msgLow.includes("c'est quoi reussitess") || msgLow.includes("reussitess c'est quoi") || msgLow.includes("kesako reussitess") || msgLow.includes("qui est-ce que reussitess")) { return res.status(200).json({ pdfAction: null, response: "🌟 **REUSSITESS®971** — Né en Guadeloupe 🇬🇵\n\nREUSSITESS est une plateforme SaaS IA créée par **Rony Porinus** depuis la Guadeloupe, au service de la diaspora afro-caribéenne mondiale.\n\n🧠 **200+ modules IA** (60 Neuro-X, 40 Sentinelles, 99 Quiz)\n💎 **Token REUSS** sur Polygon blockchain\n🌍 **14 pays partenaires**\n📱 **Bot Telegram** intelligent\n👑 **Premium 4,99€/mois** — 5 outils exclusifs\n\n*Terres de Champions — Positivité à l'infini !*\n\nBoudoum ! 🇬🇵" }) }
 
     if (msgLow.includes("qui es-tu") || msgLow.includes("qui es tu") || msgLow.includes("présente-toi") || msgLow.includes("présente toi") || msgLow.includes("ta mission") || msgLow.includes("c'est quoi reussitess ai") || msgLow.includes("tu es qui")) {
