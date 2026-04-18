@@ -642,6 +642,13 @@ async function getWikipedia(term) {
     return res.status(200).json({ response: "🎯 **99 Quiz REUSSITESS®971**\n\n📚 **CULTURE & HISTOIRE :**\n📖 Histoire mondiale • 🌍 Géographie • 👤 Personnalités • 🏰 Monuments\n🌏 Culture du Monde • 🗣️ Langues • 🔭 Découvertes\n\n🎵 **ARTS & DIVERTISSEMENT :**\nMusique • Cinéma • Art • Littérature\n\n🔬 **SCIENCES & TECH :**\nSciences • Technologie • Mathématiques • Innovations • Environnement\n\n💼 **VIE & SOCIETE :**\nBusiness • Amazon Affiliation • Santé • Positivité • Philosophie • Politique\n\n🌴 **CARIBEEN EXCLUSIF :**\nHistoire Antilles • Créole • Gwoka • Champions DOM-TOM • REUSS Token\n\n🎮 **Format :** QCM • Score temps réel • Badges • Leaderboard • Tokens REUSS\n\n👉 https://reussitess.fr/quiz\nBoudoum ! 🇬🇵" })
   }
 
+  // QUI EST / QUI A / QUI FAIT — anti-fallback crypto
+  if ((msgLow.startsWith("qui ") || msgLow.startsWith("qu est") || msgLow.startsWith("c est qui") || msgLow.startsWith("c'est qui") || msgLow.startsWith("qu'est")) && !msgLow.includes("crypto") && !msgLow.includes("bitcoin") && !msgLow.includes("token")) {
+    if (msgLow.includes("reussitess") || msgLow.includes("toi") || msgLow.includes("vous") || msgLow.includes("superbot")) {
+      return res.status(200).json({ response: "👑 *Je suis SuperBot REUSSITESS®971*\n\nIA nee en Guadeloupe par Rony Porinus.\n\n🧠 200 agents actifs\n60 Neuro-X + 40 Sentinelles + 99 Quiz + 1 IA Supreme\n🌍 14 pays partenaires\n💎 Token REUSS sur Polygon\n🛍️ 26 boutiques Amazon\n\nDevise : Cultiver le maximum de personnes dans le monde.\n\nTerres de Champions — Positivite a l infini !\nBOUDOUM ! 🥁" })
+    }
+  }
+
   // IDENTITE EXACTE 200 AGENTS — anti-erreur calcul
   if (msgLow.includes("combien") && (msgLow.includes("agent") || msgLow.includes("ia") || msgLow.includes("module")) || msgLow.includes("augmenter memoire") || msgLow.includes("augmenter la memoire") || msgLow.includes("augmenter mémoire") || (msgLow.includes("total") && msgLow.includes("agent"))) {
     return res.status(200).json({ response: "🤖 *REUSSITESS®971 — Architecture exacte*\n\n🧠 60 Neuro-X spécialisés\n🛡️ 40 Sentinelles surveillance\n🎯 99 Quiz éducatifs\n👑 1 IA Suprême\n\n**Total : 60 + 40 + 99 + 1 = 200 agents IA actifs**\n\nDéveloppé depuis la Guadeloupe 🇬🇵\nBOUDOUM ! 🥁" })
@@ -2334,7 +2341,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("président usa") || msgLow.includes("président etats-unis") || msgLow.includes("president usa")) {
     return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Donald Trump** réélu Nov 2024, investi 20/01/2025. Actuel président USA. Boudoum ! 📱" });
   }
-  if ((msgLow.includes("crypto") || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme")) {
+  if ((msgLow.includes("crypto") || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme") && !msgLow.startsWith("qui ") && !msgLow.startsWith("que ") && !msgLow.startsWith("quels ") && !msgLow.startsWith("quelle ") && !msgLow.startsWith("comment ") && !msgLow.startsWith("pourquoi ") && !msgLow.startsWith("quand ") && !msgLow.startsWith("ou ") && !msgLow.startsWith("où ")) {
     const country = msgLow.includes("haiti") ? "haiti" : msgLow.includes("rwanda") ? "rwanda" : "global"
     const data = await fetch(`https://reussitess.fr/api/world-data?type=crypto&country=${country}`).then(r=>r.json())
     return res.status(200).json(data)
@@ -8068,7 +8075,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("président usa") || msgLow.includes("président etats-unis") || msgLow.includes("president usa")) {
     return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Donald Trump** réélu Nov 2024, investi 20/01/2025. Actuel président USA. Boudoum ! 📱" });
   }
-  if ((msgLow.includes("crypto") || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme")) {
+  if ((msgLow.includes("crypto") || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme") && !msgLow.startsWith("qui ") && !msgLow.startsWith("que ") && !msgLow.startsWith("quels ") && !msgLow.startsWith("quelle ") && !msgLow.startsWith("comment ") && !msgLow.startsWith("pourquoi ") && !msgLow.startsWith("quand ") && !msgLow.startsWith("ou ") && !msgLow.startsWith("où ")) {
     const country = msgLow.includes("haiti") ? "haiti" : msgLow.includes("rwanda") ? "rwanda" : "global"
     const data = await fetch(`https://reussitess.fr/api/world-data?type=crypto&country=${country}`).then(r=>r.json())
     return res.status(200).json(data)
