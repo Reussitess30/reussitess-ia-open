@@ -630,6 +630,98 @@ async function getWikipedia(term) {
     return res.status(200).json({ response: "🎯 **99 Quiz REUSSITESS®971**\n\n📚 **CULTURE & HISTOIRE :**\n📖 Histoire mondiale • 🌍 Géographie • 👤 Personnalités • 🏰 Monuments\n🌏 Culture du Monde • 🗣️ Langues • 🔭 Découvertes\n\n🎵 **ARTS & DIVERTISSEMENT :**\nMusique • Cinéma • Art • Littérature\n\n🔬 **SCIENCES & TECH :**\nSciences • Technologie • Mathématiques • Innovations • Environnement\n\n💼 **VIE & SOCIETE :**\nBusiness • Amazon Affiliation • Santé • Positivité • Philosophie • Politique\n\n🌴 **CARIBEEN EXCLUSIF :**\nHistoire Antilles • Créole • Gwoka • Champions DOM-TOM • REUSS Token\n\n🎮 **Format :** QCM • Score temps réel • Badges • Leaderboard • Tokens REUSS\n\n👉 https://reussitess.fr/quiz\nBoudoum ! 🇬🇵" })
   }
 
+  // METEO MONDIALE — Open-Meteo (sans cle)
+  if ((msgLow.includes("meteo") || msgLow.includes("météo") || msgLow.includes("temps") || msgLow.includes("temperature") || msgLow.includes("température")) && !msgLow.includes("guadeloupe") && !msgLow.includes("antilles")) {
+    const villes = {
+      "paris": {lat:48.85,lon:2.35}, "london": {lat:51.5,lon:-0.12}, "new york": {lat:40.71,lon:-74.01},
+      "dakar": {lat:14.69,lon:-17.44}, "abidjan": {lat:5.35,lon:-4.0}, "montreal": {lat:45.5,lon:-73.57},
+      "tokyo": {lat:35.68,lon:139.69}, "dubai": {lat:25.2,lon:55.27}, "miami": {lat:25.77,lon:-80.19},
+      "martinique": {lat:14.64,lon:-61.02}, "reunion": {lat:-20.88,lon:55.45}, "guyane": {lat:4.93,lon:-52.33},
+      "haiti": {lat:18.54,lon:-72.33}, "canada": {lat:45.42,lon:-75.69}, "bresil": {lat:-15.77,lon:-47.93},
+      "senegal": {lat:14.69,lon:-17.44}, "cameroun": {lat:3.87,lon:11.52}, "maroc": {lat:33.99,lon:-6.85}
+    }
+    const ville = Object.keys(villes).find(k => msgLow.includes(k))
+    if (ville) {
+      try {
+        const v = villes[ville]
+        const r = await fetch("https://api.open-meteo.com/v1/forecast?latitude="+v.lat+"&longitude="+v.lon+"&current=temperature_2m,weathercode,windspeed_10m,relativehumidity_2m&timezone=auto").then(r=>r.json())
+        const t = r.current
+        const codes = {0:"☀️ Ciel dégagé",1:"🌤️ Peu nuageux",2:"⛅ Partiellement nuageux",3:"☁️ Couvert",45:"🌫️ Brouillard",48:"🌫️ Givre",51:"🌦️ Bruine",61:"🌧️ Pluie",71:"🌨️ Neige",80:"🌧️ Averses",95:"⛈️ Orage",99:"⛈️ Orage violent"}
+        const ciel = codes[t.weathercode] || "🌡️"
+        return res.status(200).json({ response: "🌍 *Météo "+ville.charAt(0).toUpperCase()+ville.slice(1)+"*\n\n"+ciel+"\n🌡️ Température : *"+t.temperature_2m+"°C*\n💧 Humidité : "+t.relativehumidity_2m+"%\n🌬️ Vent : "+t.windspeed_10m+" km/h\n\nSource : Open-Meteo\nBoudoum ! 🇬🇵" })
+      } catch(e) {}
+    }
+  }
+
+  // WORLD BANK — économie par pays
+  if (msgLow.includes("inflation") || msgLow.includes("pib") || msgLow.includes("gdp") || msgLow.includes("croissance économique") || msgLow.includes("economie") || msgLow.includes("économie") && msgLow.includes("pays")) {
+    const pays = { france:"FR", guadeloupe:"GP", martinique:"MQ", haiti:"HT", senegal:"SN", cameroun:"CM", maroc:"MA", bresil:"BR", canada:"CA", "etats-unis":"US", usa:"US" }
+    const p = Object.keys(pays).find(k => msgLow.includes(k)) || "GP"
+    const code = pays[p] || "GP"
+    try {
+      const [gdpR, infR] = await Promise.all([
+        fetch("https://api.worldbank.org/v2/country/"+code+"/indicator/NY.GDP.MKTP.CD?format=json&mrv=1").then(r=>r.json()).catch(()=>null),
+        fetch("https://api.worldbank.org/v2/country/"+code+"/indicator/FP.CPI.TOTL.ZG?format=json&mrv=1").then(r=>r.json()).catch(()=>null),
+      ])
+      const gdp = gdpR?.[1]?.[0]?.value ? (gdpR[1][0].value/1e9).toFixed(1)+" Mds USD" : "N/A"
+      const inf = infR?.[1]?.[0]?.value ? infR[1][0].value.toFixed(1)+"%" : "N/A"
+      const annee = gdpR?.[1]?.[0]?.date || "2023"
+      return res.status(200).json({ response: "📊 *Économie — "+p.charAt(0).toUpperCase()+p.slice(1)+"* ("+annee+")\n\n💰 PIB : *"+gdp+"*\n📈 Inflation : *"+inf+"*\n\nSource : World Bank\nBoudoum ! 🇬🇵" })
+    } catch(e) {}
+  }
+
+  // OPENAQ — qualité de l'air
+  if (msgLow.includes("qualité de l air") || msgLow.includes("qualite air") || msgLow.includes("pollution") || msgLow.includes("aqi") || msgLow.includes("air guadeloupe") || msgLow.includes("air martinique")) {
+    try {
+      const ville = msgLow.includes("martinique") ? "Fort-de-France" : "Pointe-a-Pitre"
+      const r = await fetch("https://api.openaq.org/v2/latest?city="+encodeURIComponent(ville)+"&limit=3", {headers:{"X-API-Key":""}}).then(r=>r.json()).catch(()=>null)
+      const results = r?.results
+      if (results && results.length > 0) {
+        const mesures = results[0].measurements.map(m => m.parameter.toUpperCase()+": "+m.value+" "+m.unit).join(" | ")
+        return res.status(200).json({ response: "💨 *Qualité Air — "+ville+"*\n\n"+mesures+"\n\nSource : OpenAQ\nBoudoum ! 🇬🇵" })
+      }
+    } catch(e) {}
+    return res.status(200).json({ response: "💨 Qualité air : données en cours de chargement pour les DOM-TOM. Boudoum ! 🇬🇵" })
+  }
+
+  // GDACS — catastrophes naturelles mondiales
+  if (msgLow.includes("catastrophe") || msgLow.includes("inondation") || msgLow.includes("tsunami") || msgLow.includes("eruption") || msgLow.includes("éruption") || msgLow.includes("glissement terrain") || msgLow.includes("disaster")) {
+    try {
+      const r = await fetch("https://www.gdacs.org/xml/rss_24h.xml").then(r=>r.text()).catch(()=>null)
+      if (r) {
+        const items = r.match(/<title>(.*?)<\/title>/g)?.slice(1,6) || []
+        const liste = items.map(i => "⚠️ "+i.replace(/<\/?title>/g,"")).join("\n")
+        return res.status(200).json({ response: "🌍 *Catastrophes Naturelles — 24h*\n\n"+(liste||"Aucun événement majeur")+"\n\nSource : GDACS\nBoudoum ! 🇬🇵" })
+      }
+    } catch(e) {}
+    return res.status(200).json({ response: "🌍 Données catastrophes indisponibles. Boudoum ! 🇬🇵" })
+  }
+
+  // WHO RSS — santé mondiale
+  if (msgLow.includes("epidemie") || msgLow.includes("épidémie") || msgLow.includes("pandemie") || msgLow.includes("pandémie") || msgLow.includes("sante mondiale") || msgLow.includes("santé mondiale") || msgLow.includes("who") || msgLow.includes("oms")) {
+    try {
+      const r = await fetch("https://www.who.int/rss-feeds/news-english.xml").then(r=>r.text()).catch(()=>null)
+      if (r) {
+        const items = r.match(/<title>(.*?)<\/title>/g)?.slice(1,4) || []
+        const liste = items.map(i => "🏥 "+i.replace(/<\/?title>/g,"")).join("\n")
+        return res.status(200).json({ response: "🏥 *Santé Mondiale — OMS*\n\n"+(liste||"Aucune alerte")+"\n\nSource : WHO/OMS\nBoudoum ! 🇬🇵" })
+      }
+    } catch(e) {}
+    return res.status(200).json({ response: "🏥 Données OMS indisponibles. Boudoum ! 🇬🇵" })
+  }
+
+  // CO2 / CLIMAT
+  if (msgLow.includes("co2") || msgLow.includes("carbone") || msgLow.includes("climat") || msgLow.includes("rechauffement") || msgLow.includes("réchauffement") || msgLow.includes("greenhouse")) {
+    try {
+      const r = await fetch("https://global-warming.org/api/co2-api").then(r=>r.json()).catch(()=>null)
+      const last = r?.co2?.slice(-1)[0]
+      if (last) {
+        return res.status(200).json({ response: "🌡️ *CO2 Atmosphérique*\n\nNiveau actuel : *"+last.trend+" ppm*\n📅 "+last.year+"/"+last.month+"\n\n⚠️ Seuil critique : 350 ppm\n🌍 Niveau actuel : "+(parseFloat(last.trend)>420?"🔴 Critique":"🟡 Élevé")+"\n\nSource : NOAA\nBoudoum ! 🇬🇵" })
+      }
+    } catch(e) {}
+    return res.status(200).json({ response: "🌡️ CO2 : données en chargement. Boudoum ! 🇬🇵" })
+  }
+
   // WORLDTIME — heure par pays
   if (msgLow.includes("heure") && (msgLow.includes("guadeloupe") || msgLow.includes("martinique") || msgLow.includes("canada") || msgLow.includes("paris") || msgLow.includes("new york") || msgLow.includes("dakar") || msgLow.includes("abidjan") || msgLow.includes("montreal") || msgLow.includes("reunion") || msgLow.includes("guyane"))) {
     const zones = { guadeloupe:"America/Guadeloupe", martinique:"America/Martinique", paris:"Europe/Paris", canada:"America/Toronto", montreal:"America/Montreal", "new york":"America/New_York", dakar:"Africa/Dakar", abidjan:"Africa/Abidjan", reunion:"Indian/Reunion", guyane:"America/Cayenne" }
