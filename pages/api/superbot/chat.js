@@ -1100,7 +1100,8 @@ async function getWikipedia(term) {
     }
     // 2. Médias locaux DOM-TOM
     try {
-      const domRes = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://la1ere.francetvinfo.fr/guadeloupe/rss.xml&count=4", { signal: AbortSignal.timeout(5000) })
+      const domNewsRaw = await getAllDOMTOMNews()
+      const domRes = { ok: true, domNews: domNewsRaw }
       const domData = await domRes.json()
       if (domData.items && domData.items.length > 0) {
         const actu = domData.items.slice(0,4).map(function(it) { return "• " + it.title }).join("\n")
@@ -1133,7 +1134,8 @@ async function getWikipedia(term) {
     }
     // 2. Médias locaux DOM-TOM
     try {
-      const domRes = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://la1ere.francetvinfo.fr/guadeloupe/rss.xml&count=4", { signal: AbortSignal.timeout(5000) })
+      const domNewsRaw = await getAllDOMTOMNews()
+      const domRes = { ok: true, domNews: domNewsRaw }
       const domData = await domRes.json()
       if (domData.items && domData.items.length > 0) {
         const actu = domData.items.slice(0,4).map(function(it) { return "• " + it.title }).join("\n")
@@ -4961,6 +4963,43 @@ function detectPremiumModule(msg) {
     if (keywords.some(k => m.includes(k))) return module
   }
   return null
+}
+
+
+// ===== RSS DOM-TOM UNIFIÉ — TOUTES SOURCES =====
+async function getAllDOMTOMNews() {
+  const RSS_SOURCES = [
+    { url: "https://la1ere.francetvinfo.fr/guadeloupe/rss.xml", label: "🇬🇵 La 1ère Guadeloupe" },
+    { url: "https://la1ere.francetvinfo.fr/martinique/rss.xml", label: "🇲🇶 La 1ère Martinique" },
+    { url: "https://la1ere.francetvinfo.fr/reunion/rss.xml", label: "🇷🇪 La 1ère Réunion" },
+    { url: "https://la1ere.francetvinfo.fr/guyane/rss.xml", label: "🇬🇫 La 1ère Guyane" },
+    { url: "https://la1ere.francetvinfo.fr/mayotte/rss.xml", label: "🇾🇹 La 1ère Mayotte" },
+    { url: "https://la1ere.francetvinfo.fr/nouvelle-caledonie/rss.xml", label: "🏝️ La 1ère Nouvelle-Calédonie" },
+    { url: "https://www.bondamanjak.com/feed/", label: "🇬🇵 Bondamanjak" },
+    { url: "https://outremers360.com/feed/", label: "🌍 Outremers360" },
+    { url: "https://www.zinfos974.com/feed/", label: "🇷🇪 Zinfos974" },
+    { url: "https://rci.fm/guadeloupe/rss.xml", label: "📻 RCI Guadeloupe" },
+    { url: "https://rci.fm/martinique/rss.xml", label: "📻 RCI Martinique" },
+    { url: "https://www.regionguadeloupe.fr/rss.xml", label: "🏛️ Région Guadeloupe" },
+  ]
+
+  const results = []
+  const promises = RSS_SOURCES.map(async (source) => {
+    try {
+      const res = await fetch(
+        "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(source.url) + "&count=2",
+        { signal: AbortSignal.timeout(4000) }
+      )
+      const data = await res.json()
+      if (data.items?.length > 0) {
+        const titles = data.items.map(i => "• " + i.title).join("\n")
+        results.push(source.label + ":\n" + titles)
+      }
+    } catch(e) {}
+  })
+
+  await Promise.allSettled(promises)
+  return results.join("\n\n")
 }
 
 export default async function handler(req, res) {
