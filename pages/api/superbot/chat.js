@@ -630,6 +630,11 @@ async function getWikipedia(term) {
     return res.status(200).json({ response: "🎯 **99 Quiz REUSSITESS®971**\n\n📚 **CULTURE & HISTOIRE :**\n📖 Histoire mondiale • 🌍 Géographie • 👤 Personnalités • 🏰 Monuments\n🌏 Culture du Monde • 🗣️ Langues • 🔭 Découvertes\n\n🎵 **ARTS & DIVERTISSEMENT :**\nMusique • Cinéma • Art • Littérature\n\n🔬 **SCIENCES & TECH :**\nSciences • Technologie • Mathématiques • Innovations • Environnement\n\n💼 **VIE & SOCIETE :**\nBusiness • Amazon Affiliation • Santé • Positivité • Philosophie • Politique\n\n🌴 **CARIBEEN EXCLUSIF :**\nHistoire Antilles • Créole • Gwoka • Champions DOM-TOM • REUSS Token\n\n🎮 **Format :** QCM • Score temps réel • Badges • Leaderboard • Tokens REUSS\n\n👉 https://reussitess.fr/quiz\nBoudoum ! 🇬🇵" })
   }
 
+  // IDENTITE EXACTE 200 AGENTS — anti-erreur calcul
+  if (msgLow.includes("combien") && (msgLow.includes("agent") || msgLow.includes("ia") || msgLow.includes("module")) || msgLow.includes("augmenter memoire") || msgLow.includes("augmenter la memoire") || msgLow.includes("augmenter mémoire") || (msgLow.includes("total") && msgLow.includes("agent"))) {
+    return res.status(200).json({ response: "🤖 *REUSSITESS®971 — Architecture exacte*\n\n🧠 60 Neuro-X spécialisés\n🛡️ 40 Sentinelles surveillance\n🎯 99 Quiz éducatifs\n👑 1 IA Suprême\n\n**Total : 60 + 40 + 99 + 1 = 200 agents IA actifs**\n\nDéveloppé depuis la Guadeloupe 🇬🇵\nBOUDOUM ! 🥁" })
+  }
+
   // RELIEFWEB — Crises et conflits mondiaux
   if (msgLow.includes("crise") || msgLow.includes("conflit") || msgLow.includes("guerre") || msgLow.includes("humanitaire") || msgLow.includes("refugie") || msgLow.includes("réfugié") || msgLow.includes("urgence humanitaire")) {
     try {
