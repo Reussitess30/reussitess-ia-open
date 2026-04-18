@@ -630,6 +630,27 @@ async function getWikipedia(term) {
     return res.status(200).json({ response: "🎯 **99 Quiz REUSSITESS®971**\n\n📚 **CULTURE & HISTOIRE :**\n📖 Histoire mondiale • 🌍 Géographie • 👤 Personnalités • 🏰 Monuments\n🌏 Culture du Monde • 🗣️ Langues • 🔭 Découvertes\n\n🎵 **ARTS & DIVERTISSEMENT :**\nMusique • Cinéma • Art • Littérature\n\n🔬 **SCIENCES & TECH :**\nSciences • Technologie • Mathématiques • Innovations • Environnement\n\n💼 **VIE & SOCIETE :**\nBusiness • Amazon Affiliation • Santé • Positivité • Philosophie • Politique\n\n🌴 **CARIBEEN EXCLUSIF :**\nHistoire Antilles • Créole • Gwoka • Champions DOM-TOM • REUSS Token\n\n🎮 **Format :** QCM • Score temps réel • Badges • Leaderboard • Tokens REUSS\n\n👉 https://reussitess.fr/quiz\nBoudoum ! 🇬🇵" })
   }
 
+  // PETROLE COMMODITES
+  if (msgLow.includes("p\u00e9trole") || msgLow.includes("petrole") || msgLow.includes("baril") || msgLow.includes("wti") || msgLow.includes("brent")) {
+    try {
+      const avKey = process.env.ALPHA_VANTAGE_KEY
+      const [wtiRes, brentRes] = await Promise.all([
+        fetch("https://www.alphavantage.co/query?function=WTI&interval=daily&apikey="+avKey).then(r=>r.json()).catch(()=>null),
+        fetch("https://www.alphavantage.co/query?function=BRENT&interval=daily&apikey="+avKey).then(r=>r.json()).catch(()=>null),
+      ])
+      const wti = wtiRes?.data?.[0]?.value ? parseFloat(wtiRes.data[0].value).toFixed(2) : null
+      const brent = brentRes?.data?.[0]?.value ? parseFloat(brentRes.data[0].value).toFixed(2) : null
+      let rep = "\u26fd\ufe0f *PRIX DU P\u00c9TROLE*\n\n"
+      if (wti) rep += "\u26fd WTI : *"+wti+" USD/baril*\n"
+      if (brent) rep += "\ud83d\udee2\ufe0f Brent : *"+brent+" USD/baril*\n"
+      if (!wti && !brent) rep += "\u26a0\ufe0f Donn\u00e9es indisponibles. R\u00e9essaie.\n"
+      rep += "\n\ud83d\udcca Source : Alpha Vantage\nBoudoum ! \ud83c\uddec\ud83c\uddf5"
+      return res.status(200).json({ response: rep })
+    } catch(e) {
+      return res.status(200).json({ response: "P\u00e9trole indisponible. Boudoum !" })
+    }
+  }
+
   if (msgLow.includes("crypto art") || msgLow.includes("generative art") || msgLow.includes("art génératif") || msgLow.includes("créer avec ia") || msgLow.includes("midjourney")) {
 
   // ===== GÉNÉRATION CONTENU SOCIAL =====
