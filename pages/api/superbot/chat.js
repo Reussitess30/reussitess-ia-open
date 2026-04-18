@@ -630,6 +630,46 @@ async function getWikipedia(term) {
     return res.status(200).json({ response: "🎯 **99 Quiz REUSSITESS®971**\n\n📚 **CULTURE & HISTOIRE :**\n📖 Histoire mondiale • 🌍 Géographie • 👤 Personnalités • 🏰 Monuments\n🌏 Culture du Monde • 🗣️ Langues • 🔭 Découvertes\n\n🎵 **ARTS & DIVERTISSEMENT :**\nMusique • Cinéma • Art • Littérature\n\n🔬 **SCIENCES & TECH :**\nSciences • Technologie • Mathématiques • Innovations • Environnement\n\n💼 **VIE & SOCIETE :**\nBusiness • Amazon Affiliation • Santé • Positivité • Philosophie • Politique\n\n🌴 **CARIBEEN EXCLUSIF :**\nHistoire Antilles • Créole • Gwoka • Champions DOM-TOM • REUSS Token\n\n🎮 **Format :** QCM • Score temps réel • Badges • Leaderboard • Tokens REUSS\n\n👉 https://reussitess.fr/quiz\nBoudoum ! 🇬🇵" })
   }
 
+  // WORLDTIME — heure par pays
+  if (msgLow.includes("heure") && (msgLow.includes("guadeloupe") || msgLow.includes("martinique") || msgLow.includes("canada") || msgLow.includes("paris") || msgLow.includes("new york") || msgLow.includes("dakar") || msgLow.includes("abidjan") || msgLow.includes("montreal") || msgLow.includes("reunion") || msgLow.includes("guyane"))) {
+    const zones = { guadeloupe:"America/Guadeloupe", martinique:"America/Martinique", paris:"Europe/Paris", canada:"America/Toronto", montreal:"America/Montreal", "new york":"America/New_York", dakar:"Africa/Dakar", abidjan:"Africa/Abidjan", reunion:"Indian/Reunion", guyane:"America/Cayenne" }
+    const zone = Object.keys(zones).find(k => msgLow.includes(k))
+    if (zone) {
+      try {
+        const r = await fetch("https://worldtimeapi.org/api/timezone/"+zones[zone]).then(r=>r.json())
+        const dt = new Date(r.datetime)
+        const heure = dt.toLocaleTimeString("fr-FR", {hour:"2-digit", minute:"2-digit"})
+        const date = dt.toLocaleDateString("fr-FR", {weekday:"long", day:"numeric", month:"long"})
+        return res.status(200).json({ response: "🕐 *Heure en "+zone.charAt(0).toUpperCase()+zone.slice(1)+"*\n\n⏰ "+heure+"\n📅 "+date+"\n🌍 Fuseau : "+zones[zone]+"\n\nBoudoum ! 🇬🇵" })
+      } catch(e) {
+        const heure = new Date().toLocaleTimeString("fr-FR", {timeZone: zones[zone], hour:"2-digit", minute:"2-digit"})
+        return res.status(200).json({ response: "🕐 Heure en "+zone+" : *"+heure+"*\nBoudoum ! 🇬🇵" })
+      }
+    }
+  }
+
+  // CITATION INSPIRANTE
+  if (msgLow.includes("citation") || msgLow.includes("inspire moi") || msgLow.includes("motivation du jour") || msgLow === "inspire" || msgLow === "citation") {
+    const citations = [
+      { texte: "La liberte n est pas donnee, elle se conquiert.", auteur: "Frantz Fanon" },
+      { texte: "Ma bouche sera la bouche des malheurs qui n ont pas de bouche.", auteur: "Aime Cesaire" },
+      { texte: "Nou la, fos e kouraj — On avance ensemble.", auteur: "REUSSITESS®971" },
+      { texte: "Tè a chanpion yo — La terre des champions.", auteur: "Guadeloupe 🇬🇵" },
+      { texte: "L identite n est pas figee, elle est un perpetuel devenir.", auteur: "Edouard Glissant" },
+      { texte: "Ce n est pas parce que les choses sont difficiles que nous n osons pas, c est parce que nous n osons pas qu elles sont difficiles.", auteur: "Seneque" },
+      { texte: "Le succes c est aller d echec en echec sans perdre son enthousiasme.", auteur: "Winston Churchill" },
+      { texte: "Positivite a l infini — BOUDOUM !", auteur: "REUSSITESS®971 🥁" },
+    ]
+    try {
+      const r = await fetch("https://quoteslate.it/api/quotes/random").then(r=>r.json()).catch(()=>null)
+      if (r?.quote) {
+        return res.status(200).json({ response: "✨ *CITATION DU JOUR*\n\n\""+r.quote+"\"\n\n— "+r.author+"\n\nBoudoum ! 🇬🇵" })
+      }
+    } catch(e) {}
+    const c = citations[Math.floor(Math.random()*citations.length)]
+    return res.status(200).json({ response: "✨ *CITATION CARIBÉENNE*\n\n\""+c.texte+"\"\n\n— "+c.auteur+"\n\nBoudoum ! 🇬🇵" })
+  }
+
   // PETROLE COMMODITES
   if (msgLow.includes("p\u00e9trole") || msgLow.includes("petrole") || msgLow.includes("baril") || msgLow.includes("wti") || msgLow.includes("brent")) {
     try {
