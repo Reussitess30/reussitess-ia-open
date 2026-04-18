@@ -2549,16 +2549,24 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
   const needsEncyclo = sujetsEncyclo.some(s => msgLow.includes(s))
   if (needsEncyclo) {
     try {
-      const wiki = await encyclopedieAntillesAfrique(message)
+      // Essai 1 — encyclopédie caribéenne
+      let wiki = await encyclopedieAntillesAfrique(message)
+      // Essai 2 — Wikipedia général si pas de résultat caribéen
+      if (!wiki) wiki = await rechercheWikipedia(message, "fr")
       if (wiki) {
-        // Enrichit avec Groq
         const groqText = await groqFetch([
-              { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
+              { role: "system", content: `Tu es REUSSITESS AI, assistant encyclopédique universel. Réponds avec précision sur le sujet demandé. Si la personne est connue, présente sa biographie. Boudoum!` },
               { role: "user", content: "Question: "+message+"\n\nSource Wikipedia:\n"+wiki }
             ], 4096)
         const rep = groqText
-        if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS — Wikipedia Live**\n\n"+rep+"\n\nSource: Wikipedia FR\n\nBoudoum ! 🇬🇵" })
+        if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS**\n\n"+rep+"\n\nBoudoum ! 🇬🇵" })
       }
+      // Fallback Groq direct si Wikipedia vide
+      const groqDirect = await groqFetch([
+        { role: "system", content: `Tu es REUSSITESS AI, assistant encyclopédique universel. Réponds avec précision. Boudoum!` },
+        { role: "user", content: message }
+      ], 2048)
+      if (groqDirect) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS**\n\n"+groqDirect+"\n\nBoudoum ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBoudoum ! 🇬🇵" })
     }
@@ -7988,16 +7996,24 @@ Boudoum ! 🇬🇵`})
   const needsEncyclo = sujetsEncyclo.some(s => msgLow.includes(s))
   if (needsEncyclo) {
     try {
-      const wiki = await encyclopedieAntillesAfrique(message)
+      // Essai 1 — encyclopédie caribéenne
+      let wiki = await encyclopedieAntillesAfrique(message)
+      // Essai 2 — Wikipedia général si pas de résultat caribéen
+      if (!wiki) wiki = await rechercheWikipedia(message, "fr")
       if (wiki) {
-        // Enrichit avec Groq
         const groqText = await groqFetch([
-              { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
+              { role: "system", content: `Tu es REUSSITESS AI, assistant encyclopédique universel. Réponds avec précision sur le sujet demandé. Si la personne est connue, présente sa biographie. Boudoum!` },
               { role: "user", content: "Question: "+message+"\n\nSource Wikipedia:\n"+wiki }
             ], 4096)
         const rep = groqText
-        if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS — Wikipedia Live**\n\n"+rep+"\n\nSource: Wikipedia FR\n\nBoudoum ! 🇬🇵" })
+        if (rep) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS**\n\n"+rep+"\n\nBoudoum ! 🇬🇵" })
       }
+      // Fallback Groq direct si Wikipedia vide
+      const groqDirect = await groqFetch([
+        { role: "system", content: `Tu es REUSSITESS AI, assistant encyclopédique universel. Réponds avec précision. Boudoum!` },
+        { role: "user", content: message }
+      ], 2048)
+      if (groqDirect) return res.status(200).json({ pdfAction: pdfType, response: "📚 **Encyclopédie REUSSITESS**\n\n"+groqDirect+"\n\nBoudoum ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBoudoum ! 🇬🇵" })
     }
