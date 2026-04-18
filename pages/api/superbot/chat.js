@@ -3951,7 +3951,22 @@ async function getDashboardStats() {
     const visitors = await redis.get('reussitess_visitors') || 0
     const today = new Date().toISOString().substring(0,10)
     const todayRequests = await redis.get('requests:'+today) || 0
-    return `📊 **Dashboard REUSSITESS AI**\n\n👥 Visiteurs total: **${visitors}**\n📡 Requêtes aujourd'hui: **${todayRequests}**\n🌍 14 pays actifs\n⚡ 6 niveaux fallback IA\n🛡️ Chiffrement AES-256 actif\n🔔 Alertes Telegram actives\n\n⏰ ${new Date().toISOString().substring(0,19)} UTC\nBoudoum ! 🇬🇵`
+    // Top pays
+    let paysStats = ""
+    try {
+      const paysKeys = await redis.keys('visitors:country:*')
+      if (paysKeys && paysKeys.length > 0) {
+        const paysData = []
+        for (const key of paysKeys.slice(0, 8)) {
+          const count = await redis.get(key)
+          const pays = key.replace('visitors:country:', '')
+          paysData.push({ pays, count: parseInt(count) || 0 })
+        }
+        paysData.sort((a, b) => b.count - a.count)
+        paysStats = "\n\n🌍 **Top Pays :**\n" + paysData.map(p => "• " + p.pays + ": " + p.count).join("\n")
+      }
+    } catch(e) {}
+    return `📊 **Dashboard REUSSITESS AI**\n\n👥 Visiteurs total: **${visitors}**\n📡 Requêtes aujourd'hui: **${todayRequests}**⚡ 6 niveaux fallback IA\n🛡️ Chiffrement AES-256 actif\n🔔 Alertes Telegram actives${paysStats}\n\n⏰ ${new Date().toISOString().substring(0,19)} UTC\nBoudoum ! 🇬🇵`
   } catch(e) { return "📊 Dashboard en chargement. Réessaie ! Boudoum 🇬🇵" }
 }
 
