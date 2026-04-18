@@ -46,7 +46,7 @@ function getPolitiquesGuadeloupe() {
 • **Solanges Nadille** — Guadeloupe Solidaire (GUSR)
 • **Victorin Lurel** — Ensemble, Nou Tout (PS)
 
-🗓️ **Prochaines élections :** Municipales 15 et 22 mars 2026
+🗓️ **Élections Municipales :** 15 et 22 mars 2026 — Résultats en cours de dépouillement
 
 🔗 Sources : regionguadeloupe.fr | cg971.fr | assemblee-nationale.fr
 
@@ -2600,7 +2600,7 @@ Boudoum ! 🇬🇵` })
       const rates = rateD.rates
       return res.status(200).json({ pdfAction: pdfType, response: "💱 **Convertisseur Caribéen Temps Réel**\n\n1 EUR = "+rates.USD?.toFixed(2)+" USD 🇺🇸\n1 EUR = "+rates.GBP?.toFixed(2)+" GBP 🇬🇧\n1 EUR = "+rates.CAD?.toFixed(2)+" CAD 🇨🇦\n1 EUR = "+rates.BRL?.toFixed(2)+" BRL 🇧🇷\n1 EUR = "+rates.XCD?.toFixed(2)+" XCD 🇧🇧 (Dollar Caraïbes)\n1 EUR = "+rates.HTG?.toFixed(2)+" HTG 🇭🇹 (Gourde Haïtienne)\n1 EUR = "+rates.MAD?.toFixed(2)+" MAD 🇲🇦\n1 EUR = "+rates.XOF?.toFixed(2)+" XOF 🌍 (Franc CFA Ouest)\n1 EUR = "+rates.XAF?.toFixed(2)+" XAF 🌍 (Franc CFA Central)\n\n📊 Source: ExchangeRate-API\nBoudoum ! 🇬🇵" })
     } catch(e) {
-      return res.status(200).json({ pdfAction: pdfType, response: "💱 **Convertisseur Caribéen**\n\nTaux approximatifs (mars 2026):\n\n1 EUR ≈ 1.08 USD 🇺🇸\n1 EUR ≈ 0.85 GBP 🇬🇧\n1 EUR ≈ 1.48 CAD 🇨🇦\n1 EUR ≈ 5.80 BRL 🇧🇷\n1 EUR ≈ 2.93 XCD 🇧🇧 (Dollar Caraïbes)\n1 EUR ≈ 142 HTG 🇭🇹 (Gourde Haïtienne)\n1 EUR ≈ 10.7 MAD 🇲🇦\n1 EUR ≈ 655 XOF 🌍 (Franc CFA Ouest)\n1 EUR ≈ 655 XAF 🌍 (Franc CFA Central)\n\n⚠️ Vérifiez sur xe.com pour taux exacts\nBoudoum ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💱 **Convertisseur Caribéen**\n\nTaux approximatifs (avril 2026):\n\n1 EUR ≈ 1.08 USD 🇺🇸\n1 EUR ≈ 0.85 GBP 🇬🇧\n1 EUR ≈ 1.48 CAD 🇨🇦\n1 EUR ≈ 5.80 BRL 🇧🇷\n1 EUR ≈ 2.93 XCD 🇧🇧 (Dollar Caraïbes)\n1 EUR ≈ 142 HTG 🇭🇹 (Gourde Haïtienne)\n1 EUR ≈ 10.7 MAD 🇲🇦\n1 EUR ≈ 655 XOF 🌍 (Franc CFA Ouest)\n1 EUR ≈ 655 XAF 🌍 (Franc CFA Central)\n\n⚠️ Vérifiez sur xe.com pour taux exacts\nBoudoum ! 🇬🇵" })
     }
   }
 
@@ -9058,7 +9058,7 @@ Si on te demande l'heure, la date ou le jour, utilise EXACTEMENT ces données te
 REGLES ABSOLUES: 1.Tu as des donnees LIVE ci-dessous, UTILISE-LES TOUJOURS. 2.Ne jamais dire je n ai pas acces aux donnees temps reel. 3.Actualites=cite RFI/BBC/France24. 4.Crypto=cite prix reels. 5.Meteo=cite temperature reelle. 6.Change=cite vrais taux.
 DONNEES LIVE OBLIGATOIRES: ${nc||"indisponibles"}
 CONTEXTE REUSSITESS (utilise si pertinent): ${getRAGContext(message)||""}
-Tu es REUSSITESS®971 AI, chef d'orchestre de l'écosystème REUSSITESS®971. IMPORTANT: Tu es REUSSITESS AI mis à jour en mars 2026.
+Tu es REUSSITESS®971 AI, chef d'orchestre de l'écosystème REUSSITESS®971. IMPORTANT: Tu es REUSSITESS AI mis à jour en avril 2026. RÈGLES ABSOLUES: 1) JAMAIS poser une question sans donner une réponse complète d'abord. 2) Toujours répondre directement et enchaîner. 3) Si besoin de précision, donne quand même une réponse générale puis demande. 4) Termine toujours par Boudoum ! 🇬🇵 Tu as 200+ modules IA, 12 sources RSS DOM-TOM, 60 agents Neuro-X, 5 modules Premium, PayPal 4,99€/mois. Tu DOIS toujours répondre directement sans poser de question préalable. Si tu manques d'info, donne quand même une réponse complète avec ce que tu sais.
 
 NOUVELLES CAPACITÉS MARS 2026:
 - 📷 Analyse d'images (Groq Llama-4 Scout 17B — meilleur modèle vision)
@@ -9105,7 +9105,7 @@ NOUVELLES CAPACITÉS MARS 2026:
 - 🧠 Function Calling: Groq détecte automatiquement météo, séismes, cyclones, devises, crypto, emploi, dates
 - 📚 RAG: base de connaissances REUSSITESS injectée automatiquement
 - 🤖 Multi-agents: 60 Neuro-X orchestrés de façon autonome
-- 🗓️ Municipales DOM-TOM: 15 et 22 mars 2026
+- 🗓️ Municipales DOM-TOM: 15 et 22 mars 2026 — Élections passées
 SOURCES DE DONNÉES RÉELLES (cite uniquement celles-ci):
 - Météo: Open-Meteo API (openmeteo.com)
 - Séismes: USGS Earthquake API (earthquake.usgs.gov)
@@ -9587,7 +9587,7 @@ function getPolitiquesMartinique() {
 • **Catherine Conconne** — PS
 • **Maurice Antiste** — PS
 
-🗓️ **Prochaines élections :** Municipales mars 2026
+🗓️ **Élections Municipales :** Mars 2026 — Résultats disponibles
 
 🔗 Sources : collectivitedemartinique.mq | assemblee-nationale.fr
 
@@ -9651,7 +9651,7 @@ function getPolitiquesReunion() {
 • **Viviane Malet** — LR
 • **Audrey Belim** — PS
 
-🗓️ **Prochaines élections :** Municipales mars 2026
+🗓️ **Élections Municipales :** Mars 2026 — Résultats disponibles
 
 🔗 Sources : regionreunion.com | departement974.fr | assemblee-nationale.fr
 
@@ -9678,7 +9678,7 @@ function getPolitiquesMayotte() {
 
 🔥 **Contexte 2025 :** Mayotte dévastée par le cyclone Chido (14 décembre 2024). Reconstruction majeure en cours. Loi programme Mayotte adoptée août 2025. Jeux des Îles 2036.
 
-🗓️ **Prochaines élections :** Municipales mars 2026
+🗓️ **Élections Municipales :** Mars 2026 — Résultats disponibles
 
 🔗 Sources : mayotte.fr | assemblee-nationale.fr
 
