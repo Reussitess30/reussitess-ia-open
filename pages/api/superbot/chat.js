@@ -5083,6 +5083,97 @@ export default async function handler(req, res) {
   }
   const msgLow = message.toLowerCase()  // ===== GARDE-FOU JURIDIQUE =====
 
+
+  // ===== QUIZ ENGINE — CHAT =====
+  if (msgLow.includes('quiz') && (msgLow.includes('jouer') || msgLow.includes('commencer') || msgLow.includes('démarre') || msgLow.includes('lance') || msgLow.includes('start quiz'))) {
+    try {
+      const { Redis } = await import('@upstash/redis')
+      const redis = Redis.fromEnv()
+      const fs = await import('fs')
+      const path = await import('path')
+      const files = fs.default.readdirSync(path.default.join(process.cwd())).filter(f => f.startsWith('quiz_') && f.endsWith('.js'))
+      const quizList = files.map(f => f.replace('quiz_', '').replace('.js', '')).slice(0, 20)
+      return res.status(200).json({ pdfAction: null, response: "🎯 **Quiz REUSSITESS — Choisis ton thème !**\n\n" + quizList.map((q, i) => `${i+1}. ${q.replace(/_/g, ' ')}`).join('\n') + "\n\n💬 Tape **quiz [thème]** pour commencer\nExemple: *quiz Histoire* ou *quiz Afrique*\n\nBoudoum ! 🇬🇵" })
+    } catch(e) {}
+  }
+
+  // Quiz direct — ex: "quiz Histoire"
+  const quizMatch = msgLow.match(/^quiz\s+(.+)$/)
+  if (quizMatch) {
+    try {
+      const quizName = quizMatch[1].trim().replace(/\s+/g, '_')
+      const capitalize = quizName.charAt(0).toUpperCase() + quizName.slice(1)
+      
+      // Vérifier si session en cours
+      const { Redis } = await import('@upstash/redis')
+      const redis = Redis.fromEnv()
+      
+      // Démarrer quiz
+      const quizRes = await fetch('https://reussitess.fr/api/quiz/engine', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'start', userId, quizId: capitalize })
+      })
+      const quizData = await quizRes.json()
+      
+      if (quizData.error) {
+        return res.status(200).json({ pdfAction: null, response: `❌ Quiz "${capitalize}" non trouvé.\n\nTape **jouer quiz** pour voir tous les thèmes disponibles.\n\nBoudoum ! 🇬🇵` })
+      }
+      
+      const q = quizData.question
+      return res.status(200).json({ pdfAction: null, response: `🎯 **${q.quizTitle}** — Question 1/${q.total}\n\n❓ ${q.text}\n\n${q.answers.map((a, i) => `${['A','B','C'][i]}) ${a}`).join('\n')}\n\n💬 Réponds avec **A**, **B** ou **C**\n\nBoudoum ! 🇬🇵` })
+    } catch(e) {}
+  }
+
+  // Réponse quiz en cours — A, B ou C
+  if (['a', 'b', 'c'].includes(msgLow.trim()) || ['a)', 'b)', 'c)'].includes(msgLow.trim())) {
+    try {
+      const { Redis } = await import('@upstash/redis')
+      const redis = Redis.fromEnv()
+      const sessionData = await redis.get(`quiz:session:${userId}`)
+      
+      if (sessionData) {
+        const answerMap = { 'a': 0, 'b': 1, 'c': 2, 'a)': 0, 'b)': 1, 'c)': 2 }
+        const answerIndex = answerMap[msgLow.trim()]
+        
+        const quizRes = await fetch('https://reussitess.fr/api/quiz/engine', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'answer', userId, answerIndex })
+        })
+        const quizData = await quizRes.json()
+        
+        if (quizData.action === 'finished') {
+          const r = quizData.result
+          const medal = r.percentage >= 80 ? '🥇' : r.percentage >= 60 ? '🥈' : '🥉'
+          return res.status(200).json({ pdfAction: null, response: `${quizData.lastQuestion.correct ? '✅' : '❌'} ${quizData.lastQuestion.correct ? 'Bonne réponse' : 'Mauvaise réponse'} — ${quizData.lastQuestion.correctAnswer}\n📖 ${quizData.lastQuestion.explanation}\n\n${medal} **Résultat Final**\n\n🎯 Score: ${r.score}/${r.total} (${r.percentage}%)\n⭐ Points gagnés: +${r.points} pts\n🏆 Total: ${r.totalPoints} pts\n\nBoudoum ! 🇬🇵` })
+        }
+        
+        if (quizData.action === 'question') {
+          const fb = quizData.feedback
+          const q = quizData.question
+          return res.status(200).json({ pdfAction: null, response: `${fb.correct ? '✅ Bonne réponse !' : '❌ Mauvaise réponse'}\n📖 ${fb.explanation}\n\n❓ **Question ${q.index+1}/${q.total}** — Score: ${q.score}\n\n${q.text}\n\n${q.answers.map((a, i) => `${['A','B','C'][i]}) ${a}`).join('\n')}\n\nBoudoum ! 🇬🇵` })
+        }
+      }
+    } catch(e) {}
+  }
+
+  // Mon score quiz
+  if (msgLow.includes('mon score') || msgLow.includes('mes points quiz') || msgLow.includes('mon classement quiz')) {
+    try {
+      const quizRes = await fetch('https://reussitess.fr/api/quiz/engine', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'score', userId })
+      })
+      const data = await quizRes.json()
+      const history = data.quizzes?.slice(0, 5).map(q => `• ${q.title}: ${q.score}/${q.total} (${q.percentage}%) +${q.points}pts`).join('\n') || 'Aucun quiz joué'
+      return res.status(200).json({ pdfAction: null, response: `🏆 **Ton Score REUSSITESS**\n\n⭐ Total Points: ${data.totalPoints || 0}\n\n📊 Derniers quiz:\n${history}\n\nBoudoum ! 🇬🇵` })
+    } catch(e) {}
+  }
+  // ===== FIN QUIZ ENGINE =====
+
+
   // ===== RAG CONTEXT — AUTO-CORRECTION TEMPS RÉEL =====
   let ragContext = null
   try {

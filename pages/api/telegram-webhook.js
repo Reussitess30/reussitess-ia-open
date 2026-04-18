@@ -293,6 +293,70 @@ Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
       })
 
 
+
+      if (data === 'quiz_menu') {
+        return await sendMsg(chatId, '🎯 *Quiz REUSSITESS — Choisis ton thème !*\n\nHistoire, Culture, Sciences, Crypto, Afrique, Amazon, Sport...\n\nTape le nom du quiz:\nEx: *quiz Histoire* ou *quiz Afrique*', {
+          inline_keyboard: [
+            [{ text: '🌍 Quiz Afrique', callback_data: 'quiz_Afrique' }, { text: '📚 Quiz Histoire', callback_data: 'quiz_Histoire' }],
+            [{ text: '💰 Quiz Amazon', callback_data: 'quiz_Amazon' }, { text: '🔬 Quiz Sciences', callback_data: 'quiz_Sciences' }],
+            [{ text: '🏆 Mon Score', callback_data: 'quiz_score' }]
+          ]
+        })
+      }
+
+      if (data === 'quiz_score') {
+        const scoreRes = await fetch('https://reussitess.fr/api/quiz/engine', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'score', userId: chatId })
+        })
+        const scoreData = await scoreRes.json()
+        const history = scoreData.quizzes?.slice(0, 3).map(q => `• ${q.title}: ${q.score}/${q.total} (${q.percentage}%)`).join('\n') || 'Aucun quiz joué'
+        return await sendMsg(chatId, `🏆 *Ton Score REUSSITESS*\n\n⭐ Total: ${scoreData.totalPoints || 0} pts\n\n${history}\n\nBoudoum ! 🇬🇵`)
+      }
+
+      if (data.startsWith('quiz_')) {
+        const quizId = data.replace('quiz_', '')
+        const quizRes = await fetch('https://reussitess.fr/api/quiz/engine', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'start', userId: chatId, quizId })
+        })
+        const quizData = await quizRes.json()
+        if (quizData.error) return await sendMsg(chatId, '❌ Quiz non trouvé. Tape *jouer quiz* pour voir les thèmes.')
+        const q = quizData.question
+        return await sendMsg(chatId, `🎯 *${q.quizTitle}* — Q1/${q.total}\n\n❓ ${q.text}`, {
+          inline_keyboard: q.answers.map((a, i) => [{ text: ['A','B','C'][i] + ') ' + a, callback_data: `qans_${['a','b','c'][i]}` }])
+        })
+      }
+
+      if (data.startsWith('qans_')) {
+        const ansMap = { 'qans_a': 0, 'qans_b': 1, 'qans_c': 2 }
+        const answerIndex = ansMap[data]
+        const quizRes = await fetch('https://reussitess.fr/api/quiz/engine', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'answer', userId: chatId, answerIndex })
+        })
+        const quizData = await quizRes.json()
+
+        if (quizData.action === 'finished') {
+          const r = quizData.result
+          const medal = r.percentage >= 80 ? '🥇' : r.percentage >= 60 ? '🥈' : '🥉'
+          return await sendMsg(chatId, `${quizData.lastQuestion.correct ? '✅' : '❌'} ${quizData.lastQuestion.correctAnswer}\n📖 ${quizData.lastQuestion.explanation}\n\n${medal} *Score: ${r.score}/${r.total} (${r.percentage}%)*\n⭐ +${r.points} pts\n🏆 Total: ${r.totalPoints} pts\n\nBoudoum ! 🇬🇵`, {
+            inline_keyboard: [[{ text: '🎯 Rejouer', callback_data: 'quiz_menu' }, { text: '🏠 Menu', callback_data: 'menu' }]]
+          })
+        }
+
+        if (quizData.action === 'question') {
+          const fb = quizData.feedback
+          const q = quizData.question
+          return await sendMsg(chatId, `${fb.correct ? '✅' : '❌'} ${fb.correctAnswer}\n📖 ${fb.explanation}\n\n❓ Q${q.index+1}/${q.total} — Score: ${q.score}\n\n${q.text}`, {
+            inline_keyboard: q.answers.map((a, i) => [{ text: ['A','B','C'][i] + ') ' + a, callback_data: `qans_${['a','b','c'][i]}` }])
+          })
+        }
+      }
+
       if (data === 'premium_menu') {
         return await sendMsg(chatId, '👑 *REUSSITESS PREMIUM*\n\n🌍 Traducteur Créole IA\n💰 Comparateur Transfert Argent\n📋 Générateur CV + Dossier Admin\n🛂 Assistant Visa 14 pays\n🧠 Coach IA Mémoire Longue\n\n4,99€/mois — Sans engagement', {
           inline_keyboard: [
