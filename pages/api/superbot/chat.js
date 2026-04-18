@@ -1030,7 +1030,7 @@ async function getWikipedia(term) {
             { role: "system", content: "Tu es Neuro-X Juridique, expert aides sociales DOM-TOM (RSA, APL, CAF, AAH, aide logement). Guide précis sur montants, conditions, démarches. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
-      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Juridique — Aides Sociales DOM-TOM**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Social — Aides DOM-TOM**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBoudoum ! 🇬🇵" })
     }
@@ -5182,6 +5182,10 @@ export default async function handler(req, res) {
   // ===== FIN RAG =====
 
   // ===== NEURO-X DÉTECTION PRIORITAIRE =====
+  if (msgLow === "neuro-x" || msgLow === "neuro x" || msgLow === "neurox" || (msgLow.includes("neuro-x") && !msgLow.includes("neuro-x ") && msgLow.trim() === "neuro-x")) {
+    return res.status(200).json({ pdfAction: pdfType, response: "🧠 **NEURO-X — 60 Agents Spécialisés**\n\nTape *neuro-x [domaine]* pour activer un agent :\n\n💰 neuro-x finance\n🏢 neuro-x business\n🎨 neuro-x créatif\n🍽️ neuro-x cuisine\n⚖️ neuro-x juridique\n🏥 neuro-x santé\n📚 neuro-x éducation\n✈️ neuro-x voyage\n🏗️ neuro-x immobilier\n💻 neuro-x tech\n🎵 neuro-x musique\n🌍 neuro-x diaspora\n🧘 neuro-x psychologie\n🌱 neuro-x environnement\n📊 neuro-x marketing\n... et 45 autres agents !\n\n💬 Exemple: *neuro-x cuisine*\n\nBoudoum ! 🇬🇵" })
+  }
+
   if (msgLow.includes("neuro-x") || msgLow.startsWith("nx-")) {
     const agentMap = {
       "finance": { nom: "NX-001 Finance", prompt: "Tu es Neuro-X Finance, expert crypto, DeFi, Token REUSS, investissement et marchés financiers caribéens. Réponds en français avec des données précises." },
@@ -6847,7 +6851,7 @@ Boudoum ! 🇬🇵`})
             { role: "system", content: "Tu es Neuro-X Créatif, expert cinéma caribéen. Boudoum!" },
             { role: "user", content: message }
           ], 2048)
-      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Juridique — Aides Sociales DOM-TOM**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Social — Aides DOM-TOM**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBoudoum ! 🇬🇵" })
     }
