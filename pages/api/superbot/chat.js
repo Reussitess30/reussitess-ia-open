@@ -1101,8 +1101,7 @@ async function getWikipedia(term) {
     // 2. Médias locaux DOM-TOM
     try {
       const domNewsRaw = await getAllDOMTOMNews()
-      const domRes = { ok: true, domNews: domNewsRaw }
-      const domData = await domRes.json()
+      const domData = { items: [], domNews: domNewsRaw }
       if (domData.items && domData.items.length > 0) {
         const actu = domData.items.slice(0,4).map(function(it) { return "• " + it.title }).join("\n")
         sections.push("🌴 **Guadeloupe 1ère — Actu Locale**\n" + actu)
@@ -1135,8 +1134,7 @@ async function getWikipedia(term) {
     // 2. Médias locaux DOM-TOM
     try {
       const domNewsRaw = await getAllDOMTOMNews()
-      const domRes = { ok: true, domNews: domNewsRaw }
-      const domData = await domRes.json()
+      const domData = { items: [], domNews: domNewsRaw }
       if (domData.items && domData.items.length > 0) {
         const actu = domData.items.slice(0,4).map(function(it) { return "• " + it.title }).join("\n")
         sections.push("🌴 **Guadeloupe 1ère — Actu Locale**\n" + actu)
@@ -9441,20 +9439,38 @@ async function getActualitesMartinique() {
 }
 
 async function getActualitesDOMTOM() {
-  try {
-    const r = await fetch('https://la1ere.francetvinfo.fr/feed', { headers: { 'User-Agent': 'Mozilla/5.0' } })
-    const xml = await r.text()
-    const items = xml.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0,6) || []
-    let result = "📰 **Actualités DOM-TOM — La 1ère**\n\n"
-    for (const item of items) {
-      const title = item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || item.match(/<title>(.*?)<\/title>/)?.[1] || ''
-      if (title) result += `• ${title}\n\n`
-    }
-    result += "🔗 https://la1ere.francetvinfo.fr"
-    return result
-  } catch(e) {
-    return "📰 Actualités DOM-TOM :\n\n🔗 https://la1ere.francetvinfo.fr\n🔗 https://outremers360.com"
-  }
+  const sources = [
+    { url: "https://la1ere.francetvinfo.fr/guadeloupe/rss.xml", label: "🇬🇵 La 1ère Guadeloupe" },
+    { url: "https://la1ere.francetvinfo.fr/martinique/rss.xml", label: "🇲🇶 La 1ère Martinique" },
+    { url: "https://la1ere.francetvinfo.fr/reunion/rss.xml", label: "🇷🇪 La 1ère Réunion" },
+    { url: "https://la1ere.francetvinfo.fr/guyane/rss.xml", label: "🇬🇫 La 1ère Guyane" },
+    { url: "https://la1ere.francetvinfo.fr/mayotte/rss.xml", label: "🇾🇹 La 1ère Mayotte" },
+    { url: "https://la1ere.francetvinfo.fr/nouvelle-caledonie/rss.xml", label: "🏝️ La 1ère Nouvelle-Calédonie" },
+    { url: "https://www.bondamanjak.com/feed/", label: "🇬🇵 Bondamanjak" },
+    { url: "https://outremers360.com/feed/", label: "🌍 Outremers360" },
+    { url: "https://www.zinfos974.com/feed/", label: "🇷🇪 Zinfos974" },
+    { url: "https://rci.fm/guadeloupe/rss.xml", label: "📻 RCI Guadeloupe" },
+    { url: "https://rci.fm/martinique/rss.xml", label: "📻 RCI Martinique" },
+    { url: "https://www.regionguadeloupe.fr/rss.xml", label: "🏛️ Région Guadeloupe" },
+  ]
+  let result = "📰 **Actualités DOM-TOM — 12 Sources Temps Réel**\n\n"
+  const promises = sources.map(async (source) => {
+    try {
+      const res = await fetch(
+        "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(source.url) + "&count=2",
+        { signal: AbortSignal.timeout(4000) }
+      )
+      const data = await res.json()
+      if (data.items?.length > 0) {
+        return source.label + ":\n" + data.items.map(i => "• " + i.title).join("\n")
+      }
+    } catch(e) {}
+    return null
+  })
+  const results = await Promise.allSettled(promises)
+  results.forEach(r => { if (r.status === 'fulfilled' && r.value) result += r.value + "\n\n" })
+  result += "Boudoum ! 🇬🇵"
+  return result
 }
 
 // ===== CREOLE GUADELOUPEEN =====
