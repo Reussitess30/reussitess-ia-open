@@ -5208,6 +5208,45 @@ export default async function handler(req, res) {
   } catch(e) {}
   // ===== FIN RAG =====
 
+
+  // ===== PERSONNALITÉS DOM-TOM — REDIS =====
+  if (msgLow.includes("qui est") || msgLow.includes("qui était") || msgLow.includes("parle moi de") || msgLow.includes("biographie")) {
+    try {
+      const { Redis } = await import('@upstash/redis')
+      const redis = Redis.fromEnv()
+      
+      // Chercher dans toutes les clés person:*
+      const personKeys = await redis.keys('person:*')
+      let found = null
+      
+      for (const key of personKeys) {
+        const data = await redis.get(key)
+        if (data) {
+          const person = typeof data === 'string' ? JSON.parse(data) : data
+          const nomLow = person.nom.toLowerCase()
+          // Vérifier si le nom est mentionné dans le message
+          const nomParts = nomLow.split(' ')
+          if (nomParts.some(part => part.length > 3 && msgLow.includes(part))) {
+            found = person
+            break
+          }
+        }
+      }
+      
+      if (found) {
+        const deces = found.deces ? ` — †${found.deces}` : ''
+        const naissance = found.naissance ? ` (${found.naissance}${deces})` : ''
+        const sources = found.sources?.length > 0 ? `\n\n🔗 [En savoir plus](${found.sources[0]})` : ''
+        return res.status(200).json({ 
+          pdfAction: pdfType, 
+          response: `👤 **${found.nom}**${naissance}\n🌍 Origine: ${found.origine}\n🎯 ${found.role}\n\n📖 ${found.bio}\n🏷️ Domaine: ${found.domaine}${sources}\n\nBoudoum ! 🇬🇵`
+        })
+      }
+    } catch(e) {}
+  }
+  // ===== FIN PERSONNALITÉS =====
+
+
   // ===== NEURO-X DÉTECTION PRIORITAIRE =====
   if (msgLow === "neuro-x" || msgLow === "neuro x" || msgLow === "neurox" || (msgLow.includes("neuro-x") && !msgLow.includes("neuro-x ") && msgLow.trim() === "neuro-x")) {
     return res.status(200).json({ pdfAction: pdfType, response: "🧠 **NEURO-X — 60 Agents Spécialisés**\n\nTape *neuro-x [domaine]* pour activer un agent :\n\n💰 neuro-x finance\n🏢 neuro-x business\n🎨 neuro-x créatif\n🍽️ neuro-x cuisine\n⚖️ neuro-x juridique\n🏥 neuro-x santé\n📚 neuro-x éducation\n✈️ neuro-x voyage\n🏗️ neuro-x immobilier\n💻 neuro-x tech\n🎵 neuro-x musique\n🌍 neuro-x diaspora\n🧘 neuro-x psychologie\n🌱 neuro-x environnement\n📊 neuro-x marketing\n... et 45 autres agents !\n\n💬 Exemple: *neuro-x cuisine*\n\nBoudoum ! 🇬🇵" })
