@@ -630,6 +630,57 @@ async function getWikipedia(term) {
     return res.status(200).json({ response: "🎯 **99 Quiz REUSSITESS®971**\n\n📚 **CULTURE & HISTOIRE :**\n📖 Histoire mondiale • 🌍 Géographie • 👤 Personnalités • 🏰 Monuments\n🌏 Culture du Monde • 🗣️ Langues • 🔭 Découvertes\n\n🎵 **ARTS & DIVERTISSEMENT :**\nMusique • Cinéma • Art • Littérature\n\n🔬 **SCIENCES & TECH :**\nSciences • Technologie • Mathématiques • Innovations • Environnement\n\n💼 **VIE & SOCIETE :**\nBusiness • Amazon Affiliation • Santé • Positivité • Philosophie • Politique\n\n🌴 **CARIBEEN EXCLUSIF :**\nHistoire Antilles • Créole • Gwoka • Champions DOM-TOM • REUSS Token\n\n🎮 **Format :** QCM • Score temps réel • Badges • Leaderboard • Tokens REUSS\n\n👉 https://reussitess.fr/quiz\nBoudoum ! 🇬🇵" })
   }
 
+  // RELIEFWEB — Crises et conflits mondiaux
+  if (msgLow.includes("crise") || msgLow.includes("conflit") || msgLow.includes("guerre") || msgLow.includes("humanitaire") || msgLow.includes("refugie") || msgLow.includes("réfugié") || msgLow.includes("urgence humanitaire")) {
+    try {
+      const r = await fetch("https://api.reliefweb.int/v1/reports?appname=reussitess&filter[field]=primary_country&profile=minimal&limit=5&sort[]=date:desc").then(r=>r.json()).catch(()=>null)
+      if (r?.data?.length) {
+        const liste = r.data.map(d => "⚠️ "+d.fields.title).join("\n")
+        return res.status(200).json({ response: "🌍 *Crises Humanitaires Mondiales*\n\n"+liste+"\n\nSource : ReliefWeb (OCHA)\nBoudoum ! 🇬🇵" })
+      }
+    } catch(e) {}
+    return res.status(200).json({ response: "🌍 Données crises indisponibles. Boudoum ! 🇬🇵" })
+  }
+
+  // UNHCR — Migrations et réfugiés
+  if (msgLow.includes("migration") || msgLow.includes("migrant") || msgLow.includes("deplacement") || msgLow.includes("déplacement") || msgLow.includes("asylum") || msgLow.includes("demandeur asile") || msgLow.includes("flux migratoire")) {
+    try {
+      const r = await fetch("https://api.unhcr.org/population/v1/population/?limit=5&sortBy=refugees:desc&displayType=totals").then(r=>r.json()).catch(()=>null)
+      if (r?.items?.length) {
+        const top = r.items.slice(0,5).map(i => "🌍 "+i.geomaster_name+" : *"+parseInt(i.refugees).toLocaleString("fr-FR")+" réfugiés*").join("\n")
+        return res.status(200).json({ response: "🛂 *Migrations & Réfugiés Mondiaux*\n\n"+top+"\n\nSource : UNHCR\nBoudoum ! 🇬🇵" })
+      }
+    } catch(e) {}
+    return res.status(200).json({ response: "🛂 Données migrations : Selon l UNHCR, plus de 100 millions de personnes deplacees dans le monde. Boudoum ! 🇬🇵" })
+  }
+
+  // OECD — Finances publiques et emploi
+  if (msgLow.includes("chomage") || msgLow.includes("chômage") || msgLow.includes("emploi public") || msgLow.includes("budget") && msgLow.includes("pays") || msgLow.includes("dette publique") || msgLow.includes("finances publiques")) {
+    const pays = { france:"FRA", guadeloupe:"FRA", canada:"CAN", usa:"USA", "etats-unis":"USA", bresil:"BRA", allemagne:"DEU", "royaume-uni":"GBR" }
+    const p = Object.keys(pays).find(k => msgLow.includes(k)) || "FRA"
+    const code = pays[p]
+    try {
+      const r = await fetch("https://stats.oecd.org/sdmx-json/data/KEI/"+code+".LRUNTTTT.STSA.M/all?startTime=2024&endTime=2024&lastNObservations=1").then(r=>r.json()).catch(()=>null)
+      const val = r?.dataSets?.[0]?.series?.["0:0:0:0"]?.observations?.["0"]?.[0]
+      if (val) {
+        return res.status(200).json({ response: "📊 *Chômage — "+p.charAt(0).toUpperCase()+p.slice(1)+"*\n\nTaux : *"+val.toFixed(1)+"%*\n\nSource : OCDE\nBoudoum ! 🇬🇵" })
+      }
+    } catch(e) {}
+    return res.status(200).json({ response: "📊 Finances publiques : données OCDE en chargement. Boudoum ! 🇬🇵" })
+  }
+
+  // ELECTIONS / POLITIQUE — Wikipedia + RSS
+  if (msgLow.includes("election") || msgLow.includes("élection") || msgLow.includes("vote") || msgLow.includes("scrutin") || msgLow.includes("parti politique") || msgLow.includes("president") && msgLow.includes("pays") || msgLow.includes("democratie")) {
+    try {
+      const query = encodeURIComponent("elections 2025 2026 monde")
+      const r = await fetch("https://fr.wikipedia.org/api/rest_v1/page/summary/"+encodeURIComponent("Élections en 2026")).then(r=>r.json()).catch(()=>null)
+      if (r?.extract) {
+        return res.status(200).json({ response: "🗳️ *Élections Mondiales 2026*\n\n"+r.extract.substring(0,400)+"...\n\n🔗 fr.wikipedia.org\nBoudoum ! 🇬🇵" })
+      }
+    } catch(e) {}
+    return res.status(200).json({ response: "🗳️ *Élections & Démocratie*\n\nPour suivre les élections mondiales en temps réel :\n🔗 elections-mondiales.org\n🔗 ifes.org\n🔗 idea.int\n\nBoudoum ! 🇬🇵" })
+  }
+
   // METEO MONDIALE — Open-Meteo (sans cle)
   if ((msgLow.includes("meteo") || msgLow.includes("météo") || msgLow.includes("temps") || msgLow.includes("temperature") || msgLow.includes("température")) && !msgLow.includes("guadeloupe") && !msgLow.includes("antilles")) {
     const villes = {
@@ -9962,6 +10013,16 @@ const REUSSITESS_KB = {
   securite: "HTTPS + headers A+ SecurityHeaders.com. REUSSSHIELD. Anti-injection. 3 clés Groq rotation.",
   contact: "reussitess.fr | shop.reussitess.fr | kick.com/Reussitess | github.com/Reussitess30",
   coach: "reussitess.fr/coach — Coach de Vie quotidien, defis personnalises, streak journalier, recompenses REUSS tokens, profils entrepreneur/etudiant/sportif/general",
+  crises: "ReliefWeb OCHA — crises humanitaires mondiales temps reel",
+  migrations: "UNHCR — refugies et deplacements mondiaux temps reel",
+  finances_publiques: "OCDE — chomage, budget, dette publique par pays",
+  elections: "Wikipedia — elections mondiales 2025-2026",
+  meteo_mondiale: "Open-Meteo — meteo 18 pays dont tous les 14 pays REUSSITESS",
+  worldbank: "World Bank — PIB et inflation par pays",
+  air: "OpenAQ — qualite air DOM-TOM temps reel",
+  catastrophes: "GDACS — catastrophes naturelles mondiales 24h",
+  sante_mondiale: "WHO/OMS — alertes sanitaires mondiales",
+  climat: "NOAA — CO2 atmospherique temps reel",
   communaute: "reussitess.fr/communaute — Live Kick integre, chat en direct, discussions afro-caribeennes, entrepreneuriat, culture, IA"
 }
 
@@ -9978,6 +10039,12 @@ function getRAGContext(message) {
   if (msgL.includes('bibliotheque') || msgL.includes('cesaire') || msgL.includes('fanon')) context.push(REUSSITESS_KB.bibliotheque)
   if (msgL.includes('securite') || msgL.includes('sécurité') || msgL.includes('shield')) context.push(REUSSITESS_KB.securite)
   if (msgL.includes('contact') || msgL.includes('kick') || msgL.includes('github')) context.push(REUSSITESS_KB.contact)
+  if (msgL.includes('crise') || msgL.includes('conflit') || msgL.includes('guerre')) context.push(REUSSITESS_KB.crises)
+  if (msgL.includes('migration') || msgL.includes('refugie')) context.push(REUSSITESS_KB.migrations)
+  if (msgL.includes('chomage') || msgL.includes('budget') || msgL.includes('dette')) context.push(REUSSITESS_KB.finances_publiques)
+  if (msgL.includes('election') || msgL.includes('vote') || msgL.includes('politique')) context.push(REUSSITESS_KB.elections)
+  if (msgL.includes('meteo') || msgL.includes('temps')) context.push(REUSSITESS_KB.meteo_mondiale)
+  if (msgL.includes('co2') || msgL.includes('climat')) context.push(REUSSITESS_KB.climat)
   if (msgL.includes('coach') || msgL.includes('defi') || msgL.includes('streak') || msgL.includes('motivation quotidienne')) context.push(REUSSITESS_KB.coach)
   if (msgL.includes('communaute') || msgL.includes('live') || msgL.includes('stream') || msgL.includes('forum')) context.push(REUSSITESS_KB.communaute)
   return context.join(' | ')
