@@ -22,11 +22,37 @@ export default function IAPassport() {
     }
   }
 
+  const [counts, setCounts] = useState({ neuro: 0, sentinelles: 0, quiz: 0, supreme: 0 })
+
+  useEffect(() => {
+    const targets = { neuro: 60, sentinelles: 40, quiz: 99, supreme: 1 }
+    const steps = 60
+    let step = 0
+    const timer = setInterval(() => {
+      step++
+      const ease = 1 - Math.pow(1 - step / steps, 3)
+      setCounts({
+        neuro: Math.round(targets.neuro * ease),
+        sentinelles: Math.round(targets.sentinelles * ease),
+        quiz: Math.round(targets.quiz * ease),
+        supreme: step >= steps ? 1 : 0,
+      })
+      if (step >= steps) clearInterval(timer)
+    }, 1800 / steps)
+    return () => clearInterval(timer)
+  }, [])
+
   const features = [
     {
       icon: '🤖',
       title: 'ÉCOSYSTÈME IA',
       desc: '200 agents IA actifs — 60 Neuro-X spécialisés, 40 Sentinelles, 99 Quiz, 1 IA Suprême. Système développé depuis la Guadeloupe.',
+      statsAnimated: [
+        { label: 'Neuro-X', count: 'neuro', color: '#10b981' },
+        { label: 'Sentinelles', count: 'sentinelles', color: '#f59e0b' },
+        { label: 'Quiz', count: 'quiz', color: '#06b6d4' },
+        { label: 'IA Suprême', count: 'supreme', color: '#ec4899' },
+      ],
       stats: ['60 Neuro-X', '40 Sentinelles', '99 Quiz', '1 IA Suprême'],
       links: [
         { text: '🧠 Explorer Neuro-X', url: 'https://reussitess.fr/neuro-x' },
