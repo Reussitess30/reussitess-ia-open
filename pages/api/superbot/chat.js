@@ -5083,6 +5083,13 @@ export default async function handler(req, res) {
   }
   const msgLow = message.toLowerCase()  // ===== GARDE-FOU JURIDIQUE =====
 
+  // ===== RAG CONTEXT — AUTO-CORRECTION TEMPS RÉEL =====
+  let ragContext = null
+  try {
+    ragContext = await getRAGContext(message, userId)
+  } catch(e) {}
+  // ===== FIN RAG =====
+
   // ===== NEURO-X DÉTECTION PRIORITAIRE =====
   if (msgLow.includes("neuro-x") || msgLow.startsWith("nx-")) {
     const agentMap = {
