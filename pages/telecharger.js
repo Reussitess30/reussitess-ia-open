@@ -15,7 +15,7 @@ export default function Telecharger() {
         <div style={{ width:"100%", maxWidth:"400px", display:"flex", flexDirection:"column", gap:"1rem" }}>
           
           {/* Android APK */}
-          <a href="https://expo.dev/artifacts/eas/8ESVLWFGGbtkeDnmmaksH4.apk" 
+          <a href="https://github.com/Reussitess30/ReussitessApp/releases/download/v1.0.0/reussitess-ai-v1.0.0.apk" 
              target="_blank" rel="noopener noreferrer"
              style={{ display:"flex", alignItems:"center", gap:"1rem", padding:"1.2rem", background:"linear-gradient(135deg,#10b981,#065f46)", borderRadius:"16px", textDecoration:"none", color:"white" }}>
             <span style={{fontSize:"2.5rem"}}>🤖</span>
