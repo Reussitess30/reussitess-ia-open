@@ -60,10 +60,9 @@ export default function Premium() {
           </p>
           <div style={{ display: 'inline-block', background: 'rgba(255,255,255,0.04)', border: '2px solid rgba(16,185,129,0.4)', borderRadius: '20px', padding: '1.5rem 3rem', marginBottom: '2rem' }}>
             <div style={{ fontSize: '0.8rem', color: '#64748b', textDecoration: 'line-through', marginBottom: '0.25rem' }}>9,99 EUR/mois</div>
-            <div style={{ fontSize: '3.5rem', fontWeight: '900', color: '#10b981', lineHeight: 1 }}>3,99 EUR</div>
+            <div style={{ fontSize: '3.5rem', fontWeight: '900', color: '#10b981', lineHeight: 1 }}>4,99 EUR</div>
             <div style={{ fontSize: '0.85rem', color: '#64748b' }}>par mois - Sans engagement</div>
             <div style={{ marginTop: '0.5rem', background: 'rgba(245,158,11,0.15)', border: '1px solid rgba(245,158,11,0.3)', borderRadius: '8px', padding: '0.3rem 0.8rem', fontSize: '0.75rem', color: '#f59e0b' }}>
-              Offre de lancement -60%
             </div>
           </div>
           <br />
@@ -75,7 +74,7 @@ export default function Premium() {
           />
           <br />
           <button onClick={souscrire} disabled={loading} style={{ ...btn, opacity: loading ? 0.7 : 1 }}>
-            {loading ? 'Chargement...' : 'Souscrire 3,99 EUR/mois via PayPal'}
+            {loading ? 'Chargement...' : 'Souscrire 4,99 EUR/mois via PayPal'}
           </button>
           <p style={{ color: '#475569', fontSize: '0.75rem', marginTop: '0.75rem' }}>
             PayPal securise - Annulation a tout moment - Protection INPI DSO2026012614
@@ -100,7 +99,7 @@ export default function Premium() {
           <h3 style={{ fontSize: '1.8rem', fontWeight: '900', marginBottom: '0.75rem' }}>Rejoins les Champions</h3>
           <p style={{ color: '#64748b', marginBottom: '2rem' }}>50 millions d afro-caribeens dans le monde. Tu merires les meilleurs outils. BOUDOUM !</p>
           <button onClick={souscrire} disabled={loading} style={{ ...btn, opacity: loading ? 0.7 : 1 }}>
-            {loading ? 'Chargement...' : 'Devenir Premium — 3,99 EUR/mois'}
+            {loading ? 'Chargement...' : 'Devenir Premium — 4,99 EUR/mois'}
           </button>
           <div style={{ marginTop: '2rem', padding: '1rem', background: 'rgba(0,0,0,0.3)', borderRadius: '10px', fontSize: '0.72rem', color: '#475569', textAlign: 'left' }}>
             <strong style={{ color: '#64748b' }}>Mentions Legales</strong><br />
