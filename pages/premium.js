@@ -1,131 +1,186 @@
-/*
- * © REUSSITESS®971 — Tous droits réservés — INPI DSO2026012614
- */
-import { useState } from 'react'
+/* © Reussitess®971 INPI DSO2026014206 PORINUS Rony 2026 */
+import { useState, useEffect } from 'react'
+import Head from 'next/head'
+import Link from 'next/link'
+
+const MODULES = [
+  { icon: '🧬', nom: 'ADN de Réussite', desc: 'Analyse psychologique profonde de ta personnalité caribéenne' },
+  { icon: '💼', nom: 'Architecte de Fortune', desc: 'Plan financier 5 ans DOM-TOM + Girardin + crypto REUSS' },
+  { icon: '🎯', nom: 'Négociateur Caribéen', desc: 'Scripts de négociation adaptés aux codes afro-caribéens' },
+  { icon: '🌐', nom: 'Traducteur de Succès', desc: 'Pitch ton projet caribéen en France, Canada, USA' },
+  { icon: '🏗️', nom: "Bâtisseur d'Empire", desc: "De l'idée à l'entreprise en 90 jours DOM-TOM" },
+  { icon: '🛡️', nom: 'Bouclier Juridique', desc: 'Protection juridique complète droit français + DOM-TOM' },
+  { icon: '🧠', nom: 'Mindset Champions', desc: 'Transformation mentale — Césaire, Fanon, Glissant' },
+  { icon: '🌱', nom: 'Entrepreneur Social', desc: 'Impact communautaire + revenus + subventions caribéennes' },
+  { icon: '📡', nom: 'Intelligence Stratégique', desc: 'Veille et opportunités dans 14 pays partenaires' },
+  { icon: '👑', nom: 'Passeport Excellence', desc: 'Certification personnelle reconnue réseau REUSSITESS®' },
+]
 
 export default function Premium() {
+  const [step, setStep] = useState('landing')
+  const [telegramId, setTelegramId] = useState('')
+  const [code, setCode] = useState('')
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  async function subscribe() {
-    setLoading(true)
+  const souscrire = async () => {
+    setLoading(true); setError('')
     try {
       const r = await fetch('/api/paypal/create-subscription', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ telegramId: 'web' })
+        body: JSON.stringify({ telegramId: telegramId || 'web' })
       })
       const d = await r.json()
       if (d.url) window.open(d.url, '_blank')
-      else alert('Erreur paiement, réessaie')
-    } catch(e) { alert('Erreur connexion') }
+      else setError('Erreur PayPal. Réessaie.')
+    } catch { setError('Erreur de connexion') }
     setLoading(false)
   }
 
-  const modules = [
-    { icon: "🌍", titre: "Traducteur Créole IA", rare: false,
-      desc: "Traduis entre Français, Anglais et les créoles Guadeloupéen, Martiniquais, Haïtien, Jamaïcain. Prononciation phonétique et notes culturelles.",
-      exemple: "An rinmé w anpil = Je t'aime (créole GWA)" },
-    { icon: "💰", titre: "Comparateur Transfert Argent", rare: false,
-      desc: "Envoie de l'argent aux Caraïbes et en Afrique au meilleur prix. Compare Wise, Western Union, Remitly, PayPal en temps réel. Économise jusqu'à 8% par transfert.",
-      exemple: "300€ vers Guadeloupe: Wise 298,50€ vs WU 288€" },
-    { icon: "📋", titre: "Générateur CV + Dossier Admin", rare: false,
-      desc: "CV professionnel France, Canada, DOM-TOM. Lettre de motivation. Dossier CAF, RSA, APL, logement social — étape par étape.",
-      exemple: "CV valorisant l'expérience caribéenne pour le marché français" },
-    { icon: "🛂", titre: "Assistant Visa 14 Pays", rare: false,
-      desc: "Guide complet visa Canada, USA, UK, Schengen et Caraïbes. Documents, formulaires, délais, frais selon ta nationalité.",
-      exemple: "Visa Canada depuis Guadeloupe — liste complète documents" },
-    { icon: "🧠", titre: "Coach IA Mémoire Longue", rare: false,
-      desc: "Une IA qui se souvient de toi, tes projets, ta situation. Mentor personnel 24h/24 adapté à la diaspora afro-caribéenne.",
-      exemple: "L'IA se souvient de ton projet business depuis 3 mois" },
-    { icon: "🌿", titre: "Pharmacopée Caribéenne IA", rare: true,
-      desc: "200+ plantes médicinales caribéennes avec usages traditionnels, préparations, contre-indications. Connaissance ancestrale numérisée.",
-      exemple: "Bois bandé, Siguine, Vétiver — remèdes créoles authentiques" },
-    { icon: "📜", titre: "Généalogiste ADN Caribéen", rare: true,
-      desc: "Reconstitue ton arbre généalogique caribéen et africain. Identifie tes origines et tes ancêtres parmi 500+ personnalités DOM-TOM.",
-      exemple: "Retrouve tes liens avec l'histoire de la Guadeloupe" },
-    { icon: "🔮", titre: "Oracle 971 Premium", rare: true,
-      desc: "Version avancée de l'Oracle caribéen — numérologie personnalisée, calendrier lunaire créole, analyse de rêves, guidance quimbois.",
-      exemple: "Analyse complète de ta date de naissance créole" },
-    { icon: "📊", titre: "Analyste Crypto Caribéen", rare: true,
-      desc: "Analyse technique du Token REUSS et cryptos caribéennes. Signaux achat/vente, DeFi sur Polygon, stratégies DOM-TOM.",
-      exemple: "Signal REUSS/POL + stratégie staking QuickSwap" },
-    { icon: "🎙️", titre: "Studio Contenu Créole", rare: true,
-      desc: "Génère scripts TikTok, podcasts, posts Instagram en créole et français. Adapté à la culture caribéenne pour maximiser l'engagement diaspora.",
-      exemple: "Script TikTok viral en créole guadeloupéen" },
-  ]
-
-  const btn = {
-    background: 'linear-gradient(135deg, #ffd700, #ff8c00)',
-    color: '#000', padding: '15px 50px', borderRadius: '50px',
-    border: 'none', fontSize: '1.2rem', fontWeight: '900',
-    cursor: 'pointer', boxShadow: '0 10px 30px rgba(255,215,0,0.4)'
+  const activer = async () => {
+    if (!telegramId || !code) { setError('Remplis tous les champs'); return }
+    setLoading(true); setError('')
+    try {
+      const r = await fetch('/api/premium/activate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ telegramId, code })
+      })
+      const d = await r.json()
+      if (d.success) setStep('success')
+      else setError(d.error || 'Code invalide')
+    } catch { setError('Erreur de connexion') }
+    setLoading(false)
   }
 
+  const inputStyle = { width: '100%', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '10px', padding: '0.75rem', color: '#fff', fontSize: '0.9rem', marginBottom: '0.75rem', boxSizing: 'border-box' }
+  const btnGreen = { background: 'linear-gradient(135deg,#10b981,#059669)', border: 'none', borderRadius: '12px', padding: '0.9rem', color: '#fff', fontWeight: '800', width: '100%', cursor: 'pointer', fontSize: '1rem' }
+  const btnBlue = { background: 'linear-gradient(135deg,#0070f3,#0055cc)', border: 'none', borderRadius: '12px', padding: '0.9rem', color: '#fff', fontWeight: '800', width: '100%', cursor: 'pointer', fontSize: '1rem' }
+  const btnDisabled = { ...btnGreen, background: 'rgba(255,255,255,0.05)', cursor: 'not-allowed' }
+
   return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #0a0a0a, #1a0a2e)', color: '#fff', fontFamily: 'monospace' }}>
-      <div style={{ padding: '15px 20px' }}>
-        <a href="/" style={{ color: '#888', textDecoration: 'none', fontSize: '0.9rem', border: '1px solid #333', padding: '6px 16px', borderRadius: '20px' }}>← Accueil</a>
-      </div>
-      
-      <div style={{ textAlign: 'center', padding: '60px 20px 30px' }}>
-        <div style={{ fontSize: '3rem' }}>👑</div>
-        <h1 style={{ color: '#ffd700', fontSize: '2.5rem', margin: '10px 0' }}>REUSSITESS Premium</h1>
-        <p style={{ color: '#888', maxWidth: '600px', margin: '0 auto 10px' }}>L'IA indispensable de la diaspora afro-caribéenne</p>
-        <p style={{ color: '#00c853', fontSize: '1.3rem', fontWeight: 'bold' }}>10 modules exclusifs • 4,99€/mois</p>
-        <p style={{ color: '#555', fontSize: '0.8rem', marginBottom: '20px' }}>Sans engagement • PayPal sécurisé • Annulation à tout moment</p>
-        <button onClick={subscribe} disabled={loading} style={btn}>
-          {loading ? '⏳ Chargement...' : '💳 Souscrire 4,99€/mois'}
-        </button>
-      </div>
+    <>
+      <Head>
+        <title>REUSSITESS Premium — 10 Modules Uniques | 3,99€/mois</title>
+        <meta name="description" content="10 modules IA uniques au monde pour la diaspora caribéenne. BOUDOUM !" />
+      </Head>
+      <div style={{ minHeight: '100vh', background: '#04060f', color: '#fff', fontFamily: 'Georgia, serif' }}>
+        <div style={{ position: 'fixed', inset: 0, background: 'radial-gradient(ellipse at 20% 20%, rgba(16,185,129,0.07) 0%, transparent 60%)', pointerEvents: 'none' }} />
 
-      <div style={{ maxWidth: '900px', margin: '0 auto', padding: '20px 20px 60px' }}>
-
-        <h2 style={{ color: '#00c853', borderBottom: '1px solid #222', paddingBottom: '10px' }}>⚡ 5 Modules Essentiels</h2>
-        <div style={{ display: 'grid', gap: '15px', marginBottom: '30px' }}>
-          {modules.filter(m => !m.rare).map((m, i) => (
-            <div key={i} style={{ background: '#111', border: '1px solid #333', borderRadius: '12px', padding: '20px', display: 'flex', gap: '15px' }}>
-              <div style={{ fontSize: '2rem', flexShrink: 0 }}>{m.icon}</div>
-              <div>
-                <h3 style={{ color: '#ffd700', margin: '0 0 8px' }}>{m.titre}</h3>
-                <p style={{ color: '#ccc', margin: '0 0 8px', lineHeight: '1.5', fontSize: '0.9rem' }}>{m.desc}</p>
-                <div style={{ background: '#1a1a1a', borderLeft: '3px solid #00c853', padding: '6px 10px', fontSize: '0.8rem', color: '#888' }}>💡 {m.exemple}</div>
+        {step === 'landing' && (
+          <div style={{ maxWidth: '900px', margin: '0 auto', padding: '3rem 1.5rem', position: 'relative' }}>
+            <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+              <span style={{ background: 'rgba(16,185,129,0.15)', border: '1px solid rgba(16,185,129,0.4)', borderRadius: '50px', padding: '0.4rem 1.2rem', fontSize: '0.75rem', color: '#10b981', letterSpacing: '0.1em' }}>
+                EXCLUSIF MONDIAL — AUCUNE APP NE FAIT CELA
+              </span>
+            </div>
+            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🥁</div>
+              <h1 style={{ fontSize: 'clamp(2rem,6vw,4rem)', fontWeight: '900', lineHeight: 1.1, margin: '0 0 1rem' }}>
+                Deviens un{' '}
+                <span style={{ background: 'linear-gradient(135deg,#10b981,#f59e0b)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                  Champion Caribéen
+                </span>
+              </h1>
+              <p style={{ color: '#94a3b8', fontSize: '1.1rem', maxWidth: '550px', margin: '0 auto 2rem', lineHeight: 1.7 }}>
+                10 modules IA créés exclusivement pour la diaspora afro-caribéenne.
+              </p>
+              <div style={{ display: 'inline-block', background: 'rgba(255,255,255,0.04)', border: '2px solid rgba(16,185,129,0.4)', borderRadius: '20px', padding: '1.5rem 3rem', marginBottom: '2rem' }}>
+                <div style={{ fontSize: '0.8rem', color: '#64748b', textDecoration: 'line-through', marginBottom: '0.25rem' }}>9,99€/mois</div>
+                <div style={{ fontSize: '3.5rem', fontWeight: '900', color: '#10b981', lineHeight: 1 }}>3,99€</div>
+                <div style={{ fontSize: '0.85rem', color: '#64748b' }}>par mois • Sans engagement</div>
+                <div style={{ marginTop: '0.75rem', background: 'rgba(245,158,11,0.15)', border: '1px solid rgba(245,158,11,0.3)', borderRadius: '8px', padding: '0.4rem 0.8rem', fontSize: '0.75rem', color: '#f59e0b' }}>
+                  🔥 -60% Offre de lancement
+                </div>
+              </div>
+              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <button onClick={() => setStep('activation')} style={{ ...btnGreen, width: 'auto', padding: '1rem 2.5rem', fontSize: '1.1rem', boxShadow: '0 0 40px rgba(16,185,129,0.4)' }}>
+                  🚀 S'abonner maintenant
+                </button>
               </div>
             </div>
-          ))}
-        </div>
 
-        <h2 style={{ color: '#ff6b6b', borderBottom: '1px solid #222', paddingBottom: '10px' }}>🔥 5 Modules Rares — Introuvables Ailleurs</h2>
-        <div style={{ display: 'grid', gap: '15px', marginBottom: '40px' }}>
-          {modules.filter(m => m.rare).map((m, i) => (
-            <div key={i} style={{ background: '#111', border: '1px solid #ff6b6b44', borderRadius: '12px', padding: '20px', display: 'flex', gap: '15px' }}>
-              <div style={{ fontSize: '2rem', flexShrink: 0 }}>{m.icon}</div>
-              <div>
-                <h3 style={{ color: '#ff6b6b', margin: '0 0 8px' }}>{m.titre} <span style={{ background: '#ff6b6b22', color: '#ff6b6b', fontSize: '0.7rem', padding: '2px 8px', borderRadius: '10px' }}>RARE</span></h3>
-                <p style={{ color: '#ccc', margin: '0 0 8px', lineHeight: '1.5', fontSize: '0.9rem' }}>{m.desc}</p>
-                <div style={{ background: '#1a1a1a', borderLeft: '3px solid #ff6b6b', padding: '6px 10px', fontSize: '0.8rem', color: '#888' }}>💡 {m.exemple}</div>
-              </div>
+            <h2 style={{ textAlign: 'center', color: '#e2e8f0', marginBottom: '1.5rem', fontSize: '1.5rem', fontWeight: '800' }}>10 Modules Uniques au Monde</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(260px,1fr))', gap: '0.75rem', marginBottom: '3rem' }}>
+              {MODULES.map((m, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '14px', padding: '1.25rem', display: 'flex', gap: '1rem' }}>
+                  <span style={{ fontSize: '1.8rem', flexShrink: 0 }}>{m.icon}</span>
+                  <div>
+                    <div style={{ color: '#e2e8f0', fontWeight: '700', fontSize: '0.9rem', marginBottom: '0.25rem' }}>{m.nom}</div>
+                    <div style={{ color: '#64748b', fontSize: '0.78rem', lineHeight: 1.5 }}>{m.desc}</div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        <div style={{ textAlign: 'center', background: 'linear-gradient(135deg, #111, #1a1a2e)', borderRadius: '20px', padding: '40px', border: '1px solid #ffd70044' }}>
-          <div style={{ fontSize: '2rem', marginBottom: '10px' }}>🇬🇵</div>
-          <h2 style={{ color: '#ffd700' }}>Rejoins la diaspora qui réussit</h2>
-          <p style={{ color: '#888', marginBottom: '5px' }}>50 millions d'afro-caribéens dans le monde. Tu mérites les meilleurs outils.</p>
-          <div style={{ fontSize: '2rem', fontWeight: '900', color: '#00c853' }}>4,99€/mois</div>
-          <p style={{ color: '#555', fontSize: '0.8rem', marginBottom: '20px' }}>Moins d'un café par semaine</p>
-          <button onClick={subscribe} disabled={loading} style={btn}>
-            {loading ? '⏳...' : '💳 Commencer maintenant'}
-          </button>
-          <div style={{ marginTop: '20px', padding: '15px', background: '#0a0a0a', borderRadius: '10px', fontSize: '0.75rem', color: '#555', textAlign: 'left' }}>
-            <p style={{ margin: '0 0 5px', color: '#888' }}>⚖️ Mentions Légales</p>
-            <p style={{ margin: '0' }}>© 2026 REUSSITESS®971 — Propriétaire : Rony Porinus — Auto-entrepreneur Guadeloupe 🇬🇵</p>
-            <p style={{ margin: '0' }}>SIRET : 444699979700031 — Protection INPI DSO2026012614</p>
-            <p style={{ margin: '0' }}>Abonnement mensuel résiliable à tout moment depuis votre espace PayPal.</p>
-            <p style={{ margin: '0' }}>Conformément au droit de rétractation (14 jours) — Contact : influenceur@reussitess.fr</p>
+            <div style={{ textAlign: 'center', background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: '24px', padding: '3rem 2rem' }}>
+              <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🇬🇵</div>
+              <h3 style={{ fontSize: '1.8rem', fontWeight: '900', marginBottom: '0.75rem' }}>Rejoins les Champions</h3>
+              <p style={{ color: '#64748b', marginBottom: '2rem' }}>Annule à tout moment. BOUDOUM !</p>
+              <button onClick={() => setStep('activation')} style={{ ...btnGreen, width: 'auto', padding: '1.1rem 3rem', fontSize: '1.1rem', boxShadow: '0 0 40px rgba(16,185,129,0.4)' }}>
+                👑 Devenir Premium — 3,99€/mois
+              </button>
+            </div>
+            <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+              <Link href="/" style={{ color: '#10b981', textDecoration: 'none', fontSize: '0.85rem' }}>← Retour à l'accueil</Link>
+            </div>
           </div>
-        </div>
+        )}
+
+        {step === 'activation' && (
+          <div style={{ maxWidth: '500px', margin: '0 auto', padding: '4rem 1.5rem', position: 'relative' }}>
+            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+              <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>👑</div>
+              <h2 style={{ fontSize: '1.8rem', fontWeight: '900', marginBottom: '0.5rem' }}>Activation Premium</h2>
+              <p style={{ color: '#64748b', fontSize: '0.9rem' }}>2 étapes simples pour accéder à tes 10 modules</p>
+            </div>
+            <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '20px', padding: '2rem', marginBottom: '1.5rem' }}>
+              <div style={{ color: '#10b981', fontWeight: '800', marginBottom: '1rem', fontSize: '0.9rem' }}>ÉTAPE 1 — Payer via PayPal</div>
+              <label style={{ color: '#94a3b8', fontSize: '0.8rem', display: 'block', marginBottom: '0.5rem' }}>Ton ID Telegram (pour recevoir ton code)</label>
+              <input value={telegramId} onChange={e => setTelegramId(e.target.value)} placeholder="Ex: 123456789" style={inputStyle} />
+              <p style={{ color: '#64748b', fontSize: '0.75rem', marginBottom: '1rem' }}>
+                Trouve ton ID : écris <strong style={{ color: '#94a3b8' }}>/start</strong> à <strong style={{ color: '#94a3b8' }}>@userinfobot</strong> sur Telegram
+              </p>
+              <button onClick={souscrire} disabled={loading || !telegramId} style={loading || !telegramId ? btnDisabled : btnBlue}>
+                {loading ? '⏳ Connexion...' : '💳 Payer 3,99€ via PayPal'}
+              </button>
+            </div>
+            <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '20px', padding: '2rem' }}>
+              <div style={{ color: '#f59e0b', fontWeight: '800', marginBottom: '1rem', fontSize: '0.9rem' }}>ÉTAPE 2 — Entrer ton code d'activation</div>
+              <p style={{ color: '#64748b', fontSize: '0.8rem', marginBottom: '1rem' }}>Après paiement, tu reçois un code sur Telegram et par email. Entre-le ici :</p>
+              <input value={code} onChange={e => setCode(e.target.value.toUpperCase())} placeholder="REUSS-XXXXXXXX" style={{ ...inputStyle, letterSpacing: '0.1em', fontFamily: 'monospace' }} />
+              {error && <p style={{ color: '#ef4444', fontSize: '0.8rem', marginBottom: '1rem' }}>⚠️ {error}</p>}
+              <button onClick={activer} disabled={loading || !code || !telegramId} style={loading || !code || !telegramId ? btnDisabled : btnGreen}>
+                {loading ? '⏳ Activation...' : '🚀 Activer mon accès Premium'}
+              </button>
+            </div>
+            <button onClick={() => setStep('landing')} style={{ background: 'transparent', border: 'none', color: '#64748b', cursor: 'pointer', marginTop: '1.5rem', display: 'block', margin: '1.5rem auto 0', fontSize: '0.85rem' }}>
+              ← Retour
+            </button>
+          </div>
+        )}
+
+        {step === 'success' && (
+          <div style={{ maxWidth: '500px', margin: '0 auto', padding: '5rem 1.5rem', textAlign: 'center', position: 'relative' }}>
+            <div style={{ fontSize: '5rem', marginBottom: '1.5rem' }}>🎉</div>
+            <h2 style={{ fontSize: '2.2rem', fontWeight: '900', marginBottom: '1rem', background: 'linear-gradient(135deg,#10b981,#f59e0b)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              Bienvenue Champion !
+            </h2>
+            <p style={{ color: '#94a3b8', marginBottom: '2rem', lineHeight: 1.7 }}>
+              Ton accès Premium est activé. Tu as reçu un message de confirmation sur Telegram.
+            </p>
+            <div style={{ background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.3)', borderRadius: '16px', padding: '1.5rem', marginBottom: '2rem' }}>
+              <div style={{ color: '#10b981', fontWeight: '800', marginBottom: '0.5rem' }}>✅ 10 Modules déverrouillés</div>
+              <div style={{ color: '#64748b', fontSize: '0.85rem' }}>Accès illimité pendant 31 jours</div>
+            </div>
+            <Link href="/modules-reussitess" style={{ display: 'block', background: 'linear-gradient(135deg,#10b981,#059669)', borderRadius: '14px', padding: '1rem 2rem', color: '#fff', fontWeight: '900', textDecoration: 'none', fontSize: '1.1rem', boxShadow: '0 0 40px rgba(16,185,129,0.4)', marginBottom: '1rem' }}>
+              👑 Accéder à mes modules
+            </Link>
+            <p style={{ color: '#1e293b', fontSize: '0.75rem' }}>REUSSITESS®971 — Terres de Champions 🇬🇵</p>
+          </div>
+        )}
       </div>
-    </div>
+    </>
   )
 }
