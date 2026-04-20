@@ -71,3 +71,4 @@ dump.rdb
 dump.rdb
 *.txt
 .env
+*.bak
