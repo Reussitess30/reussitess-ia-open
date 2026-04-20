@@ -69,6 +69,9 @@ let keyIndex = 0
 const keyErrors = {}
 const responseCache = new Map()
 const CACHE_TTL = 30 * 1000
+let warnedMissingRAG = false
+let warnedMissingMemory = false
+
 
 function getNextKey() {
   const now = Date.now()
@@ -9373,9 +9376,7 @@ Boudoum!` },
         if (typeof saveConversationMemory === "function") await saveConversationMemory(userId, message, finalResponse)
         if (typeof saveSatisfactionScore === "function") await saveSatisfactionScore(userId, message, finalResponse)
       } catch (e) { console.error("Save memory/score failed:", e) }
-        if (typeof saveSatisfactionScore === "function") await saveSatisfactionScore(userId, message, finalResponse)
-      } catch (e) { console.error("Save memory/score failed:", e) }
-      res.status(200).json({ response: finalResponse })
+        return res.status(200).json({ response: finalResponse })
   } catch (error) {
     console.error('Erreur SuperBot:', error)
     res.status(500).json({ 
