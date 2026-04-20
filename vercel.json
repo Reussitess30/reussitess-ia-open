@@ -1,4 +1,10 @@
 {
+  "functions": {
+    "pages/api/superbot/chat.js": {
+      "maxDuration": 30,
+      "memory": 1024
+    }
+  },
   "crons": [
     {
       "path": "/api/system/rag-update?secret=reussitess-rag-2026",
