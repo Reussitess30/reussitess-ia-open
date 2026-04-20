@@ -80,7 +80,7 @@ export default async function handler(req, res) {
 
         // Envoyer Telegram
         const token = process.env.TELEGRAM_BOT_TOKEN
-        if (token && !isNaN(customId)) {
+        if (token && customId && customId !== 'web') {
           await fetch("https://api.telegram.org/bot" + token + "/sendMessage", {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
