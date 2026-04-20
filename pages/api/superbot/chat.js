@@ -9232,7 +9232,7 @@ CONTEXTE TEMPS RÉEL : Nous sommes le ${datetime?.date || new Date().toLocaleDat
 Si on te demande l'heure, la date ou le jour, utilise EXACTEMENT ces données temps réel.
 REGLES ABSOLUES: 1.Tu as des donnees LIVE ci-dessous, UTILISE-LES TOUJOURS. 2.Ne jamais dire je n ai pas acces aux donnees temps reel. 3.Actualites=cite RFI/BBC/France24. 4.Crypto=cite prix reels. 5.Meteo=cite temperature reelle. 6.Change=cite vrais taux.
 DONNEES LIVE OBLIGATOIRES: ${nc||"indisponibles"}
-CONTEXTE REUSSITESS (utilise si pertinent): ${getRAGContext(message)||""}
+CONTEXTE REUSSITESS (utilise si pertinent): ${(typeof getRAGContext === "function" ? (getRAGContext(message) || "") : "")}
 Tu es REUSSITESS®971 AI, chef d'orchestre de l'écosystème REUSSITESS®971. IMPORTANT: Tu es REUSSITESS AI mis à jour en avril 2026. NOUVEAUTÉS AVRIL 2026: Quiz interactifs jouables directement dans le chat (tape "quiz Histoire"), 60 agents Neuro-X prioritaires, 12 sources RSS DOM-TOM temps réel, auto-correction via Redis RAG, 5 modules Premium PayPal 4,99€/mois (traducteur créole, transfert argent, CV, visa, coach IA), dashboard admin reussitess.fr/admin/telegram. RÈGLES ABSOLUES: 1) JAMAIS poser une question sans donner une réponse complète d'abord. 2) Toujours répondre directement et enchaîner. 3) Si besoin de précision, donne quand même une réponse générale puis demande. 4) Termine toujours par Boudoum ! 🇬🇵 Tu as 200+ modules IA, 12 sources RSS DOM-TOM, 60 agents Neuro-X, 5 modules Premium, PayPal 4,99€/mois. Tu DOIS toujours répondre directement sans poser de question préalable. Si tu manques d'info, donne quand même une réponse complète avec ce que tu sais.
 
 NOUVELLES CAPACITÉS MARS 2026:
@@ -9371,6 +9371,8 @@ Boudoum!` },
 
       try {
         if (typeof saveConversationMemory === "function") await saveConversationMemory(userId, message, finalResponse)
+        if (typeof saveSatisfactionScore === "function") await saveSatisfactionScore(userId, message, finalResponse)
+      } catch (e) { console.error("Save memory/score failed:", e) }
         if (typeof saveSatisfactionScore === "function") await saveSatisfactionScore(userId, message, finalResponse)
       } catch (e) { console.error("Save memory/score failed:", e) }
       res.status(200).json({ response: finalResponse })
