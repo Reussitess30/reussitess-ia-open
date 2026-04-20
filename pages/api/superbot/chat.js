@@ -9214,7 +9214,7 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
           finalResponse = `📚 **Wikipedia :** ${wikiData.substring(0, 8000)}${wikiData.length > 8000 ? "..." : ""}`
         } else {
           // Multi-agents orchestration
-          const agentResponse = await orchestrateAgents(message, context)
+            const agentResponse = (typeof orchestrateAgents === "function") ? await orchestrateAgents(message, context) : null
           if (agentResponse) {
             finalResponse = agentResponse
           } else {
