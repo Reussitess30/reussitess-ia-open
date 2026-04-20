@@ -62,7 +62,7 @@ export default function Premium() {
   return (
     <>
       <Head>
-        <title>REUSSITESS Premium — 10 Modules Uniques | 3,99€/mois</title>
+        <title>REUSSITESS Premium — 10 Modules Uniques | 4,99€/mois</title>
         <meta name="description" content="10 modules IA uniques au monde pour la diaspora caribéenne. BOUDOUM !" />
       </Head>
       <div style={{ minHeight: '100vh', background: '#04060f', color: '#fff', fontFamily: 'Georgia, serif' }}>
@@ -88,10 +88,10 @@ export default function Premium() {
               </p>
               <div style={{ display: 'inline-block', background: 'rgba(255,255,255,0.04)', border: '2px solid rgba(16,185,129,0.4)', borderRadius: '20px', padding: '1.5rem 3rem', marginBottom: '2rem' }}>
                 <div style={{ fontSize: '0.8rem', color: '#64748b', textDecoration: 'line-through', marginBottom: '0.25rem' }}>9,99€/mois</div>
-                <div style={{ fontSize: '3.5rem', fontWeight: '900', color: '#10b981', lineHeight: 1 }}>3,99€</div>
+                <div style={{ fontSize: '3.5rem', fontWeight: '900', color: '#10b981', lineHeight: 1 }}>4,99€</div>
                 <div style={{ fontSize: '0.85rem', color: '#64748b' }}>par mois • Sans engagement</div>
                 <div style={{ marginTop: '0.75rem', background: 'rgba(245,158,11,0.15)', border: '1px solid rgba(245,158,11,0.3)', borderRadius: '8px', padding: '0.4rem 0.8rem', fontSize: '0.75rem', color: '#f59e0b' }}>
-                  🔥 -60% Offre de lancement
+                  
                 </div>
               </div>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -119,7 +119,7 @@ export default function Premium() {
               <h3 style={{ fontSize: '1.8rem', fontWeight: '900', marginBottom: '0.75rem' }}>Rejoins les Champions</h3>
               <p style={{ color: '#64748b', marginBottom: '2rem' }}>Annule à tout moment. BOUDOUM !</p>
               <button onClick={() => setStep('activation')} style={{ ...btnGreen, width: 'auto', padding: '1.1rem 3rem', fontSize: '1.1rem', boxShadow: '0 0 40px rgba(16,185,129,0.4)' }}>
-                👑 Devenir Premium — 3,99€/mois
+                👑 Devenir Premium — 4,99€/mois
               </button>
             </div>
             <div style={{ textAlign: 'center', marginTop: '2rem' }}>
@@ -143,7 +143,7 @@ export default function Premium() {
                 Trouve ton ID : écris <strong style={{ color: '#94a3b8' }}>/start</strong> à <strong style={{ color: '#94a3b8' }}>@userinfobot</strong> sur Telegram
               </p>
               <button onClick={souscrire} disabled={loading || !telegramId} style={loading || !telegramId ? btnDisabled : btnBlue}>
-                {loading ? '⏳ Connexion...' : '💳 Payer 3,99€ via PayPal'}
+                {loading ? '⏳ Connexion...' : '💳 Payer 4,99€ via PayPal'}
               </button>
             </div>
             <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '20px', padding: '2rem' }}>
