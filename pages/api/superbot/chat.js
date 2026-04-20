@@ -9369,8 +9369,10 @@ Boudoum!` },
         finalResponse = "⚠️ **Donnée non vérifiée détectée**\n\nJe préfère ne pas te donner une information incorrecte. Voici ce que je sais avec certitude :\n\n🇺🇸 Président USA : **Donald Trump** (depuis jan 2025)\n🇫🇷 Président France : **Emmanuel Macron**\n\nPour toute info en temps réel : reussitess.fr\n\nBoudoum ! 🇬🇵"
       }
 
-      await saveConversationMemory(userId, message, finalResponse)
-      await saveSatisfactionScore(userId, message, finalResponse)
+      try {
+        if (typeof saveConversationMemory === "function") await saveConversationMemory(userId, message, finalResponse)
+        if (typeof saveSatisfactionScore === "function") await saveSatisfactionScore(userId, message, finalResponse)
+      } catch (e) { console.error("Save memory/score failed:", e) }
       res.status(200).json({ response: finalResponse })
   } catch (error) {
     console.error('Erreur SuperBot:', error)
