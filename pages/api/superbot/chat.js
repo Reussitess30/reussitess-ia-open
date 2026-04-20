@@ -97,7 +97,7 @@ async function groqFetch(messages, maxTokens = 512) {
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
       body: JSON.stringify({ model: "llama-3.1-8b-instant", messages, max_tokens: maxTokens })
     })
-    if (!res.ok) { keyErrors[key] = Date.now(); return null }
+    if (!res.ok) { await new Promise(r => setTimeout(r, 300)); } if (!res.ok) { keyErrors[key] = Date.now(); return null }
     const d = await res.json()
     const text = d.choices?.[0]?.message?.content || null
     if (text) responseCache.set(cacheKey, { val: text, ts: Date.now() })
@@ -390,7 +390,7 @@ async function groqFetchWithTools(messages, systemPrompt) {
         max_tokens: 1024
       })
     })
-    if (!res.ok) { keyErrors[key] = Date.now(); return null }
+    if (!res.ok) { await new Promise(r => setTimeout(r, 300)); } if (!res.ok) { keyErrors[key] = Date.now(); return null }
     const d = await res.json()
     const choice = d.choices?.[0]
     
@@ -3065,7 +3065,7 @@ Boudoum ! 🇬🇵` })
     }
 
     const res = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`)
-    if (!res.ok) {
+    if (!res.ok) { await new Promise(r => setTimeout(r, 300)); } if (!res.ok) {
       const err = await res.json().catch(() => ({}))
       console.error("Vision error:", err?.error?.message || res.status)
       return null
@@ -9375,7 +9375,7 @@ Boudoum!` },
   } catch (error) {
     console.error('Erreur SuperBot:', error)
     res.status(500).json({ 
-      response: "⚠️ Petit souci technique momentané ! Je suis toujours là pour vous. Réessayez dans un instant ! 💪\n\n**Boudoum** 🎯" 
+      response: "🤖 Je rencontre un ralentissement temporaire côté IA. Je suis toujours là pour vous. Réessayez dans un instant ! 💪\n\n**Boudoum** 🎯" 
     })
   }
 }
