@@ -1,22 +1,18 @@
-import { get } from '@vercel/edge-config'; // Ou ta méthode Redis habituelle
-
 export default async function handler(req, res) {
+  // Configuration des headers pour éviter les bugs de cache
   res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
   try {
-    // Tentative de récupération du chiffre réel
-    // Si Redis échoue, on force le chiffre de ton choix (ex: 6940)
-    const count = 6940; 
-    
+    // Le chiffre est écrit en dur ici pour garantir qu'il ne disparaisse plus
+    const fixedCount = 6940;
+
     return res.status(200).json({ 
       success: true, 
-      count: count,
-      status: "stable" 
+      count: fixedCount,
+      status: "stable"
     });
   } catch (error) {
-    return res.status(200).json({ 
-      success: true, 
-      count: 6940, 
-      error: "fallback_active" 
-    });
+    return res.status(500).json({ success: false, count: 0 });
   }
 }
