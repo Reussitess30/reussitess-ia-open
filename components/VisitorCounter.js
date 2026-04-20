@@ -9,7 +9,7 @@ export default function VisitorCounter() {
   useEffect(() => {
     fetch("/api/visitors")
       .then(r => r.json())
-      .then(d => { if (d.count) setVisitorCount(d.count.toLocaleString("fr-FR")) })
+      .then(d => { const n = Number(d?.count); if (Number.isFinite(n)) setVisitorCount(n.toLocaleString("fr-FR")); else setVisitorCount("0") })
       .catch(() => {})
   }, []);
 

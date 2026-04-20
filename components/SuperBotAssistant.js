@@ -95,7 +95,7 @@ export default function SuperBotAssistant() {
   }, [])
 
   useEffect(() => {
-    fetch('/api/visitors').then(r=>r.json()).then(d=>{ if(d.count) setVisitorCount(d.count) }).catch(()=>{})
+    fetch('/api/visitors').then(r=>r.json()).then(d=>{ const n = Number(d?.count); if (Number.isFinite(n)) setVisitorCount(n); else setVisitorCount(0) }).catch(()=>{})
   }, [])
 
   useEffect(() => {
