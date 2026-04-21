@@ -28,6 +28,7 @@
     "formidable": "^3.5.4",
     "geoip-lite": "^1.4.10",
     "html2canvas": "^1.4.1",
+    "ioredis": "^5.10.1",
     "jspdf": "^3.0.4",
     "langchain": "^1.2.31",
     "lucide-react": "^0.556.0",
