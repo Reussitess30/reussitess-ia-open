@@ -287,7 +287,14 @@ Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
         const caption = response.replace(nasaMatch[0], "").trim()
         await sendPhoto(chatId, nasaMatch[1], caption, { inline_keyboard: [[{ text: "🔄 Menu Principal", callback_data: "menu" }]] })
       } else {
-        await sendMsg(chatId, response, { inline_keyboard: [[{ text: "🔄 Menu Principal", callback_data: "menu" }]] })
+        // Ajouter bouton partage
+const shareKeyboard = {
+  inline_keyboard: [[
+    { text: '🔄 Menu Principal', callback_data: 'menu' },
+    { text: '📤 Partager le bot', url: 'https://t.me/share/url?url=https://t.me/Reussitessbot&text=Découvre%20REUSSITESS%20AI%20🇬🇵%20le%20bot%20AfroCaraïbéen%20%21%20BOUDOUM%20!' }
+  ]]
+}
+await sendMsg(chatId, response, { inline_keyboard: [[{ text: "🔄 Menu Principal", callback_data: "menu" }]] })
       }
     }
 
