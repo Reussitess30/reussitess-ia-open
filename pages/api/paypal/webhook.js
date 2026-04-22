@@ -40,7 +40,7 @@ async function sendEmail(to, code) {
             </div>
             <div style="background:rgba(255,255,255,0.03);border-radius:12px;padding:20px;margin-bottom:20px">
               <p style="color:#e2e8f0;font-weight:700;margin-bottom:10px">Tes 10 modules :</p>
-              <p style="color:#94a3b8;line-height:2">🧬 ADN de Reussite | 💼 Architecte de Fortune | 🎯 Negociateur Caribeen | 🌐 Traducteur de Succes | 🏗️ Batisseur d Empire | 🛡️ Bouclier Juridique | 🧠 Mindset Champions | 🌱 Entrepreneur Social | 📡 Intelligence Strategique | 👑 Passeport Excellence</p>
+              <p style="color:#94a3b8;line-height:2">🧬 ADN de Reussite | 💼 Architecte de Fortune | 🎯 Negociateur Caribeen | 🌐 Traducteur de Succes | 🏗 Batisseur d Empire | 🛡 Bouclier Juridique | 🧠 Mindset Champions | 🌱 Entrepreneur Social | 📡 Intelligence Strategique | 👑 Passeport Excellence</p>
             </div>
             <div style="text-align:center;color:#475569;font-size:0.8rem">
               <p>REUSSITESS®971 — Terres de Champions 🇬🇵</p>

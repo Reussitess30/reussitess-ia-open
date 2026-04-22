@@ -25,7 +25,7 @@ export default function Espagne() {
 
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
             <h2 className="text-3xl font-bold text-red-800 mb-6">
-              🏛️ Patrimoine UNESCO (50 sites)
+              🏛 Patrimoine UNESCO (50 sites)
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-red-50 p-4 rounded-xl">
@@ -69,7 +69,7 @@ export default function Espagne() {
               </div>
               <div className="bg-red-50 p-4 rounded-xl">
                 <h3 className="font-bold text-red-900 mb-2">
-                  🏖️ Saint-Jacques Compostelle
+                  🏖 Saint-Jacques Compostelle
                 </h3>
                 <p className="text-gray-700">
                   Chemin pèlerinage millénaire chrétien. Camino 800 km France,
@@ -78,7 +78,7 @@ export default function Espagne() {
               </div>
               <div className="bg-red-50 p-4 rounded-xl">
                 <h3 className="font-bold text-red-900 mb-2">
-                  🏛️ Cordoue Mosquée
+                  🏛 Cordoue Mosquée
                 </h3>
                 <p className="text-gray-700">
                   Mezquita-Catedral arcs bicolores unique. Califat Omeyyade 10e
@@ -140,7 +140,7 @@ export default function Espagne() {
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-green-50 p-4 rounded-xl">
                 <h3 className="font-bold text-green-900">
-                  🏖️ Tourisme 83M 2e Mondial
+                  🏖 Tourisme 83M 2e Mondial
                 </h3>
                 <p className="text-gray-700">
                   Destination paradis soleil plages. Costa Brava Costa del Sol,

@@ -354,7 +354,7 @@ export default function Home() {
                   rel="noopener noreferrer nofollow sponsored"
                   className="boutique-btn"
                 >
-                  🛍️ Visiter la Boutique
+                  🛍 Visiter la Boutique
                 </a>
                 <div
                   style={{
@@ -403,21 +403,21 @@ export default function Home() {
             }}
           >
             <div>
-              <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>1️⃣</div>
+              <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>1⃣</div>
               <h3 style={{ color: "#f59e0b", marginBottom: "1rem" }}>
                 Cliquez
               </h3>
               <p>Choisissez une boutique Amazon</p>
             </div>
             <div>
-              <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>2️⃣</div>
+              <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>2⃣</div>
               <h3 style={{ color: "#3b82f6", marginBottom: "1rem" }}>
                 Achetez
               </h3>
               <p>Faites vos achats normalement</p>
             </div>
             <div>
-              <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>3️⃣</div>
+              <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>3⃣</div>
               <h3 style={{ color: "#10b981", marginBottom: "1rem" }}>Gagnez</h3>
               <p>Je reçois une commission</p>
             </div>

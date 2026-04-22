@@ -5,7 +5,7 @@ export default function AffiliateDisclaimer() {
       {/* Fixed Top Banner */}
       <div className="affiliate-banner-top">
         <div className="banner-content">
-          <span className="banner-icon">⚠️</span>
+          <span className="banner-icon">⚠</span>
           <p className="banner-text">
             <strong>Partenaire Amazon</strong> • En tant qu'Affiliée Amazon, je
             réalise un bénéfice sur les achats remplissant les conditions
@@ -17,7 +17,7 @@ export default function AffiliateDisclaimer() {
       {/* Bottom Disclaimer (kept for legal completeness) */}
       <div className="affiliate-disclaimer">
         <p>
-          ⚠️ <strong>Avertissement :</strong> Ce site contient des liens
+          ⚠ <strong>Avertissement :</strong> Ce site contient des liens
           d'affiliation Amazon. Nous pouvons recevoir une commission sur les
           achats effectués via ces liens, sans frais supplémentaires pour vous.
         </p>

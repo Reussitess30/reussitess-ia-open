@@ -236,7 +236,7 @@ export default function Boutiques() {
         }}
       >
         <div style={{ textAlign: "center", color: "white" }}>
-          <div style={{ fontSize: "4rem", marginBottom: "1rem" }}>🛍️</div>
+          <div style={{ fontSize: "4rem", marginBottom: "1rem" }}>🛍</div>
           <h1
             style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: "800" }}
           >

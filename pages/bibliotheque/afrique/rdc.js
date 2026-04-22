@@ -43,7 +43,7 @@ const Page = () => {
         <div className="max-w-4xl mx-auto px-4 py-12 space-y-8">
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <h2 className="text-3xl font-bold mb-6 text-blue-600">
-              🏛️ Informations Générales
+              🏛 Informations Générales
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
@@ -80,7 +80,7 @@ const Page = () => {
 
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <h2 className="text-3xl font-bold mb-6 text-blue-600">
-              🏛️ Patrimoine
+              🏛 Patrimoine
             </h2>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
@@ -126,7 +126,7 @@ const Page = () => {
 
           <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl shadow-xl p-8 text-white">
             <h2 className="text-3xl font-bold mb-6">
-              🛍️ Découvrir les Produits
+              🛍 Découvrir les Produits
             </h2>
             <p className="text-lg mb-6">
               Explorez notre sélection de produits en lien avec République

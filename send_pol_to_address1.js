@@ -61,7 +61,7 @@ rl.question('\nEntrez la CLÉ PRIVÉE de l\'adresse 2: ', async (privateKey) => 
     console.log(`Montant:  10 POL\n`);
     console.log('═'.repeat(80));
     
-    rl.question('\n⚠️  Confirmer l\'envoi? (oui/non): ', async (confirm) => {
+    rl.question('\n⚠  Confirmer l\'envoi? (oui/non): ', async (confirm) => {
       if (confirm.toLowerCase() !== 'oui' && confirm.toLowerCase() !== 'o') {
         console.log('\n❌ Envoi annulé\n');
         rl.close();

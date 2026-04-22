@@ -61,7 +61,7 @@ async function investigate() {
             const isContractCreation = !tx.to || tx.to === '';
             
             console.log(`${i + 1}. ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`);
-            console.log(`   ${isContractCreation ? '🏗️  CONTRACT CREATION' : '📤 Transaction'}`);
+            console.log(`   ${isContractCreation ? '🏗  CONTRACT CREATION' : '📤 Transaction'}`);
             console.log(`   De: ${tx.from.substring(0, 20)}...`);
             if (tx.to) console.log(`   À: ${tx.to.substring(0, 20)}...`);
             console.log(`   Fonction: ${tx.functionName || 'N/A'}`);
@@ -105,7 +105,7 @@ async function investigate() {
           console.log('• Source code → S\'il est vérifié, vous verrez le code\n');
           
         } else {
-          console.log('⚠️  Impossible de récupérer l\'historique via API');
+          console.log('⚠  Impossible de récupérer l\'historique via API');
           console.log('Vérification manuelle requise sur Polygonscan\n');
         }
       } catch (e) {

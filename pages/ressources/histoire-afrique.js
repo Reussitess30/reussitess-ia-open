@@ -72,7 +72,7 @@ export default function HistoireAfrique() {
                   marginBottom: "1rem",
                 }}
               >
-                🏛️ Berceau de l'Humanité
+                🏛 Berceau de l'Humanité
               </h2>
               <p
                 style={{

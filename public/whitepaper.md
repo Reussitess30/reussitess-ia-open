@@ -1,13 +1,13 @@
 # Whitepaper v2.0 – REUSSITESS® Réel & Optimisé
 
-## 1️⃣ Identité et Protection
+## 1⃣ Identité et Protection
 - **Projet :** REUSSITESS®  
 - **Origine :** Guadeloupe / Gourbeyre  
 - **Fondateur :** Rony Porinus (SIRET : 444699979700031)  
 - **Protection IP :** Dépôt INPI eSoleau DSO2026008921 (Mars 2026)  
 - **Objectif :** Fournir un écosystème digital utile, fiable et Afrocaraïbéen pour la communauté Outre-mer  
 
-## 2️⃣ Écosystème Réel et Fonctionnel
+## 2⃣ Écosystème Réel et Fonctionnel
 
 ### 2.1 Bot Reussitess – Chef d’orchestre
 **Modules principaux :**
@@ -29,7 +29,7 @@
 - IA médicale / TERRA HEALTH → futur projet (coût élevé + légal complexe)  
 - TERRA GROW / WATER → prototypes limités à version locale / low-cost  
 
-## 3️⃣ Token REUSS – Utilité réelle
+## 3⃣ Token REUSS – Utilité réelle
 - **Contrat :** 0xB37531727fC07c6EED4f97F852A115B428046EB2 (Polygon)  
 - **Total Supply :** 999 999 999 REUSS  
 
@@ -38,12 +38,12 @@
 - +10 REUSS → signalement d’incidents locaux (fuite d’eau, alertes environnementales)  
 - **Principe :** token pratique et utile, pas de spéculation, adoption locale avant tout  
 
-## 4️⃣ Stratégie de déploiement
+## 4⃣ Stratégie de déploiement
 - **Q2 2026 :** bot Reussitess complet et testé en Guadeloupe  
 - **Q3 2026 :** extension aux autres territoires Outre-mer  
 - **Q4 2026 :** enrichissement du bot avec modules optionnels selon retours utilisateurs  
 
-## 5️⃣ Points clés
+## 5⃣ Points clés
 - Écosystème léger, gratuit et stable  
 - Modules réels et opérationnels → bot fiable et utile  
 - Token REUSS utilité locale avant spéculation  

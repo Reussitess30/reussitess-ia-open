@@ -101,7 +101,7 @@ export default function Layout({ children, title = 'REUSSITESS®971' }) {
         fontWeight: '600',
         boxShadow: '0 2px 10px rgba(0,0,0,0.2)'
       }}>
-        🛍️ <strong>Programme Partenaires Amazon</strong> - En tant qu'Affilié Amazon, nous réalisons un bénéfice sur les achats qualifiés. Merci ! 🙏
+        🛍 <strong>Programme Partenaires Amazon</strong> - En tant qu'Affilié Amazon, nous réalisons un bénéfice sur les achats qualifiés. Merci ! 🙏
       </div>
 
       {/* NAVBAR */}
@@ -232,7 +232,7 @@ export default function Layout({ children, title = 'REUSSITESS®971' }) {
               boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)'
             }}
             className="btn-boutiques">
-              🛍️ Boutiques
+              🛍 Boutiques
             </Link>
 
             <a

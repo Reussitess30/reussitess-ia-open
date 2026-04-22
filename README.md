@@ -8,7 +8,7 @@ France, Belgique, Italie, Allemagne, Suède, Singapour, Australie, Espagne, Bré
 ​Réseau : Polygon (POS)  
 ​Contrat de Jeton (GAMMA) : 0xB37531727fC07c6EED4f97F852A115B428046EB2  
 ​Pool de Liquidité Principal (QuickSwap V3) : 0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c  
-​🛠️ Écosystème IA-Passport
+​🛠 Écosystème IA-Passport
 ​Site Officiel : reussitess.fr/ia-passport  
 ​Infrastructure : Déploiement sécurisé sur Vercel et analyse via l'API Moralis.  
 ​Support : rony.porinus@gmail.com  

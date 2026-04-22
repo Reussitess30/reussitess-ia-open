@@ -143,7 +143,7 @@ export default function SavoirCulture() {
                 }}
                 className="resource-card"
               >
-                <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🏝️</div>
+                <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>🏝</div>
                 <h3
                   style={{
                     fontSize: "1.5rem",
@@ -250,7 +250,7 @@ export default function SavoirCulture() {
                 }}
               >
                 <div style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>
-                  ⚖️
+                  ⚖
                 </div>
                 <h4
                   style={{

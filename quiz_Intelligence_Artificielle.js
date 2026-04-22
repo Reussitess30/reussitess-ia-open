@@ -35,7 +35,7 @@ const quizIA = {
       explanation: "L'IA transforme tous les secteurs : diagnostics médicaux plus précis, voitures autonomes, traductions instantanées, détection de fraudes bancaires, personnalisation du contenu, création artistique...",
     },
     {
-      question: "⚠️ Qu'est-ce que le biais algorithmique ?",
+      question: "⚠ Qu'est-ce que le biais algorithmique ?",
       answers: ["Un bug informatique", "Quand un algorithme prend des décisions discriminatoires à cause de biais dans ses données d'entraînement", "Une erreur de calcul mathématique", "Un virus dans l'IA"],
       correct: 1,
       explanation: "Si les données d'entraînement d'une IA reflètent des inégalités sociales, l'IA reproduit et amplifie ces biais. C'est un défi majeur de l'IA éthique que chercheurs et entreprises tentent de résoudre.",

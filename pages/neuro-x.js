@@ -140,7 +140,7 @@ export default function NeuroX() {
                       <li style={{ marginBottom: "8px" }}><a href="https://www.guyane.cci.fr" target="_blank" style={{ color: "#ccc", textDecoration: "none" }}><strong style={{ color: "#22c55e" }}>Guyane :</strong> Guides économiques (CCI) ➜</a></li>
                       <li style={{ marginBottom: "8px" }}><a href="https://www.regionreunion.com/economie" target="_blank" style={{ color: "#ccc", textDecoration: "none" }}><strong style={{ color: "#22c55e" }}>La Réunion :</strong> Investissements et croissance ➜</a></li>
                     </ul>
-                    <h4 style={{ color: "#a855f7", marginBottom: "10px" }}>🗣️ Langue et Culture Créoles</h4>
+                    <h4 style={{ color: "#a855f7", marginBottom: "10px" }}>🗣 Langue et Culture Créoles</h4>
                     <ul style={{ listStyle: "none", padding: 0 }}>
                       <li style={{ marginBottom: "8px" }}><a href="https://www.potomitan.info" target="_blank" style={{ color: "#ccc", textDecoration: "none" }}><strong style={{ color: "#a855f7" }}>Potomitan :</strong> Dictionnaire créole ➜</a></li>
                       <li style={{ marginBottom: "8px" }}><a href="https://www.lexilogos.com/creole_dictionnaire.htm" target="_blank" style={{ color: "#ccc", textDecoration: "none" }}><strong style={{ color: "#a855f7" }}>Lexilogos :</strong> Portail ressources ➜</a></li>

@@ -134,10 +134,10 @@ const Astuces = () => {
                       🔍 Détecter les faux avis
                     </h3>
                     <ul className="space-y-2 text-lg">
-                      <li>⚠️ Méfiez-vous avis 5 étoiles tous identiques</li>
-                      <li>⚠️ Vérifiez profil acheteurs (Achat Vérifié ✓)</li>
-                      <li>⚠️ Utilisez Fakespot.com ou ReviewMeta.com</li>
-                      <li>⚠️ Lisez avis 3-4 étoiles (plus authentiques)</li>
+                      <li>⚠ Méfiez-vous avis 5 étoiles tous identiques</li>
+                      <li>⚠ Vérifiez profil acheteurs (Achat Vérifié ✓)</li>
+                      <li>⚠ Utilisez Fakespot.com ou ReviewMeta.com</li>
+                      <li>⚠ Lisez avis 3-4 étoiles (plus authentiques)</li>
                       <li>✅ Privilégiez vendeurs "Expédié par Amazon"</li>
                     </ul>
                   </div>
@@ -248,7 +248,7 @@ const Astuces = () => {
                   </div>
 
                   <div className="border-2 border-orange-500 rounded-xl p-6 hover:shadow-2xl transition">
-                    <div className="text-4xl mb-3">🛍️</div>
+                    <div className="text-4xl mb-3">🛍</div>
                     <h3 className="text-2xl font-bold mb-3 text-orange-700">
                       Dropshipping Shopify
                     </h3>
@@ -264,7 +264,7 @@ const Astuces = () => {
                   </div>
 
                   <div className="border-2 border-pink-500 rounded-xl p-6 hover:shadow-2xl transition">
-                    <div className="text-4xl mb-3">✍️</div>
+                    <div className="text-4xl mb-3">✍</div>
                     <h3 className="text-2xl font-bold mb-3 text-pink-700">
                       Copywriting IA-Assisté
                     </h3>
@@ -456,31 +456,31 @@ const Astuces = () => {
                     </h3>
                     <ul className="space-y-2 text-lg">
                       <li>
-                        1️⃣ <strong>Niche spécifique</strong> : Expertise pointue
+                        1⃣ <strong>Niche spécifique</strong> : Expertise pointue
                         (fitness végan, tech IA, minimalisme...)
                       </li>
                       <li>
-                        2️⃣ <strong>Consistance</strong> : Poster quotidiennement
+                        2⃣ <strong>Consistance</strong> : Poster quotidiennement
                         3-6 mois minimum
                       </li>
                       <li>
-                        3️⃣ <strong>Engagement authentique</strong> : Répondre
+                        3⃣ <strong>Engagement authentique</strong> : Répondre
                         commentaires, créer communauté
                       </li>
                       <li>
-                        4️⃣ <strong>Qualité visuelle</strong> : Éclairage,
+                        4⃣ <strong>Qualité visuelle</strong> : Éclairage,
                         montage pro (CapCut, Premiere)
                       </li>
                       <li>
-                        5️⃣ <strong>Plateforme agence</strong> : AspireIQ,
+                        5⃣ <strong>Plateforme agence</strong> : AspireIQ,
                         Upfluence, CreatorIQ
                       </li>
                       <li>
-                        6️⃣ <strong>Media Kit</strong> : Stats, démo, tarifs
+                        6⃣ <strong>Media Kit</strong> : Stats, démo, tarifs
                         clairs
                       </li>
                       <li>
-                        7️⃣ <strong>Diversifier revenus</strong> : Affiliation,
+                        7⃣ <strong>Diversifier revenus</strong> : Affiliation,
                         produits propres, formations
                       </li>
                     </ul>
@@ -500,7 +500,7 @@ const Astuces = () => {
 
                 <div className="grid md:grid-cols-2 gap-6 mb-8">
                   <div className="border-2 border-purple-500 rounded-xl p-6 hover:shadow-2xl transition">
-                    <div className="text-4xl mb-3">✍️</div>
+                    <div className="text-4xl mb-3">✍</div>
                     <h3 className="text-2xl font-bold mb-3 text-purple-700">
                       Rédaction IA (ChatGPT/Claude)
                     </h3>
@@ -749,7 +749,7 @@ const Astuces = () => {
                       ballonnements
                     </p>
                     <p className="text-lg">
-                      <strong>⚠️ Attention :</strong> Max 2 fois/semaine (pH
+                      <strong>⚠ Attention :</strong> Max 2 fois/semaine (pH
                       sanguin)
                     </p>
                   </div>
@@ -808,7 +808,7 @@ const Astuces = () => {
 
                 <div className="mt-8 p-6 bg-red-50 border-2 border-red-500 rounded-xl">
                   <h3 className="text-2xl font-bold mb-3 text-red-700">
-                    ⚠️ IMPORTANT - Précautions
+                    ⚠ IMPORTANT - Précautions
                   </h3>
                   <ul className="space-y-2 text-lg">
                     <li>
@@ -823,7 +823,7 @@ const Astuces = () => {
                       ❌ Femmes enceintes/allaitantes : demander avis médical
                     </li>
                     <li>
-                      ⚠️ Remèdes traditionnels complémentaires uniquement — Consultez toujours un médecin pour tout traitement
+                      ⚠ Remèdes traditionnels complémentaires uniquement — Consultez toujours un médecin pour tout traitement
                     </li>
                   </ul>
                 </div>
@@ -1040,7 +1040,7 @@ const Astuces = () => {
 
                   <div className="bg-red-50 border-2 border-red-500 p-6 rounded-xl">
                     <h3 className="text-2xl font-bold mb-3 text-red-700">
-                      ⚠️ PRÉCAUTIONS ESSENTIELLES
+                      ⚠ PRÉCAUTIONS ESSENTIELLES
                     </h3>
                     <ul className="space-y-2 text-lg">
                       <li>
@@ -1118,7 +1118,7 @@ const Astuces = () => {
                 href="https://reussitess.fr/"
                 className="bg-white text-purple-600 px-8 py-4 rounded-xl font-bold text-xl hover:scale-105 transition-all"
               >
-                🛍️ Explorer Maintenant
+                🛍 Explorer Maintenant
               </a>
               <Link
                 href="/bibliotheque"

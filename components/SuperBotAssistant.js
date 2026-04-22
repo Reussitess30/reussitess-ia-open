@@ -55,7 +55,7 @@ export default function SuperBotAssistant() {
   }
   const [historiqueList, setHistoriqueList] = useState([])
   const [sessionId] = useState(() => 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2,9))
-  const [suggestions, setSuggestions] = useState(['🌋 Séismes Antilles','🌀 Cyclones','🌤️ Météo DOM-TOM','💱 Devises XOF/XAF','⛽ Carburant DOM-TOM','📅 Calendrier scolaire','💎 Prix REUSS','🎓 Bourses francophones','💼 Emploi Caraïbes','🌴 Traduire créole','📚 Bibliothèque caribéenne','📰 Actualités Guadeloupe','💰 Calculateur Amazon','📄 Créer mon CV'])
+  const [suggestions, setSuggestions] = useState(['🌋 Séismes Antilles','🌀 Cyclones','🌤 Météo DOM-TOM','💱 Devises XOF/XAF','⛽ Carburant DOM-TOM','📅 Calendrier scolaire','💎 Prix REUSS','🎓 Bourses francophones','💼 Emploi Caraïbes','🌴 Traduire créole','📚 Bibliothèque caribéenne','📰 Actualités Guadeloupe','💰 Calculateur Amazon','📄 Créer mon CV'])
   const [selectedImage, setSelectedImage] = useState(null)
   const [imagePreview, setImagePreview] = useState(null)
   const [activeTab, setActiveTab] = useState('chat')
@@ -242,7 +242,7 @@ export default function SuperBotAssistant() {
       // Sauvegarder conversation
       fetch('/api/conversations', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ sessionId, messages: [...messages, { role: 'user', content: userMessage }, { role: 'assistant', content: botResponse }] }) }).catch(()=>{})
     } catch {
-      setMessages(prev => [...prev, { role: 'assistant', content: "⚠️ Connexion temporairement indisponible. Réessayez dans un instant. 💪" }])
+      setMessages(prev => [...prev, { role: 'assistant', content: "⚠ Connexion temporairement indisponible. Réessayez dans un instant. 💪" }])
     } finally { setIsLoading(false) }
   }
 
@@ -340,7 +340,7 @@ export default function SuperBotAssistant() {
 
           {/* ONGLETS */}
           <div style={{display:'flex',borderBottom:'1px solid rgba(255,255,255,0.1)'}}>
-            {[['chat','💬 Chat'],['nexus','🌐 Nexus'],['amazon','🛍️ Amazon'],['token','💎 Token'],['quiz','📚 Quiz'],['historique','📜 Hist']].map(([tab,label]) => (
+            {[['chat','💬 Chat'],['nexus','🌐 Nexus'],['amazon','🛍 Amazon'],['token','💎 Token'],['quiz','📚 Quiz'],['historique','📜 Hist']].map(([tab,label]) => (
               <button key={tab} onClick={() => { setActiveTab(tab); if(tab==='nexus') fetchNexusStats()
                   if(tab==='historique') fetch('/api/conversations').then(r=>r.json()).then(d=>setHistoriqueList(Array.isArray(d)?d:[])).catch(()=>{}) }}
                 style={{flex:1,padding:'0.6rem',border:'none',background: activeTab===tab?'rgba(16,185,129,0.2)':'transparent',color: activeTab===tab?'#10b981':'#64748b',fontSize:'0.7rem',cursor:'pointer',fontWeight: activeTab===tab?'bold':'normal',borderBottom: activeTab===tab?'2px solid #10b981':'2px solid transparent'}}>
@@ -377,8 +377,8 @@ export default function SuperBotAssistant() {
                     <p style={{color:'white',fontWeight:'bold',margin:0}}>${nexusStats.pol}</p>
                   </div>
                   <div style={{background:'rgba(245,158,11,0.1)',border:'1px solid rgba(245,158,11,0.3)',borderRadius:'12px',padding:'1rem'}}>
-                    <p style={{color:'#f59e0b',fontWeight:'bold',margin:'0 0 0.5rem'}}>🏗️ Écosystème</p>
-                    {[['🛍️ Boutiques Amazon','26 actives • 14 pays'],['🤖 Agents IA','200 déployés'],['📚 Quiz','100+ thèmes'],['🇬🇵 Base','Guadeloupe 971']].map(([k,v]) => (
+                    <p style={{color:'#f59e0b',fontWeight:'bold',margin:'0 0 0.5rem'}}>🏗 Écosystème</p>
+                    {[['🛍 Boutiques Amazon','26 actives • 14 pays'],['🤖 Agents IA','200 déployés'],['📚 Quiz','100+ thèmes'],['🇬🇵 Base','Guadeloupe 971']].map(([k,v]) => (
                       <div key={k} style={{display:'flex',justifyContent:'space-between',padding:'0.3rem 0',borderBottom:'1px solid rgba(255,255,255,0.05)'}}>
                         <span style={{color:'#94a3b8',fontSize:'0.8rem'}}>{k}</span>
                         <span style={{color:'white',fontSize:'0.8rem',fontWeight:'bold'}}>{v}</span>
@@ -412,7 +412,7 @@ export default function SuperBotAssistant() {
 
           {activeTab === 'amazon' && (
             <div style={{flex:1,overflowY:'auto',padding:'1rem'}}>
-              <p style={{color:'#f59e0b',fontWeight:'bold',marginBottom:'1rem'}}>🛍️ 26 Boutiques • 14 Pays</p>
+              <p style={{color:'#f59e0b',fontWeight:'bold',marginBottom:'1rem'}}>🛍 26 Boutiques • 14 Pays</p>
               {[['🇺🇸','USA','https://amazon.com/shop/amourguadeloupe'],['🇫🇷','France','https://amazon.fr/shop/amourguadeloupe'],['🇩🇪','Allemagne','https://amazon.de/shop/amourguadeloupe'],['🇬🇧','UK','https://amazon.co.uk/shop/amourguadeloupe'],['🇨🇦','Canada','https://amazon.ca/shop/amourguadeloupe'],['🇮🇹','Italie','https://amazon.it/shop/amourguadeloupe'],['🇪🇸','Espagne','https://amazon.es/shop/amourguadeloupe'],['🇦🇺','Australie','https://amzlink.to/az05kTTrYJ06L'],['🇧🇪','Belgique','https://amazon.com.be/shop/influencer-fb942837'],['🇮🇳','Inde','https://amazon.in/shop/amourguadeloupe'],['🇸🇬','Singapour','https://amazon.sg/shop/amourguadeloupe'],['🇸🇪','Suède','https://amazon.se/shop/amourguadeloupe'],['🇳🇱','Pays-Bas','https://amazon.nl/shop/amourguadeloupe'],['🇧🇷','Brésil','https://amzlink.to/az0ymmoCLHvyA']].map(([flag,name,url]) => (
                 <a key={name} href={url} target="_blank" rel="noopener noreferrer" style={{display:'flex',alignItems:'center',gap:'0.8rem',padding:'0.7rem',background:'rgba(245,158,11,0.1)',border:'1px solid rgba(245,158,11,0.2)',borderRadius:'10px',marginBottom:'0.5rem',textDecoration:'none',color:'white'}}>
                   <span style={{fontSize:'1.5rem'}}>{flag}</span>
@@ -442,7 +442,7 @@ export default function SuperBotAssistant() {
             <div style={{flex:1,overflowY:'auto',padding:'1rem'}}>
               <p style={{color:'#10b981',fontWeight:'bold',marginBottom:'0.3rem'}}>📚 99 Quiz • Learn-to-Earn REUSS</p>
               <p style={{color:'#64748b',fontSize:'0.75rem',marginBottom:'0.8rem'}}>Cliquez une catégorie → le bot lance le quiz !</p>
-              {[['🛒','Amazon','Amazon'],['🛒','Amazon Affiliation','Amazon_Affiliation'],['🌍','Afrique','Afrique'],['⭐','Afro-Caraïbes 1','Afro_Caraibes_1'],['⭐','Afro-Caraïbes 2','Afro_Caraibes_2'],['🇩🇪','Allemagne Essentiel','Allemagne_Essentiel'],['🎌','Anime & Manga','Anime_Manga'],['🏛️','Architecture','Architecture'],['🎨','Art','Art'],['⭐','Astrologie','Astrologie'],['🔭','Astronomie','Astronomie'],['🇦🇺','Australie Essentiel','Australie_Essentiel'],['🇧🇪','Belgique Essentiel','Belgique_Essentiel'],['🛍️','Boutique Motivation','Boutique_Motivation'],['🇧🇷','Brésil Essentiel','Bresil_Essentiel'],['📈','Business','Business'],['🇨🇦','Canada Essentiel','Canada_Essentiel'],['🇬🇵','Caraïbes','Caraibes'],['🎭','Cinéma','Cinéma'],['💬','Communication','Communication'],['💎','Crypto','Crypto'],['🍽️','Cuisine Antillaise','CuisineAntillaise'],['🍽️','Cuisine Antillaise 2','Cuisine_Antillaise'],['🌍','Culture du Monde','Culture_du_Monde'],['💪','Dépassement de Soi','DepassementSoi'],['💡','Développement Soi','DeveloppementSoi'],['💡','Développement Personnel','Developpement_Personnel'],['⚖️','Droit','Droit'],['⚖️','Droit Consommateur','DroitConsommateur'],['⚖️','Droit Étrangers','DroitEtrangers'],['⚖️','Droit Famille','DroitFamille'],['📱','Droit Numérique','DroitNumerique2'],['⚖️','Droit Travail','DroitTravail'],['⚖️','Droits Citoyen','DroitsCitoyen'],['📱','Droits Numériques','DroitsNumeriques'],['🔍','Découvertes','Découvertes'],['🚀','Entrepreneuriat','Entrepreneuriat'],['🌿','Environnement','Environnement'],['🌶️','Épices du Monde','EpicesMonde'],['🇪🇸','Espagne Essentiel','Espagne_Essentiel'],['💰','Finance Personnelle','Finance_Personnelle'],['💰','Finances Personnelles','FinancesPersonnelles'],['🇫🇷','France Essentiel','France_Essentiel'],['🍴','Gastronomie','Gastronomie'],['🌍','Gastronomie Africaine','GastronomieAfricaine'],['😌','Gestion Stress','GestionStress'],['⛏️','GoMining','GoMining'],['✍️','Graphologie','Graphologie'],['🌍','Géographie','Géographie'],['📖','Histoire','Histoire'],['🌿','Huiles Essentielles','HuilesEssentielles'],['🏠','Immobilier','Immobilier'],['🇮🇳','Inde Essentiel','Inde_Essentiel'],['💡','Innovations','Innovations'],['🤖','Intelligence Artificielle','IntelligenceArtificielle'],['❤️','Intelligence Émotionnelle','IntelligenceEmotionnelle'],['🤖','IA','Intelligence_Artificielle'],['🌐','Internet','Internet'],['🇮🇹','Italie Essentiel','Italie_Essentiel'],['🧘','Jeune Detox','JeuneDetox'],['🎮','Jeux Vidéo','Jeux_Video'],['🌐','Langue','Langue'],['🏆','Leadership','Leadership'],['📚','Littérature','Litterature'],['📣','Marketing Digital','MarketingDigital'],['📣','Marketing Digital 2','Marketing_Digital'],['🔢','Maths','Maths'],['💊','Médecine','Medecine'],['🌿','Médecines Douces','MedecinesDouces'],['👗','Mode & Beauté','Mode_Beaute'],['🏛️','Monuments','Monuments'],['🎵','Musique','Musique'],['🏺','Mythologie','Mythologie'],['🔢','Numérologie','Numerologie'],['🥗','Nutrition','Nutrition'],['🇳🇱','Pays-Bas Essentiel','PaysBas_Essentiel'],['👑','Personnalités','Personnalités'],['🏛️','Philosophie','Philosophie'],['📷','Photographie','Photographie'],['🌺','Plantes Antilles','PlantesAntilles'],['🌿','Plantes Médicinales','PlantesMediacinales'],['🗳️','Politique','Politique'],['✨','Positivité','Positivité'],['🧠','Psychologie','Psychologie'],['📱','Réseaux Sociaux','Reseaux_Sociaux'],['💭','Rêves','Reves'],['❤️','Santé','Santé'],['🔬','Sciences','Sciences'],['🇸🇬','Singapour Essentiel','Singapour_Essentiel'],['🙏','Spiritualité','Spiritualite'],['🏃','Sport','Sport'],['🍜','Street Food','StreetFood'],['🇸🇪','Suède Essentiel','Suede_Essentiel'],['🔣','Symbolisme','Symbolisme'],['📱','Tech','Tech'],['🇬🇧','UK Essentiel','UK_Essentiel'],['🇺🇸','USA Essentiel','USA_Essentiel'],['🍷','Vins & Spiritueux','VinsSpiriteux'],['✈️','Voyage','Voyage']].map(([icon,cat,id]) => (
+              {[['🛒','Amazon','Amazon'],['🛒','Amazon Affiliation','Amazon_Affiliation'],['🌍','Afrique','Afrique'],['⭐','Afro-Caraïbes 1','Afro_Caraibes_1'],['⭐','Afro-Caraïbes 2','Afro_Caraibes_2'],['🇩🇪','Allemagne Essentiel','Allemagne_Essentiel'],['🎌','Anime & Manga','Anime_Manga'],['🏛','Architecture','Architecture'],['🎨','Art','Art'],['⭐','Astrologie','Astrologie'],['🔭','Astronomie','Astronomie'],['🇦🇺','Australie Essentiel','Australie_Essentiel'],['🇧🇪','Belgique Essentiel','Belgique_Essentiel'],['🛍','Boutique Motivation','Boutique_Motivation'],['🇧🇷','Brésil Essentiel','Bresil_Essentiel'],['📈','Business','Business'],['🇨🇦','Canada Essentiel','Canada_Essentiel'],['🇬🇵','Caraïbes','Caraibes'],['🎭','Cinéma','Cinéma'],['💬','Communication','Communication'],['💎','Crypto','Crypto'],['🍽','Cuisine Antillaise','CuisineAntillaise'],['🍽','Cuisine Antillaise 2','Cuisine_Antillaise'],['🌍','Culture du Monde','Culture_du_Monde'],['💪','Dépassement de Soi','DepassementSoi'],['💡','Développement Soi','DeveloppementSoi'],['💡','Développement Personnel','Developpement_Personnel'],['⚖','Droit','Droit'],['⚖','Droit Consommateur','DroitConsommateur'],['⚖','Droit Étrangers','DroitEtrangers'],['⚖','Droit Famille','DroitFamille'],['📱','Droit Numérique','DroitNumerique2'],['⚖','Droit Travail','DroitTravail'],['⚖','Droits Citoyen','DroitsCitoyen'],['📱','Droits Numériques','DroitsNumeriques'],['🔍','Découvertes','Découvertes'],['🚀','Entrepreneuriat','Entrepreneuriat'],['🌿','Environnement','Environnement'],['🌶','Épices du Monde','EpicesMonde'],['🇪🇸','Espagne Essentiel','Espagne_Essentiel'],['💰','Finance Personnelle','Finance_Personnelle'],['💰','Finances Personnelles','FinancesPersonnelles'],['🇫🇷','France Essentiel','France_Essentiel'],['🍴','Gastronomie','Gastronomie'],['🌍','Gastronomie Africaine','GastronomieAfricaine'],['😌','Gestion Stress','GestionStress'],['⛏','GoMining','GoMining'],['✍','Graphologie','Graphologie'],['🌍','Géographie','Géographie'],['📖','Histoire','Histoire'],['🌿','Huiles Essentielles','HuilesEssentielles'],['🏠','Immobilier','Immobilier'],['🇮🇳','Inde Essentiel','Inde_Essentiel'],['💡','Innovations','Innovations'],['🤖','Intelligence Artificielle','IntelligenceArtificielle'],['❤','Intelligence Émotionnelle','IntelligenceEmotionnelle'],['🤖','IA','Intelligence_Artificielle'],['🌐','Internet','Internet'],['🇮🇹','Italie Essentiel','Italie_Essentiel'],['🧘','Jeune Detox','JeuneDetox'],['🎮','Jeux Vidéo','Jeux_Video'],['🌐','Langue','Langue'],['🏆','Leadership','Leadership'],['📚','Littérature','Litterature'],['📣','Marketing Digital','MarketingDigital'],['📣','Marketing Digital 2','Marketing_Digital'],['🔢','Maths','Maths'],['💊','Médecine','Medecine'],['🌿','Médecines Douces','MedecinesDouces'],['👗','Mode & Beauté','Mode_Beaute'],['🏛','Monuments','Monuments'],['🎵','Musique','Musique'],['🏺','Mythologie','Mythologie'],['🔢','Numérologie','Numerologie'],['🥗','Nutrition','Nutrition'],['🇳🇱','Pays-Bas Essentiel','PaysBas_Essentiel'],['👑','Personnalités','Personnalités'],['🏛','Philosophie','Philosophie'],['📷','Photographie','Photographie'],['🌺','Plantes Antilles','PlantesAntilles'],['🌿','Plantes Médicinales','PlantesMediacinales'],['🗳','Politique','Politique'],['✨','Positivité','Positivité'],['🧠','Psychologie','Psychologie'],['📱','Réseaux Sociaux','Reseaux_Sociaux'],['💭','Rêves','Reves'],['❤','Santé','Santé'],['🔬','Sciences','Sciences'],['🇸🇬','Singapour Essentiel','Singapour_Essentiel'],['🙏','Spiritualité','Spiritualite'],['🏃','Sport','Sport'],['🍜','Street Food','StreetFood'],['🇸🇪','Suède Essentiel','Suede_Essentiel'],['🔣','Symbolisme','Symbolisme'],['📱','Tech','Tech'],['🇬🇧','UK Essentiel','UK_Essentiel'],['🇺🇸','USA Essentiel','USA_Essentiel'],['🍷','Vins & Spiritueux','VinsSpiriteux'],['✈','Voyage','Voyage']].map(([icon,cat,id]) => (
                 <a key={cat} href={'/quiz/'+id} target="_blank" rel="noopener noreferrer"
                   style={{display:'flex',alignItems:'center',gap:'0.5rem',width:'100%',padding:'0.65rem 0.8rem',background:'rgba(16,185,129,0.08)',border:'1px solid rgba(16,185,129,0.2)',borderRadius:'10px',marginBottom:'0.4rem',cursor:'pointer',color:'white',fontSize:'0.82rem',fontWeight:'bold',textDecoration:'none'}}>
                   <span>{icon}</span><span style={{flex:1,textAlign:'left'}}>{cat}</span><span style={{color:'#10b981'}}>▶</span>
@@ -457,11 +457,11 @@ export default function SuperBotAssistant() {
 
           {activeTab === 'menu' && (
             <div style={{flex:1,overflowY:'auto',padding:'1rem'}}>
-              <p style={{color:'#f59e0b',fontWeight:'bold',marginBottom:'0.3rem'}}>🗺️ Navigation REUSSITESS®971</p>
+              <p style={{color:'#f59e0b',fontWeight:'bold',marginBottom:'0.3rem'}}>🗺 Navigation REUSSITESS®971</p>
               <p style={{color:'#64748b',fontSize:'0.75rem',marginBottom:'0.8rem'}}>Toutes les sections de l'écosystème</p>
 
               <p style={{color:'#10b981',fontSize:'0.75rem',fontWeight:'bold',marginBottom:'0.4rem'}}>💼 BUSINESS</p>
-              {[['🛍️','Boutiques Amazon','/boutiques'],['💎','Investir REUSS','/investir-reuss'],['📊','Affiliation','/affiliation'],['🚀','Booster Amazon','/booster-reussitess-amazon']].map(([icon,label,url]) => (
+              {[['🛍','Boutiques Amazon','/boutiques'],['💎','Investir REUSS','/investir-reuss'],['📊','Affiliation','/affiliation'],['🚀','Booster Amazon','/booster-reussitess-amazon']].map(([icon,label,url]) => (
                 <a key={label} href={url} target="_blank" rel="noopener noreferrer"
                   style={{display:'flex',alignItems:'center',gap:'0.6rem',padding:'0.6rem 0.8rem',background:'rgba(16,185,129,0.08)',border:'1px solid rgba(16,185,129,0.2)',borderRadius:'10px',marginBottom:'0.35rem',textDecoration:'none',color:'white',fontSize:'0.82rem',fontWeight:'bold'}}>
                   <span>{icon}</span><span style={{flex:1}}>{label}</span><span style={{color:'#10b981'}}>→</span>
@@ -492,7 +492,7 @@ export default function SuperBotAssistant() {
                 </a>
               ))}
 
-              <p style={{color:'#94a3b8',fontSize:'0.75rem',fontWeight:'bold',marginBottom:'0.4rem',marginTop:'0.8rem'}}>⚙️ OUTILS & LÉGAL</p>
+              <p style={{color:'#94a3b8',fontSize:'0.75rem',fontWeight:'bold',marginBottom:'0.4rem',marginTop:'0.8rem'}}>⚙ OUTILS & LÉGAL</p>
               {[['🔧','Outils & Calculateurs','/outils'],['📜','Mentions Légales','/mentions-legales'],['🔒','Confidentialité','/politique-confidentialite'],['📞','Contact','/contact'],['🏅','À Propos','/a-propos']].map(([icon,label,url]) => (
                 <a key={label} href={url} target="_blank" rel="noopener noreferrer"
                   style={{display:'flex',alignItems:'center',gap:'0.6rem',padding:'0.6rem 0.8rem',background:'rgba(148,163,184,0.08)',border:'1px solid rgba(148,163,184,0.2)',borderRadius:'10px',marginBottom:'0.35rem',textDecoration:'none',color:'white',fontSize:'0.82rem',fontWeight:'bold'}}>
@@ -505,7 +505,7 @@ export default function SuperBotAssistant() {
           {activeTab === 'token' && (
             <div style={{flex:1,overflowY:'auto',padding:'1rem'}}>
               <p style={{color:'#a855f7',fontWeight:'bold',marginBottom:'1rem'}}>💎 Token REUSS — Données Officielles</p>
-              {[['📋 Contrat','0xB37531...46EB2'],['🌐 Réseau','Polygon (MATIC)'],['💰 Supply','999,999,999 REUSS'],['🔥 Brûlés','1 REUSS symbolique'],['📊 DEX','QuickSwap V3'],['⚡ Vecteur 1','ALPHA-1 : Staking'],['🎓 Vecteur 2','BETA-2 : Quiz L2E'],['🛍️ Vecteur 3','GAMMA-1 : Amazon CB'],['🏛️ Vecteur 4','DELTA-4 : Gouvernance']].map(([k,v]) => (
+              {[['📋 Contrat','0xB37531...46EB2'],['🌐 Réseau','Polygon (MATIC)'],['💰 Supply','999,999,999 REUSS'],['🔥 Brûlés','1 REUSS symbolique'],['📊 DEX','QuickSwap V3'],['⚡ Vecteur 1','ALPHA-1 : Staking'],['🎓 Vecteur 2','BETA-2 : Quiz L2E'],['🛍 Vecteur 3','GAMMA-1 : Amazon CB'],['🏛 Vecteur 4','DELTA-4 : Gouvernance']].map(([k,v]) => (
                 <div key={k} style={{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'0.7rem',background:'rgba(168,85,247,0.08)',border:'1px solid rgba(168,85,247,0.2)',borderRadius:'10px',marginBottom:'0.5rem'}}>
                   <span style={{color:'#94a3b8',fontSize:'0.8rem'}}>{k}</span>
                   <span style={{color:'white',fontSize:'0.8rem',fontWeight:'bold'}}>{v}</span>
@@ -597,7 +597,7 @@ export default function SuperBotAssistant() {
                     </button>
                     <button aria-label="Imprimer ce message" onClick={() => {const w=window.open('');w.document.write('<pre>'+msg.content+'</pre>');w.print();}}
                       style={{padding:'0.3rem 0.7rem',background:'rgba(16,185,129,0.2)',border:'1px solid #10b981',borderRadius:'15px',color:'#10b981',fontSize:'0.72rem',cursor:'pointer',fontWeight:'bold'}}>
-                      🖨️ Imprimer
+                      🖨 Imprimer
                     </button>
                   </div>
                 )}

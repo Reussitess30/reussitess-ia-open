@@ -86,7 +86,7 @@ export default function Contact() {
                   <strong>💼 Statut :</strong> Auto-entrepreneur EI - IT & Amazon Influencer
                 </p>
                 <p style={{ marginBottom: '0.5rem' }}>
-                  <strong>✉️ Email :</strong>{' '}
+                  <strong>✉ Email :</strong>{' '}
                   <a 
                     href="mailto:influenceur@reussitess.fr"
                     style={{ 

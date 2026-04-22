@@ -46,7 +46,7 @@ async function analyzeTx() {
     
     if (toAddr === addr1) {
       console.log('📍 Cette transaction va vers votre ADRESSE 1 (Smart Contract)');
-      console.log('   ⚠️  Le smart contract peut avoir rejeté le POL\n');
+      console.log('   ⚠  Le smart contract peut avoir rejeté le POL\n');
     } else if (toAddr === addr2) {
       console.log('📍 Cette transaction va vers votre ADRESSE 2 (Wallet EOA) ✅');
       console.log('   Le POL devrait être arrivé!\n');

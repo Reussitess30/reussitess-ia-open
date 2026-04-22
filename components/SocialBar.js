@@ -34,7 +34,7 @@ export default function SocialBar() {
     },
     {
       name: "Telegram",
-      icon: "✈️",
+      icon: "✈",
       color: "#0088cc",
       link: `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,
     },
@@ -67,7 +67,7 @@ export default function SocialBar() {
             boxShadow: "0 4px 20px rgba(102, 126, 234, 0.5)",
           }}
         >
-          {isOpen ? "✖️" : "🔗"}
+          {isOpen ? "✖" : "🔗"}
         </button>
 
         {isOpen &&

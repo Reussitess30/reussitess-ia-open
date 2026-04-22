@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 import Link from 'next/link'
 
 const COURS = [
-  { id: 1, titre: "Créole Guadeloupéen — Débutant", emoji: "🗣️", niveau: "Débutant", duree: "4h", desc: "Apprends les bases du créole guadeloupéen — salutations, expressions quotidiennes, prononciation.", gratuit: true, lecons: ["Bonjour en créole", "Les chiffres", "La famille", "Les couleurs", "Expressions courantes"] },
+  { id: 1, titre: "Créole Guadeloupéen — Débutant", emoji: "🗣", niveau: "Débutant", duree: "4h", desc: "Apprends les bases du créole guadeloupéen — salutations, expressions quotidiennes, prononciation.", gratuit: true, lecons: ["Bonjour en créole", "Les chiffres", "La famille", "Les couleurs", "Expressions courantes"] },
   { id: 2, titre: "Histoire Afro-Caribéenne", emoji: "📚", niveau: "Intermédiaire", duree: "6h", desc: "De l'Afrique précoloniale à la Guadeloupe moderne — Toussaint, Césaire, Fanon, Mandela.", gratuit: true, lecons: ["Civilisations africaines", "La traite négrière", "Résistances et révoltes", "Abolition 1848", "Indépendances africaines"] },
   { id: 3, titre: "Entrepreneuriat Caribéen", emoji: "💼", niveau: "Intermédiaire", duree: "8h", desc: "Crée et développe ton business aux Antilles — plan, financement, digital, Amazon.", gratuit: true, lecons: ["Idée & Validation", "Business plan", "Auto-entrepreneur", "Marketing digital", "Amazon Affiliation"] },
   { id: 4, titre: "IA & Technologie pour tous", emoji: "🤖", niveau: "Débutant", duree: "5h", desc: "Comprendre et utiliser l'intelligence artificielle pour ton quotidien et ton business.", gratuit: true, lecons: ["C'est quoi l'IA", "ChatGPT & REUSSITESS AI", "Créer avec l'IA", "IA et emploi", "Automatiser son business"] },
@@ -50,7 +50,7 @@ export default function Academie() {
               <h2 style={{ color: '#fff', fontWeight: '900', marginBottom: '0.5rem' }}>{selected.titre}</h2>
               <p style={{ color: '#94a3b8', marginBottom: '1.5rem' }}>{selected.desc}</p>
               <div style={{ display: 'flex', gap: '1rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
-                <span style={{ background: 'rgba(16,185,129,0.2)', color: '#10b981', padding: '0.3rem 0.8rem', borderRadius: '10px', fontSize: '0.8rem' }}>⏱️ {selected.duree}</span>
+                <span style={{ background: 'rgba(16,185,129,0.2)', color: '#10b981', padding: '0.3rem 0.8rem', borderRadius: '10px', fontSize: '0.8rem' }}>⏱ {selected.duree}</span>
                 <span style={{ background: 'rgba(16,185,129,0.2)', color: '#10b981', padding: '0.3rem 0.8rem', borderRadius: '10px', fontSize: '0.8rem' }}>📊 {selected.niveau}</span>
                 <span style={{ background: 'rgba(16,185,129,0.2)', color: '#10b981', padding: '0.3rem 0.8rem', borderRadius: '10px', fontSize: '0.8rem' }}>✅ Gratuit</span>
               </div>
@@ -82,7 +82,7 @@ export default function Academie() {
                 <p style={{ color: '#94a3b8', fontSize: '0.8rem', marginBottom: '1rem', lineHeight: '1.5' }}>{c.desc}</p>
                 <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
                   <span style={{ background: 'rgba(16,185,129,0.15)', color: '#10b981', padding: '0.2rem 0.6rem', borderRadius: '8px', fontSize: '0.7rem' }}>{c.niveau}</span>
-                  <span style={{ background: 'rgba(16,185,129,0.15)', color: '#10b981', padding: '0.2rem 0.6rem', borderRadius: '8px', fontSize: '0.7rem' }}>⏱️ {c.duree}</span>
+                  <span style={{ background: 'rgba(16,185,129,0.15)', color: '#10b981', padding: '0.2rem 0.6rem', borderRadius: '8px', fontSize: '0.7rem' }}>⏱ {c.duree}</span>
                   <span style={{ background: 'rgba(16,185,129,0.15)', color: '#10b981', padding: '0.2rem 0.6rem', borderRadius: '8px', fontSize: '0.7rem' }}>✅ Gratuit</span>
                 </div>
                 <button style={{ width: '100%', padding: '0.6rem', background: 'linear-gradient(135deg,#10b981,#059669)', border: 'none', borderRadius: '10px', color: 'white', fontWeight: '700', cursor: 'pointer', fontSize: '0.85rem' }}>

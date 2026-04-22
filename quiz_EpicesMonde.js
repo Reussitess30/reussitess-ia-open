@@ -2,7 +2,7 @@
 const quizEpicesMonde = {
   title: "Épices du Monde — Saveurs & Secrets",
   description: "Partez à la découverte des épices qui ont changé le monde, de leur histoire à leurs vertus !",
-  emoji: "🌶️",
+  emoji: "🌶",
   questions: [
     { question: "Quelle épice était plus précieuse que l'or au Moyen Âge et a motivé les grandes explorations ?", answers: ["Le piment", "Le poivre noir (Piper nigrum)", "La cannelle", "La muscade"], correct: 1, explanation: "Le poivre noir était si précieux au Moyen Âge qu'il servait de monnaie d'échange et de dot. Les caravanes de la Route des Épices traversaient l'Asie. C'est la recherche d'une route directe vers les épices (poivre, cannelle, muscade) qui a motivé Vasco de Gama, Christophe Colomb et les grandes explorations du XVe siècle." },
     { question: "Quelle est l'épice la plus chère du monde, récoltée à la main en Iran, Espagne et Maroc ?", answers: ["La vanille de Madagascar", "Le safran (Crocus sativus) — jusqu'à 10 000€/kg", "La cardamome", "La truffe noire"], correct: 1, explanation: "Le safran (5 000 à 10 000€/kg) est l'épice la plus chère au monde. Il faut 150 000 à 200 000 fleurs de Crocus sativus pour produire 1 kg de safran sec. Chaque fleur ne produit que 3 stigmates récoltés à la main. L'Iran produit 90% du safran mondial. Propriétés médicinales : antidépresseur naturel (études prometteuses), antioxydant." },

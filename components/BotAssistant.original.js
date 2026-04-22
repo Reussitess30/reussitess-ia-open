@@ -35,7 +35,7 @@ export default function BotAssistant() {
       desc: "A répondu correctement à 3 quiz",
     },
     polyglotte: {
-      icon: "🗣️",
+      icon: "🗣",
       name: "Polyglotte",
       desc: "A utilisé 3 langues différentes",
     },
@@ -50,12 +50,12 @@ export default function BotAssistant() {
       desc: "A interagi 20 fois avec le bot",
     },
     shopper: {
-      icon: "🛍️",
+      icon: "🛍",
       name: "Shopper",
       desc: "A consulté les boutiques Amazon",
     },
     "globe-trotter": {
-      icon: "✈️",
+      icon: "✈",
       name: "Globe-trotter",
       desc: "A visité tous les continents",
     },
@@ -74,7 +74,7 @@ export default function BotAssistant() {
     "🏆 Record mondial : L'Italie a 58 sites UNESCO !",
     "🌍 Info: Le Brésil est le 9e économie mondiale !",
     "🎭 Culture: Le carnaval de Rio est la plus grande fête du monde !",
-    "🏛️ Patrimoine: Les pyramides de Gizeh ont 4500 ans !",
+    "🏛 Patrimoine: Les pyramides de Gizeh ont 4500 ans !",
     "🌊 Océans: La Grande Barrière de Corail fait 2300 km !",
     "🎨 Art: Le Louvre reçoit 10 millions de visiteurs par an !",
     "🚀 Innovation: Singapour est le 3e hub financier mondial !",
@@ -1882,23 +1882,23 @@ export default function BotAssistant() {
 
           if (data.pays) {
             let response = `${getRandomPunchline()}\n\n📍 **${data.pays}**\n\n`;
-            if (data.capitale) response += `🏛️ Capitale: ${data.capitale}\n`;
+            if (data.capitale) response += `🏛 Capitale: ${data.capitale}\n`;
             if (data.population)
               response += `👥 Population: ${data.population}\n`;
-            if (data.unesco) response += `🏛️ ${data.unesco}\n`;
+            if (data.unesco) response += `🏛 ${data.unesco}\n`;
             if (data.patrimoine)
               response += `\n🎭 Patrimoine:\n${data.patrimoine}\n`;
             if (data.culture) response += `\n🎨 Culture:\n${data.culture}\n`;
             if (data.economie) response += `\n💼 Économie:\n${data.economie}\n`;
             if (data.url)
-              response += `\n➡️ [Voir la page complète](${data.url})`;
+              response += `\n➡ [Voir la page complète](${data.url})`;
             response += `\n\n${getRandomFunFact()}`;
             return response;
           } else if (data.info) {
             addBadge("shopper");
-            let response = `${getRandomPunchline()}\n\n🛍️ ${data.info}\n\n`;
+            let response = `${getRandomPunchline()}\n\n🛍 ${data.info}\n\n`;
             response += Object.values(data.pays).join("\n");
-            response += `\n\n➡️ [Voir toutes les boutiques](${data.url})`;
+            response += `\n\n➡ [Voir toutes les boutiques](${data.url})`;
             response += `\n\n${getRandomFunFact()}`;
             return response;
           }
@@ -1928,7 +1928,7 @@ export default function BotAssistant() {
 
       if (msgLower.includes("bibliothèque") || msgLower.includes("library")) {
         addBadge("curieux");
-        return `${getRandomPunchline()}\n\nNotre bibliothèque mondiale contient 55 pages couvrant:\n\n🇪🇺 Europe (15 pays)\n🌍 Afrique (7 pays)\n🌏 Asie-Pacifique (11 pays)\n🏝️ DOM-TOM (10 territoires)\n🌎 Amériques (4 régions)\n\n[Voir la bibliothèque](/bibliotheque)\n\n${getRandomFunFact()}`;
+        return `${getRandomPunchline()}\n\nNotre bibliothèque mondiale contient 55 pages couvrant:\n\n🇪🇺 Europe (15 pays)\n🌍 Afrique (7 pays)\n🌏 Asie-Pacifique (11 pays)\n🏝 DOM-TOM (10 territoires)\n🌎 Amériques (4 régions)\n\n[Voir la bibliothèque](/bibliotheque)\n\n${getRandomFunFact()}`;
       }
 
       if (
@@ -1937,7 +1937,7 @@ export default function BotAssistant() {
         msgLower.includes("shop")
       ) {
         addBadge("shopper");
-        return `${getRandomPunchline()}\n\n🛍️ Nous avons 26 boutiques Amazon dans 14 pays:\n\nAmérique du Nord, Europe (8 pays), Asie-Pacifique, Amérique du Sud\n\n[Voir toutes les boutiques](/hub-central)\n\n${getRandomFunFact()}`;
+        return `${getRandomPunchline()}\n\n🛍 Nous avons 26 boutiques Amazon dans 14 pays:\n\nAmérique du Nord, Europe (8 pays), Asie-Pacifique, Amérique du Sud\n\n[Voir toutes les boutiques](/hub-central)\n\n${getRandomFunFact()}`;
       }
 
       if (
@@ -1945,7 +1945,7 @@ export default function BotAssistant() {
         msgLower.includes("help") ||
         msgLower.includes("?")
       ) {
-        return `${getRandomPunchline()}\n\n🎯 **Ce que je peux faire:**\n\n• 📚 Te renseigner sur 55 pays et régions\n• 🛍️ Te guider vers nos 26 boutiques Amazon\n• 🧠 Te challenger avec des quiz\n• 🏆 T'attribuer des badges\n• 📊 Suivre ton score et mon ego\n\n💡 Essaie: "quiz", "france", "amazon", "badge", "ego"\n\n${getRandomFunFact()}`;
+        return `${getRandomPunchline()}\n\n🎯 **Ce que je peux faire:**\n\n• 📚 Te renseigner sur 55 pays et régions\n• 🛍 Te guider vers nos 26 boutiques Amazon\n• 🧠 Te challenger avec des quiz\n• 🏆 T'attribuer des badges\n• 📊 Suivre ton score et mon ego\n\n💡 Essaie: "quiz", "france", "amazon", "badge", "ego"\n\n${getRandomFunFact()}`;
       }
 
       return `${getRandomPunchline()}\n\nJe peux te renseigner sur les 55 pages de notre bibliothèque mondiale ou nos 26 boutiques Amazon.\n\n💡 Essaie: "quiz", "france", "amazon", "badge"\n\n${getRandomFunFact()}`;

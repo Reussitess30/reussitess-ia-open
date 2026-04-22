@@ -45,14 +45,14 @@ https.get(url, (res) => {
         console.log('\n💡 CONCLUSION:\n');
         
         if (firstTx.from.toLowerCase() === CONTRACT.toLowerCase()) {
-          console.log('⚠️  Ce contrat s\'est auto-créé (pattern inhabituel)');
+          console.log('⚠  Ce contrat s\'est auto-créé (pattern inhabituel)');
         } else {
           console.log(`✅ Créé par: ${firstTx.from}`);
           console.log('   Vérifiez si c\'est VOTRE adresse ou un service tiers.');
         }
         
       } else {
-        console.log('⚠️  Impossible de récupérer l\'historique');
+        console.log('⚠  Impossible de récupérer l\'historique');
         console.log('Vérifiez manuellement sur Polygonscan');
       }
     } catch (e) {

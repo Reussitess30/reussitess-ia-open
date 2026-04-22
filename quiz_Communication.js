@@ -2,7 +2,7 @@
 const quizCommunication = {
   title: "Communication & Art de Convaincre",
   description: "Maîtrisez l'art de communiquer, persuader et influencer positivement !",
-  emoji: "🗣️",
+  emoji: "🗣",
   questions: [
     { question: "Selon Albert Mehrabian, quelle proportion de la communication est non-verbale ?", answers: ["10%", "38%", "55%", "93%"], correct: 3, explanation: "La règle de Mehrabian (1967) : dans une communication émotionnelle, 7% = les mots, 38% = le ton de la voix, 55% = le langage corporel. Soit 93% non-verbal ! Attention : cette règle s'applique spécifiquement aux messages émotionnels, pas à toute communication." },
     { question: "Qu'est-ce que l'écoute active selon Carl Rogers ?", answers: ["Écouter en faisant autre chose", "Écouter avec toute son attention, reformuler et valider sans juger pour que l'autre se sente vraiment compris", "Prendre des notes pendant que l'autre parle", "Hocher la tête régulièrement"], correct: 1, explanation: "L'écoute active (Carl Rogers) implique : attention totale (ranger le téléphone), reformulation (répéter avec ses mots), validation émotionnelle (reconnaître les sentiments), questions ouvertes et absence de jugement. Les études montrent que se sentir écouté est l'un des besoins humains les plus fondamentaux." },

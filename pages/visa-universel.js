@@ -58,11 +58,11 @@ export default function VisaUniversel() {
     { value: "tech", label: "Technologie & Innovation", icon: "💻" },
     { value: "business", label: "Entrepreneuriat & Business", icon: "💼" },
     { value: "education", label: "Éducation & Enseignement", icon: "📚" },
-    { value: "sante", label: "Santé & Bien-être", icon: "⚕️" },
+    { value: "sante", label: "Santé & Bien-être", icon: "⚕" },
     { value: "art", label: "Arts & Créativité", icon: "🎨" },
     { value: "finance", label: "Finance & Investissement", icon: "💰" },
     { value: "agriculture", label: "Agriculture & Environnement", icon: "🌱" },
-    { value: "tourisme", label: "Tourisme & Hôtellerie", icon: "✈️" },
+    { value: "tourisme", label: "Tourisme & Hôtellerie", icon: "✈" },
     { value: "social", label: "Impact Social", icon: "🤝" },
     { value: "sport", label: "Sport & Performance", icon: "⚽" },
   ];
@@ -86,7 +86,7 @@ export default function VisaUniversel() {
     { value: "reseau", label: "Réseau professionnel", icon: "🌐" },
     { value: "partenariat", label: "Partenariat business", icon: "🤝" },
     { value: "visibilite", label: "Visibilité & Marketing", icon: "📢" },
-    { value: "technologie", label: "Outils & Technologie", icon: "🛠️" },
+    { value: "technologie", label: "Outils & Technologie", icon: "🛠" },
   ];
 
   const genererNumeroVisa = () => {
@@ -573,7 +573,7 @@ export default function VisaUniversel() {
                       marginBottom: "0.5rem",
                     }}
                   >
-                    🏙️ Ville
+                    🏙 Ville
                   </label>
                   <input
                     type="text"

@@ -32,7 +32,7 @@ export default function CalculateurAmazon() {
 
         <header style={{ textAlign: 'center', marginBottom: '35px' }}>
           <h1 style={{ color: '#f59e0b', fontSize: '1.8rem', fontWeight: '900', marginBottom: '10px' }}>
-            🛍️ CALCULATEUR AMAZON × REUSS
+            🛍 CALCULATEUR AMAZON × REUSS
           </h1>
           <p style={{ color: '#00ff41', fontWeight: 'bold', fontSize: '0.9rem' }}>
             GUADELOUPE 🇬🇵 · TERRES DE CHAMPIONS · BOUDOUM !
@@ -113,7 +113,7 @@ export default function CalculateurAmazon() {
         )}
 
         <div style={{ background: '#0f172a', border: '1px solid #1e293b', borderRadius: '15px', padding: '20px', marginBottom: '25px' }}>
-          <h3 style={{ color: '#3b82f6', fontSize: '0.95rem', marginBottom: '15px' }}>🛍️ Nos 26 boutiques Amazon — 14 pays</h3>
+          <h3 style={{ color: '#3b82f6', fontSize: '0.95rem', marginBottom: '15px' }}>🛍 Nos 26 boutiques Amazon — 14 pays</h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '8px' }}>
             {[
               { flag: '🇺🇸', name: 'USA', url: 'https://amazon.com/shop/amourguadeloupe' },

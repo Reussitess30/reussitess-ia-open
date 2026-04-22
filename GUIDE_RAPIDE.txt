@@ -32,7 +32,7 @@ Résultat:
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-⚠️  IMPORTANT:
+⚠  IMPORTANT:
 • Les clés privées ne sont JAMAIS enregistrées
 • Vérifiez toujours les adresses avant de confirmer
 • Ne partagez JAMAIS vos clés privées

@@ -52,13 +52,13 @@ async function fullInvestigation() {
             if (firstTx.from.toLowerCase() === YOUR_EOA.toLowerCase()) {
               console.log(`  🎯 CRÉÉ PAR VOTRE ADRESSE 2! Vous avez le contrôle!`);
             } else if (firstTx.from.toLowerCase() === CONTRACT.toLowerCase()) {
-              console.log(`  ⚠️  Auto-création (pattern inhabituel)`);
+              console.log(`  ⚠  Auto-création (pattern inhabituel)`);
             } else {
-              console.log(`  ℹ️  Créé par une autre adresse`);
+              console.log(`  ℹ  Créé par une autre adresse`);
             }
           }
         } catch (e) {
-          console.log('⚠️ API limitée, continuons...');
+          console.log('⚠ API limitée, continuons...');
         }
         resolve();
       });
@@ -140,7 +140,7 @@ async function fullInvestigation() {
       console.log(`  ❌ Pas d'approval - Vous devez d'abord approuver\n`);
     }
   } catch (e) {
-    console.log('⚠️ Impossible de vérifier les allowances\n');
+    console.log('⚠ Impossible de vérifier les allowances\n');
   }
   
   // 5. RECOMMANDATIONS

@@ -158,7 +158,7 @@ async function deepAnalysis() {
             console.log('   4. Si contrat créé AVANT première TX → Incompatible!\n');
             
           } else {
-            console.log('⚠️  AUCUNE réception de POL détectée dans l\'historique');
+            console.log('⚠  AUCUNE réception de POL détectée dans l\'historique');
             console.log('');
             console.log('💡 POSSIBILITÉS:\n');
             console.log('   A. Vous pensez à une AUTRE adresse');
@@ -170,7 +170,7 @@ async function deepAnalysis() {
           console.log('═'.repeat(80));
           
         } else {
-          console.log('⚠️  API Polygonscan limitée');
+          console.log('⚠  API Polygonscan limitée');
           console.log('Vérification manuelle requise\n');
         }
       } catch (e) {

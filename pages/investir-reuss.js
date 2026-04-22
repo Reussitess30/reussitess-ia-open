@@ -92,7 +92,7 @@ export default function InvestirReuss() {
           <h3 style={{ color: '#fff', fontSize: '1rem', marginBottom: '15px' }}>🔗 Token REUSS — Données on-chain vérifiables</h3>
           <div style={{ fontSize: '0.8rem', color: '#cbd5e1', lineHeight: '2' }}>
             <p>📋 <strong>Contrat :</strong> <code style={{ color: '#00ff41', fontSize: '0.7rem' }}>{CONTRACT}</code></p>
-            <p>⛓️ <strong>Réseau :</strong> Polygon (POS) — ERC-20</p>
+            <p>⛓ <strong>Réseau :</strong> Polygon (POS) — ERC-20</p>
             <p>💰 <strong>Supply :</strong> 999 999 999 REUSS (1 brûlé symboliquement)</p>
             <p>👥 <strong>Holders :</strong> 20 (phase amorçage — Février 2026)</p>
             <p>🏊 <strong>Pool :</strong> QuickSwap V3 — REUSS/POL</p>
@@ -156,7 +156,7 @@ export default function InvestirReuss() {
 
         {/* DISCLAIMER LÉGAL */}
         <section style={{ background: 'rgba(239,68,68,0.05)', padding: '20px', borderRadius: '15px', border: '1px solid #ef4444', marginBottom: '25px' }}>
-          <h3 style={{ color: '#ef4444', fontSize: '0.9rem', marginBottom: '10px' }}>⚖️ AVERTISSEMENTS LÉGAUX OBLIGATOIRES</h3>
+          <h3 style={{ color: '#ef4444', fontSize: '0.9rem', marginBottom: '10px' }}>⚖ AVERTISSEMENTS LÉGAUX OBLIGATOIRES</h3>
           <div style={{ fontSize: '0.75rem', color: '#cbd5e1', lineHeight: '1.6' }}>
             <p>Les projections financières présentées sont des objectifs et estimations à titre informatif uniquement. Elles ne constituent pas une promesse de rendement. Investir dans des cryptomonnaies comporte des risques de perte totale du capital.</p>
             <p style={{ marginTop: '8px' }}>Conformément à la directive européenne 2003/71/CE et au règlement MiCA 2023/1114, ce document ne constitue pas un prospectus d&apos;offre au public. REUSS N&apos;EST PAS un security au sens des réglementations AMF/SEC, ni une garantie de profit.</p>

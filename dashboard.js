@@ -57,7 +57,7 @@ async function dashboard() {
   
   // Actions requises
   if (polBalance === 0n) {
-    console.log('⚠️  ACTION REQUISE:');
+    console.log('⚠  ACTION REQUISE:');
     console.log('   1. Obtenez du POL via un faucet (gratuit)');
     console.log('   2. Ou achetez 0.01 POL sur un exchange');
     console.log('   3. Envoyez à: 0x69f42Aa645A43A84e1143D416a4C81A88DF01549');

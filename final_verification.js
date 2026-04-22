@@ -11,7 +11,7 @@ async function finalCheck() {
   
   // 1. Code du contrat
   const code = await provider.getCode(WALLET);
-  console.log('1️⃣ TYPE D\'ADRESSE:');
+  console.log('1⃣ TYPE D\'ADRESSE:');
   console.log(`   Bytecode: ${code}`);
   console.log(`   Longueur: ${code.length} caractères\n`);
   
@@ -19,19 +19,19 @@ async function finalCheck() {
     console.log('   ✅ C\'EST UN WALLET NORMAL (EOA)!');
     console.log('   Aucun code de contrat détecté.\n');
   } else {
-    console.log('   ⚠️  C\'EST UN SMART CONTRACT');
+    console.log('   ⚠  C\'EST UN SMART CONTRACT');
     console.log(`   Code présent: ${code.substring(0, 66)}...\n`);
   }
   
   // 2. Solde POL
   const balance = await provider.getBalance(WALLET);
-  console.log('2️⃣ SOLDE POL:');
+  console.log('2⃣ SOLDE POL:');
   console.log(`   ${ethers.formatEther(balance)} POL`);
   console.log(`   Wei: ${balance.toString()}\n`);
   
   // 3. Transactions
   const txCount = await provider.getTransactionCount(WALLET);
-  console.log('3️⃣ NOMBRE DE TRANSACTIONS:');
+  console.log('3⃣ NOMBRE DE TRANSACTIONS:');
   console.log(`   ${txCount} transactions\n`);
   
   // 4. Diagnostic
@@ -43,7 +43,7 @@ async function finalCheck() {
     console.log('   Vous POUVEZ recevoir du POL normalement.\n');
     
     if (balance === 0n && txCount > 0) {
-      console.log('⚠️  MAIS: 0 POL avec ' + txCount + ' transactions');
+      console.log('⚠  MAIS: 0 POL avec ' + txCount + ' transactions');
       console.log('   → Tout le POL a été dépensé en frais de gaz');
       console.log('   → OU vous n\'avez jamais reçu de POL avec succès\n');
       

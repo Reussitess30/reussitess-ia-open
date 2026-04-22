@@ -57,12 +57,12 @@ export default function IAPassport() {
 
   const features = [
     { 
-      icon: '⚛️', 
+      icon: '⚛', 
       title: 'QUANTUM ECOSYSTEM', 
       desc: '200 IA gèrent 0x1d2e...9c - Premier pool auto-piloté au monde',
       stats: ['200 IA Actives', '14 Pays', '$10M Target', 'APY 40-60%'],
       links: [
-        { text: '🛡️ Quantum Guardian - Anti-Hack absolu (détection 0.1s)', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
+        { text: '🛡 Quantum Guardian - Anti-Hack absolu (détection 0.1s)', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
         { text: '📊 Price Stabilizer - Floor price garanti par IA', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
         { text: '💰 Yield Generator - Auto-farming 12 protocoles DeFi', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
         { text: '🌍 Global Bridge - Transferts instantanés 14 pays (0 frais)', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
@@ -92,7 +92,7 @@ export default function IAPassport() {
       desc: 'Traduction instantanée 195 langues + dialectes - Même langues mortes',
       stats: ['195 Langues', '500+ Dialectes', 'Temps Réel', '99.8% Précision'],
       links: [
-        { text: '🗣️ Live Translation - Parlez, IA traduit instantanément (0.2s)', url: 'https://translate.google.com' },
+        { text: '🗣 Live Translation - Parlez, IA traduit instantanément (0.2s)', url: 'https://translate.google.com' },
         { text: '📱 AR Glasses Mode - Voit + traduit textes en réalité augmentée', url: 'https://www.meta.com' },
         { text: '🎓 Ancient Languages - Traduit hiéroglyphes, latin, sanscrit', url: 'https://www.deepl.com' },
         { text: '🤝 Business Interpreter - Négocie pour vous (ton, culture, contexte)', url: 'https://wordly.ai' },
@@ -110,7 +110,7 @@ export default function IAPassport() {
         { text: '🔒 Zero-Knowledge Proof - Prouvez qui vous êtes sans révéler', url: 'https://worldcoin.org' },
         { text: '🌐 Universal Login - 1 ID pour tous services web3/web2', url: 'https://ens.domains' },
         { text: '💳 Quantum Wallet - Impossible à hacker (résiste ordinateurs quantiques)', url: 'https://metamask.io' },
-        { text: '🏛️ Legal Entity - Valeur juridique 195 pays (passeport digital)', url: 'https://www.idhub.com' },
+        { text: '🏛 Legal Entity - Valeur juridique 195 pays (passeport digital)', url: 'https://www.idhub.com' },
         { text: '📜 Heritage Protocol - Transférez actifs post-mortem (smart testament)', url: 'https://polygonscan.com/token/0xB37531727fC07c6EED4f97F852A115B428046EB2' }
       ],
       special: 'security'
@@ -150,7 +150,7 @@ export default function IAPassport() {
       desc: 'Créez films/séries complets avec IA - De l\'idée au cinéma',
       stats: ['Script Auto', 'Actors IA', '8K Render', 'Oscar-Ready'],
       links: [
-        { text: '✍️ AI Screenwriter - Scénario complet en 10min (structure Hollywood)', url: 'https://www.scriptbook.ai' },
+        { text: '✍ AI Screenwriter - Scénario complet en 10min (structure Hollywood)', url: 'https://www.scriptbook.ai' },
         { text: '🎭 Virtual Actors - Créez acteurs photoréalistes (voix, émotions)', url: 'https://www.synthesia.io' },
         { text: '🎬 Auto-Director - IA dirige scènes (angles, lumière, timing)', url: 'https://runwayml.com' },
         { text: '🎵 Soundtrack Generator - Musique épique adaptée à chaque scène', url: 'https://www.aiva.ai' },
@@ -166,7 +166,7 @@ export default function IAPassport() {
       stats: ['Auto-Startup', 'Market Research', 'Product Build', '$1M/an'],
       links: [
         { text: '🔍 Market Finder - Détecte niches profitables (analyse 10M data points)', url: 'https://trends.co' },
-        { text: '🏗️ Product Builder - Crée MVP complet (design, dev, test)', url: 'https://bubble.io' },
+        { text: '🏗 Product Builder - Crée MVP complet (design, dev, test)', url: 'https://bubble.io' },
         { text: '📢 Marketing AI - Campagnes virales multi-plateformes', url: 'https://www.jasper.ai' },
         { text: '💰 Sales Agent - Prospecte, qualifie, close deals automatiquement', url: 'https://www.gong.io' },
         { text: '📊 CFO Assistant - Gestion finances, taxes, investisseurs', url: 'https://www.bench.co' },
@@ -194,7 +194,7 @@ export default function IAPassport() {
       stats: ['+20 ans vie', 'DNA Analysis', 'Disease Predict', '24/7 Monitoring'],
       links: [
         { text: '🧬 DNA Optimization - Analyse génome, recommande interventions', url: 'https://www.23andme.com' },
-        { text: '⚕️ Disease Prediction - Détecte cancer 5 ans avant (94% précision)', url: 'https://www.tempus.com' },
+        { text: '⚕ Disease Prediction - Détecte cancer 5 ans avant (94% précision)', url: 'https://www.tempus.com' },
         { text: '💊 Custom Medicine - Médicaments personnalisés (basé votre biologie)', url: 'https://www.atlasbio.com' },
         { text: '🏃 Longevity Protocol - Plan anti-âge scientifique (nutrition, exercice, suppléments)', url: 'https://www.insidetracker.com' },
         { text: '📱 Real-Time Monitor - Alerte maladies avant symptômes', url: 'https://www.apple.com/watch' },
@@ -210,7 +210,7 @@ export default function IAPassport() {
       links: [
         { text: '🌳 1 REUSS = 10 arbres plantés (vérifiable blockchain)', url: 'https://onetreeplanted.org' },
         { text: '🌊 Ocean Cleanup - 1kg plastique retiré/token brûlé', url: 'https://theoceancleanup.com' },
-        { text: '☀️ Solar Network - Financement panneaux solaires communautaires', url: 'https://www.solar.com' },
+        { text: '☀ Solar Network - Financement panneaux solaires communautaires', url: 'https://www.solar.com' },
         { text: '📊 Impact Dashboard - Trackez VOTRE impact environnemental réel', url: 'https://www.wren.co' },
         { text: '🏆 Green Rewards - Gagnez tokens en agissant écolo', url: 'https://earthhero.org' },
         { text: '🎯 Objectif : Carbon Negative d\'ici 2026', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' }
@@ -459,7 +459,7 @@ export default function IAPassport() {
               }}
               className="cta-button-secondary"
             >
-              ⚛️ QUANTUM POOL
+              ⚛ QUANTUM POOL
             </a>
           </div>
 
@@ -911,7 +911,7 @@ export default function IAPassport() {
             position: 'relative'
           }}>
             <h2 style={{ fontSize: '2.5rem', fontWeight: '900', color: '#fff', marginBottom: '3rem', textAlign: 'center' }}>
-              🛠️ TECHNIQUE COMPLÈTE & RÈGLEMENTS
+              🛠 TECHNIQUE COMPLÈTE & RÈGLEMENTS
             </h2>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
@@ -941,7 +941,7 @@ export default function IAPassport() {
             </div>
 
             <div style={{ marginTop: '3rem', padding: '2.5rem', background: 'rgba(239, 68, 68, 0.05)', borderRadius: '30px', border: '1px solid #ef4444' }}>
-              <h3 style={{ color: '#f87171', marginBottom: '1rem' }}>⚖️ PROTECTION RÉGLEMENTAIRE INTERNATIONALE</h3>
+              <h3 style={{ color: '#f87171', marginBottom: '1rem' }}>⚖ PROTECTION RÉGLEMENTAIRE INTERNATIONALE</h3>
               <p style={{ color: '#e2e8f0', lineHeight: '1.6', fontSize: '0.95rem' }}>
                 Conformité <b>EU AI Act</b> (Europe), <b>RGPD</b> (Sécurité des données) et standards <b>ISO/IEC 42001</b>. 
                 L&apos;écosystème Reussitess© est juridiquement protégé pour opérer les agents IA dans les 14 zones partenaires, garantissant la sécurité des investisseurs.
@@ -1009,7 +1009,7 @@ export default function IAPassport() {
                 💎 QuickSwap
               </a>
               <a href="https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c" target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'none', fontSize: '1.1rem' }}>
-                ⚛️ Liquidity Pool
+                ⚛ Liquidity Pool
               </a>
             </div>
             

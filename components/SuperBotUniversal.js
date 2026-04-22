@@ -18,7 +18,7 @@ async function fetchCountry(term) {
     const p = d[0]
     const langs = Object.values(p.languages || {}).join(', ')
     const currencies = Object.values(p.currencies || {}).map(c => c.name).join(', ')
-    return `🌍 **${p.name.common}** | 👥 ${p.population.toLocaleString()} hab. | 🏛️ ${p.capital?.[0] || 'N/A'} | 🗣️ ${langs} | 💰 ${currencies}`
+    return `🌍 **${p.name.common}** | 👥 ${p.population.toLocaleString()} hab. | 🏛 ${p.capital?.[0] || 'N/A'} | 🗣 ${langs} | 💰 ${currencies}`
   } catch(e) { return null }
 }
 
@@ -250,7 +250,7 @@ export default function SuperBotUniversal() {
       const blagues = [
         "Pourquoi les guadeloupéens sont toujours en retard ? Parce qu'ils vivent sur une île où le temps s'arrête ! ⏰😄",
         "Comment appelle-t-on un Martiniquais qui court ? Un Madinina-sprint ! 🏃💨",
-        "Pourquoi les créoles sont les meilleurs en géographie ? Parce qu'ils savent où se trouve le paradis : chez eux ! 🏝️"
+        "Pourquoi les créoles sont les meilleurs en géographie ? Parce qu'ils savent où se trouve le paradis : chez eux ! 🏝"
       ]
       return blagues[Math.floor(Math.random() * blagues.length)]
     }
@@ -262,7 +262,7 @@ export default function SuperBotUniversal() {
 📍 Capitale : Basse-Terre (administrative), Pointe-à-Pitre (économique)
 🦋 Forme : Papillon (Grande-Terre + Basse-Terre)
 👥 Population : 380,000 habitants
-🗣️ Langues : Français, Créole guadeloupéen
+🗣 Langues : Français, Créole guadeloupéen
 💶 Monnaie : Euro
 
 🎵 CULTURE :
@@ -293,7 +293,7 @@ Excellence • Innovation • Succès • BOUDOUM ! 🇬🇵`
 💻 Data Scientist : 60-120K€/an
 🎨 Prompt Engineer : 50-100K€/an
 
-🏝️ OPPORTUNITÉS DOM-TOM :
+🏝 OPPORTUNITÉS DOM-TOM :
 ✅ Tourisme IA (assistants créoles)
 ✅ AgriTech IA (cultures tropicales)
 ✅ Traduction IA (créole-français)
@@ -308,7 +308,7 @@ Tape 'formation' pour plus d'infos !`
     
     // BOUTIQUES
     if (q.includes('boutique') || q.includes('amazon')) {
-      return "🛍️ 26 BOUTIQUES AMAZON dans 14 pays !\n\n🇫🇷 France • 🇺🇸 USA • 🇬🇧 UK • 🇩🇪 Allemagne\n🇪🇸 Espagne • 🇮🇹 Italie • 🇨🇦 Canada • 🇮🇳 Inde\n\nVisite /boutiques pour tout découvrir ! 🎯"
+      return "🛍 26 BOUTIQUES AMAZON dans 14 pays !\n\n🇫🇷 France • 🇺🇸 USA • 🇬🇧 UK • 🇩🇪 Allemagne\n🇪🇸 Espagne • 🇮🇹 Italie • 🇨🇦 Canada • 🇮🇳 Inde\n\nVisite /boutiques pour tout découvrir ! 🎯"
     }
     
     // PASSEPORT
@@ -321,7 +321,7 @@ Tape 'formation' pour plus d'infos !`
       return "🌍 VISA UNIVERSEL DE RÉUSSITE !\n\n✅ Bourses AUF et Campus France\n✅ Emplois Afrique et DOM-TOM\n✅ 200 agents Neuro-X spécialisés\n✅ 26 boutiques Amazon dans 14 pays\n\nObtiens ton VISA sur /visa-universel ! 🎯"
     }
     
-    return `🤔 Je peux t'aider avec :\n\n🎓 Quiz interactifs (tape 'quiz')\n🇬🇵 Guadeloupe & DOM-TOM\n🚀 Vision IA 2030\n😄 Blagues antillaises\n🛍️ Boutiques Amazon\n🏆 Passeport de Réussite\n🌍 VISA Universel\n💥 Easter Egg BOUDOUM\n\nQue veux-tu découvrir ? Score actuel : ${userScore} points`
+    return `🤔 Je peux t'aider avec :\n\n🎓 Quiz interactifs (tape 'quiz')\n🇬🇵 Guadeloupe & DOM-TOM\n🚀 Vision IA 2030\n😄 Blagues antillaises\n🛍 Boutiques Amazon\n🏆 Passeport de Réussite\n🌍 VISA Universel\n💥 Easter Egg BOUDOUM\n\nQue veux-tu découvrir ? Score actuel : ${userScore} points`
   }
 
   const handleSubmit = async (e) => {
@@ -350,7 +350,7 @@ Tape 'formation' pour plus d'infos !`
 
 🎓 Quiz (tape 'quiz')
 🇬🇵 Guadeloupe
-🛍️ Boutiques Amazon
+🛍 Boutiques Amazon
 🏆 Passeport
 
 Score: ${userScore} points`
@@ -359,7 +359,7 @@ Score: ${userScore} points`
 
 🎓 Quiz (tape 'quiz')
 🇬🇵 Guadeloupe
-🛍️ Boutiques Amazon
+🛍 Boutiques Amazon
 
 Score: ${userScore} points`
         }

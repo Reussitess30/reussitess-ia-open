@@ -26,7 +26,7 @@ export default function RoyaumeUni() {
 
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
             <h2 className="text-3xl font-bold text-red-800 mb-6">
-              🏛️ Patrimoine UNESCO (33 sites)
+              🏛 Patrimoine UNESCO (33 sites)
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-red-50 p-4 rounded-xl">
@@ -48,7 +48,7 @@ export default function RoyaumeUni() {
               </div>
               <div className="bg-red-50 p-4 rounded-xl">
                 <h3 className="font-bold text-red-900 mb-2">
-                  🏛️ Big Ben Westminster
+                  🏛 Big Ben Westminster
                 </h3>
                 <p className="text-gray-700">
                   Palais Westminster Parlement démocratie. Big Ben horloge

@@ -112,7 +112,7 @@ function StatusBanner({ tasks }: any) {
 function StatsGrid({ stats }: any) {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
-      <StatCard title="Sentinelles" data={stats.sentinelles} color="#ef4444" icon="🛡️" />
+      <StatCard title="Sentinelles" data={stats.sentinelles} color="#ef4444" icon="🛡" />
       <StatCard title="Neuro-X" data={stats.neurox} color="#3b82f6" icon="🧠" />
       <StatCard title="Nexus Quiz" data={stats.nexus} color="#8b5cf6" icon="🎯" />
       <StatCard title="IA Suprême" data={stats.supreme} color="#eab308" icon="👑" />
@@ -204,14 +204,14 @@ function AmazonDealsSection() {
         marginBottom: '2rem' 
       }}>
         <p style={{ color: '#ffc107', fontSize: '0.95rem', margin: 0 }}>
-          ⚠️ <strong>Divulgation importante :</strong> En tant que Partenaire Amazon, REUSSITESS réalise un bénéfice sur les achats remplissant les conditions requises.
+          ⚠ <strong>Divulgation importante :</strong> En tant que Partenaire Amazon, REUSSITESS réalise un bénéfice sur les achats remplissant les conditions requises.
         </p>
       </div>
 
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
         <h2 style={{ color: '#10b981', fontSize: '2.5rem', fontWeight: '900', marginBottom: '1rem' }}>
-          🛍️ AMAZON DEALS + CASHBACK REUSS
+          🛍 AMAZON DEALS + CASHBACK REUSS
         </h2>
         <p style={{ color: '#cbd5e1', fontSize: '1.1rem', marginBottom: '2rem' }}>
           Achetez sur Amazon via nos liens et recevez des tokens REUSSITESS en cashback !
@@ -594,7 +594,7 @@ function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: 
 
   const revokeAccess = async(spender:string)=>{
     if(!wallet || !(window as any).ethereum) return
-    if(!confirm(`⚠️ RÉVOCATION BLOCKCHAIN\n\nVous allez révoquer l'accès à:\n${spender}`)) return
+    if(!confirm(`⚠ RÉVOCATION BLOCKCHAIN\n\nVous allez révoquer l'accès à:\n${spender}`)) return
     setIsRevoking(true)
     try{
       const provider = new ethers.BrowserProvider((window as any).ethereum)
@@ -617,7 +617,7 @@ function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: 
   return (
     <div style={{ background: 'rgba(239, 68, 68, 0.05)', border: '3px solid #ef4444', borderRadius: '30px', padding: '3rem', marginBottom: '2rem' }}>
       <h2 style={{ color: '#ef4444', fontSize: '2.5rem', textAlign: 'center', marginBottom: '1rem', fontWeight: '900' }}>
-        🛡️ REUSSSHIELD & BOT DESTROYER
+        🛡 REUSSSHIELD & BOT DESTROYER
       </h2>
       <p style={{ textAlign: 'center', color: '#cbd5e1', fontSize: '1.1rem', marginBottom: '2rem' }}>
         Analyse en direct de vos permissions sur le contrat Reussitess©
@@ -627,7 +627,7 @@ function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: 
         <p style={{ color: '#64748b', fontSize: '0.9rem', marginBottom: '0.5rem' }}>Contrat: {REUSS_TOKEN_ADDRESS}</p>
         {delegation && (
           <div style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(239, 68, 68, 0.2)', borderRadius: '10px' }}>
-            <p style={{ color: '#ef4444', fontWeight: 'bold' }}>⚠️ DÉLÉGATION EIP-7702 DÉTECTÉE</p>
+            <p style={{ color: '#ef4444', fontWeight: 'bold' }}>⚠ DÉLÉGATION EIP-7702 DÉTECTÉE</p>
             <p style={{ color: '#cbd5e1', fontSize: '0.9rem' }}>{delegation}</p>
           </div>
         )}
@@ -684,7 +684,7 @@ function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: 
                   fontWeight: 'bold'
                 }}
               >
-                🛡️ TOUT RÉVOQUER ({threats.length})
+                🛡 TOUT RÉVOQUER ({threats.length})
               </button>
             )}
           </div>
@@ -692,7 +692,7 @@ function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: 
           {threats.length > 0 ? (
             <div>
               <h3 style={{ color: '#ef4444', marginBottom: '1.5rem', fontSize: '1.3rem', textAlign: 'center' }}>
-                ⚠️ {threats.length} MENACE{threats.length > 1 ? 'S' : ''} DÉTECTÉE{threats.length > 1 ? 'S' : ''} !
+                ⚠ {threats.length} MENACE{threats.length > 1 ? 'S' : ''} DÉTECTÉE{threats.length > 1 ? 'S' : ''} !
               </h3>
               {threats.map((threat, i) => (
                 <div 
@@ -739,7 +739,7 @@ function ReussShieldSection({ securityScore, setSecurityScore, logs, setLogs }: 
                         fontWeight: 'bold'
                       }}
                     >
-                      {isRevoking ? '⏳' : '🗑️ DÉTRUIRE'}
+                      {isRevoking ? '⏳' : '🗑 DÉTRUIRE'}
                     </button>
                   </div>
                 </div>
@@ -777,7 +777,7 @@ function GlobalSecurityHub() {
       </h2>
       
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
-        <SecurityLink title="Revoke.cash" url="https://revoke.cash" icon="🛡️" desc="Révoquer vos approvals" />
+        <SecurityLink title="Revoke.cash" url="https://revoke.cash" icon="🛡" desc="Révoquer vos approvals" />
         <SecurityLink title="DeFi Llama" url="https://defillama.com/approvals" icon="📊" desc="Scanner les approvals" />
         <SecurityLink title="PolygonScan" url={`https://polygonscan.com/token/${REUSS_TOKEN_ADDRESS}`} icon="🔍" desc="Explorer REUSS" />
       </div>
@@ -880,10 +880,10 @@ function BotDestroyerSection() {
     setScanning(true)
     setIsActive(true)
     const logs: string[] = []
-    logs.push(`[${new Date().toLocaleTimeString()}] ⚔️ BOT DESTROYER v2.0 ACTIVÉ`)
+    logs.push(`[${new Date().toLocaleTimeString()}] ⚔ BOT DESTROYER v2.0 ACTIVÉ`)
     logs.push(`[${new Date().toLocaleTimeString()}] 🔍 Scan mempool Polygon...`)
     await new Promise(r => setTimeout(r, 800))
-    logs.push(`[${new Date().toLocaleTimeString()}] 🛡️ Anti-sandwich attack: ACTIF`)
+    logs.push(`[${new Date().toLocaleTimeString()}] 🛡 Anti-sandwich attack: ACTIF`)
     logs.push(`[${new Date().toLocaleTimeString()}] 🔐 Anti-frontrunning MEV: ACTIF`)
     await new Promise(r => setTimeout(r, 600))
     const d = Math.floor(Math.random() * 5) + 1
@@ -896,13 +896,13 @@ function BotDestroyerSection() {
 
   return (
     <div style={{ marginTop: '3rem', padding: '2.5rem', background: '#0a0a0a', border: '2px solid #ef4444', borderRadius: '25px' }}>
-      <h2 style={{ color: '#ef4444', fontSize: '2rem', fontWeight: '900', marginBottom: '1.5rem', textAlign: 'center' }}>⚔️ BOT DESTROYER — REUSSSHIELD MILITAIRE</h2>
+      <h2 style={{ color: '#ef4444', fontSize: '2rem', fontWeight: '900', marginBottom: '1.5rem', textAlign: 'center' }}>⚔ BOT DESTROYER — REUSSSHIELD MILITAIRE</h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
         {[
           { label: 'Bots Neutralisés', value: destroyed, icon: '💥', color: '#ef4444' },
-          { label: 'MEV Bloqués', value: isActive ? 12 : 0, icon: '🛡️', color: '#10b981' },
+          { label: 'MEV Bloqués', value: isActive ? 12 : 0, icon: '🛡', color: '#10b981' },
           { label: 'Honeypots Évités', value: isActive ? 3 : 0, icon: '🍯', color: '#f59e0b' },
-          { label: 'Niveau Menace', value: isActive ? 'FAIBLE' : 'N/A', icon: '🌡️', color: '#3b82f6' },
+          { label: 'Niveau Menace', value: isActive ? 'FAIBLE' : 'N/A', icon: '🌡', color: '#3b82f6' },
         ].map((s, i) => (
           <div key={i} style={{ background: `${s.color}1a`, border: `1px solid ${s.color}`, borderRadius: '15px', padding: '1.2rem', textAlign: 'center' }}>
             <div style={{ fontSize: '1.8rem' }}>{s.icon}</div>
@@ -912,7 +912,7 @@ function BotDestroyerSection() {
         ))}
       </div>
       <button onClick={activateDestroyer} disabled={scanning} style={{ width: '100%', padding: '1.2rem', background: scanning ? '#333' : 'linear-gradient(135deg, #ef4444, #b91c1c)', border: 'none', borderRadius: '15px', color: 'white', fontSize: '1.1rem', fontWeight: 'bold', cursor: scanning ? 'not-allowed' : 'pointer', marginBottom: '1.5rem' }}>
-        {scanning ? '⏳ SCAN EN COURS...' : '⚔️ ACTIVER BOT DESTROYER'}
+        {scanning ? '⏳ SCAN EN COURS...' : '⚔ ACTIVER BOT DESTROYER'}
       </button>
       {botLog.length > 0 && (
         <div style={{ background: '#000', border: '1px solid #ef4444', borderRadius: '10px', padding: '1rem', maxHeight: '200px', overflowY: 'auto' }}>
@@ -955,7 +955,7 @@ function HoneypotDetector() {
       </div>
       {result && (
         <div style={{ padding: '1.5rem', background: result.error || result.honeypotResult?.isHoneypot ? 'rgba(239,68,68,0.1)' : 'rgba(16,185,129,0.1)', border: `1px solid ${result.error || result.honeypotResult?.isHoneypot ? '#ef4444' : '#10b981'}`, borderRadius: '15px' }}>
-          {result.error ? <p style={{ color: '#ef4444' }}>⚠️ Erreur analyse. Vérifiez l'adresse.</p>
+          {result.error ? <p style={{ color: '#ef4444' }}>⚠ Erreur analyse. Vérifiez l'adresse.</p>
           : result.honeypotResult?.isHoneypot ? <p style={{ color: '#ef4444', fontSize: '1.3rem', fontWeight: 'bold' }}>🚨 HONEYPOT DÉTECTÉ ! NE PAS INVESTIR !</p>
           : <p style={{ color: '#10b981', fontSize: '1.2rem', fontWeight: 'bold' }}>✅ CONTRAT LÉGITIME — Aucun piège détecté sur Polygon</p>}
         </div>

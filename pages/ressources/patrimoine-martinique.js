@@ -49,7 +49,7 @@ export default function PatrimoineMartinique() {
                 WebkitTextFillColor: "transparent",
               }}
             >
-              🏝️ Patrimoine Martiniquais
+              🏝 Patrimoine Martiniquais
             </h1>
             <p
               style={{
@@ -100,7 +100,7 @@ export default function PatrimoineMartinique() {
                   marginBottom: "1rem",
                 }}
               >
-                🏛️ Histoire et Repères Historiques
+                🏛 Histoire et Repères Historiques
               </h2>
               <div
                 style={{
@@ -199,7 +199,7 @@ export default function PatrimoineMartinique() {
                   marginBottom: "1rem",
                 }}
               >
-                🍽️ Gastronomie Raffinée
+                🍽 Gastronomie Raffinée
               </h2>
               <div
                 style={{
@@ -249,7 +249,7 @@ export default function PatrimoineMartinique() {
                   marginBottom: "1rem",
                 }}
               >
-                🗺️ Sites Patrimoniaux Majeurs
+                🗺 Sites Patrimoniaux Majeurs
               </h2>
               <div
                 style={{
@@ -385,7 +385,7 @@ export default function PatrimoineMartinique() {
                     display: "inline-block",
                   }}
                 >
-                  🗺️ Site Officiel Tourisme
+                  🗺 Site Officiel Tourisme
                 </a>
                 <Link
                   href="/bibliotheque"

@@ -52,7 +52,7 @@ export default function PasseportMondial() {
     { label: "🧠 Agents Neuro-X", url: "https://reussitess.fr/neuro-x", desc: "60 experts IA spécialisés" },
     { label: "💎 Token REUSS", url: "https://reussitess.fr/investir-reuss", desc: "Token sur Polygon Blockchain" },
     { label: "📚 Bibliothèque mondiale", url: "https://reussitess.fr/bibliotheque", desc: "50+ pays, Open Library" },
-    { label: "🛍️ Boutiques Amazon", url: "https://reussitess.fr/boutiques", desc: "26 boutiques 14 pays" },
+    { label: "🛍 Boutiques Amazon", url: "https://reussitess.fr/boutiques", desc: "26 boutiques 14 pays" },
     { label: "🎓 Quiz éducatifs", url: "https://reussitess.fr/quiz/1", desc: "99 quiz tous thèmes" },
     { label: "🔮 Oracle 971", url: "https://reussitess.fr/oracle-971", desc: "Oracle caribéen mystique" },
   ];

@@ -102,7 +102,7 @@ app.listen(PORT, () => {
 ║                                                          ║
 ║   🌐 URL: http://localhost:${PORT}                       ║
 ║   📚 Docs: http://localhost:${PORT}/api/docs            ║
-║   ❤️  Health: http://localhost:${PORT}/health            ║
+║   ❤  Health: http://localhost:${PORT}/health            ║
 ║                                                          ║
 ║   Status: ${process.env.NODE_ENV || 'development'}      ║
 ╚══════════════════════════════════════════════════════════╝

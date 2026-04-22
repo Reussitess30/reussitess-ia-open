@@ -62,7 +62,7 @@ export default function Certificat() {
       </div>
 
       <div style={{ marginTop: '40px', display: 'flex', gap: '20px', noPrint: { display: 'none' } }}>
-        <button onClick={() => window.print()} style={{ padding: '15px 30px', cursor: 'pointer', background: '#111', color: '#fff', border: 'none', borderRadius: '5px', fontWeight: 'bold', fontSize: '16px', boxShadow: '0 4px 15px rgba(0,0,0,0.2)' }}>🖨️ IMPRIMER LE CERTIFICAT</button>
+        <button onClick={() => window.print()} style={{ padding: '15px 30px', cursor: 'pointer', background: '#111', color: '#fff', border: 'none', borderRadius: '5px', fontWeight: 'bold', fontSize: '16px', boxShadow: '0 4px 15px rgba(0,0,0,0.2)' }}>🖨 IMPRIMER LE CERTIFICAT</button>
         <Link href="/" style={{ padding: '15px 30px', background: '#00ff41', color: '#000', textDecoration: 'none', fontWeight: 'bold', borderRadius: '5px', fontSize: '16px' }}>🏠 RETOUR</Link>
       </div>
 

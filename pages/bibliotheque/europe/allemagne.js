@@ -26,7 +26,7 @@ export default function Allemagne() {
 
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
             <h2 className="text-3xl font-bold text-yellow-800 mb-6">
-              🏛️ Patrimoine UNESCO (51 sites)
+              🏛 Patrimoine UNESCO (51 sites)
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-yellow-50 p-4 rounded-xl">
@@ -70,7 +70,7 @@ export default function Allemagne() {
               </div>
               <div className="bg-yellow-50 p-4 rounded-xl">
                 <h3 className="font-bold text-yellow-900 mb-2">
-                  🏛️ Bauhaus Weimar
+                  🏛 Bauhaus Weimar
                 </h3>
                 <p className="text-gray-700">
                   Mouvement design moderne révolutionnaire 1919. Architecture
@@ -142,7 +142,7 @@ export default function Allemagne() {
               </div>
               <div className="bg-blue-50 p-4 rounded-xl">
                 <h3 className="font-bold text-blue-900">
-                  ⚙️ Ingénierie Siemens Bosch
+                  ⚙ Ingénierie Siemens Bosch
                 </h3>
                 <p className="text-gray-700">
                   Leaders mondiaux technologie industrielle. Automatisation

@@ -25,7 +25,7 @@ export default function Singapour() {
 
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
             <h2 className="text-3xl font-bold text-red-800 mb-6">
-              🏙️ Cité-État Futuriste
+              🏙 Cité-État Futuriste
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-red-50 p-4 rounded-xl">
@@ -48,7 +48,7 @@ export default function Singapour() {
               </div>
               <div className="bg-red-50 p-4 rounded-xl">
                 <h3 className="font-bold text-red-900 mb-2">
-                  🏛️ Changi Airport
+                  🏛 Changi Airport
                 </h3>
                 <p className="text-gray-700">
                   Meilleur aéroport monde 12 années. Jewel cascade Rain Vortex

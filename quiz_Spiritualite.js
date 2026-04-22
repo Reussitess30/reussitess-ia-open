@@ -2,7 +2,7 @@
 const quizSpiritualite = {
   title: "Spiritualité & Méditation Mondiale",
   description: "Explorez les grandes traditions spirituelles, la méditation et la conscience du monde !",
-  emoji: "🕊️",
+  emoji: "🕊",
   questions: [
     { question: "Qu'est-ce que la pleine conscience (mindfulness) ?", answers: ["Une religion asiatique", "L'attention intentionnelle au moment présent sans jugement", "Une technique de sommeil", "Un régime alimentaire"], correct: 1, explanation: "La pleine conscience (mindfulness) est la pratique d'attention intentionnelle au moment présent, sans jugement. Issue du bouddhisme, elle a été adaptée en médecine par Jon Kabat-Zinn (MBSR). Réduire le stress, l'anxiété et améliorer le bien-être sont ses effets prouvés scientifiquement." },
     { question: "Qu'est-ce que le concept hindou de 'Dharma' ?", answers: ["Le destin immuable qu'on ne peut changer", "Le devoir moral, la voie juste, l'ordre naturel de chaque être", "La réincarnation de l'âme", "Le paradis après la mort"], correct: 1, explanation: "Le Dharma est un concept central de l'hindouisme, du bouddhisme et du jaïnisme. Il représente le devoir moral, la loi cosmique, la voie juste propre à chaque individu selon sa nature. Vivre selon son Dharma c'est être en accord avec sa véritable nature et l'ordre universel." },

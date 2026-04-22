@@ -31,12 +31,12 @@ Boudoum !` })
     try {
       const data = await (await fetch(url)).json()
       const w = data.current_weather
-      return res.json({ response: `🌤️ **${country.toUpperCase()}**
-${w.temperature}°C ${w.weathercode === 0 ? '☀️' : '🌧️'}
+      return res.json({ response: `🌤 **${country.toUpperCase()}**
+${w.temperature}°C ${w.weathercode === 0 ? '☀' : '🌧'}
 Vent: ${w.windspeed}km/h
 Boudoum ! 🇬🇵` })
     } catch(e) {
-      return res.json({ response: `🌤️ Météo ${country} indisponible
+      return res.json({ response: `🌤 Météo ${country} indisponible
 Boudoum ! 🇬🇵` })
     }
   }

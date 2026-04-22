@@ -14,16 +14,16 @@ const quizCategories = [
   { id: "Culture", name: "Culture du Monde", icon: "🌍" },
   { id: "Decouvertes", name: "Découvertes", icon: "🔍" },
   { id: "Environnement", name: "Environnement", icon: "🌱" },
-  { id: "Gastronomie", name: "Gastronomie", icon: "🍽️" },
-  { id: "Geographie", name: "Géographie", icon: "🗺️" },
+  { id: "Gastronomie", name: "Gastronomie", icon: "🍽" },
+  { id: "Geographie", name: "Géographie", icon: "🗺" },
   { id: "Histoire", name: "Histoire", icon: "📜" },
   { id: "Innovations", name: "Innovations", icon: "💡" },
   { id: "Langue", name: "Langue", icon: "📝" },
   { id: "Maths", name: "Maths", icon: "🔢" },
-  { id: "Monuments", name: "Monuments", icon: "🏛️" },
+  { id: "Monuments", name: "Monuments", icon: "🏛" },
   { id: "Musique", name: "Musique", icon: "🎵" },
   { id: "Personnalites", name: "Personnalités", icon: "👤" },
-  { id: "Politique", name: "Politique", icon: "🏛️" },
+  { id: "Politique", name: "Politique", icon: "🏛" },
   { id: "Sante", name: "Santé", icon: "🏥" },
   { id: "Sciences", name: "Sciences", icon: "🔬" },
   { id: "Sport", name: "Sport", icon: "⚽" },
@@ -565,7 +565,7 @@ function renderBoutiques() {
       <div class="boutique-flag">${shop.flag}</div>
       <div class="boutique-name">${shop.country}</div>
       <a href="${shop.url}" target="_blank" rel="noopener noreferrer nofollow sponsored" class="boutique-btn">
-        🛍️ ${shop.cta}
+        🛍 ${shop.cta}
       </a>
       <div class="boutique-disclaimer">🔒 ${shop.disclaimer}</div>
     </div>

@@ -90,7 +90,7 @@ export default function France() {
 
             {/* Fiscalité */}
             <h2 style={{ color: "#667eea", marginTop: "40px" }}>
-              ⚖️ Fiscalité & TVA
+              ⚖ Fiscalité & TVA
             </h2>
             <div
               style={{

@@ -33,7 +33,7 @@ export function getDroitDOMTOM(question) {
   const q = question.toLowerCase()
   
   if (q.includes('aide juridiction') || q.includes('avocat gratuit') || q.includes('aide légale')) {
-    return `⚖️ **Aide Juridictionnelle DOM-TOM**
+    return `⚖ **Aide Juridictionnelle DOM-TOM**
 
 📋 **Qui peut en bénéficier ?**
 • Revenus mensuels < 1 069€ (aide totale)
@@ -53,7 +53,7 @@ Boudoum ! 🇬🇵`
   if (q.includes('logement') || q.includes('loyer') || q.includes('expulsion') || q.includes('hlm')) {
     return `🏠 **Droit au Logement DOM-TOM**
 
-🛡️ **Vos droits :**
+🛡 **Vos droits :**
 • DALO (Droit Au Logement Opposable)
 • APL/ALS disponibles en DOM-TOM
 • Protection contre expulsion (trêve hivernale)
@@ -71,7 +71,7 @@ Boudoum ! 🇬🇵`
   if (q.includes('travail') || q.includes('licenciem') || q.includes('contrat') || q.includes('employeur') || q.includes('salaire')) {
     return `💼 **Droit du Travail DOM-TOM**
 
-⚖️ **Vos droits :**
+⚖ **Vos droits :**
 • SMIC DOM : identique métropole (1 767€ brut/mois 2024)
 • Congés bonification DOM : +1 mois tous les 3 ans
 • CGSS (pas URSSAF) pour cotisations sociales
@@ -89,7 +89,7 @@ Boudoum ! 🇬🇵`
   if (q.includes('divorce') || q.includes('garde') || q.includes('pension') || q.includes('famille')) {
     return `👨‍👩‍👧 **Droit de la Famille DOM-TOM**
 
-⚖️ **Vos droits :**
+⚖ **Vos droits :**
 • Médiation familiale gratuite (CAF)
 • Pension alimentaire : calcul selon revenus
 • Garde alternée possible
@@ -125,7 +125,7 @@ export async function getFinanceAvancee(question) {
 • Degiro — frais bas, marchés mondiaux
 • Boursorama — banque + bourse française
 
-⚠️ Investir comporte des risques. Consultez un conseiller.
+⚠ Investir comporte des risques. Consultez un conseiller.
 Boudoum ! 🇬🇵`
   }
 
@@ -161,7 +161,7 @@ Boudoum ! 🇬🇵`
 🔗 QuickSwap : quickswap.exchange
 🔗 GoMining : gomining.com/?ref=OT3GI2U
 
-⚠️ Crypto = risque élevé. Investissez prudemment.
+⚠ Crypto = risque élevé. Investissez prudemment.
 Boudoum ! 🇬🇵`
     } catch(e) {
       return `💎 **Crypto REUSSITESS**\n\n🔗 Token REUSS sur Polygon\n🔗 GoMining : gomining.com/?ref=OT3GI2U\n\nBoudoum ! 🇬🇵`

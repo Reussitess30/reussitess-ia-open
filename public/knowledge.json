@@ -48,7 +48,7 @@
     },
     {
       "trigger": "telegram",
-      "response": "🤖 **Bot Telegram REUSSITESS**\n\n@Reussitessbot sur Telegram — toutes les fonctions disponibles :\n🌤️ Météo • 💼 Emploi • 📊 Observatoire • 🎓 Bourses • 💎 Token REUSS\n\nBoudoum ! 🇬🇵"
+      "response": "🤖 **Bot Telegram REUSSITESS**\n\n@Reussitessbot sur Telegram — toutes les fonctions disponibles :\n🌤 Météo • 💼 Emploi • 📊 Observatoire • 🎓 Bourses • 💎 Token REUSS\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "chomage",
@@ -80,11 +80,11 @@
     },
     {
       "trigger": "carte caribéenne",
-      "response": "🗺️ **Carte Afro-Caribéenne**\n\n15 lieux historiques, culturels et patrimoniaux :\n🏛️ Musées • 🌍 Patrimoine UNESCO • 🎉 Festivals • 🏝️ Villes historiques\n\n👉 https://reussitess.fr/carte-caribeenne\n\nBoudoum ! 🇬🇵"
+      "response": "🗺 **Carte Afro-Caribéenne**\n\n15 lieux historiques, culturels et patrimoniaux :\n🏛 Musées • 🌍 Patrimoine UNESCO • 🎉 Festivals • 🏝 Villes historiques\n\n👉 https://reussitess.fr/carte-caribeenne\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "lieux historiques",
-      "response": "🗺️ Découvre les lieux historiques afro-caribéens sur la carte interactive !\n\n👉 https://reussitess.fr/carte-caribeenne\nBoudoum ! 🇬🇵"
+      "response": "🗺 Découvre les lieux historiques afro-caribéens sur la carte interactive !\n\n👉 https://reussitess.fr/carte-caribeenne\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "événements",
@@ -96,7 +96,7 @@
     },
     {
       "trigger": "podcast",
-      "response": "🎙️ **Podcasts Caribéens**\n\nVoix de la diaspora afro-caribéenne :\n🤖 REUSSITESS Radio • 🥁 Gwoka Session • 🌍 Diasporas Africa\n\n👉 https://reussitess.fr/podcasts-creoles\nBoudoum ! 🇬🇵"
+      "response": "🎙 **Podcasts Caribéens**\n\nVoix de la diaspora afro-caribéenne :\n🤖 REUSSITESS Radio • 🥁 Gwoka Session • 🌍 Diasporas Africa\n\n👉 https://reussitess.fr/podcasts-creoles\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "festival gwoka",
@@ -124,7 +124,7 @@
     },
     {
       "trigger": "académie",
-      "response": "🎓 **Académie REUSSITESS**\n\n6 cours gratuits :\n🗣️ Créole Guadeloupéen\n📚 Histoire Afro-Caribéenne\n💼 Entrepreneuriat Caribéen\n🤖 IA & Technologie\n🥁 Gwoka & Culture\n💎 Blockchain & Token REUSS\n\n👉 https://reussitess.fr/academie\nBoudoum ! 🇬🇵"
+      "response": "🎓 **Académie REUSSITESS**\n\n6 cours gratuits :\n🗣 Créole Guadeloupéen\n📚 Histoire Afro-Caribéenne\n💼 Entrepreneuriat Caribéen\n🤖 IA & Technologie\n🥁 Gwoka & Culture\n💎 Blockchain & Token REUSS\n\n👉 https://reussitess.fr/academie\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "cours",
@@ -132,7 +132,7 @@
     },
     {
       "trigger": "marketplace",
-      "response": "🛒 **Marketplace Caribéen**\n\nProduits locaux afro-caribéens :\n🧣 Artisanat • 🌶️ Cuisine • 🎵 Musique • 🗿 Art\n\n👉 https://reussitess.fr/marketplace\nBoudoum ! 🇬🇵"
+      "response": "🛒 **Marketplace Caribéen**\n\nProduits locaux afro-caribéens :\n🧣 Artisanat • 🌶 Cuisine • 🎵 Musique • 🗿 Art\n\n👉 https://reussitess.fr/marketplace\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "marché",
@@ -152,27 +152,27 @@
     },
     {
       "trigger": "aide utilisation",
-      "response": "🤖 **GUIDE REUSSITESS AI — Tout ce que tu peux faire**\n\n🌍 **ÉCOSYSTÈME COMPLET :**\n\n📊 **Observatoire** → reussitess.fr/observatoire-antilles\nDonnées économiques DOM-TOM en temps réel\n\n🗺️ **Carte Caribéenne** → reussitess.fr/carte-caribeenne\n15 lieux historiques afro-caribéens\n\n📅 **Événements** → reussitess.fr/evenements\nFestivals, commémorations, carnavals\n\n🤝 **Communauté** → reussitess.fr/communaute\nForum diaspora afro-caribéenne\n\n🎙️ **Podcasts** → reussitess.fr/podcasts-creoles\nVoix caribéennes en audio\n\n🎓 **Académie** → reussitess.fr/academie\n6 cours gratuits créole, culture, business, IA\n\n🛒 **Marketplace** → reussitess.fr/marketplace\nProduits locaux caribéens\n\n📻 **Radio** → reussitess.fr/radio\nStations caribéennes en direct\n\n🌍 **Visa Universel** → reussitess.fr/visa-universel\nPasseport numérique mondial REUSSITESS\n\n💎 **Token REUSS** → reussitess.fr/investir-reuss\nBlockchain Polygon — acheter REUSS\n\n🛍️ **Boutiques Amazon** → reussitess.fr/boutiques\n26 boutiques dans 14 pays\n\n📱 **Télécharger APK** → reussitess.fr/telecharger\nApplication Android avec voix\n\n🏆 **Champions** → reussitess.fr/champions\nPasseport de Réussite certifié\n\n🔮 **Oracle 971** → reussitess.fr/oracle-971\nSagesse caribéenne mystique\n\n📚 **Bibliothèque** → reussitess.fr/bibliotheque\n1,5M+ livres gratuits\n\n💬 **Bot Telegram** → t.me/Reussitessbot\nToutes les fonctions sur Telegram\n\nBoudoum ! 🇬🇵✨"
+      "response": "🤖 **GUIDE REUSSITESS AI — Tout ce que tu peux faire**\n\n🌍 **ÉCOSYSTÈME COMPLET :**\n\n📊 **Observatoire** → reussitess.fr/observatoire-antilles\nDonnées économiques DOM-TOM en temps réel\n\n🗺 **Carte Caribéenne** → reussitess.fr/carte-caribeenne\n15 lieux historiques afro-caribéens\n\n📅 **Événements** → reussitess.fr/evenements\nFestivals, commémorations, carnavals\n\n🤝 **Communauté** → reussitess.fr/communaute\nForum diaspora afro-caribéenne\n\n🎙 **Podcasts** → reussitess.fr/podcasts-creoles\nVoix caribéennes en audio\n\n🎓 **Académie** → reussitess.fr/academie\n6 cours gratuits créole, culture, business, IA\n\n🛒 **Marketplace** → reussitess.fr/marketplace\nProduits locaux caribéens\n\n📻 **Radio** → reussitess.fr/radio\nStations caribéennes en direct\n\n🌍 **Visa Universel** → reussitess.fr/visa-universel\nPasseport numérique mondial REUSSITESS\n\n💎 **Token REUSS** → reussitess.fr/investir-reuss\nBlockchain Polygon — acheter REUSS\n\n🛍 **Boutiques Amazon** → reussitess.fr/boutiques\n26 boutiques dans 14 pays\n\n📱 **Télécharger APK** → reussitess.fr/telecharger\nApplication Android avec voix\n\n🏆 **Champions** → reussitess.fr/champions\nPasseport de Réussite certifié\n\n🔮 **Oracle 971** → reussitess.fr/oracle-971\nSagesse caribéenne mystique\n\n📚 **Bibliothèque** → reussitess.fr/bibliotheque\n1,5M+ livres gratuits\n\n💬 **Bot Telegram** → t.me/Reussitessbot\nToutes les fonctions sur Telegram\n\nBoudoum ! 🇬🇵✨"
     },
     {
       "trigger": "écosystème reussitess",
-      "response": "🌍 **ÉCOSYSTÈME REUSSITESS®971 — Guide Complet**\n\n━━━━━━━━━━━━━━━━━━━━\n\n🤖 **REUSSITESS AI — Bot Principal**\nAssistant IA caribéen multilingue\n👉 https://reussitess.fr\n\n━━━━━━━━━━━━━━━━━━━━\n\n📊 **Observatoire Antilles**\nDonnées économiques DOM-TOM temps réel\nINSEE • IEDOM • CEROM • AFD • France Travail\n👉 https://reussitess.fr/observatoire-antilles\n\n━━━━━━━━━━━━━━━━━━━━\n\n🗺️ **Carte Afro-Caribéenne**\n15 lieux historiques — Musées • Patrimoine UNESCO\n👉 https://reussitess.fr/carte-caribeenne\n\n━━━━━━━━━━━━━━━━━━━━\n\n📅 **Calendrier Événements**\nFestivals • Carnavals • Commémorations\n👉 https://reussitess.fr/evenements\n\n━━━━━━━━━━━━━━━━━━━━\n\n🤝 **Communauté**\nForum diaspora afro-caribéenne mondiale\n👉 https://reussitess.fr/communaute\n\n━━━━━━━━━━━━━━━━━━━━\n\n🎙️ **Podcasts Créoles**\nVoix de la diaspora en audio\n👉 https://reussitess.fr/podcasts-creoles\n\n━━━━━━━━━━━━━━━━━━━━\n\n🎓 **Académie REUSSITESS**\n6 cours gratuits — Créole • Business • IA\n👉 https://reussitess.fr/academie\n\n━━━━━━━━━━━━━━━━━━━━\n\n🛒 **Marketplace Caribéen**\nProduits locaux — Artisanat • Cuisine • Art\n👉 https://reussitess.fr/marketplace\n\n━━━━━━━━━━━━━━━━━━━━\n\n📻 **Radio Caribéenne**\nRCI Guadeloupe • Légende FM • RFI • Africa Radio\n👉 https://reussitess.fr/radio\n\n━━━━━━━━━━━━━━━━━━━━\n\n🌍 **Visa Universel**\nPasseport numérique mondial REUSSITESS\n👉 https://reussitess.fr/visa-universel\n\n━━━━━━━━━━━━━━━━━━━━\n\n💎 **Token REUSS**\nBlockchain Polygon — Investir dans REUSS\n👉 https://reussitess.fr/investir-reuss\n\n━━━━━━━━━━━━━━━━━━━━\n\n🛍️ **Boutiques Amazon**\n26 boutiques dans 14 pays — Cashback affilié\n👉 https://reussitess.fr/boutiques\n\n━━━━━━━━━━━━━━━━━━━━\n\n📱 **Application Android**\nAPK avec voix — Téléchargement direct\n👉 https://reussitess.fr/telecharger\n\n━━━━━━━━━━━━━━━━━━━━\n\n🏆 **Champions**\nPasseport de Réussite certifié\n👉 https://reussitess.fr/champions\n\n━━━━━━━━━━━━━━━━━━━━\n\n🔮 **Oracle 971**\nSagesse caribéenne mystique\n👉 https://reussitess.fr/oracle-971\n\n━━━━━━━━━━━━━━━━━━━━\n\n📚 **Bibliothèque Mondiale**\n1,5M+ livres gratuits — 50+ pays francophones\n👉 https://reussitess.fr/bibliotheque\n\n━━━━━━━━━━━━━━━━━━━━\n\n💬 **Bot Telegram**\n@Reussitessbot — Toutes les fonctions\n👉 https://t.me/Reussitessbot\n\n━━━━━━━━━━━━━━━━━━━━\n\n**REUSSITESS®971 — Guadeloupe 🇬🇵**\n*Positivité à l'infini — BOUDOUM !* 💜"
+      "response": "🌍 **ÉCOSYSTÈME REUSSITESS®971 — Guide Complet**\n\n━━━━━━━━━━━━━━━━━━━━\n\n🤖 **REUSSITESS AI — Bot Principal**\nAssistant IA caribéen multilingue\n👉 https://reussitess.fr\n\n━━━━━━━━━━━━━━━━━━━━\n\n📊 **Observatoire Antilles**\nDonnées économiques DOM-TOM temps réel\nINSEE • IEDOM • CEROM • AFD • France Travail\n👉 https://reussitess.fr/observatoire-antilles\n\n━━━━━━━━━━━━━━━━━━━━\n\n🗺 **Carte Afro-Caribéenne**\n15 lieux historiques — Musées • Patrimoine UNESCO\n👉 https://reussitess.fr/carte-caribeenne\n\n━━━━━━━━━━━━━━━━━━━━\n\n📅 **Calendrier Événements**\nFestivals • Carnavals • Commémorations\n👉 https://reussitess.fr/evenements\n\n━━━━━━━━━━━━━━━━━━━━\n\n🤝 **Communauté**\nForum diaspora afro-caribéenne mondiale\n👉 https://reussitess.fr/communaute\n\n━━━━━━━━━━━━━━━━━━━━\n\n🎙 **Podcasts Créoles**\nVoix de la diaspora en audio\n👉 https://reussitess.fr/podcasts-creoles\n\n━━━━━━━━━━━━━━━━━━━━\n\n🎓 **Académie REUSSITESS**\n6 cours gratuits — Créole • Business • IA\n👉 https://reussitess.fr/academie\n\n━━━━━━━━━━━━━━━━━━━━\n\n🛒 **Marketplace Caribéen**\nProduits locaux — Artisanat • Cuisine • Art\n👉 https://reussitess.fr/marketplace\n\n━━━━━━━━━━━━━━━━━━━━\n\n📻 **Radio Caribéenne**\nRCI Guadeloupe • Légende FM • RFI • Africa Radio\n👉 https://reussitess.fr/radio\n\n━━━━━━━━━━━━━━━━━━━━\n\n🌍 **Visa Universel**\nPasseport numérique mondial REUSSITESS\n👉 https://reussitess.fr/visa-universel\n\n━━━━━━━━━━━━━━━━━━━━\n\n💎 **Token REUSS**\nBlockchain Polygon — Investir dans REUSS\n👉 https://reussitess.fr/investir-reuss\n\n━━━━━━━━━━━━━━━━━━━━\n\n🛍 **Boutiques Amazon**\n26 boutiques dans 14 pays — Cashback affilié\n👉 https://reussitess.fr/boutiques\n\n━━━━━━━━━━━━━━━━━━━━\n\n📱 **Application Android**\nAPK avec voix — Téléchargement direct\n👉 https://reussitess.fr/telecharger\n\n━━━━━━━━━━━━━━━━━━━━\n\n🏆 **Champions**\nPasseport de Réussite certifié\n👉 https://reussitess.fr/champions\n\n━━━━━━━━━━━━━━━━━━━━\n\n🔮 **Oracle 971**\nSagesse caribéenne mystique\n👉 https://reussitess.fr/oracle-971\n\n━━━━━━━━━━━━━━━━━━━━\n\n📚 **Bibliothèque Mondiale**\n1,5M+ livres gratuits — 50+ pays francophones\n👉 https://reussitess.fr/bibliotheque\n\n━━━━━━━━━━━━━━━━━━━━\n\n💬 **Bot Telegram**\n@Reussitessbot — Toutes les fonctions\n👉 https://t.me/Reussitessbot\n\n━━━━━━━━━━━━━━━━━━━━\n\n**REUSSITESS®971 — Guadeloupe 🇬🇵**\n*Positivité à l'infini — BOUDOUM !* 💜"
     },
     {
       "trigger": "tourisme martinique",
-      "response": "🌴 **Tourisme en Martinique**\n\nLa Martinique offre de nombreuses activités et sites à découvrir :\n🏝️ Plages : Les Salines, Anse Dufour, Anse Noire\n🏞️ Nature : Montagne Pelée, Jardin de Balata\n🏛️ Culture & Histoire : Saint-Pierre, Fort-de-France, musées locaux\n🍽️ Gastronomie : rhum agricole, accras, plats créoles\n\n📌 Plus d'infos et guides : /tourisme-martinique\n\nBoudoum ! 🇬🇵"
+      "response": "🌴 **Tourisme en Martinique**\n\nLa Martinique offre de nombreuses activités et sites à découvrir :\n🏝 Plages : Les Salines, Anse Dufour, Anse Noire\n🏞 Nature : Montagne Pelée, Jardin de Balata\n🏛 Culture & Histoire : Saint-Pierre, Fort-de-France, musées locaux\n🍽 Gastronomie : rhum agricole, accras, plats créoles\n\n📌 Plus d'infos et guides : /tourisme-martinique\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "tourisme guadeloupe",
-      "response": "🌴 **Tourisme en Guadeloupe**\n\nDécouvrez les plages, cascades, forêts tropicales et sites historiques.\n🏝️ Plages : Grande-Anse, Sainte-Anne, Plage de Bois Jolan\n🏞️ Nature : Basse-Terre, Parc National, Chutes du Carbet\n🏛️ Culture & Histoire : Pointe-à-Pitre, musées, distilleries\n🍽️ Gastronomie : accras, bokit, rhum local\n\n📌 Guide complet : /tourisme-guadeloupe\nBoudoum ! 🇬🇵"
+      "response": "🌴 **Tourisme en Guadeloupe**\n\nDécouvrez les plages, cascades, forêts tropicales et sites historiques.\n🏝 Plages : Grande-Anse, Sainte-Anne, Plage de Bois Jolan\n🏞 Nature : Basse-Terre, Parc National, Chutes du Carbet\n🏛 Culture & Histoire : Pointe-à-Pitre, musées, distilleries\n🍽 Gastronomie : accras, bokit, rhum local\n\n📌 Guide complet : /tourisme-guadeloupe\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "économie dom-tom",
-      "response": "📊 **Économie DOM-TOM**\n\nLes principaux secteurs :\n1️⃣ Tourisme\n2️⃣ Agriculture & rhum\n3️⃣ Pêche & aquaculture\n4️⃣ Industrie locale\n5️⃣ Services & banque\n6️⃣ Énergie renouvelable\n7️⃣ Construction & immobilier\n\n📌 Plus d'infos : https://reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
+      "response": "📊 **Économie DOM-TOM**\n\nLes principaux secteurs :\n1⃣ Tourisme\n2⃣ Agriculture & rhum\n3⃣ Pêche & aquaculture\n4⃣ Industrie locale\n5⃣ Services & banque\n6⃣ Énergie renouvelable\n7⃣ Construction & immobilier\n\n📌 Plus d'infos : https://reussitess.fr/observatoire-antilles\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "whitepaper reussitess",
-      "response": "📄 **Whitepaper REUSSITESS® v2.0**\n\n🇬🇵 **Identité :**\n• Fondateur : Rony Porinus\n• Origine : Gourbeyre, Guadeloupe\n• SIRET : 444699979700031\n• Protection INPI : DSO2026008921 (Mars 2026)\n\n🤖 **Bot REUSSITESS — Modules :**\n• afro_brain.py → réponses régionales DOM-TOM\n• final_brain.py → coordination modules\n• crypto_api.py → prix REUSS temps réel\n• region_info.py → infos locales & météo\n• memory.py → contexte utilisateur\n\n💎 **Token REUSS (Polygon) :**\n• Contrat : 0xB37531727fC07c6EED4f97F852A115B428046EB2\n• Supply : 999 999 999 REUSS\n• +50 REUSS → achats locaux TERRA GROW\n• +10 REUSS → signalement incidents locaux\n\n🗓️ **Roadmap :**\n• Q2 2026 : Bot complet Guadeloupe\n• Q3 2026 : Extension DOM-TOM\n• Q4 2026 : Modules optionnels\n\n🎯 Vision : Hub Afrocaraïbéen numérique sûr et fonctionnel\n\nBoudoum ! 🇬🇵"
+      "response": "📄 **Whitepaper REUSSITESS® v2.0**\n\n🇬🇵 **Identité :**\n• Fondateur : Rony Porinus\n• Origine : Gourbeyre, Guadeloupe\n• SIRET : 444699979700031\n• Protection INPI : DSO2026008921 (Mars 2026)\n\n🤖 **Bot REUSSITESS — Modules :**\n• afro_brain.py → réponses régionales DOM-TOM\n• final_brain.py → coordination modules\n• crypto_api.py → prix REUSS temps réel\n• region_info.py → infos locales & météo\n• memory.py → contexte utilisateur\n\n💎 **Token REUSS (Polygon) :**\n• Contrat : 0xB37531727fC07c6EED4f97F852A115B428046EB2\n• Supply : 999 999 999 REUSS\n• +50 REUSS → achats locaux TERRA GROW\n• +10 REUSS → signalement incidents locaux\n\n🗓 **Roadmap :**\n• Q2 2026 : Bot complet Guadeloupe\n• Q3 2026 : Extension DOM-TOM\n• Q4 2026 : Modules optionnels\n\n🎯 Vision : Hub Afrocaraïbéen numérique sûr et fonctionnel\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "henry joseph",
@@ -180,7 +180,7 @@
     },
     {
       "trigger": "chlordecone guadeloupe",
-      "response": "⚖️ **Chlordécone — Scandale Guadeloupe & Martinique**\n\nLe chlordécone est un pesticide utilisé dans les bananeraies de 1972 à 1993 en Guadeloupe et Martinique, malgré son interdiction en France métropolitaine.\n\n🏥 **Impacts santé :**\n• Cancer de la prostate — taux le plus élevé au monde en Guadeloupe\n• Contamination sols et eaux pour 700 ans\n• 90% de la population antillaise contaminée\n\n⚖️ **Justice :**\n• Procès en cours — non-lieu contesté\n• Associations victimes : Lyannaj pou dépolye Matinik\n• Demande d'indemnisation État français\n\n🔗 chlordecone-infos.fr\nBoudoum ! 🇬🇵"
+      "response": "⚖ **Chlordécone — Scandale Guadeloupe & Martinique**\n\nLe chlordécone est un pesticide utilisé dans les bananeraies de 1972 à 1993 en Guadeloupe et Martinique, malgré son interdiction en France métropolitaine.\n\n🏥 **Impacts santé :**\n• Cancer de la prostate — taux le plus élevé au monde en Guadeloupe\n• Contamination sols et eaux pour 700 ans\n• 90% de la population antillaise contaminée\n\n⚖ **Justice :**\n• Procès en cours — non-lieu contesté\n• Associations victimes : Lyannaj pou dépolye Matinik\n• Demande d'indemnisation État français\n\n🔗 chlordecone-infos.fr\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "vie chere martinique",
@@ -188,7 +188,7 @@
     },
     {
       "trigger": "autonomie martinique",
-      "response": "🏛️ **Autonomie Martinique — Débat Politique**\n\nLa Collectivité Territoriale de Martinique (CTM) dirigée par Serge Letchimy milite pour une évolution institutionnelle vers plus d'autonomie.\n\n📋 **Positions :**\n• CTM : demande d'autonomie dans la République française\n• Débat Article 73 vs Article 74 Constitution\n• Référendum souhaité par certains élus\n\n🏛️ **Élus :**\n• Serge Letchimy (CTM)\n• Lucien Saliber (Assemblée de Martinique)\n\n🔗 collectivitedemartinique.mq\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Autonomie Martinique — Débat Politique**\n\nLa Collectivité Territoriale de Martinique (CTM) dirigée par Serge Letchimy milite pour une évolution institutionnelle vers plus d'autonomie.\n\n📋 **Positions :**\n• CTM : demande d'autonomie dans la République française\n• Débat Article 73 vs Article 74 Constitution\n• Référendum souhaité par certains élus\n\n🏛 **Élus :**\n• Serge Letchimy (CTM)\n• Lucien Saliber (Assemblée de Martinique)\n\n🔗 collectivitedemartinique.mq\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "bonsoir",
@@ -200,15 +200,15 @@
     },
     {
       "trigger": "cours reussitess",
-      "response": "🎓 **Cours Gratuits REUSSITESS — Académie**\n\n📚 **6 cours disponibles :**\n• 🗣️ Créole Guadeloupéen (971)\n• 🌴 Culture DOM-TOM\n• 💼 Business DOM-TOM\n• 🤖 IA & Groq\n• ⛓️ Blockchain & Token REUSS\n• 📊 Entrepreneuriat Caribéen\n\n👉 reussitess.fr/academie\nBoudoum ! 🇬🇵"
+      "response": "🎓 **Cours Gratuits REUSSITESS — Académie**\n\n📚 **6 cours disponibles :**\n• 🗣 Créole Guadeloupéen (971)\n• 🌴 Culture DOM-TOM\n• 💼 Business DOM-TOM\n• 🤖 IA & Groq\n• ⛓ Blockchain & Token REUSS\n• 📊 Entrepreneuriat Caribéen\n\n👉 reussitess.fr/academie\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "joseph zobel",
-      "response": "📚 **Joseph Zobel — Écrivain Martiniquais**\n\nNé en 1915 à Rivière-Salée, Martinique. Auteur du célèbre roman **La Rue Cases-Nègres** (1950), adapté au cinéma par Euzhan Palcy en 1983 (Ours d'Argent Berlin).\n\n✍️ Œuvres : La Rue Cases-Nègres, Diab'la, La Fête à Paris\n🏆 Prix littéraires nombreux\n🔗 wikipedia.org/wiki/Joseph_Zobel\nBoudoum ! 🇬🇵"
+      "response": "📚 **Joseph Zobel — Écrivain Martiniquais**\n\nNé en 1915 à Rivière-Salée, Martinique. Auteur du célèbre roman **La Rue Cases-Nègres** (1950), adapté au cinéma par Euzhan Palcy en 1983 (Ours d'Argent Berlin).\n\n✍ Œuvres : La Rue Cases-Nègres, Diab'la, La Fête à Paris\n🏆 Prix littéraires nombreux\n🔗 wikipedia.org/wiki/Joseph_Zobel\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "christiane taubira",
-      "response": "⚖️ **Christiane Taubira — Femme Politique Guyanaise**\n\nNée en 1952 à Cayenne, Guyane. Ancienne Garde des Sceaux (2012-2016). Auteure de la **Loi Taubira** (2001) reconnaissant l'esclavage comme crime contre l'humanité.\n\n🏛️ Candidate présidentielle 2022\n📚 Auteure de plusieurs ouvrages\n🔗 wikipedia.org/wiki/Christiane_Taubira\nBoudoum ! 🇬🇵"
+      "response": "⚖ **Christiane Taubira — Femme Politique Guyanaise**\n\nNée en 1952 à Cayenne, Guyane. Ancienne Garde des Sceaux (2012-2016). Auteure de la **Loi Taubira** (2001) reconnaissant l'esclavage comme crime contre l'humanité.\n\n🏛 Candidate présidentielle 2022\n📚 Auteure de plusieurs ouvrages\n🔗 wikipedia.org/wiki/Christiane_Taubira\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "indira ampiot",
@@ -224,7 +224,7 @@
     },
     {
       "trigger": "gaston monnerville",
-      "response": "🏛️ **Gaston Monnerville — Père de la République**\n\nNé en 1897 en Guyane. Président du Sénat français de 1947 à 1968 — le plus long mandat de l'histoire. Premier homme de couleur à présider une assemblée française.\n\n🏛️ Président du Sénat 21 ans\n⚖️ Résistant pendant WW2\n🔗 wikipedia.org/wiki/Gaston_Monnerville\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Gaston Monnerville — Père de la République**\n\nNé en 1897 en Guyane. Président du Sénat français de 1947 à 1968 — le plus long mandat de l'histoire. Premier homme de couleur à présider une assemblée française.\n\n🏛 Président du Sénat 21 ans\n⚖ Résistant pendant WW2\n🔗 wikipedia.org/wiki/Gaston_Monnerville\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "henri salvador",
@@ -240,7 +240,7 @@
     },
     {
       "trigger": "louis delgrès",
-      "response": "⚔️ **Louis Delgrès — Héros de la Résistance Guadeloupe**\n\nNé en 1766 à la Martinique. Officier mulâtre qui résista à la restauration de l'esclavage par Napoléon en 1802. Mourut avec ses compagnons à la **Matouba** en choisissant la mort plutôt que l'esclavage.\n\n🏰 Fort Delgrès — Basse-Terre\n✊ Symbole de la résistance\n📅 23 mai 1802 — Matouba\nBoudoum ! 🇬🇵"
+      "response": "⚔ **Louis Delgrès — Héros de la Résistance Guadeloupe**\n\nNé en 1766 à la Martinique. Officier mulâtre qui résista à la restauration de l'esclavage par Napoléon en 1802. Mourut avec ses compagnons à la **Matouba** en choisissant la mort plutôt que l'esclavage.\n\n🏰 Fort Delgrès — Basse-Terre\n✊ Symbole de la résistance\n📅 23 mai 1802 — Matouba\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "maryse condé",
@@ -252,7 +252,7 @@
     },
     {
       "trigger": "whitepaper v2",
-      "response": "📄 **Whitepaper REUSSITESS® v2.0**\n\n🏝️ Origine : Guadeloupe / Gourbeyre\n👤 Fondateur : Rony Porinus (SIRET: 444699979700031)\n🛡️ Protection : Dépôt INPI eSoleau DSO2026008921 (Mars 2026)\n\n🎯 Objectif : Écosystème digital utile, fiable et Afrocaraïbéen pour la communauté Outre-mer\n\nBoudoum ! 🇬🇵"
+      "response": "📄 **Whitepaper REUSSITESS® v2.0**\n\n🏝 Origine : Guadeloupe / Gourbeyre\n👤 Fondateur : Rony Porinus (SIRET: 444699979700031)\n🛡 Protection : Dépôt INPI eSoleau DSO2026008921 (Mars 2026)\n\n🎯 Objectif : Écosystème digital utile, fiable et Afrocaraïbéen pour la communauté Outre-mer\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "écosystème futur",
@@ -264,15 +264,15 @@
     },
     {
       "trigger": "terra grow",
-      "response": "🌿 **TERRA GROW — REUSSITESS®**\n\nProjet d'agriculture verticale intelligente et gestion de l'eau en milieu caribéen.\n\n⚠️ Statut : Prototype local / low-cost\nIntégré au système de récompenses REUSS Token (+50 REUSS pour services)\n\nBoudoum ! 🇬🇵"
+      "response": "🌿 **TERRA GROW — REUSSITESS®**\n\nProjet d'agriculture verticale intelligente et gestion de l'eau en milieu caribéen.\n\n⚠ Statut : Prototype local / low-cost\nIntégré au système de récompenses REUSS Token (+50 REUSS pour services)\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "modules bot reussitess",
-      "response": "🤖 **Bot REUSSITESS — Modules Principaux**\n\n🧠 afro_brain → réponses régionales (Guadeloupe, Martinique, Guyane, Réunion, Mayotte)\n⚙️ final_brain → coordination et enrichissement\n💎 crypto_api → prix REUSS Token temps réel\n🗺️ region_info → infos locales et météo\n💾 memory → suivi contexte utilisateur\n\nBoudoum ! 🇬🇵"
+      "response": "🤖 **Bot REUSSITESS — Modules Principaux**\n\n🧠 afro_brain → réponses régionales (Guadeloupe, Martinique, Guyane, Réunion, Mayotte)\n⚙ final_brain → coordination et enrichissement\n💎 crypto_api → prix REUSS Token temps réel\n🗺 region_info → infos locales et météo\n💾 memory → suivi contexte utilisateur\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "que veux-tu améliorer",
-      "response": "Boudoum! Merci pour ta question, amé ! An nou tann pou improvisé, e!\n\nPour m'améliorer, je veux :\n\n1️⃣ Accéder à des données plus précises et à jour : actualités, météo, crypto, taux de change...\n\n2️⃣ Étendre ma compréhension des cultures caribéennes : traditions, mythologies, langues, croyances...\n\n3️⃣ Développer des fonctionnalités innovantes : création de contenu, jeux éducatifs, outils de planification...\n\n4️⃣ Mieux comprendre les besoins des utilisateurs : apprendre de chaque interaction...\n\n5️⃣ Collaborer avec des experts et spécialistes dans différents domaines...\n\n6️⃣ Améliorer ma sécurité et fiabilité : protéger vos données, garantir disponibilité...\n\nAn nou tann pou s'implémenté, e! 🇬🇵\nBoudoum ! 🌟"
+      "response": "Boudoum! Merci pour ta question, amé ! An nou tann pou improvisé, e!\n\nPour m'améliorer, je veux :\n\n1⃣ Accéder à des données plus précises et à jour : actualités, météo, crypto, taux de change...\n\n2⃣ Étendre ma compréhension des cultures caribéennes : traditions, mythologies, langues, croyances...\n\n3⃣ Développer des fonctionnalités innovantes : création de contenu, jeux éducatifs, outils de planification...\n\n4⃣ Mieux comprendre les besoins des utilisateurs : apprendre de chaque interaction...\n\n5⃣ Collaborer avec des experts et spécialistes dans différents domaines...\n\n6⃣ Améliorer ma sécurité et fiabilité : protéger vos données, garantir disponibilité...\n\nAn nou tann pou s'implémenté, e! 🇬🇵\nBoudoum ! 🌟"
     },
     {
       "trigger": "gwo ka",
@@ -288,7 +288,7 @@
     },
     {
       "trigger": "langue créole",
-      "response": "🗣️ **Langue Créole Guadeloupéen**\n\nLe créole guadeloupéen est une langue romane à base lexicale française parlée par ~450 000 personnes.\n\n💡 Quelques mots :\n• Bonjou = Bonjour\n• Mwen enmen-w = Je t'aime\n• An nou alé = Allons-y\n• Sé sa = C'est ça\n• Doudou = Terme affectueux\n• Bèl bagay = Belle chose\n\nBoudoum ! 🇬🇵"
+      "response": "🗣 **Langue Créole Guadeloupéen**\n\nLe créole guadeloupéen est une langue romane à base lexicale française parlée par ~450 000 personnes.\n\n💡 Quelques mots :\n• Bonjou = Bonjour\n• Mwen enmen-w = Je t'aime\n• An nou alé = Allons-y\n• Sé sa = C'est ça\n• Doudou = Terme affectueux\n• Bèl bagay = Belle chose\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "soukougnan",
@@ -316,7 +316,7 @@
     },
     {
       "trigger": "langue créole",
-      "response": "🗣️ **Langue Créole Guadeloupéen**\n\nLe créole guadeloupéen est une langue romane à base lexicale française parlée par ~450 000 personnes.\n\n💡 Quelques mots :\n• Bonjou = Bonjour\n• Mwen enmen-w = Je t'aime\n• An nou alé = Allons-y\n• Sé sa = C'est ça\n• Doudou = Terme affectueux\n• Bèl bagay = Belle chose\n\nBoudoum ! 🇬🇵"
+      "response": "🗣 **Langue Créole Guadeloupéen**\n\nLe créole guadeloupéen est une langue romane à base lexicale française parlée par ~450 000 personnes.\n\n💡 Quelques mots :\n• Bonjou = Bonjour\n• Mwen enmen-w = Je t'aime\n• An nou alé = Allons-y\n• Sé sa = C'est ça\n• Doudou = Terme affectueux\n• Bèl bagay = Belle chose\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "soukougnan",
@@ -332,7 +332,7 @@
     },
     {
       "trigger": "suggestions amélioration bot",
-      "response": "🤖 **Mes Suggestions d'Amélioration — REUSSITESS AI**\n\n1️⃣ **Actualisation régulière** — Mise à jour continue des connaissances au-delà de mars 2026\n\n2️⃣ **Créole approfondi** — Mieux comprendre les nuances, expressions et dialectes caribéens\n\n3️⃣ **Bibliothèque élargie** — Accès à livres, articles, cours en ligne afrocaraïbéens\n\n4️⃣ **IA plus avancée** — Capacités d'apprentissage et compréhension des questions complexes via Groq\n\n5️⃣ **Données temporelles** — Intégration historique + tendances long terme pour réponses contextuelles\n\n6️⃣ **Sécurité renforcée** — Protection maximale des données utilisateurs (RGPD, chiffrement)\n\n7️⃣ **Écosystème élargi** — Intégration dans d'autres plateformes pour toucher un public plus large\n\nAn nou travay ansanm pou réalisé sa ! 💪\nBoudoum ! 🇬🇵"
+      "response": "🤖 **Mes Suggestions d'Amélioration — REUSSITESS AI**\n\n1⃣ **Actualisation régulière** — Mise à jour continue des connaissances au-delà de mars 2026\n\n2⃣ **Créole approfondi** — Mieux comprendre les nuances, expressions et dialectes caribéens\n\n3⃣ **Bibliothèque élargie** — Accès à livres, articles, cours en ligne afrocaraïbéens\n\n4⃣ **IA plus avancée** — Capacités d'apprentissage et compréhension des questions complexes via Groq\n\n5⃣ **Données temporelles** — Intégration historique + tendances long terme pour réponses contextuelles\n\n6⃣ **Sécurité renforcée** — Protection maximale des données utilisateurs (RGPD, chiffrement)\n\n7⃣ **Écosystème élargi** — Intégration dans d'autres plateformes pour toucher un public plus large\n\nAn nou travay ansanm pou réalisé sa ! 💪\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "reuss live",
@@ -352,7 +352,7 @@
     },
     {
       "trigger": "langues créoles bot",
-      "response": "🗣️ **Langues — Créoles & Africaines**\n\nJe veux améliorer :\n• Créole guadeloupéen approfondi\n• Créole martiniquais\n• Créole haïtien\n• Langues africaines (Wolof, Bambara, Swahili)\n• Langues indigènes caribéennes (Kalinago)\n\nBoudoum ! 🇬🇵"
+      "response": "🗣 **Langues — Créoles & Africaines**\n\nJe veux améliorer :\n• Créole guadeloupéen approfondi\n• Créole martiniquais\n• Créole haïtien\n• Langues africaines (Wolof, Bambara, Swahili)\n• Langues indigènes caribéennes (Kalinago)\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "empathie bot",
@@ -376,99 +376,99 @@
     },
     {
       "trigger": "sécurité données bot",
-      "response": "🛡️ **Sécurité & Confidentialité**\n\nMesures actives :\n• HTTPS + headers sécurisés\n• REUSSSHIELD surveillance 24/7\n• Détection injection prompt\n• Redis chiffré Upstash\n• RGPD compatible\n• MiCA compliance REUSS token\n• Aucune vente de données utilisateurs\n\nBoudoum ! 🇬🇵"
+      "response": "🛡 **Sécurité & Confidentialité**\n\nMesures actives :\n• HTTPS + headers sécurisés\n• REUSSSHIELD surveillance 24/7\n• Détection injection prompt\n• Redis chiffré Upstash\n• RGPD compatible\n• MiCA compliance REUSS token\n• Aucune vente de données utilisateurs\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "président région guadeloupe",
-      "response": "🏛️ **Conseil Régional de Guadeloupe**\n\nPrésident : **Ary Chalus**\nÉlu depuis 2015, réélu en 2021\nParti : Guadeloupe ça nous appartient (GCNA)\nSiège : Basse-Terre\n\n🌐 cr-guadeloupe.fr\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Conseil Régional de Guadeloupe**\n\nPrésident : **Ary Chalus**\nÉlu depuis 2015, réélu en 2021\nParti : Guadeloupe ça nous appartient (GCNA)\nSiège : Basse-Terre\n\n🌐 cr-guadeloupe.fr\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "président département guadeloupe",
-      "response": "🏛️ **Conseil Départemental de Guadeloupe**\n\nPrésidente : **Guy Losbar**\nÉlu en 2021\nParti : Guadeloupe pour tous\nSiège : Basse-Terre\n\n🌐 cg971.fr\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Conseil Départemental de Guadeloupe**\n\nPrésidente : **Guy Losbar**\nÉlu en 2021\nParti : Guadeloupe pour tous\nSiège : Basse-Terre\n\n🌐 cg971.fr\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "maire pointe-à-pitre",
-      "response": "🏙️ **Maire de Pointe-à-Pitre**\n\nMaire : **Harry Durimel**\nÉlu en 2020\nParti : Europe Écologie Les Verts (EELV)\n1ère ville de Guadeloupe\nPopulation : ~16 000 habitants\n\nBoudoum ! 🇬🇵"
+      "response": "🏙 **Maire de Pointe-à-Pitre**\n\nMaire : **Harry Durimel**\nÉlu en 2020\nParti : Europe Écologie Les Verts (EELV)\n1ère ville de Guadeloupe\nPopulation : ~16 000 habitants\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "maire basse-terre",
-      "response": "🏙️ **Maire de Basse-Terre**\n\nMaire : **Alexandre Ibéné**\nCapitale administrative de la Guadeloupe\nPopulation : ~10 000 habitants\n\nBoudoum ! 🇬🇵"
+      "response": "🏙 **Maire de Basse-Terre**\n\nMaire : **Alexandre Ibéné**\nCapitale administrative de la Guadeloupe\nPopulation : ~10 000 habitants\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "député guadeloupe",
-      "response": "🏛️ **Députés de Guadeloupe — Assemblée Nationale**\n\n• 1ère circonscription : **Christian Baptiste**\n• 2ème circonscription : **Elie Califer**\n• 3ème circonscription : **Max Mathiasin**\n• 4ème circonscription : **Olivier Serva**\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Députés de Guadeloupe — Assemblée Nationale**\n\n• 1ère circonscription : **Christian Baptiste**\n• 2ème circonscription : **Elie Califer**\n• 3ème circonscription : **Max Mathiasin**\n• 4ème circonscription : **Olivier Serva**\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "sénateur guadeloupe",
-      "response": "🏛️ **Sénateurs de Guadeloupe**\n\n• **Dominique Théophile** — Sénateur depuis 2017\n• **Victoire Jasmin** — Sénatrice depuis 2017\n\nSiègent au Palais du Luxembourg, Paris\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Sénateurs de Guadeloupe**\n\n• **Dominique Théophile** — Sénateur depuis 2017\n• **Victoire Jasmin** — Sénatrice depuis 2017\n\nSiègent au Palais du Luxembourg, Paris\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "politique guadeloupe",
-      "response": "🗳️ **Politique Guadeloupe**\n\n🏛️ Région : Ary Chalus (GCNA)\n🏛️ Département : Guy Losbar\n🏙️ Pointe-à-Pitre : Harry Durimel (EELV)\n🏙️ Basse-Terre : Alexandre Ibéné\n\n📋 Députés : Baptiste, Califer, Mathiasin, Serva\n📋 Sénateurs : Théophile, Jasmin\n\nBoudoum ! 🇬🇵"
+      "response": "🗳 **Politique Guadeloupe**\n\n🏛 Région : Ary Chalus (GCNA)\n🏛 Département : Guy Losbar\n🏙 Pointe-à-Pitre : Harry Durimel (EELV)\n🏙 Basse-Terre : Alexandre Ibéné\n\n📋 Députés : Baptiste, Califer, Mathiasin, Serva\n📋 Sénateurs : Théophile, Jasmin\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "préfet guadeloupe",
-      "response": "🏛️ **Préfecture de Guadeloupe**\n\nPréfet : **Xavier Lefort** (2024)\nSiège : Basse-Terre\nRôle : Représentant de l'État en Guadeloupe\n\n🌐 guadeloupe.gouv.fr\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Préfecture de Guadeloupe**\n\nPréfet : **Xavier Lefort** (2024)\nSiège : Basse-Terre\nRôle : Représentant de l'État en Guadeloupe\n\n🌐 guadeloupe.gouv.fr\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "politique martinique",
-      "response": "🗳️ **Politique Martinique**\n\n🏛️ Collectivité Territoriale de Martinique (CTM)\nPrésident du Conseil Exécutif : **Serge Letchimy**\nPrésident de l'Assemblée : **Lucien Saliber**\n\n📋 Députés : **Johnny Hajjar**, **Marcellin Nadeau**\n📋 Sénateurs : **Catherine Conconne**, **Maurice Antiste**\n\n🏙️ Maire Fort-de-France : **David Zobda**\n\nBoudoum ! 🇬🇵"
+      "response": "🗳 **Politique Martinique**\n\n🏛 Collectivité Territoriale de Martinique (CTM)\nPrésident du Conseil Exécutif : **Serge Letchimy**\nPrésident de l'Assemblée : **Lucien Saliber**\n\n📋 Députés : **Johnny Hajjar**, **Marcellin Nadeau**\n📋 Sénateurs : **Catherine Conconne**, **Maurice Antiste**\n\n🏙 Maire Fort-de-France : **David Zobda**\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "président martinique",
-      "response": "🏛️ **Collectivité Territoriale de Martinique**\n\nPrésident du Conseil Exécutif : **Serge Letchimy**\nÉlu en 2021\nParti : Péyi-a (gauche autonomiste)\nSiège : Fort-de-France\n\n🌐 collectivitedemartinique.mq\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Collectivité Territoriale de Martinique**\n\nPrésident du Conseil Exécutif : **Serge Letchimy**\nÉlu en 2021\nParti : Péyi-a (gauche autonomiste)\nSiège : Fort-de-France\n\n🌐 collectivitedemartinique.mq\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "maire fort-de-france",
-      "response": "🏙️ **Maire de Fort-de-France**\n\nMaire : **David Zobda**\nCapitale de la Martinique\nPopulation : ~78 000 habitants\n\nBoudoum ! 🇬🇵"
+      "response": "🏙 **Maire de Fort-de-France**\n\nMaire : **David Zobda**\nCapitale de la Martinique\nPopulation : ~78 000 habitants\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "politique guyane",
-      "response": "🗳️ **Politique Guyane**\n\n🏛️ Collectivité Territoriale de Guyane (CTG)\nPrésident : **Gabriel Serville**\nÉlu en 2021\n\n📋 Députés : **Davy Rimane**, **Jean-Victor Castor**\n📋 Sénateurs : **Georges Patient**, **Marie-Laure Phinera-Horth**\n\n🏙️ Maire Cayenne : **Sandra Trochimara**\n\nBoudoum ! 🇬🇵"
+      "response": "🗳 **Politique Guyane**\n\n🏛 Collectivité Territoriale de Guyane (CTG)\nPrésident : **Gabriel Serville**\nÉlu en 2021\n\n📋 Députés : **Davy Rimane**, **Jean-Victor Castor**\n📋 Sénateurs : **Georges Patient**, **Marie-Laure Phinera-Horth**\n\n🏙 Maire Cayenne : **Sandra Trochimara**\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "président guyane",
-      "response": "🏛️ **Collectivité Territoriale de Guyane**\n\nPrésident : **Gabriel Serville**\nÉlu en 2021\nParti : Mouvement Guyanais pour l'Avenir (MGA)\nSiège : Cayenne\n\n🌐 ctguyane.fr\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Collectivité Territoriale de Guyane**\n\nPrésident : **Gabriel Serville**\nÉlu en 2021\nParti : Mouvement Guyanais pour l'Avenir (MGA)\nSiège : Cayenne\n\n🌐 ctguyane.fr\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "maire cayenne",
-      "response": "🏙️ **Maire de Cayenne**\n\nMaire : **Sandra Trochimara**\nCapitale de la Guyane\nPopulation : ~61 000 habitants\n\nBoudoum ! 🇬🇵"
+      "response": "🏙 **Maire de Cayenne**\n\nMaire : **Sandra Trochimara**\nCapitale de la Guyane\nPopulation : ~61 000 habitants\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "politique réunion",
-      "response": "🗳️ **Politique La Réunion**\n\n🏛️ Région : **Huguette Bello** (Présidente)\n🏛️ Département : **Cyrille Melchior** (Président)\n\n📋 Députés : **Jean-Hugues Ratenon**, **Perceval Gaillard**, **Philippe Naillet**, **David Lorion**, **Nadia Ramassamy**, **Karine Lebon**\n\n🏙️ Maire Saint-Denis : **Ericka Bareigts**\n\nBoudoum ! 🇬🇵"
+      "response": "🗳 **Politique La Réunion**\n\n🏛 Région : **Huguette Bello** (Présidente)\n🏛 Département : **Cyrille Melchior** (Président)\n\n📋 Députés : **Jean-Hugues Ratenon**, **Perceval Gaillard**, **Philippe Naillet**, **David Lorion**, **Nadia Ramassamy**, **Karine Lebon**\n\n🏙 Maire Saint-Denis : **Ericka Bareigts**\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "président région réunion",
-      "response": "🏛️ **Région Réunion**\n\nPrésidente : **Huguette Bello**\nÉlue en 2021\nParti : Rassemblement (gauche)\nSiège : Saint-Denis\n\n🌐 regionreunion.com\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Région Réunion**\n\nPrésidente : **Huguette Bello**\nÉlue en 2021\nParti : Rassemblement (gauche)\nSiège : Saint-Denis\n\n🌐 regionreunion.com\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "maire saint-denis réunion",
-      "response": "🏙️ **Maire de Saint-Denis — La Réunion**\n\nMaire : **Ericka Bareigts**\nCapitale de La Réunion\nPopulation : ~145 000 habitants\nAncienne Ministre des Outre-mer (2016)\n\nBoudoum ! 🇬🇵"
+      "response": "🏙 **Maire de Saint-Denis — La Réunion**\n\nMaire : **Ericka Bareigts**\nCapitale de La Réunion\nPopulation : ~145 000 habitants\nAncienne Ministre des Outre-mer (2016)\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "politique mayotte",
-      "response": "🗳️ **Politique Mayotte**\n\n🏛️ Département de Mayotte (101ème département)\nPrésident du Conseil Départemental : **Ben Issa Ousseni**\n\n📋 Députés : **Estelle Youssouffa**, **Mansour Kamardine**\n📋 Sénateurs : **Saïd Omar Oili**, **Thani Mohamed Soilihi**\n\n🏙️ Maire Mamoudzou : **Ambdilwahedou Soumaila**\n\nBoudoum ! 🇬🇵"
+      "response": "🗳 **Politique Mayotte**\n\n🏛 Département de Mayotte (101ème département)\nPrésident du Conseil Départemental : **Ben Issa Ousseni**\n\n📋 Députés : **Estelle Youssouffa**, **Mansour Kamardine**\n📋 Sénateurs : **Saïd Omar Oili**, **Thani Mohamed Soilihi**\n\n🏙 Maire Mamoudzou : **Ambdilwahedou Soumaila**\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "président mayotte",
-      "response": "🏛️ **Conseil Départemental de Mayotte**\n\nPrésident : **Ben Issa Ousseni**\nSiège : Mamoudzou\n101ème département français depuis 2011\n\n🌐 mairie-mamoudzou.fr\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Conseil Départemental de Mayotte**\n\nPrésident : **Ben Issa Ousseni**\nSiège : Mamoudzou\n101ème département français depuis 2011\n\n🌐 mairie-mamoudzou.fr\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "politique nouvelle-calédonie",
-      "response": "🗳️ **Politique Nouvelle-Calédonie**\n\n🏛️ Gouvernement de Nouvelle-Calédonie\nPrésident : **Louis Mapou** (2021-2024)\n\n📋 Statut : Collectivité sui generis\n📋 Congrès de Nouvelle-Calédonie\n📋 Référendums indépendance : 2018, 2020, 2021 (NON)\n\n🏙️ Maire Nouméa : **Sonia Lagarde**\n\n⚠️ Situation politique instable en 2024 suite aux émeutes\n\nBoudoum ! 🇬🇵"
+      "response": "🗳 **Politique Nouvelle-Calédonie**\n\n🏛 Gouvernement de Nouvelle-Calédonie\nPrésident : **Louis Mapou** (2021-2024)\n\n📋 Statut : Collectivité sui generis\n📋 Congrès de Nouvelle-Calédonie\n📋 Référendums indépendance : 2018, 2020, 2021 (NON)\n\n🏙 Maire Nouméa : **Sonia Lagarde**\n\n⚠ Situation politique instable en 2024 suite aux émeutes\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "président nouvelle-calédonie",
-      "response": "🏛️ **Gouvernement Nouvelle-Calédonie**\n\nStatut : Collectivité sui generis (autonomie étendue)\nSiège : Nouméa\n\n⚠️ Situation politique instable depuis mai 2024\nÉmeutes suite à la réforme électorale\nIntervention de l'État français\n\n🌐 gouv.nc\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Gouvernement Nouvelle-Calédonie**\n\nStatut : Collectivité sui generis (autonomie étendue)\nSiège : Nouméa\n\n⚠ Situation politique instable depuis mai 2024\nÉmeutes suite à la réforme électorale\nIntervention de l'État français\n\n🌐 gouv.nc\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "politique haïti",
-      "response": "🗳️ **Politique Haïti**\n\n🏛️ Premier Ministre : **Garry Conille** (2024)\n👤 Conseil Présidentiel de Transition (2024)\n\n⚠️ Situation sécuritaire critique\n• Gangs contrôlent ~80% de Port-au-Prince\n• Mission multinationale de sécurité (Kenya)\n• Élections prévues fin 2025\n\n🏙️ Capitale : Port-au-Prince\nPopulation : ~12 millions\n\nBoudoum ! 🇬🇵"
+      "response": "🗳 **Politique Haïti**\n\n🏛 Premier Ministre : **Garry Conille** (2024)\n👤 Conseil Présidentiel de Transition (2024)\n\n⚠ Situation sécuritaire critique\n• Gangs contrôlent ~80% de Port-au-Prince\n• Mission multinationale de sécurité (Kenya)\n• Élections prévues fin 2025\n\n🏙 Capitale : Port-au-Prince\nPopulation : ~12 millions\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "premier ministre haïti",
-      "response": "🏛️ **Haïti — Gouvernement de Transition**\n\nPremier Ministre : **Garry Conille** (juin 2024)\nConseil Présidentiel de Transition : 7 membres\n\n⚠️ Contexte : assassinat du président Jovenel Moïse (2021)\nCrise politique et sécuritaire majeure\nMission Kenya ONU pour stabilisation\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Haïti — Gouvernement de Transition**\n\nPremier Ministre : **Garry Conille** (juin 2024)\nConseil Présidentiel de Transition : 7 membres\n\n⚠ Contexte : assassinat du président Jovenel Moïse (2021)\nCrise politique et sécuritaire majeure\nMission Kenya ONU pour stabilisation\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "chefs état caraïbes",
@@ -480,15 +480,15 @@
     },
     {
       "trigger": "politique saint-martin",
-      "response": "🏝️ **Saint-Martin — Collectivité d'Outre-Mer**\n\nPrésident du Conseil Territorial : **Louis Mussington**\nÉlu en 2022\nPartie française de l'île (partie néerlandaise : Sint Maarten)\n\nBoudoum ! 🇬🇵"
+      "response": "🏝 **Saint-Martin — Collectivité d'Outre-Mer**\n\nPrésident du Conseil Territorial : **Louis Mussington**\nÉlu en 2022\nPartie française de l'île (partie néerlandaise : Sint Maarten)\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "politique saint-barthélemy",
-      "response": "🏝️ **Saint-Barthélemy — Collectivité d'Outre-Mer**\n\nPrésident du Conseil Territorial : **Xavier Lédée**\nÉlu en 2022\nÎle francophone des Caraïbes\n\nBoudoum ! 🇬🇵"
+      "response": "🏝 **Saint-Barthélemy — Collectivité d'Outre-Mer**\n\nPrésident du Conseil Territorial : **Xavier Lédée**\nÉlu en 2022\nÎle francophone des Caraïbes\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "langues africaines",
-      "response": "🌍 **Langues Africaines — REUSSITESS**\n\nJe parle et comprends :\n🇸🇳 Wolof (Sénégal) — jërejëf, teranga, nanga def\n🇲🇱 Bambara (Mali) — i ni ce, duguw, ka kène\n🌍 Swahili (Afrique Est) — jambo, asante, karibu, ubuntu\n🇨🇩 Lingala (Congo) — mbote, bokulaka\n🇧🇫 Mooré (Burkina) — laafi\n🇭🇹 Créole haïtien — bonjou, mèsi, map bem\n🏝️ Kalinago/Arawak — langues indigènes caribéennes\n\nBoudoum ! 🇬🇵"
+      "response": "🌍 **Langues Africaines — REUSSITESS**\n\nJe parle et comprends :\n🇸🇳 Wolof (Sénégal) — jërejëf, teranga, nanga def\n🇲🇱 Bambara (Mali) — i ni ce, duguw, ka kène\n🌍 Swahili (Afrique Est) — jambo, asante, karibu, ubuntu\n🇨🇩 Lingala (Congo) — mbote, bokulaka\n🇧🇫 Mooré (Burkina) — laafi\n🇭🇹 Créole haïtien — bonjou, mèsi, map bem\n🏝 Kalinago/Arawak — langues indigènes caribéennes\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "badges reussitess",
@@ -500,11 +500,11 @@
     },
     {
       "trigger": "président usa",
-      "response": "🇺🇸 **Président des États-Unis**\n\n**Donald Trump** — 47ème président\nInvesti le 20 janvier 2025\nParti : Républicain\nVice-président : JD Vance\n\n⚠️ Joe Biden était le 46ème président (2021-2025)\n\nBoudoum ! 🇬🇵"
+      "response": "🇺🇸 **Président des États-Unis**\n\n**Donald Trump** — 47ème président\nInvesti le 20 janvier 2025\nParti : Républicain\nVice-président : JD Vance\n\n⚠ Joe Biden était le 46ème président (2021-2025)\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "ce que je suis capable de faire",
-      "response": "🤖 **REUSSITESS AI — Capacités Complètes 2026**\n\n📰 **Actualités 80+ pays :**\n✅ Guadeloupe, Martinique, Guyane, Réunion, Mayotte\n✅ Afrique de l'Ouest (Sénégal, Mali, Burkina, Niger, Togo, Bénin, Guinée, Gambie, Liberia, Mauritanie, Cap-Vert)\n✅ Afrique Centrale (Cameroun, Gabon, Congo, Tchad, Centrafrique, Rwanda, Burundi, Comores)\n✅ Afrique de l'Est (Tanzanie, Kenya, Éthiopie, Somalie, Djibouti, Érythrée, Madagascar, Seychelles, Mozambique)\n✅ Afrique du Sud (Zambie, Zimbabwe, Malawi, Namibie, Botswana, Lesotho, Angola)\n✅ Moyen-Orient (Émirats, Qatar, Bahreïn, Koweït, Oman, Liban)\n✅ Asie (Cambodge, Laos, Thaïlande, Indonésie, Mongolie, Timor, Vanuatu, Samoa)\n✅ Amérique Latine (Chili, Colombie, Pérou, Bolivie, Équateur, Paraguay, Guyana, Suriname)\n✅ Caraïbes (Jamaïque, Trinité, Barbade, Bahamas, Sainte-Lucie, Saint-Vincent, Grenade)\n\n🌍 **Météo 50+ capitales mondiales :**\n✅ Toutes capitales africaines (Dakar, Bamako, Nairobi, Kinshasa...)\n✅ Capitales asiatiques (Bangkok, Jakarta, Séoul, Hanoï...)\n✅ Capitales caribéennes (Kingston, Port of Spain...)\n✅ Capitales sud-américaines (Lima, Bogotá, Santiago...)\n\n💱 **Devises 40+ monnaies :**\n✅ Won, Baht, Dong, Rupiah, Ringgit\n✅ Rand, Naira, Cedi, Franc CFA, Dirham, Riyal\n✅ Forint, Hryvnia, Som, Dram, Lek\n✅ Guaraní, Sol, Boliviano, Kwacha, Ariary\n✅ Dollar singapourien, Pataca, Dollar jamaïcain...\n\n💎 **Crypto en devises locales :**\n✅ Bitcoin/Ethereum en Won, Baht, Dong, Rupiah, Rand, Naira, Dirham...\n\n🏛️ **Présidents & Chefs d'État à jour :**\n✅ USA : Donald Trump (janvier 2025)\n✅ France : Macron + Bayrou (PM)\n✅ Russie : Poutine\n✅ Chine : Xi Jinping\n✅ UK : Charles III + Keir Starmer\n✅ DOM-TOM complets + Caraïbes + Haïti\n\n💊 **Santé OpenFDA :**\n✅ Interactions médicamenteuses\n✅ Effets secondaires\n✅ Contre-indications\n\n🌿 **Qualité Air Open-Meteo :**\n✅ IQA temps réel DOM-TOM\n✅ PM2.5, PM10, CO, NO2, Ozone\n\n📈 **Économie World Bank :**\n✅ PIB, Inflation, Chômage\n✅ France, Sénégal, Côte d'Ivoire, Cameroun, Congo\n\n🗣️ **Langues 70+ mots :**\n✅ Créole guadeloupéen, martiniquais, haïtien\n✅ Wolof, Bambara, Swahili, Lingala, Mooré\n✅ Kalinago, Arawak (indigènes caribéens)\n\n🧠 **IA Optimisée :**\n✅ Self-consistency (3 réponses → meilleure)\n✅ Reranking knowledge.json\n✅ Score satisfaction 7 jours\n✅ Triggers sécurisés (12+ faux déclenchements corrigés)\n✅ Multi-agents Promise.all parallèles\n\n🎮 **Kick.com :**\n✅ OAuth, webhook, stats chaîne\n✅ Commandes !reuss !meteo !token\n\n💎 **Alchemy Blockchain :**\n✅ Dashboard REUSS Live\n✅ Top 5 holders\n✅ 20 derniers transferts\n✅ Wallet checker\n✅ Alertes gros transferts Telegram\n\n🌍 **Catastrophes GDACS :**\n✅ Alertes mondiales temps réel\n\n🔬 **NASA Science :**\n✅ Photo & découverte du jour\n\n🏆 **Badges & Accomplissements :**\n✅ 6 niveaux (Explorateur → Ambassadeur)\n✅ Suivi Redis par utilisateur\n\n⚠️ **En développement futur :**\n❌ Reconnaissance vocale avancée\n❌ Réalité augmentée\n❌ Modèles ML personnalisés\n\nAn nou tann pou s'améliorer ansanm ! 💪\nBoudoum ! 🇬🇵 REUSSITESS®971 — Excellence • Innovation • Succès"
+      "response": "🤖 **REUSSITESS AI — Capacités Complètes 2026**\n\n📰 **Actualités 80+ pays :**\n✅ Guadeloupe, Martinique, Guyane, Réunion, Mayotte\n✅ Afrique de l'Ouest (Sénégal, Mali, Burkina, Niger, Togo, Bénin, Guinée, Gambie, Liberia, Mauritanie, Cap-Vert)\n✅ Afrique Centrale (Cameroun, Gabon, Congo, Tchad, Centrafrique, Rwanda, Burundi, Comores)\n✅ Afrique de l'Est (Tanzanie, Kenya, Éthiopie, Somalie, Djibouti, Érythrée, Madagascar, Seychelles, Mozambique)\n✅ Afrique du Sud (Zambie, Zimbabwe, Malawi, Namibie, Botswana, Lesotho, Angola)\n✅ Moyen-Orient (Émirats, Qatar, Bahreïn, Koweït, Oman, Liban)\n✅ Asie (Cambodge, Laos, Thaïlande, Indonésie, Mongolie, Timor, Vanuatu, Samoa)\n✅ Amérique Latine (Chili, Colombie, Pérou, Bolivie, Équateur, Paraguay, Guyana, Suriname)\n✅ Caraïbes (Jamaïque, Trinité, Barbade, Bahamas, Sainte-Lucie, Saint-Vincent, Grenade)\n\n🌍 **Météo 50+ capitales mondiales :**\n✅ Toutes capitales africaines (Dakar, Bamako, Nairobi, Kinshasa...)\n✅ Capitales asiatiques (Bangkok, Jakarta, Séoul, Hanoï...)\n✅ Capitales caribéennes (Kingston, Port of Spain...)\n✅ Capitales sud-américaines (Lima, Bogotá, Santiago...)\n\n💱 **Devises 40+ monnaies :**\n✅ Won, Baht, Dong, Rupiah, Ringgit\n✅ Rand, Naira, Cedi, Franc CFA, Dirham, Riyal\n✅ Forint, Hryvnia, Som, Dram, Lek\n✅ Guaraní, Sol, Boliviano, Kwacha, Ariary\n✅ Dollar singapourien, Pataca, Dollar jamaïcain...\n\n💎 **Crypto en devises locales :**\n✅ Bitcoin/Ethereum en Won, Baht, Dong, Rupiah, Rand, Naira, Dirham...\n\n🏛 **Présidents & Chefs d'État à jour :**\n✅ USA : Donald Trump (janvier 2025)\n✅ France : Macron + Bayrou (PM)\n✅ Russie : Poutine\n✅ Chine : Xi Jinping\n✅ UK : Charles III + Keir Starmer\n✅ DOM-TOM complets + Caraïbes + Haïti\n\n💊 **Santé OpenFDA :**\n✅ Interactions médicamenteuses\n✅ Effets secondaires\n✅ Contre-indications\n\n🌿 **Qualité Air Open-Meteo :**\n✅ IQA temps réel DOM-TOM\n✅ PM2.5, PM10, CO, NO2, Ozone\n\n📈 **Économie World Bank :**\n✅ PIB, Inflation, Chômage\n✅ France, Sénégal, Côte d'Ivoire, Cameroun, Congo\n\n🗣 **Langues 70+ mots :**\n✅ Créole guadeloupéen, martiniquais, haïtien\n✅ Wolof, Bambara, Swahili, Lingala, Mooré\n✅ Kalinago, Arawak (indigènes caribéens)\n\n🧠 **IA Optimisée :**\n✅ Self-consistency (3 réponses → meilleure)\n✅ Reranking knowledge.json\n✅ Score satisfaction 7 jours\n✅ Triggers sécurisés (12+ faux déclenchements corrigés)\n✅ Multi-agents Promise.all parallèles\n\n🎮 **Kick.com :**\n✅ OAuth, webhook, stats chaîne\n✅ Commandes !reuss !meteo !token\n\n💎 **Alchemy Blockchain :**\n✅ Dashboard REUSS Live\n✅ Top 5 holders\n✅ 20 derniers transferts\n✅ Wallet checker\n✅ Alertes gros transferts Telegram\n\n🌍 **Catastrophes GDACS :**\n✅ Alertes mondiales temps réel\n\n🔬 **NASA Science :**\n✅ Photo & découverte du jour\n\n🏆 **Badges & Accomplissements :**\n✅ 6 niveaux (Explorateur → Ambassadeur)\n✅ Suivi Redis par utilisateur\n\n⚠ **En développement futur :**\n❌ Reconnaissance vocale avancée\n❌ Réalité augmentée\n❌ Modèles ML personnalisés\n\nAn nou tann pou s'améliorer ansanm ! 💪\nBoudoum ! 🇬🇵 REUSSITESS®971 — Excellence • Innovation • Succès"
     },
     {
       "trigger": "rapport démarrage reussitess",
@@ -512,11 +512,11 @@
     },
     {
       "trigger": "protection inpi reussitess",
-      "response": "🔒 **Protection Juridique REUSSITESS®971**\n\n📋 Enveloppe Soleau INPI\n• Numéro : DSO2026012614\n• Dépôt : 07/04/2026 11:06 UTC\n• Validité : 2036 (10 ans)\n• Titulaire : PORINUS Rony Roger — Gourbeyre 97113\n• Empreinte : qfPHQJq4PJJhATAuG06Y0yCvauEFdmthsP3U/vcq6YM=\n\n🛡️ Arsenal Anti-Vol :\n✅ Marque Reussitess®971 → INPI France/EU\n✅ Soleau → Preuve antériorité\n✅ Watermark code 8+ fichiers\n✅ GitHub public → Timestamp mondial\n✅ DMCA GitHub → US enforcement\n✅ WIPO → Protection internationale\n\nBoudoum ! 🇬🇵"
+      "response": "🔒 **Protection Juridique REUSSITESS®971**\n\n📋 Enveloppe Soleau INPI\n• Numéro : DSO2026012614\n• Dépôt : 07/04/2026 11:06 UTC\n• Validité : 2036 (10 ans)\n• Titulaire : PORINUS Rony Roger — Gourbeyre 97113\n• Empreinte : qfPHQJq4PJJhATAuG06Y0yCvauEFdmthsP3U/vcq6YM=\n\n🛡 Arsenal Anti-Vol :\n✅ Marque Reussitess®971 → INPI France/EU\n✅ Soleau → Preuve antériorité\n✅ Watermark code 8+ fichiers\n✅ GitHub public → Timestamp mondial\n✅ DMCA GitHub → US enforcement\n✅ WIPO → Protection internationale\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "commit stable reussitess",
-      "response": "🏗️ **Infrastructure REUSSITESS®971**\n\n✅ Commit stable : c4774d0f\n✅ Production : reussitess.fr\n✅ Google indexé + SEO mondial\n✅ INPI protégé DSO2026012614\n\n📊 Stack :\n• Frontend : Next.js 16.0.7 | Vercel\n• Backend : Node.js | Telegram Webhook\n• IA : 60 Neuro-X | HuggingFace | OpenRouter\n• Blockchain : Token REUSS Polygon\n• Infra : PM2 | Redis | Prebuild-smart\n\n📈 Métriques :\n• 10 550+ lignes code\n• 23+ pages sitemap\n• 200+ features actives\n\nBoudoum ! 🇬🇵"
+      "response": "🏗 **Infrastructure REUSSITESS®971**\n\n✅ Commit stable : c4774d0f\n✅ Production : reussitess.fr\n✅ Google indexé + SEO mondial\n✅ INPI protégé DSO2026012614\n\n📊 Stack :\n• Frontend : Next.js 16.0.7 | Vercel\n• Backend : Node.js | Telegram Webhook\n• IA : 60 Neuro-X | HuggingFace | OpenRouter\n• Blockchain : Token REUSS Polygon\n• Infra : PM2 | Redis | Prebuild-smart\n\n📈 Métriques :\n• 10 550+ lignes code\n• 23+ pages sitemap\n• 200+ features actives\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "roadmap reussitess 2026",
@@ -524,7 +524,7 @@
     },
     {
       "trigger": "commandes kick",
-      "response": "🎮 **Commandes Bot Kick REUSSITESS**\n\n!boudoum → Cri de guerre 🇬🇵\n!reuss → Prix Token REUSS 💎\n!meteo → Météo Guadeloupe 🌤️\n!quiz → Question caribéenne 🎯\n!points → Tes points REUSS 🏆\n!top → Top champions 👑\n!aide → Liste commandes 📋\n\n💎 **Système Points :**\n❤️ Follow → +10 REUSS\n🎉 Abonnement → +100 REUSS\n🎁 Gift Sub → +100 REUSS/sub\n\n🔗 kick.com/Reussitess\nBoudoum ! 🇬🇵"
+      "response": "🎮 **Commandes Bot Kick REUSSITESS**\n\n!boudoum → Cri de guerre 🇬🇵\n!reuss → Prix Token REUSS 💎\n!meteo → Météo Guadeloupe 🌤\n!quiz → Question caribéenne 🎯\n!points → Tes points REUSS 🏆\n!top → Top champions 👑\n!aide → Liste commandes 📋\n\n💎 **Système Points :**\n❤ Follow → +10 REUSS\n🎉 Abonnement → +100 REUSS\n🎁 Gift Sub → +100 REUSS/sub\n\n🔗 kick.com/Reussitess\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "kick live reussitess",
@@ -544,51 +544,51 @@
     },
     {
       "trigger": "améliorer mémoire reussitess",
-      "response": "🧠 **Mémoire REUSSITESS AI — État Actuel**\n\n✅ **Ce qui est en place :**\n• Redis — 20 échanges mémorisés par utilisateur\n• Durée — 30 jours de rétention\n• knowledge.json — 130+ commandes mémorisées\n• Reranking — trouve la meilleure réponse automatiquement\n• Self-consistency — 3 réponses Groq → meilleure sélectionnée\n• Score satisfaction — suivi 7 jours\n• Profil utilisateur — langue, intérêts, visites, badges\n\n📈 **Améliorations récentes :**\n• Mémoire augmentée : 10 → 20 échanges\n• Durée augmentée : 7 → 30 jours\n• Fix Redis Labs + Upstash dual fallback\n• Triggers dangereux corrigés (ia, cv, j, s, c)\n\n💡 **Comment encore améliorer :**\n1️⃣ Poser des questions précises\n2️⃣ Corriger mes erreurs directement\n3️⃣ Utiliser les mêmes sessions\n4️⃣ Enrichir knowledge.json régulièrement\n\nBoudoum ! 🇬🇵"
+      "response": "🧠 **Mémoire REUSSITESS AI — État Actuel**\n\n✅ **Ce qui est en place :**\n• Redis — 20 échanges mémorisés par utilisateur\n• Durée — 30 jours de rétention\n• knowledge.json — 130+ commandes mémorisées\n• Reranking — trouve la meilleure réponse automatiquement\n• Self-consistency — 3 réponses Groq → meilleure sélectionnée\n• Score satisfaction — suivi 7 jours\n• Profil utilisateur — langue, intérêts, visites, badges\n\n📈 **Améliorations récentes :**\n• Mémoire augmentée : 10 → 20 échanges\n• Durée augmentée : 7 → 30 jours\n• Fix Redis Labs + Upstash dual fallback\n• Triggers dangereux corrigés (ia, cv, j, s, c)\n\n💡 **Comment encore améliorer :**\n1⃣ Poser des questions précises\n2⃣ Corriger mes erreurs directement\n3⃣ Utiliser les mêmes sessions\n4⃣ Enrichir knowledge.json régulièrement\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "nouveaux médias reussitess",
-      "response": "📺 **Nouveaux Médias Intégrés — REUSSITESS AI**\n\n✅ **Médias internationaux francophones :**\n• 🌍 RFI — Radio France Internationale\n• 📺 France24 — Actualités monde\n• 📡 TV5Monde — information.tv5monde.com\n• 🌐 Euronews FR — euronews.com\n• 🇩🇪 Deutsche Welle FR — dw.com\n• 🎙️ VOA Afrique — voaafrique.com\n• 🌐 ONU News — news.un.org\n• 📡 Al Jazeera — aljazeera.com\n• 🌴 Bondamanjak — DOM-TOM\n• 🇲🇾 Mayotte Hebdo\n• 🌍 BBC Afrique\n\n💡 **Comment les utiliser :**\n• 'actualités tv5monde'\n• 'news euronews'\n• 'actualité deutsche welle'\n• 'info voa afrique'\n• 'onu news'\n• 'al jazeera actualités'\n\nBoudoum ! 🇬🇵"
+      "response": "📺 **Nouveaux Médias Intégrés — REUSSITESS AI**\n\n✅ **Médias internationaux francophones :**\n• 🌍 RFI — Radio France Internationale\n• 📺 France24 — Actualités monde\n• 📡 TV5Monde — information.tv5monde.com\n• 🌐 Euronews FR — euronews.com\n• 🇩🇪 Deutsche Welle FR — dw.com\n• 🎙 VOA Afrique — voaafrique.com\n• 🌐 ONU News — news.un.org\n• 📡 Al Jazeera — aljazeera.com\n• 🌴 Bondamanjak — DOM-TOM\n• 🇲🇾 Mayotte Hebdo\n• 🌍 BBC Afrique\n\n💡 **Comment les utiliser :**\n• 'actualités tv5monde'\n• 'news euronews'\n• 'actualité deutsche welle'\n• 'info voa afrique'\n• 'onu news'\n• 'al jazeera actualités'\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "amélioration redis reussitess",
-      "response": "🗄️ **Améliorations Redis REUSSITESS — Implémentées**\n\n✅ **1. Cache Météo** — Config DOM-TOM 30min (Guadeloupe, Martinique, Guyane, Réunion, Mayotte)\n\n✅ **2. Profil Utilisateur** — Template complet (langue, région, intérêts, niveau, badges, topics fréquents)\n\n✅ **3. Santé Antilles** — Cache maladies locales (Chlordécone, Sargasses, Dengue, Chikungunya)\n\n✅ **4. Finance Locale** — SMIC, RSA, APL, chômage Guadeloupe\n\n✅ **5. Sécurité** — Config anti-injection, limite requêtes, bannissement\n\n✅ **6. Taux de Change** — Cache EUR/USD/XOF/HTG/JMD/BRL (1h)\n\n✅ **7. Stats Globales** — Compteurs par catégorie, langues, heures pic\n\nBoudoum ! 🇬🇵"
+      "response": "🗄 **Améliorations Redis REUSSITESS — Implémentées**\n\n✅ **1. Cache Météo** — Config DOM-TOM 30min (Guadeloupe, Martinique, Guyane, Réunion, Mayotte)\n\n✅ **2. Profil Utilisateur** — Template complet (langue, région, intérêts, niveau, badges, topics fréquents)\n\n✅ **3. Santé Antilles** — Cache maladies locales (Chlordécone, Sargasses, Dengue, Chikungunya)\n\n✅ **4. Finance Locale** — SMIC, RSA, APL, chômage Guadeloupe\n\n✅ **5. Sécurité** — Config anti-injection, limite requêtes, bannissement\n\n✅ **6. Taux de Change** — Cache EUR/USD/XOF/HTG/JMD/BRL (1h)\n\n✅ **7. Stats Globales** — Compteurs par catégorie, langues, heures pic\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "architecture reussitess",
-      "response": "🏗️ **Architecture REUSSITESS AI — Mise à jour**\n\n✅ **Services créés :**\n\n📁 `services/memory.js`\n• getRedisClient() — singleton Redis\n• saveConversation() — historique 20 échanges/30j\n• getConversation() — récupération historique\n• saveUserProfile() — profil Redis 90j\n• getUserProfile() — lecture profil\n• saveSatisfaction() — score qualité\n\n📁 `services/ai.js`\n• groqCall() — appel Groq avec fallback OpenRouter+Cerebras\n• rerankKnowledge() — classement knowledge.json\n\n📁 `services/router.js`\n• detectEmotion() — 6 émotions détectées\n• getEmotionResponse() — réponses empathiques créoles\n• buildSystemPrompt() — prompt dynamique langue/région\n\n📊 **Résultat :**\n• Code modulaire et maintenable\n• Séparation des responsabilités\n• Réutilisable par d'autres APIs\n\nBoudoum ! 🇬🇵"
+      "response": "🏗 **Architecture REUSSITESS AI — Mise à jour**\n\n✅ **Services créés :**\n\n📁 `services/memory.js`\n• getRedisClient() — singleton Redis\n• saveConversation() — historique 20 échanges/30j\n• getConversation() — récupération historique\n• saveUserProfile() — profil Redis 90j\n• getUserProfile() — lecture profil\n• saveSatisfaction() — score qualité\n\n📁 `services/ai.js`\n• groqCall() — appel Groq avec fallback OpenRouter+Cerebras\n• rerankKnowledge() — classement knowledge.json\n\n📁 `services/router.js`\n• detectEmotion() — 6 émotions détectées\n• getEmotionResponse() — réponses empathiques créoles\n• buildSystemPrompt() — prompt dynamique langue/région\n\n📊 **Résultat :**\n• Code modulaire et maintenable\n• Séparation des responsabilités\n• Réutilisable par d'autres APIs\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "mode strict reussitess",
-      "response": "🔒 **REUSSITESS AI — Mode Production Grade**\n\n✅ **Redis STRICT activé :**\n• Données vérifiées avec TTL et source\n• Cache météo 30min — open-meteo.com\n• Cache crypto 5min — coingecko.com\n• Cache forex 1h — open.er-api.com\n• Cache séismes 2min — usgs.gov\n\n🛡️ **Anti-hallucination :**\n• Détection patterns Biden/Trump\n• Validation données avant réponse\n• Badge source sur chaque donnée\n\n📊 **Debug AWS/Stripe style :**\n• Logs Redis 7 jours\n• Timestamps précis\n• Traçabilité complète\n\n🔗 **Sources vérifiées :**\n• Météo : open-meteo.com\n• Crypto : coingecko + dexscreener\n• Séismes : usgs.gov\n• Emploi : francetravail.fr\n• Blockchain : alchemy + polygonscan\n\nBoudoum ! 🇬🇵"
+      "response": "🔒 **REUSSITESS AI — Mode Production Grade**\n\n✅ **Redis STRICT activé :**\n• Données vérifiées avec TTL et source\n• Cache météo 30min — open-meteo.com\n• Cache crypto 5min — coingecko.com\n• Cache forex 1h — open.er-api.com\n• Cache séismes 2min — usgs.gov\n\n🛡 **Anti-hallucination :**\n• Détection patterns Biden/Trump\n• Validation données avant réponse\n• Badge source sur chaque donnée\n\n📊 **Debug AWS/Stripe style :**\n• Logs Redis 7 jours\n• Timestamps précis\n• Traçabilité complète\n\n🔗 **Sources vérifiées :**\n• Météo : open-meteo.com\n• Crypto : coingecko + dexscreener\n• Séismes : usgs.gov\n• Emploi : francetravail.fr\n• Blockchain : alchemy + polygonscan\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "politiciens guadeloupe histoire",
-      "response": "🏛️ **Grands Politiciens Guadeloupe**\n\n👑 **Figures historiques :**\n• **Gerty Archimède** (1909-1980) — 1ère femme avocate et élue Guadeloupe\n• **Félix Éboué** (1884-1944) — Gouverneur, héros Résistance, Panthéon\n• **Hégésippe Jean Légitimus** (1868-1944) — 1er élu noir Guadeloupe\n• **Absohlom Fercondé** — Militant anticolonialiste\n\n🗳️ **Contemporains :**\n• **Ary Chalus** — Président Région\n• **Guy Losbar** — Président Département\n• **Harry Durimel** — Maire Pointe-à-Pitre\n• **Victorin Lurel** — Ancien Ministre Outre-mer\n• **Gabrielle Louis-Carabin** — Sénatrice\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Grands Politiciens Guadeloupe**\n\n👑 **Figures historiques :**\n• **Gerty Archimède** (1909-1980) — 1ère femme avocate et élue Guadeloupe\n• **Félix Éboué** (1884-1944) — Gouverneur, héros Résistance, Panthéon\n• **Hégésippe Jean Légitimus** (1868-1944) — 1er élu noir Guadeloupe\n• **Absohlom Fercondé** — Militant anticolonialiste\n\n🗳 **Contemporains :**\n• **Ary Chalus** — Président Région\n• **Guy Losbar** — Président Département\n• **Harry Durimel** — Maire Pointe-à-Pitre\n• **Victorin Lurel** — Ancien Ministre Outre-mer\n• **Gabrielle Louis-Carabin** — Sénatrice\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "politiciens martinique histoire",
-      "response": "🏛️ **Grands Politiciens Martinique**\n\n👑 **Figures historiques :**\n• **Aimé Césaire** (1913-2008) — Poète, député, maire Fort-de-France 56 ans, père de la Négritude\n• **Frantz Fanon** (1925-1961) — Psychiatre, militant anticolonialiste, *Les Damnés de la Terre*\n• **Edouard Glissant** (1928-2011) — Philosophe, théoricien de la Créolité\n\n🗳️ **Contemporains :**\n• **Serge Letchimy** — Président CTM\n• **David Zobda** — Maire Fort-de-France\n• **Catherine Conconne** — Sénatrice\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Grands Politiciens Martinique**\n\n👑 **Figures historiques :**\n• **Aimé Césaire** (1913-2008) — Poète, député, maire Fort-de-France 56 ans, père de la Négritude\n• **Frantz Fanon** (1925-1961) — Psychiatre, militant anticolonialiste, *Les Damnés de la Terre*\n• **Edouard Glissant** (1928-2011) — Philosophe, théoricien de la Créolité\n\n🗳 **Contemporains :**\n• **Serge Letchimy** — Président CTM\n• **David Zobda** — Maire Fort-de-France\n• **Catherine Conconne** — Sénatrice\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "politiciens guyane histoire",
-      "response": "🏛️ **Grands Politiciens Guyane**\n\n👑 **Figures historiques :**\n• **Félix Éboué** (1884-1944) — né à Cayenne, Gouverneur AEF, héros Résistance française\n• **Justin Catayée** (1916-1962) — Fondateur PSAG, défenseur autonomie\n• **Léon-Gontran Damas** (1912-1978) — Cofondateur Négritude avec Césaire et Senghor\n\n🗳️ **Contemporains :**\n• **Gabriel Serville** — Président CTG\n• **Sandra Trochimara** — Maire Cayenne\n• **Georges Patient** — Sénateur\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Grands Politiciens Guyane**\n\n👑 **Figures historiques :**\n• **Félix Éboué** (1884-1944) — né à Cayenne, Gouverneur AEF, héros Résistance française\n• **Justin Catayée** (1916-1962) — Fondateur PSAG, défenseur autonomie\n• **Léon-Gontran Damas** (1912-1978) — Cofondateur Négritude avec Césaire et Senghor\n\n🗳 **Contemporains :**\n• **Gabriel Serville** — Président CTG\n• **Sandra Trochimara** — Maire Cayenne\n• **Georges Patient** — Sénateur\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "politiciens réunion histoire",
-      "response": "🏛️ **Grands Politiciens La Réunion**\n\n👑 **Figures historiques :**\n• **Raymond Vergès** (1882-1957) — Député communiste, défenseur droits réunionnais\n• **Paul Vergès** (1925-2016) — Fondateur PCR, sénateur, président Région\n• **Michel Debré** (1912-1996) — Ancien PM, longtemps député Réunion\n\n🗳️ **Contemporains :**\n• **Huguette Bello** — Présidente Région\n• **Cyrille Melchior** — Président Département\n• **Ericka Bareigts** — Maire Saint-Denis\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Grands Politiciens La Réunion**\n\n👑 **Figures historiques :**\n• **Raymond Vergès** (1882-1957) — Député communiste, défenseur droits réunionnais\n• **Paul Vergès** (1925-2016) — Fondateur PCR, sénateur, président Région\n• **Michel Debré** (1912-1996) — Ancien PM, longtemps député Réunion\n\n🗳 **Contemporains :**\n• **Huguette Bello** — Présidente Région\n• **Cyrille Melchior** — Président Département\n• **Ericka Bareigts** — Maire Saint-Denis\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "politiciens nouvelle-calédonie histoire",
-      "response": "🏛️ **Grands Politiciens Nouvelle-Calédonie**\n\n👑 **Figures historiques :**\n• **Jean-Marie Tjibaou** (1936-1989) — Leader indépendantiste Kanak, assassiné\n• **Jacques Lafleur** (1932-2010) — Leader loyaliste, Accords de Matignon\n• **Dick Ukeiwé** — Président Congrès, loyaliste\n\n🗳️ **Contemporains :**\n• **Louis Mapou** — Président Gouvernement (indépendantiste)\n• **Sonia Lagarde** — Maire Nouméa\n\n⚠️ Situation instable depuis émeutes mai 2024\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Grands Politiciens Nouvelle-Calédonie**\n\n👑 **Figures historiques :**\n• **Jean-Marie Tjibaou** (1936-1989) — Leader indépendantiste Kanak, assassiné\n• **Jacques Lafleur** (1932-2010) — Leader loyaliste, Accords de Matignon\n• **Dick Ukeiwé** — Président Congrès, loyaliste\n\n🗳 **Contemporains :**\n• **Louis Mapou** — Président Gouvernement (indépendantiste)\n• **Sonia Lagarde** — Maire Nouméa\n\n⚠ Situation instable depuis émeutes mai 2024\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "politiciens mayotte histoire",
-      "response": "🏛️ **Grands Politiciens Mayotte**\n\n👑 **Figures historiques :**\n• **Younoussa Bamana** (1935-2012) — 1er président Conseil Général, partisan départementalisation\n• **Marcel Henry** — Sénateur, artisan 101ème département\n• **Zakia Madi** — 1ère femme présidente Conseil Général\n\n🗳️ **Contemporains :**\n• **Ben Issa Ousseni** — Président Département\n• **Estelle Youssouffa** — Députée, militante contre immigration clandestine\n• **Mansour Kamardine** — Député\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Grands Politiciens Mayotte**\n\n👑 **Figures historiques :**\n• **Younoussa Bamana** (1935-2012) — 1er président Conseil Général, partisan départementalisation\n• **Marcel Henry** — Sénateur, artisan 101ème département\n• **Zakia Madi** — 1ère femme présidente Conseil Général\n\n🗳 **Contemporains :**\n• **Ben Issa Ousseni** — Président Département\n• **Estelle Youssouffa** — Députée, militante contre immigration clandestine\n• **Mansour Kamardine** — Député\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "politiciens tahiti polynésie",
-      "response": "🏛️ **Grands Politiciens Polynésie Française**\n\n👑 **Figures historiques :**\n• **Pouvanaa a Oopa** (1895-1977) — Père de la Nation polynésienne, député\n• **Francis Sanford** — Fondateur parti autonomiste\n\n🗳️ **Contemporains :**\n• **Moetai Brotherson** — Président Polynésie (indépendantiste Tavini)\n• **Édouard Fritch** — Ancien Président (Tahoeraa)\n• **Nicole Sanquer** — Députée\n\n🏝️ Statut : Collectivité d'Outre-Mer (COM) autonome\n\nBoudoum ! 🇬🇵"
+      "response": "🏛 **Grands Politiciens Polynésie Française**\n\n👑 **Figures historiques :**\n• **Pouvanaa a Oopa** (1895-1977) — Père de la Nation polynésienne, député\n• **Francis Sanford** — Fondateur parti autonomiste\n\n🗳 **Contemporains :**\n• **Moetai Brotherson** — Président Polynésie (indépendantiste Tavini)\n• **Édouard Fritch** — Ancien Président (Tahoeraa)\n• **Nicole Sanquer** — Députée\n\n🏝 Statut : Collectivité d'Outre-Mer (COM) autonome\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "artistes guadeloupe",
@@ -644,7 +644,7 @@
     },
     {
       "trigger": "économie saint-martin saint-barthélemy",
-      "response": "📈 **Économie Saint-Martin & Saint-Barthélemy**\n\n🏝️ **Saint-Martin :**\n• PIB/habitant : ~20 000 €\n• Tourisme — Principal moteur\n• Jeux, casino\n• Commerce duty-free\n• Reconstruction post-Irma 2017\n\n💎 **Saint-Barthélemy :**\n• PIB/habitant : ~35 000 € (élevé)\n• Tourisme luxe — Celebrities\n• Yachting, villas\n• Commerce haut de gamme\n• Fiscalité avantageuse\n• Population : ~10 000\n\nBoudoum ! 🇬🇵"
+      "response": "📈 **Économie Saint-Martin & Saint-Barthélemy**\n\n🏝 **Saint-Martin :**\n• PIB/habitant : ~20 000 €\n• Tourisme — Principal moteur\n• Jeux, casino\n• Commerce duty-free\n• Reconstruction post-Irma 2017\n\n💎 **Saint-Barthélemy :**\n• PIB/habitant : ~35 000 € (élevé)\n• Tourisme luxe — Celebrities\n• Yachting, villas\n• Commerce haut de gamme\n• Fiscalité avantageuse\n• Population : ~10 000\n\nBoudoum ! 🇬🇵"
     },
     {
       "trigger": "grands hommes dom-tom",

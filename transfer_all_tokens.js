@@ -22,7 +22,7 @@ const tokenAbi = [
 
 console.log('\n🔐 TRANSFERT SÉCURISÉ DES TOKENS REUSSITESS\n');
 console.log('═'.repeat(80));
-console.log('\n⚠️  SÉCURITÉ: Votre clé privée ne sera JAMAIS enregistrée');
+console.log('\n⚠  SÉCURITÉ: Votre clé privée ne sera JAMAIS enregistrée');
 console.log('Elle sera utilisée uniquement pour cette transaction\n');
 console.log('═'.repeat(80));
 
@@ -71,7 +71,7 @@ rl.question('\nEntrez votre CLÉ PRIVÉE de l\'adresse 1: ', async (privateKey) 
     console.log(`   ${formattedBalance} ${symbol}\n`);
     
     if (balance === 0n) {
-      console.log('⚠️  Aucun token à transférer!\n');
+      console.log('⚠  Aucun token à transférer!\n');
       rl.close();
       return;
     }
@@ -99,7 +99,7 @@ rl.question('\nEntrez votre CLÉ PRIVÉE de l\'adresse 1: ', async (privateKey) 
     console.log(`Frais:    ~0.001 POL (estimation)\n`);
     console.log('═'.repeat(80));
     
-    rl.question('\n⚠️  Confirmer le transfert? (oui/non): ', async (confirm) => {
+    rl.question('\n⚠  Confirmer le transfert? (oui/non): ', async (confirm) => {
       if (confirm.toLowerCase() !== 'oui' && confirm.toLowerCase() !== 'o') {
         console.log('\n❌ Transfert annulé\n');
         rl.close();

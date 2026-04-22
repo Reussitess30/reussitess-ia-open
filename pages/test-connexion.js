@@ -68,7 +68,7 @@ export default function TestConnexion() {
       ...prev,
       pwa: {
         status: isPWA ? "success" : "info",
-        message: isPWA ? "✅ Mode app" : "ℹ️ Mode navigateur",
+        message: isPWA ? "✅ Mode app" : "ℹ Mode navigateur",
       },
     }));
 
@@ -174,7 +174,7 @@ export default function TestConnexion() {
                       {key === "internet"
                         ? "🌐 Connexion Internet"
                         : key === "vercel"
-                          ? "☁️ Serveur Vercel"
+                          ? "☁ Serveur Vercel"
                           : key === "pwa"
                             ? "📱 Mode Application"
                             : key === "amazon"

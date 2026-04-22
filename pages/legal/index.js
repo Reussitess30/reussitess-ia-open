@@ -45,7 +45,7 @@ export default function MentionsLegales() {
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent'
           }}>
-            ⚖️ Mentions Légales
+            ⚖ Mentions Légales
           </h1>
 
           <div style={{
@@ -120,7 +120,7 @@ export default function MentionsLegales() {
                 borderBottom: '2px solid rgba(16, 185, 129, 0.3)',
                 paddingBottom: '0.5rem'
               }}>
-                ©️ Propriété Intellectuelle
+                © Propriété Intellectuelle
               </h2>
               <p>L'ensemble du contenu de ce site (textes, images, logos, marques) est la propriété exclusive de REUSSITESS® et est protégé par le droit d'auteur français et international.</p>
               <p><strong>Marque :</strong> REUSSITESS®971</p>
@@ -138,7 +138,7 @@ export default function MentionsLegales() {
                 borderBottom: '2px solid rgba(16, 185, 129, 0.3)',
                 paddingBottom: '0.5rem'
               }}>
-                🛍️ Programme d'Affiliation Amazon
+                🛍 Programme d'Affiliation Amazon
               </h2>
               <p><strong>Statut :</strong> Partenaire Affilié Amazon</p>
               <p><strong>Identifiant :</strong> fb942837</p>
@@ -199,7 +199,7 @@ export default function MentionsLegales() {
                 borderBottom: '2px solid rgba(16, 185, 129, 0.3)',
                 paddingBottom: '0.5rem'
               }}>
-                ⚠️ Limitation de Responsabilité
+                ⚠ Limitation de Responsabilité
               </h2>
               <p>REUSSITESS® fournit des informations à titre indicatif. Nous ne garantissons pas l'exactitude totale des contenus.</p>
               <p>Les liens externes sont fournis à titre informatif. REUSSITESS® n'est pas responsable du contenu des sites tiers.</p>

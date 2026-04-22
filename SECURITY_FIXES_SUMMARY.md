@@ -39,7 +39,7 @@
 
 - [x] Composant AffiliateDisclaimer créé
 - [x] Intégré dans Layout (visible sur toutes les pages)
-- [x] Style distinctif (fond jaune avec icône ⚠️)
+- [x] Style distinctif (fond jaune avec icône ⚠)
 - [x] Conforme FTC et Amazon Associates
 
 **Fichiers:**
@@ -170,7 +170,7 @@
 | Disclaimer affiliation | ❌        | ✅       | ✅     |
 | robots.txt             | ❌        | ✅       | ✅     |
 | Documentation sécurité | ❌        | ✅       | ✅     |
-| Vulnérabilités npm     | Critical  | High\*   | ⚠️     |
+| Vulnérabilités npm     | Critical  | High\*   | ⚠     |
 | CodeQL alerts          | N/A       | 0        | ✅     |
 
 \*Impact minimal car application statique
@@ -212,7 +212,7 @@ L'application **REUSSITESS® Global Nexus** est maintenant :
 - Protection anti-copie
 - Mise à jour des dépendances
 
-⚖️ **Conforme légalement**
+⚖ **Conforme légalement**
 
 - Politique de confidentialité RGPD
 - Disclaimer d'affiliation Amazon

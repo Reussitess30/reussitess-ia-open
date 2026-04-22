@@ -9,7 +9,7 @@ export default function BlockchainNotif() {
     "🚀 NOUVEAU SWAP : 858 REUSS via Velora v5",
     "💎 REUSS Token actif sur Polygon",
     "🔐 DÉLÉGATION SÉCURISÉE : 1,503,674 REUSS par Fondateur",
-    "⚛️ POOL LIQUIDITÉ : Ajustement automatique par IA #42",
+    "⚛ POOL LIQUIDITÉ : Ajustement automatique par IA #42",
     "🌍 EXPANSION : Connexion Bridge établie via LiFi Diamond"
   ];
 

@@ -51,7 +51,7 @@ const { getArtwork } = require("./services/artService");
 
         syncIA: function() {
             // Connexion invisible aux 100+ Modèles
-            console.log("%c🛡️ Reussitess© : Hub Universel Connecté (100+ IA)", "color: #00ff00; font-weight: bold;");
+            console.log("%c🛡 Reussitess© : Hub Universel Connecté (100+ IA)", "color: #00ff00; font-weight: bold;");
         },
 
         secureBlockchain: function() {

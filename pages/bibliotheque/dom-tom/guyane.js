@@ -35,7 +35,7 @@ const Guyane = () => {
           {/* Infos générales */}
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <h2 className="text-3xl font-bold mb-6 text-green-600">
-              🏛️ Informations Générales
+              🏛 Informations Générales
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
@@ -77,7 +77,7 @@ const Guyane = () => {
           {/* Patrimoine */}
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <h2 className="text-3xl font-bold mb-6 text-purple-600">
-              🏛️ Patrimoine
+              🏛 Patrimoine
             </h2>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
@@ -93,7 +93,7 @@ const Guyane = () => {
                 </div>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-2xl">🏝️</span>
+                <span className="text-2xl">🏝</span>
                 <div>
                   <h3 className="font-bold text-xl mb-1">Îles du Salut</h3>
                   <p>Ancien bagne français, site historique majeur</p>
@@ -140,7 +140,7 @@ const Guyane = () => {
               </div>
               <div className="border-l-4 border-purple-500 pl-4">
                 <h3 className="font-bold text-xl mb-2">
-                  🏛️ Cultures Amérindiennes
+                  🏛 Cultures Amérindiennes
                 </h3>
                 <p>
                   6 peuples amérindiens préservant leurs traditions ancestrales
@@ -156,7 +156,7 @@ const Guyane = () => {
           {/* Produits Amazon */}
           <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl shadow-xl p-8 text-white">
             <h2 className="text-3xl font-bold mb-6">
-              🛍️ Découvrir les Produits
+              🛍 Découvrir les Produits
             </h2>
             <p className="text-lg mb-6">
               Explorez notre sélection de produits en lien avec la Guyane et

@@ -64,7 +64,7 @@ gtag('config', '${GA_ID}', { page_path: window.location.pathname });`}
                 WebkitTextFillColor: "transparent",
               }}
             >
-              🛠️ Outils & Calculateurs
+              🛠 Outils & Calculateurs
             </h1>
             <p
               style={{
@@ -299,7 +299,7 @@ gtag('config', '${GA_ID}', { page_path: window.location.pathname });`}
                     display: "inline-block",
                   }}
                 >
-                  🛍️ Amazon Seller
+                  🛍 Amazon Seller
                 </a>
 
                 {/* Lien interne corrigé — pointe vers la page locale hub-international */}

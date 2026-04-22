@@ -72,7 +72,7 @@ export default function CultureGuadeloupe() {
                   marginBottom: "1rem",
                 }}
               >
-                🏝️ Une Culture Riche et Diversifiée
+                🏝 Une Culture Riche et Diversifiée
               </h2>
               <p
                 style={{
@@ -145,7 +145,7 @@ export default function CultureGuadeloupe() {
                   marginBottom: "1rem",
                 }}
               >
-                🍽️ Gastronomie Créole
+                🍽 Gastronomie Créole
               </h2>
               <div
                 style={{
@@ -322,7 +322,7 @@ export default function CultureGuadeloupe() {
                     display: "inline-block",
                   }}
                 >
-                  🏝️ Site Officiel Tourisme
+                  🏝 Site Officiel Tourisme
                 </a>
                 <Link
                   href="/bibliotheque"

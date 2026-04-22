@@ -281,7 +281,7 @@ export default function Champions() {
                 marginBottom: "2rem",
               }}
             >
-              ✍️ Créez votre Passeport de Réussite
+              ✍ Créez votre Passeport de Réussite
             </h2>
 
             <form onSubmit={handleSubmit}>
@@ -664,7 +664,7 @@ export default function Champions() {
                 boxShadow: "0 5px 15px rgba(99, 102, 241, 0.3)",
               }}
             >
-              🖨️ Imprimer
+              🖨 Imprimer
             </button>
           </div>
 

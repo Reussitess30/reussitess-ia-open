@@ -13,7 +13,7 @@ export default async function handler(req, res) {
         break;
 
       case "BILLING.SUBSCRIPTION.CANCELLED":
-        console.log("⚠️ PREMIUM CANCELLED");
+        console.log("⚠ PREMIUM CANCELLED");
         // TODO: set user premium = false
         break;
 
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
         break;
 
       default:
-        console.log("ℹ️ EVENT IGNORED");
+        console.log("ℹ EVENT IGNORED");
     }
 
     return res.status(200).json({ ok: true });

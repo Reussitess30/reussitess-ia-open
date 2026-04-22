@@ -20,14 +20,14 @@ async function runBoudoum() {
     
     const tokenContract = new ethers.Contract(REUSS_TOKEN, ERC20_ABI, wallet);
 
-    console.log("\n🛰️ [IA-SENTINELLES] CONNEXION V2");
+    console.log("\n🛰 [IA-SENTINELLES] CONNEXION V2");
     console.log(`📍 ADRESSE : ${wallet.address}`);
     console.log(`🌍 ORIGINE : GUADELOUPE - TERRES DE CHAMPIONS\n`);
     
     const balance = await tokenContract.balanceOf(wallet.address);
     console.log(`✅ SOLDE DÉTECTÉ : ${ethers.formatUnits(balance, 18)} REUSS`);
 
-    console.log("⚙️ APPROBATION DU ROUTER V2 EN COURS...");
+    console.log("⚙ APPROBATION DU ROUTER V2 EN COURS...");
     const txApprove = await tokenContract.approve(ROUTER_ADDRESS, balance);
     
     console.log(`🔗 HASH : ${txApprove.hash}`);

@@ -22,7 +22,7 @@ async function verify() {
                 console.log(`✅ Transaction ${hash.substring(0,10)}... CONFIRMÉE sur le bloc ${tx.blockNumber}`);
             }
         } catch (e) {
-            console.log(`⚠️ Impossible de lire le hash ${hash.substring(0,10)}`);
+            console.log(`⚠ Impossible de lire le hash ${hash.substring(0,10)}`);
         }
     }
 }

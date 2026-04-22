@@ -237,7 +237,7 @@ export default function PolitiqueConfidentialite() {
               }}
             >
               <p>
-                <strong>⚠️ Déclaration d'Affiliation :</strong>
+                <strong>⚠ Déclaration d'Affiliation :</strong>
                 <br />
                 REUSSITESS® REUSSITESS®NEURO-X participe au Programme Partenaires
                 d'Amazon, un programme d'affiliation conçu pour permettre aux

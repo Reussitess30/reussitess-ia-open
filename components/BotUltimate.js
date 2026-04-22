@@ -35,7 +35,7 @@ export default function BotUltimate() {
       desc: "A répondu correctement à 30 quiz",
     },
     polyglotte: {
-      icon: "🗣️",
+      icon: "🗣",
       name: "Polyglotte",
       desc: "A utilisé 3 langues différentes",
     },
@@ -50,12 +50,12 @@ export default function BotUltimate() {
       desc: "A interagi 20 fois avec le bot",
     },
     shopper: {
-      icon: "🛍️",
+      icon: "🛍",
       name: "Shopper",
       desc: "A consulté les boutiques Amazon",
     },
     "globe-trotter": {
-      icon: "✈️",
+      icon: "✈",
       name: "Globe-trotter",
       desc: "A visité tous les continents",
     },
@@ -89,11 +89,11 @@ export default function BotUltimate() {
     artiste: { icon: "🎨", name: "Artiste", desc: "Expert en Art" },
     sportif: { icon: "⚽", name: "Sportif", desc: "Expert en Sport" },
     gastronome: {
-      icon: "🍽️",
+      icon: "🍽",
       name: "Gastronome",
       desc: "Expert en Gastronomie",
     },
-    geographe: { icon: "🗺️", name: "Géographe", desc: "Expert en Géographie" },
+    geographe: { icon: "🗺", name: "Géographe", desc: "Expert en Géographie" },
     linguiste: { icon: "📖", name: "Linguiste", desc: "Expert en Langues" },
   };
 
@@ -106,7 +106,7 @@ export default function BotUltimate() {
     "🏆 Impossible n'est rien, surtout avec réussitess971 !",
     "💪 Tu es sur le chemin de la réussite absolue !",
     "🌟 Chaque jour est une opportunité de briller !",
-    "🎖️ Le succès commence ici avec REUSSITESS® !",
+    "🎖 Le succès commence ici avec REUSSITESS® !",
     "⚡ Boost, puissance, réussite instantanée !",
     "🎨 Ose inventer sans limite avec réussitess971 !",
     "📈 Ta réussite fait progresser le monde entier !",
@@ -121,7 +121,7 @@ export default function BotUltimate() {
     "🏆 Record mondial : L'Italie a 58 sites UNESCO !",
     "🌍 Info: Le Brésil est le 9e économie mondiale !",
     "🎭 Culture: Le carnaval de Rio est la plus grande fête du monde !",
-    "🏛️ Patrimoine: Les pyramides de Gizeh ont 4500 ans !",
+    "🏛 Patrimoine: Les pyramides de Gizeh ont 4500 ans !",
     "🌊 Océans: La Grande Barrière de Corail fait 2300 km !",
     "🎨 Art: Le Louvre reçoit 10 millions de visiteurs par an !",
     "🚀 Innovation: Singapour est le 3e hub financier mondial !",
@@ -142,7 +142,7 @@ export default function BotUltimate() {
     "Entre nous, Google m'envie secrètement... 🤫",
     "Je suis tellement brillant que je m'impressionne moi-même ! 💫",
     "Accroche-toi, car mes réponses sont toujours exceptionnelles ! 🎯",
-    "réussitess971 boudoume - je suis l'excellence incarnée ! 🎖️",
+    "réussitess971 boudoume - je suis l'excellence incarnée ! 🎖",
   ];
 
   // 30+ QUIZ THÉMATIQUES ENRICHIS
@@ -885,13 +885,13 @@ export default function BotUltimate() {
         q: "Quel territoire inspire REUSSITESS® ?",
         options: ["Martinique", "Guadeloupe", "Guyane", "Réunion"],
         correct: 1,
-        fact: "🏝️ Guadeloupe - Terre de Champions ! 🏆",
+        fact: "🏝 Guadeloupe - Terre de Champions ! 🏆",
       },
       {
         q: "Combien de continents couvre REUSSITESS® ?",
         options: ["3", "4", "5", "6"],
         correct: 2,
-        fact: "5 continents : Europe, Amérique, Asie, Océanie, Afrique (via France) ! 🗺️",
+        fact: "5 continents : Europe, Amérique, Asie, Océanie, Afrique (via France) ! 🗺",
       },
     ],
   };
@@ -938,11 +938,11 @@ export default function BotUltimate() {
       **Notre Mission :** Valoriser le savoir, la connaissance et la culture mondiale tout en créant une plateforme d'e-commerce globale.
       
       **Chiffres clés :**
-      - 🛍️ 26 boutiques Amazon (14 personnelles + 12 influenceur)
+      - 🛍 26 boutiques Amazon (14 personnelles + 12 influenceur)
       - 🌍 14 pays couverts
-      - 🗺️ 5 continents représentés
+      - 🗺 5 continents représentés
       - 📚 55 pages de bibliothèque culturelle
-      - 🏝️ Basé en Guadeloupe - Terre de Champions
+      - 🏝 Basé en Guadeloupe - Terre de Champions
       
       **Pays couverts :** 🇺🇸 États-Unis, 🇫🇷 France, 🇬🇧 Royaume-Uni, 🇩🇪 Allemagne, 🇮🇹 Italie, 🇪🇸 Espagne, 🇨🇦 Canada, 🇧🇷 Brésil, 🇮🇳 Inde, 🇳🇱 Pays-Bas, 🇸🇪 Suède, 🇸🇬 Singapour, 🇦🇺 Australie, 🇧🇪 Belgique
       
@@ -952,7 +952,7 @@ export default function BotUltimate() {
     },
     boutiques: {
       titre: "Nos 26 Boutiques Amazon",
-      contenu: `🛍️ **REUSSITESS® dispose de 26 boutiques Amazon officielles !**
+      contenu: `🛍 **REUSSITESS® dispose de 26 boutiques Amazon officielles !**
       
       **Boutiques Personnelles (14) :**
       - 🇺🇸 amazon.com/shop/amourguadeloupe
@@ -996,7 +996,7 @@ export default function BotUltimate() {
       **🏆 Système de Badges :**
       Gagnez des badges en explorant, en répondant aux quiz, en utilisant différentes langues, etc.
       
-      **🗣️ Multilingue :**
+      **🗣 Multilingue :**
       8 langues disponibles : Français, English, Español, Deutsch, Italiano, Português, 中文, العربية
       
       **💯 Système d'Ego :**
@@ -1028,7 +1028,7 @@ export default function BotUltimate() {
     },
     guadeloupe: {
       titre: "Guadeloupe - Terre de Champions",
-      contenu: `🏝️ **Guadeloupe - Notre Source d'Inspiration**
+      contenu: `🏝 **Guadeloupe - Notre Source d'Inspiration**
       
       La Guadeloupe, département français d'outre-mer dans les Caraïbes, est au cœur de l'identité REUSSITESS®.
       
@@ -1290,7 +1290,7 @@ export default function BotUltimate() {
         }}
         className="bot-button"
       >
-        {isOpen ? "✖️" : "🤖"}
+        {isOpen ? "✖" : "🤖"}
       </button>
 
       {/* Fenêtre de chat */}
@@ -1460,7 +1460,7 @@ export default function BotUltimate() {
                 fontWeight: "bold",
               }}
             >
-              ▶️
+              ▶
             </button>
           </div>
         </div>

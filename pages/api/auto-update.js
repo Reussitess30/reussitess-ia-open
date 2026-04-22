@@ -64,7 +64,7 @@ export default async function handler(req, res) {
     // Mettre à jour les triggers existants
     knowledge.commands = knowledge.commands.map(cmd => {
       if (cmd.trigger === 'meteo' && updates.meteo) {
-        cmd.response = `🌤️ **Météo Guadeloupe — Temps Réel**\n\n🌡️ Température : ${updates.meteo.temperature}°C\n💨 Vent : ${updates.meteo.vent} km/h\n\n📅 Mis à jour : ${new Date().toLocaleDateString('fr-FR')}\nBoudoum ! 🇬🇵`
+        cmd.response = `🌤 **Météo Guadeloupe — Temps Réel**\n\n🌡 Température : ${updates.meteo.temperature}°C\n💨 Vent : ${updates.meteo.vent} km/h\n\n📅 Mis à jour : ${new Date().toLocaleDateString('fr-FR')}\nBoudoum ! 🇬🇵`
       }
       if (cmd.trigger === 'bitcoin' && updates.crypto) {
         cmd.response = `₿ **Bitcoin — Prix Temps Réel**\n\n💰 Prix : $${updates.crypto.bitcoin?.toLocaleString()}\nΞ Ethereum : $${updates.crypto.ethereum?.toLocaleString()}\n⬡ Polygon : $${updates.crypto.polygon}\n\n📅 Mis à jour : ${new Date().toLocaleTimeString('fr-FR')}\nBoudoum ! 🇬🇵`

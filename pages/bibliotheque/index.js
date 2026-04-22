@@ -40,7 +40,7 @@ const BibliothequeIndex = () => {
       ],
     },
     Maghreb: {
-      icon: "🏜️",
+      icon: "🏜",
       color: "from-orange-600 to-orange-800",
       folder: "maghreb",
       pays: [

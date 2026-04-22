@@ -79,7 +79,7 @@ rl.question('\n🔑 Entrez la CLÉ PRIVÉE de l\'ADRESSE 1: ', async (privateKey
         console.log(`⛽ POL sur adresse 2: ${ethers.formatEther(pol2)} POL\n`);
         
         if (parseFloat(ethers.formatEther(pol2)) < 0.05) {
-          console.log('⚠️  Peu de POL sur l\'adresse 2');
+          console.log('⚠  Peu de POL sur l\'adresse 2');
           console.log('   Assurez-vous d\'avoir au moins 0.05 POL pour les frais\n');
         }
         

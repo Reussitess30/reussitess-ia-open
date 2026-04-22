@@ -24,7 +24,7 @@ export default function Suede() {
 
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
             <h2 className="text-3xl font-bold text-blue-800 mb-6">
-              🏛️ Patrimoine UNESCO (15 sites)
+              🏛 Patrimoine UNESCO (15 sites)
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-blue-50 p-4 rounded-xl">
@@ -39,7 +39,7 @@ export default function Suede() {
               </div>
               <div className="bg-blue-50 p-4 rounded-xl">
                 <h3 className="font-bold text-blue-900 mb-2">
-                  🏛️ Palais Royal Drottningholm
+                  🏛 Palais Royal Drottningholm
                 </h3>
                 <p className="text-gray-700">
                   Résidence royale 1430 pièces plus grand palais monde encore
@@ -69,7 +69,7 @@ export default function Suede() {
               </div>
               <div className="bg-blue-50 p-4 rounded-xl">
                 <h3 className="font-bold text-blue-900 mb-2">
-                  🏔️ Hautes Côtes Kvarken
+                  🏔 Hautes Côtes Kvarken
                 </h3>
                 <p className="text-gray-700">
                   Archipel élévation post-glaciaire géologie unique. 5,600 îles
@@ -78,7 +78,7 @@ export default function Suede() {
               </div>
               <div className="bg-blue-50 p-4 rounded-xl">
                 <h3 className="font-bold text-blue-900 mb-2">
-                  ⛏️ Falun Mine Cuivre
+                  ⛏ Falun Mine Cuivre
                 </h3>
                 <p className="text-gray-700">
                   Mine historique exploitation 1000 ans. Production cuivre
@@ -105,7 +105,7 @@ export default function Suede() {
               </div>
               <div className="bg-yellow-50 p-4 rounded-xl">
                 <h3 className="font-bold text-yellow-900 mb-2">
-                  🛋️ IKEA Design Démocratique
+                  🛋 IKEA Design Démocratique
                 </h3>
                 <p className="text-gray-700">
                   Géant mobilier mondial Älmhult Ingvar Kamprad. Meubles kit

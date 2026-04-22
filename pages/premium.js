@@ -8,8 +8,8 @@ const MODULES = [
   { icon: '💼', nom: 'Architecte de Fortune', desc: 'Plan financier 5 ans DOM-TOM + Girardin + crypto REUSS' },
   { icon: '🎯', nom: 'Négociateur Caribéen', desc: 'Scripts de négociation adaptés aux codes afro-caribéens' },
   { icon: '🌐', nom: 'Traducteur de Succès', desc: 'Pitch ton projet caribéen en France, Canada, USA' },
-  { icon: '🏗️', nom: "Bâtisseur d'Empire", desc: "De l'idée à l'entreprise en 90 jours DOM-TOM" },
-  { icon: '🛡️', nom: 'Bouclier Juridique', desc: 'Protection juridique complète droit français + DOM-TOM' },
+  { icon: '🏗', nom: "Bâtisseur d'Empire", desc: "De l'idée à l'entreprise en 90 jours DOM-TOM" },
+  { icon: '🛡', nom: 'Bouclier Juridique', desc: 'Protection juridique complète droit français + DOM-TOM' },
   { icon: '🧠', nom: 'Mindset Champions', desc: 'Transformation mentale — Césaire, Fanon, Glissant' },
   { icon: '🌱', nom: 'Entrepreneur Social', desc: 'Impact communautaire + revenus + subventions caribéennes' },
   { icon: '📡', nom: 'Intelligence Stratégique', desc: 'Veille et opportunités dans 14 pays partenaires' },
@@ -150,7 +150,7 @@ export default function Premium() {
               <div style={{ color: '#f59e0b', fontWeight: '800', marginBottom: '1rem', fontSize: '0.9rem' }}>ÉTAPE 2 — Entrer ton code d'activation</div>
               <p style={{ color: '#64748b', fontSize: '0.8rem', marginBottom: '1rem' }}>Après paiement, tu reçois un code sur Telegram et par email. Entre-le ici :</p>
               <input value={code} onChange={e => setCode(e.target.value.toUpperCase())} placeholder="REUSS-XXXXXXXX" style={{ ...inputStyle, letterSpacing: '0.1em', fontFamily: 'monospace' }} />
-              {error && <p style={{ color: '#ef4444', fontSize: '0.8rem', marginBottom: '1rem' }}>⚠️ {error}</p>}
+              {error && <p style={{ color: '#ef4444', fontSize: '0.8rem', marginBottom: '1rem' }}>⚠ {error}</p>}
               <button onClick={activer} disabled={loading || !code || !telegramId} style={loading || !code || !telegramId ? btnDisabled : btnGreen}>
                 {loading ? '⏳ Activation...' : '🚀 Activer mon accès Premium'}
               </button>

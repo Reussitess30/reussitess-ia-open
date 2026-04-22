@@ -45,7 +45,7 @@ export function startAgentScheduler() {
   
   // Run Sentinelles patrol every 30 minutes
   cron.schedule('*/30 * * * *', async () => {
-    console.log('🛡️ Sentinelle patrol starting...')
+    console.log('🛡 Sentinelle patrol starting...')
     // Trigger 5 random sentinelles
     for (let i = 0; i < 5; i++) {
       const randomId = Math.floor(Math.random() * 40) + 1

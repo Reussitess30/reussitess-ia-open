@@ -2,10 +2,10 @@
 const quizGoMining = {
   title: "Bitcoin Mining & GoMining",
   description: "Découvrez comment miner du Bitcoin depuis chez vous grâce aux NFT mineurs !",
-  emoji: "⛏️",
+  emoji: "⛏",
   questions: [
     {
-      question: "⛏️ Qu'est-ce que le Bitcoin Mining (minage de Bitcoin) ?",
+      question: "⛏ Qu'est-ce que le Bitcoin Mining (minage de Bitcoin) ?",
       answers: [
         "Creuser de l'or dans une mine virtuelle",
         "Valider des transactions Bitcoin et recevoir des BTC en récompense",
@@ -111,7 +111,7 @@ const quizGoMining = {
   gominingPromo: {
     enabled: true,
     refLink: "https://gomining.com/?ref=OT3GI2U",
-    ctaText: "⛏️ Commencer à Miner du Bitcoin",
+    ctaText: "⛏ Commencer à Miner du Bitcoin",
     subText: "Rejoignez GoMining avec le lien Reussitess®971 et démarrez votre premier mineur",
     bonusText: "🎁 Bonus de bienvenue disponible pour les nouveaux inscrits",
   },

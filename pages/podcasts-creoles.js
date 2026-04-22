@@ -8,7 +8,7 @@ const PODCASTS = [
   { id: 2, nom: "Gwoka Session", desc: "Histoire et culture du Gwoka, patrimoine UNESCO", emoji: "🥁", url: "https://la1ere.francetvinfo.fr/guadeloupe/programmes", pays: "Guadeloupe 🇬🇵", tags: ["Culture", "Musique"] },
   { id: 3, nom: "Caraïbes Business", desc: "Actualité économique et entrepreneuriale des Antilles", emoji: "💼", url: "https://la1ere.francetvinfo.fr", pays: "DOM-TOM 🌴", tags: ["Business", "Économie"] },
   { id: 4, nom: "Diasporas Africa", desc: "Voix de la diaspora africaine en France et dans le monde", emoji: "🌍", url: "https://www.rfi.fr/fr/podcasts", pays: "Afrique 🌍", tags: ["Diaspora", "Culture"] },
-  { id: 5, nom: "Créole Talk", desc: "Langue et culture créole — apprendre et préserver", emoji: "🗣️", url: "#", pays: "Caraïbes 🌴", tags: ["Langue", "Culture"] },
+  { id: 5, nom: "Créole Talk", desc: "Langue et culture créole — apprendre et préserver", emoji: "🗣", url: "#", pays: "Caraïbes 🌴", tags: ["Langue", "Culture"] },
   { id: 6, nom: "RFI Afrique", desc: "Actualités africaines et caribéennes en temps réel", emoji: "📻", url: "https://www.rfi.fr/fr/podcasts", pays: "Afrique 🌍", tags: ["Actualités"] },
 ]
 
@@ -22,7 +22,7 @@ export default function PodcastsCreoles() {
     <Layout>
       <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #0f172a, #1e293b)', padding: '2rem 1rem' }}>
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <div style={{ fontSize: '4rem', marginBottom: '0.5rem' }}>🎙️</div>
+          <div style={{ fontSize: '4rem', marginBottom: '0.5rem' }}>🎙</div>
           <h1 style={{ color: '#fff', fontSize: 'clamp(1.8rem,5vw,3rem)', fontWeight: '900' }}>PODCASTS CARIBÉENS</h1>
           <p style={{ color: '#94a3b8' }}>Voix de la diaspora afro-caribéenne</p>
         </div>
@@ -51,7 +51,7 @@ export default function PodcastsCreoles() {
               {p.url !== '#' && (
                 <a href={p.url} target="_blank" rel="noreferrer"
                   style={{ display: 'inline-block', padding: '0.5rem 1rem', background: 'linear-gradient(135deg,#10b981,#059669)', color: 'white', borderRadius: '10px', textDecoration: 'none', fontSize: '0.8rem', fontWeight: '700' }}>
-                  🎙️ Écouter
+                  🎙 Écouter
                 </a>
               )}
             </div>

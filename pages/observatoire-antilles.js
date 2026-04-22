@@ -69,7 +69,7 @@ export default function ObservatoireAntilles() {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '1rem' }}>
                   {data.insee?.population?.map((t, i) => (
                     <div key={i} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '20px', padding: '1.5rem' }}>
-                      <h3 style={{ color: '#10b981', fontWeight: '900', marginBottom: '1rem', fontSize: '1.2rem' }}>🏝️ {t.territoire}</h3>
+                      <h3 style={{ color: '#10b981', fontWeight: '900', marginBottom: '1rem', fontSize: '1.2rem' }}>🏝 {t.territoire}</h3>
                       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
                         <span style={{ color: '#94a3b8' }}>Population</span>
                         <span style={{ color: '#e2e8f0', fontWeight: '700' }}>{t.population.toLocaleString()} hab.</span>
@@ -94,7 +94,7 @@ export default function ObservatoireAntilles() {
                 <h2 style={{ color: '#e2e8f0', marginBottom: '1.5rem', textAlign: 'center' }}>💼 Marché du Travail Guadeloupe</h2>
                 <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '20px', padding: '2rem', marginBottom: '1.5rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-                    <h3 style={{ color: '#10b981', fontWeight: '900' }}>🏛️ France Travail — Offres en cours</h3>
+                    <h3 style={{ color: '#10b981', fontWeight: '900' }}>🏛 France Travail — Offres en cours</h3>
                     <span style={{ background: 'rgba(16,185,129,0.2)', color: '#10b981', padding: '0.4rem 0.8rem', borderRadius: '15px', fontWeight: '700' }}>
                       {data.emploi?.total || 0} offres
                     </span>
@@ -143,7 +143,7 @@ export default function ObservatoireAntilles() {
                   </div>
                   {/* Banque de France */}
                   <div style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '20px', padding: '1.5rem' }}>
-                    <h3 style={{ color: '#ec4899', fontWeight: '900', marginBottom: '1rem' }}>🏛️ Banque de France</h3>
+                    <h3 style={{ color: '#ec4899', fontWeight: '900', marginBottom: '1rem' }}>🏛 Banque de France</h3>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
                       <span style={{ color: '#94a3b8' }}>Taux directeur</span>
                       <span style={{ color: '#ec4899', fontWeight: '700' }}>{data.banqueFrance?.tauxDirecteur}%</span>

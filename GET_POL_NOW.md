@@ -4,10 +4,10 @@
 0x69f42Aa645A43A84e1143D416a4C81A88DF01549
 ## 🎯 FAUCETS GRATUITS (Choisir UN):
 
-### 1️⃣ Alchemy Faucet (RECOMMANDÉ)
+### 1⃣ Alchemy Faucet (RECOMMANDÉ)
 🔗 https://www.alchemy.com/faucets/polygon-pos
 💧 Donne: 0.1 POL gratuit
-⏱️  Temps: Instantané
+⏱  Temps: Instantané
 ✅ Pas besoin de compte
 
 **ÉTAPES:**
@@ -18,11 +18,11 @@
 
 ---
 
-### 2️⃣ Polygon Official Faucet
+### 2⃣ Polygon Official Faucet
 🔗 https://faucet.polygon.technology/
 💧 Donne: 0.2 POL gratuit
-⏱️  Temps: 1-2 minutes
-⚠️  Nécessite connexion avec wallet
+⏱  Temps: 1-2 minutes
+⚠  Nécessite connexion avec wallet
 
 **ÉTAPES:**
 1. Connectez votre wallet (MetaMask)
@@ -32,10 +32,10 @@
 
 ---
 
-### 3️⃣ QuickNode Faucet
+### 3⃣ QuickNode Faucet
 🔗 https://faucet.quicknode.com/polygon
 💧 Donne: 0.05 POL gratuit
-⏱️  Temps: Instantané
+⏱  Temps: Instantané
 ✅ Simple et rapide
 
 ---

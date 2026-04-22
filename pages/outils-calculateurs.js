@@ -2,7 +2,7 @@
 export default function OutilsCalculateurs() {
   return (
     <div className="container">
-      <h1>🛠️ Outils & Calculateurs</h1>
+      <h1>🛠 Outils & Calculateurs</h1>
       <div className="grid">
         <div className="card">
           <h3>Calculateur Amazon</h3>

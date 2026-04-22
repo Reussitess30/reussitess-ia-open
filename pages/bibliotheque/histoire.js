@@ -17,7 +17,7 @@ export default function Histoire() {
       ],
     },
     {
-      title: "🏝️ Histoire des Caraïbes",
+      title: "🏝 Histoire des Caraïbes",
       content: [
         "Populations autochtones : Taïnos, Caraïbes, Arawaks avant l'arrivée des Européens",
         "L'arrivée de Christophe Colomb (1492) et la colonisation espagnole",

@@ -26,12 +26,12 @@ export default function NouvelleZelande() {
 
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
             <h2 className="text-3xl font-bold text-blue-800 mb-6">
-              🏛️ Patrimoine UNESCO (3 sites)
+              🏛 Patrimoine UNESCO (3 sites)
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-blue-50 p-4 rounded-xl">
                 <h3 className="font-bold text-blue-900 mb-2">
-                  🏔️ Milford Sound Fjords
+                  🏔 Milford Sound Fjords
                 </h3>
                 <p className="text-gray-700">
                   Paysages glaciaires île Sud. Fiordland cascades 160m, dauphins
@@ -73,7 +73,7 @@ export default function NouvelleZelande() {
             <div className="space-y-4">
               <div className="bg-green-50 p-4 rounded-xl">
                 <h3 className="font-bold text-green-900 mb-2">
-                  🗳️ 1er Vote Femmes 1893
+                  🗳 1er Vote Femmes 1893
                 </h3>
                 <p className="text-gray-700">
                   Premier pays suffrage féminin universel. Kate Sheppard

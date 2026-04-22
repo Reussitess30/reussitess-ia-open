@@ -62,7 +62,7 @@ export default function Professeurs() {
       description: "Fiches complètes avec statistiques actualisées",
     },
     {
-      icon: "⚖️",
+      icon: "⚖",
       name: "Réglementations",
       description: "Textes de loi et normes à jour",
     },
@@ -243,7 +243,7 @@ export default function Professeurs() {
                 fontSize: "2em",
               }}
             >
-              🛠️ Outils à Disposition
+              🛠 Outils à Disposition
             </h2>
             <div
               style={{
@@ -316,7 +316,7 @@ export default function Professeurs() {
               </div>
               <div>
                 <h3 style={{ color: "#dc2626", marginBottom: "10px" }}>
-                  🏛️ Supérieur
+                  🏛 Supérieur
                 </h3>
                 <p style={{ fontSize: "1.05em", lineHeight: "1.6" }}>
                   Analyses poussées réglementations, stratégies

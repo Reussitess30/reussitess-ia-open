@@ -40,7 +40,7 @@ export default function CarteCaribéenne() {
         
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <div style={{ fontSize: '4rem', marginBottom: '0.5rem' }}>🗺️</div>
+          <div style={{ fontSize: '4rem', marginBottom: '0.5rem' }}>🗺</div>
           <h1 style={{ color: '#fff', fontSize: 'clamp(1.8rem,5vw,3rem)', fontWeight: '900', marginBottom: '0.5rem' }}>
             CARTE AFRO-CARIBÉENNE
           </h1>
@@ -101,7 +101,7 @@ export default function CarteCaribéenne() {
                     )}
                     <a href={`https://www.google.com/maps?q=${l.lat},${l.lng}`} target="_blank" rel="noreferrer"
                       style={{ padding: '0.4rem 0.8rem', background: 'rgba(59,130,246,0.2)', color: '#3b82f6', borderRadius: '10px', textDecoration: 'none', fontSize: '0.75rem', fontWeight: '700', border: '1px solid rgba(59,130,246,0.3)' }}>
-                      🗺️ Google Maps
+                      🗺 Google Maps
                     </a>
                   </div>
                 </div>

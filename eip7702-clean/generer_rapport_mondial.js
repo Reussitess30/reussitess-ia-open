@@ -8,7 +8,7 @@ const paysCibles = [
 ];
 
 async function main() {
-  console.log("🏝️ Reussitess© - Terres De Champions Positivité à l'infini");
+  console.log("🏝 Reussitess© - Terres De Champions Positivité à l'infini");
   console.log("📡 Activation des 200 IA pour le contrôle des boutiques...");
 
   let rapport = "RAPPORT DE VISIBILITÉ MONDIALE REUSSITESS©\n";

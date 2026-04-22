@@ -59,8 +59,8 @@ export default async function handler(req, res) {
       // REUSSSHIELD — détection spam
       const isBanned = BANNED_WORDS.some(w => msgLow.includes(w))
       if (isBanned) {
-        await sendKickMessage(`⚠️ @${user} Message supprimé par REUSSSHIELD. Respect des règles REUSSITESS ! 🛡️`)
-        await sendTelegram(`🛡️ *REUSSSHIELD Kick*\n⚠️ Message suspect de @${user}\nContenu: ${msg.substring(0, 100)}`)
+        await sendKickMessage(`⚠ @${user} Message supprimé par REUSSSHIELD. Respect des règles REUSSITESS ! 🛡`)
+        await sendTelegram(`🛡 *REUSSSHIELD Kick*\n⚠ Message suspect de @${user}\nContenu: ${msg.substring(0, 100)}`)
         return res.status(200).json({ ok: true, action: 'moderated' })
       }
 
@@ -79,8 +79,8 @@ export default async function handler(req, res) {
         try {
           const m = await fetch('https://api.open-meteo.com/v1/forecast?latitude=16.2411&longitude=-61.5331&current_weather=true')
             .then(r => r.json())
-          await sendKickMessage(`🌤️ Météo Guadeloupe : ${m.current_weather?.temperature}°C | Vent: ${m.current_weather?.windspeed}km/h BOUDOUM ! 🇬🇵`)
-        } catch(e) { await sendKickMessage('🌤️ Météo indisponible. reussitess.fr BOUDOUM ! 🇬🇵') }
+          await sendKickMessage(`🌤 Météo Guadeloupe : ${m.current_weather?.temperature}°C | Vent: ${m.current_weather?.windspeed}km/h BOUDOUM ! 🇬🇵`)
+        } catch(e) { await sendKickMessage('🌤 Météo indisponible. reussitess.fr BOUDOUM ! 🇬🇵') }
       }
       else if (msgLow.startsWith('!quiz')) {
         const quizzes = [
@@ -132,7 +132,7 @@ export default async function handler(req, res) {
     else if (eventType === 'follow' || eventType === 'new_follower') {
       const user = data?.user?.username || data?.username || 'Nouveau follower'
       const totalPoints = await addReussPoints(user, 10, 'follow')
-      await sendKickMessage(`❤️ Merci @${user} pour le follow ! +10 REUSS ! Découvre REUSSITESS®971 : reussitess.fr BOUDOUM ! 🇬🇵`)
+      await sendKickMessage(`❤ Merci @${user} pour le follow ! +10 REUSS ! Découvre REUSSITESS®971 : reussitess.fr BOUDOUM ! 🇬🇵`)
     }
 
     // ===== HOST/RAID =====

@@ -2,7 +2,7 @@
 const quizDroitTravail = {
   title: "Droit du Travail — Ce que Tout Salarié Doit Savoir",
   description: "Connaissez vos droits en tant que salarié et ne laissez personne les violer !",
-  emoji: "⚖️",
+  emoji: "⚖",
   questions: [
     { question: "Quel est le SMIC horaire brut en France en 2024 et à partir de quelle ancienneté a-t-on droit à une prime d'ancienneté ?", answers: ["11€ brut, aucune prime légale", "11,65€ brut, prime d'ancienneté selon conventions collectives (pas légale universelle)", "10€ brut, prime après 1 an", "12€ brut, prime après 6 mois"], correct: 1, explanation: "Le SMIC était de 11,65€ brut/heure au 1er janvier 2024 (soit 1 766,92€ brut/mois pour 35h). La prime d'ancienneté n'est pas une obligation légale universelle — elle dépend de votre convention collective. Vérifiez votre CCN (Convention Collective Nationale) sur le site Légifrance." },
     { question: "Combien de semaines de congés payés un salarié à temps plein a-t-il droit par an en France ?", answers: ["4 semaines (20 jours ouvrables)", "5 semaines (25 jours ouvrables ou 30 jours ouvrés)", "3 semaines", "6 semaines après 5 ans d'ancienneté"], correct: 1, explanation: "En France, tout salarié acquiert 2,5 jours ouvrables de congés par mois travaillé = 30 jours ouvrables (5 semaines) par an. Les congés se prennent entre le 1er mai et 31 octobre pour la période principale (4 semaines minimum). Le fractionnement peut donner droit à des jours supplémentaires. Les DOM ont les mêmes droits." },

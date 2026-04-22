@@ -23,7 +23,7 @@ export default async function handler(req, res) {
   <div class="field">👤 <b>Nom :</b> ${visa.prenom} ${visa.nom}</div>
   <div class="field">📧 <b>Email :</b> ${visa.email}</div>
   <div class="field">🌍 <b>Pays :</b> ${visa.pays}</div>
-  <div class="field">🏙️ <b>Ville :</b> ${visa.ville || 'Non précisé'}</div>
+  <div class="field">🏙 <b>Ville :</b> ${visa.ville || 'Non précisé'}</div>
   <div class="field">💼 <b>Domaine :</b> ${visa.domaine?.label || visa.domaine}</div>
   <div class="field">📈 <b>Niveau :</b> ${visa.niveau?.label || visa.niveau}</div>
   <div class="field">🎯 <b>Besoin :</b> ${visa.besoin?.label || visa.besoin}</div>

@@ -65,7 +65,7 @@ export default async function handler(req, res) {
     const MAIN_MENU = {
       inline_keyboard: [
         [
-          { text: '🌤️ Météo', callback_data: 'météo Guadeloupe' },
+          { text: '🌤 Météo', callback_data: 'météo Guadeloupe' },
           { text: '₿ Bitcoin', callback_data: 'prix bitcoin' },
           { text: '💱 Devises', callback_data: 'taux de change euro dollar' }
         ],
@@ -75,7 +75,7 @@ export default async function handler(req, res) {
           { text: '🌋 Séismes', callback_data: 'séismes antilles' }
         ],
         [
-          { text: '🛍️ Boutiques', callback_data: 'boutiques amazon 14 pays' },
+          { text: '🛍 Boutiques', callback_data: 'boutiques amazon 14 pays' },
           { text: '💎 Token REUSS', callback_data: 'token REUSS blockchain supply' },
             { text: '📊 REUSS Live', callback_data: 'reuss live' },
             { text: '🏆 Top Holders', callback_data: 'transferts reuss' },
@@ -83,7 +83,7 @@ export default async function handler(req, res) {
         ],
         [
           { text: '🏆 Champions', callback_data: 'passeport de réussite' },
-          { text: '🛡️ Shield', callback_data: 'reussshield' },
+          { text: '🛡 Shield', callback_data: 'reussshield' },
           { text: '🌊 Marées', callback_data: 'marées Guadeloupe' }
         ],
         [
@@ -98,7 +98,7 @@ export default async function handler(req, res) {
         ],
         [
           { text: '🎵 Zouk', callback_data: 'deezer zouk guadeloupe' },
-          { text: '🎙️ Podcast', callback_data: 'podcast guadeloupe' },
+          { text: '🎙 Podcast', callback_data: 'podcast guadeloupe' },
           { text: '🌀 Cyclones', callback_data: 'cyclones atlantique' }
         ],
         [
@@ -124,19 +124,19 @@ export default async function handler(req, res) {
                         ],
                         [
                           { text: '🤝 Communauté', callback_data: 'communauté reussitess forum' },
-                          { text: '🎙️ Podcasts', callback_data: 'podcast caribéen' },
-                          { text: '🗺️ Carte', callback_data: 'carte caribéenne lieux historiques' }
+                          { text: '🎙 Podcasts', callback_data: 'podcast caribéen' },
+                          { text: '🗺 Carte', callback_data: 'carte caribéenne lieux historiques' }
                         ],
                         [
-                          { text: '⚖️ Droit DOM-TOM', callback_data: 'aide juridictionnelle dom-tom' },
+                          { text: '⚖ Droit DOM-TOM', callback_data: 'aide juridictionnelle dom-tom' },
                     { text: '💰 Finance', callback_data: 'épargne investissement dom-tom' },
-                    { text: '🗺️ Carte Caribéenne', callback_data: 'carte caribéenne lieux historiques' },
+                    { text: '🗺 Carte Caribéenne', callback_data: 'carte caribéenne lieux historiques' },
                           { text: '📅 Événements', callback_data: 'événements afro-caribéens' },
-                          { text: '🎙️ Podcasts', callback_data: 'podcast caribéen' }
+                          { text: '🎙 Podcasts', callback_data: 'podcast caribéen' }
                         ],
                         [
                           { text: '🚀 NASA', callback_data: 'photo nasa du jour' },
-                          { text: '☀️ Lever Soleil', callback_data: 'lever soleil guadeloupe' },
+                          { text: '☀ Lever Soleil', callback_data: 'lever soleil guadeloupe' },
                           { text: '📺 TV', callback_data: 'programme tv caribbean' },
                           { text: '📊 Observatoire', callback_data: 'observatoire antilles' }
                         ],
@@ -147,23 +147,23 @@ export default async function handler(req, res) {
                   ],
                   [
                     { text: '🌊 Météo Marine', callback_data: 'météo marine guadeloupe' },
-                    { text: '🏛️ Lieux Culturels', callback_data: 'lieux culturels guadeloupe' },
+                    { text: '🏛 Lieux Culturels', callback_data: 'lieux culturels guadeloupe' },
                     { text: '🧠 Santé Mentale', callback_data: 'santé mentale dom-tom' }
                   ],
                   [
                     { text: '🎓 Éducation', callback_data: 'éducation guadeloupe' },
-                    { text: '🗺️ Carnet Route', callback_data: 'carnet de route guadeloupe' },
+                    { text: '🗺 Carnet Route', callback_data: 'carnet de route guadeloupe' },
                     { text: '💼 Métiers', callback_data: 'métiers dom-tom' }
                   ],
                   [
                     { text: '📊 Finance', callback_data: 'analyse financière' },
-                    { text: '⚖️ Entreprise', callback_data: 'créer entreprise guadeloupe' },
-                    { text: '🗣️ Créole', callback_data: 'dictionnaire créole' }
+                    { text: '⚖ Entreprise', callback_data: 'créer entreprise guadeloupe' },
+                    { text: '🗣 Créole', callback_data: 'dictionnaire créole' }
                   ],
                   [
                     { text: '🌿 Médecine Naturelle', callback_data: 'médecine naturelle caribéenne' },
                     { text: '🌍 Traduction', callback_data: 'traduis bonjour en anglais' },
-                    { text: '🏝️ DOM-TOM Info', callback_data: 'dom-tom guadeloupe' }
+                    { text: '🏝 DOM-TOM Info', callback_data: 'dom-tom guadeloupe' }
                   ],
                   [
                     { text: '🧠 Émotion', callback_data: 'je suis fatigué et découragé' },
@@ -176,9 +176,9 @@ export default async function handler(req, res) {
             { text: '🛸 Quantum Nexus', callback_data: 'agents ia' }
           ],
           [
-            { text: '⛓️ Blockchain', callback_data: 'dashboard crypto' },
+            { text: '⛓ Blockchain', callback_data: 'dashboard crypto' },
                     { text: '🌋 Séismes Historiques', callback_data: 'séismes historiques caraïbes' },
-                    { text: '🗺️ Carnet Route', callback_data: 'carnet de route guadeloupe' }
+                    { text: '🗺 Carnet Route', callback_data: 'carnet de route guadeloupe' }
         ]
       ]
     }
@@ -186,9 +186,9 @@ export default async function handler(req, res) {
     // Menu persistant en bas
     const PERSISTENT_MENU = {
       keyboard: [
-        ['🌤️ Météo', '₿ Bitcoin', '💱 Devises'],
+        ['🌤 Météo', '₿ Bitcoin', '💱 Devises'],
         ['💼 Emploi', '📰 Actualités', '🌋 Séismes'],
-        ['🛍️ Boutiques', '💎 REUSS', '🔮 Oracle'],
+        ['🛍 Boutiques', '💎 REUSS', '🔮 Oracle'],
         ['🏠 Menu Principal']
       ],
       resize_keyboard: true,
@@ -213,7 +213,7 @@ Né en Guadeloupe — Terres de Champions !
 Je suis ton assistant IA caribéen avec *120+ fonctionnalités* :
 • 📡 Données temps réel
 • 💼 Emploi DOM-TOM
-• 🛍️ 26 boutiques Amazon
+• 🛍 26 boutiques Amazon
 • 💎 Token REUSS Polygon
 • 📰 Actualités DOM-TOM
 • 🌋 Séismes & Cyclones
@@ -229,7 +229,7 @@ Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             chat_id: chatId,
-            text: '⬇️ Menu rapide toujours disponible',
+            text: '⬇ Menu rapide toujours disponible',
             reply_markup: PERSISTENT_MENU
           })
         })
@@ -242,27 +242,27 @@ Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
 
       // Commandes texte du menu persistant
       const TEXT_COMMANDS = {
-        '🌤️ Météo': 'météo Guadeloupe',
+        '🌤 Météo': 'météo Guadeloupe',
         '₿ Bitcoin': 'prix bitcoin',
         '💱 Devises': 'taux de change euro dollar',
         '💼 Emploi': 'liste emploi Guadeloupe',
         '📰 Actualités': 'actualites outremer complet',
         '🌋 Séismes': 'séismes antilles',
-        '🛍️ Boutiques': 'boutiques amazon 14 pays',
+        '🛍 Boutiques': 'boutiques amazon 14 pays',
       '🎵 Musique': 'deezer zouk guadeloupe',
-      '🎙️ Podcast': 'podcast guadeloupe',
+      '🎙 Podcast': 'podcast guadeloupe',
       '🔐 Crypto': 'crypto securite draineur danger',
         '💎 REUSS': 'token REUSS blockchain supply',
         '🔮 Oracle': 'oracle 971 quel est mon destin',
         '🌊 Météo Marine': 'météo marine guadeloupe',
-        '🏛️ Lieux Culturels': 'lieux culturels guadeloupe',
+        '🏛 Lieux Culturels': 'lieux culturels guadeloupe',
         '🧠 Santé Mentale': 'santé mentale dom-tom',
         '🎓 Éducation': 'éducation guadeloupe',
-        '🗺️ Carnet Route': 'carnet de route guadeloupe',
+        '🗺 Carnet Route': 'carnet de route guadeloupe',
         '💼 Métiers': 'métiers dom-tom',
         '📊 Finance': 'analyse financière',
-        '⚖️ Entreprise': 'créer entreprise guadeloupe',
-        '🗣️ Créole': 'dictionnaire créole',
+        '⚖ Entreprise': 'créer entreprise guadeloupe',
+        '🗣 Créole': 'dictionnaire créole',
       }
 
     if (text === '/premium') {
@@ -277,7 +277,7 @@ Boudoum ! 🇬🇵`, { inline_keyboard: MAIN_MENU.inline_keyboard })
           inline_keyboard: [[{ text: '💳 Souscrire 4,99EUR/mois', url: subData.url }]]
         })
       }
-      return await sendMsg(chatId, '⚠️ Erreur paiement. Reessaie.')
+      return await sendMsg(chatId, '⚠ Erreur paiement. Reessaie.')
     }
       const msgToSend = TEXT_COMMANDS[text] || text
       await typing(chatId)
@@ -397,7 +397,7 @@ await sendMsg(chatId, response, { inline_keyboard: [[{ text: "🔄 Menu Principa
         }
         return await sendMsg(chatId, demos[data], {
           inline_keyboard: [[{ text: '💳 Souscrire 4,99€/mois', callback_data: 'premium' }],
-          [{ text: '◀️ Menu Premium', callback_data: 'premium_menu' }]]
+          [{ text: '◀ Menu Premium', callback_data: 'premium_menu' }]]
         })
       }
       
@@ -405,7 +405,7 @@ await sendMsg(chatId, response, { inline_keyboard: [[{ text: "🔄 Menu Principa
         return await sendMsg(chatId, '🤝 *COMMUNAUTE REUSSITESS*\n\nRejois le reseau afro-caribeen !\n\n📺 Live Kick - Stream en direct\n💬 Discussions thematiques\n🌴 Entrepreneuriat, Culture, IA, Creole\n\nBOUDOUM 🥁', {
           inline_keyboard: [
             [{ text: '📺 Rejoindre le Live Kick', url: 'https://reussitess.fr/communaute' }],
-            [{ text: '◀️ Menu', callback_data: 'menu' }]
+            [{ text: '◀ Menu', callback_data: 'menu' }]
           ]
         })
       }
@@ -414,7 +414,7 @@ await sendMsg(chatId, response, { inline_keyboard: [[{ text: "🔄 Menu Principa
         return await sendMsg(chatId, '💪 *COACH DE VIE REUSSITESS*\n\nTon defi quotidien caribeen\n\n🔥 Streak journalier\n💎 Recompenses REUSS tokens\n🎯 Profils : Entrepreneur, Etudiant, Sportif, General\n🌴 Defis inspires de la culture caribeenne\n\nDeviens un Champion - Te a chanpion yo', {
           inline_keyboard: [
             [{ text: '💪 Acceder au Coach de Vie', url: 'https://reussitess.fr/coach' }],
-            [{ text: '◀️ Menu', callback_data: 'menu' }]
+            [{ text: '◀ Menu', callback_data: 'menu' }]
           ]
         })
       }

@@ -21,7 +21,7 @@ export default function Bresil() {
 
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
             <h2 className="text-3xl font-bold text-green-800 mb-6">
-              🏛️ Patrimoine UNESCO (23 sites)
+              🏛 Patrimoine UNESCO (23 sites)
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-green-50 p-4 rounded-xl">

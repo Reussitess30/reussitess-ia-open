@@ -8,7 +8,7 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const quizCategories = [
-    { id: "Gastronomie", name: "Gastronomie", icon: "🍽️", color: "#ff6b6b" },
+    { id: "Gastronomie", name: "Gastronomie", icon: "🍽", color: "#ff6b6b" },
     { id: "Histoire", name: "Histoire", icon: "📚", color: "#4ecdc4" },
     { id: "Géographie", name: "Géographie", icon: "🌍", color: "#45b7d1" },
     { id: "Sciences", name: "Sciences", icon: "🔬", color: "#96ceb4" },
@@ -17,13 +17,13 @@ export default function Home() {
     { id: "Cinéma", name: "Cinéma", icon: "🎬", color: "#a29bfe" },
     { id: "Sport", name: "Sport", icon: "⚽", color: "#74b9ff" },
     { id: "Tech", name: "Technologie", icon: "💻", color: "#00b894" },
-    { id: "Langue", name: "Langues", icon: "🗣️", color: "#fdcb6e" },
+    { id: "Langue", name: "Langues", icon: "🗣", color: "#fdcb6e" },
     { id: "Maths", name: "Mathématiques", icon: "🔢", color: "#e17055" },
-    { id: "Politique", name: "Politique", icon: "🏛️", color: "#636e72" },
+    { id: "Politique", name: "Politique", icon: "🏛", color: "#636e72" },
     { id: "Philosophie", name: "Philosophie", icon: "🤔", color: "#6c5ce7" },
     { id: "Innovations", name: "Innovations", icon: "💡", color: "#f39c12" },
     { id: "Environnement", name: "Environnement", icon: "🌱", color: "#27ae60" },
-    { id: "Santé", name: "Santé", icon: "⚕️", color: "#e74c3c" },
+    { id: "Santé", name: "Santé", icon: "⚕", color: "#e74c3c" },
     { id: "Business", name: "Business", icon: "💼", color: "#2c3e50" },
     { id: "Monuments", name: "Monuments", icon: "🏰", color: "#95a5a6" },
     { id: "Personnalités", name: "Personnalités", icon: "👤", color: "#d63031" },
@@ -31,7 +31,7 @@ export default function Home() {
     { id: "Découvertes", name: "Découvertes", icon: "🔭", color: "#0984e3" },
     { id: "Internet", name: "Internet", icon: "🌐", color: "#6c5ce7" },
     { id: "Positivité", name: "Positivité", icon: "😊", color: "#fdcb6e" },
-    { id: "Amazon_Affiliation", name: "Amazon Affiliation", icon: "🛍️", color: "#ff9f43" },
+    { id: "Amazon_Affiliation", name: "Amazon Affiliation", icon: "🛍", color: "#ff9f43" },
     { id: "Boutique_Motivation", name: "Boutique Motivation", icon: "🚀", color: "#ee5a6f" },
   ];
 

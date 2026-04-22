@@ -491,7 +491,7 @@ body {
 
 <!-- HEADER -->
 <div class="header">
-  <div class="logo-shield">🛡️</div>
+  <div class="logo-shield">🛡</div>
   <div class="tagline">Powered by AI & Machine Learning</div>
   <h1>REUSSSHIELD AI GUARDIAN</h1>
   <p class="subtitle">
@@ -627,13 +627,13 @@ body {
       🔐 Créer Guardian Wallet
     </button>
     <button class="guardian-btn" onclick="viewGuardian()">
-      👁️ Voir Guardian Wallet
+      👁 Voir Guardian Wallet
     </button>
     <button class="guardian-btn" onclick="createDecoys()">
       🎭 Activer Decoy System
     </button>
     <button class="guardian-btn" onclick="enableTimeLock()">
-      ⏱️ Time-Lock Approvals
+      ⏱ Time-Lock Approvals
     </button>
   </div>
 </div>
@@ -774,14 +774,14 @@ function stopMonitoring(){
 // ===================== FEED =====================
 function addFeedItem(type,msg){
   const time=new Date().toLocaleTimeString('fr',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-  const icons={blocked:'🛑',detected:'⚠️',success:'✅',info:'ℹ️'};
+  const icons={blocked:'🛑',detected:'⚠',success:'✅',info:'ℹ'};
   const badges={blocked:'BLOQUÉ',detected:'DÉTECTÉ',success:'SÉCURISÉ',info:'INFO'};
 
   const item=document.createElement('div');
   item.className=`feed-item ${type}`;
   item.innerHTML=`
     <div class="feed-time">${time}</div>
-    <div class="feed-icon">${icons[type]||'ℹ️'}</div>
+    <div class="feed-icon">${icons[type]||'ℹ'}</div>
     <div class="feed-message"><strong>${msg}</strong></div>
     <div class="feed-badge ${type==='blocked'?'critical':type==='detected'?'warning':'info'}">
       ${badges[type]||'INFO'}
@@ -837,10 +837,10 @@ function showSpinner(v,t){
 
 function showToast(msg,type='info'){
   const c=document.getElementById('toastContainer');
-  const icons={success:'✅',error:'❌',info:'ℹ️'};
+  const icons={success:'✅',error:'❌',info:'ℹ'};
   const d=document.createElement('div');
   d.className=`toast ${type}`;
-  d.innerHTML=`<div class="toast-icon">${icons[type]||'ℹ️'}</div><div class="toast-text">${msg}</div>`;
+  d.innerHTML=`<div class="toast-icon">${icons[type]||'ℹ'}</div><div class="toast-text">${msg}</div>`;
   c.appendChild(d);
   setTimeout(()=>{d.classList.add('out');setTimeout(()=>d.remove(),300)},4000);
 }

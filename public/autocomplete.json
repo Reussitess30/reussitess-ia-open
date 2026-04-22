@@ -1,15 +1,15 @@
 {
-  "météo": ["🌤️ Météo Guadeloupe aujourd'hui", "🌧️ Prévisions 7 jours Martinique", "🌀 Risque cyclonique en cours", "🌡️ Température mer Antilles"],
+  "météo": ["🌤 Météo Guadeloupe aujourd'hui", "🌧 Prévisions 7 jours Martinique", "🌀 Risque cyclonique en cours", "🌡 Température mer Antilles"],
   "emploi": ["💼 Offres emploi Guadeloupe", "📄 Créer mon CV professionnel", "🎓 Formations disponibles Antilles", "💰 Salaire moyen Guadeloupe"],
-  "logement": ["🏠 Prix immobilier Guadeloupe", "🏘️ Aides logement DOM-TOM", "📋 Comment louer en Guadeloupe", "🔑 Acheter un bien aux Antilles"],
+  "logement": ["🏠 Prix immobilier Guadeloupe", "🏘 Aides logement DOM-TOM", "📋 Comment louer en Guadeloupe", "🔑 Acheter un bien aux Antilles"],
   "reuss": ["💎 Prix token REUSS maintenant", "📈 Comment acheter REUSS", "🏦 Staking REUSS", "🌍 REUSS sur Quickswap"],
   "bourse": ["🎓 Bourses AUF francophones", "🇫🇷 Bourses Campus France", "🌍 Fulbright program", "💵 Aides financières étudiants"],
-  "séisme": ["🌋 Derniers séismes Antilles", "⚠️ Risque sismique Guadeloupe", "🆘 Que faire en cas de séisme", "📊 Historique séismes Caraïbes"],
-  "cyclone": ["🌀 Alerte cyclone en cours", "📅 Saison cyclonique 2026", "🆘 Consignes cyclone Guadeloupe", "🗺️ Trajectoire cyclones Atlantique"],
-  "amazon": ["🛍️ Boutiques Amazon Antilles", "💰 Calculateur cashback Amazon", "📦 Livraison Amazon Guadeloupe", "🎁 Meilleures offres Amazon"],
-  "créole": ["🌴 Traduire français créole", "📚 Apprendre le créole", "🎵 Musique gwoka", "🗣️ Expressions créoles courantes"],
+  "séisme": ["🌋 Derniers séismes Antilles", "⚠ Risque sismique Guadeloupe", "🆘 Que faire en cas de séisme", "📊 Historique séismes Caraïbes"],
+  "cyclone": ["🌀 Alerte cyclone en cours", "📅 Saison cyclonique 2026", "🆘 Consignes cyclone Guadeloupe", "🗺 Trajectoire cyclones Atlantique"],
+  "amazon": ["🛍 Boutiques Amazon Antilles", "💰 Calculateur cashback Amazon", "📦 Livraison Amazon Guadeloupe", "🎁 Meilleures offres Amazon"],
+  "créole": ["🌴 Traduire français créole", "📚 Apprendre le créole", "🎵 Musique gwoka", "🗣 Expressions créoles courantes"],
   "santé": ["🏥 Urgences Guadeloupe", "💊 Pharmacies de garde", "🩺 Médecins disponibles", "🚑 Numéros urgence DOM-TOM"],
   "carburant": ["⛽ Prix carburant Guadeloupe", "🚗 Prix essence Martinique", "📊 Évolution prix carburant", "⛽ Prix carburant Réunion"],
   "visa": ["🌍 Visa universel REUSSITESS", "📋 Obtenir mon visa réussite", "🌐 Opportunités mondiales", "🎯 Rejoindre le réseau"],
-  "insee": ["📊 Chômage Guadeloupe INSEE", "👥 Population Antilles", "💶 Revenus moyens DOM-TOM", "🏘️ Logement Guadeloupe INSEE"]
+  "insee": ["📊 Chômage Guadeloupe INSEE", "👥 Population Antilles", "💶 Revenus moyens DOM-TOM", "🏘 Logement Guadeloupe INSEE"]
 }

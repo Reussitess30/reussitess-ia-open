@@ -152,7 +152,7 @@ class SentinelleAgent extends AIAgent {
   }
   
   async run(): Promise<RunResult> {
-    console.log(`🛡️ ${this.name} starting patrol...`)
+    console.log(`🛡 ${this.name} starting patrol...`)
     
     try {
       const approvals = await this.checkApprovals()

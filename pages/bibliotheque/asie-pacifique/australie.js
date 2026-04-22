@@ -26,7 +26,7 @@ export default function Australie() {
 
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
             <h2 className="text-3xl font-bold text-yellow-800 mb-6">
-              🏛️ Patrimoine UNESCO (20 sites)
+              🏛 Patrimoine UNESCO (20 sites)
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-yellow-50 p-4 rounded-xl">
@@ -40,7 +40,7 @@ export default function Australie() {
               </div>
               <div className="bg-yellow-50 p-4 rounded-xl">
                 <h3 className="font-bold text-yellow-900 mb-2">
-                  🏜️ Uluru Ayers Rock
+                  🏜 Uluru Ayers Rock
                 </h3>
                 <p className="text-gray-700">
                   Rocher sacré 348m monolithe rouge. Site spirituel aborigène
@@ -100,7 +100,7 @@ export default function Australie() {
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-blue-50 p-4 rounded-xl">
-                <h3 className="font-bold text-blue-900">⛏️ Mines Ressources</h3>
+                <h3 className="font-bold text-blue-900">⛏ Mines Ressources</h3>
                 <p className="text-gray-700">
                   1er exportateur fer charbon. Or uranium bauxite, BHP Rio Tinto
                 </p>
@@ -112,7 +112,7 @@ export default function Australie() {
                 </p>
               </div>
               <div className="bg-blue-50 p-4 rounded-xl">
-                <h3 className="font-bold text-blue-900">🏖️ Qualité Vie</h3>
+                <h3 className="font-bold text-blue-900">🏖 Qualité Vie</h3>
                 <p className="text-gray-700">
                   Melbourne Sydney villes plus vivables. Outdoor lifestyle
                   équilibre

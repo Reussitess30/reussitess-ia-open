@@ -56,7 +56,7 @@ async function verifyOwnership() {
         console.log('   Vous avez le contrôle total depuis cette adresse.\n');
         ownerFound = true;
       } else {
-        console.log(`⚠️  Le propriétaire est une autre adresse: ${owner}`);
+        console.log(`⚠  Le propriétaire est une autre adresse: ${owner}`);
         console.log('   Ce n\'est ni votre adresse 1 ni votre adresse 2.\n');
       }
     } catch (e) {

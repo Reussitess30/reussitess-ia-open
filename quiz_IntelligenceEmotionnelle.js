@@ -2,7 +2,7 @@
 const quizIntelligenceEmotionnelle = {
   title: "Intelligence Émotionnelle",
   description: "Maîtrisez vos émotions, développez votre empathie et transformez vos relations !",
-  emoji: "❤️",
+  emoji: "❤",
   questions: [
     { question: "Quelles sont les 4 composantes principales de l'intelligence émotionnelle selon Salovey et Mayer ?", answers: ["Joie, tristesse, colère, peur", "Percevoir, utiliser, comprendre et réguler les émotions", "QI, QE, créativité, logique", "Empathie, communication, leadership, confiance"], correct: 1, explanation: "Le modèle original de Salovey et Mayer (1990) définit 4 branches : 1. Percevoir les émotions (les reconnaître chez soi et autrui), 2. Utiliser les émotions (pour faciliter la pensée), 3. Comprendre les émotions (leur évolution), 4. Réguler les émotions (gérer les siennes et influencer celles des autres)." },
     { question: "Qu'est-ce que l'empathie cognitive, différente de l'empathie émotionnelle ?", answers: ["Ressentir exactement les mêmes émotions qu'une autre personne", "Comprendre intellectuellement le point de vue et les émotions de l'autre sans nécessairement les ressentir", "Ignorer les émotions des autres", "Être d'accord avec tout le monde"], correct: 1, explanation: "L'empathie émotionnelle = ressentir ce que l'autre ressent (risque de surcharge émotionnelle). L'empathie cognitive = comprendre le point de vue et l'état émotionnel de l'autre sans le ressentir soi-même. Les grands leaders utilisent principalement l'empathie cognitive : elle permet d'aider sans se noyer." },

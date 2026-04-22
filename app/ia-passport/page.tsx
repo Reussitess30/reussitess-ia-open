@@ -61,7 +61,7 @@ export default function IAPassport() {
       ]
     },
     {
-      icon: '🛡️',
+      icon: '🛡',
       title: 'REUSSSHIELD',
       desc: 'Système de sécurité REUSSSHIELD : surveillance du contrat REUSS, détection anomalies blockchain, protection wallet fondateur.',
       stats: ['Surveillance 24/7', 'Blockchain Polygon', 'Contrat Vérifié', 'Anti-Injection'],
@@ -87,7 +87,7 @@ export default function IAPassport() {
       desc: '26 boutiques Amazon actives dans 14 pays sur 5 continents. Influencer ID : fb942837. Expansion en cours.',
       stats: ['26 Boutiques', '14 Pays', '5 Continents', 'Amazon Affilié'],
       links: [
-        { text: '🛍️ Boutiques Amazon', url: 'https://reussitess.fr/boutiques' },
+        { text: '🛍 Boutiques Amazon', url: 'https://reussitess.fr/boutiques' },
         { text: '🌐 Visa Universel', url: 'https://reussitess.fr/visa-universel' },
         { text: '🎓 Opportunities Mondiales', url: 'https://reussitess.fr/champions' }
       ]
@@ -111,7 +111,7 @@ export default function IAPassport() {
       links: [
         { text: '💰 Acheter sur QuickSwap', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' },
         { text: '📊 PolygonScan', url: 'https://polygonscan.com/token/0xB37531727fC07c6EED4f97F852A115B428046EB2' },
-        { text: '⚛️ Pool de Liquidité', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
+        { text: '⚛ Pool de Liquidité', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
         { text: '📈 Investir REUSS', url: 'https://reussitess.fr/investir-reuss' }
       ]
     }
@@ -221,7 +221,7 @@ export default function IAPassport() {
       {/* INFOS TECHNIQUES */}
       <div style={{ maxWidth: '1000px', margin: '2rem auto', padding: '2rem' }}>
         <div style={{ background: 'rgba(10,10,10,0.9)', border: '2px solid rgba(139,92,246,0.4)', borderRadius: '30px', padding: '3rem 2rem' }}>
-          <h2 style={{ textAlign: 'center', fontSize: '2rem', fontWeight: '900', marginBottom: '2.5rem' }}>🛠️ INFORMATIONS TECHNIQUES</h2>
+          <h2 style={{ textAlign: 'center', fontSize: '2rem', fontWeight: '900', marginBottom: '2.5rem' }}>🛠 INFORMATIONS TECHNIQUES</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
             <div style={{ background: 'rgba(255,255,255,0.03)', padding: '2rem', borderRadius: '20px', borderLeft: '6px solid #8b5cf6' }}>
               <h3 style={{ color: '#a78bfa', marginBottom: '1rem' }}>1. Infrastructure</h3>
@@ -242,7 +242,7 @@ export default function IAPassport() {
 
           {/* Conformité */}
           <div style={{ marginTop: '2rem', padding: '2rem', background: 'rgba(239,68,68,0.05)', borderRadius: '20px', border: '1px solid #ef4444' }}>
-            <h3 style={{ color: '#f87171', marginBottom: '1rem' }}>⚖️ CONFORMITÉ RÉGLEMENTAIRE</h3>
+            <h3 style={{ color: '#f87171', marginBottom: '1rem' }}>⚖ CONFORMITÉ RÉGLEMENTAIRE</h3>
             <p style={{ color: '#e2e8f0', lineHeight: '1.6', fontSize: '0.9rem' }}>
               Projet en conformité avec <b>EU AI Act</b> et <b>RGPD</b>. Auto-entrepreneur Guadeloupe, SIRET: 444699979700031. Développement transparent — code open source sur GitHub.
             </p>
@@ -276,9 +276,9 @@ export default function IAPassport() {
           {[
             { text: '📊 PolygonScan', url: 'https://polygonscan.com/token/0xB37531727fC07c6EED4f97F852A115B428046EB2' },
             { text: '💎 QuickSwap', url: 'https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137' },
-            { text: '⚛️ Liquidity Pool', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
+            { text: '⚛ Liquidity Pool', url: 'https://info.quickswap.exchange/#/pair/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c' },
             { text: '💻 GitHub', url: 'https://github.com/Reussitess30/reussitess-global-nexus' },
-            { text: '🛍️ Boutiques', url: 'https://reussitess.fr/boutiques' }
+            { text: '🛍 Boutiques', url: 'https://reussitess.fr/boutiques' }
           ].map((l, i) => (
             <a key={i} href={l.url} target="_blank" rel="noopener noreferrer" style={{ color: '#10b981', textDecoration: 'none', fontSize: '1rem' }}>{l.text}</a>
           ))}

@@ -41,7 +41,7 @@ export default function KickLive() {
           {[
             ['!boudoum', 'Cri de guerre REUSSITESS 🇬🇵'],
             ['!reuss', 'Prix Token REUSS en direct 💎'],
-            ['!meteo', 'Météo Guadeloupe 🌤️'],
+            ['!meteo', 'Météo Guadeloupe 🌤'],
             ['!quiz', 'Question caribéenne aléatoire 🎯'],
             ['!points', 'Voir tes points REUSS 🏆'],
             ['!top', 'Top champions REUSSITESS 👑'],
@@ -57,7 +57,7 @@ export default function KickLive() {
         <div style={{ maxWidth: '700px', margin: '2rem auto', background: '#111', border: '1px solid #a78bfa', borderRadius: '12px', padding: '1.5rem' }}>
           <h2 style={{ color: '#a78bfa', margin: '0 0 1rem' }}>💎 Système Points REUSS</h2>
           {[
-            ['❤️ Follow', '+10 REUSS'],
+            ['❤ Follow', '+10 REUSS'],
             ['🎉 Abonnement', '+100 REUSS'],
             ['🎁 Gift Sub (x1)', '+100 REUSS'],
             ['🎁 Gift Sub (x5)', '+500 REUSS'],

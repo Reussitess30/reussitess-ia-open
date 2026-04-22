@@ -38,7 +38,7 @@ const Cambodge = () => {
         <div className="max-w-4xl mx-auto px-4 py-12 space-y-8">
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <h2 className="text-3xl font-bold mb-6 text-blue-600">
-              🏛️ Informations
+              🏛 Informations
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
@@ -68,11 +68,11 @@ const Cambodge = () => {
           </div>
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <h2 className="text-3xl font-bold mb-6 text-blue-600">
-              🏛️ Patrimoine
+              🏛 Patrimoine
             </h2>
             <ul className="space-y-3">
               <li className="flex gap-3">
-                <span className="text-2xl">🕉️</span>
+                <span className="text-2xl">🕉</span>
                 <div>
                   <h3 className="font-bold text-xl">Angkor Wat UNESCO</h3>
                   <p>Plus grand temple monde</p>
@@ -102,7 +102,7 @@ const Cambodge = () => {
             </p>
           </div>
           <div className="bg-gradient-to-r from-blue-600 to-red-600 rounded-2xl p-8 text-white">
-            <h2 className="text-3xl font-bold mb-4">🛍️ Découvrir</h2>
+            <h2 className="text-3xl font-bold mb-4">🛍 Découvrir</h2>
             <a
               href="https://reussitess.fr/"
               className="bg-white text-blue-600 px-6 py-3 rounded-xl font-bold inline-block hover:scale-105 transition"

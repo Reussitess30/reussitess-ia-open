@@ -123,7 +123,7 @@ export default function Martinique() {
             </div>
 
             {/* Fiscalité & TVA */}
-            <h2 style={{ color: "#667eea" }}>⚖️ Fiscalité & TVA</h2>
+            <h2 style={{ color: "#667eea" }}>⚖ Fiscalité & TVA</h2>
             <div
               style={{
                 background: "#f9fafb",

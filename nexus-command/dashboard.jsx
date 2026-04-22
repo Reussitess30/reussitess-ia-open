@@ -55,7 +55,7 @@ export default function NexusCommandCenter() {
             🌍 Expansion
           </button>
           <button className="bg-gradient-to-r from-red-600 to-red-700 p-4 rounded-xl font-bold hover:scale-105 transition">
-            🛡️ Security
+            🛡 Security
           </button>
         </div>
       </div>

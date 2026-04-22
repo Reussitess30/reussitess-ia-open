@@ -24,7 +24,7 @@ export default function France() {
 
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
             <h2 className="text-3xl font-bold text-blue-800 mb-6">
-              🏛️ Patrimoine UNESCO (49 sites - Record Europe)
+              🏛 Patrimoine UNESCO (49 sites - Record Europe)
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-blue-50 p-4 rounded-xl">
@@ -95,7 +95,7 @@ export default function France() {
             <div className="space-y-4">
               <div className="bg-purple-50 p-4 rounded-xl">
                 <h3 className="font-bold text-purple-900 mb-2">
-                  🍽️ Gastronomie Patrimoine UNESCO
+                  🍽 Gastronomie Patrimoine UNESCO
                 </h3>
                 <p className="text-gray-700">
                   Repas gastronomique français inscrit patrimoine immatériel.
@@ -152,7 +152,7 @@ export default function France() {
               </div>
               <div className="bg-green-50 p-4 rounded-xl">
                 <h3 className="font-bold text-green-900">
-                  ✈️ Airbus Aéronautique
+                  ✈ Airbus Aéronautique
                 </h3>
                 <p className="text-gray-700">
                   Co-leader avions civils mondial avec Boeing. A380 plus gros
@@ -170,7 +170,7 @@ export default function France() {
               </div>
               <div className="bg-green-50 p-4 rounded-xl">
                 <h3 className="font-bold text-green-900">
-                  🏖️ Tourisme N°1 Mondial
+                  🏖 Tourisme N°1 Mondial
                 </h3>
                 <p className="text-gray-700">
                   90 millions visiteurs internationaux/an record. Paris

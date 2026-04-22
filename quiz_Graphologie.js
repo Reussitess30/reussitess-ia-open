@@ -2,7 +2,7 @@
 const quizGraphologie = {
   title: "Graphologie — Ce que votre Écriture Révèle",
   description: "L'écriture est le miroir de l'âme — découvrez les secrets de la graphologie !",
-  emoji: "✍️",
+  emoji: "✍",
   questions: [
     { question: "Qu'est-ce que la graphologie ?", answers: ["L'étude des langues étrangères", "L'étude de la personnalité à travers l'analyse de l'écriture manuscrite", "L'art de la calligraphie", "L'étude des signatures des célébrités"], correct: 1, explanation: "La graphologie est la science (et l'art) d'analyser la personnalité, le caractère et l'état psychologique d'une personne à travers son écriture manuscrite. Elle est utilisée en recrutement (France), en psychologie et en criminologie." },
     { question: "Que révèle une écriture très penchée vers la droite ?", answers: ["Personnalité introvertie et froide", "Nature extravertie, tournée vers les autres, affectivité forte", "Intelligence supérieure", "Agressivité et violence"], correct: 1, explanation: "En graphologie, une écriture inclinée vers la droite indique une personne tournée vers l'avenir, les autres et les émotions. Elle est affective, communicative et a besoin de contacts humains. À l'inverse, une écriture penchée à gauche indique un repli sur soi." },

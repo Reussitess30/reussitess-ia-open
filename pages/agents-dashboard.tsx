@@ -117,7 +117,7 @@ export default function AgentsDashboard() {
             count={sentinellesCount}
             total={40}
             color="#ef4444"
-            icon="🛡️"
+            icon="🛡"
             description="Protection contrat et surveillance blockchain"
           />
           <AgentTypeCard 

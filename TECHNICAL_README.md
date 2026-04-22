@@ -42,7 +42,7 @@ Génère un rapport JSON complet du système.
 - **QuickSwap** : https://dapp.quickswap.exchange/swap/best/ETH/0xB37531727fC07c6EED4f97F852A115B428046EB2?chainId=137
 - **GitHub** : https://github.com/Reussitess30/reussitess-global-nexus
 
-## 🛠️ Stack Technique
+## 🛠 Stack Technique
 
 - **Frontend** : Next.js 16, React 19, TypeScript
 - **Backend** : 100 scripts Python

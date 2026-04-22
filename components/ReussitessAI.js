@@ -315,7 +315,7 @@ export default function ReussitessAI() {
     
     const cleanText = text
       .replace(/\*\*/g, '')
-      .replace(/[🇫🇷🇺🇸🇪🇸🇩🇪🇮🇹🇧🇷🇯🇵🇨🇳💬🗣️✅🚀📚🌍🛍️]/g, '')
+      .replace(/[🇫🇷🇺🇸🇪🇸🇩🇪🇮🇹🇧🇷🇯🇵🇨🇳💬🗣✅🚀📚🌍🛍]/g, '')
       .replace(/\n/g, ' ')
       .substring(0, 600);
 
@@ -361,7 +361,7 @@ export default function ReussitessAI() {
     
     // BOUTIQUE SPÉCIFIQUE
     if (q.match(/amazon|boutique|acheter|shopping|store/)) {
-      let response = '🛍️ **26 BOUTIQUES AMAZON INTERNATIONALES**\n\n';
+      let response = '🛍 **26 BOUTIQUES AMAZON INTERNATIONALES**\n\n';
       
       if (q.match(/france|français|.fr/)) {
         const fr = COMPLETE_KNOWLEDGE.boutiques['France'];
@@ -424,7 +424,7 @@ export default function ReussitessAI() {
     // CULTURE MONDIALE
     if (q.match(/unesco|patrimoine|sites|monument|culture/)) {
       const unesco = COMPLETE_KNOWLEDGE.culture_mondiale['UNESCO'];
-      let response = '🏛️ **UNESCO PATRIMOINE MONDIAL**\n\n';
+      let response = '🏛 **UNESCO PATRIMOINE MONDIAL**\n\n';
       response += unesco.total_sites + '\n\n';
       response += '**TOP PAYS**: ' + unesco.pays_record + '\n\n';
       response += '**CATÉGORIES**: ' + unesco.categories + '\n\n';
@@ -435,11 +435,11 @@ export default function ReussitessAI() {
     
     if (q.match(/langue|parler|linguistique/)) {
       const lang = COMPLETE_KNOWLEDGE.culture_mondiale['Langues_Mondiales'];
-      let response = '🗣️ **LANGUES MONDIALES**\n\n';
+      let response = '🗣 **LANGUES MONDIALES**\n\n';
       response += '**PLUS PARLÉES**: ' + lang.plus_parlees + '\n\n';
       response += '**ONU OFFICIELLES**: ' + lang.langues_officielles_ONU + '\n\n';
       response += '**FAMILLES**: ' + lang.familles_linguistiques + '\n\n';
-      response += '⚠️ **DANGER**: ' + lang.langues_danger;
+      response += '⚠ **DANGER**: ' + lang.langues_danger;
       return response;
     }
     
@@ -454,7 +454,7 @@ export default function ReussitessAI() {
     
     if (q.match(/gastronomie|cuisine|food|manger|plat/)) {
       const gastro = COMPLETE_KNOWLEDGE.culture_mondiale['Gastronomie_Mondiale'];
-      let response = '🍽️ **GASTRONOMIE MONDIALE**\n\n';
+      let response = '🍽 **GASTRONOMIE MONDIALE**\n\n';
       response += '**UNESCO**: ' + gastro.patrimoine_unesco + '\n\n';
       response += '**SPÉCIALITÉS**: ' + gastro.specialites_pays + '\n\n';
       response += '**BOISSONS**: ' + gastro.boissons + '\n\n';
@@ -474,7 +474,7 @@ export default function ReussitessAI() {
     
     if (q.match(/architecture|construction|batiment|monument/)) {
       const archi = COMPLETE_KNOWLEDGE.culture_mondiale['Architecture_Mondiale'];
-      let response = '🏗️ **ARCHITECTURE MONDIALE**\n\n';
+      let response = '🏗 **ARCHITECTURE MONDIALE**\n\n';
       response += '**STYLES**: ' + archi.styles_majeurs + '\n\n';
       response += '**MERVEILLES ANTIQUES**: ' + archi.merveilles_antiques + '\n\n';
       response += '**GRATTE-CIELS**: ' + archi.gratte_ciels + '\n\n';
@@ -491,7 +491,7 @@ export default function ReussitessAI() {
       response += '**INCONTOURNABLES**: ' + fr.incontournables + '\n\n';
       response += '**GASTRONOMIE**: ' + fr.gastronomie + '\n\n';
       response += '**CULTURE**: ' + fr.culture + '\n\n';
-      response += '🛍️ **AMAZON**: ' + fr.conseil_shopping;
+      response += '🛍 **AMAZON**: ' + fr.conseil_shopping;
       return response;
     }
     
@@ -503,7 +503,7 @@ export default function ReussitessAI() {
       response += '**INCONTOURNABLES**: ' + it.incontournables + '\n\n';
       response += '**GASTRONOMIE**: ' + it.gastronomie + '\n\n';
       response += '**CULTURE**: ' + it.culture + '\n\n';
-      response += '🛍️ **AMAZON**: ' + it.conseil_shopping;
+      response += '🛍 **AMAZON**: ' + it.conseil_shopping;
       return response;
     }
     
@@ -515,7 +515,7 @@ export default function ReussitessAI() {
       response += '**INCONTOURNABLES**: ' + jp.incontournables + '\n\n';
       response += '**GASTRONOMIE**: ' + jp.gastronomie + '\n\n';
       response += '**CULTURE**: ' + jp.culture + '\n\n';
-      response += '🛍️ **SHOPPING**: ' + jp.conseil_shopping;
+      response += '🛍 **SHOPPING**: ' + jp.conseil_shopping;
       return response;
     }
     
@@ -527,13 +527,13 @@ export default function ReussitessAI() {
       response += '**MUST-SEE**: ' + us.incontournables + '\n\n';
       response += '**FOOD**: ' + us.gastronomie + '\n\n';
       response += '**CULTURE**: ' + us.culture + '\n\n';
-      response += '🛍️ **AMAZON**: ' + us.conseil_shopping;
+      response += '🛍 **AMAZON**: ' + us.conseil_shopping;
       return response;
     }
     
     // DÉFAUT
     const name = userName ? userName + ', ' : '';
-    return name + 'je suis Alex, expert RÉUSSITESS ! Je peux vous aider avec:\n\n🌍 **62 PAYS**: France, Italie, Japon, USA...\n🛍️ **26 BOUTIQUES Amazon** internationales\n🏛️ **UNESCO** 1199 sites patrimoine\n🗣️ **LANGUES** mondiales\n🍽️ **GASTRONOMIE** internationale\n🎉 **FESTIVALS** mondiaux\n🏗️ **ARCHITECTURE** emblématique\n\nQue voulez-vous découvrir ?';
+    return name + 'je suis Alex, expert RÉUSSITESS ! Je peux vous aider avec:\n\n🌍 **62 PAYS**: France, Italie, Japon, USA...\n🛍 **26 BOUTIQUES Amazon** internationales\n🏛 **UNESCO** 1199 sites patrimoine\n🗣 **LANGUES** mondiales\n🍽 **GASTRONOMIE** internationale\n🎉 **FESTIVALS** mondiaux\n🏗 **ARCHITECTURE** emblématique\n\nQue voulez-vous découvrir ?';
   };
 
   const handleSubmit = function(e) {
@@ -707,7 +707,7 @@ export default function ReussitessAI() {
               </button>
             </div>
             <p className="text-xs text-gray-500 mt-2 text-center">
-              🗣️ 8 langues • 🛍️ 26 Amazon • 🏛️ UNESCO • 🌍 Culture mondiale
+              🗣 8 langues • 🛍 26 Amazon • 🏛 UNESCO • 🌍 Culture mondiale
             </p>
           </form>
         </div>

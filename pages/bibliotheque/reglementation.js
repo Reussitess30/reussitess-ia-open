@@ -94,7 +94,7 @@ export default function Reglementation() {
       ],
     },
     {
-      title: "🏝️ Outre-Mers (DOM-TOM)",
+      title: "🏝 Outre-Mers (DOM-TOM)",
       sections: [
         {
           subtitle: "Spécificités Fiscales",
@@ -152,7 +152,7 @@ export default function Reglementation() {
   return (
     <>
       <Head>
-        <title>⚖️ Réglementation Internationale - Bibliothèque Mondiale</title>
+        <title>⚖ Réglementation Internationale - Bibliothèque Mondiale</title>
         <meta
           name="description"
           content="Réglementations internationales, lois et normes à jour pour le commerce électronique"
@@ -197,7 +197,7 @@ export default function Reglementation() {
                 color: "#7c3aed",
               }}
             >
-              ⚖️ Réglementation Internationale
+              ⚖ Réglementation Internationale
             </h1>
             <p
               style={{ fontSize: "1.2em", color: "#666", marginBottom: "10px" }}
@@ -213,7 +213,7 @@ export default function Reglementation() {
                 fontStyle: "italic",
               }}
             >
-              ⚠️ Information à caractère général. Consultez toujours un juriste
+              ⚠ Information à caractère général. Consultez toujours un juriste
               pour votre situation spécifique.
             </p>
 
@@ -368,7 +368,7 @@ export default function Reglementation() {
               }}
             >
               <h2 style={{ marginBottom: "15px", fontSize: "1.8em" }}>
-                ⚠️ Avertissement Important
+                ⚠ Avertissement Important
               </h2>
               <p
                 style={{

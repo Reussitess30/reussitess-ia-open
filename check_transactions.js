@@ -31,7 +31,7 @@ https.get(url, (res) => {
           console.log('');
         });
       } else {
-        console.log('\n⚠️ Aucune transaction trouvée ou API limitée');
+        console.log('\n⚠ Aucune transaction trouvée ou API limitée');
         console.log('💡 Vérifiez manuellement sur: https://polygonscan.com/address/' + WALLET);
       }
     } catch (e) {

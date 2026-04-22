@@ -83,7 +83,7 @@ async function analyzeTransactions() {
                 console.log(`${i + 1}. TRANSFERT AUTOMATIQUE:`);
                 console.log(`   📥 Reçu: ${transfer.received.toFixed(6)} POL`);
                 console.log(`   📤 Envoyé: ${transfer.sent.toFixed(6)} POL`);
-                console.log(`   ⏱️  Délai: ${transfer.timeDiff} secondes`);
+                console.log(`   ⏱  Délai: ${transfer.timeDiff} secondes`);
                 console.log(`   👤 De: ${transfer.receivedFrom.substring(0, 20)}...`);
                 console.log(`   👉 Vers: ${transfer.sentTo.substring(0, 20)}...`);
                 console.log(`   🔗 TX Reçue: https://polygonscan.com/tx/${transfer.receivedHash}`);
@@ -96,7 +96,7 @@ async function analyzeTransactions() {
               console.log('Un bot surveille votre wallet et vide automatiquement');
               console.log('tout POL qui arrive en quelques secondes.\n');
               
-              console.log('🛡️ ACTIONS IMMÉDIATES REQUISES:\n');
+              console.log('🛡 ACTIONS IMMÉDIATES REQUISES:\n');
               console.log('1. ❌ N\'ENVOYEZ PLUS RIEN à cette adresse');
               console.log('2. 🆕 CRÉEZ un nouveau wallet (je vais vous aider)');
               console.log('3. 💎 TRANSFÉREZ vos 1 milliard de REUSS vers le nouveau wallet');
@@ -108,12 +108,12 @@ async function analyzeTransactions() {
               console.log('Votre wallet est probablement sûr, juste vide de POL.\n');
               
             } else if (incomingPOL.length === 0) {
-              console.log('\n⚠️  AUCUNE RÉCEPTION DE POL RÉCENTE\n');
+              console.log('\n⚠  AUCUNE RÉCEPTION DE POL RÉCENTE\n');
               console.log('Impossible de détecter un bot drainer sans réception de POL.');
               console.log('Votre wallet semble simplement vide.\n');
               
             } else {
-              console.log('\n⚠️  PATTERN AMBIGU\n');
+              console.log('\n⚠  PATTERN AMBIGU\n');
               console.log(`Réceptions: ${incomingPOL.length}, Envois: ${outgoingPOL.length}`);
               console.log('Les transferts ne semblent pas automatiques, mais soyez prudent.\n');
             }
@@ -147,7 +147,7 @@ async function analyzeTransactions() {
             resolve(suspiciousTransfers.length > 0);
             
           } else {
-            console.log('\n⚠️  API Polygonscan limitée ou aucune transaction');
+            console.log('\n⚠  API Polygonscan limitée ou aucune transaction');
             console.log('\n🔗 Vérification manuelle requise:');
             console.log(`   https://polygonscan.com/address/${WALLET}`);
             console.log('\nRecherchez des patterns de transferts automatiques:\n');
@@ -180,7 +180,7 @@ async function checkWalletSecurity() {
   console.log('');
   
   if (txCount > 100 && balance === 0n) {
-    console.log('⚠️  PATTERN SUSPECT:');
+    console.log('⚠  PATTERN SUSPECT:');
     console.log(`   • ${txCount} transactions effectuées`);
     console.log(`   • Mais solde à 0 POL`);
     console.log(`   • Tous les fonds ont été dépensés en frais de gaz`);
@@ -201,7 +201,7 @@ async function runFullAudit() {
 
 runFullAudit().then(isCompromised => {
   if (isCompromised) {
-    console.log('\n⚠️  WALLET COMPROMIS - Création d\'un nouveau wallet recommandée\n');
+    console.log('\n⚠  WALLET COMPROMIS - Création d\'un nouveau wallet recommandée\n');
   } else {
     console.log('\n✅ Wallet semble sûr - Rechargez simplement avec du POL\n');
   }

@@ -138,7 +138,7 @@ body{font-family:'Exo 2',sans-serif;background:var(--bg);color:var(--text);min-h
 
 <div class="header">
   <div class="header-logo">
-    <div class="shield-icon">🛡️</div>
+    <div class="shield-icon">🛡</div>
     <div style="text-align:left"><h1>REUSS<span>SHIELD</span></h1></div>
   </div>
   <p>Détecte les délégations (approvals) placées par des bots malveillants sur vos tokens et les supprime en un seul clic. Connectez votre wallet pour démarrer.</p>
@@ -327,7 +327,7 @@ function renderCard(ap){
     if(ap.unlimited){cardClass='danger';riskTag='<span class="risk-tag critical">CRITIQUE</span>'}
     else{cardClass='warning';riskTag='<span class="risk-tag suspect">SUSPECT</span>'}
   }
-  const btn=ap.revoked?`<div class="btn-revoked-done">✓ Révoqué</div>`:ap.safe?`<button class="btn-revoke" style="background:linear-gradient(135deg,#ff9500,#ff6b00)" onclick="revokeOne(${idx})">Révoquer</button>`:`<button class="btn-revoke" onclick="revokeOne(${idx})">🛡️ Révoquer</button>`;
+  const btn=ap.revoked?`<div class="btn-revoked-done">✓ Révoqué</div>`:ap.safe?`<button class="btn-revoke" style="background:linear-gradient(135deg,#ff9500,#ff6b00)" onclick="revokeOne(${idx})">Révoquer</button>`:`<button class="btn-revoke" onclick="revokeOne(${idx})">🛡 Révoquer</button>`;
   const colors=['#00e676','#00d4ff','#ff2d55','#ffcc00','#c060ff','#ff9500'];
   const c=colors[idx%colors.length];
   return`<div class="approval-card ${cardClass}" id="card-${idx}">
@@ -375,7 +375,7 @@ async function revokeOne(idx){
     showToast(`✓ Révoqué : ${ap.tokenSymbol} → ${ap.spenderName}`,"success");
   }catch(e){
     if(!signer){ap.revoked=true;revokedHistory.push({time:new Date(),token:ap.tokenSymbol,spender:ap.spenderName,addr:ap.spender});renderApprovals();renderHistory();showToast(`✓ [Demo] Révoqué : ${ap.tokenSymbol} → ${ap.spenderName}`,"success")}
-    else{if(btn){btn.disabled=false;btn.textContent='🛡️ Révoquer'}showToast("Erreur : "+(e.message||e),"error")}
+    else{if(btn){btn.disabled=false;btn.textContent='🛡 Révoquer'}showToast("Erreur : "+(e.message||e),"error")}
   }
 }
 
@@ -395,9 +395,9 @@ function renderHistory(){
 
 function showSpinner(v,t){document.getElementById('spinner').classList.toggle('visible',v);if(t)document.getElementById('spinnerText').textContent=t}
 function showToast(msg,type='info'){
-  const c=document.getElementById('toastContainer'),icons={success:'✅',error:'❌',info:'ℹ️'};
+  const c=document.getElementById('toastContainer'),icons={success:'✅',error:'❌',info:'ℹ'};
   const d=document.createElement('div');d.className=`toast ${type}`;
-  d.innerHTML=`<div class="toast-icon">${icons[type]||'ℹ️'}</div><div class="toast-text">${msg}</div>`;
+  d.innerHTML=`<div class="toast-icon">${icons[type]||'ℹ'}</div><div class="toast-text">${msg}</div>`;
   c.appendChild(d);setTimeout(()=>{d.classList.add('out');setTimeout(()=>d.remove(),350)},3500);
 }
 function fmtAddr(a){return a?a.slice(0,6)+'...'+a.slice(-4):'—'}

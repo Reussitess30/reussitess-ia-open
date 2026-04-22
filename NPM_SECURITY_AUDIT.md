@@ -86,10 +86,10 @@ Cela installerait Next.js 16.x qui est une **mise à jour majeure (breaking chan
 
 ### Risques de la Mise à Jour vers Next.js 16
 
-- ⚠️ Breaking changes possibles
-- ⚠️ Nécessite des tests approfondis
-- ⚠️ Peut nécessiter des modifications de code
-- ⚠️ Peut affecter next-pwa et autres dépendances
+- ⚠ Breaking changes possibles
+- ⚠ Nécessite des tests approfondis
+- ⚠ Peut nécessiter des modifications de code
+- ⚠ Peut affecter next-pwa et autres dépendances
 
 ### Décision
 
@@ -129,7 +129,7 @@ npm outdated
 - Aucune fonctionnalité affectée par les vulnérabilités
 - Toutes les autres mesures de sécurité sont en place (headers HTTP, CSP, RGPD, etc.)
 
-⚠️ Surveillance continue recommandée pour les futures mises à jour de sécurité.
+⚠ Surveillance continue recommandée pour les futures mises à jour de sécurité.
 
 ---
 

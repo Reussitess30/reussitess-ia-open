@@ -24,12 +24,12 @@ export default function Italie() {
 
           <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
             <h2 className="text-3xl font-bold text-green-800 mb-6">
-              🏛️ UNESCO (58 sites - RECORD MONDIAL ABSOLU)
+              🏛 UNESCO (58 sites - RECORD MONDIAL ABSOLU)
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-green-50 p-4 rounded-xl">
                 <h3 className="font-bold text-green-900 mb-2">
-                  🏛️ Colisée Rome
+                  🏛 Colisée Rome
                 </h3>
                 <p className="text-gray-700">
                   Amphithéâtre Flavien 50,000 places construit 80 AD.
@@ -133,7 +133,7 @@ export default function Italie() {
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-blue-50 p-4 rounded-xl">
                 <h3 className="font-bold text-blue-900">
-                  🏎️ Ferrari Lamborghini
+                  🏎 Ferrari Lamborghini
                 </h3>
                 <p className="text-gray-700">
                   Supercars luxe légende Maranello. Maserati Alfa Romeo,
@@ -157,7 +157,7 @@ export default function Italie() {
                 </p>
               </div>
               <div className="bg-blue-50 p-4 rounded-xl">
-                <h3 className="font-bold text-blue-900">🏖️ Tourisme 65M</h3>
+                <h3 className="font-bold text-blue-900">🏖 Tourisme 65M</h3>
                 <p className="text-gray-700">
                   5e destination mondiale. Rome Florence Venise, Côte
                   Amalfitaine Cinque Terre, patrimoine attractivité

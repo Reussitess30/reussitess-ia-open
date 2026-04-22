@@ -11,7 +11,7 @@ const DEFIS = {
     { defi: "Revise 1 sujet difficile pendant 25 minutes (methode Pomodoro).", categorie: "Etudes", emoji: "📚" },
     { defi: "Recherche 1 bourse ou opportunite disponible pour ton profil.", categorie: "Opportunite", emoji: "🎓" },
     { defi: "Lis 10 pages d un livre qui te fait progresser.", categorie: "Lecture", emoji: "📖" },
-    { defi: "Prends des notes organisees sur 1 cours de la journee.", categorie: "Organisation", emoji: "✏️" },
+    { defi: "Prends des notes organisees sur 1 cours de la journee.", categorie: "Organisation", emoji: "✏" },
     { defi: "Contacte 1 mentor ou professionnel de ton domaine.", categorie: "Reseau", emoji: "🤝" },
   ],
   sportif: [
@@ -23,7 +23,7 @@ const DEFIS = {
   ],
   general: [
     { defi: "Ecris 3 choses pour lesquelles tu es reconnaissant(e) aujourd hui.", categorie: "Gratitude", emoji: "🙏" },
-    { defi: "Appelle quelqu un que tu n as pas contacte depuis longtemps.", categorie: "Liens", emoji: "❤️" },
+    { defi: "Appelle quelqu un que tu n as pas contacte depuis longtemps.", categorie: "Liens", emoji: "❤" },
     { defi: "Coupe les reseaux sociaux pendant 2h et fais quelque chose de concret.", categorie: "Focus", emoji: "🎯" },
     { defi: "Apprends 1 mot en creole caribeen et utilise-le dans la journee.", categorie: "Culture", emoji: "🌴" },
     { defi: "Fais 1 action vers ton reve principal — aussi petite soit-elle.", categorie: "Vision", emoji: "🚀" },

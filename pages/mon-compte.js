@@ -36,7 +36,7 @@ export default function MonCompte() {
   const tier = getTier(reussPoints);
 
   const rewards = [
-    { reuss: 1000, label: "5% réduction sur nos services", icon: "🛍️", available: reussPoints >= 1000 },
+    { reuss: 1000, label: "5% réduction sur nos services", icon: "🛍", available: reussPoints >= 1000 },
     { reuss: 5000, label: "Code promo exclusif 10%", icon: "🎁", available: reussPoints >= 5000 },
     { reuss: 10000, label: "Tier Bronze — Membre actif REUSSITESS®971", icon: "⭐", available: reussPoints >= 10000 },
     { reuss: 50000, label: "Tier Silver — Accès prioritaire nouvelles fonctionnalités", icon: "🥈", available: reussPoints >= 50000 },
@@ -67,7 +67,7 @@ export default function MonCompte() {
                 <h1 style={{ color: "white", fontSize: "1.8rem", fontWeight: "900" }}>
                   {userName || "Champion REUSSITESS®"}
                 </h1>
-                <button onClick={() => { setEditName(true); setTempName(userName); }} style={{ background: "transparent", color: "#7c3aed", border: "1px solid #7c3aed", padding: "0.3rem 1rem", borderRadius: "20px", cursor: "pointer", fontSize: "0.85rem" }}>✏️ Modifier mon nom</button>
+                <button onClick={() => { setEditName(true); setTempName(userName); }} style={{ background: "transparent", color: "#7c3aed", border: "1px solid #7c3aed", padding: "0.3rem 1rem", borderRadius: "20px", cursor: "pointer", fontSize: "0.85rem" }}>✏ Modifier mon nom</button>
               </div>
             )}
             <div style={{ color: tier.color, fontWeight: "900", fontSize: "1.3rem" }}>{tier.name}</div>
