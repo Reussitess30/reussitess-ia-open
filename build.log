@@ -3,13 +3,6 @@
 > next build --webpack
 
 [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
- ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
- We detected multiple lockfiles and selected the directory of /data/data/com.termux/files/home/package-lock.json as the root directory.
- To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
-   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
- Detected additional lockfiles: 
-   * /data/data/com.termux/files/home/reussitess-global-nexus/package-lock.json
-
    Skipping creating a lockfile at /data/data/com.termux/files/home/reussitess-global-nexus/.next/lock because we're using WASM bindings
    ▲ Next.js 16.0.7 (webpack)
    - Environments: .env.local, .env
@@ -19,191 +12,59 @@
 
    Creating an optimized production build ...
 [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
-[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
-[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
- ✓ Compiled successfully in 67s
-   Running TypeScript ...
-   Collecting page data using 1 worker ...
-[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
-   Generating static pages using 1 worker (0/130) ...
-[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
-   Generating static pages using 1 worker (32/130) 
-   Generating static pages using 1 worker (64/130) 
-   Generating static pages using 1 worker (97/130) 
- ✓ Generating static pages using 1 worker (130/130) in 5.8s
- ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
-   Finalizing page optimization ...
-   Collecting build traces ...
+Failed to compile.
 
-Route (app)                                        Revalidate  Expire
-┌ ○ /_not-found
-├ ○ /api/ai-status                                        10s      1y
-├ ƒ /api/amazon-deals
-├ ƒ /api/generate-report
-├ ƒ /api/superbot-reussitess
-├ ƒ /api/superbot-reussitess/data
-├ ƒ /api/token-info
-├ ○ /ia-passport
-├ ○ /monitoring-ia
-└ ○ /transparency
+./pages/api/superbot/chat.js
+Error:   x Unexpected character '\u{fe0f}'
+    ,-[/data/data/com.termux/files/home/reussitess-global-nexus/pages/api/superbot/chat.js:89:1]
+ 86 | }
+ 87 | 
+ 88 | function getPolitiquesGuyane() {
+ 89 |   return `🏛️ **Élus Officiels de Guyane (2025-2026)**
+    :            ^
+ 90 | 
+ 91 | 🌴 **COLLECTIVITÉ TERRITORIALE DE GUYANE (CTG)**
+ 92 | 👤 **Gabriel Serville** — Président CTG depuis le 2 juillet 2021
+    `----
+  x Unexpected character '🏛'
+    ,-[/data/data/com.termux/files/home/reussitess-global-nexus/pages/api/superbot/chat.js:89:1]
+ 86 | }
+ 87 | 
+ 88 | function getPolitiquesGuyane() {
+ 89 |   return `🏛️ **Élus Officiels de Guyane (2025-2026)**
+    :           ^
+ 90 | 
+ 91 | 🌴 **COLLECTIVITÉ TERRITORIALE DE GUYANE (CTG)**
+ 92 | 👤 **Gabriel Serville** — Président CTG depuis le 2 juillet 2021
+    `----
+  x Expected ';', got '<lexing error: Error { error: (4245..4245, UnexpectedChar { c: '🏛' }) }>'
+    ,-[/data/data/com.termux/files/home/reussitess-global-nexus/pages/api/superbot/chat.js:89:1]
+ 86 | }
+ 87 | 
+ 88 | function getPolitiquesGuyane() {
+ 89 |   return `🏛️ **Élus Officiels de Guyane (2025-2026)**
+    :           ^
+ 90 | 
+ 91 | 🌴 **COLLECTIVITÉ TERRITORIALE DE GUYANE (CTG)**
+ 92 | 👤 **Gabriel Serville** — Président CTG depuis le 2 juillet 2021
+    `----
 
-Route (pages)
-┌ ○ /
-├   /_app
-├ ○ /404 (825 ms)
-├ ○ /a-propos (815 ms)
-├ ○ /academie (815 ms)
-├ ○ /affiliation (814 ms)
-├ ○ /agents-dashboard (813 ms)
-├ ○ /airpods (813 ms)
-├ ○ /amazon (812 ms)
-├ ○ /analytics (812 ms)
-├ ƒ /api/agents/orchestrate
-├ ƒ /api/auto-update
-├ ƒ /api/autocomplete
-├ ƒ /api/bot
-├ ƒ /api/chat
-├ ƒ /api/conversations
-├ ƒ /api/full-knowledge
-├ ƒ /api/gemini
-├ ƒ /api/generate-pdf
-├ ƒ /api/health
-├ ƒ /api/knowledge
-├ ƒ /api/observatoire
-├ ƒ /api/passeport/register
-├ ƒ /api/passeport/stats
-├ ƒ /api/podcasts-rss
-├ ƒ /api/read-pdf
-├ ƒ /api/reuss-dashboard
-├ ƒ /api/reuss-webhook
-├ ƒ /api/rss-experts
-├ ƒ /api/sitemap.xml
-├ ƒ /api/suggestions
-├ ƒ /api/superbot/chat
-├ ƒ /api/superbot/compagnon-creole
-├ ƒ /api/superbot/creole-tts
-├ ƒ /api/superbot/debug
-├ ƒ /api/superbot/extensions
-├ ƒ /api/superbot/langchain
-├ ƒ /api/superbot/whisper
-├ ƒ /api/superbot/wikipedia
-├ ƒ /api/telegram-webhook
-├ ƒ /api/visa/generate-pdf
-├ ƒ /api/visa/register
-├ ƒ /api/visitors
-├ ƒ /api/zenquote
-├ ○ /astuces
-├ ○ /bibliotheque
-├ ○ /bibliotheque/actu
-├ ○ /bibliotheque/afrique/cameroun
-├ ○ /bibliotheque/afrique/cote-ivoire
-├ ○ /bibliotheque/afrique/madagascar
-├ ○ /bibliotheque/afrique/mali
-├ ○ /bibliotheque/afrique/rdc
-├ ○ /bibliotheque/afrique/rwanda
-├ ○ /bibliotheque/afrique/senegal
-├ ○ /bibliotheque/amerique-sud/bresil
-├ ○ /bibliotheque/ameriques/haiti
-├ ○ /bibliotheque/ameriques/louisiane
-├ ○ /bibliotheque/ameriques/quebec
-├ ○ /bibliotheque/asie-pacifique/australie
-├ ○ /bibliotheque/asie-pacifique/cambodge
-├ ○ /bibliotheque/asie-pacifique/inde
-├ ○ /bibliotheque/asie-pacifique/laos
-├ ○ /bibliotheque/asie-pacifique/nouvelle-zelande
-├ ○ /bibliotheque/asie-pacifique/singapour
-├ ○ /bibliotheque/asie-pacifique/vanuatu
-├ ○ /bibliotheque/asie-pacifique/vietnam
-├ ○ /bibliotheque/dom-tom/guadeloupe
-├ ○ /bibliotheque/dom-tom/guyane
-├ ○ /bibliotheque/dom-tom/martinique
-├ ○ /bibliotheque/dom-tom/mayotte
-├ ○ /bibliotheque/dom-tom/nouvelle-caledonie
-├ ○ /bibliotheque/dom-tom/polynesie
-├ ○ /bibliotheque/dom-tom/reunion
-├ ○ /bibliotheque/dom-tom/saint-barthelemy
-├ ○ /bibliotheque/dom-tom/saint-martin
-├ ○ /bibliotheque/dom-tom/saint-pierre
-├ ○ /bibliotheque/dom-tom/wallis-futuna
-├ ○ /bibliotheque/europe/allemagne
-├ ○ /bibliotheque/europe/belgique
-├ ○ /bibliotheque/europe/espagne
-├ ○ /bibliotheque/europe/france
-├ ○ /bibliotheque/europe/italie
-├ ○ /bibliotheque/europe/luxembourg
-├ ○ /bibliotheque/europe/monaco
-├ ○ /bibliotheque/europe/royaume-uni
-├ ○ /bibliotheque/europe/suede
-├ ○ /bibliotheque/europe/suisse
-├ ○ /bibliotheque/histoire
-├ ○ /bibliotheque/maghreb/algerie
-├ ○ /bibliotheque/maghreb/liban
-├ ○ /bibliotheque/maghreb/maroc
-├ ○ /bibliotheque/maghreb/tunisie
-├ ○ /bibliotheque/outils
-├ ○ /bibliotheque/pays/fr
-├ ○ /bibliotheque/pays/guadeloupe
-├ ○ /bibliotheque/pays/guyane
-├ ○ /bibliotheque/pays/martinique
-├ ○ /bibliotheque/prof
-├ ○ /bibliotheque/reglementation
-├ ○ /booster-reussitess-amazon
-├ ○ /boutiques (363 ms)
-├ ○ /calculateur-amazon (363 ms)
-├ ○ /carte-caribeenne (362 ms)
-├ ○ /certificat (362 ms)
-├ ○ /champions (362 ms)
-├ ○ /communaute (361 ms)
-├ ○ /contact (362 ms)
-├ ○ /creole (361 ms)
-├ ○ /de
-├ ○ /en
-├ ○ /es
-├ ○ /evenements
-├ ○ /fr
-├ ○ /guadeloupe
-├ ○ /guide-complet
-├ ○ /guyane
-├ ○ /hub-central
-├ ○ /hub-international
-├ ○ /hub-regional
-├ ○ /hub-regional/creole
-├ ○ /hub-regional/douanes
-├ ○ /hub-regional/marketing-seo
-├ ○ /hub-regional/opportunites
-├ ○ /index.before-coach
-├ ○ /investir-reuss
-├ ○ /legal
-├ ○ /ma-revolution-ia
-├ ○ /marketplace
-├ ○ /martinique
-├ ○ /mentions-legales
-├ ○ /mon-adn
-├ ○ /mon-compte
-├ ○ /neuro-x
-├ ○ /observatoire-antilles
-├ ○ /oracle-971
-├ ○ /outils
-├ ○ /outils-calculateurs
-├ ○ /passe-port-mondial
-├ ○ /podcasts-creoles
-├ ○ /politique-confidentialite
-├ ○ /presse
-├ ○ /pwa-app
-├ ○ /quiz
-├ ○ /quiz/[id]
-├ ○ /radio
-├ ○ /ressources/culture-guadeloupe
-├ ○ /ressources/histoire-afrique
-├ ○ /ressources/patrimoine-martinique
-├ ○ /reunion
-├ ○ /reuss-live
-├ ○ /savoir-culture
-├ ○ /telecharger
-├ ○ /test-connexion
-├ ƒ /vamazon
-└ ○ /visa-universel
+Caused by:
+    0: failed to process js file
+    1: Syntax Error
+    at module.exports.__wbindgen_error_new (/data/data/com.termux/files/home/reussitess-global-nexus/node_modules/next/wasm/@next/swc-wasm-nodejs/wasm.js:647:17)
+    at wasm.wasm.__wbindgen_error_new externref shim (wasm://wasm/wasm.wasm-0698437e:wasm-function[22322]:0x1420296)
+    at wasm.wasm.wasm::transform_sync::h529ddc4954edadd0 (wasm://wasm/wasm.wasm-0698437e:wasm-function[2063]:0xadbaf7)
+    at wasm.wasm.wasm_bindgen_futures::future_to_promise::{{closure}}::{{closure}}::h2e5f71fd2a270a1f (wasm://wasm/wasm.wasm-0698437e:wasm-function[10267]:0x1230f7b)
+    at wasm.wasm.wasm_bindgen_futures::queue::Queue::new::{{closure}}::h599d038da4d3846a (wasm://wasm/wasm.wasm-0698437e:wasm-function[8443]:0x1166b1b)
+    at wasm.wasm.<dyn core::ops::function::FnMut<(A,)>+Output = R as wasm_bindgen::closure::WasmClosure>::describe::invoke::hed48f120abbf9c99 (wasm://wasm/wasm.wasm-0698437e:wasm-function[21877]:0x141cf84)
+    at wasm.wasm.closure1163 externref shim (wasm://wasm/wasm.wasm-0698437e:wasm-function[22832]:0x14234a9)
+    at __wbg_adapter_50 (/data/data/com.termux/files/home/reussitess-global-nexus/node_modules/next/wasm/@next/swc-wasm-nodejs/wasm.js:349:10)
+    at real (/data/data/com.termux/files/home/reussitess-global-nexus/node_modules/next/wasm/@next/swc-wasm-nodejs/wasm.js:140:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
 
-○  (Static)   prerendered as static content
-ƒ  (Dynamic)  server-rendered on demand
+Import trace for requested module:
+./pages/api/superbot/chat.js
 
+
+> Build failed because of webpack errors
