@@ -2344,7 +2344,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("président usa") || msgLow.includes("président etats-unis") || msgLow.includes("president usa")) {
     return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Donald Trump** réélu Nov 2024, investi 20/01/2025. Actuel président USA. Boudoum ! 📱" });
   }
-  if ((msgLow.includes("crypto") || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme") && !msgLow.startsWith("qui ") && !msgLow.startsWith("que ") && !msgLow.startsWith("quels ") && !msgLow.startsWith("quelle ") && !msgLow.startsWith("comment ") && !msgLow.startsWith("pourquoi ") && !msgLow.startsWith("quand ") && !msgLow.startsWith("ou ") && !msgLow.startsWith("où ")) {
+  if (((msgLow.includes("crypto") && (msgLow.includes("prix") || msgLow.includes("acheter") || msgLow.includes("vendre") || msgLow.length <= 6)) || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme") && !msgLow.startsWith("qui ") && !msgLow.startsWith("que ") && !msgLow.startsWith("quels ") && !msgLow.startsWith("quelle ") && !msgLow.startsWith("comment ") && !msgLow.startsWith("pourquoi ") && !msgLow.startsWith("quand ") && !msgLow.startsWith("ou ") && !msgLow.startsWith("où ")) {
     const country = msgLow.includes("haiti") ? "haiti" : msgLow.includes("rwanda") ? "rwanda" : "global"
     const data = await fetch(`https://reussitess.fr/api/world-data?type=crypto&country=${country}`).then(r=>r.json())
     return res.status(200).json(data)
@@ -5384,7 +5384,7 @@ export default async function handler(req, res) {
   }
 
   // ===== PRÉSIDENTS À JOUR 2025 =====
-  if (msgLow.includes("président") || msgLow.includes("premier ministre")) {
+  if (msgLow.includes("président") || msgLow.includes("premier ministre") || msgLow.includes("trump") || msgLow.includes("qui gouverne") || msgLow.includes("chef état")) {
     if (msgLow.includes("américain") || msgLow.includes("usa") || msgLow.includes("états-unis") || msgLow.includes("america") || msgLow.includes("trump") || msgLow.includes("biden"))
       return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Président des États-Unis**\n\n**Donald Trump** — 47ème président\nEn fonction depuis le 20 janvier 2025\nParti : Républicain\nVice-président : JD Vance\n\n(Joe Biden était le 46ème président, 2021-2025)\n\nBoudoum ! 🇬🇵" })
     if (msgLow.includes("france") || msgLow.includes("français") || msgLow.includes("macron") || msgLow.includes("élysée"))
@@ -8078,7 +8078,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("président usa") || msgLow.includes("président etats-unis") || msgLow.includes("president usa")) {
     return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Donald Trump** réélu Nov 2024, investi 20/01/2025. Actuel président USA. Boudoum ! 📱" });
   }
-  if ((msgLow.includes("crypto") || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme") && !msgLow.startsWith("qui ") && !msgLow.startsWith("que ") && !msgLow.startsWith("quels ") && !msgLow.startsWith("quelle ") && !msgLow.startsWith("comment ") && !msgLow.startsWith("pourquoi ") && !msgLow.startsWith("quand ") && !msgLow.startsWith("ou ") && !msgLow.startsWith("où ")) {
+  if (((msgLow.includes("crypto") && (msgLow.includes("prix") || msgLow.includes("acheter") || msgLow.includes("vendre") || msgLow.length <= 6)) || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme") && !msgLow.startsWith("qui ") && !msgLow.startsWith("que ") && !msgLow.startsWith("quels ") && !msgLow.startsWith("quelle ") && !msgLow.startsWith("comment ") && !msgLow.startsWith("pourquoi ") && !msgLow.startsWith("quand ") && !msgLow.startsWith("ou ") && !msgLow.startsWith("où ")) {
     const country = msgLow.includes("haiti") ? "haiti" : msgLow.includes("rwanda") ? "rwanda" : "global"
     const data = await fetch(`https://reussitess.fr/api/world-data?type=crypto&country=${country}`).then(r=>r.json())
     return res.status(200).json(data)
