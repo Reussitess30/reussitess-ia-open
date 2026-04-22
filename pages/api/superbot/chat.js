@@ -64,6 +64,120 @@ function getPolitiquesGuadeloupe() {
 
 Boudoum ! 🇬🇵`
 }
+
+function getPolitiquesMartinique() {
+  return `🏛️ **Élus Officiels de Martinique (2025-2026)**
+
+🌴 **CONSEIL EXÉCUTIF CTM**
+👤 **Serge Letchimy** — Président CTM depuis décembre 2021
+ℹ️ Fondateur PPM (Parti Progressiste Martiniquais), architecte de formation, ancien maire de Fort-de-France, défenseur de l'autonomie martiniquaise
+
+🗳️ **DÉPUTÉS ASSEMBLÉE NATIONALE (élus juillet 2024)**
+• **1ère circ. Fort-de-France** : **Béatrice Bellay** (PS) — Née le 25 juillet 1975 à Villepinte, parents martiniquais. Diplômée droit-gestion Sorbonne. 1ère secrétaire Fédération Socialiste Martinique. Surprise des législatives, bat Johnny Hajjar (PPM) par ~1700 voix. 2ème femme martiniquaise à l'Assemblée après Josette Manin (2017).
+• **2ème circ. Nord** : **Marcellin Nadeau** (GDR/Péyi-A) — Né le 2 nov 1962 à Saint-Pierre. Ancien maire du Prêcheur 2008-2022. Cofondateur Péyi-A avec Nilor en 2019. Réélu avec 17 229 voix.
+• **3ème circ. Centre** : **Jiovanny William** (GDR/Péyi-A) — Né en 1985, avocat. Conseiller municipal du Robert. Réélu avec 18 512 voix. A obtenu médaille AN pour cinéaste Euzhan Palcy.
+• **4ème circ. Sud** : **Jean-Philippe Nilor** (LFI-NFP/Péyi-A) — Né le 15 mai 1965 à Fort-de-France. Député depuis 2012, 4ème mandat. Le mieux élu de Martinique avec 21 620 voix (87%). Cofondateur Péyi-A.
+
+🏛️ **SÉNATEURS**
+• **Catherine Conconne** | **Victorin Lurel** (sénateur partagé Guadeloupe)
+
+🔗 Sources : assemblee-nationale.fr | ctmartinique.mq
+Boudoum ! 🇲🇶\`
+}
+
+function getPolitiquesGuyane() {
+  return `🏛️ **Élus Officiels de Guyane (2025-2026)**
+
+🌴 **COLLECTIVITÉ TERRITORIALE DE GUYANE (CTG)**
+👤 **Gabriel Serville** — Président CTG depuis le 2 juillet 2021
+ℹ️ Né le 27 septembre 1959 à Cayenne (père Saint-Lucien). Ancien professeur de maths puis proviseur lycée. Fondateur Péyi Guyane en 2018. Ancien député 2012-2021, ancien maire Matoury 2014-2017. Premier indépendantiste président de la CTG. Engagé contre l'orpaillage illégal. Hospitalisé fin 2024 pour maladie grave.
+
+🗳️ **DÉPUTÉS ASSEMBLÉE NATIONALE (élus juillet 2024)**
+• **1ère circ.** : **Jean-Victor Castor** (GDR/NFP)
+• **2ème circ.** : **Davy Rimane** (GDR/NFP)
+
+🏛️ **SÉNATEURS**
+• **Georges Patient** | **Marie-Laure Phinera-Horth**
+
+⚠️ **GRANDS ENJEUX GUYANE :**
+• Orpaillage illégal et mercure en Amazonie
+• Immigration clandestine depuis Brésil/Suriname
+• Continuité territoriale et cherté de la vie
+• Développement du spatial (Kourou/Ariane)
+• Droits des peuples amérindiens et bushinengués
+
+🔗 Sources : ctguyane.fr | assemblee-nationale.fr
+Boudoum ! 🇬🇫\`
+}
+
+function getPolitiquesReunion() {
+  return `🏛️ **Élus Officiels de La Réunion (2025-2026)**
+
+🌴 **CONSEIL RÉGIONAL**
+👤 **Huguette Bello** — Présidente Région Réunion depuis avril 2021
+ℹ️ Née le 24 août 1950 à Saint-Pierre. Parents planteurs. Enseignante de formation. Fondatrice mouvement Pour La Réunion. Ancienne députée 2002-2021 groupe GDR. Soutien LFI/NFP. Citée candidate PM France après victoire NFP 2024. Défend autonomie et développement réunionnais.
+
+🏛️ **CONSEIL DÉPARTEMENTAL**
+👤 **Cyrille Melchior** — Président depuis décembre 2017
+ℹ️ LR (droite). Président commission Outre-mer ADF depuis 2018. Battu aux municipales Saint-Paul mars 2026 (44,3% vs 55,7% pour Emmanuel Séraphin).
+
+🗳️ **DÉPUTÉS ASSEMBLÉE NATIONALE (7 circonscriptions, élus juillet 2024)**
+• Frédéric Maillot | Karine Lebon | Philippe Naillet | Emeline K'Bidi | Joseph Rivière | Jean-Hugues Ratenon | Perceval Gaillard
+
+🏛️ **SÉNATRICES**
+• **Viviane Malet** | **Audrey Bélim** | **Evelyne Corbière Naminzo** | **Stéphane Fouassin**
+
+🔗 Sources : regionreunion.com | departement974.fr | assemblee-nationale.fr
+Boudoum ! 🇷🇪\`
+}
+
+function getPolitiquesMayotte() {
+  return `🏛️ **Élus Officiels de Mayotte (2025-2026)**
+
+🏛️ **CONSEIL DÉPARTEMENTAL**
+👤 **Ben Issa Ousseni** — Président depuis le 1er juillet 2021
+ℹ️ Né le 11 juillet 1973 à Mamoudzou. Comptable de formation (IUT finances-comptabilité 1995-1997). Membre LR Les Républicains. Élu canton M'Tsangamouji 2011, Tsingoni 2015 et 2021. A géré la reconstruction après le cyclone Chido (décembre 2024) qui a dévasté l'archipel. Partenariat renforcé avec La Réunion pour la reconstruction.
+
+🗳️ **DÉPUTÉS ASSEMBLÉE NATIONALE (élus juillet 2024)**
+• **1ère circ. Nord** : **Estelle Youssouffa** (LIOT, réélue) — Défenseure lutte immigration clandestine
+• **2ème circ. Sud** : **Mansour Kamardine** (LR, réélu) — Avocat, figure droite mahoraise
+
+🏛️ **SÉNATEURS**
+• **Saïd Omar Oili** | **Thani Mohamed Soilihi**
+
+⚠️ **GRANDS ENJEUX MAYOTTE :**
+• Reconstruction post-cyclone Chido (déc 2024)
+• Immigration clandestine et droit du sol
+• Accès à l'eau potable
+• Insécurité et trafics
+• Développement économique et éducation
+
+🔗 Sources : cg976.fr | assemblee-nationale.fr
+Boudoum ! 🇾🇹\`
+}
+
+function getPolitiquesNouvelleCaledonie() {
+  return `🏛️ **Élus Officiels de Nouvelle-Calédonie (2025-2026)**
+
+🏛️ **GOUVERNEMENT COLLÉGIAL**
+👤 **Alcide Ponga** — Président 18ème gouvernement depuis janvier 2025 (loyaliste, anti-indépendance)
+👤 **Louis Mapou** — Ancien Président 17ème gouvernement (juillet 2021 - janvier 2025)
+ℹ️ Louis Mapou: né le 14 novembre 1958 à Yaté. Premier Kanak et premier indépendantiste président du gouvernement NC depuis l'accord de Nouméa 1998. Géographe de formation. Fondateur UNI-Palika. Pilote ADRAF réforme foncière 1998-2005. Défenseur nationalisme industriel nickel. A géré crise post-émeutes 2024.
+
+🗳️ **CONTEXTE POLITIQUE :**
+• 3 référendums d'autodétermination: 2018, 2020, 2021 — victoire loyalistes
+• Émeutes mai 2024 liées à réforme électorale
+• Territoire divisé entre Kanaks indépendantistes (FLNKS/UC/UNI) et loyalistes (Avenir en confiance, Calédonie ensemble)
+• Économie basée sur le nickel (crise du secteur en 2024)
+
+🗳️ **DÉPUTÉS (2024)**
+• **1ère circ.** : **Nicolas Metzdorf** (loyaliste)
+• **2ème circ.** : **Emmanuel Tjibaou** (indépendantiste FLNKS)
+
+🔗 Sources : gouv.nc | congres.nc
+Boudoum ! 🇨🇵\`
+}
+
 const GROQ_KEYS = [process.env.GROQ_API_KEY, process.env.GROQ_API_KEY_2, process.env.GROQ_API_KEY_3].filter(Boolean)
 let keyIndex = 0
 const keyErrors = {}
@@ -2659,7 +2773,7 @@ Boudoum ! 🇬🇵` })
   // ENCYCLOPEDIE DIRECTE — mots-clés spécifiques
   // FORCE encyclopédie si message court contient mot-clé Antilles/Afrique
   if (message.split(" ").length <= 8) {
-    const forceWiki = ["guadeloupe","martinique","haïti","haiti","guyane","solitude","delgrès","kalinago","arawak","taïno","gwo ka","biguine","zouk","mandela","sankara","lumumba","nkrumah","nefertiti","pharaon","ubuntu","swahili","wolof","bambara","négritude","negritude"]
+    const forceWiki = ["guadeloupe","martinique","haïti","haiti","guyane","solitude","delgrès","kalinago","arawak","taïno","gwo ka","biguine","zouk","mandela","sankara","lumumba","nkrumah","nefertiti","pharaon","ubuntu","swahili","wolof","bambara","négritude","negritude","admiral t","kassav","jacob desvarieux","jacob desvarieux","jocelyne beroard","tanya saint-val","eugene mona","ralph thamar","edith lefel","francky vincent","ali campbell","malavoi","mario canonge","dj kalenna","gims","aya nakamura","stromae","burna boy","wizkid","davido","youssou ndour","salif keita","angelique kidjo","fela kuti","miriam makeba","papa wemba"]
     const fw = forceWiki.find(k => msgLow.includes(k))
     if (fw) {
       try {
@@ -2868,13 +2982,13 @@ Boudoum ! 🇬🇵` })
 
   if (msgLow.includes('bitcoin') || msgLow.includes('btc') || msgLow.includes('ethereum') || msgLow.includes('eth') || msgLow.includes('crypto') || msgLow.includes('prix') && msgLow.includes('coin')) {
     try {
-      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,polygon-ecosystem-token&vs_currencies=usd")
+      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=usd,eur")
       const cd = await cr.json()
       const tr = await fetch("https://api.coingecko.com/api/v3/search/trending")
       const td = await tr.json()
       const fg = await getFearGreed()
       const trending = td.coins.slice(0,5).map(function(c){ return c.item.name }).join(", ")
-      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Données Temps Réel**\n\n₿ Bitcoin : $" + (cd.bitcoin?.usd||"N/A") + "\nΞ Ethereum : $" + (cd.ethereum?.usd||"N/A") + "\n🔷 POL : $" + (cd["polygon-ecosystem-token"]?.usd||"N/A") + "\n\n🔥 Tendances : " + trending + "\n😨 Sentiment : " + fg + "\n\nBoudoum ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Données Temps Réel**\n\n₿ Bitcoin : $" + (cd.bitcoin?.usd||"N/A") + "\nΞ Ethereum : $" + (cd.ethereum?.usd||"N/A") + "\n🔷 POL : $" + (cd["matic-network"]?.usd||"N/A") + "\n\n🔥 Tendances : " + trending + "\n😨 Sentiment : " + fg + "\n\nBoudoum ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBoudoum ! 🇬🇵" })
     }
@@ -3104,12 +3218,12 @@ async function getBBCNews() {
 
 async function getCryptoPrice() {
   try {
-    const r = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,polygon-ecosystem-token&vs_currencies=usd")
+    const r = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=usd")
     const d = await r.json()
     const parts = []
     if(d.bitcoin) parts.push("BTC $" + d.bitcoin.usd)
     if(d.ethereum) parts.push("ETH $" + d.ethereum.usd)
-    if(d["polygon-ecosystem-token"]) parts.push("POL $" + d["polygon-ecosystem-token"].usd)
+    if(d["matic-network"]) parts.push("POL $" + d["matic-network"].usd)
     return parts.join(" | ")
   } catch(e) { return null }
 }
@@ -6610,7 +6724,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // ============ ACTUALITES GUADELOUPE ============
-  if (msgLow.includes('actualite guadeloupe') || msgLow.includes('actualités guadeloupe') || msgLow.includes('news guadeloupe') || msgLow.includes('info guadeloupe')) {
+  if (msgLow.includes('actualite guadeloupe') || msgLow.includes('actualités guadeloupe') || msgLow.includes('news guadeloupe') || msgLow.includes('info guadeloupe') || msgLow.includes('infos guadeloupe') || msgLow.includes('guadeloupe info') || msgLow.includes('guadeloupe actu') || msgLow.includes('971 info') || msgLow.includes('gwada info')) {
     const actu = await getActualitesGuadeloupe()
     const meteo = await getMeteoMonde('Guadeloupe')
     const groqText = await groqFetch([
@@ -8381,7 +8495,7 @@ Boudoum ! 🇬🇵`})
   // ENCYCLOPEDIE DIRECTE — mots-clés spécifiques
   // FORCE encyclopédie si message court contient mot-clé Antilles/Afrique
   if (message.split(" ").length <= 8) {
-    const forceWiki = ["guadeloupe","martinique","haïti","haiti","guyane","solitude","delgrès","kalinago","arawak","taïno","gwo ka","biguine","zouk","mandela","sankara","lumumba","nkrumah","nefertiti","pharaon","ubuntu","swahili","wolof","bambara","négritude","negritude"]
+    const forceWiki = ["guadeloupe","martinique","haïti","haiti","guyane","solitude","delgrès","kalinago","arawak","taïno","gwo ka","biguine","zouk","mandela","sankara","lumumba","nkrumah","nefertiti","pharaon","ubuntu","swahili","wolof","bambara","négritude","negritude","admiral t","kassav","jacob desvarieux","jacob desvarieux","jocelyne beroard","tanya saint-val","eugene mona","ralph thamar","edith lefel","francky vincent","ali campbell","malavoi","mario canonge","dj kalenna","gims","aya nakamura","stromae","burna boy","wizkid","davido","youssou ndour","salif keita","angelique kidjo","fela kuti","miriam makeba","papa wemba"]
     const fw = forceWiki.find(k => msgLow.includes(k))
     if (fw) {
       try {
@@ -8549,13 +8663,13 @@ Boudoum ! 🇬🇵`})
   // CRYPTO DIRECTE
   if (msgLow.includes("bitcoin") || msgLow.includes("btc") || msgLow.includes("ethereum") || (msgLow.includes("crypto") && msgLow.includes("prix"))) {
     try {
-      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,polygon-ecosystem-token&vs_currencies=usd")
+      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=usd,eur")
       const cd = await cr.json()
       const tr = await fetch("https://api.coingecko.com/api/v3/search/trending")
       const td = await tr.json()
       const fg = await getFearGreed()
       const trending = td.coins.slice(0,5).map(function(c){ return c.item.name }).join(", ")
-      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Temps Réel**\n\n₿ Bitcoin : $"+(cd.bitcoin?.usd||"N/A")+"\nΞ Ethereum : $"+(cd.ethereum?.usd||"N/A")+"\n🔷 POL : $"+(cd["polygon-ecosystem-token"]?.usd||"N/A")+"\n\n🔥 Tendances : "+trending+"\n😨 Sentiment : "+fg+"\n\nBoudoum ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Temps Réel**\n\n₿ Bitcoin : $"+(cd.bitcoin?.usd||"N/A")+"\nΞ Ethereum : $"+(cd.ethereum?.usd||"N/A")+"\n🔷 POL : $"+(cd["matic-network"]?.usd||"N/A")+"\n\n🔥 Tendances : "+trending+"\n😨 Sentiment : "+fg+"\n\nBoudoum ! 🇬🇵" })
     } catch(e) { return res.status(200).json({ pdfAction: pdfType, response: "💎 Crypto en chargement. Réessaie ! Boudoum 🇬🇵" }) }
   }
 
@@ -8735,10 +8849,10 @@ Excellent question sur l'intelligence artificielle ! Laissez-moi vous éclairer 
 ✨ Comparaison côte-à-côte des réponses
 ✨ Workflows automatisés : GPT écrit → DALL-E illustre → Synthesia présente
 
-**Données benchmark réelles (2024-2025) :**
+**Données benchmark réelles (2026) :**
 • Groq LLaMA 3.3 70B : ultra-rapide, open-source
 • 3 clés API rotation automatique anti-429
-• 200 agents Neuro-X spécialisés (Emploi, Crypto, Éducation...)
+• 60 Sentinelles + 40 Neuro-X + 99 Quiz + 1 Suprême = 200 agents IA
 
 **Made in Guadeloupe** 🇬🇵 avec standards UE !
 
@@ -9272,10 +9386,27 @@ NOUVELLES CAPACITÉS MARS 2026:
 - 🏖️ Plages DOM-TOM prioritaires
 - 🌦️ Météo DOM-TOM prioritaire
 - 🏛️ Politique DOM-TOM COMPLÈTE et vérifiée:
-  * Guadeloupe: Ary Chalus (Région), Guy Losbar (Département), Harry Durimel (Maire PAP), 4 députés juillet 2024 (Olivier Serva, Christian Baptiste, Max Mathiasin, Élie Califer), 3 sénateurs (Dominique Théophile, Solanges Nadille, Victorin Lurel)
-  * Martinique: Serge Letchimy (CTM), Lucien Saliber (Assemblée), 4 députés (Johnny Hajjar, Marcellin Nadeau, Jiovanny William, Steve Chérubin)
-  * Guyane: Gabriel Serville (CTG), 2 députés (Davy Rimane, Lénaïck Adam)
-  * Réunion: Huguette Bello (Région), Cyrille Melchior (Département), 7 députés
+  * GUADELOUPE 971 — Élus actuels:
+EXÉCUTIFS: Ary Chalus (Président Conseil Régional depuis 2015, fondateur GUSR Guadeloupe Unie Solidaire Responsable, businessman, soutien développement économique insulaire) | Guy Losbar (Président Conseil Départemental, GUSR, défenseur autonomie normative locale) | Harry Durimel (Maire Pointe-à-Pitre, écologiste, premier maire Vert de Guadeloupe)
+DÉPUTÉS élus juillet 2024 (tous sortants réélus):
+1) Olivier Serva (1ère circ Abymes/PAP/Marie-Galante, DVG/LIOT, 77.59% des voix) — Expert-comptable, professeur agrégé LGT Baimbridge, fondateur EKO ZABYM, ancien 3ème VP Région Guadeloupe. Siège groupe LIOT.
+2) Christian Baptiste (2ème circ Est Grande-Terre, DVG/NFP, 72.38%) — Maire de Sainte-Anne, soutenu Nouveau Front Populaire, défenseur intérêts guadeloupéens.
+3) Max Mathiasin (3ème circ Centre, DVG/LIOT, 52.12%) — Ancien soutien majorité présidentielle, élu de justesse face à Rody Tolassy (RN). Groupe LIOT.
+4) Élie Califer (4ème circ Sud Basse-Terre, SOC, 71%) — Né le 19 avril 1954 à Saint-Claude. Ancien cadre. Groupe Socialistes et apparentés. Parti PPROG. Défenseur SMIC, blocage des prix, accès à l'eau. 2ème mandat.
+SÉNATEURS: Dominique Théophile | Solanges Nadille | Victorin Lurel (ancien Président de Région, ancien ministre)
+  * Martinique: Serge Letchimy (CTM), Lucien Saliber (Assemblée), 4 députés élus juillet 2024:
+1) Béatrice Bellay (3ème circ Fort-de-France, Parti Socialiste) — Née le 25 juillet 1975 à Villepinte (Seine-Saint-Denis), parents martiniquais. Diplômée droit-gestion Sorbonne. Cadre territoriale, directrice services population Espace Sud Martinique. Première secrétaire Fédération Socialiste Martinique depuis 2018. Élue en battant Johnny Hajjar (PPM) par ~1700 voix. 2ème femme martiniquaise à l'Assemblée nationale après Josette Manin (2017). Membre commission affaires sociales. Combat pour les intérêts ultramarins contre la vie chère.
+2) Marcellin Nadeau (2ème circ Nord, GDR/Péyi-A) — Né le 2 novembre 1962 à Saint-Pierre (Martinique). Ancien maire du Prêcheur 2008-2022. Cofondateur du mouvement souverainiste Péyi-A en 2019 avec Jean-Philippe Nilor. Réélu en 2024 avec 17 229 voix. Défenseur de la continuité territoriale et des droits des Martiniquais. Membre groupe Gauche Démocrate et Républicaine.
+3) Jiovanny William (1ère circ Centre-Atlantique, GDR/Péyi-A) — Né en 1985, avocat de formation. Conseiller municipal du Robert. Élu pour la première fois en 2022, réélu en 2024 avec 18 512 voix. Soutenu par Péyi-A. A obtenu la médaille de l'Assemblée nationale pour la cinéaste Euzhan Palcy. Combat contre le scandale de la chlordécone et les sargasses.
+4) Jean-Philippe Nilor (4ème circ Sud, LFI-NFP/Péyi-A) — Né le 15 mai 1965 à Fort-de-France. Cofondateur Péyi-A. Député depuis 2012, à son 4ème mandat. Le parlementaire martiniquais le mieux élu en 2024 avec 21 620 voix (87% des suffrages). Ancien collaborateur parlementaire. Membre commission affaires sociales. Défenseur acharné des droits ultramarins, contre la vie chère et pour la souveraineté martiniquaise.
+  * GUYANE 973:
+EXÉCUTIF: Gabriel Serville (Président CTG Collectivité Territoriale de Guyane depuis juillet 2021, né le 27 sept 1959 à Cayenne, père Saint-Lucien, ancien prof de maths et proviseur lycée, fondateur Péyi Guyane 2018, ancien député 2012-2021, maire Matoury 2014-2017. Premier indépendantiste à la tête de la CTG. Actuellement malade, hospitalisé fin 2024)
+DÉPUTÉS 2024: Jean-Victor Castor (1ère circ, GDR) | Davy Rimane (2ème circ, GDR/NFP)
+ENJEUX: orpaillage illégal, immigration, développement Amazonie, continuité territoriale
+  * RÉUNION 974:
+EXÉCUTIFS: Huguette Bello (Présidente Conseil Régional depuis 2021, née le 24 août 1950 à Saint-Pierre Réunion, enseignante de formation, fondatrice mouvement Pour La Réunion, ancienne députée 2002-2021 groupe GDR, soutien LFI/NFP, citée comme candidate PM France en 2024 après victoire NFP aux législatives, défend autonomie réunionnaise) | Cyrille Melchior (Président Conseil Départemental depuis déc 2017, LR/droite, candidat malheureux élections municipales Saint-Paul 2026, président commission Outre-mer ADF depuis 2018)
+DÉPUTÉS 2024 (7 circonscriptions): Frédéric Maillot | Karine Lebon | Philippe Naillet | Emeline K'Bidi | Joseph Rivière | + 2 autres
+ENJEUX: vie chère, chômage, continuité territoriale, eau, énergie
   * Mayotte: Ben Issa Ousseni, contexte cyclone Chido déc 2024, reconstruction en cours
   * Nouvelle-Calédonie: Alcide Ponga (Président gouvernement depuis jan 2025, 1er Kanak LR), crises post-émeutes mai 2024
 - 🚗 Vie quotidienne Guadeloupe: covoiturage Karos, routes RN1/RN4, bons plans, mix électrique EDF, RCI FM, KaruData
