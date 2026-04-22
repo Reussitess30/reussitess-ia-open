@@ -1853,7 +1853,7 @@ Boudoum ! 🇬🇵` })
   }
 
   // GUIDE AGRICULTURE BIO
-  if (msgLow.includes("agriculture bio") || msgLow.includes("jardin créole") || msgLow.includes("cultiver") || msgLow.includes("planter") || msgLow.includes("permaculture caraïbes")) {
+  if (msgLow.includes("agriculture bio") || msgLow.includes("jardin créole") || (msgLow.includes("cultiver") && (msgLow.includes("plante") || msgLow.includes("jardin") || msgLow.includes("sol") || msgLow.includes("légume"))) || (msgLow.includes("planter") && msgLow.includes("jardin")) || msgLow.includes("permaculture caraïbes")) {
     try {
       const meteo = await getMeteo()
       const lune = getLunePhase()
@@ -7587,7 +7587,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // GUIDE AGRICULTURE BIO
-  if (msgLow.includes("agriculture bio") || msgLow.includes("jardin créole") || msgLow.includes("cultiver") || msgLow.includes("planter") || msgLow.includes("permaculture caraïbes")) {
+  if (msgLow.includes("agriculture bio") || msgLow.includes("jardin créole") || (msgLow.includes("cultiver") && (msgLow.includes("plante") || msgLow.includes("jardin") || msgLow.includes("sol") || msgLow.includes("légume"))) || (msgLow.includes("planter") && msgLow.includes("jardin")) || msgLow.includes("permaculture caraïbes")) {
     try {
       const meteo = await getMeteo()
       const lune = getLunePhase()
