@@ -8735,10 +8735,10 @@ Excellent question sur l'intelligence artificielle ! Laissez-moi vous éclairer 
 ✨ Comparaison côte-à-côte des réponses
 ✨ Workflows automatisés : GPT écrit → DALL-E illustre → Synthesia présente
 
-**Données benchmark réelles (2024-2025) :**
+**Données benchmark réelles (2026) :**
 • Groq LLaMA 3.3 70B : ultra-rapide, open-source
 • 3 clés API rotation automatique anti-429
-• 200 agents Neuro-X spécialisés (Emploi, Crypto, Éducation...)
+• 60 Sentinelles + 40 Neuro-X + 99 Quiz + 1 Suprême = 200 agents IA
 
 **Made in Guadeloupe** 🇬🇵 avec standards UE !
 
