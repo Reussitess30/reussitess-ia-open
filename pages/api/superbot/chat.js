@@ -1,21 +1,26 @@
-// ... (keep previous imports and code here)
+export default async function handler(req, res) {
+  const { message } = req.body;
+
+  // Logique du bot Reussitess©
+  if (message.includes('Guyane')) {
+    return res.status(200).json({ text: getPolitiquesGuyane() });
+  }
+  
+  if (message.includes('Reunion')) {
+    return res.status(200).json({ text: getPolitiquesReunion() });
+  }
+
+  res.status(200).json({ text: "Reussitess© à votre écoute. Terres De Champions Positivité à l'infini Boudoum !" });
+}
 
 function getPolitiquesGuyane() {
   return `🏢 Élus Officiels de Guyane (2025-2026)
-COLLECTIVITE TERRITORIALE DE GUYANE (CTG)
-Gabriel Serville - Président CTG depuis juillet 2021
-Né le 27 septembre 1959 à Cayenne. Fondateur Péyi Guyane 2018.
-
-DÉPUTÉS ASSEMBLÉE NATIONALE (2024)
-`;
+- Gabriel Serville : Président de la CTG.
+- Députés : Jean-Victor Castor et Davy Rimane.`;
 }
 
 function getPolitiquesReunion() {
-  return `**Élus Officiels de La Réunion (2025-2026)**
-
-🌴 **CONSEIL RÉGIONAL**
-👤 **Huguette Bello** — Présidente Région Réunion depuis avril 2021
-`;
+  return `🌴 Élus Officiels de La Réunion (2025-2026)
+- Huguette Bello : Présidente du Conseil Régional.
+- Cyrille Melchior : Président du Conseil Départemental.`;
 }
-
-// ... (ensure the rest of the file follows)
