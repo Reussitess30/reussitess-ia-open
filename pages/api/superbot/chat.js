@@ -6565,6 +6565,17 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes('harry durimel') || (msgLow.includes('maire') && msgLow.includes('pointe-a-pitre')) || (msgLow.includes('maire') && msgLow.includes('pointe à pitre'))) {
     return res.status(200).json({ pdfAction: null, response: "🏙️ **Maire de Pointe-à-Pitre**\n\n👤 **Harry Durimel**\n🗓️ Élu en 2020\n🌿 Parti : EELV (Europe Écologie Les Verts)\n\n🔗 https://www.pointeapitre.fr\n\nBoudoum ! 🇬🇵" })
   }
+  // DÉCLENCHEUR GLOBAL DOM-TOM
+  if (msgLow.includes('politicien') && (msgLow.includes('dom') || msgLow.includes('outre') || msgLow.includes('antilles') || msgLow.includes('caraib') || msgLow.includes('territoires')) || msgLow.includes('elus dom-tom') || msgLow.includes('élus dom-tom') || msgLow.includes('politique dom-tom') || msgLow.includes('politique outre-mer') || msgLow.includes('politiciens dom tom') || msgLow.includes('élus outre-mer') || msgLow.includes('elus outre-mer')) {
+    const gp = getPolitiquesGuadeloupe()
+    const mq = getPolitiquesMartinique()
+    const gy = getPolitiquesGuyane()
+    const re = getPolitiquesReunion()
+    const yt = getPolitiquesMayotte()
+    const nc = getPolitiquesNouvelleCaledonie()
+    return res.status(200).json({ pdfAction: null, response: gp + '\n\n---\n\n' + mq + '\n\n---\n\n' + gy + '\n\n---\n\n' + re + '\n\n---\n\n' + yt + '\n\n---\n\n' + nc })
+  }
+
   if (msgLow.includes('politique guadeloupe') || msgLow.includes('elus guadeloupe') || msgLow.includes('élus guadeloupe') || msgLow.includes('depute guadeloupe') || msgLow.includes('député guadeloupe') || msgLow.includes('senateur guadeloupe') || msgLow.includes('sénateur guadeloupe') || msgLow.includes('politicien guadeloupe') || msgLow.includes('politiciens guadeloupe') || msgLow.includes('cite.*politicien') || (msgLow.includes('politicien') && msgLow.includes('guadeloup')) || msgLow.includes('ary chalus') || msgLow.includes('guy losbar') || msgLow.includes('olivier serva') || msgLow.includes('christian baptiste') || msgLow.includes('max mathiasin') || msgLow.includes('elie califer') || msgLow.includes('élie califer') || msgLow.includes('dominique theophile') || msgLow.includes('victorin lurel') || msgLow.includes('solanges nadille') || msgLow.includes('politicien guadeloupe') || msgLow.includes('politiciens guadeloupe') || msgLow.includes('cite.*politicien') || (msgLow.includes('politicien') && msgLow.includes('guadeloup')) || msgLow.includes('ary chalus') || msgLow.includes('guy losbar') || msgLow.includes('olivier serva') || msgLow.includes('christian baptiste') || msgLow.includes('max mathiasin') || msgLow.includes('elie califer') || msgLow.includes('élie califer') || msgLow.includes('dominique theophile') || msgLow.includes('victorin lurel') || msgLow.includes('solanges nadille')) {
     try {
       const data = getPolitiquesGuadeloupe()
