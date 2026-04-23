@@ -1,21 +1,26 @@
 /* © Reussitess®971 INPI DSO2026012614 PORINUS Rony 2026 */
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import Layout from '../components/Layout'
 import Link from 'next/link'
 
 const PODCASTS = [
-  { id: 1, nom: "REUSSITESS Radio", desc: "Entrepreneuriat, IA et innovation caribéenne", emoji: "🤖", url: "https://reussitess.fr", pays: "Guadeloupe 🇬🇵", tags: ["Business", "IA"] },
-  { id: 2, nom: "Gwoka Session", desc: "Histoire et culture du Gwoka, patrimoine UNESCO", emoji: "🥁", url: "https://la1ere.francetvinfo.fr/guadeloupe/programmes", pays: "Guadeloupe 🇬🇵", tags: ["Culture", "Musique"] },
-  { id: 3, nom: "Caraïbes Business", desc: "Actualité économique et entrepreneuriale des Antilles", emoji: "💼", url: "https://la1ere.francetvinfo.fr", pays: "DOM-TOM 🌴", tags: ["Business", "Économie"] },
-  { id: 4, nom: "Diasporas Africa", desc: "Voix de la diaspora africaine en France et dans le monde", emoji: "🌍", url: "https://www.rfi.fr/fr/podcasts", pays: "Afrique 🌍", tags: ["Diaspora", "Culture"] },
-  { id: 5, nom: "Créole Talk", desc: "Langue et culture créole — apprendre et préserver", emoji: "🗣", url: "#", pays: "Caraïbes 🌴", tags: ["Langue", "Culture"] },
-  { id: 6, nom: "RFI Afrique", desc: "Actualités africaines et caribéennes en temps réel", emoji: "📻", url: "https://www.rfi.fr/fr/podcasts", pays: "Afrique 🌍", tags: ["Actualités"] },
+  { id: 1, nom: "Guadeloupe la 1ère", desc: "Émissions et podcasts officiels de Guadeloupe la 1ère — actualités, culture, société", emoji: "🎙", url: "https://la1ere.francetvinfo.fr/guadeloupe/programmes", pays: "Guadeloupe 🇬🇵", tags: ["Actualités", "Culture"] },
+  { id: 2, nom: "RCI Guadeloupe Podcasts", desc: "Radio Caraïbes International — émissions, débats et magazines guadeloupéens", emoji: "📻", url: "https://rci.fm/guadeloupe/podcasts", pays: "Guadeloupe 🇬🇵", tags: ["Actualités", "Musique"] },
+  { id: 3, nom: "Martinique la 1ère", desc: "Podcasts et émissions de Martinique la 1ère — culture, politique, société martiniquaise", emoji: "🎵", url: "https://la1ere.francetvinfo.fr/martinique/programmes", pays: "Martinique 🇲🇶", tags: ["Actualités", "Culture"] },
+  { id: 4, nom: "RCI Martinique", desc: "Radio Caraïbes International Martinique — émissions créoles et actualités", emoji: "🥁", url: "https://rci.fm/martinique/podcasts", pays: "Martinique 🇲🇶", tags: ["Culture", "Musique"] },
+  { id: 5, nom: "Guyane la 1ère", desc: "Podcasts de Guyane la 1ère — actualités amazoniennes, culture guyanaise", emoji: "🌿", url: "https://la1ere.francetvinfo.fr/guyane/programmes", pays: "Guyane 🇬🇫", tags: ["Actualités", "Culture"] },
+  { id: 6, nom: "Réunion la 1ère", desc: "Émissions et podcasts de La Réunion — culture réunionnaise, maloya, actualités", emoji: "🌋", url: "https://la1ere.francetvinfo.fr/reunion/programmes", pays: "Réunion 🇷🇪", tags: ["Actualités", "Culture"] },
+  { id: 7, nom: "RFI Afrique Podcasts", desc: "Podcasts RFI dédiés à l'Afrique et à la diaspora africaine mondiale", emoji: "🌍", url: "https://www.rfi.fr/fr/podcasts", pays: "Afrique 🌍", tags: ["Diaspora", "Actualités"] },
+  { id: 8, nom: "Outremers 360 Radio", desc: "Le média des Outre-mer — podcasts, émissions et débats sur tous les territoires", emoji: "🗣", url: "https://outremers360.com/podcasts", pays: "DOM-TOM 🌴", tags: ["Actualités", "Diaspora"] },
+  { id: 9, nom: "Bondamanjak Podcast", desc: "Le média caribéen indépendant — société, culture et politique antillaise", emoji: "💬", url: "https://www.bondamanjak.com", pays: "Caraïbes 🌴", tags: ["Culture", "Société"] },
+  { id: 10, nom: "Gwoka UNESCO", desc: "Le Gwoka, patrimoine immatériel de l'UNESCO — histoire, rythmes et spiritualité", emoji: "🥁", url: "https://la1ere.francetvinfo.fr/guadeloupe/programmes", pays: "Guadeloupe 🇬🇵", tags: ["Culture", "Musique"] },
+  { id: 11, nom: "Zouk & Caribéen", desc: "Histoire du zouk, biguine, soca et musiques caribéennes — artistes et interviews", emoji: "🎶", url: "https://rci.fm/guadeloupe", pays: "Caraïbes 🌴", tags: ["Musique", "Culture"] },
+  { id: 12, nom: "Créole Talk", desc: "Apprendre et préserver la langue créole — guadeloupéen, martiniquais, haïtien", emoji: "🗣", url: "https://reussitess.fr/neuro-x", pays: "Caraïbes 🌴", tags: ["Langue", "Culture"] },
 ]
 
 export default function PodcastsCreoles() {
   const [filtre, setFiltre] = useState('Tous')
-  const tags = ['Tous', 'Business', 'Culture', 'Musique', 'Diaspora', 'Actualités', 'Langue']
-
+  const tags = ['Tous', 'Actualités', 'Culture', 'Musique', 'Diaspora', 'Langue', 'Société']
   const filtered = PODCASTS.filter(p => filtre === 'Tous' || p.tags.includes(filtre))
 
   return (
@@ -24,7 +29,7 @@ export default function PodcastsCreoles() {
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <div style={{ fontSize: '4rem', marginBottom: '0.5rem' }}>🎙</div>
           <h1 style={{ color: '#fff', fontSize: 'clamp(1.8rem,5vw,3rem)', fontWeight: '900' }}>PODCASTS CARIBÉENS</h1>
-          <p style={{ color: '#94a3b8' }}>Voix de la diaspora afro-caribéenne</p>
+          <p style={{ color: '#94a3b8' }}>Voix de la diaspora afro-caribéenne — {PODCASTS.length} sources</p>
         </div>
 
         <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2rem' }}>
@@ -38,7 +43,7 @@ export default function PodcastsCreoles() {
           ))}
         </div>
 
-        <div style={{ maxWidth: '900px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(260px,1fr))', gap: '1rem' }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(260px,1fr))', gap: '1rem' }}>
           {filtered.map(p => (
             <div key={p.id} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', padding: '1.5rem' }}>
               <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>{p.emoji}</div>
@@ -48,12 +53,10 @@ export default function PodcastsCreoles() {
               <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
                 {p.tags.map(t => <span key={t} style={{ background: 'rgba(16,185,129,0.15)', color: '#10b981', padding: '0.2rem 0.5rem', borderRadius: '8px', fontSize: '0.7rem' }}>{t}</span>)}
               </div>
-              {p.url !== '#' && (
-                <a href={p.url} target="_blank" rel="noreferrer"
-                  style={{ display: 'inline-block', padding: '0.5rem 1rem', background: 'linear-gradient(135deg,#10b981,#059669)', color: 'white', borderRadius: '10px', textDecoration: 'none', fontSize: '0.8rem', fontWeight: '700' }}>
-                  🎙 Écouter
-                </a>
-              )}
+              <a href={p.url} target="_blank" rel="noreferrer"
+                style={{ display: 'inline-block', padding: '0.5rem 1rem', background: 'linear-gradient(135deg,#10b981,#059669)', color: 'white', borderRadius: '10px', textDecoration: 'none', fontSize: '0.8rem', fontWeight: '700' }}>
+                🎙 Écouter
+              </a>
             </div>
           ))}
         </div>
