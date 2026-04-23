@@ -64,6 +64,105 @@ function getPolitiquesGuadeloupe() {
 
 Boudoum ! 🇬🇵`
 }
+
+function getPolitiquesMartinique() {
+  return `🏛️ **Élus Officiels de Martinique (2025-2026)**
+
+🌴 **CONSEIL EXÉCUTIF CTM**
+👤 **Serge Letchimy** — Président CTM depuis décembre 2021
+ℹ️ Architecte de formation, fondateur PPM, ancien maire Fort-de-France, défenseur autonomie martiniquaise
+
+🗳️ **DÉPUTÉS (élus juillet 2024)**
+• **1ère circ. Fort-de-France** : **Béatrice Bellay** (PS) — Née 25 juil 1975 Villepinte, parents martiniquais, diplômée Sorbonne, 1ère secrétaire Fédération Socialiste Martinique, bat Johnny Hajjar par 1700 voix, 2ème femme martiniquaise à lAssemblée nationale
+• **2ème circ. Nord** : **Marcellin Nadeau** (GDR/Péyi-A) — Né 2 nov 1962 Saint-Pierre, ancien maire du Prêcheur 2008-2022, cofondateur Péyi-A, réélu 17229 voix
+• **3ème circ. Centre** : **Jiovanny William** (GDR/Péyi-A) — Né 1985, avocat, conseiller municipal du Robert, réélu 18512 voix
+• **4ème circ. Sud** : **Jean-Philippe Nilor** (LFI-NFP/Péyi-A) — Né 15 mai 1965 Fort-de-France, député depuis 2012, 4ème mandat, cofondateur Péyi-A, mieux élu Martinique 21620 voix (87%)
+
+🏛️ **SÉNATEURS** : Catherine Conconne | Maurice Antiste
+
+🔗 Sources : assemblee-nationale.fr | ctmartinique.mq
+Boudoum ! 🇲🇶`
+}
+
+function getPolitiquesGuyane() {
+  return `🏛️ **Élus Officiels de Guyane (2025-2026)**
+
+🌴 **COLLECTIVITÉ TERRITORIALE DE GUYANE (CTG)**
+👤 **Gabriel Serville** — Président CTG depuis le 2 juillet 2021
+ℹ️ Né le 27 septembre 1959 à Cayenne, père Saint-Lucien. Ancien professeur de maths puis proviseur lycée. Fondateur Péyi Guyane 2018. Ancien député 2012-2021, ancien maire Matoury 2014-2017. Premier indépendantiste président CTG. Hospitalisé fin 2024.
+
+🗳️ **DÉPUTÉS (élus juillet 2024)**
+• **1ère circ.** : **Jean-Victor Castor** (GDR/NFP)
+• **2ème circ.** : **Davy Rimane** (GDR/NFP)
+
+🏛️ **SÉNATEURS** : Georges Patient | Marie-Laure Phinera-Horth
+
+⚠️ Enjeux: orpaillage illégal, immigration, continuité territoriale, spatial Kourou
+
+🔗 Sources : ctguyane.fr | assemblee-nationale.fr
+Boudoum ! 🇬🇫`
+}
+
+function getPolitiquesReunion() {
+  return `🏛️ **Élus Officiels de La Réunion (2025-2026)**
+
+🌴 **CONSEIL RÉGIONAL**
+👤 **Huguette Bello** — Présidente Région Réunion depuis avril 2021
+ℹ️ Née le 24 août 1950 à Saint-Pierre. Enseignante de formation. Fondatrice Pour La Réunion. Ancienne députée 2002-2021. Soutien LFI/NFP. Citée candidate PM France après victoire NFP 2024.
+
+🏛️ **CONSEIL DÉPARTEMENTAL**
+👤 **Cyrille Melchior** — Président depuis décembre 2017
+ℹ️ LR droite. Président commission Outre-mer ADF depuis 2018.
+
+🗳️ **DÉPUTÉS (7 circonscriptions, élus juillet 2024)**
+• Frédéric Maillot | Karine Lebon | Philippe Naillet | Emeline K'Bidi | Joseph Rivière | Jean-Hugues Ratenon | Perceval Gaillard
+
+🏛️ **SÉNATRICES** : Viviane Malet | Audrey Bélim | Evelyne Corbière Naminzo | Stéphane Fouassin
+
+🔗 Sources : regionreunion.com | departement974.fr
+Boudoum ! 🇷🇪`
+}
+
+function getPolitiquesMayotte() {
+  return `🏛️ **Élus Officiels de Mayotte (2025-2026)**
+
+🏛️ **CONSEIL DÉPARTEMENTAL**
+👤 **Ben Issa Ousseni** — Président depuis juillet 2021
+ℹ️ Né 11 juil 1973 Mamoudzou, comptable LR, gère reconstruction post-cyclone Chido décembre 2024
+
+🗳️ **DÉPUTÉS (juillet 2024)**
+• **1ère circ. Nord** : **Estelle Youssouffa** (LIOT) — lutte immigration clandestine
+• **2ème circ. Sud** : **Mansour Kamardine** (LR) — avocat, figure droite mahoraise
+
+🏛️ **SÉNATEURS** : Saïd Omar Oili | Thani Mohamed Soilihi
+
+⚠️ Enjeux: reconstruction post-Chido, immigration, eau, insécurité
+
+🔗 Sources : cg976.fr | assemblee-nationale.fr
+Boudoum ! 🇾🇹`
+}
+
+function getPolitiquesNouvelleCaledonie() {
+  return `🏛️ **Élus Officiels de Nouvelle-Calédonie (2025-2026)**
+
+🏛️ **GOUVERNEMENT COLLÉGIAL**
+👤 **Alcide Ponga** — Président 18ème gouvernement depuis janvier 2025 (loyaliste)
+👤 **Louis Mapou** — Ancien Président 17ème gouvernement juillet 2021 - janvier 2025
+ℹ️ Louis Mapou: né 14 nov 1958 à Yaté, premier Kanak président NC, géographe, fondateur UNI-Palika, a géré émeutes 2024
+
+🗳️ **CONTEXTE POLITIQUE**
+• 3 référendums 2018-2021: victoire loyalistes
+• Émeutes mai 2024 réforme électorale
+• Crise nickel 2024
+
+🗳️ **DÉPUTÉS (2024)**
+• **1ère circ.** : Nicolas Metzdorf (loyaliste)
+• **2ème circ.** : Emmanuel Tjibaou (indépendantiste FLNKS)
+
+🔗 Sources : gouv.nc | congres.nc
+Boudoum ! 🇨🇵`
+}
+
 const GROQ_KEYS = [process.env.GROQ_API_KEY, process.env.GROQ_API_KEY_2, process.env.GROQ_API_KEY_3].filter(Boolean)
 let keyIndex = 0
 const keyErrors = {}
@@ -2656,7 +2755,7 @@ Boudoum ! 🇬🇵` })
   // ENCYCLOPEDIE DIRECTE — mots-clés spécifiques
   // FORCE encyclopédie si message court contient mot-clé Antilles/Afrique
   if (message.split(" ").length <= 8) {
-    const forceWiki = ["guadeloupe","martinique","haïti","haiti","guyane","solitude","delgrès","kalinago","arawak","taïno","gwo ka","biguine","zouk","mandela","sankara","lumumba","nkrumah","nefertiti","pharaon","ubuntu","swahili","wolof","bambara","négritude","negritude"]
+    const forceWiki = ["guadeloupe","martinique","haïti","haiti","guyane","solitude","delgrès","kalinago","arawak","taïno","gwo ka","biguine","zouk","mandela","sankara","lumumba","nkrumah","nefertiti","pharaon","ubuntu","swahili","wolof","bambara","négritude","negritude","admiral t","kassav","jacob desvarieux","jocelyne beroard","tanya saint-val","eugene mona","ralph thamar","edith lefel","francky vincent","malavoi","mario canonge","gims","aya nakamura","burna boy","wizkid","davido","youssou ndour","salif keita","angelique kidjo","fela kuti","miriam makeba","papa wemba"]
     const fw = forceWiki.find(k => msgLow.includes(k))
     if (fw) {
       try {
@@ -5638,7 +5737,7 @@ export default async function handler(req, res) {
   if ((msgLow.includes("président") || msgLow.includes("president") || msgLow.includes("premier ministre") || msgLow.includes("chef état")) && (msgLow.includes("usa") || msgLow.includes("états-unis") || msgLow.includes("amerique") || msgLow.includes("amérique") || msgLow.includes("america"))) {
     return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Président des États-Unis**\n\n**Donald Trump** — 47ème président\nInvesti le 20 janvier 2025\nParti : Républicain\nVice-président : JD Vance\n\n⚠️ Joe Biden était le 46ème président (2021-2025)\n\nBoudoum ! 🇬🇵" })
   }
-  if ((msgLow.includes("président") || msgLow.includes("president")) && (msgLow.includes("france") || msgLow.includes("français") || msgLow.includes("elysée") || msgLow.includes("élysée"))) {
+  if ((msgLow.includes("président") || msgLow.includes("president")) && (msgLow.includes("france") || msgLow.includes("français") || msgLow.includes("elysée") || msgLow.includes("élysée")) || msgLow.includes("macron") || msgLow.includes("emmanuel macron")) {
     return res.status(200).json({ pdfAction: null, response: "🇫🇷 **Président de la République Française**\n\n**Emmanuel Macron** — Président depuis 2017, réélu 2022\nParti : Renaissance (centre)\nPremier Ministre : **François Bayrou** (depuis janvier 2025)\n\nBoudoum ! 🇬🇵" })
   }
   if ((msgLow.includes("président") || msgLow.includes("president")) && (msgLow.includes("russie") || msgLow.includes("russia") || msgLow.includes("poutine"))) {
@@ -6652,7 +6751,7 @@ Boudoum ! 🇬🇵`})
   }
 
   // ============ ACTUALITES GUADELOUPE ============
-  if (msgLow.includes('actualite guadeloupe') || msgLow.includes('actualités guadeloupe') || msgLow.includes('news guadeloupe') || msgLow.includes('info guadeloupe')) {
+  if (msgLow.includes('actualite guadeloupe') || msgLow.includes('actualités guadeloupe') || msgLow.includes('news guadeloupe') || msgLow.includes('info guadeloupe') || msgLow.includes('infos guadeloupe') || msgLow.includes('gwada info') || msgLow.includes('971 info')) {
     const actu = await getActualitesGuadeloupe()
     const meteo = await getMeteoMonde('Guadeloupe')
     const groqText = await groqFetch([
@@ -8423,7 +8522,7 @@ Boudoum ! 🇬🇵`})
   // ENCYCLOPEDIE DIRECTE — mots-clés spécifiques
   // FORCE encyclopédie si message court contient mot-clé Antilles/Afrique
   if (message.split(" ").length <= 8) {
-    const forceWiki = ["guadeloupe","martinique","haïti","haiti","guyane","solitude","delgrès","kalinago","arawak","taïno","gwo ka","biguine","zouk","mandela","sankara","lumumba","nkrumah","nefertiti","pharaon","ubuntu","swahili","wolof","bambara","négritude","negritude"]
+    const forceWiki = ["guadeloupe","martinique","haïti","haiti","guyane","solitude","delgrès","kalinago","arawak","taïno","gwo ka","biguine","zouk","mandela","sankara","lumumba","nkrumah","nefertiti","pharaon","ubuntu","swahili","wolof","bambara","négritude","negritude","admiral t","kassav","jacob desvarieux","jocelyne beroard","tanya saint-val","eugene mona","ralph thamar","edith lefel","francky vincent","malavoi","mario canonge","gims","aya nakamura","burna boy","wizkid","davido","youssou ndour","salif keita","angelique kidjo","fela kuti","miriam makeba","papa wemba"]
     const fw = forceWiki.find(k => msgLow.includes(k))
     if (fw) {
       try {
