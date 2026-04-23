@@ -1,9 +1,3 @@
-const { detecterMenace, reponseAntiMenace } = require("../../services/security")
-const { getActualitesOutremerComplet } = require("../../services/news")
-const { getRCIGuadeloupe } = require("../../services/rci")
-const { getCryptoPaysDevise } = require("../../services/crypto")
-const { getPoliticiensDOMTOM } = require("../../services/politique")
-
 /* 
  * © REUSSITESS®971 — Tous droits réservés
  * Auteur : Rony Porinus — Guadeloupe 🇬🇵
