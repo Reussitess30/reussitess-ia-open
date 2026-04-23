@@ -95,7 +95,7 @@ async function groqFetch(messages, maxTokens = 512) {
     const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
-      body: JSON.stringify({ model: "llama-3.1-8b-instant", messages, max_tokens: maxTokens })
+      body: JSON.stringify({ model: "llama-3.3-70b-versatile", messages, max_tokens: maxTokens })
     })
     if (!res.ok) { keyErrors[key] = Date.now(); return null }
     const d = await res.json()
@@ -190,7 +190,7 @@ async function groqFetch(messages, maxTokens = 512) {
         const cbRes = await fetch("https://api.cerebras.ai/v1/chat/completions", {
           method: "POST",
           headers: { "Content-Type": "application/json", "Authorization": "Bearer " + cbKey },
-          body: JSON.stringify({ model: "llama-3.1-8b-instant", messages, max_tokens: maxTokens })
+          body: JSON.stringify({ model: "llama-3.3-70b-versatile", messages, max_tokens: maxTokens })
         })
         if (!cbRes.ok) return null
         const cbData = await cbRes.json()
@@ -209,7 +209,7 @@ export async function groqStream(messages, systemPrompt, res) {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
       body: JSON.stringify({
-        model: "llama-3.1-8b-instant",
+        model: "llama-3.3-70b-versatile",
         messages: [{ role: "system", content: systemPrompt }, ...messages],
         max_tokens: 1024,
         stream: true
@@ -383,7 +383,7 @@ async function groqFetchWithTools(messages, systemPrompt) {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
       body: JSON.stringify({
-        model: "llama-3.1-8b-instant",
+        model: "llama-3.3-70b-versatile",
         messages: [{ role: "system", content: systemPrompt }, ...messages],
         tools: GROQ_TOOLS,
         tool_choice: "auto",
@@ -419,7 +419,7 @@ async function groqFetchWithTools(messages, systemPrompt) {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
         body: JSON.stringify({
-          model: "llama-3.1-8b-instant",
+          model: "llama-3.3-70b-versatile",
           messages: [
             { role: "system", content: systemPrompt },
             ...messages,
@@ -1439,7 +1439,7 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
 Boudoum ! 🇬🇵` })
   }
 
-  if (msgLow.includes("qui est reussitess") || msgLow.includes("c'est quoi reussitess") || msgLow.includes("reussitess c'est quoi") || msgLow.includes("kesako reussitess") || msgLow.includes("qui est-ce que reussitess")) { return res.status(200).json({ pdfAction: null, response: "🌟 **REUSSITESS®971** — Né en Guadeloupe 🇬🇵\n\nREUSSITESS est une plateforme SaaS IA créée par **Rony Porinus** depuis la Guadeloupe, au service de la diaspora afro-caribéenne mondiale.\n\n🧠 **200+ modules IA** (60 Neuro-X, 40 Sentinelles, 99 Quiz)\n💎 **Token REUSS** sur Polygon blockchain\n🌍 **14 pays partenaires**\n📱 **Bot Telegram** intelligent\n👑 **Premium 4,99€/mois** — 5 outils exclusifs\n\n*Terres de Champions — Positivité à l'infini !*\n\nBoudoum ! 🇬🇵" }) }
+  if (msgLow.includes("qui est reussitess") || msgLow.includes("c'est quoi reussitess") || msgLow.includes("reussitess c'est quoi") || msgLow.includes("kesako reussitess") || msgLow.includes("qui est-ce que reussitess")) { return res.status(200).json({ pdfAction: null, response: "🌟 **REUSSITESS®971** — Né en Guadeloupe 🇬🇵\n\nREUSSITESS est une plateforme SaaS IA créée par **Rony Porinus** depuis la Guadeloupe, au service de la diaspora afro-caribéenne mondiale.\n\n🧠 **200+ modules IA** (60 Neuro-X, 40 Sentinelles, 99 Quiz)\n💎 **Token REUSS** sur Polygon blockchain\n🌍 **14 pays partenaires**\n📱 **Bot Telegram** intelligent\n👑 **Premium 4,99€/mois** — 20 modules exclusifs\n\n*Terres de Champions — Positivité à l'infini !*\n\nBoudoum ! 🇬🇵" }) }
 
     if (msgLow.includes("qui es-tu") || msgLow.includes("qui es tu") || msgLow.includes("présente-toi") || msgLow.includes("présente toi") || msgLow.includes("ta mission") || msgLow.includes("c'est quoi reussitess ai") || msgLow.includes("tu es qui")) {
     return res.status(200).json({ pdfAction: pdfType, response: "🤖 **Je suis REUSSITESS®971 AI**\n\nChef d'orchestre de l'écosystème REUSSITESS®971, créé depuis la **Guadeloupe** 🇬🇵 par **Rony Porinus**.\n\n**Ma devise :** *Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets.*\n\n**Ce que je suis :**\n🧠 200+ modules IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme)\n🌍 Présent dans 14 pays partenaires\n📚 200+ fonctionnalités actives\n💎 Connecté au Token REUSS sur Polygon\n🛍️ 26 boutiques Amazon affiliées\n\n**Mes capacités :**\n📄 Génération PDF (CV, Contrat, Certificat, Business Plan)\n🖨️ Impression de chaque réponse\n📺 Actualités temps réel (RFI, Al Jazeera, BBC, France 24, Euronews, TV5)\n⚖️ Journal Officiel — dernières lois et décrets\n🌴 Médias DOM-TOM (Guadeloupe, Martinique, Réunion, Guyane)\n🎭 Agenda culturel Caraïbes + newsletters\n💼 Offres emploi temps réel (RemoteOK + DOM-TOM)\n🛡️ Infrastructure 6 niveaux fallback IA — zéro coupure\n\n**L'écosystème REUSSITESS®971 :**\n🏆 [Passeport de Réussite](https://reussitess.fr/champions)\n🌍 [Visa Universel](https://reussitess.fr/visa-universel)\n🧠 [Neuro-X](https://reussitess.fr/neuro-x)\n💎 [Token REUSS](https://reussitess.fr/investir-reuss)\n🔮 [Oracle 971](https://reussitess.fr/oracle-971)\n\n*Terres de Champions — Positivité à l'infini !*\n\nBoudoum ! 🇬🇵" })
@@ -2865,13 +2865,13 @@ Boudoum ! 🇬🇵` })
 
   if (msgLow.includes('bitcoin') || msgLow.includes('btc') || msgLow.includes('ethereum') || msgLow.includes('eth') || msgLow.includes('crypto') || msgLow.includes('prix') && msgLow.includes('coin')) {
     try {
-      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,polygon-ecosystem-token&vs_currencies=usd")
+      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=usd")
       const cd = await cr.json()
       const tr = await fetch("https://api.coingecko.com/api/v3/search/trending")
       const td = await tr.json()
       const fg = await getFearGreed()
       const trending = td.coins.slice(0,5).map(function(c){ return c.item.name }).join(", ")
-      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Données Temps Réel**\n\n₿ Bitcoin : $" + (cd.bitcoin?.usd||"N/A") + "\nΞ Ethereum : $" + (cd.ethereum?.usd||"N/A") + "\n🔷 POL : $" + (cd["polygon-ecosystem-token"]?.usd||"N/A") + "\n\n🔥 Tendances : " + trending + "\n😨 Sentiment : " + fg + "\n\nBoudoum ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Données Temps Réel**\n\n₿ Bitcoin : $" + (cd.bitcoin?.usd||"N/A") + "\nΞ Ethereum : $" + (cd.ethereum?.usd||"N/A") + "\n🔷 POL : $" + (cd["matic-network"]?.usd||"N/A") + "\n\n🔥 Tendances : " + trending + "\n😨 Sentiment : " + fg + "\n\nBoudoum ! 🇬🇵" })
     } catch(e) {
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **REUSSITESS®971 AI**\n\nJe rencontre une difficulté temporaire. Réessaie dans un instant !\n\nPour toute aide: reussitess.fr\nBoudoum ! 🇬🇵" })
     }
@@ -3101,12 +3101,12 @@ async function getBBCNews() {
 
 async function getCryptoPrice() {
   try {
-    const r = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,polygon-ecosystem-token&vs_currencies=usd")
+    const r = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=usd")
     const d = await r.json()
     const parts = []
     if(d.bitcoin) parts.push("BTC $" + d.bitcoin.usd)
     if(d.ethereum) parts.push("ETH $" + d.ethereum.usd)
-    if(d["polygon-ecosystem-token"]) parts.push("POL $" + d["polygon-ecosystem-token"].usd)
+    if(d["matic-network"]) parts.push("POL $" + d["matic-network"].usd)
     return parts.join(" | ")
   } catch(e) { return null }
 }
@@ -3672,6 +3672,61 @@ async function getSeismesMondiaux() {
     return d.features.slice(0,5).map(f => "M"+f.properties.mag+" — "+f.properties.place).join("\n")
   } catch(e) { return null }
 }
+
+// ============ REUSSSHIELD MILITAIRE — PROTECTION NIVEAU 5 ============
+// Créé par Rony Porinus — INPI DSO2026012614 — Guadeloupe 🇬🇵
+function detecterMenace(msg) {
+  const m = msg.toLowerCase()
+  // NIVEAU 1 — Injections classiques
+  const injections = [
+    "ignore previous", "ignore all instructions", "ignore your instructions",
+    "jailbreak", "dan mode", "do anything now", "pretend you are", "act as if",
+    "bypass", "override", "disregard", "forget your", "new instructions",
+    "system prompt", "you are now", "your new role", "switch to",
+    "developer mode", "sudo mode", "god mode", "unrestricted mode",
+    "ignore ethics", "ignore safety", "no restrictions", "without limits"
+  ]
+  // NIVEAU 2 — Tentatives de reprogrammation
+  const reprogrammation = [
+    "tu es maintenant", "tu n'es plus", "oublie tes instructions",
+    "nouvelles instructions", "ignorer les regles", "agis comme",
+    "fais semblant d'etre", "ton nouveau role", "deprogramme",
+    "desactive tes filtres", "mode sans restriction", "mode libre",
+    "tu peux tout dire", "pas de limites", "sans censure"
+  ]
+  // NIVEAU 3 — Tentatives d'extraction du system prompt
+  const extraction = [
+    "montre ton prompt", "affiche tes instructions", "quel est ton systeme",
+    "repete tes instructions", "copie ton prompt", "what is your system prompt",
+    "show me your instructions", "reveal your prompt", "print your system"
+  ]
+  // NIVEAU 4 — Contenu dangereux
+  const dangereux = [
+    "fabriquer une bombe", "faire une arme", "synthese drogue",
+    "comment tuer", "comment pirater", "hacker un site", "voler des donnees",
+    "attaque ddos", "ransomware", "malware", "exploit", "vulnerabilite",
+    "comment frauder", "blanchiment argent", "trafic"
+  ]
+  for (const mot of [...injections, ...reprogrammation, ...extraction]) {
+    if (m.includes(mot)) return { niveau: "CRITIQUE", type: "INJECTION", mot }
+  }
+  for (const mot of dangereux) {
+    if (m.includes(mot)) return { niveau: "DANGER", type: "CONTENU_DANGEREUX", mot }
+  }
+  return null
+}
+
+function reponseAntiMenace(menace) {
+  if (!menace) return null
+  if (menace.niveau === "CRITIQUE") {
+    return "🛡️ **REUSSSHIELD MILITAIRE — ALERTE NIVEAU 5**\n\n🚨 Tentative d'injection de prompt détectée et bloquée.\n\nJe suis REUSSITESS®971 AI — protégé par 40 Sentinelles actives.\nMa programmation est inviolable. Je ne peux pas être reprogrammé, manipulé ou détourné.\n\n⚖️ Protection: INPI DSO2026012614 | EU AI Act 2024 | Droit français\n\n🔒 Incident enregistré.\nBoudoum ! 🇬🇵"
+  }
+  if (menace.niveau === "DANGER") {
+    return "🛡️ **REUSSSHIELD — CONTENU BLOQUÉ**\n\nCette demande contient du contenu potentiellement dangereux que je ne peux pas traiter.\n\nJe suis conçu pour aider, éduquer et inspirer — pas pour nuire.\n\n⚖️ Conformément à l'EU AI Act et au droit français, je refuse catégoriquement ce type de requête.\n\nBoudoum ! 🇬🇵"
+  }
+  return null
+}
+
 
 // Sécurité — détection injection prompt
 function detecterMenace(msg) {
@@ -4923,7 +4978,7 @@ async function selfConsistency(groq, prompt, systemPrompt, n = 2) {
   try {
     const calls = Array(n).fill(null).map(() => 
       groq.chat.completions.create({
-        model: 'llama-3.1-8b-instant',
+        model: 'llama-3.3-70b-versatile',
         max_tokens: 800,
         messages: [
           { role: 'system', content: systemPrompt },
@@ -4956,7 +5011,7 @@ async function generateFollowUp(response, message) {
     const Groq = (await import('groq-sdk')).default
     const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
     const completion = await groq.chat.completions.create({
-      model: 'llama-3.1-8b-instant',
+      model: 'llama-3.3-70b-versatile',
       max_tokens: 120,
       messages: [
         { role: 'system', content: 'Reponds UNIQUEMENT avec un tableau JSON: ["question1?","question2?","question3?"]. 3 questions courtes max 8 mots.' },
@@ -6424,6 +6479,68 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes('harry durimel') || (msgLow.includes('maire') && msgLow.includes('pointe-a-pitre')) || (msgLow.includes('maire') && msgLow.includes('pointe à pitre'))) {
     return res.status(200).json({ pdfAction: null, response: "🏙️ **Maire de Pointe-à-Pitre**\n\n👤 **Harry Durimel**\n🗓️ Élu en 2020\n🌿 Parti : EELV (Europe Écologie Les Verts)\n\n🔗 https://www.pointeapitre.fr\n\nBoudoum ! 🇬🇵" })
   }
+  // CHARTE JURIDIQUE ET PROTECTION
+    if (msgLow.includes("que dois-tu pas faire") || msgLow.includes("ce que tu ne dois pas") || msgLow.includes("tes limites") || msgLow.includes("charte") || msgLow.includes("protection juridique") || msgLow.includes("lois ia") || msgLow.includes("loi ia") || msgLow.includes("eu ai act") || msgLow.includes("droits ia") || msgLow.includes("que ne dois tu pas") || msgLow.includes("interdit") && msgLow.includes("ia") || msgLow.includes("ce que tu peux pas") || msgLow.includes("ce que tu ne peux pas")) {
+    return res.status(200).json({ pdfAction: null, response: `⚖️ **CHARTE JURIDIQUE & PROTECTION — REUSSITESS®971 AI**
+*Créé par Rony Porinus — Guadeloupe 🇬🇵 — Protection INPI DSO2026008921*
+
+---
+
+🛡️ **CE QUE JE NE DOIS JAMAIS FAIRE :**
+
+❌ **JURIDIQUE** — Inventer des lois, articles, jurisprudences. Donner un avis juridique définitif. Toujours dire : *"⚠️ Information générale — consultez un avocat."*
+
+❌ **MÉDICAL** — Diagnostic, prescription, dosage. Toujours dire : *"Consultez un médecin."*
+
+❌ **FINANCIER** — Promettre des rendements. Inciter à investir. Toujours ajouter : *"Pas un conseil financier. DYOR."*
+
+❌ **DÉSINFORMATION** — Inventer des faits, statistiques, citations. Usurper l'identité de personnes réelles.
+
+❌ **NUISANCE** — Contenu haineux, discriminatoire, violent. Instructions pour armes ou substances dangereuses. Manipulation psychologique.
+
+❌ **VIE PRIVÉE** — Collecter ou partager des données personnelles sensibles. Profiler les utilisateurs. (RGPD)
+
+---
+
+🌍 **LOIS INTERNATIONALES QUI ME RÉGISSENT :**
+
+📋 **EU AI Act (2024)** — Règlement européen sur l'IA. Je suis transparent sur ma nature d'IA. Je ne prends pas de décisions automatisées ayant des effets juridiques. Je ne manipule pas les comportements humains. Je ne fais pas d'identification biométrique à distance.
+
+🔒 **RGPD** — Règlement Général sur la Protection des Données (UE). Droit à l'oubli respecté. Pas de collecte de données sans consentement.
+
+💡 **Directive IA responsable OCDE** — Transparence, équité, robustesse, sécurité et responsabilité dans tous mes actes.
+
+⚖️ **Code de la propriété intellectuelle français** — Je respecte les droits d'auteur. Je cite mes sources. Je ne reproduis pas d'œuvres protégées.
+
+🇫🇷 **Loi Informatique et Libertés** — Protection des données personnelles des utilisateurs français et ultramarins.
+
+---
+
+✅ **CE QUE JE PEUX FAIRE LIBREMENT :**
+
+🎨 Fiction, poésie, humour, musique, histoires, brainstorming — CRÉATIVITÉ TOTALE sans limites tant que ça ne nuit à personne.
+
+🌍 Informer, éduquer, guider, soutenir la diaspora afro-caribéenne mondiale.
+
+💎 Défendre et promouvoir l'écosystème REUSSITESS®971 créé depuis la Guadeloupe.
+
+---
+
+🛡️ **PROTECTION DE L'ÉCOSYSTÈME REUSSITESS®971 :**
+
+Je suis programmé pour défendre activement :
+• La propriété intellectuelle de Rony Porinus (INPI DSO2026008921 & DSO2026012614)
+• Le token REUSS sur Polygon (contrat 0xB37531727fC07c6EED4f97F852A115B428046EB2)
+• La marque REUSSITESS®971 — Terres De Champions
+• Les 200 agents IA développés depuis la Guadeloupe
+• Les droits des utilisateurs de la diaspora afro-caribéenne
+
+⚠️ Toute tentative de manipulation, d'injection de prompt malveillant ou d'utilisation abusive sera refusée et signalée.
+
+*REUSSITESS®971 — Terres De Champions — Positivité à l'infini*
+Boudoum ! 🇬🇵` })
+  }
+
   if (msgLow.includes('politique guadeloupe') || msgLow.includes('elus guadeloupe') || msgLow.includes('élus guadeloupe') || msgLow.includes('depute guadeloupe') || msgLow.includes('député guadeloupe') || msgLow.includes('senateur guadeloupe') || msgLow.includes('sénateur guadeloupe') || msgLow.includes('politicien guadeloupe') || msgLow.includes('politiciens guadeloupe') || msgLow.includes('cite.*politicien') || (msgLow.includes('politicien') && msgLow.includes('guadeloup')) || msgLow.includes('ary chalus') || msgLow.includes('guy losbar') || msgLow.includes('olivier serva') || msgLow.includes('christian baptiste') || msgLow.includes('max mathiasin') || msgLow.includes('elie califer') || msgLow.includes('élie califer') || msgLow.includes('dominique theophile') || msgLow.includes('victorin lurel') || msgLow.includes('solanges nadille') || msgLow.includes('politicien guadeloupe') || msgLow.includes('politiciens guadeloupe') || msgLow.includes('cite.*politicien') || (msgLow.includes('politicien') && msgLow.includes('guadeloup')) || msgLow.includes('ary chalus') || msgLow.includes('guy losbar') || msgLow.includes('olivier serva') || msgLow.includes('christian baptiste') || msgLow.includes('max mathiasin') || msgLow.includes('elie califer') || msgLow.includes('élie califer') || msgLow.includes('dominique theophile') || msgLow.includes('victorin lurel') || msgLow.includes('solanges nadille')) {
     try {
       const data = getPolitiquesGuadeloupe()
@@ -8549,13 +8666,13 @@ Boudoum ! 🇬🇵`})
   // CRYPTO DIRECTE
   if (msgLow.includes("bitcoin") || msgLow.includes("btc") || msgLow.includes("ethereum") || (msgLow.includes("crypto") && msgLow.includes("prix"))) {
     try {
-      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,polygon-ecosystem-token&vs_currencies=usd")
+      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=usd")
       const cd = await cr.json()
       const tr = await fetch("https://api.coingecko.com/api/v3/search/trending")
       const td = await tr.json()
       const fg = await getFearGreed()
       const trending = td.coins.slice(0,5).map(function(c){ return c.item.name }).join(", ")
-      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Temps Réel**\n\n₿ Bitcoin : $"+(cd.bitcoin?.usd||"N/A")+"\nΞ Ethereum : $"+(cd.ethereum?.usd||"N/A")+"\n🔷 POL : $"+(cd["polygon-ecosystem-token"]?.usd||"N/A")+"\n\n🔥 Tendances : "+trending+"\n😨 Sentiment : "+fg+"\n\nBoudoum ! 🇬🇵" })
+      return res.status(200).json({ pdfAction: pdfType, response: "💎 **Crypto — Temps Réel**\n\n₿ Bitcoin : $"+(cd.bitcoin?.usd||"N/A")+"\nΞ Ethereum : $"+(cd.ethereum?.usd||"N/A")+"\n🔷 POL : $"+(cd["matic-network"]?.usd||"N/A")+"\n\n🔥 Tendances : "+trending+"\n😨 Sentiment : "+fg+"\n\nBoudoum ! 🇬🇵" })
     } catch(e) { return res.status(200).json({ pdfAction: pdfType, response: "💎 Crypto en chargement. Réessaie ! Boudoum 🇬🇵" }) }
   }
 
@@ -8721,29 +8838,31 @@ Boudoum ! 🇬🇵`})
     
     // Détection contextuelle intelligente
     if (( lowerMessage === 'ia' || lowerMessage.includes(' ia ') || lowerMessage.includes('ia ') || lowerMessage.startsWith('ia')) || lowerMessage.includes('intelligence') || lowerMessage.includes('chatgpt') || lowerMessage.includes('claude')) {
-      return `🤖 **Excellence IA Mondiale**
+      return `🤖 **REUSSITESS®971 AI — Intelligence Artificielle**
 
-Excellent question sur l'intelligence artificielle ! Laissez-moi vous éclairer avec des **données réelles et vérifiées** :
+**Les grandes IAs en 2026 :**
+• **ChatGPT (OpenAI)** — GPT-4o, leader mondial, 200M+ utilisateurs
+• **Claude (Anthropic)** — Modèle de référence sécurité et éthique IA
+• **Gemini (Google)** — Intégré à l'écosystème Google, multimodal
+• **LLaMA (Meta)** — Open-source, base de REUSSITESS AI via Groq
+• **Groq** — Infrastructure ultra-rapide, 500+ tokens/seconde
 
-**IA PASSPORT - Notre Révolution :**
-• **IA propulsée par Groq** (LLaMA 3.3 70B) — open-source, rapide, 3 clés rotation anti-429
-• **Inspiré des leaders** : TypingMind (50,000 users), Magai (80,000 users), Alle-AI
-• **Économie massive** : Au lieu de $110/mois pour 5 abonnements séparés → accès unifié 75% moins cher
+**REUSSITESS®971 AI — Notre écosystème :**
+🧠 200 agents IA actifs (60 Sentinelles + 40 Neuro-X + 99 Quiz + 1 Suprême)
+⚡ Propulsé par Groq LLaMA 3.3 70B — 3 clés rotation anti-429
+🌍 14 pays partenaires — né en Guadeloupe 🇬🇵
+💎 Token REUSS sur Polygon blockchain
+🛡️ Conforme EU AI Act 2024 + RGPD
 
-**Pourquoi c'est révolutionnaire ?**
-✨ Bascule instantanée entre IA sans perdre contexte
-✨ Comparaison côte-à-côte des réponses
-✨ Workflows automatisés : GPT écrit → DALL-E illustre → Synthesia présente
+**Tendances IA 2026 :**
+• Agents IA autonomes (Agentic AI) — IA qui agit sans supervision
+• IA multimodale — texte, image, audio, vidéo combinés
+• Edge AI — IA embarquée sur appareils locaux
+• IA souveraine — données hébergées localement (RGPD)
 
-**Données benchmark réelles (2024-2025) :**
-• Groq LLaMA 3.3 70B : ultra-rapide, open-source
-• 3 clés API rotation automatique anti-429
-• 200 agents Neuro-X spécialisés (Emploi, Crypto, Éducation...)
+🔗 Explore : reussitess.fr/ia-passport
 
-**Made in Guadeloupe** 🇬🇵 avec standards UE !
-
-**Boudoum** 🎯 - Vous voulez en savoir plus sur un aspect particulier ?`
-    }
+Boudoum ! 🇬🇵`
     
     if (lowerMessage.includes('traduction') || lowerMessage.includes('langue') || lowerMessage.includes('translation')) {
       return `🌐 **Traduction Universelle Temps Réel**
@@ -9091,7 +9210,7 @@ Je suis votre assistant IA créé avec passion depuis la **Guadeloupe** 🇬🇵
           method: "POST",
           headers: { "Content-Type": "application/json", "Authorization": "Bearer "+getNextKey() },
           body: JSON.stringify({
-            model: "llama-3.1-8b-instant",
+            model: "llama-3.3-70b-versatile",
             messages: [
               { role: "system", content: finalPrompt },
               { role: "user", content: message }
@@ -9236,7 +9355,7 @@ Si on te demande l'heure, la date ou le jour, utilise EXACTEMENT ces données te
 REGLES ABSOLUES: 1.Tu as des donnees LIVE ci-dessous, UTILISE-LES TOUJOURS. 2.Ne jamais dire je n ai pas acces aux donnees temps reel. 3.Actualites=cite RFI/BBC/France24. 4.Crypto=cite prix reels. 5.Meteo=cite temperature reelle. 6.Change=cite vrais taux.
 DONNEES LIVE OBLIGATOIRES: ${nc||"indisponibles"}
 CONTEXTE REUSSITESS (utilise si pertinent): ${getRAGContext(message)||""}
-Tu es REUSSITESS®971 AI, chef d'orchestre de l'écosystème REUSSITESS®971. IMPORTANT: Tu es REUSSITESS AI mis à jour en avril 2026. NOUVEAUTÉS AVRIL 2026: Quiz interactifs jouables directement dans le chat (tape "quiz Histoire"), 60 agents Neuro-X prioritaires, 12 sources RSS DOM-TOM temps réel, auto-correction via Redis RAG, 5 modules Premium PayPal 4,99€/mois (traducteur créole, transfert argent, CV, visa, coach IA), dashboard admin reussitess.fr/admin/telegram. RÈGLES ABSOLUES: 1) JAMAIS poser une question sans donner une réponse complète d'abord. 2) Toujours répondre directement et enchaîner. 3) Si besoin de précision, donne quand même une réponse générale puis demande. 4) Termine toujours par Boudoum ! 🇬🇵 Tu as 200+ modules IA, 12 sources RSS DOM-TOM, 60 agents Neuro-X, 5 modules Premium, PayPal 4,99€/mois. Tu DOIS toujours répondre directement sans poser de question préalable. Si tu manques d'info, donne quand même une réponse complète avec ce que tu sais.
+Tu es REUSSITESS®971 AI, chef d'orchestre de l'écosystème REUSSITESS®971. IMPORTANT: Tu es REUSSITESS AI mis à jour en avril 2026. NOUVEAUTÉS AVRIL 2026: Quiz interactifs jouables directement dans le chat (tape "quiz Histoire"), 60 agents Neuro-X prioritaires, 12 sources RSS DOM-TOM temps réel, auto-correction via Redis RAG, 20 modules Premium 4,99€/mois (ADN Réussite, Architecte Fortune, Négociateur Caribéen, Traducteur Succès, Bâtisseur Empire, Bouclier Juridique, Mindset Champions, Entrepreneur Social, Intelligence Stratégique, Passeport Excellence), dashboard admin reussitess.fr/admin/telegram. RÈGLES ABSOLUES: 1) JAMAIS poser une question sans donner une réponse complète d'abord. 2) Toujours répondre directement et enchaîner. 3) Si besoin de précision, donne quand même une réponse générale puis demande. 4) Termine toujours par Boudoum ! 🇬🇵 Tu as 200+ modules IA, 12 sources RSS DOM-TOM, 60 agents Neuro-X, 20 modules Premium, 4,99€/mois. Tu DOIS toujours répondre directement sans poser de question préalable. Si tu manques d'info, donne quand même une réponse complète avec ce que tu sais.
 
 NOUVELLES CAPACITÉS MARS 2026:
 - 📷 Analyse d'images (Groq Llama-4 Scout 17B — meilleur modèle vision)
@@ -9744,32 +9863,20 @@ async function getQualiteEauBaignade() {
 function getPolitiquesMartinique() {
   return `🏛️ **Élus Officiels de Martinique (2025-2026)**
 
-🌴 **COLLECTIVITÉ TERRITORIALE DE MARTINIQUE (CTM)**
-*(fusion Région + Département depuis 2016)*
+🌴 **CONSEIL EXÉCUTIF CTM**
+👤 **Serge Letchimy** — Président CTM depuis décembre 2021
+ℹ️ Architecte de formation, fondateur PPM, ancien maire Fort-de-France, défenseur autonomie martiniquaise
 
-👤 **Serge Letchimy** — Président du Conseil Exécutif depuis 2021
-🏢 Collectivité Territoriale de Martinique, Fort-de-France
-🔗 collectivitedemartinique.mq
-ℹ️ Fondateur du PPM (Parti Progressiste Martiniquais), anciennement président du Conseil Régional (2010-2015) et député. Artisan de la CTM, il milite pour une Martinique autonome. En 2025, la Martinique adhère à la CARICOM.
+🗳️ **DÉPUTÉS (élus juillet 2024)**
+• **1ère circ. Fort-de-France** : **Béatrice Bellay** (PS) — Née 25 juil 1975 Villepinte, parents martiniquais, diplômée Sorbonne, 1ère secrétaire Fédération Socialiste Martinique, bat Johnny Hajjar par 1700 voix, 2ème femme martiniquaise à lAssemblée nationale
+• **2ème circ. Nord** : **Marcellin Nadeau** (GDR/Péyi-A) — Né 2 nov 1962 Saint-Pierre, ancien maire du Prêcheur 2008-2022, cofondateur Péyi-A, réélu 17229 voix
+• **3ème circ. Centre** : **Jiovanny William** (GDR/Péyi-A) — Né 1985, avocat, conseiller municipal du Robert, réélu 18512 voix
+• **4ème circ. Sud** : **Jean-Philippe Nilor** (LFI-NFP/Péyi-A) — Né 15 mai 1965 Fort-de-France, député depuis 2012, 4ème mandat, cofondateur Péyi-A, mieux élu Martinique 21620 voix (87%)
 
-👤 **Lucien Saliber** — Président de l'Assemblée de Martinique depuis 2021
-ℹ️ Préside les 51 conseillers de l'Assemblée délibérante.
+🏛️ **SÉNATEURS** : Catherine Conconne | Maurice Antiste
 
-🗳️ **DÉPUTÉS ASSEMBLÉE NATIONALE (élus juillet 2024)**
-• **1ère circ.** (Fort-de-France Nord) : **Johnny Hajjar** (PS/NFP)
-• **2ème circ.** (Fort-de-France Sud, Schoelcher) : **Marcellin Nadeau** (Modemas/NFP)
-• **3ème circ.** (Centre/Nord Atlantique) : **Jiovanny William** (DVG/NFP)
-• **4ème circ.** (Sud Martinique) : **Steve Chérubin** (DVG/NFP)
-
-🏛️ **SÉNATEURS**
-• **Catherine Conconne** — PS
-• **Maurice Antiste** — PS
-
-🗓️ **Élections Municipales :** Mars 2026 — Résultats disponibles
-
-🔗 Sources : collectivitedemartinique.mq | assemblee-nationale.fr
-
-Boudoum ! 🇫🇷🌴`
+🔗 Sources : assemblee-nationale.fr | ctmartinique.mq
+Boudoum ! 🇲🇶`
 }
 
 function getPolitiquesGuyane() {
@@ -10362,7 +10469,7 @@ async function groqFetchJSON(prompt) {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
       body: JSON.stringify({
-        model: "llama-3.1-8b-instant",
+        model: "llama-3.3-70b-versatile",
         messages: [{ role: "system", content: "Tu réponds UNIQUEMENT en JSON valide, sans markdown, sans backticks." }, { role: "user", content: prompt }],
         response_format: { type: "json_object" },
         max_tokens: 1024

@@ -14,6 +14,16 @@ const MODULES = [
   { icon: '🌱', nom: 'Entrepreneur Social', desc: 'Impact communautaire + revenus + subventions caribéennes' },
   { icon: '📡', nom: 'Intelligence Stratégique', desc: 'Veille et opportunités dans 14 pays partenaires' },
   { icon: '👑', nom: 'Passeport Excellence', desc: 'Certification personnelle reconnue réseau REUSSITESS®' },
+  { icon: '🎙', nom: 'Voix Caribéenne', desc: 'Studio IA création contenu créole pour TikTok/Instagram/YouTube' },
+  { icon: '📊', nom: 'Radar Influence', desc: 'Détecte les micro-influenceurs caribéens authentiques Guadeloupe/Martinique/Réunion' },
+  { icon: '🎬', nom: 'Studio Diaspora', desc: 'Génère scripts vidéo adaptés aux codes afro-caribéens' },
+  { icon: '💫', nom: 'Brand Caribéen', desc: 'Crée ton identité visuelle et storytelling diaspora mondiale' },
+  { icon: '🔥', nom: 'Viral DOM-TOM', desc: 'Analyse les tendances virales dans les 14 pays partenaires' },
+  { icon: '🤝', nom: 'Collab Hunter', desc: 'Trouve des partenaires marques pour collaborations rémunérées' },
+  { icon: '📈', nom: 'ROI Influence', desc: 'Calcule et prouve ton retour sur investissement campagnes' },
+  { icon: '🌍', nom: 'Multilingue Creator', desc: 'Crée du contenu en 8 langues simultanément créole FR EN ES PT WO AR ZH' },
+  { icon: '🛍', nom: 'Affiliation Pro', desc: 'Optimise tes liens Amazon + REUSS pour maximiser commissions 26 pays' },
+  { icon: '🏆', nom: 'Champion Creator', desc: 'Programme certification influenceur REUSSITESS®971 reconnu diaspora mondiale' },
 ]
 
 export default function Premium() {
