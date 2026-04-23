@@ -4690,6 +4690,78 @@ async function getVillesPays(pays = "Guadeloupe") {
 }
 
 // ===== CURRENTSAPI — Actualités mondiales =====
+async function getPrixREUSS() {
+  try {
+    const res = await fetch("https://api.dexscreener.com/latest/dex/pairs/polygon/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c", { signal: AbortSignal.timeout(5000) })
+    const d = await res.json()
+    const pair = d?.pairs?.[0]
+    if (!pair) return "💎 Prix REUSS indisponible. Vérifiez sur DexScreener.\nBoudoum ! 🇬🇵"
+    return "💎 **Token REUSS — Prix Temps Réel**\n\n💰 Prix: $" + (pair.priceUsd||'N/A') + "\n📊 Volume 24h: $" + (pair.volume?.h24||'N/A') + "\n🌊 Liquidité: $" + (pair.liquidity?.usd||'N/A') + "\n📈 Variation 24h: " + (pair.priceChange?.h24||'N/A') + "%\n\n🔗 [DexScreener](https://dexscreener.com/polygon/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c)\n\n⚠️ Pas un conseil financier. DYOR.\nBoudoum ! 🇬🇵"
+  } catch(e) { return "💎 Prix REUSS indisponible. Réessaie ! Boudoum ! 🇬🇵" }
+}
+
+async function getActualitesOutremerComplet() {
+  try {
+    const feeds = [
+      "https://la1ere.francetvinfo.fr/rss",
+      "https://outremers360.com/feed",
+      "https://www.bondamanjak.com/feed/"
+    ]
+    const results = await Promise.allSettled(feeds.map(url =>
+      fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(url), { signal: AbortSignal.timeout(5000) })
+        .then(r => r.json())
+    ))
+    let articles = []
+    for (const r of results) {
+      if (r.status === 'fulfilled' && r.value?.items?.length) {
+        articles = articles.concat(r.value.items.slice(0, 3))
+      }
+    }
+    if (!articles.length) return "📰 Actualités DOM-TOM indisponibles. Réessaie !\nBoudoum ! 🇬🇵"
+    const list = articles.slice(0, 8).map((a, i) => (i+1) + ". **" + (a.title||'').replace(/[<>]/g,'').trim() + "**\n   🔗 " + (a.link||'').trim()).join("\n\n")
+    return "📰 **Actualités Outre-mer — Temps Réel**\n\n" + list + "\n\nBoudoum ! 🇬🇵"
+  } catch(e) { return "📰 Actualités indisponibles. Réessaie !\nBoudoum ! 🇬🇵" }
+}
+
+async function getRCIGuadeloupe() {
+  try {
+    const res = await fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent("https://rci.fm/guadeloupe/feed"), { signal: AbortSignal.timeout(5000) })
+    const d = await res.json()
+    if (!d?.items?.length) return "📻 RCI Guadeloupe indisponible. Consultez rci.fm/guadeloupe\nBoudoum ! 🇬🇵"
+    const list = d.items.slice(0, 5).map((a, i) => (i+1) + ". **" + (a.title||'').replace(/[<>]/g,'').trim() + "**\n   🔗 " + (a.link||'').trim()).join("\n\n")
+    return "📻 **RCI Guadeloupe — Dernières Infos**\n\n" + list + "\n\nBoudoum ! 🇬🇵"
+  } catch(e) { return "📻 RCI Guadeloupe indisponible. Réessaie !\nBoudoum ! 🇬🇵" }
+}
+
+async function getOffresEmploiDOMTOM(query = "", zone = "Guadeloupe") {
+  try {
+    const liens = [
+      { nom: "France Travail", url: "https://www.francetravail.fr/offres/recherche.aspx?motsCles=" + encodeURIComponent(query) + "&lieux=971" },
+      { nom: "Emploi.re", url: "https://www.emploi.re" },
+      { nom: "CaribbeanJobs", url: "https://www.caribbeanjobs.com" },
+      { nom: "JobArtis", url: "https://www.jobartis.com" }
+    ]
+    let rep = "💼 **Offres Emploi DOM-TOM**\n\n"
+    rep += "🔍 Recherche : " + (query || "Toutes offres") + " — Zone: " + zone + "\n\n"
+    rep += "📌 **Plateformes recommandées :**\n"
+    for (const l of liens) rep += "• [" + l.nom + "](" + l.url + ")\n"
+    rep += "\n💡 Astuce: Précisez votre métier pour de meilleures offres\n\nBoudoum ! 🇬🇵"
+    return rep
+  } catch(e) { return "💼 Offres emploi indisponibles. Consultez francetravail.fr\nBoudoum ! 🇬🇵" }
+}
+
+async function getCryptoPaysDevise(crypto = "bitcoin", devise = "usd") {
+  try {
+    const ids = { "bitcoin": "bitcoin", "btc": "bitcoin", "ethereum": "ethereum", "eth": "ethereum", "matic": "matic-network", "pol": "matic-network", "polygon": "matic-network", "reuss": null }
+    const id = ids[crypto.toLowerCase()] || crypto.toLowerCase()
+    if (!id) return await getPrixREUSS()
+    const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=" + id + "&vs_currencies=" + devise + ",eur,usd&include_24hr_change=true", { signal: AbortSignal.timeout(5000) })
+    const d = await res.json()
+    if (!d[id]) return "💰 Prix " + crypto + " introuvable. Réessaie !\nBoudoum ! 🇬🇵"
+    return "💰 **" + crypto.toUpperCase() + " — Prix Temps Réel**\n\n💵 USD: $" + (d[id].usd||'N/A') + "\n💶 EUR: €" + (d[id].eur||'N/A') + "\n📈 Variation 24h: " + (d[id].usd_24h_change?.toFixed(2)||'N/A') + "%\n\n⚠️ Pas un conseil financier. DYOR.\nBoudoum ! 🇬🇵"
+  } catch(e) { return "💰 Prix crypto indisponible. Réessaie !\nBoudoum ! 🇬🇵" }
+}
+
 async function getActualitesCurrents(query = "Guadeloupe", langue = "fr") {
   try {
     const q = query.toLowerCase()
