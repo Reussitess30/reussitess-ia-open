@@ -506,7 +506,7 @@ async function groqFetchWithTools(messages, systemPrompt) {
       else if (fnName === "get_devises") toolResult = await getDevisesAfriqueCaraibe()
       else if (fnName === "get_crypto") toolResult = await getCryptoPrice()
       else if (fnName === "get_carburant") toolResult = await getPrixCarburant()
-      else if (fnName === "get_actualites_guadeloupe") toolResult = await getActualitesGuadeloupe()
+      else if (fnName === "get_actualites_guadeloupe") toolResult = await getActualitesCurrents("Guadeloupe", "fr")
       else if (fnName === "get_prix_reuss") toolResult = await getPrixREUSS()
       else if (fnName === "get_hopitaux") toolResult = getHopitauxDOMTOM ? await getHopitauxDOMTOM() : ""
       else if (fnName === "get_emploi") toolResult = await getOffresEmploiDOMTOM()
@@ -3134,7 +3134,7 @@ Boudoum ! 🇬🇵` })
   }
 
   if (msgLow.includes('actualite dom-tom') || msgLow.includes('actualites dom-tom') || msgLow.includes('news dom-tom') || msgLow.includes('actu outremer') || msgLow.includes('la 1ere actualite')) {
-    const data = await getActualitesDOMTOM()
+    const data = await getActualitesCurrents("DOM-TOM Outre-mer", "fr")
     return res.status(200).json({ pdfAction: null, response: data+"Boudoum ! 🇬🇵" })
   }
 
@@ -6763,7 +6763,7 @@ Boudoum ! 🇬🇵`})
 
   // ============ ACTUALITES GUADELOUPE ============
   if (msgLow.includes('actualite guadeloupe') || msgLow.includes('actualités guadeloupe') || msgLow.includes('news guadeloupe') || msgLow.includes('info guadeloupe') || msgLow.includes('infos guadeloupe') || msgLow.includes('gwada info') || msgLow.includes('971 info')) {
-    const actu = await getActualitesGuadeloupe()
+    const actu = await getActualitesCurrents("Guadeloupe", "fr")
     const meteo = await getMeteoMonde('Guadeloupe')
     const groqText = await groqFetch([
       { role: "system", content: "Tu es REUSSITESS AI, encyclopédie caribéenne. Réponds comme une encyclopédie vivante sur la Guadeloupe. Inclus géographie, histoire, économie, culture, politique. Style chaleureux et positif. Termine par Boudoum ! 🇬🇵" },
@@ -6775,7 +6775,7 @@ Boudoum ! 🇬🇵`})
 
   // ============ ACTUALITES MARTINIQUE ============
   if (msgLow.includes('actualite martinique') || msgLow.includes('actualités martinique') || msgLow.includes('news martinique') || msgLow.includes('info martinique')) {
-    const actu = await getActualitesMartinique()
+    const actu = await getActualitesCurrents("Martinique", "fr")
     const meteo = await getMeteoMonde('Martinique')
     const groqText = await groqFetch([
       { role: "system", content: "Tu es REUSSITESS AI, encyclopédie caribéenne. Réponds comme une encyclopédie vivante sur la Martinique. Inclus géographie, histoire, économie, culture, politique. Style chaleureux et positif. Termine par Boudoum ! 🇬🇵" },
@@ -6787,7 +6787,7 @@ Boudoum ! 🇬🇵`})
 
   // ============ ACTUALITES DOM-TOM ============
   if (msgLow.includes('actualite dom-tom') || msgLow.includes('actualités dom-tom') || msgLow.includes('news dom-tom') || msgLow.includes('info dom-tom') || msgLow.includes('la 1ere')) {
-    const data = await getActualitesDOMTOM()
+    const data = await getActualitesCurrents("DOM-TOM Outre-mer", "fr")
     return res.status(200).json({ pdfAction: null, response: data+"Boudoum ! 🇬🇵" })
   }
 
