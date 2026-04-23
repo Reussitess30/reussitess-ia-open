@@ -4693,7 +4693,7 @@ async function getVillesPays(pays = "Guadeloupe") {
 async function getActualitesCurrents(query = "Guadeloupe", langue = "fr") {
   try {
     const q = query.toLowerCase()
-    const feedUrl = q.includes('guadeloupe') ? "https://www.bondamanjak.com/category/guadeloupe/feed/" :
+    const rawUrl = q.includes('guadeloupe') ? "https://www.bondamanjak.com/category/guadeloupe/feed/" :
                     q.includes('martinique') ? "https://www.bondamanjak.com/category/martinique/feed/" :
                     q.includes('guyane') ? "https://www.bondamanjak.com/category/guyane/feed/" :
                     q.includes('mayotte') ? "https://www.mayottehebdo.com/feed/" :
@@ -4702,8 +4702,16 @@ async function getActualitesCurrents(query = "Guadeloupe", langue = "fr") {
                     q.includes('afrique') ? "https://www.rfi.fr/fr/afrique/rss" :
                     q.includes('monde') || q.includes('international') ? "https://www.france24.com/fr/rss" :
                     "https://www.rfi.fr/fr/rss"
-    const res = await fetch(feedUrl, { signal: AbortSignal.timeout(5000) })
-    const xml = await res.text()
+    const feedUrl = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(rawUrl)
+    const res = await fetch(feedUrl, { signal: AbortSignal.timeout(8000) })
+    const jsonData = await res.json()
+    if (jsonData.items?.length) {
+      const articles = jsonData.items.slice(0,5).map((item,i) =>
+        i+1 + ". **" + (item.title||'').replace(/[<>]/g,'') + "**\n   🔗 " + (item.link||'').trim()
+      ).join("\n\n")
+      return "📰 **Actualités — \"" + query + "\"**\n\n" + articles + "\n\nBoudoum ! 🇬🇵"
+    }
+    const xml = JSON.stringify(jsonData)
     const items = [...xml.matchAll(/<item>[\s\S]*?<title>([\s\S]*?)<\/title>[\s\S]*?<link>([\s\S]*?)<\/link>[\s\S]*?<\/item>/g)]
     if (!items.length) return "❌ Aucune actualité trouvée."
     const decode = s => s.replace(/<!\[CDATA\[(.*?)\]\]>/g,'$1').replace(/&#(\d+);/g,(_,n)=>String.fromCharCode(n)).replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').trim()
