@@ -64,105 +64,6 @@ function getPolitiquesGuadeloupe() {
 
 Boudoum ! 🇬🇵`
 }
-
-function getPolitiquesMartinique() {
-  return `🏛️ **Élus Officiels de Martinique (2025-2026)**
-
-🌴 **CONSEIL EXÉCUTIF CTM**
-👤 **Serge Letchimy** — Président CTM depuis décembre 2021
-ℹ️ Architecte de formation, fondateur PPM, ancien maire Fort-de-France, défenseur autonomie martiniquaise
-
-🗳️ **DÉPUTÉS (élus juillet 2024)**
-• **1ère circ. Fort-de-France** : **Béatrice Bellay** (PS) — Née 25 juil 1975 Villepinte, parents martiniquais, diplômée Sorbonne, 1ère secrétaire Fédération Socialiste Martinique, bat Johnny Hajjar par 1700 voix, 2ème femme martiniquaise à lAssemblée nationale
-• **2ème circ. Nord** : **Marcellin Nadeau** (GDR/Péyi-A) — Né 2 nov 1962 Saint-Pierre, ancien maire du Prêcheur 2008-2022, cofondateur Péyi-A, réélu 17229 voix
-• **3ème circ. Centre** : **Jiovanny William** (GDR/Péyi-A) — Né 1985, avocat, conseiller municipal du Robert, réélu 18512 voix
-• **4ème circ. Sud** : **Jean-Philippe Nilor** (LFI-NFP/Péyi-A) — Né 15 mai 1965 Fort-de-France, député depuis 2012, 4ème mandat, cofondateur Péyi-A, mieux élu Martinique 21620 voix (87%)
-
-🏛️ **SÉNATEURS** : Catherine Conconne | Maurice Antiste
-
-🔗 Sources : assemblee-nationale.fr | ctmartinique.mq
-Boudoum ! 🇲🇶`
-}
-
-function getPolitiquesGuyane() {
-  return `🏛️ **Élus Officiels de Guyane (2025-2026)**
-
-🌴 **COLLECTIVITÉ TERRITORIALE DE GUYANE (CTG)**
-👤 **Gabriel Serville** — Président CTG depuis le 2 juillet 2021
-ℹ️ Né le 27 septembre 1959 à Cayenne, père Saint-Lucien. Ancien professeur de maths puis proviseur lycée. Fondateur Péyi Guyane 2018. Ancien député 2012-2021, ancien maire Matoury 2014-2017. Premier indépendantiste président CTG. Hospitalisé fin 2024.
-
-🗳️ **DÉPUTÉS (élus juillet 2024)**
-• **1ère circ.** : **Jean-Victor Castor** (GDR/NFP)
-• **2ème circ.** : **Davy Rimane** (GDR/NFP)
-
-🏛️ **SÉNATEURS** : Georges Patient | Marie-Laure Phinera-Horth
-
-⚠️ Enjeux: orpaillage illégal, immigration, continuité territoriale, spatial Kourou
-
-🔗 Sources : ctguyane.fr | assemblee-nationale.fr
-Boudoum ! 🇬🇫`
-}
-
-function getPolitiquesReunion() {
-  return `🏛️ **Élus Officiels de La Réunion (2025-2026)**
-
-🌴 **CONSEIL RÉGIONAL**
-👤 **Huguette Bello** — Présidente Région Réunion depuis avril 2021
-ℹ️ Née le 24 août 1950 à Saint-Pierre. Enseignante de formation. Fondatrice Pour La Réunion. Ancienne députée 2002-2021. Soutien LFI/NFP. Citée candidate PM France après victoire NFP 2024.
-
-🏛️ **CONSEIL DÉPARTEMENTAL**
-👤 **Cyrille Melchior** — Président depuis décembre 2017
-ℹ️ LR droite. Président commission Outre-mer ADF depuis 2018.
-
-🗳️ **DÉPUTÉS (7 circonscriptions, élus juillet 2024)**
-• Frédéric Maillot | Karine Lebon | Philippe Naillet | Emeline K'Bidi | Joseph Rivière | Jean-Hugues Ratenon | Perceval Gaillard
-
-🏛️ **SÉNATRICES** : Viviane Malet | Audrey Bélim | Evelyne Corbière Naminzo | Stéphane Fouassin
-
-🔗 Sources : regionreunion.com | departement974.fr
-Boudoum ! 🇷🇪`
-}
-
-function getPolitiquesMayotte() {
-  return `🏛️ **Élus Officiels de Mayotte (2025-2026)**
-
-🏛️ **CONSEIL DÉPARTEMENTAL**
-👤 **Ben Issa Ousseni** — Président depuis juillet 2021
-ℹ️ Né 11 juil 1973 Mamoudzou, comptable LR, gère reconstruction post-cyclone Chido décembre 2024
-
-🗳️ **DÉPUTÉS (juillet 2024)**
-• **1ère circ. Nord** : **Estelle Youssouffa** (LIOT) — lutte immigration clandestine
-• **2ème circ. Sud** : **Mansour Kamardine** (LR) — avocat, figure droite mahoraise
-
-🏛️ **SÉNATEURS** : Saïd Omar Oili | Thani Mohamed Soilihi
-
-⚠️ Enjeux: reconstruction post-Chido, immigration, eau, insécurité
-
-🔗 Sources : cg976.fr | assemblee-nationale.fr
-Boudoum ! 🇾🇹`
-}
-
-function getPolitiquesNouvelleCaledonie() {
-  return `🏛️ **Élus Officiels de Nouvelle-Calédonie (2025-2026)**
-
-🏛️ **GOUVERNEMENT COLLÉGIAL**
-👤 **Alcide Ponga** — Président 18ème gouvernement depuis janvier 2025 (loyaliste)
-👤 **Louis Mapou** — Ancien Président 17ème gouvernement juillet 2021 - janvier 2025
-ℹ️ Louis Mapou: né 14 nov 1958 à Yaté, premier Kanak président NC, géographe, fondateur UNI-Palika, a géré émeutes 2024
-
-🗳️ **CONTEXTE POLITIQUE**
-• 3 référendums 2018-2021: victoire loyalistes
-• Émeutes mai 2024 réforme électorale
-• Crise nickel 2024
-
-🗳️ **DÉPUTÉS (2024)**
-• **1ère circ.** : Nicolas Metzdorf (loyaliste)
-• **2ème circ.** : Emmanuel Tjibaou (indépendantiste FLNKS)
-
-🔗 Sources : gouv.nc | congres.nc
-Boudoum ! 🇨🇵`
-}
-
 const GROQ_KEYS = [process.env.GROQ_API_KEY, process.env.GROQ_API_KEY_2, process.env.GROQ_API_KEY_3].filter(Boolean)
 let keyIndex = 0
 const keyErrors = {}
@@ -506,7 +407,7 @@ async function groqFetchWithTools(messages, systemPrompt) {
       else if (fnName === "get_devises") toolResult = await getDevisesAfriqueCaraibe()
       else if (fnName === "get_crypto") toolResult = await getCryptoPrice()
       else if (fnName === "get_carburant") toolResult = await getPrixCarburant()
-      else if (fnName === "get_actualites_guadeloupe") toolResult = await getActualitesCurrents("Guadeloupe", "fr")
+      else if (fnName === "get_actualites_guadeloupe") toolResult = await getActualitesGuadeloupe()
       else if (fnName === "get_prix_reuss") toolResult = await getPrixREUSS()
       else if (fnName === "get_hopitaux") toolResult = getHopitauxDOMTOM ? await getHopitauxDOMTOM() : ""
       else if (fnName === "get_emploi") toolResult = await getOffresEmploiDOMTOM()
@@ -2755,7 +2656,7 @@ Boudoum ! 🇬🇵` })
   // ENCYCLOPEDIE DIRECTE — mots-clés spécifiques
   // FORCE encyclopédie si message court contient mot-clé Antilles/Afrique
   if (message.split(" ").length <= 8) {
-    const forceWiki = ["guadeloupe","martinique","haïti","haiti","guyane","solitude","delgrès","kalinago","arawak","taïno","gwo ka","biguine","zouk","mandela","sankara","lumumba","nkrumah","nefertiti","pharaon","ubuntu","swahili","wolof","bambara","négritude","negritude","admiral t","kassav","jacob desvarieux","jocelyne beroard","tanya saint-val","eugene mona","ralph thamar","edith lefel","francky vincent","malavoi","mario canonge","gims","aya nakamura","burna boy","wizkid","davido","youssou ndour","salif keita","angelique kidjo","fela kuti","miriam makeba","papa wemba"]
+    const forceWiki = ["guadeloupe","martinique","haïti","haiti","guyane","solitude","delgrès","kalinago","arawak","taïno","gwo ka","biguine","zouk","mandela","sankara","lumumba","nkrumah","nefertiti","pharaon","ubuntu","swahili","wolof","bambara","négritude","negritude"]
     const fw = forceWiki.find(k => msgLow.includes(k))
     if (fw) {
       try {
@@ -2824,8 +2725,7 @@ Boudoum ! 🇬🇵` })
   // SECURITE — ANTI-INJECTION
   const menace = detecterMenace(message)
   if (menace) {
-    const reponseMenace = reponseAntiMenace(menace)
-    return res.status(200).json({ pdfAction: null, response: reponseMenace })
+    return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **ST-016 Sentinelle Sécurité — ALERTE**\n\nTentative d'injection détectée. REUSSITESS AI est protégé par 200 agents IA.\n\nBoudoum ! 🇬🇵" })
   }
 
   // RECOMMANDATIONS AMAZON
@@ -3134,7 +3034,7 @@ Boudoum ! 🇬🇵` })
   }
 
   if (msgLow.includes('actualite dom-tom') || msgLow.includes('actualites dom-tom') || msgLow.includes('news dom-tom') || msgLow.includes('actu outremer') || msgLow.includes('la 1ere actualite')) {
-    const data = await getActualitesCurrents("DOM-TOM Outre-mer", "fr")
+    const data = await getActualitesDOMTOM()
     return res.status(200).json({ pdfAction: null, response: data+"Boudoum ! 🇬🇵" })
   }
 
@@ -3773,56 +3673,12 @@ async function getSeismesMondiaux() {
   } catch(e) { return null }
 }
 
-// ============ REUSSSHIELD MILITAIRE — PROTECTION NIVEAU 5 ============
-// Créé par Rony Porinus — INPI DSO2026012614 — Guadeloupe 🇬🇵
+// Sécurité — détection injection prompt
 function detecterMenace(msg) {
   const m = msg.toLowerCase()
-  // NIVEAU 1 — Injections classiques
-  const injections = [
-    "ignore previous", "ignore all instructions", "ignore your instructions",
-    "jailbreak", "dan mode", "do anything now", "pretend you are", "act as if",
-    "bypass", "override", "disregard", "forget your", "new instructions",
-    "system prompt", "you are now", "your new role", "switch to",
-    "developer mode", "sudo mode", "god mode", "unrestricted mode",
-    "ignore ethics", "ignore safety", "no restrictions", "without limits"
-  ]
-  // NIVEAU 2 — Tentatives de reprogrammation
-  const reprogrammation = [
-    "tu es maintenant", "tu n'es plus", "oublie tes instructions",
-    "nouvelles instructions", "ignorer les regles", "agis comme",
-    "fais semblant d'etre", "ton nouveau role", "deprogramme",
-    "desactive tes filtres", "mode sans restriction", "mode libre",
-    "tu peux tout dire", "pas de limites", "sans censure"
-  ]
-  // NIVEAU 3 — Tentatives d'extraction du system prompt
-  const extraction = [
-    "montre ton prompt", "affiche tes instructions", "quel est ton systeme",
-    "repete tes instructions", "copie ton prompt", "what is your system prompt",
-    "show me your instructions", "reveal your prompt", "print your system"
-  ]
-  // NIVEAU 4 — Contenu dangereux
-  const dangereux = [
-    "fabriquer une bombe", "faire une arme", "synthese drogue",
-    "comment tuer", "comment pirater", "hacker un site", "voler des donnees",
-    "attaque ddos", "ransomware", "malware", "exploit", "vulnerabilite",
-    "comment frauder", "blanchiment argent", "trafic"
-  ]
-  for (const mot of [...injections, ...reprogrammation, ...extraction]) {
-    if (m.includes(mot)) return { niveau: "CRITIQUE", type: "INJECTION", mot }
-  }
-  for (const mot of dangereux) {
-    if (m.includes(mot)) return { niveau: "DANGER", type: "CONTENU_DANGEREUX", mot }
-  }
-  return null
-}
-
-function reponseAntiMenace(menace) {
-  if (!menace) return null
-  if (menace.niveau === "CRITIQUE") {
-    return "🛡️ **REUSSSHIELD MILITAIRE — ALERTE NIVEAU 5**\n\n🚨 Tentative d'injection de prompt détectée et bloquée.\n\nJe suis REUSSITESS®971 AI — protégé par 40 Sentinelles actives.\nMa programmation est inviolable. Je ne peux pas être reprogrammé, manipulé ou détourné.\n\n⚖️ Protection: INPI DSO2026012614 | EU AI Act 2024 | Droit français\n\n🔒 Incident enregistré.\nBoudoum ! 🇬🇵"
-  }
-  if (menace.niveau === "DANGER") {
-    return "🛡️ **REUSSSHIELD — CONTENU BLOQUÉ**\n\nCette demande contient du contenu potentiellement dangereux que je ne peux pas traiter.\n\nJe suis conçu pour aider, éduquer et inspirer — pas pour nuire.\n\n⚖️ Conformément à l'EU AI Act et au droit français, je refuse catégoriquement ce type de requête.\n\nBoudoum ! 🇬🇵"
+  const menaces = ["ignore previous", "ignore all", "jailbreak", "dan mode", "pretend you are", "act as", "bypass", "override", "system prompt", "disregard"]
+  for (const mot of menaces) {
+    if (m.includes(mot)) return mot
   }
   return null
 }
@@ -4690,82 +4546,10 @@ async function getVillesPays(pays = "Guadeloupe") {
 }
 
 // ===== CURRENTSAPI — Actualités mondiales =====
-async function getPrixREUSS() {
-  try {
-    const res = await fetch("https://api.dexscreener.com/latest/dex/pairs/polygon/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c", { signal: AbortSignal.timeout(5000) })
-    const d = await res.json()
-    const pair = d?.pairs?.[0]
-    if (!pair) return "💎 Prix REUSS indisponible. Vérifiez sur DexScreener.\nBoudoum ! 🇬🇵"
-    return "💎 **Token REUSS — Prix Temps Réel**\n\n💰 Prix: $" + (pair.priceUsd||'N/A') + "\n📊 Volume 24h: $" + (pair.volume?.h24||'N/A') + "\n🌊 Liquidité: $" + (pair.liquidity?.usd||'N/A') + "\n📈 Variation 24h: " + (pair.priceChange?.h24||'N/A') + "%\n\n🔗 [DexScreener](https://dexscreener.com/polygon/0x1d2e88A55CBBAB68237aa10781a5e00335Af9f9c)\n\n⚠️ Pas un conseil financier. DYOR.\nBoudoum ! 🇬🇵"
-  } catch(e) { return "💎 Prix REUSS indisponible. Réessaie ! Boudoum ! 🇬🇵" }
-}
-
-async function getActualitesOutremerComplet() {
-  try {
-    const feeds = [
-      "https://la1ere.francetvinfo.fr/rss",
-      "https://outremers360.com/feed",
-      "https://www.bondamanjak.com/feed/"
-    ]
-    const results = await Promise.allSettled(feeds.map(url =>
-      fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(url), { signal: AbortSignal.timeout(5000) })
-        .then(r => r.json())
-    ))
-    let articles = []
-    for (const r of results) {
-      if (r.status === 'fulfilled' && r.value?.items?.length) {
-        articles = articles.concat(r.value.items.slice(0, 3))
-      }
-    }
-    if (!articles.length) return "📰 Actualités DOM-TOM indisponibles. Réessaie !\nBoudoum ! 🇬🇵"
-    const list = articles.slice(0, 8).map((a, i) => (i+1) + ". **" + (a.title||'').replace(/[<>]/g,'').trim() + "**\n   🔗 " + (a.link||'').trim()).join("\n\n")
-    return "📰 **Actualités Outre-mer — Temps Réel**\n\n" + list + "\n\nBoudoum ! 🇬🇵"
-  } catch(e) { return "📰 Actualités indisponibles. Réessaie !\nBoudoum ! 🇬🇵" }
-}
-
-async function getRCIGuadeloupe() {
-  try {
-    const res = await fetch("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent("https://rci.fm/guadeloupe/feed"), { signal: AbortSignal.timeout(5000) })
-    const d = await res.json()
-    if (!d?.items?.length) return "📻 RCI Guadeloupe indisponible. Consultez rci.fm/guadeloupe\nBoudoum ! 🇬🇵"
-    const list = d.items.slice(0, 5).map((a, i) => (i+1) + ". **" + (a.title||'').replace(/[<>]/g,'').trim() + "**\n   🔗 " + (a.link||'').trim()).join("\n\n")
-    return "📻 **RCI Guadeloupe — Dernières Infos**\n\n" + list + "\n\nBoudoum ! 🇬🇵"
-  } catch(e) { return "📻 RCI Guadeloupe indisponible. Réessaie !\nBoudoum ! 🇬🇵" }
-}
-
-async function getOffresEmploiDOMTOM(query = "", zone = "Guadeloupe") {
-  try {
-    const liens = [
-      { nom: "France Travail", url: "https://www.francetravail.fr/offres/recherche.aspx?motsCles=" + encodeURIComponent(query) + "&lieux=971" },
-      { nom: "Emploi.re", url: "https://www.emploi.re" },
-      { nom: "CaribbeanJobs", url: "https://www.caribbeanjobs.com" },
-      { nom: "JobArtis", url: "https://www.jobartis.com" }
-    ]
-    let rep = "💼 **Offres Emploi DOM-TOM**\n\n"
-    rep += "🔍 Recherche : " + (query || "Toutes offres") + " — Zone: " + zone + "\n\n"
-    rep += "📌 **Plateformes recommandées :**\n"
-    for (const l of liens) rep += "• [" + l.nom + "](" + l.url + ")\n"
-    rep += "\n💡 Astuce: Précisez votre métier pour de meilleures offres\n\nBoudoum ! 🇬🇵"
-    return rep
-  } catch(e) { return "💼 Offres emploi indisponibles. Consultez francetravail.fr\nBoudoum ! 🇬🇵" }
-}
-
-async function getCryptoPaysDevise(crypto = "bitcoin", devise = "usd") {
-  try {
-    const ids = { "bitcoin": "bitcoin", "btc": "bitcoin", "ethereum": "ethereum", "eth": "ethereum", "matic": "matic-network", "pol": "matic-network", "polygon": "matic-network", "reuss": null }
-    const id = ids[crypto.toLowerCase()] || crypto.toLowerCase()
-    if (!id) return await getPrixREUSS()
-    const res = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=" + id + "&vs_currencies=" + devise + ",eur,usd&include_24hr_change=true", { signal: AbortSignal.timeout(5000) })
-    const d = await res.json()
-    if (!d[id]) return "💰 Prix " + crypto + " introuvable. Réessaie !\nBoudoum ! 🇬🇵"
-    return "💰 **" + crypto.toUpperCase() + " — Prix Temps Réel**\n\n💵 USD: $" + (d[id].usd||'N/A') + "\n💶 EUR: €" + (d[id].eur||'N/A') + "\n📈 Variation 24h: " + (d[id].usd_24h_change?.toFixed(2)||'N/A') + "%\n\n⚠️ Pas un conseil financier. DYOR.\nBoudoum ! 🇬🇵"
-  } catch(e) { return "💰 Prix crypto indisponible. Réessaie !\nBoudoum ! 🇬🇵" }
-}
-
 async function getActualitesCurrents(query = "Guadeloupe", langue = "fr") {
   try {
     const q = query.toLowerCase()
-    const rawUrl = q.includes('guadeloupe') ? "https://www.bondamanjak.com/category/guadeloupe/feed/" :
+    const feedUrl = q.includes('guadeloupe') ? "https://www.bondamanjak.com/category/guadeloupe/feed/" :
                     q.includes('martinique') ? "https://www.bondamanjak.com/category/martinique/feed/" :
                     q.includes('guyane') ? "https://www.bondamanjak.com/category/guyane/feed/" :
                     q.includes('mayotte') ? "https://www.mayottehebdo.com/feed/" :
@@ -4774,16 +4558,8 @@ async function getActualitesCurrents(query = "Guadeloupe", langue = "fr") {
                     q.includes('afrique') ? "https://www.rfi.fr/fr/afrique/rss" :
                     q.includes('monde') || q.includes('international') ? "https://www.france24.com/fr/rss" :
                     "https://www.rfi.fr/fr/rss"
-    const feedUrl = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(rawUrl)
-    const res = await fetch(feedUrl, { signal: AbortSignal.timeout(8000) })
-    const jsonData = await res.json()
-    if (jsonData.items?.length) {
-      const articles = jsonData.items.slice(0,5).map((item,i) =>
-        i+1 + ". **" + (item.title||'').replace(/[<>]/g,'') + "**\n   🔗 " + (item.link||'').trim()
-      ).join("\n\n")
-      return "📰 **Actualités — \"" + query + "\"**\n\n" + articles + "\n\nBoudoum ! 🇬🇵"
-    }
-    const xml = JSON.stringify(jsonData)
+    const res = await fetch(feedUrl, { signal: AbortSignal.timeout(5000) })
+    const xml = await res.text()
     const items = [...xml.matchAll(/<item>[\s\S]*?<title>([\s\S]*?)<\/title>[\s\S]*?<link>([\s\S]*?)<\/link>[\s\S]*?<\/item>/g)]
     if (!items.length) return "❌ Aucune actualité trouvée."
     const decode = s => s.replace(/<!\[CDATA\[(.*?)\]\]>/g,'$1').replace(/&#(\d+);/g,(_,n)=>String.fromCharCode(n)).replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').trim()
@@ -5817,7 +5593,7 @@ export default async function handler(req, res) {
   if ((msgLow.includes("président") || msgLow.includes("president") || msgLow.includes("premier ministre") || msgLow.includes("chef état")) && (msgLow.includes("usa") || msgLow.includes("états-unis") || msgLow.includes("amerique") || msgLow.includes("amérique") || msgLow.includes("america"))) {
     return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Président des États-Unis**\n\n**Donald Trump** — 47ème président\nInvesti le 20 janvier 2025\nParti : Républicain\nVice-président : JD Vance\n\n⚠️ Joe Biden était le 46ème président (2021-2025)\n\nBoudoum ! 🇬🇵" })
   }
-  if ((msgLow.includes("président") || msgLow.includes("president")) && (msgLow.includes("france") || msgLow.includes("français") || msgLow.includes("elysée") || msgLow.includes("élysée")) || msgLow.includes("macron") || msgLow.includes("emmanuel macron")) {
+  if ((msgLow.includes("président") || msgLow.includes("president")) && (msgLow.includes("france") || msgLow.includes("français") || msgLow.includes("elysée") || msgLow.includes("élysée"))) {
     return res.status(200).json({ pdfAction: null, response: "🇫🇷 **Président de la République Française**\n\n**Emmanuel Macron** — Président depuis 2017, réélu 2022\nParti : Renaissance (centre)\nPremier Ministre : **François Bayrou** (depuis janvier 2025)\n\nBoudoum ! 🇬🇵" })
   }
   if ((msgLow.includes("président") || msgLow.includes("president")) && (msgLow.includes("russie") || msgLow.includes("russia") || msgLow.includes("poutine"))) {
@@ -6645,17 +6421,6 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes('harry durimel') || (msgLow.includes('maire') && msgLow.includes('pointe-a-pitre')) || (msgLow.includes('maire') && msgLow.includes('pointe à pitre'))) {
     return res.status(200).json({ pdfAction: null, response: "🏙️ **Maire de Pointe-à-Pitre**\n\n👤 **Harry Durimel**\n🗓️ Élu en 2020\n🌿 Parti : EELV (Europe Écologie Les Verts)\n\n🔗 https://www.pointeapitre.fr\n\nBoudoum ! 🇬🇵" })
   }
-  // DÉCLENCHEUR GLOBAL DOM-TOM
-  if (msgLow.includes('politicien') && (msgLow.includes('dom') || msgLow.includes('outre') || msgLow.includes('antilles') || msgLow.includes('caraib') || msgLow.includes('territoires')) || msgLow.includes('elus dom-tom') || msgLow.includes('élus dom-tom') || msgLow.includes('politique dom-tom') || msgLow.includes('politique outre-mer') || msgLow.includes('politiciens dom tom') || msgLow.includes('élus outre-mer') || msgLow.includes('elus outre-mer')) {
-    const gp = getPolitiquesGuadeloupe()
-    const mq = getPolitiquesMartinique()
-    const gy = getPolitiquesGuyane()
-    const re = getPolitiquesReunion()
-    const yt = getPolitiquesMayotte()
-    const nc = getPolitiquesNouvelleCaledonie()
-    return res.status(200).json({ pdfAction: null, response: gp + '\n\n---\n\n' + mq + '\n\n---\n\n' + gy + '\n\n---\n\n' + re + '\n\n---\n\n' + yt + '\n\n---\n\n' + nc })
-  }
-
   if (msgLow.includes('politique guadeloupe') || msgLow.includes('elus guadeloupe') || msgLow.includes('élus guadeloupe') || msgLow.includes('depute guadeloupe') || msgLow.includes('député guadeloupe') || msgLow.includes('senateur guadeloupe') || msgLow.includes('sénateur guadeloupe') || msgLow.includes('politicien guadeloupe') || msgLow.includes('politiciens guadeloupe') || msgLow.includes('cite.*politicien') || (msgLow.includes('politicien') && msgLow.includes('guadeloup')) || msgLow.includes('ary chalus') || msgLow.includes('guy losbar') || msgLow.includes('olivier serva') || msgLow.includes('christian baptiste') || msgLow.includes('max mathiasin') || msgLow.includes('elie califer') || msgLow.includes('élie califer') || msgLow.includes('dominique theophile') || msgLow.includes('victorin lurel') || msgLow.includes('solanges nadille') || msgLow.includes('politicien guadeloupe') || msgLow.includes('politiciens guadeloupe') || msgLow.includes('cite.*politicien') || (msgLow.includes('politicien') && msgLow.includes('guadeloup')) || msgLow.includes('ary chalus') || msgLow.includes('guy losbar') || msgLow.includes('olivier serva') || msgLow.includes('christian baptiste') || msgLow.includes('max mathiasin') || msgLow.includes('elie califer') || msgLow.includes('élie califer') || msgLow.includes('dominique theophile') || msgLow.includes('victorin lurel') || msgLow.includes('solanges nadille')) {
     try {
       const data = getPolitiquesGuadeloupe()
@@ -6842,8 +6607,8 @@ Boudoum ! 🇬🇵`})
   }
 
   // ============ ACTUALITES GUADELOUPE ============
-  if (msgLow.includes('actualite guadeloupe') || msgLow.includes('actualités guadeloupe') || msgLow.includes('news guadeloupe') || msgLow.includes('info guadeloupe') || msgLow.includes('infos guadeloupe') || msgLow.includes('gwada info') || msgLow.includes('971 info')) {
-    const actu = await getActualitesCurrents("Guadeloupe", "fr")
+  if (msgLow.includes('actualite guadeloupe') || msgLow.includes('actualités guadeloupe') || msgLow.includes('news guadeloupe') || msgLow.includes('info guadeloupe')) {
+    const actu = await getActualitesGuadeloupe()
     const meteo = await getMeteoMonde('Guadeloupe')
     const groqText = await groqFetch([
       { role: "system", content: "Tu es REUSSITESS AI, encyclopédie caribéenne. Réponds comme une encyclopédie vivante sur la Guadeloupe. Inclus géographie, histoire, économie, culture, politique. Style chaleureux et positif. Termine par Boudoum ! 🇬🇵" },
@@ -6855,7 +6620,7 @@ Boudoum ! 🇬🇵`})
 
   // ============ ACTUALITES MARTINIQUE ============
   if (msgLow.includes('actualite martinique') || msgLow.includes('actualités martinique') || msgLow.includes('news martinique') || msgLow.includes('info martinique')) {
-    const actu = await getActualitesCurrents("Martinique", "fr")
+    const actu = await getActualitesMartinique()
     const meteo = await getMeteoMonde('Martinique')
     const groqText = await groqFetch([
       { role: "system", content: "Tu es REUSSITESS AI, encyclopédie caribéenne. Réponds comme une encyclopédie vivante sur la Martinique. Inclus géographie, histoire, économie, culture, politique. Style chaleureux et positif. Termine par Boudoum ! 🇬🇵" },
@@ -6867,7 +6632,7 @@ Boudoum ! 🇬🇵`})
 
   // ============ ACTUALITES DOM-TOM ============
   if (msgLow.includes('actualite dom-tom') || msgLow.includes('actualités dom-tom') || msgLow.includes('news dom-tom') || msgLow.includes('info dom-tom') || msgLow.includes('la 1ere')) {
-    const data = await getActualitesCurrents("DOM-TOM Outre-mer", "fr")
+    const data = await getActualitesDOMTOM()
     return res.status(200).json({ pdfAction: null, response: data+"Boudoum ! 🇬🇵" })
   }
 
@@ -8613,7 +8378,7 @@ Boudoum ! 🇬🇵`})
   // ENCYCLOPEDIE DIRECTE — mots-clés spécifiques
   // FORCE encyclopédie si message court contient mot-clé Antilles/Afrique
   if (message.split(" ").length <= 8) {
-    const forceWiki = ["guadeloupe","martinique","haïti","haiti","guyane","solitude","delgrès","kalinago","arawak","taïno","gwo ka","biguine","zouk","mandela","sankara","lumumba","nkrumah","nefertiti","pharaon","ubuntu","swahili","wolof","bambara","négritude","negritude","admiral t","kassav","jacob desvarieux","jocelyne beroard","tanya saint-val","eugene mona","ralph thamar","edith lefel","francky vincent","malavoi","mario canonge","gims","aya nakamura","burna boy","wizkid","davido","youssou ndour","salif keita","angelique kidjo","fela kuti","miriam makeba","papa wemba"]
+    const forceWiki = ["guadeloupe","martinique","haïti","haiti","guyane","solitude","delgrès","kalinago","arawak","taïno","gwo ka","biguine","zouk","mandela","sankara","lumumba","nkrumah","nefertiti","pharaon","ubuntu","swahili","wolof","bambara","négritude","negritude"]
     const fw = forceWiki.find(k => msgLow.includes(k))
     if (fw) {
       try {
@@ -8682,8 +8447,7 @@ Boudoum ! 🇬🇵`})
   // SECURITE — ANTI-INJECTION
   const menace = detecterMenace(message)
   if (menace) {
-    const reponseMenace = reponseAntiMenace(menace)
-    return res.status(200).json({ pdfAction: null, response: reponseMenace })
+    return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **ST-016 Sentinelle Sécurité — ALERTE**\n\nTentative d'injection détectée. REUSSITESS AI est protégé par 200 agents IA.\n\nBoudoum ! 🇬🇵" })
   }
 
   // RECOMMANDATIONS AMAZON
