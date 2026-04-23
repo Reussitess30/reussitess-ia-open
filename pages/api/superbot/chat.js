@@ -5116,6 +5116,9 @@ export default async function handler(req, res) {
     }
   }
   const msgLow = message.toLowerCase()  // ===== GARDE-FOU JURIDIQUE =====
+if (detecterPremium(msgLow)) {
+  return res.status(200).json({ response: reponsePremium() })
+}
 
 
   // ===== QUIZ ENGINE — CHAT =====
@@ -12338,3 +12341,32 @@ async function redisOptimise(operations) {
     return await pipeline.exec()
   } catch(e) { return null }
 }
+
+// ===== PREMIUM DETECTION =====
+function detecterPremium(msg) {
+  const m = msg.toLowerCase()
+  return (
+    m.includes("premium") ||
+    m.includes("abonnement") ||
+    m.includes("pro") ||
+    m.includes("payer") ||
+    m.includes("upgrade") ||
+    m.includes("vip")
+  )
+}
+
+function reponsePremium() {
+  return `💎 **REUSSITESS PREMIUM**
+
+Débloquez toutes les fonctionnalités exclusives :
+- IA avancée
+- réponses illimitées
+- modules DOM-TOM enrichis
+- crypto + news temps réel
+
+👉 Accéder ici :
+https://reussitess.fr/premium
+
+Boudoum ! 🇬🇵`
+}
+
