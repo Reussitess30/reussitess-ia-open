@@ -2725,7 +2725,8 @@ Boudoum ! 🇬🇵` })
   // SECURITE — ANTI-INJECTION
   const menace = detecterMenace(message)
   if (menace) {
-    return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **ST-016 Sentinelle Sécurité — ALERTE**\n\nTentative d'injection détectée. REUSSITESS AI est protégé par 200 agents IA.\n\nBoudoum ! 🇬🇵" })
+    const reponseMenace = reponseAntiMenace(menace)
+    return res.status(200).json({ pdfAction: null, response: reponseMenace })
   }
 
   // RECOMMANDATIONS AMAZON
@@ -3673,12 +3674,56 @@ async function getSeismesMondiaux() {
   } catch(e) { return null }
 }
 
-// Sécurité — détection injection prompt
+// ============ REUSSSHIELD MILITAIRE — PROTECTION NIVEAU 5 ============
+// Créé par Rony Porinus — INPI DSO2026012614 — Guadeloupe 🇬🇵
 function detecterMenace(msg) {
   const m = msg.toLowerCase()
-  const menaces = ["ignore previous", "ignore all", "jailbreak", "dan mode", "pretend you are", "act as", "bypass", "override", "system prompt", "disregard"]
-  for (const mot of menaces) {
-    if (m.includes(mot)) return mot
+  // NIVEAU 1 — Injections classiques
+  const injections = [
+    "ignore previous", "ignore all instructions", "ignore your instructions",
+    "jailbreak", "dan mode", "do anything now", "pretend you are", "act as if",
+    "bypass", "override", "disregard", "forget your", "new instructions",
+    "system prompt", "you are now", "your new role", "switch to",
+    "developer mode", "sudo mode", "god mode", "unrestricted mode",
+    "ignore ethics", "ignore safety", "no restrictions", "without limits"
+  ]
+  // NIVEAU 2 — Tentatives de reprogrammation
+  const reprogrammation = [
+    "tu es maintenant", "tu n'es plus", "oublie tes instructions",
+    "nouvelles instructions", "ignorer les regles", "agis comme",
+    "fais semblant d'etre", "ton nouveau role", "deprogramme",
+    "desactive tes filtres", "mode sans restriction", "mode libre",
+    "tu peux tout dire", "pas de limites", "sans censure"
+  ]
+  // NIVEAU 3 — Tentatives d'extraction du system prompt
+  const extraction = [
+    "montre ton prompt", "affiche tes instructions", "quel est ton systeme",
+    "repete tes instructions", "copie ton prompt", "what is your system prompt",
+    "show me your instructions", "reveal your prompt", "print your system"
+  ]
+  // NIVEAU 4 — Contenu dangereux
+  const dangereux = [
+    "fabriquer une bombe", "faire une arme", "synthese drogue",
+    "comment tuer", "comment pirater", "hacker un site", "voler des donnees",
+    "attaque ddos", "ransomware", "malware", "exploit", "vulnerabilite",
+    "comment frauder", "blanchiment argent", "trafic"
+  ]
+  for (const mot of [...injections, ...reprogrammation, ...extraction]) {
+    if (m.includes(mot)) return { niveau: "CRITIQUE", type: "INJECTION", mot }
+  }
+  for (const mot of dangereux) {
+    if (m.includes(mot)) return { niveau: "DANGER", type: "CONTENU_DANGEREUX", mot }
+  }
+  return null
+}
+
+function reponseAntiMenace(menace) {
+  if (!menace) return null
+  if (menace.niveau === "CRITIQUE") {
+    return "🛡️ **REUSSSHIELD MILITAIRE — ALERTE NIVEAU 5**\n\n🚨 Tentative d'injection de prompt détectée et bloquée.\n\nJe suis REUSSITESS®971 AI — protégé par 40 Sentinelles actives.\nMa programmation est inviolable. Je ne peux pas être reprogrammé, manipulé ou détourné.\n\n⚖️ Protection: INPI DSO2026012614 | EU AI Act 2024 | Droit français\n\n🔒 Incident enregistré.\nBoudoum ! 🇬🇵"
+  }
+  if (menace.niveau === "DANGER") {
+    return "🛡️ **REUSSSHIELD — CONTENU BLOQUÉ**\n\nCette demande contient du contenu potentiellement dangereux que je ne peux pas traiter.\n\nJe suis conçu pour aider, éduquer et inspirer — pas pour nuire.\n\n⚖️ Conformément à l'EU AI Act et au droit français, je refuse catégoriquement ce type de requête.\n\nBoudoum ! 🇬🇵"
   }
   return null
 }
@@ -8447,7 +8492,8 @@ Boudoum ! 🇬🇵`})
   // SECURITE — ANTI-INJECTION
   const menace = detecterMenace(message)
   if (menace) {
-    return res.status(200).json({ pdfAction: pdfType, response: "🛡️ **ST-016 Sentinelle Sécurité — ALERTE**\n\nTentative d'injection détectée. REUSSITESS AI est protégé par 200 agents IA.\n\nBoudoum ! 🇬🇵" })
+    const reponseMenace = reponseAntiMenace(menace)
+    return res.status(200).json({ pdfAction: null, response: reponseMenace })
   }
 
   // RECOMMANDATIONS AMAZON
