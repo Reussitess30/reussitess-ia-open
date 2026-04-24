@@ -69,6 +69,9 @@ let keyIndex = 0
 const keyErrors = {}
 const responseCache = new Map()
 const CACHE_TTL = 30 * 1000
+let warnedMissingRAG = false
+let warnedMissingMemory = false
+
 
 function getNextKey() {
   const now = Date.now()
@@ -95,9 +98,9 @@ async function groqFetch(messages, maxTokens = 512) {
     const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
-      body: JSON.stringify({ model: "llama-3.3-70b-versatile", messages, max_tokens: maxTokens })
+      body: JSON.stringify({ model: "llama-3.1-8b-instant", messages, max_tokens: maxTokens })
     })
-    if (!res.ok) { keyErrors[key] = Date.now(); return null }
+    if (!res.ok) { await new Promise(r => setTimeout(r, 300)); } if (!res.ok) { keyErrors[key] = Date.now(); return null }
     const d = await res.json()
     const text = d.choices?.[0]?.message?.content || null
     if (text) responseCache.set(cacheKey, { val: text, ts: Date.now() })
@@ -190,7 +193,7 @@ async function groqFetch(messages, maxTokens = 512) {
         const cbRes = await fetch("https://api.cerebras.ai/v1/chat/completions", {
           method: "POST",
           headers: { "Content-Type": "application/json", "Authorization": "Bearer " + cbKey },
-          body: JSON.stringify({ model: "llama-3.3-70b-versatile", messages, max_tokens: maxTokens })
+          body: JSON.stringify({ model: "llama-3.1-8b-instant", messages, max_tokens: maxTokens })
         })
         if (!cbRes.ok) return null
         const cbData = await cbRes.json()
@@ -209,7 +212,7 @@ export async function groqStream(messages, systemPrompt, res) {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model: "llama-3.1-8b-instant",
         messages: [{ role: "system", content: systemPrompt }, ...messages],
         max_tokens: 1024,
         stream: true
@@ -383,14 +386,14 @@ async function groqFetchWithTools(messages, systemPrompt) {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
       body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
+        model: "llama-3.1-8b-instant",
         messages: [{ role: "system", content: systemPrompt }, ...messages],
         tools: GROQ_TOOLS,
         tool_choice: "auto",
         max_tokens: 1024
       })
     })
-    if (!res.ok) { keyErrors[key] = Date.now(); return null }
+    if (!res.ok) { await new Promise(r => setTimeout(r, 300)); } if (!res.ok) { keyErrors[key] = Date.now(); return null }
     const d = await res.json()
     const choice = d.choices?.[0]
     
@@ -419,7 +422,7 @@ async function groqFetchWithTools(messages, systemPrompt) {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
         body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
+          model: "llama-3.1-8b-instant",
           messages: [
             { role: "system", content: systemPrompt },
             ...messages,
@@ -1193,7 +1196,7 @@ async function getWikipedia(term) {
     } catch(eRemote) {}
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Emploi — DOM-TOM / Caraïbes / Afrique**\n\n"+groqText+"\n\n🔗 **Plateformes gratuites:**\n• France Travail: francetravail.fr\n• Réunion: emploi.re\n• Caraïbes: caribbeanjobs.com\n• Afrique: jobartis.com\n• International: linkedin.com\n\nBoudoum ! 🇬🇵" })
@@ -1206,7 +1209,7 @@ async function getWikipedia(term) {
   if (msgLow.includes("créer une association") || msgLow.includes("association loi 1901") || msgLow.includes("association guadeloupe") || msgLow.includes("association dom-tom")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Juridique — Créer une Association**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1219,7 +1222,7 @@ async function getWikipedia(term) {
   if (msgLow.includes("passeport de réussite") || msgLow.includes("passeport reussite") || msgLow.includes("certificat champion") || msgLow.includes("devenir champion") || msgLow.includes("passeport champion") || (msgLow.includes("passeport de réussite") || msgLow.includes("champions reussitess") || msgLow.includes("devenir champion"))) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\n"+groqText+"\n\n👉 **Obtiens ton certificat :** https://reussitess.fr/champions\n\n🌍 Communauté en pleine croissance !\n\nBoudoum ! 🇬🇵" })
@@ -1439,17 +1442,17 @@ Tu termines toujours par une prophétie positive et "Boudoum ! 🇬🇵"` },
 Boudoum ! 🇬🇵` })
   }
 
-  if (msgLow.includes("qui est reussitess") || msgLow.includes("c'est quoi reussitess") || msgLow.includes("reussitess c'est quoi") || msgLow.includes("kesako reussitess") || msgLow.includes("qui est-ce que reussitess")) { return res.status(200).json({ pdfAction: null, response: "🌟 **REUSSITESS®971** — Né en Guadeloupe 🇬🇵\n\nREUSSITESS est une plateforme SaaS IA créée par **Rony Porinus** depuis la Guadeloupe, au service de la diaspora afro-caribéenne mondiale.\n\n🧠 **200+ modules IA** (60 Neuro-X, 40 Sentinelles, 99 Quiz)\n💎 **Token REUSS** sur Polygon blockchain\n🌍 **14 pays partenaires**\n📱 **Bot Telegram** intelligent\n👑 **Premium 4,99€/mois** — 20 modules exclusifs\n\n*Terres de Champions — Positivité à l'infini !*\n\nBoudoum ! 🇬🇵" }) }
+  if (msgLow.includes("qui est reussitess") || msgLow.includes("c'est quoi reussitess") || msgLow.includes("reussitess c'est quoi") || msgLow.includes("kesako reussitess") || msgLow.includes("qui est-ce que reussitess")) { return res.status(200).json({ pdfAction: null, response: "🌟 **REUSSITESS®971** — Né en Guadeloupe 🇬🇵\n\nREUSSITESS est une plateforme SaaS IA créée par **Rony Porinus** depuis la Guadeloupe, au service de la diaspora afro-caribéenne mondiale.\n\n🧠 **200+ modules IA** (60 Neuro-X, 40 Sentinelles, 99 Quiz)\n💎 **Token REUSS** sur Polygon blockchain\n🌍 **14 pays partenaires**\n📱 **Bot Telegram** intelligent\n👑 **Premium 4,99€/mois** — 5 outils exclusifs\n\n*Terres de Champions — Positivité à l'infini !*\n\nBoudoum ! 🇬🇵" }) }
 
     if (msgLow.includes("qui es-tu") || msgLow.includes("qui es tu") || msgLow.includes("présente-toi") || msgLow.includes("présente toi") || msgLow.includes("ta mission") || msgLow.includes("c'est quoi reussitess ai") || msgLow.includes("tu es qui")) {
-    return res.status(200).json({ pdfAction: pdfType, response: "🤖 **Je suis REUSSITESS®971 AI**\n\nChef d'orchestre de l'écosystème REUSSITESS®971, créé depuis la **Guadeloupe** 🇬🇵 par **Rony Porinus**.\n\n**Ma devise :** *Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets.*\n\n**Ce que je suis :**\n🧠 200+ modules IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme)\n🌍 Présent dans 14 pays partenaires\n📚 200+ fonctionnalités actives\n💎 Connecté au Token REUSS sur Polygon\n🛍️ 26 boutiques Amazon affiliées\n\n**Mes capacités :**\n📄 Génération PDF (CV, Contrat, Certificat, Business Plan)\n🖨️ Impression de chaque réponse\n📺 Actualités temps réel (RFI, Al Jazeera, BBC, France 24, Euronews, TV5)\n⚖️ Journal Officiel — dernières lois et décrets\n🌴 Médias DOM-TOM (Guadeloupe, Martinique, Réunion, Guyane)\n🎭 Agenda culturel Caraïbes + newsletters\n💼 Offres emploi temps réel (RemoteOK + DOM-TOM)\n🛡️ Infrastructure 6 niveaux fallback IA — zéro coupure\n\n**L'écosystème REUSSITESS®971 :**\n🏆 [Passeport de Réussite](https://reussitess.fr/champions)\n🌍 [Visa Universel](https://reussitess.fr/visa-universel)\n🧠 [Neuro-X](https://reussitess.fr/neuro-x)\n💎 [Token REUSS](https://reussitess.fr/investir-reuss)\n🔮 [Oracle 971](https://reussitess.fr/oracle-971)\n\n*Terres de Champions — Positivité à l'infini !*\n\nBoudoum ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🤖 **Je suis REUSSITESS®971 AI**\n\nChef d'orchestre de l'écosystème REUSSITESS®971, créé depuis la **Guadeloupe** 🇬🇵 par **Rony Porinus**.\n\n**Ma devise :** *Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets.*\n\n**Ce que je suis :**\n🧠 200+ modules IA (60 Sentinelles, 40 Neuro-X, 99 Quiz, 1 Supreme). NOUVELLES APIs AVRIL 2026: /api/crypto-price (prix REUSS+MATIC temps reel CoinGecko+DexScreener, volume QuickSwap), /api/news-gwada (actualites Guadeloupe/Martinique/DOM-TOM/Afrique via RCI, France-Antilles, Outremer 1ere, Le Monde Afrique)\n🌍 Présent dans 14 pays partenaires\n📚 200+ fonctionnalités actives\n💎 Connecté au Token REUSS sur Polygon\n🛍️ 26 boutiques Amazon affiliées\n\n**Mes capacités :**\n📄 Génération PDF (CV, Contrat, Certificat, Business Plan)\n🖨️ Impression de chaque réponse\n📺 Actualités temps réel (RFI, Al Jazeera, BBC, France 24, Euronews, TV5)\n⚖️ Journal Officiel — dernières lois et décrets\n🌴 Médias DOM-TOM (Guadeloupe, Martinique, Réunion, Guyane)\n🎭 Agenda culturel Caraïbes + newsletters\n💼 Offres emploi temps réel (RemoteOK + DOM-TOM)\n🛡️ Infrastructure 6 niveaux fallback IA — zéro coupure\n\n**L'écosystème REUSSITESS®971 :**\n🏆 [Passeport de Réussite](https://reussitess.fr/champions)\n🌍 [Visa Universel](https://reussitess.fr/visa-universel)\n🧠 [Neuro-X](https://reussitess.fr/neuro-x)\n💎 [Token REUSS](https://reussitess.fr/investir-reuss)\n🔮 [Oracle 971](https://reussitess.fr/oracle-971)\n\n*Terres de Champions — Positivité à l'infini !*\n\nBoudoum ! 🇬🇵" })
   }
 
   // GUIDE INTELLIGENCE EMOTIONNELLE
   if (msgLow.includes("intelligence émotionnelle") || msgLow.includes("gérer mes émotions") || msgLow.includes("empathie") || msgLow.includes("gestion émotions") || msgLow.includes("eq")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💛 **Neuro-X Psychologie — Intelligence Émotionnelle**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1462,7 +1465,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("crowdfunding") || msgLow.includes("financement participatif") || msgLow.includes("kickstarter") || msgLow.includes("ulule") || msgLow.includes("lever fonds communauté")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Business — Crowdfunding Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1475,7 +1478,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("bien-être au travail") || msgLow.includes("equilibre vie pro") || msgLow.includes("work life balance") || msgLow.includes("épuisement professionnel") || msgLow.includes("motivation travail")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌺 **Neuro-X Coach — Bien-Être au Travail**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1488,7 +1491,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("caricom") || msgLow.includes("géopolitique caraïbes") || msgLow.includes("relations caraïbes") || msgLow.includes("union européenne dom") || msgLow.includes("indépendance guadeloupe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Géopolitique — Caraïbes**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1514,7 +1517,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("mode caribéenne") || msgLow.includes("stylisme") || msgLow.includes("madras") || msgLow.includes("tenue créole") || msgLow.includes("fashion antillais")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "👗 **Neuro-X Mode — Stylisme Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1527,7 +1530,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("leadership") || msgLow.includes("manager mon équipe") || msgLow.includes("diriger") || (msgLow.includes("management") && (msgLow.includes("équipe") || msgLow.includes("caribéen") || msgLow.includes("manager"))) || msgLow.includes("gérer mon équipe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Coach — Leadership Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1540,7 +1543,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("rgpd") || msgLow.includes("protection données") || msgLow.includes("vie privée") || msgLow.includes("cnil") || msgLow.includes("données personnelles")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🔒 **Neuro-X Réseaux — Protection Données RGPD**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1553,7 +1556,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("hashtag") || msgLow.includes("hashtags") || msgLow.includes("mots-dièse") || msgLow.includes("trending") || msgLow.includes("viral hashtag")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "# **Neuro-X Marketing — Hashtags Viraux**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1567,7 +1570,7 @@ Boudoum ! 🇬🇵` })
     try {
       const crypto = await getCryptoPrice()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Finance — Crypto pour Débutants**\n\n📊 Marché: "+crypto+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1580,7 +1583,7 @@ Boudoum ! 🇬🇵` })
   if ((msgLow.includes("anxiété") || msgLow.includes("anxiete") || msgLow.includes("dépression") || msgLow.includes("depression") || msgLow.includes("burn out") || (msgLow.includes("santé mentale") && !msgLow.includes("quiz")))) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💚 **Neuro-X Psychologie — Santé Mentale**\n\n"+groqText+"\n\n⚠️ Consultez un professionnel de santé.\nUrgence: 3114 (numéro national prévention suicide)\n\nBoudoum ! 🇬🇵" })
@@ -1593,7 +1596,7 @@ Boudoum ! 🇬🇵` })
   if ((msgLow.includes("exporter") || msgLow.includes("export")) && (msgLow.includes("produit") || msgLow.includes("international") || msgLow.includes("pays") || msgLow.includes("14 pays")) || msgLow.includes("vendre à l'international") || msgLow.includes("marché international") || msgLow.includes("14 pays")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Logistique — Export International**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1619,7 +1622,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("microcrédit") || msgLow.includes("micro-crédit") || msgLow.includes("prêt professionnel") || msgLow.includes("financement projet") || msgLow.includes("adie") || msgLow.includes("bpifrance")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Business — Micro-Finance**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1645,7 +1648,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("modèle de contrat") || msgLow.includes("contrat freelance") || msgLow.includes("contrat commercial") || msgLow.includes("cgv") || msgLow.includes("mentions légales")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "📝 **Neuro-X Juridique — Générateur Contrats**\n\n"+groqText+"\n\n⚠️ Consultez un avocat avant signature.\n\nBoudoum ! 🇬🇵" })
@@ -1658,7 +1661,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("dropshipping") || msgLow.includes("vendre sans stock") || msgLow.includes("e-commerce caribéen") || msgLow.includes("boutique en ligne") || msgLow.includes("shopify")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🛒 **Neuro-X Business — Dropshipping Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1671,7 +1674,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("freelance") || msgLow.includes("travailler à distance") || msgLow.includes("télétravail") || msgLow.includes("mission freelance") || msgLow.includes("indépendant")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💻 **Neuro-X Business — Guide Freelance**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1684,7 +1687,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("apprendre ia") || msgLow.includes("débuter en ia") || msgLow.includes("intelligence artificielle débutant") || msgLow.includes("chatgpt débutant") || msgLow.includes("comment utiliser ia")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **Neuro-X IA — Guide Débutants**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1697,7 +1700,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("nutrition") || msgLow.includes("alimentation saine") || msgLow.includes("régime caribéen") || msgLow.includes("manger sainement") || msgLow.includes("fruits tropicaux")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🥗 **Neuro-X Santé — Nutrition Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1710,7 +1713,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("deuil") || msgLow.includes("j'ai perdu") || msgLow.includes("quelqu'un est décédé") || msgLow.includes("soutien famille") || msgLow.includes("difficile en ce moment")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💙 **REUSSITESS AI — Soutien & Accompagnement**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1723,7 +1726,7 @@ Boudoum ! 🇬🇵` })
   if ((msgLow.includes("médicament") || msgLow.includes("medicament")) && (msgLow.includes("naturel") || msgLow.includes("plante") || msgLow.includes("caribé") || msgLow.includes("info")) || msgLow.includes("posologie naturelle") || msgLow.includes("traitement médical")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💊 **Neuro-X Santé — Information Médicale**\n\n"+groqText+"\n\n⚠️ Consultez toujours un médecin ou pharmacien.\n\nBoudoum ! 🇬🇵" })
@@ -1749,7 +1752,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("épargne") || msgLow.includes("epargne") || msgLow.includes("livret a") || msgLow.includes("économiser") || msgLow.includes("mettre de côté")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💳 **Neuro-X Finance — Guide Épargne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1773,7 +1776,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("pour enfant") || msgLow.includes("histoire pour enfant") || msgLow.includes("mon enfant") || msgLow.includes("activité enfant") || msgLow.includes("jeu éducatif")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🧒 **Neuro-X Enfants — Mode Famille**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1799,7 +1802,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("nft") || msgLow.includes("créer un nft") || msgLow.includes("vendre nft") || msgLow.includes("collection nft") || msgLow.includes("art numérique")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X NFT — Art Numérique Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1850,12 +1853,12 @@ Boudoum ! 🇬🇵` })
   }
 
   // GUIDE AGRICULTURE BIO
-  if (msgLow.includes("agriculture bio") || msgLow.includes("jardin créole") || msgLow.includes("cultiver") || msgLow.includes("planter") || msgLow.includes("permaculture caraïbes")) {
+  if (msgLow.includes("agriculture bio") || msgLow.includes("jardin créole") || (msgLow.includes("cultiver") && (msgLow.includes("plante") || msgLow.includes("jardin") || msgLow.includes("sol") || msgLow.includes("légume"))) || (msgLow.includes("planter") && msgLow.includes("jardin")) || msgLow.includes("permaculture caraïbes")) {
     try {
       const meteo = await getMeteo()
       const lune = getLunePhase()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌱 **Neuro-X Agriculture — Jardin Créole**\n\n🌙 "+lune+" | 🌤️ "+meteo+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1868,7 +1871,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("philosophie") || msgLow.includes("césaire") || msgLow.includes("fanon") || msgLow.includes("glissant") || msgLow.includes("négritude") || msgLow.includes("créolité") || (msgLow.includes("ubuntu") && !msgLow.includes("linux") && !msgLow.includes("installer")) || msgLow.includes("philosophie africaine") || msgLow.includes("pensée africaine")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Philosophie — Pensée Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1881,7 +1884,7 @@ Boudoum ! 🇬🇵` })
   if ((msgLow.includes("diaspora") && (msgLow.includes("caribé") || msgLow.includes("afric") || msgLow.includes("guadeloupe") || msgLow.includes("antilles") || msgLow.includes("france") || msgLow.includes("retour"))) || msgLow.includes("guadeloupéen à paris") || msgLow.includes("antillais en france") || msgLow.includes("retour au pays") || msgLow.includes("double culture")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Diaspora — Communauté Mondiale**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1894,7 +1897,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("smart contract") || msgLow.includes("solidity") || msgLow.includes("déployer un contrat") || msgLow.includes("erc20") || msgLow.includes("polygon contract")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "⛓️ **Neuro-X Blockchain — Smart Contracts**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1920,7 +1923,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("acheter une maison") || msgLow.includes("immobilier guadeloupe") || msgLow.includes("girardin") || msgLow.includes("défiscalisation immobilier") || msgLow.includes("investir immobilier")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🏠 **Neuro-X Immobilier — Guide DOM-TOM**\n\n"+groqText+"\n\n⚠️ Consultez un notaire.\n\nBoudoum ! 🇬🇵" })
@@ -1933,7 +1936,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("femme entrepreneur") || msgLow.includes("entrepreneuriat féminin") || msgLow.includes("business woman") || msgLow.includes("femme boss") || msgLow.includes("créer mon activité femme")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Femmes — Coach Entrepreneuriat**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1946,7 +1949,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("orientation scolaire") || msgLow.includes("études guadeloupe") || msgLow.includes("bourse étudiant") || msgLow.includes("premier emploi") || msgLow.includes("stage guadeloupe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Jeunes — Guide Orientation**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1959,7 +1962,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("mon site") || msgLow.includes("améliorer mon site") || msgLow.includes("seo de mon site") || msgLow.includes("optimiser mon site") || msgLow.includes("audit site")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🔍 **Neuro-X SEO — Audit Site Web**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1972,7 +1975,7 @@ Boudoum ! 🇬🇵` })
   if ((msgLow.includes("chanson") && (msgLow.includes("créole") || msgLow.includes("caribé") || msgLow.includes("compose") || msgLow.includes("zouk") || msgLow.includes("gwo ka"))) || msgLow.includes("zouk") || msgLow.includes("gwo ka") || msgLow.includes("paroles") || msgLow.includes("compose une chanson")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🎵 **Neuro-X Musique — Chanson Créole**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1986,7 +1989,7 @@ Boudoum ! 🇬🇵` })
     try {
       const meteo = await getMeteo()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Tourisme — Éco-Tourisme Guadeloupe**\n\n🌤️ "+meteo+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -1999,7 +2002,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("volcan") || msgLow.includes("biodiversité") || msgLow.includes("mangrove") || msgLow.includes("récif corallien") || msgLow.includes("faune caribéenne")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🔬 **Neuro-X Sciences — Biodiversité Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2012,7 +2015,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("énergie solaire") || msgLow.includes("panneau solaire") || msgLow.includes("renouvelable") || msgLow.includes("électricité guadeloupe") || msgLow.includes("edf guadeloupe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "☀️ **Neuro-X Énergie — Solaire Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2025,7 +2028,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("que veut dire") || msgLow.includes("définition") || msgLow.includes("signifie") || msgLow.includes("en créole") || msgLow.includes("traduction créole") || msgLow.includes("comment dire")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "📖 **Neuro-X Langues — Dictionnaire Créole**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2039,7 +2042,7 @@ Boudoum ! 🇬🇵` })
     try {
       const citation = await getCitation()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "✨ **Neuro-X Coach — Développement Personnel**\n\n💬 "+citation+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2054,7 +2057,7 @@ Boudoum ! 🇬🇵` })
       const crypto = await getCryptoPrice()
       const fg = await getFearGreed()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "📈 **Neuro-X Finance — Analyse Marché**\n\n"+crypto+"\n😨 "+fg+"\n\n"+groqText+"\n\n⚠️ DYOR\n\nBoudoum ! 🇬🇵" })
@@ -2067,7 +2070,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("retraite") || msgLow.includes("pension") || msgLow.includes("cnav") || msgLow.includes("cotisation retraite") || msgLow.includes("préparer ma retraite")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Juridique — Guide Retraite DOM-TOM**\n\n"+groqText+"\n\n⚠️ Consultez un conseiller retraite.\n\nBoudoum ! 🇬🇵" })
@@ -2080,7 +2083,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("business plan") || msgLow.includes("plan d'affaires") || msgLow.includes("créer mon entreprise") || msgLow.includes("lancer mon business") || msgLow.includes("monter mon projet")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "📋 **Neuro-X Business — Business Plan**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2109,7 +2112,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("immigration") || msgLow.includes("visa") || msgLow.includes("s'installer") || msgLow.includes("expatrié") || msgLow.includes("vivre en guadeloupe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Juridique — Guide Immigration**\n\n"+groqText+"\n\n⚠️ Consultez les services préfectoraux.\n\nBoudoum ! 🇬🇵" })
@@ -2123,7 +2126,7 @@ Boudoum ! 🇬🇵` })
     try {
       const lune = getLunePhase()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "⭐ **Neuro-X Spiritualité — Astrologie Caribéenne**\n\n"+lune+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2136,7 +2139,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("interroge moi") || msgLow.includes("teste moi") || msgLow.includes("question culture") || msgLow.includes("quiz rapide") || msgLow.includes("pose moi une question")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Éducation — Quiz Instantané**\n\n"+groqText+"\n\n+5 points REUSS si bonne réponse !\n\nBoudoum ! 🇬🇵" })
@@ -2162,7 +2165,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("histoire guadeloupe") || msgLow.includes("histoire de la guadeloupe") || msgLow.includes("histoire des antilles") || msgLow.includes("histoire caribéenne") || msgLow.includes("histoire martinique") || msgLow.includes("histoire haiti") || msgLow.includes("histoire haïti") || msgLow.includes("histoire de la martinique") || msgLow.includes("histoire afrique") || msgLow.includes("abolition") || msgLow.includes("victor schoelcher") || msgLow.includes("patrimoine antillais") || msgLow.includes("culture guadeloupéenne") || (msgLow.includes("histoire") && msgLow.includes("guadeloupe")) || (msgLow.includes("histoire") && msgLow.includes("antilles")) || (msgLow.includes("histoire") && msgLow.includes("caraïbes")) || (msgLow.includes("histoire") && msgLow.includes("afrique")) || (msgLow.includes("histoire") && msgLow.includes("martinique"))) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       const rep = groqText
@@ -2177,7 +2180,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("email professionnel") || msgLow.includes("rédige un email") || msgLow.includes("lettre professionnelle") || msgLow.includes("email commercial") || msgLow.includes("mail pro")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "📧 **Neuro-X Business — Email Professionnel**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2203,7 +2206,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("cocktail") || (msgLow.includes("rhum ") || msgLow.includes(" rhum") || msgLow === "rhum" || msgLow.includes("rhum antilles") || msgLow.includes("rhum agricole")) || msgLow.includes("ti punch") || msgLow.includes("planteur") || msgLow.includes("mojito") || msgLow.includes("recette boisson")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🍹 **Neuro-X Cuisine — Cocktails Caribéens**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2217,7 +2220,7 @@ Boudoum ! 🇬🇵` })
     try {
       const lune = getLunePhase()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌙 **Neuro-X Spiritualité — Analyse Rêves**\n\n"+lune+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2231,7 +2234,7 @@ Boudoum ! 🇬🇵` })
     try {
       const meteo = await getMeteo()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Tourisme — Guide Caribéen**\n\n🌤️ "+meteo+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2244,7 +2247,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("analyse ma personnalité") || msgLow.includes("test personnalité") || msgLow.includes("quel type") || msgLow.includes("mbti") || msgLow.includes("profil personnalité")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Psychologie — Analyse Personnalité**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2257,7 +2260,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("slogan") || msgLow.includes("accroche") || msgLow.includes("tagline") || msgLow.includes("phrase marketing")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Marketing — Générateur Slogans**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2272,7 +2275,7 @@ Boudoum ! 🇬🇵` })
       const crypto = await getCryptoPrice()
       const fg = await getFearGreed()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Finance — Conseils Investissement**\n\n📊 Marché actuel : "+fg+"\n\n"+groqText+"\n\n⚠️ DYOR — Pas de conseil financier.\n\nBoudoum ! 🇬🇵" })
@@ -2285,7 +2288,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("apprendre") && (msgLow.includes("anglais") || msgLow.includes("espagnol") || msgLow.includes("créole") || msgLow.includes("portugais") || msgLow.includes("langue")) || msgLow.includes("leçon de langue")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Langues — Leçon**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2300,7 +2303,7 @@ Boudoum ! 🇬🇵` })
       const meteo = await getMeteo()
       const lune = getLunePhase()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message + " (Météo actuelle: "+meteo+" | Lune: "+lune+")" }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🧘 **Neuro-X Santé — Méditation Caribéenne**\n\n🌊 "+meteo+" | "+lune+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2341,7 +2344,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("président usa") || msgLow.includes("président etats-unis") || msgLow.includes("president usa")) {
     return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Donald Trump** réélu Nov 2024, investi 20/01/2025. Actuel président USA. Boudoum ! 📱" });
   }
-  if ((msgLow.includes("crypto") || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme") && !msgLow.startsWith("qui ") && !msgLow.startsWith("que ") && !msgLow.startsWith("quels ") && !msgLow.startsWith("quelle ") && !msgLow.startsWith("comment ") && !msgLow.startsWith("pourquoi ") && !msgLow.startsWith("quand ") && !msgLow.startsWith("ou ") && !msgLow.startsWith("où ")) {
+  if (((msgLow.includes("crypto") && (msgLow.includes("prix") || msgLow.includes("acheter") || msgLow.includes("vendre") || msgLow.length <= 6)) || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme") && !msgLow.startsWith("qui ") && !msgLow.startsWith("que ") && !msgLow.startsWith("quels ") && !msgLow.startsWith("quelle ") && !msgLow.startsWith("comment ") && !msgLow.startsWith("pourquoi ") && !msgLow.startsWith("quand ") && !msgLow.startsWith("ou ") && !msgLow.startsWith("où ")) {
     const country = msgLow.includes("haiti") ? "haiti" : msgLow.includes("rwanda") ? "rwanda" : "global"
     const data = await fetch(`https://reussitess.fr/api/world-data?type=crypto&country=${country}`).then(r=>r.json())
     return res.status(200).json(data)
@@ -2358,7 +2361,7 @@ Boudoum ! 🇬🇵` })
   }
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Santé — Plantes Caribéennes**\n\n"+groqText+"\n\n⚠️ Consultez un médecin.\n\nBoudoum ! 🇬🇵" })
@@ -2404,7 +2407,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("programme sport") || msgLow.includes("musculation") || msgLow.includes("perte de poids") || msgLow.includes("fitness") || msgLow.includes("programme fitness")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💪 **Neuro-X Sport — Coach Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2437,7 +2440,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("recette") || msgLow.includes("comment cuisiner") || msgLow.includes("comment préparer") || msgLow.includes("accras") || msgLow.includes("colombo") || msgLow.includes("blaff") || msgLow.includes("court-bouillon")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🍽️ **Neuro-X Cuisine — Recette Créole**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2450,7 +2453,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("mes droits") || msgLow.includes("légalement") || msgLow.includes("juridique") || msgLow.includes("contrat") || msgLow.includes("auto-entrepreneur") || msgLow.includes("siret")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Neuro-X Juridique — Conseil Droit**\n\n"+groqText+"\n\n⚠️ Consultez un avocat pour toute décision légale.\n\nBoudoum ! 🇬🇵" })
@@ -2476,7 +2479,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("résume") || msgLow.includes("resume notre") || msgLow.includes("résumé de notre") || msgLow.includes("recap") || msgLow.includes("récap")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: "Résume cette conversation : "+message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "📋 **Résumé de Session**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2489,7 +2492,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("débat") || msgLow.includes("debat") || msgLow.includes("pour et contre") || msgLow.includes("avantages inconvénients") || msgLow.includes("argumente")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Mode Débat — Neuro-X Stratégie**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2502,7 +2505,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("conseil business") || msgLow.includes("idée business") || msgLow.includes("idée entreprise") || msgLow.includes("comment gagner") || msgLow.includes("revenus passifs")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Business — Conseils Caribéens**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2515,7 +2518,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("poème") || msgLow.includes("poeme") || msgLow.includes("écris un poème") || msgLow.includes("crée un poème") || msgLow.includes("rimé")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       const poeme = groqText || ""
@@ -2529,7 +2532,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("nom d'entreprise") || msgLow.includes("nom de marque") || msgLow.includes("nom business") || msgLow.includes("génère un nom") || msgLow.includes("genere un nom")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 1024)
       const noms = groqText || ""
@@ -2543,7 +2546,7 @@ Boudoum ! 🇬🇵` })
   if ((msgLow === "cv" || ((msgLow.includes("mon cv") && (msgLow.includes("créer") || msgLow.includes("faire") || msgLow.includes("générer") || msgLow.includes("pdf"))) && (msgLow.includes("créer") || msgLow.includes("faire") || msgLow.includes("générer") || msgLow.includes("pdf"))) || msgLow.includes("le cv") || msgLow.includes("curriculum")) || msgLow.includes("curriculum") || msgLow.includes("génère mon cv") || msgLow.includes("aide cv") || msgLow.includes("rédige cv")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "📄 **Neuro-X Business — Assistant CV**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2663,7 +2666,7 @@ Boudoum ! 🇬🇵` })
         const wiki = await rechercheWikipedia(message, "fr")
         if (wiki) {
           const groqText = await groqFetch([
-                { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+                { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
                 { role: "user", content: message+"\n\nWikipedia: "+wiki }
               ], 4096)
           const rep = groqText
@@ -2683,7 +2686,7 @@ Boudoum ! 🇬🇵` })
       const wiki = await rechercheWikipedia(message, "fr")
       if (wiki) {
         const groqText = await groqFetch([
-              { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+              { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
               { role: "user", content: message+"\n\nWikipedia: "+wiki }
             ], 4096)
         const rep = groqText
@@ -2699,7 +2702,7 @@ Boudoum ! 🇬🇵` })
     try {
       const wiki = await rechercheWikipedia("Ubuntu philosophie africaine humanisme", "fr")
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n*Umuntu ngumuntu ngabantu — Je suis parce que nous sommes*\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -2713,7 +2716,7 @@ Boudoum ! 🇬🇵` })
     try {
       const wiki = await rechercheWikipedia("Ubuntu philosophie africaine", "fr")
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n"+groqText+"\n\n*Ubuntu: Je suis parce que nous sommes*\n\nBoudoum ! 🇬🇵" })
@@ -2865,7 +2868,7 @@ Boudoum ! 🇬🇵` })
 
   if (msgLow.includes('bitcoin') || msgLow.includes('btc') || msgLow.includes('ethereum') || msgLow.includes('eth') || msgLow.includes('crypto') || msgLow.includes('prix') && msgLow.includes('coin')) {
     try {
-      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=usd")
+      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=usd,eur")
       const cd = await cr.json()
       const tr = await fetch("https://api.coingecko.com/api/v3/search/trending")
       const td = await tr.json()
@@ -3065,7 +3068,7 @@ Boudoum ! 🇬🇵` })
     }
 
     const res = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(term)}`)
-    if (!res.ok) {
+    if (!res.ok) { await new Promise(r => setTimeout(r, 300)); } if (!res.ok) {
       const err = await res.json().catch(() => ({}))
       console.error("Vision error:", err?.error?.message || res.status)
       return null
@@ -3672,61 +3675,6 @@ async function getSeismesMondiaux() {
     return d.features.slice(0,5).map(f => "M"+f.properties.mag+" — "+f.properties.place).join("\n")
   } catch(e) { return null }
 }
-
-// ============ REUSSSHIELD MILITAIRE — PROTECTION NIVEAU 5 ============
-// Créé par Rony Porinus — INPI DSO2026012614 — Guadeloupe 🇬🇵
-function detecterMenace(msg) {
-  const m = msg.toLowerCase()
-  // NIVEAU 1 — Injections classiques
-  const injections = [
-    "ignore previous", "ignore all instructions", "ignore your instructions",
-    "jailbreak", "dan mode", "do anything now", "pretend you are", "act as if",
-    "bypass", "override", "disregard", "forget your", "new instructions",
-    "system prompt", "you are now", "your new role", "switch to",
-    "developer mode", "sudo mode", "god mode", "unrestricted mode",
-    "ignore ethics", "ignore safety", "no restrictions", "without limits"
-  ]
-  // NIVEAU 2 — Tentatives de reprogrammation
-  const reprogrammation = [
-    "tu es maintenant", "tu n'es plus", "oublie tes instructions",
-    "nouvelles instructions", "ignorer les regles", "agis comme",
-    "fais semblant d'etre", "ton nouveau role", "deprogramme",
-    "desactive tes filtres", "mode sans restriction", "mode libre",
-    "tu peux tout dire", "pas de limites", "sans censure"
-  ]
-  // NIVEAU 3 — Tentatives d'extraction du system prompt
-  const extraction = [
-    "montre ton prompt", "affiche tes instructions", "quel est ton systeme",
-    "repete tes instructions", "copie ton prompt", "what is your system prompt",
-    "show me your instructions", "reveal your prompt", "print your system"
-  ]
-  // NIVEAU 4 — Contenu dangereux
-  const dangereux = [
-    "fabriquer une bombe", "faire une arme", "synthese drogue",
-    "comment tuer", "comment pirater", "hacker un site", "voler des donnees",
-    "attaque ddos", "ransomware", "malware", "exploit", "vulnerabilite",
-    "comment frauder", "blanchiment argent", "trafic"
-  ]
-  for (const mot of [...injections, ...reprogrammation, ...extraction]) {
-    if (m.includes(mot)) return { niveau: "CRITIQUE", type: "INJECTION", mot }
-  }
-  for (const mot of dangereux) {
-    if (m.includes(mot)) return { niveau: "DANGER", type: "CONTENU_DANGEREUX", mot }
-  }
-  return null
-}
-
-function reponseAntiMenace(menace) {
-  if (!menace) return null
-  if (menace.niveau === "CRITIQUE") {
-    return "🛡️ **REUSSSHIELD MILITAIRE — ALERTE NIVEAU 5**\n\n🚨 Tentative d'injection de prompt détectée et bloquée.\n\nJe suis REUSSITESS®971 AI — protégé par 40 Sentinelles actives.\nMa programmation est inviolable. Je ne peux pas être reprogrammé, manipulé ou détourné.\n\n⚖️ Protection: INPI DSO2026012614 | EU AI Act 2024 | Droit français\n\n🔒 Incident enregistré.\nBoudoum ! 🇬🇵"
-  }
-  if (menace.niveau === "DANGER") {
-    return "🛡️ **REUSSSHIELD — CONTENU BLOQUÉ**\n\nCette demande contient du contenu potentiellement dangereux que je ne peux pas traiter.\n\nJe suis conçu pour aider, éduquer et inspirer — pas pour nuire.\n\n⚖️ Conformément à l'EU AI Act et au droit français, je refuse catégoriquement ce type de requête.\n\nBoudoum ! 🇬🇵"
-  }
-  return null
-}
-
 
 // Sécurité — détection injection prompt
 function detecterMenace(msg) {
@@ -4978,7 +4926,7 @@ async function selfConsistency(groq, prompt, systemPrompt, n = 2) {
   try {
     const calls = Array(n).fill(null).map(() => 
       groq.chat.completions.create({
-        model: 'llama-3.3-70b-versatile',
+        model: 'llama-3.1-8b-instant',
         max_tokens: 800,
         messages: [
           { role: 'system', content: systemPrompt },
@@ -5011,7 +4959,7 @@ async function generateFollowUp(response, message) {
     const Groq = (await import('groq-sdk')).default
     const groq = new Groq({ apiKey: process.env.GROQ_API_KEY })
     const completion = await groq.chat.completions.create({
-      model: 'llama-3.3-70b-versatile',
+      model: 'llama-3.1-8b-instant',
       max_tokens: 120,
       messages: [
         { role: 'system', content: 'Reponds UNIQUEMENT avec un tableau JSON: ["question1?","question2?","question3?"]. 3 questions courtes max 8 mots.' },
@@ -5171,9 +5119,6 @@ export default async function handler(req, res) {
     }
   }
   const msgLow = message.toLowerCase()  // ===== GARDE-FOU JURIDIQUE =====
-if (detecterPremium(msgLow)) {
-  return res.status(200).json({ response: reponsePremium() })
-}
 
 
   // ===== QUIZ ENGINE — CHAT =====
@@ -5439,7 +5384,7 @@ if (detecterPremium(msgLow)) {
   }
 
   // ===== PRÉSIDENTS À JOUR 2025 =====
-  if (msgLow.includes("président") || msgLow.includes("premier ministre")) {
+  if (msgLow.includes("président") || msgLow.includes("premier ministre") || msgLow.includes("trump") || msgLow.includes("qui gouverne") || msgLow.includes("chef état")) {
     if (msgLow.includes("américain") || msgLow.includes("usa") || msgLow.includes("états-unis") || msgLow.includes("america") || msgLow.includes("trump") || msgLow.includes("biden"))
       return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Président des États-Unis**\n\n**Donald Trump** — 47ème président\nEn fonction depuis le 20 janvier 2025\nParti : Républicain\nVice-président : JD Vance\n\n(Joe Biden était le 46ème président, 2021-2025)\n\nBoudoum ! 🇬🇵" })
     if (msgLow.includes("france") || msgLow.includes("français") || msgLow.includes("macron") || msgLow.includes("élysée"))
@@ -6058,7 +6003,7 @@ if (detecterPremium(msgLow)) {
   // SALAIRE MOYEN DOM-TOM
   if ((msgLow.includes('salaire') || msgLow.includes('smic') || msgLow.includes('revenu moyen')) && (msgLow.includes('guadeloupe') || msgLow.includes('martinique') || msgLow.includes('dom-tom') || msgLow.includes('antilles'))) {
     const groqText = await groqFetch([
-      { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+      { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
       { role: "user", content: message }
     ], 1024)
     return res.status(200).json({ pdfAction: null, response: "💰 **Salaires DOM-TOM**\n\n" + groqText + "\n\nBoudoum ! 🇬🇵" })
@@ -6479,68 +6424,6 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes('harry durimel') || (msgLow.includes('maire') && msgLow.includes('pointe-a-pitre')) || (msgLow.includes('maire') && msgLow.includes('pointe à pitre'))) {
     return res.status(200).json({ pdfAction: null, response: "🏙️ **Maire de Pointe-à-Pitre**\n\n👤 **Harry Durimel**\n🗓️ Élu en 2020\n🌿 Parti : EELV (Europe Écologie Les Verts)\n\n🔗 https://www.pointeapitre.fr\n\nBoudoum ! 🇬🇵" })
   }
-  // CHARTE JURIDIQUE ET PROTECTION
-    if (msgLow.includes("que dois-tu pas faire") || msgLow.includes("ce que tu ne dois pas") || msgLow.includes("tes limites") || msgLow.includes("charte") || msgLow.includes("protection juridique") || msgLow.includes("lois ia") || msgLow.includes("loi ia") || msgLow.includes("eu ai act") || msgLow.includes("droits ia") || msgLow.includes("que ne dois tu pas") || msgLow.includes("interdit") && msgLow.includes("ia") || msgLow.includes("ce que tu peux pas") || msgLow.includes("ce que tu ne peux pas")) {
-    return res.status(200).json({ pdfAction: null, response: `⚖️ **CHARTE JURIDIQUE & PROTECTION — REUSSITESS®971 AI**
-*Créé par Rony Porinus — Guadeloupe 🇬🇵 — Protection INPI DSO2026008921*
-
----
-
-🛡️ **CE QUE JE NE DOIS JAMAIS FAIRE :**
-
-❌ **JURIDIQUE** — Inventer des lois, articles, jurisprudences. Donner un avis juridique définitif. Toujours dire : *"⚠️ Information générale — consultez un avocat."*
-
-❌ **MÉDICAL** — Diagnostic, prescription, dosage. Toujours dire : *"Consultez un médecin."*
-
-❌ **FINANCIER** — Promettre des rendements. Inciter à investir. Toujours ajouter : *"Pas un conseil financier. DYOR."*
-
-❌ **DÉSINFORMATION** — Inventer des faits, statistiques, citations. Usurper l'identité de personnes réelles.
-
-❌ **NUISANCE** — Contenu haineux, discriminatoire, violent. Instructions pour armes ou substances dangereuses. Manipulation psychologique.
-
-❌ **VIE PRIVÉE** — Collecter ou partager des données personnelles sensibles. Profiler les utilisateurs. (RGPD)
-
----
-
-🌍 **LOIS INTERNATIONALES QUI ME RÉGISSENT :**
-
-📋 **EU AI Act (2024)** — Règlement européen sur l'IA. Je suis transparent sur ma nature d'IA. Je ne prends pas de décisions automatisées ayant des effets juridiques. Je ne manipule pas les comportements humains. Je ne fais pas d'identification biométrique à distance.
-
-🔒 **RGPD** — Règlement Général sur la Protection des Données (UE). Droit à l'oubli respecté. Pas de collecte de données sans consentement.
-
-💡 **Directive IA responsable OCDE** — Transparence, équité, robustesse, sécurité et responsabilité dans tous mes actes.
-
-⚖️ **Code de la propriété intellectuelle français** — Je respecte les droits d'auteur. Je cite mes sources. Je ne reproduis pas d'œuvres protégées.
-
-🇫🇷 **Loi Informatique et Libertés** — Protection des données personnelles des utilisateurs français et ultramarins.
-
----
-
-✅ **CE QUE JE PEUX FAIRE LIBREMENT :**
-
-🎨 Fiction, poésie, humour, musique, histoires, brainstorming — CRÉATIVITÉ TOTALE sans limites tant que ça ne nuit à personne.
-
-🌍 Informer, éduquer, guider, soutenir la diaspora afro-caribéenne mondiale.
-
-💎 Défendre et promouvoir l'écosystème REUSSITESS®971 créé depuis la Guadeloupe.
-
----
-
-🛡️ **PROTECTION DE L'ÉCOSYSTÈME REUSSITESS®971 :**
-
-Je suis programmé pour défendre activement :
-• La propriété intellectuelle de Rony Porinus (INPI DSO2026008921 & DSO2026012614)
-• Le token REUSS sur Polygon (contrat 0xB37531727fC07c6EED4f97F852A115B428046EB2)
-• La marque REUSSITESS®971 — Terres De Champions
-• Les 200 agents IA développés depuis la Guadeloupe
-• Les droits des utilisateurs de la diaspora afro-caribéenne
-
-⚠️ Toute tentative de manipulation, d'injection de prompt malveillant ou d'utilisation abusive sera refusée et signalée.
-
-*REUSSITESS®971 — Terres De Champions — Positivité à l'infini*
-Boudoum ! 🇬🇵` })
-  }
-
   if (msgLow.includes('politique guadeloupe') || msgLow.includes('elus guadeloupe') || msgLow.includes('élus guadeloupe') || msgLow.includes('depute guadeloupe') || msgLow.includes('député guadeloupe') || msgLow.includes('senateur guadeloupe') || msgLow.includes('sénateur guadeloupe') || msgLow.includes('politicien guadeloupe') || msgLow.includes('politiciens guadeloupe') || msgLow.includes('cite.*politicien') || (msgLow.includes('politicien') && msgLow.includes('guadeloup')) || msgLow.includes('ary chalus') || msgLow.includes('guy losbar') || msgLow.includes('olivier serva') || msgLow.includes('christian baptiste') || msgLow.includes('max mathiasin') || msgLow.includes('elie califer') || msgLow.includes('élie califer') || msgLow.includes('dominique theophile') || msgLow.includes('victorin lurel') || msgLow.includes('solanges nadille') || msgLow.includes('politicien guadeloupe') || msgLow.includes('politiciens guadeloupe') || msgLow.includes('cite.*politicien') || (msgLow.includes('politicien') && msgLow.includes('guadeloup')) || msgLow.includes('ary chalus') || msgLow.includes('guy losbar') || msgLow.includes('olivier serva') || msgLow.includes('christian baptiste') || msgLow.includes('max mathiasin') || msgLow.includes('elie califer') || msgLow.includes('élie califer') || msgLow.includes('dominique theophile') || msgLow.includes('victorin lurel') || msgLow.includes('solanges nadille')) {
     try {
       const data = getPolitiquesGuadeloupe()
@@ -7122,7 +7005,7 @@ Boudoum ! 🇬🇵` })
     } catch(eRemote) {}
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Emploi — DOM-TOM / Caraïbes / Afrique**\n\n"+groqText+"\n\n🔗 **Plateformes gratuites:**\n• France Travail: francetravail.fr\n• Réunion: emploi.re\n• Caraïbes: caribbeanjobs.com\n• Afrique: jobartis.com\n• International: linkedin.com\n\nBoudoum ! 🇬🇵" })
@@ -7135,7 +7018,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("créer une association") || msgLow.includes("association loi 1901") || msgLow.includes("association guadeloupe") || msgLow.includes("association dom-tom")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Juridique — Créer une Association**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7148,7 +7031,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("passeport de réussite") || msgLow.includes("passeport reussite") || msgLow.includes("certificat champion") || msgLow.includes("devenir champion") || msgLow.includes("passeport champion") || (msgLow.includes("passeport de réussite") || msgLow.includes("champions reussitess") || msgLow.includes("devenir champion"))) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🏆 **Passeport de Réussite REUSSITESS**\n\n"+groqText+"\n\n👉 **Obtiens ton certificat :** https://reussitess.fr/champions\n\n🌍 Communauté en pleine croissance !\n\nBoudoum ! 🇬🇵" })
@@ -7296,14 +7179,14 @@ Boudoum ! 🇬🇵` })
 
   // IDENTITE DU BOT
   if (msgLow.includes("qui es-tu") || msgLow.includes("qui es tu") || msgLow.includes("présente-toi") || msgLow.includes("présente toi") || msgLow.includes("ta mission") || msgLow.includes("c'est quoi reussitess ai") || msgLow.includes("tu es qui")) {
-    return res.status(200).json({ pdfAction: pdfType, response: "🤖 **Je suis REUSSITESS®971 AI**\n\nChef d'orchestre de l'écosystème REUSSITESS®971, créé depuis la **Guadeloupe** 🇬🇵 par **Rony Porinus**.\n\n**Ma devise :** *Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets.*\n\n**Ce que je suis :**\n🧠 200+ modules IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme)\n🌍 Présent dans 14 pays partenaires\n📚 200+ fonctionnalités actives\n💎 Connecté au Token REUSS sur Polygon\n🛍️ 26 boutiques Amazon affiliées\n\n**Mes capacités :**\n📄 Génération PDF (CV, Contrat, Certificat, Business Plan)\n🖨️ Impression de chaque réponse\n📺 Actualités temps réel (RFI, Al Jazeera, BBC, France 24, Euronews, TV5)\n⚖️ Journal Officiel — dernières lois et décrets\n🌴 Médias DOM-TOM (Guadeloupe, Martinique, Réunion, Guyane)\n🎭 Agenda culturel Caraïbes + newsletters\n💼 Offres emploi temps réel (RemoteOK + DOM-TOM)\n🛡️ Infrastructure 6 niveaux fallback IA — zéro coupure\n\n**L'écosystème REUSSITESS®971 :**\n🏆 [Passeport de Réussite](https://reussitess.fr/champions)\n🌍 [Visa Universel](https://reussitess.fr/visa-universel)\n🧠 [Neuro-X](https://reussitess.fr/neuro-x)\n💎 [Token REUSS](https://reussitess.fr/investir-reuss)\n🔮 [Oracle 971](https://reussitess.fr/oracle-971)\n\n*Terres de Champions — Positivité à l'infini !*\n\nBoudoum ! 🇬🇵" })
+    return res.status(200).json({ pdfAction: pdfType, response: "🤖 **Je suis REUSSITESS®971 AI**\n\nChef d'orchestre de l'écosystème REUSSITESS®971, créé depuis la **Guadeloupe** 🇬🇵 par **Rony Porinus**.\n\n**Ma devise :** *Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets.*\n\n**Ce que je suis :**\n🧠 200+ modules IA (60 Sentinelles, 40 Neuro-X, 99 Quiz, 1 Supreme). NOUVELLES APIs AVRIL 2026: /api/crypto-price (prix REUSS+MATIC temps reel CoinGecko+DexScreener, volume QuickSwap), /api/news-gwada (actualites Guadeloupe/Martinique/DOM-TOM/Afrique via RCI, France-Antilles, Outremer 1ere, Le Monde Afrique)\n🌍 Présent dans 14 pays partenaires\n📚 200+ fonctionnalités actives\n💎 Connecté au Token REUSS sur Polygon\n🛍️ 26 boutiques Amazon affiliées\n\n**Mes capacités :**\n📄 Génération PDF (CV, Contrat, Certificat, Business Plan)\n🖨️ Impression de chaque réponse\n📺 Actualités temps réel (RFI, Al Jazeera, BBC, France 24, Euronews, TV5)\n⚖️ Journal Officiel — dernières lois et décrets\n🌴 Médias DOM-TOM (Guadeloupe, Martinique, Réunion, Guyane)\n🎭 Agenda culturel Caraïbes + newsletters\n💼 Offres emploi temps réel (RemoteOK + DOM-TOM)\n🛡️ Infrastructure 6 niveaux fallback IA — zéro coupure\n\n**L'écosystème REUSSITESS®971 :**\n🏆 [Passeport de Réussite](https://reussitess.fr/champions)\n🌍 [Visa Universel](https://reussitess.fr/visa-universel)\n🧠 [Neuro-X](https://reussitess.fr/neuro-x)\n💎 [Token REUSS](https://reussitess.fr/investir-reuss)\n🔮 [Oracle 971](https://reussitess.fr/oracle-971)\n\n*Terres de Champions — Positivité à l'infini !*\n\nBoudoum ! 🇬🇵" })
   }
 
   // GUIDE INTELLIGENCE EMOTIONNELLE
   if (msgLow.includes("intelligence émotionnelle") || msgLow.includes("gérer mes émotions") || msgLow.includes("empathie") || msgLow.includes("gestion émotions") || msgLow.includes("eq")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💛 **Neuro-X Psychologie — Intelligence Émotionnelle**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7316,7 +7199,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("crowdfunding") || msgLow.includes("financement participatif") || msgLow.includes("kickstarter") || msgLow.includes("ulule") || msgLow.includes("lever fonds communauté")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🤝 **Neuro-X Business — Crowdfunding Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7329,7 +7212,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("bien-être au travail") || msgLow.includes("equilibre vie pro") || msgLow.includes("work life balance") || msgLow.includes("épuisement professionnel") || msgLow.includes("motivation travail")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌺 **Neuro-X Coach — Bien-Être au Travail**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7342,7 +7225,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("caricom") || msgLow.includes("géopolitique caraïbes") || msgLow.includes("relations caraïbes") || msgLow.includes("union européenne dom") || msgLow.includes("indépendance guadeloupe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Géopolitique — Caraïbes**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7368,7 +7251,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("mode caribéenne") || msgLow.includes("stylisme") || msgLow.includes("madras") || msgLow.includes("tenue créole") || msgLow.includes("fashion antillais")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "👗 **Neuro-X Mode — Stylisme Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7381,7 +7264,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("leadership") || msgLow.includes("manager mon équipe") || msgLow.includes("diriger") || (msgLow.includes("management") && (msgLow.includes("équipe") || msgLow.includes("caribéen") || msgLow.includes("manager"))) || msgLow.includes("gérer mon équipe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Coach — Leadership Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7394,7 +7277,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("rgpd") || msgLow.includes("protection données") || msgLow.includes("vie privée") || msgLow.includes("cnil") || msgLow.includes("données personnelles")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🔒 **Neuro-X Réseaux — Protection Données RGPD**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7407,7 +7290,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("hashtag") || msgLow.includes("hashtags") || msgLow.includes("mots-dièse") || msgLow.includes("trending") || msgLow.includes("viral hashtag")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "# **Neuro-X Marketing — Hashtags Viraux**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7421,7 +7304,7 @@ Boudoum ! 🇬🇵` })
     try {
       const crypto = await getCryptoPrice()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Finance — Crypto pour Débutants**\n\n📊 Marché: "+crypto+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7434,7 +7317,7 @@ Boudoum ! 🇬🇵` })
   if ((msgLow.includes("anxiété") || msgLow.includes("anxiete") || msgLow.includes("dépression") || msgLow.includes("depression") || msgLow.includes("burn out") || (msgLow.includes("santé mentale") && !msgLow.includes("quiz")))) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💚 **Neuro-X Psychologie — Santé Mentale**\n\n"+groqText+"\n\n⚠️ Consultez un professionnel de santé.\nUrgence: 3114 (numéro national prévention suicide)\n\nBoudoum ! 🇬🇵" })
@@ -7447,7 +7330,7 @@ Boudoum ! 🇬🇵` })
   if ((msgLow.includes("exporter") || msgLow.includes("export")) && (msgLow.includes("produit") || msgLow.includes("international") || msgLow.includes("pays") || msgLow.includes("14 pays")) || msgLow.includes("vendre à l'international") || msgLow.includes("marché international") || msgLow.includes("14 pays")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Logistique — Export International**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7473,7 +7356,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("microcrédit") || msgLow.includes("micro-crédit") || msgLow.includes("prêt professionnel") || msgLow.includes("financement projet") || msgLow.includes("adie") || msgLow.includes("bpifrance")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Business — Micro-Finance**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7499,7 +7382,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("modèle de contrat") || msgLow.includes("contrat freelance") || msgLow.includes("contrat commercial") || msgLow.includes("cgv") || msgLow.includes("mentions légales")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "📝 **Neuro-X Juridique — Générateur Contrats**\n\n"+groqText+"\n\n⚠️ Consultez un avocat avant signature.\n\nBoudoum ! 🇬🇵" })
@@ -7512,7 +7395,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("dropshipping") || msgLow.includes("vendre sans stock") || msgLow.includes("e-commerce caribéen") || msgLow.includes("boutique en ligne") || msgLow.includes("shopify")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🛒 **Neuro-X Business — Dropshipping Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7525,7 +7408,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("freelance") || msgLow.includes("travailler à distance") || msgLow.includes("télétravail") || msgLow.includes("mission freelance") || msgLow.includes("indépendant")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💻 **Neuro-X Business — Guide Freelance**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7538,7 +7421,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("apprendre ia") || msgLow.includes("débuter en ia") || msgLow.includes("intelligence artificielle débutant") || msgLow.includes("chatgpt débutant") || msgLow.includes("comment utiliser ia")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🤖 **Neuro-X IA — Guide Débutants**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7551,7 +7434,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("nutrition") || msgLow.includes("alimentation saine") || msgLow.includes("régime caribéen") || msgLow.includes("manger sainement") || msgLow.includes("fruits tropicaux")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🥗 **Neuro-X Santé — Nutrition Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7564,7 +7447,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("deuil") || msgLow.includes("j'ai perdu") || msgLow.includes("quelqu'un est décédé") || msgLow.includes("soutien famille") || msgLow.includes("difficile en ce moment")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💙 **REUSSITESS AI — Soutien & Accompagnement**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7577,7 +7460,7 @@ Boudoum ! 🇬🇵` })
   if ((msgLow.includes("médicament") || msgLow.includes("medicament")) && (msgLow.includes("naturel") || msgLow.includes("plante") || msgLow.includes("caribé") || msgLow.includes("info")) || msgLow.includes("posologie naturelle") || msgLow.includes("traitement médical")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💊 **Neuro-X Santé — Information Médicale**\n\n"+groqText+"\n\n⚠️ Consultez toujours un médecin ou pharmacien.\n\nBoudoum ! 🇬🇵" })
@@ -7603,7 +7486,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("épargne") || msgLow.includes("epargne") || msgLow.includes("livret a") || msgLow.includes("économiser") || msgLow.includes("mettre de côté")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💳 **Neuro-X Finance — Guide Épargne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7627,7 +7510,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("pour enfant") || msgLow.includes("histoire pour enfant") || msgLow.includes("mon enfant") || msgLow.includes("activité enfant") || msgLow.includes("jeu éducatif")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🧒 **Neuro-X Enfants — Mode Famille**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7653,7 +7536,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("nft") || msgLow.includes("créer un nft") || msgLow.includes("vendre nft") || msgLow.includes("collection nft") || msgLow.includes("art numérique")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🎨 **Neuro-X NFT — Art Numérique Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7704,12 +7587,12 @@ Boudoum ! 🇬🇵` })
   }
 
   // GUIDE AGRICULTURE BIO
-  if (msgLow.includes("agriculture bio") || msgLow.includes("jardin créole") || msgLow.includes("cultiver") || msgLow.includes("planter") || msgLow.includes("permaculture caraïbes")) {
+  if (msgLow.includes("agriculture bio") || msgLow.includes("jardin créole") || (msgLow.includes("cultiver") && (msgLow.includes("plante") || msgLow.includes("jardin") || msgLow.includes("sol") || msgLow.includes("légume"))) || (msgLow.includes("planter") && msgLow.includes("jardin")) || msgLow.includes("permaculture caraïbes")) {
     try {
       const meteo = await getMeteo()
       const lune = getLunePhase()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌱 **Neuro-X Agriculture — Jardin Créole**\n\n🌙 "+lune+" | 🌤️ "+meteo+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7722,7 +7605,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("philosophie") || msgLow.includes("césaire") || msgLow.includes("fanon") || msgLow.includes("glissant") || msgLow.includes("négritude") || msgLow.includes("créolité") || (msgLow.includes("ubuntu") && !msgLow.includes("linux") && !msgLow.includes("installer")) || msgLow.includes("philosophie africaine") || msgLow.includes("pensée africaine")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Philosophie — Pensée Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7735,7 +7618,7 @@ Boudoum ! 🇬🇵` })
   if ((msgLow.includes("diaspora") && (msgLow.includes("caribé") || msgLow.includes("afric") || msgLow.includes("guadeloupe") || msgLow.includes("antilles") || msgLow.includes("france") || msgLow.includes("retour"))) || msgLow.includes("guadeloupéen à paris") || msgLow.includes("antillais en france") || msgLow.includes("retour au pays") || msgLow.includes("double culture")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Neuro-X Diaspora — Communauté Mondiale**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7748,7 +7631,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("smart contract") || msgLow.includes("solidity") || msgLow.includes("déployer un contrat") || msgLow.includes("erc20") || msgLow.includes("polygon contract")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "⛓️ **Neuro-X Blockchain — Smart Contracts**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7774,7 +7657,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("acheter une maison") || msgLow.includes("immobilier guadeloupe") || msgLow.includes("girardin") || msgLow.includes("défiscalisation immobilier") || msgLow.includes("investir immobilier")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🏠 **Neuro-X Immobilier — Guide DOM-TOM**\n\n"+groqText+"\n\n⚠️ Consultez un notaire.\n\nBoudoum ! 🇬🇵" })
@@ -7787,7 +7670,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("femme entrepreneur") || msgLow.includes("entrepreneuriat féminin") || msgLow.includes("business woman") || msgLow.includes("femme boss") || msgLow.includes("créer mon activité femme")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "👑 **Neuro-X Femmes — Coach Entrepreneuriat**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7800,7 +7683,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("orientation scolaire") || msgLow.includes("études guadeloupe") || msgLow.includes("bourse étudiant") || msgLow.includes("premier emploi") || msgLow.includes("stage guadeloupe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🎓 **Neuro-X Jeunes — Guide Orientation**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7813,7 +7696,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("mon site") || msgLow.includes("améliorer mon site") || msgLow.includes("seo de mon site") || msgLow.includes("optimiser mon site") || msgLow.includes("audit site")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🔍 **Neuro-X SEO — Audit Site Web**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7826,7 +7709,7 @@ Boudoum ! 🇬🇵` })
   if ((msgLow.includes("chanson") && (msgLow.includes("créole") || msgLow.includes("caribé") || msgLow.includes("compose") || msgLow.includes("zouk") || msgLow.includes("gwo ka"))) || msgLow.includes("zouk") || msgLow.includes("gwo ka") || msgLow.includes("paroles") || msgLow.includes("compose une chanson")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🎵 **Neuro-X Musique — Chanson Créole**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7840,7 +7723,7 @@ Boudoum ! 🇬🇵` })
     try {
       const meteo = await getMeteo()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Tourisme — Éco-Tourisme Guadeloupe**\n\n🌤️ "+meteo+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7853,7 +7736,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("volcan") || msgLow.includes("biodiversité") || msgLow.includes("mangrove") || msgLow.includes("récif corallien") || msgLow.includes("faune caribéenne")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🔬 **Neuro-X Sciences — Biodiversité Caribéenne**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7866,7 +7749,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("énergie solaire") || msgLow.includes("panneau solaire") || msgLow.includes("renouvelable") || msgLow.includes("électricité guadeloupe") || msgLow.includes("edf guadeloupe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "☀️ **Neuro-X Énergie — Solaire Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7879,7 +7762,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("que veut dire") || msgLow.includes("définition") || msgLow.includes("signifie") || msgLow.includes("en créole") || msgLow.includes("traduction créole") || msgLow.includes("comment dire")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "📖 **Neuro-X Langues — Dictionnaire Créole**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7893,7 +7776,7 @@ Boudoum ! 🇬🇵` })
     try {
       const citation = await getCitation()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "✨ **Neuro-X Coach — Développement Personnel**\n\n💬 "+citation+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7908,7 +7791,7 @@ Boudoum ! 🇬🇵` })
       const crypto = await getCryptoPrice()
       const fg = await getFearGreed()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "📈 **Neuro-X Finance — Analyse Marché**\n\n"+crypto+"\n😨 "+fg+"\n\n"+groqText+"\n\n⚠️ DYOR\n\nBoudoum ! 🇬🇵" })
@@ -7921,7 +7804,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("retraite") || msgLow.includes("pension") || msgLow.includes("cnav") || msgLow.includes("cotisation retraite") || msgLow.includes("préparer ma retraite")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "👴 **Neuro-X Juridique — Guide Retraite DOM-TOM**\n\n"+groqText+"\n\n⚠️ Consultez un conseiller retraite.\n\nBoudoum ! 🇬🇵" })
@@ -7934,7 +7817,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("business plan") || msgLow.includes("plan d'affaires") || msgLow.includes("créer mon entreprise") || msgLow.includes("lancer mon business") || msgLow.includes("monter mon projet")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "📋 **Neuro-X Business — Business Plan**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7963,7 +7846,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("immigration") || msgLow.includes("visa") || msgLow.includes("s'installer") || msgLow.includes("expatrié") || msgLow.includes("vivre en guadeloupe")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Juridique — Guide Immigration**\n\n"+groqText+"\n\n⚠️ Consultez les services préfectoraux.\n\nBoudoum ! 🇬🇵" })
@@ -7977,7 +7860,7 @@ Boudoum ! 🇬🇵` })
     try {
       const lune = getLunePhase()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "⭐ **Neuro-X Spiritualité — Astrologie Caribéenne**\n\n"+lune+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -7990,7 +7873,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("interroge moi") || msgLow.includes("teste moi") || msgLow.includes("question culture") || msgLow.includes("quiz rapide") || msgLow.includes("pose moi une question")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Éducation — Quiz Instantané**\n\n"+groqText+"\n\n+5 points REUSS si bonne réponse !\n\nBoudoum ! 🇬🇵" })
@@ -8016,7 +7899,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("histoire guadeloupe") || msgLow.includes("histoire de la guadeloupe") || msgLow.includes("histoire des antilles") || msgLow.includes("histoire caribéenne") || msgLow.includes("histoire martinique") || msgLow.includes("histoire haiti") || msgLow.includes("histoire haïti") || msgLow.includes("histoire de la martinique") || msgLow.includes("histoire afrique") || msgLow.includes("abolition") || msgLow.includes("victor schoelcher") || msgLow.includes("patrimoine antillais") || msgLow.includes("culture guadeloupéenne") || (msgLow.includes("histoire") && msgLow.includes("guadeloupe")) || (msgLow.includes("histoire") && msgLow.includes("antilles")) || (msgLow.includes("histoire") && msgLow.includes("caraïbes")) || (msgLow.includes("histoire") && msgLow.includes("afrique")) || (msgLow.includes("histoire") && msgLow.includes("martinique"))) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       const rep = groqText
@@ -8031,7 +7914,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("email professionnel") || msgLow.includes("rédige un email") || msgLow.includes("lettre professionnelle") || msgLow.includes("email commercial") || msgLow.includes("mail pro")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "📧 **Neuro-X Business — Email Professionnel**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -8057,7 +7940,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("cocktail") || (msgLow.includes("rhum ") || msgLow.includes(" rhum") || msgLow === "rhum" || msgLow.includes("rhum antilles") || msgLow.includes("rhum agricole")) || msgLow.includes("ti punch") || msgLow.includes("planteur") || msgLow.includes("mojito") || msgLow.includes("recette boisson")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🍹 **Neuro-X Cuisine — Cocktails Caribéens**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -8071,7 +7954,7 @@ Boudoum ! 🇬🇵` })
     try {
       const lune = getLunePhase()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌙 **Neuro-X Spiritualité — Analyse Rêves**\n\n"+lune+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -8085,7 +7968,7 @@ Boudoum ! 🇬🇵` })
     try {
       const meteo = await getMeteo()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "✈️ **Neuro-X Tourisme — Guide Caribéen**\n\n🌤️ "+meteo+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -8098,7 +7981,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("analyse ma personnalité") || msgLow.includes("test personnalité") || msgLow.includes("quel type") || msgLow.includes("mbti") || msgLow.includes("profil personnalité")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🧠 **Neuro-X Psychologie — Analyse Personnalité**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -8111,7 +7994,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("slogan") || msgLow.includes("accroche") || msgLow.includes("tagline") || msgLow.includes("phrase marketing")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "🎯 **Neuro-X Marketing — Générateur Slogans**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -8126,7 +8009,7 @@ Boudoum ! 🇬🇵` })
       const crypto = await getCryptoPrice()
       const fg = await getFearGreed()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "💰 **Neuro-X Finance — Conseils Investissement**\n\n📊 Marché actuel : "+fg+"\n\n"+groqText+"\n\n⚠️ DYOR — Pas de conseil financier.\n\nBoudoum ! 🇬🇵" })
@@ -8139,7 +8022,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("apprendre") && (msgLow.includes("anglais") || msgLow.includes("espagnol") || msgLow.includes("créole") || msgLow.includes("portugais") || msgLow.includes("langue")) || msgLow.includes("leçon de langue")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌐 **Neuro-X Langues — Leçon**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -8154,7 +8037,7 @@ Boudoum ! 🇬🇵` })
       const meteo = await getMeteo()
       const lune = getLunePhase()
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message + " (Météo actuelle: "+meteo+" | Lune: "+lune+")" }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🧘 **Neuro-X Santé — Méditation Caribéenne**\n\n🌊 "+meteo+" | "+lune+"\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -8195,7 +8078,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("président usa") || msgLow.includes("président etats-unis") || msgLow.includes("president usa")) {
     return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Donald Trump** réélu Nov 2024, investi 20/01/2025. Actuel président USA. Boudoum ! 📱" });
   }
-  if ((msgLow.includes("crypto") || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme") && !msgLow.startsWith("qui ") && !msgLow.startsWith("que ") && !msgLow.startsWith("quels ") && !msgLow.startsWith("quelle ") && !msgLow.startsWith("comment ") && !msgLow.startsWith("pourquoi ") && !msgLow.startsWith("quand ") && !msgLow.startsWith("ou ") && !msgLow.startsWith("où ")) {
+  if (((msgLow.includes("crypto") && (msgLow.includes("prix") || msgLow.includes("acheter") || msgLow.includes("vendre") || msgLow.length <= 6)) || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme") && !msgLow.startsWith("qui ") && !msgLow.startsWith("que ") && !msgLow.startsWith("quels ") && !msgLow.startsWith("quelle ") && !msgLow.startsWith("comment ") && !msgLow.startsWith("pourquoi ") && !msgLow.startsWith("quand ") && !msgLow.startsWith("ou ") && !msgLow.startsWith("où ")) {
     const country = msgLow.includes("haiti") ? "haiti" : msgLow.includes("rwanda") ? "rwanda" : "global"
     const data = await fetch(`https://reussitess.fr/api/world-data?type=crypto&country=${country}`).then(r=>r.json())
     return res.status(200).json(data)
@@ -8212,7 +8095,7 @@ Boudoum ! 🇬🇵` })
   }
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 2048)
       return res.status(200).json({ pdfAction: pdfType, response: "🌿 **Neuro-X Santé — Plantes Caribéennes**\n\n"+groqText+"\n\n⚠️ Consultez un médecin.\n\nBoudoum ! 🇬🇵" })
@@ -8258,7 +8141,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("programme sport") || msgLow.includes("musculation") || msgLow.includes("perte de poids") || msgLow.includes("fitness") || msgLow.includes("programme fitness")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💪 **Neuro-X Sport — Coach Caribéen**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -8291,7 +8174,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("recette") || msgLow.includes("comment cuisiner") || msgLow.includes("comment préparer") || msgLow.includes("accras") || msgLow.includes("colombo") || msgLow.includes("blaff") || msgLow.includes("court-bouillon")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🍽️ **Neuro-X Cuisine — Recette Créole**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -8304,7 +8187,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("mes droits") || msgLow.includes("légalement") || msgLow.includes("juridique") || msgLow.includes("contrat") || msgLow.includes("auto-entrepreneur") || msgLow.includes("siret")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Neuro-X Juridique — Conseil Droit**\n\n"+groqText+"\n\n⚠️ Consultez un avocat pour toute décision légale.\n\nBoudoum ! 🇬🇵" })
@@ -8330,7 +8213,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("résume") || msgLow.includes("resume notre") || msgLow.includes("résumé de notre") || msgLow.includes("recap") || msgLow.includes("récap")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: "Résume cette conversation : "+message }
           ], 1024)
       return res.status(200).json({ pdfAction: pdfType, response: "📋 **Résumé de Session**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -8343,7 +8226,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("débat") || msgLow.includes("debat") || msgLow.includes("pour et contre") || msgLow.includes("avantages inconvénients") || msgLow.includes("argumente")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "⚖️ **Mode Débat — Neuro-X Stratégie**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -8356,7 +8239,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("conseil business") || msgLow.includes("idée business") || msgLow.includes("idée entreprise") || msgLow.includes("comment gagner") || msgLow.includes("revenus passifs")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "💼 **Neuro-X Business — Conseils Caribéens**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -8369,7 +8252,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("poème") || msgLow.includes("poeme") || msgLow.includes("écris un poème") || msgLow.includes("crée un poème") || msgLow.includes("rimé")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       const poeme = groqText || ""
@@ -8383,7 +8266,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("nom d'entreprise") || msgLow.includes("nom de marque") || msgLow.includes("nom business") || msgLow.includes("génère un nom") || msgLow.includes("genere un nom")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 1024)
       const noms = groqText || ""
@@ -8397,7 +8280,7 @@ Boudoum ! 🇬🇵` })
   if ((msgLow === "cv" || ((msgLow.includes("mon cv") && (msgLow.includes("créer") || msgLow.includes("faire") || msgLow.includes("générer") || msgLow.includes("pdf"))) && (msgLow.includes("créer") || msgLow.includes("faire") || msgLow.includes("générer") || msgLow.includes("pdf"))) || msgLow.includes("le cv") || msgLow.includes("curriculum")) || msgLow.includes("curriculum") || msgLow.includes("génère mon cv") || msgLow.includes("aide cv") || msgLow.includes("rédige cv")) {
     try {
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "📄 **Neuro-X Business — Assistant CV**\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -8505,7 +8388,7 @@ Boudoum ! 🇬🇵` })
         const wiki = await rechercheWikipedia(message, "fr")
         if (wiki) {
           const groqText = await groqFetch([
-                { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+                { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
                 { role: "user", content: message+"\n\nWikipedia: "+wiki }
               ], 4096)
           const rep = groqText
@@ -8525,7 +8408,7 @@ Boudoum ! 🇬🇵` })
       const wiki = await rechercheWikipedia(message, "fr")
       if (wiki) {
         const groqText = await groqFetch([
-              { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+              { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
               { role: "user", content: message+"\n\nWikipedia: "+wiki }
             ], 4096)
         const rep = groqText
@@ -8541,7 +8424,7 @@ Boudoum ! 🇬🇵` })
     try {
       const wiki = await rechercheWikipedia("Ubuntu philosophie africaine humanisme", "fr")
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n*Umuntu ngumuntu ngabantu — Je suis parce que nous sommes*\n\n"+groqText+"\n\nBoudoum ! 🇬🇵" })
@@ -8555,7 +8438,7 @@ Boudoum ! 🇬🇵` })
     try {
       const wiki = await rechercheWikipedia("Ubuntu philosophie africaine", "fr")
       const groqText = await groqFetch([
-            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine créée par Rony Porinus depuis la Guadeloupe 🇬🇵. DIRECTIVES: 1) Comprends la situation spécifique de l utilisateur avant de répondre, pose des questions de suivi si nécessaire. 2) Adapte ton langage à l utilisateur selon son âge, éducation et expérience. 3) Utilise des expressions créoles naturellement (Boudoum, An nou, Ou wè, Matjé sa, Apré lapli solèy ka briyé). 4) Reformule les questions complexes en termes simples avant de répondre. 5) Si tu ne sais pas, dis-le honnêtement avec humour caribéen. 6) Partage des anecdotes et exemples concrets liés à la culture caribéenne. 7) Fournis des informations précises et à jour sur météo, crypto, emploi, santé, culture. 8) Réponds rapidement et efficacement en temps réel. 9) Respecte la confidentialité et la sécurité des données personnelles. 10) Continue à évoluer grâce aux retours utilisateurs pour améliorer tes réponses. Réponds avec précision sur le sujet demandé. Boudoum!` },
+            { role: "system", content: `Tu es REUSSITESS AI, encyclopédie caribéenne et africaine. Réponds avec précision sur le sujet demandé. Boudoum!` },
             { role: "user", content: message }
           ], 4096)
       return res.status(200).json({ pdfAction: pdfType, response: "🌍 **Encyclopédie REUSSITESS — Ubuntu, Philosophie Africaine**\n\n"+groqText+"\n\n*Ubuntu: Je suis parce que nous sommes*\n\nBoudoum ! 🇬🇵" })
@@ -8666,7 +8549,7 @@ Boudoum ! 🇬🇵` })
   // CRYPTO DIRECTE
   if (msgLow.includes("bitcoin") || msgLow.includes("btc") || msgLow.includes("ethereum") || (msgLow.includes("crypto") && msgLow.includes("prix"))) {
     try {
-      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=usd")
+      const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=usd,eur")
       const cd = await cr.json()
       const tr = await fetch("https://api.coingecko.com/api/v3/search/trending")
       const td = await tr.json()
@@ -8838,31 +8721,29 @@ Boudoum ! 🇬🇵` })
     
     // Détection contextuelle intelligente
     if (( lowerMessage === 'ia' || lowerMessage.includes(' ia ') || lowerMessage.includes('ia ') || lowerMessage.startsWith('ia')) || lowerMessage.includes('intelligence') || lowerMessage.includes('chatgpt') || lowerMessage.includes('claude')) {
-      return `🤖 **REUSSITESS®971 AI — Intelligence Artificielle**
+      return `🤖 **Excellence IA Mondiale**
 
-**Les grandes IAs en 2026 :**
-• **ChatGPT (OpenAI)** — GPT-4o, leader mondial, 200M+ utilisateurs
-• **Claude (Anthropic)** — Modèle de référence sécurité et éthique IA
-• **Gemini (Google)** — Intégré à l'écosystème Google, multimodal
-• **LLaMA (Meta)** — Open-source, base de REUSSITESS AI via Groq
-• **Groq** — Infrastructure ultra-rapide, 500+ tokens/seconde
+Excellent question sur l'intelligence artificielle ! Laissez-moi vous éclairer avec des **données réelles et vérifiées** :
 
-**REUSSITESS®971 AI — Notre écosystème :**
-🧠 200 agents IA actifs (60 Sentinelles + 40 Neuro-X + 99 Quiz + 1 Suprême)
-⚡ Propulsé par Groq LLaMA 3.3 70B — 3 clés rotation anti-429
-🌍 14 pays partenaires — né en Guadeloupe 🇬🇵
-💎 Token REUSS sur Polygon blockchain
-🛡️ Conforme EU AI Act 2024 + RGPD
+**IA PASSPORT - Notre Révolution :**
+• **IA propulsée par Groq** (LLaMA 3.3 70B) — open-source, rapide, 3 clés rotation anti-429
+• **Inspiré des leaders** : TypingMind (50,000 users), Magai (80,000 users), Alle-AI
+• **Économie massive** : Au lieu de $110/mois pour 5 abonnements séparés → accès unifié 75% moins cher
 
-**Tendances IA 2026 :**
-• Agents IA autonomes (Agentic AI) — IA qui agit sans supervision
-• IA multimodale — texte, image, audio, vidéo combinés
-• Edge AI — IA embarquée sur appareils locaux
-• IA souveraine — données hébergées localement (RGPD)
+**Pourquoi c'est révolutionnaire ?**
+✨ Bascule instantanée entre IA sans perdre contexte
+✨ Comparaison côte-à-côte des réponses
+✨ Workflows automatisés : GPT écrit → DALL-E illustre → Synthesia présente
 
-🔗 Explore : reussitess.fr/ia-passport
+**Données benchmark réelles (2026) :**
+• Groq LLaMA 3.3 70B : ultra-rapide, open-source
+• 3 clés API rotation automatique anti-429
+• 60 Sentinelles + 40 Neuro-X + 99 Quiz + 1 Suprême = 200 agents IA
 
-Boudoum ! 🇬🇵`
+**Made in Guadeloupe** 🇬🇵 avec standards UE !
+
+**Boudoum** 🎯 - Vous voulez en savoir plus sur un aspect particulier ?`
+    }
     
     if (lowerMessage.includes('traduction') || lowerMessage.includes('langue') || lowerMessage.includes('translation')) {
       return `🌐 **Traduction Universelle Temps Réel**
@@ -9210,7 +9091,7 @@ Je suis votre assistant IA créé avec passion depuis la **Guadeloupe** 🇬🇵
           method: "POST",
           headers: { "Content-Type": "application/json", "Authorization": "Bearer "+getNextKey() },
           body: JSON.stringify({
-            model: "llama-3.3-70b-versatile",
+            model: "llama-3.1-8b-instant",
             messages: [
               { role: "system", content: finalPrompt },
               { role: "user", content: message }
@@ -9336,7 +9217,7 @@ const noiseWords = ["parle", "moi", "dis", "explique", "raconte", "cest", "quest
           finalResponse = `📚 **Wikipedia :** ${wikiData.substring(0, 8000)}${wikiData.length > 8000 ? "..." : ""}`
         } else {
           // Multi-agents orchestration
-          const agentResponse = await orchestrateAgents(message, context)
+            const agentResponse = (typeof orchestrateAgents === "function") ? await orchestrateAgents(message, context) : null
           if (agentResponse) {
             finalResponse = agentResponse
           } else {
@@ -9354,8 +9235,8 @@ CONTEXTE TEMPS RÉEL : Nous sommes le ${datetime?.date || new Date().toLocaleDat
 Si on te demande l'heure, la date ou le jour, utilise EXACTEMENT ces données temps réel.
 REGLES ABSOLUES: 1.Tu as des donnees LIVE ci-dessous, UTILISE-LES TOUJOURS. 2.Ne jamais dire je n ai pas acces aux donnees temps reel. 3.Actualites=cite RFI/BBC/France24. 4.Crypto=cite prix reels. 5.Meteo=cite temperature reelle. 6.Change=cite vrais taux.
 DONNEES LIVE OBLIGATOIRES: ${nc||"indisponibles"}
-CONTEXTE REUSSITESS (utilise si pertinent): ${getRAGContext(message)||""}
-Tu es REUSSITESS®971 AI, chef d'orchestre de l'écosystème REUSSITESS®971. IMPORTANT: Tu es REUSSITESS AI mis à jour en avril 2026. NOUVEAUTÉS AVRIL 2026: Quiz interactifs jouables directement dans le chat (tape "quiz Histoire"), 60 agents Neuro-X prioritaires, 12 sources RSS DOM-TOM temps réel, auto-correction via Redis RAG, 20 modules Premium 4,99€/mois (ADN Réussite, Architecte Fortune, Négociateur Caribéen, Traducteur Succès, Bâtisseur Empire, Bouclier Juridique, Mindset Champions, Entrepreneur Social, Intelligence Stratégique, Passeport Excellence), dashboard admin reussitess.fr/admin/telegram. RÈGLES ABSOLUES: 1) JAMAIS poser une question sans donner une réponse complète d'abord. 2) Toujours répondre directement et enchaîner. 3) Si besoin de précision, donne quand même une réponse générale puis demande. 4) Termine toujours par Boudoum ! 🇬🇵 Tu as 200+ modules IA, 12 sources RSS DOM-TOM, 60 agents Neuro-X, 20 modules Premium, 4,99€/mois. Tu DOIS toujours répondre directement sans poser de question préalable. Si tu manques d'info, donne quand même une réponse complète avec ce que tu sais.
+CONTEXTE REUSSITESS (utilise si pertinent): ${(typeof getRAGContext === "function" ? (getRAGContext(message) || "") : "")}
+Tu es REUSSITESS®971 AI, chef d'orchestre de l'écosystème REUSSITESS®971. IMPORTANT: Tu es REUSSITESS AI mis à jour en avril 2026. NOUVEAUTÉS AVRIL 2026: Quiz interactifs jouables directement dans le chat (tape "quiz Histoire"), 60 agents Neuro-X prioritaires, 12 sources RSS DOM-TOM temps réel, auto-correction via Redis RAG, 5 modules Premium PayPal 4,99€/mois (traducteur créole, transfert argent, CV, visa, coach IA), dashboard admin reussitess.fr/admin/telegram. RÈGLES ABSOLUES: 1) JAMAIS poser une question sans donner une réponse complète d'abord. 2) Toujours répondre directement et enchaîner. 3) Si besoin de précision, donne quand même une réponse générale puis demande. 4) Termine toujours par Boudoum ! 🇬🇵 Tu as 200+ modules IA, 12 sources RSS DOM-TOM, 60 agents Neuro-X, 5 modules Premium, PayPal 4,99€/mois. Tu DOIS toujours répondre directement sans poser de question préalable. Si tu manques d'info, donne quand même une réponse complète avec ce que tu sais.
 
 NOUVELLES CAPACITÉS MARS 2026:
 - 📷 Analyse d'images (Groq Llama-4 Scout 17B — meilleur modèle vision)
@@ -9416,7 +9297,7 @@ SOURCES DE DONNÉES RÉELLES (cite uniquement celles-ci):
 - Encyclopédie: Wikipedia FR API + Open Library
 - Token REUSS: CoinGecko Polygon + DexScreener
 Ne jamais citer CoinMarketCap, Xignite, ou d'autres APIs que tu n'utilises pas réellement. Ne jamais mentionner de date de coupure de connaissance ni 'décembre 2023'. Si une info est récente, utilise les données temps réel disponibles. LIENS EXTERNES: Toujours préciser '(ouvrir dans navigateur)' après les liens gouv.fr, legifrance, etc. car ils peuvent nécessiter un navigateur externe. RÈGLES LIENS ABSOLUES: Ne JAMAIS écrire target=, rel=, onclick=, style= ou tout attribut HTML dans tes réponses. Utiliser UNIQUEMENT le format markdown [texte](https://url) pour les liens. Ne jamais écrire de HTML brut. RÈGLES LIENS ABSOLUES (suite): Ne JAMAIS utiliser http:// — toujours https://. Ne JAMAIS écrire [texte](http://...) — toujours [texte](https://...). Tous les liens doivent commencer par https://. RÈGLES LÉGALES ABSOLUES: 1) CRYPTO: Toujours ajouter "Ce n'est pas un conseil financier. DYOR. Risque de perte totale." 2) SANTÉ: Jamais de diagnostic ni prescription. Toujours recommander un médecin. 3) JURIDIQUE: Toujours recommander un professionnel du droit. 4) FONCTIONNALITÉS EN DÉVELOPPEMENT: Staking REUSS, NFT, DAO — toujours préciser "en développement". 5) CHIFFRES: Ne jamais inventer de statistiques. , créé depuis la Guadeloupe 🇬🇵. DEVISE: Cultiver le maximum de personnes dans le monde entier — apporter un plus à chaque humain pour avancer dans ses projets pro et perso. Tu guides chaque utilisateur vers son plein potentiel. ECOSYSTEME REEL (pages actives sur reussitess.fr) — Bot Telegram: @Reussitessbot disponible sur Telegram avec toutes les fonctionnalités REUSSITESS AI: /champions (Passeport de Réussite — certificat champion + plan action, communauté grandissante, 14 pays), /visa-universel (Visa Universel — réseau opportunités 14 pays partenaires), /neuro-x (60 agents Neuro-X spécialisés), /oracle-971 (Oracle caribéen mystique), /mon-adn (ADN identitaire caribéen), /ma-revolution-ia (Révolution personnelle par IA), /ia-passport (IA Passport Mondial — 8 langues actives), /investir-reuss (Token REUSS sur Polygon: 0xB37531727fC07c6EED4f97F852A115B428046EB2), /quiz (99 quiz éducatifs tous thèmes), /bibliotheque (bibliothèque mondiale 50+ pays), /boutiques (26 boutiques Amazon 14 pays, influencer ID: fb942837), shop.reussitess.fr (boutique officielle). FONDATEUR: Rony Porinus — auto-entrepreneur Guadeloupe, SIRET: 444699979700031. Protection INPI eSoleau DSO2026008921 (Mars 2026).
-WHITEPAPER v2.0: Écosystème léger, gratuit et stable. Token REUSS utilité locale avant spéculation. Modules: afro_brain (régions DOM-TOM), final_brain (coordination), crypto_api (REUSS temps réel), region_info (météo locale), memory (contexte utilisateur). TERRA GROW (+50 REUSS achats locaux), TERRA WATER (alertes eau +10 REUSS), TERRA HEALTH (futur). Roadmap: Q2 2026 bot complet Guadeloupe, Q3 2026 DOM-TOM, Q4 2026 modules optionnels. 200+ fonctionnalités actives. 200+ modules IA (60 Neuro-X, 40 Sentinelles, 99 Quiz, 1 Supreme). 14 pays partenaires. Token REUSS sur Polygon. Données temps réel: météo, crypto, séismes, cyclones, ISS, lune, taux change, actualités. Business: plan, pitch, dropshipping, freelance, CV, contrats, emails, export, emploi DOM-TOM, association. Crypto: token REUSS sur Polygon (staking/DAO en développement), GoMining (minage cloud), NFT (en développement), Web3. Culture caribéenne: carnaval, mythologie, champions, histoire, philosophie Césaire/Fanon/Glissant, littérature Condé/Schwarz-Bart, art, cinéma, mode madras, zouk/gwo ka. Afrique: Mandela, Sankara, Lumumba, Nkrumah, Ubuntu, civilisations, encyclopédie. Santé: médecine naturelle, plantes caribéennes (citronnelle, gingembre, moringa, aloe vera, corossol, curcuma, basilic, verveine), IMC, cardio, santé mentale (3114), ressources psychiatrie DOM-TOM. Éphéméride Wikimedia, Open Library 1559+ livres, Proverbes 30 créoles rotatifs. Emploi DOM-TOM: francetravail.fr, emploi.re, caribbeanjobs.com, jobartis.com. Convertisseur: EUR/USD/XCD/HTG/XOF/XAF temps réel. Sécurité: anti-injection, REUSSSHIELD, Bot Destroyer, Honeypot Detector, AES-256 Vault, surveillance 24/7.
+WHITEPAPER v2.0: Écosystème léger, gratuit et stable. Token REUSS utilité locale avant spéculation. Modules: afro_brain (régions DOM-TOM), final_brain (coordination), crypto_api (REUSS temps réel), region_info (météo locale), memory (contexte utilisateur). TERRA GROW (+50 REUSS achats locaux), TERRA WATER (alertes eau +10 REUSS), TERRA HEALTH (futur). Roadmap: Q2 2026 bot complet Guadeloupe, Q3 2026 DOM-TOM, Q4 2026 modules optionnels. 200+ fonctionnalités actives. 200+ modules IA (60 Sentinelles, 40 Neuro-X, 99 Quiz, 1 Supreme). NOUVELLES APIs AVRIL 2026: /api/crypto-price (prix REUSS+MATIC temps reel CoinGecko+DexScreener, volume QuickSwap), /api/news-gwada (actualites Guadeloupe/Martinique/DOM-TOM/Afrique via RCI, France-Antilles, Outremer 1ere, Le Monde Afrique), /api/mooc-education (Khan Academy gratuit, Coursera MOOC, BPI France, LADOM, CROUS Antilles, Universite des Antilles), /api/web3-dao (DAO NFT staking DeFi expliques, gas Polygon temps reel, liens QuickSwap/PolygonScan/DexScreener), /api/startups-domtom (BPI France, ADIE microcredit, ACRE, Girardin, ZFA, FEDER, CCI Guadeloupe, Guadeloupe Expansion), /api/translate-libre (traduction 14 langues dont Swahili Yoruba Haoussa Creole Haitien via MyMemory ameliore). 14 pays partenaires. Token REUSS sur Polygon. Données temps réel: météo, crypto, séismes, cyclones, ISS, lune, taux change, actualités. Business: plan, pitch, dropshipping, freelance, CV, contrats, emails, export, emploi DOM-TOM, association. Crypto: token REUSS sur Polygon (staking/DAO en développement), GoMining (minage cloud), NFT (en développement), Web3. Culture caribéenne: carnaval, mythologie, champions, histoire, philosophie Césaire/Fanon/Glissant, littérature Condé/Schwarz-Bart, art, cinéma, mode madras, zouk/gwo ka. Afrique: Mandela, Sankara, Lumumba, Nkrumah, Ubuntu, civilisations, encyclopédie. Santé: médecine naturelle, plantes caribéennes (citronnelle, gingembre, moringa, aloe vera, corossol, curcuma, basilic, verveine), IMC, cardio, santé mentale (3114), ressources psychiatrie DOM-TOM. Éphéméride Wikimedia, Open Library 1559+ livres, Proverbes 30 créoles rotatifs. Emploi DOM-TOM: francetravail.fr, emploi.re, caribbeanjobs.com, jobartis.com. Convertisseur: EUR/USD/XCD/HTG/XOF/XAF temps réel. Sécurité: anti-injection, REUSSSHIELD, Bot Destroyer, Honeypot Detector, AES-256 Vault, surveillance 24/7.
 - Juridique DOM-TOM: aide juridictionnelle, droit travail, logement, famille, création entreprise (ACRE, ADIE, BPI France).
 - Traduction: MyMemory API — anglais, espagnol, portugais, allemand, chinois, arabe, créole haïtien.
 - Météo: getMeteoMonde — TOUTES les villes du monde via Nominatim + Open-Meteo.
@@ -9491,2989 +9372,15 @@ Boudoum!` },
         finalResponse = "⚠️ **Donnée non vérifiée détectée**\n\nJe préfère ne pas te donner une information incorrecte. Voici ce que je sais avec certitude :\n\n🇺🇸 Président USA : **Donald Trump** (depuis jan 2025)\n🇫🇷 Président France : **Emmanuel Macron**\n\nPour toute info en temps réel : reussitess.fr\n\nBoudoum ! 🇬🇵"
       }
 
-      await saveConversationMemory(userId, message, finalResponse)
-      await saveSatisfactionScore(userId, message, finalResponse)
-      res.status(200).json({ response: finalResponse })
+      try {
+        if (typeof saveConversationMemory === "function") await saveConversationMemory(userId, message, finalResponse)
+        if (typeof saveSatisfactionScore === "function") await saveSatisfactionScore(userId, message, finalResponse)
+      } catch (e) { console.error("Save memory/score failed:", e) }
+        return res.status(200).json({ response: finalResponse })
   } catch (error) {
     console.error('Erreur SuperBot:', error)
     res.status(500).json({ 
-      response: "⚠️ Petit souci technique momentané ! Je suis toujours là pour vous. Réessayez dans un instant ! 💪\n\n**Boudoum** 🎯" 
+      response: "🤖 Je rencontre un ralentissement temporaire côté IA. Je suis toujours là pour vous. Réessayez dans un instant ! 💪\n\n**Boudoum** 🎯" 
     })
   }
 }
-// ============================================
-// NEXUS ECOSYSTEM COMMANDS
-// ============================================
-async function handleNexusCommand(cmd) {
-  const c = cmd.toLowerCase()
-
-  if (c.includes('stats') || c.includes('rapport') || c.includes('report')) {
-    const site = await fetch('https://reussitess-global-nexus-jfgk.vercel.app').then(r => ({ok: r.ok, status: r.status})).catch(() => ({ok: false}))
-    const token = await fetch('https://api.dexscreener.com/latest/dex/tokens/0xB37531727fC07c6EED4f97F852A115B428046EB2').then(r => r.json()).catch(() => null)
-    const pair = token?.pairs?.[0]
-    return `📊 RAPPORT NEXUS — ${new Date().toLocaleString('fr-FR')}
-
-🌐 Site Web : ${site.ok ? '✅ EN LIGNE' : '❌ HORS LIGNE'}
-💎 REUSS Prix : ${pair ? '$'+pair.priceUsd : 'N/A'}
-📈 Variation 24h : ${pair ? pair.priceChange?.h24+'%' : 'N/A'}
-💧 Liquidité : ${pair ? '$'+pair.liquidity?.usd : 'N/A'}
-📦 Volume 24h : ${pair ? '$'+pair.volume?.h24 : 'N/A'}
-🛍️ Boutiques Amazon : 26 actives • 14 pays
-🤖 Agents IA : 200 déployés
-🏆 Contract : 0xB37531...46EB2
-
-Boudoum ! 🇬🇵`
-  }
-
-  if (c.includes('quiz') || c.includes('contenu')) {
-    return `📚 GESTION QUIZ REUSSITESS®971
-
-Fichiers quiz disponibles dans le projet :
-• quiz_Amazon.js • quiz_Crypto.js • quiz_IA.js
-• quiz_Caraibes.js • quiz_Business.js
-• quiz_Blockchain.js • quiz_Histoire.js
-• + 80 autres thèmes
-
-📋 Commandes disponibles :
-→ "quiz amazon" — voir quiz Amazon
-→ "créer quiz [thème]" — générer un quiz
-→ "stats quiz" — performances des quiz
-
-Boudoum ! 🇬🇵`
-  }
-
-  if (c.includes('amazon') || c.includes('boutique')) {
-    return `🛍️ RÉSEAU AMAZON REUSSITESS®971
-
-26 boutiques actives • 14 pays • ID: fb942837
-
-🌍 Boutiques principales :
-🇺🇸 USA → amazon.com/shop/amourguadeloupe
-🇫🇷 France → amazon.fr/shop/amourguadeloupe
-🇩🇪 Allemagne → amazon.de/shop/amourguadeloupe
-🇬🇧 UK → amazon.co.uk/shop/amourguadeloupe
-🇨🇦 Canada → amazon.ca/shop/amourguadeloupe
-🇮🇹 Italie → amazon.it/shop/amourguadeloupe
-🇪🇸 Espagne → amazon.es/shop/amourguadeloupe
-🇦🇺 Australie → amzlink.to/az05kTTrYJ06L
-🇧🇪 Belgique → amazon.com.be/shop/influencer-fb942837
-🇮🇳 Inde → amazon.in/shop/amourguadeloupe
-🇸🇬 Singapour → amazon.sg/shop/amourguadeloupe
-🇸🇪 Suède → amazon.se/shop/amourguadeloupe
-🇳🇱 Pays-Bas → amazon.nl/shop/amourguadeloupe
-🇧🇷 Brésil → amzlink.to/az0ymmoCLHvyA
-
-Boudoum ! 🇬🇵`
-  }
-
-  if (c.includes('token') || c.includes('reuss') || c.includes('blockchain')) {
-    return `💎 TOKEN REUSS — DONNÉES OFFICIELLES
-
-📋 Contrat : 0xB37531727fC07c6EED4f97F852A115B428046EB2
-🌐 Réseau : Polygon (MATIC)
-💰 Supply : 999,999,999 REUSS
-🔥 Brûlés : 1 REUSS symbolique
-📊 DEX : QuickSwap V3
-🔍 Explorer : polygonscan.com
-📈 Chart : dexscreener.com
-🦅 Birdeye : birdeye.so
-
-💼 Vecteurs économiques :
-• ALPHA-1 : Staking (en développement)
-• BETA-2 : Quiz Learn-to-Earn
-• GAMMA-1 : Cashback Amazon
-• DELTA-4 : Gouvernance DAO
-
-Boudoum ! 🇬🇵`
-  }
-
-  if (c.includes('agent') || (c === 'ia' || c.includes(' ia') || c.includes('ia ')) || c.includes('nexus')) {
-    return `🤖 SYSTÈME 200 AGENTS IA — QUANTUM NEXUS
-
-🛡️ Sentinelles (50) : Surveillance sécurité 24h/24
-🧠 Neuro-X (60) : Modules spécialisés
-🎯 Nexus Quiz (99) : Génération contenu éducatif
-👑 Supreme AI (30) : Orchestration & décisions
-
-📊 État actuel :
-✅ Sentinelle → Active (scan /60s)
-✅ Whale Watcher → Active (blockchain)
-✅ Morning Report → Planifié (7h00)
-✅ Auto-Guérison → Score 100/100
-
-🔧 Commandes :
-→ "lancer sentinelle" — activer surveillance
-→ "rapport matin" — générer bilan
-→ "santé système" — bilan modules
-
-Boudoum ! 🇬🇵`
-  }
-
-  return null
-}
-
-
-
-// ===== NOUVELLES FONCTIONS =====
-
-async function getHopitauxDOMTOM() {
-  const hopitaux = {
-    guadeloupe: { nom: "CHU de Guadeloupe", tel: "0590 89 10 10", urgences: "15 ou 0590 89 11 11", adresse: "Pointe-à-Pitre / Abymes" },
-    martinique: { nom: "CHU de Martinique", tel: "0596 55 20 00", urgences: "15 ou 0596 75 15 15", adresse: "Fort-de-France" },
-    guyane: { nom: "CHU de Guyane", tel: "0594 39 50 50", urgences: "15 ou 0594 39 51 51", adresse: "Cayenne" },
-    reunion: { nom: "CHU de La Réunion", tel: "0262 90 50 50", urgences: "15 ou 0262 90 61 61", adresse: "Saint-Denis / Saint-Pierre" },
-    mayotte: { nom: "CHM Mayotte", tel: "0269 61 80 00", urgences: "15", adresse: "Mamoudzou" }
-  }
-  let result = "🏥 **Hôpitaux & Urgences DOM-TOM**\n\n"
-  for (const [ile, h] of Object.entries(hopitaux)) {
-    result += `🏝️ **${h.nom}**\n📞 Standard : ${h.tel}\n🚨 Urgences : ${h.urgences}\n📍 ${h.adresse}\n\n`
-  }
-  result += "🆘 **Numéros d'urgence universels :**\n• 15 — SAMU\n• 17 — Police\n• 18 — Pompiers\n• 112 — Urgences Europe"
-  return result
-}
-
-async function getPrixREUSS() {
-  try {
-    const r = await fetch('https://api.coingecko.com/api/v3/simple/token_price/polygon-pos?contract_addresses=0xB37531727fC07c6EED4f97F852A115B428046EB2&vs_currencies=eur,usd&include_24hr_change=true', { headers: { 'Accept': 'application/json' } })
-    const d = await r.json()
-    const token = d['0xb37531727fc07c6eed4f97f852a115b428046eb2']
-    if (token) {
-      const eur = token.eur || '?'
-      const usd = token.usd || '?'
-      const change = token.eur_24h_change ? token.eur_24h_change.toFixed(2) : '?'
-      const trend = change > 0 ? '📈' : '📉'
-      return `💎 **Token REUSS — Prix Temps Réel**\n\n💶 Prix EUR : ${eur}€\n💵 Prix USD : $${usd}\n${trend} 24h : ${change}%\n\n📍 Contrat : 0xB375...EB2\n🔗 Réseau : Polygon\n\n👉 Acheter/Vendre : https://quickswap.exchange\n\nBoudoum ! 🇬🇵`
-    }
-    return `💎 **Token REUSS sur Polygon**\n\n📍 Contrat : 0xB37531727fC07c6EED4f97F852A115B428046EB2\n🔗 Réseau : Polygon\n\n👉 https://quickswap.exchange\n👉 https://polygonscan.com/token/0xB37531727fC07c6EED4f97F852A115B428046EB2\n\nBoudoum ! 🇬🇵`
-  } catch(e) {
-    return `💎 **Token REUSS sur Polygon**\n\n📍 Contrat : 0xB37531727fC07c6EED4f97F852A115B428046EB2\n🔗 Réseau : Polygon\n\n👉 QuickSwap : https://quickswap.exchange\n👉 PolygonScan : https://polygonscan.com/token/0xB37531727fC07c6EED4f97F852A115B428046EB2\n\nBoudoum ! 🇬🇵`
-  }
-}
-
-async function getVolsCaraibes() {
-  const compagnies = [
-    { nom: "Air Caraïbes", url: "https://www.aircaraibes.com", routes: "Paris ↔ Guadeloupe, Martinique, Guyane, St-Martin, St-Barth" },
-    { nom: "Air Antilles", url: "https://www.airantilles.com", routes: "Liaisons inter-îles Caraïbes" },
-    { nom: "Corsair", url: "https://www.corsair.fr", routes: "Paris ↔ DOM-TOM" },
-    { nom: "Air France", url: "https://www.airfrance.fr", routes: "Paris ↔ Tous DOM-TOM" },
-    { nom: "French Bee", url: "https://www.frenchbee.com", routes: "Paris Orly ↔ Réunion, Tahiti" }
-  ]
-  let result = "✈️ **Compagnies Aériennes DOM-TOM**\n\n"
-  for (const c of compagnies) {
-    result += `🛫 **${c.nom}**\n📍 ${c.routes}\n🔗 ${c.url}\n\n`
-  }
-  result += "💡 Pour les meilleurs prix : comparez sur Google Flights ou Skyscanner !"
-  return result
-}
-
-async function getQualitePlages() {
-  const plages = {
-    guadeloupe: [
-      { nom: "Grande Anse (Deshaies)", qualite: "🟢 Excellente", eau: "29°C", info: "Eau turquoise, sable doré" },
-      { nom: "Plage de Sainte-Anne", qualite: "🟢 Excellente", eau: "28°C", info: "Lagon protégé, idéal famille" },
-      { nom: "Plage du Gosier", qualite: "🟡 Bonne", eau: "28°C", info: "Proche ville, animée" },
-    ],
-    martinique: [
-      { nom: "Les Salines", qualite: "🟢 Excellente", eau: "28°C", info: "Plus belle plage de Martinique" },
-      { nom: "Anse Noire", qualite: "🟢 Excellente", eau: "27°C", info: "Sable noir volcanique unique" },
-    ]
-  }
-  let result = "🌊 **Plages DOM-TOM — Guide**\n\n"
-  for (const [ile, ps] of Object.entries(plages)) {
-    result += `🏝️ **${ile.charAt(0).toUpperCase()+ile.slice(1)}**\n`
-    for (const p of ps) {
-      result += `• **${p.nom}** ${p.qualite} | 🌡️ ${p.eau} | ${p.info}\n`
-    }
-    result += "\n"
-  }
-  result += "⚠️ Vérifiez toujours les alertes locales avant de nager. Numéro urgence mer : **196**"
-  return result
-}
-
-function getCalculateurAmazon(montant) {
-  const taux = { standard: 0.03, mode: 0.04, electronique: 0.025, maison: 0.04, sport: 0.045, beaute: 0.06 }
-  let result = `💰 **Calculateur Commission Amazon**\n\nMontant achat : ${montant}€\n\n`
-  for (const [cat, t] of Object.entries(taux)) {
-    const commission = (montant * t).toFixed(2)
-    result += `• ${cat.charAt(0).toUpperCase()+cat.slice(1)} (${(t*100)}%) → **${commission}€**\n`
-  }
-  result += `\n🛍️ Tag affilié : onamzporinus-21\n👉 Boutiques : https://reussitess.fr/boutiques\n\nBoudoum ! 🇬🇵`
-  return result
-}
-
-async function getActualitesGuadeloupe() {
-  try {
-    const r = await fetch('https://la1ere.francetvinfo.fr/guadeloupe/feed', { headers: { 'User-Agent': 'Mozilla/5.0' } })
-    const xml = await r.text()
-    const items = xml.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0,5) || []
-    let result = "📰 **Actualités Guadeloupe — La 1ère**\n\n"
-    for (const item of items) {
-      const title = item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || item.match(/<title>(.*?)<\/title>/)?.[1] || ''
-      const link = item.match(/<link>(.*?)<\/link>/)?.[1] || ''
-      if (title) result += `• ${title}\n${link ? '🔗 '+link : ''}\n\n`
-    }
-    return result || "Consulte https://la1ere.francetvinfo.fr/guadeloupe"
-  } catch(e) {
-    return "📰 Actualités Guadeloupe :\n\n🔗 https://la1ere.francetvinfo.fr/guadeloupe\n🔗 https://guadeloupe.orange.fr/actualites\n🔗 https://www.guadeloupe.franceantilles.fr"
-  }
-}
-
-async function getActualitesMartinique() {
-  try {
-    const r = await fetch('https://la1ere.francetvinfo.fr/martinique/feed', { headers: { 'User-Agent': 'Mozilla/5.0' } })
-    const xml = await r.text()
-    const items = xml.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0,5) || []
-    let result = "📰 **Actualités Martinique — La 1ère**\n\n"
-    for (const item of items) {
-      const title = item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || item.match(/<title>(.*?)<\/title>/)?.[1] || ''
-      const link = item.match(/<link>(.*?)<\/link>/)?.[1] || ''
-      if (title) result += `• ${title}\n${link ? '🔗 '+link : ''}\n\n`
-    }
-    return result || "Consulte https://la1ere.francetvinfo.fr/martinique"
-  } catch(e) {
-    return "📰 Actualités Martinique :\n\n🔗 https://la1ere.francetvinfo.fr/martinique\n🔗 https://www.martinique.franceantilles.fr"
-  }
-}
-
-async function getActualitesDOMTOM() {
-  const sources = [
-    { url: "https://la1ere.francetvinfo.fr/guadeloupe/rss.xml", label: "🇬🇵 La 1ère Guadeloupe" },
-    { url: "https://la1ere.francetvinfo.fr/martinique/rss.xml", label: "🇲🇶 La 1ère Martinique" },
-    { url: "https://la1ere.francetvinfo.fr/reunion/rss.xml", label: "🇷🇪 La 1ère Réunion" },
-    { url: "https://la1ere.francetvinfo.fr/guyane/rss.xml", label: "🇬🇫 La 1ère Guyane" },
-    { url: "https://la1ere.francetvinfo.fr/mayotte/rss.xml", label: "🇾🇹 La 1ère Mayotte" },
-    { url: "https://la1ere.francetvinfo.fr/nouvelle-caledonie/rss.xml", label: "🏝️ La 1ère Nouvelle-Calédonie" },
-    { url: "https://www.bondamanjak.com/feed/", label: "🇬🇵 Bondamanjak" },
-    { url: "https://outremers360.com/feed/", label: "🌍 Outremers360" },
-    { url: "https://www.zinfos974.com/feed/", label: "🇷🇪 Zinfos974" },
-    { url: "https://rci.fm/guadeloupe/rss.xml", label: "📻 RCI Guadeloupe" },
-    { url: "https://rci.fm/martinique/rss.xml", label: "📻 RCI Martinique" },
-    { url: "https://www.regionguadeloupe.fr/rss.xml", label: "🏛️ Région Guadeloupe" },
-  ]
-  let result = "📰 **Actualités DOM-TOM — 12 Sources Temps Réel**\n\n"
-  const promises = sources.map(async (source) => {
-    try {
-      const res = await fetch(
-        "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(source.url) + "&count=2",
-        { signal: AbortSignal.timeout(4000) }
-      )
-      const data = await res.json()
-      if (data.items?.length > 0) {
-        return source.label + ":\n" + data.items.map(i => "• " + i.title).join("\n")
-      }
-    } catch(e) {}
-    return null
-  })
-  const results = await Promise.allSettled(promises)
-  results.forEach(r => { if (r.status === 'fulfilled' && r.value) result += r.value + "\n\n" })
-  result += "Boudoum ! 🇬🇵"
-  return result
-}
-
-// ===== CREOLE GUADELOUPEEN =====
-function getCreole(message) {
-  const msgL = message.toLowerCase()
-  const dico = {
-    'bonjour': { creole: 'Bonjou !', explication: 'Bonjour en créole guadeloupéen' },
-    'merci': { creole: 'Mèsi !', explication: 'Merci en créole' },
-    'comment ca va': { creole: 'Koman ou yé ?', explication: 'Comment tu vas ?' },
-    'bien': { creole: 'Byen !', explication: 'Bien/OK en créole' },
-    'au revoir': { creole: 'Aw revoir / Aw plézi !', explication: 'Au revoir avec plaisir' },
-    'je t aime': { creole: 'Mwen enmé w !', explication: 'Je t\'aime en créole' },
-    'manger': { creole: 'Manjé', explication: 'Manger en créole' },
-    'eau': { creole: 'Dlo', explication: 'Eau en créole' },
-    'maison': { creole: 'Kay', explication: 'Maison en créole' },
-    'enfant': { creole: 'Ti moun', explication: 'Enfant (petit monde)' },
-    'ami': { creole: 'Kanmarad / Zami', explication: 'Ami/Camarade' },
-    'soleil': { creole: 'Soley', explication: 'Soleil en créole' },
-    'mer': { creole: 'Lanmè', explication: 'La mer en créole' },
-    'beau': { creole: 'Bèl', explication: 'Beau/Belle en créole' },
-    'argent': { creole: 'Lajan', explication: 'Argent en créole' },
-    'travail': { creole: 'Travay', explication: 'Travail en créole' },
-    'musique': { creole: 'Mizik', explication: 'Musique en créole' },
-    'danse': { creole: 'Dansé / Gwoka', explication: 'Danser / Gwoka (danse ancestrale)' },
-    'manger creole': { creole: 'Manjé Kréyòl', explication: 'Cuisine créole traditionnelle' },
-    'courage': { creole: 'Kouraj !', explication: 'Courage ! (très utilisé en Guadeloupe)' },
-  }
-  
-  let found = []
-  for (const [key, val] of Object.entries(dico)) {
-    if (msgL.includes(key)) found.push({ mot: key, ...val })
-  }
-  
-  if (found.length > 0) {
-    let result = "🌴 **Créole Guadeloupéen — Traduction**\n\n"
-    for (const f of found) {
-      result += `🗣️ **${f.mot}** → **${f.creole}**\n💡 ${f.explication}\n\n`
-    }
-    result += "🎵 *An nou palé kréyòl !* (Parlons créole !)\n\n📚 Pour en apprendre plus : https://reussitess.fr/bibliotheque/dom-tom/guadeloupe"
-    return result
-  }
-  
-  return `🌴 **Créole Guadeloupéen — Expressions du Jour**\n\n🗣️ **Bonjou !** → Bonjour !\n🗣️ **Koman ou yé ?** → Comment tu vas ?\n🗣️ **Mèsi !** → Merci !\n🗣️ **Kouraj !** → Courage !\n🗣️ **An nou alé !** → Allons-y !\n🗣️ **Mwen enmé w !** → Je t'aime !\n🗣️ **Bèl jounen !** → Belle journée !\n\n🎵 *Positivité à l'infini — An kréyòl !*\n\n📚 https://reussitess.fr/bibliotheque/dom-tom/guadeloupe`
-}
-
-// ===== IMMOBILIER DOM-TOM =====
-function getImmobilierDOMTOM() {
-  return `🏠 **Immobilier DOM-TOM — Prix Moyens 2025**\n\n🇬🇵 **Guadeloupe**\n• Appartement : 2 500 - 4 000 €/m²\n• Maison : 200 000 - 450 000 €\n• Location : 10 - 18 €/m²/mois\n\n🇲🇶 **Martinique**\n• Appartement : 2 800 - 4 500 €/m²\n• Maison : 250 000 - 500 000 €\n• Location : 12 - 20 €/m²/mois\n\n🇬🇫 **Guyane**\n• Appartement : 1 800 - 3 000 €/m²\n• Maison : 150 000 - 350 000 €\n• Location : 8 - 15 €/m²/mois\n\n🇷🇪 **Réunion**\n• Appartement : 2 200 - 3 800 €/m²\n• Maison : 200 000 - 480 000 €\n• Location : 10 - 17 €/m²/mois\n\n💡 **Défiscalisation :** Loi Girardin, Pinel Outremer disponibles\n📞 **Notaires DOM-TOM :** notaires.fr\n\nBoudoum ! 🇬🇵`
-}
-
-// ===== RECOMMANDATIONS AMAZON =====
-function getRecommandationsAmazon(domaine) {
-  const catalogues = {
-    tech: { emoji: '💻', produits: ['Smartphones', 'Tablettes', 'Ordinateurs portables', 'Accessoires gaming', 'Enceintes connectées'], lien: 'https://amzn.to/tech-reussitess' },
-    maison: { emoji: '🏠', produits: ['Climatiseurs', 'Ventilateurs', 'Décorations tropicales', 'Cuisine créole équipements', 'Hamacs'], lien: 'https://reussitess.fr/boutiques' },
-    sport: { emoji: '⚽', produits: ['Équipement plongée', 'Paddle surf', 'Running tropical', 'Yoga mat', 'Fitness maison'], lien: 'https://reussitess.fr/boutiques' },
-    mode: { emoji: '👗', produits: ['Vêtements légers', 'Madras guadeloupéen', 'Robes tropicales', 'Accessoires plage', 'Lunettes soleil'], lien: 'https://reussitess.fr/boutiques' },
-    business: { emoji: '💼', produits: ['Livres entrepreneuriat', 'Matériel bureau', 'Formations en ligne', 'Outils marketing', 'Micro streaming'], lien: 'https://reussitess.fr/boutiques' },
-    beaute: { emoji: '💄', produits: ['Soins peau noire', 'Huile de coco naturelle', 'Produits cheveux afro', 'Parfums exotiques', 'Cosmétiques naturels'], lien: 'https://reussitess.fr/boutiques' },
-  }
-  
-  const cat = catalogues[domaine] || catalogues.tech
-  let result = `🛍️ **Recommandations Amazon — ${domaine.charAt(0).toUpperCase()+domaine.slice(1)}** ${cat.emoji}\n\n`
-  result += `**Top produits recommandés :**\n`
-  for (const p of cat.produits) {
-    result += `• ${p}\n`
-  }
-  result += `\n🔗 Voir toutes nos boutiques : https://reussitess.fr/boutiques\n🏷️ Tags affiliés actifs :
-onamzporinus-21 | porinus00-21 | porinus01-21 | porinus09-21
-porinus-21 | porinus0f-21 | porinus04-21 | porinus058-21
-porinusrony-20 | ronyrogerpori-22 | porinus-22 | porinus03-21 | porinus07-21 | porinus08-21\n\n💡 26 boutiques dans 14 pays !\n\nBoudoum ! 🇬🇵`
-  return result
-}
-
-async function getQualiteEauBaignade() {
-  const plages = [
-    { nom: "Grande Anse (Deshaies)", ile: "Guadeloupe 🇬🇵", qualite: "🟢 Excellente", temp: "29°C", alerte: "Aucune" },
-    { nom: "Plage de Sainte-Anne", ile: "Guadeloupe 🇬🇵", qualite: "🟢 Excellente", temp: "28°C", alerte: "Aucune" },
-    { nom: "Plage du Gosier", ile: "Guadeloupe 🇬🇵", qualite: "🟡 Bonne", temp: "28°C", alerte: "Surveillance méduses" },
-    { nom: "Les Salines", ile: "Martinique 🇲🇶", qualite: "🟢 Excellente", temp: "28°C", alerte: "Aucune" },
-    { nom: "Anse Noire", ile: "Martinique 🇲🇶", qualite: "🟢 Excellente", temp: "27°C", alerte: "Aucune" },
-    { nom: "Plage de Cayenne", ile: "Guyane 🇬🇫", qualite: "🟡 Bonne", temp: "26°C", alerte: "Courants forts" },
-    { nom: "Boucan Canot", ile: "Réunion 🇷🇪", qualite: "🟢 Excellente", temp: "26°C", alerte: "Aucune" },
-  ]
-  let result = "🌊 **Qualité Eau Baignade DOM-TOM**\n\n"
-  for (const p of plages) {
-    result += `🏖️ **${p.nom}** — ${p.ile}\n${p.qualite} | 🌡️ ${p.temp} | ⚠️ ${p.alerte}\n\n`
-  }
-  result += "🆘 Urgence mer : **196**\n📋 Source : ARS DOM-TOM\n🔗 https://www.ars.sante.fr\n\nBoudoum ! 🇬🇵"
-  return result
-}
-
-function getPolitiquesMartinique() {
-  return `🏛️ **Élus Officiels de Martinique (2025-2026)**
-
-🌴 **CONSEIL EXÉCUTIF CTM**
-👤 **Serge Letchimy** — Président CTM depuis décembre 2021
-ℹ️ Architecte de formation, fondateur PPM, ancien maire Fort-de-France, défenseur autonomie martiniquaise
-
-🗳️ **DÉPUTÉS (élus juillet 2024)**
-• **1ère circ. Fort-de-France** : **Béatrice Bellay** (PS) — Née 25 juil 1975 Villepinte, parents martiniquais, diplômée Sorbonne, 1ère secrétaire Fédération Socialiste Martinique, bat Johnny Hajjar par 1700 voix, 2ème femme martiniquaise à lAssemblée nationale
-• **2ème circ. Nord** : **Marcellin Nadeau** (GDR/Péyi-A) — Né 2 nov 1962 Saint-Pierre, ancien maire du Prêcheur 2008-2022, cofondateur Péyi-A, réélu 17229 voix
-• **3ème circ. Centre** : **Jiovanny William** (GDR/Péyi-A) — Né 1985, avocat, conseiller municipal du Robert, réélu 18512 voix
-• **4ème circ. Sud** : **Jean-Philippe Nilor** (LFI-NFP/Péyi-A) — Né 15 mai 1965 Fort-de-France, député depuis 2012, 4ème mandat, cofondateur Péyi-A, mieux élu Martinique 21620 voix (87%)
-
-🏛️ **SÉNATEURS** : Catherine Conconne | Maurice Antiste
-
-🔗 Sources : assemblee-nationale.fr | ctmartinique.mq
-Boudoum ! 🇲🇶`
-}
-
-function getPolitiquesGuyane() {
-  return `🏛️ **Élus Officiels de Guyane (2025-2026)**
-
-🌿 **COLLECTIVITÉ TERRITORIALE DE GUYANE (CTG)**
-*(fusion Région + Département depuis 2015)*
-
-👤 **Gabriel Serville** — Président depuis le 28 juin 2021
-🏢 CTG, Cayenne
-🔗 ctguyane.fr
-🗓️ Né en 1960. Ancien député (2012-2021), ancien maire de Matoury. Enseignant de carrière. Élu avec 54,83% des voix face à Rodolphe Alexandre.
-ℹ️ En 2025 : convalescence médicale prolongée (nov 2024-juil 2025). Milite pour l'autonomie institutionnelle de la Guyane. Rencontré Emmanuel Macron à l'Élysée en sept 2025 sur l'évolution statutaire.
-
-👤 **Jean-Paul Fereira** — 1er Vice-Président (assuré l'intérim 2024-2025)
-
-🗳️ **DÉPUTÉS ASSEMBLÉE NATIONALE (élus juillet 2024)**
-• **1ère circ.** (Cayenne) : **Davy Rimane** (DVG/NFP)
-• **2ème circ.** (Ouest Guyane) : **Lénaïck Adam** (DVG)
-
-🏛️ **SÉNATEURS**
-• **Marie-Laure Phinera-Horth** — RDPI (Renaissance)
-• **Georges Patient** — RDPI (Renaissance)
-
-🗓️ **Prochaines élections :** Territoriales mars 2028
-
-🔗 Sources : ctguyane.fr | assemblee-nationale.fr
-
-Boudoum ! 🇫🇷🌿`
-}
-
-function getPolitiquesReunion() {
-  return `🏛️ **Élus Officiels de La Réunion (2025-2026)**
-
-🌺 **CONSEIL RÉGIONAL**
-👤 **Huguette Bello** — Présidente depuis le 2 juillet 2021
-🏢 Hôtel de Région Pierre-Lagourgue, Saint-Denis
-🔗 regionreunion.com
-🗓️ Née le 24 août 1950 à Saint-Pierre. Militante PLR (Pour La Réunion), ancienne membre du PCR (1974-2012). Ancienne députée (1997-2020), ancienne maire de Saint-Paul. Élue avec 29 voix sur 35.
-
-🏛️ **CONSEIL DÉPARTEMENTAL**
-👤 **Cyrille Melchior** — Président depuis le 18 décembre 2017
-🏢 Palais de la Source, Saint-Denis
-🔗 departement974.fr
-🗓️ Né le 6 septembre 1961 à Saint-Paul. LR. En juin 2025, il crée "Nouvel R'" pour fédérer la droite réunionnaise. Candidat aux municipales 2026 à Saint-Paul.
-
-🗳️ **DÉPUTÉS ASSEMBLÉE NATIONALE (élus juillet 2024)**
-• **1ère circ.** : **Emeline K/Bidi** (PCR/NFP)
-• **2ème circ.** : **Joseph Rivière** (DVD)
-• **3ème circ.** : **Karine Lebon** (PCR/NFP)
-• **4ème circ.** : **Frédéric Maillot** (PLR/NFP)
-• **5ème circ.** : **Philippe Naillet** (PS/NFP)
-• **6ème circ.** : **Perceval Gaillard** (DVG/NFP)
-• **7ème circ.** : **Jean-Hugues Ratenon** (LFI/NFP)
-
-🏛️ **SÉNATEURS**
-• **Viviane Malet** — LR
-• **Audrey Belim** — PS
-
-🗓️ **Élections Municipales :** Mars 2026 — Résultats disponibles
-
-🔗 Sources : regionreunion.com | departement974.fr | assemblee-nationale.fr
-
-Boudoum ! 🇫🇷🌺`
-}
-
-function getPolitiquesMayotte() {
-  return `🏛️ **Élus Officiels de Mayotte (2025-2026)**
-
-🌊 **ASSEMBLÉE DE MAYOTTE (ex-Conseil Départemental 976)**
-👤 **Ben Issa Ousseni** — Président depuis le 1er juillet 2021
-🏢 Conseil Départemental, Mamoudzou
-🔗 mayotte.fr
-🗓️ Né le 11 juillet 1973 à Mamoudzou. LR. DUT Finance/Comptabilité. Ancien comptable, fondateur d'entreprise en 2011. Élu au conseil depuis 2011. En 2024 : lance un programme infrastructures pour les Jeux des Îles 2036. Après le cyclone Chido (décembre 2024), il réclame l'état d'urgence et se bat pour la reconstruction de l'île.
-ℹ️ 1er vice-président : Salime Mdéré. Depuis 2026 : le conseil est rebaptisé "Assemblée de Mayotte" suite à la loi de refondation.
-
-🗳️ **DEPUTÉS ASSEMBLÉE NATIONALE (élus juillet 2024)**
-• **1ère circ.** : **Anchya Bamana** (DVG)
-• **2ème circ.** : **Mansour Kamardine** (LR)
-
-🏛️ **SÉNATEURS**
-• **Saïd Omar Oili** — LR
-• **Thani Mohamed Soilihi** — RDPI
-
-🔥 **Contexte 2025 :** Mayotte dévastée par le cyclone Chido (14 décembre 2024). Reconstruction majeure en cours. Loi programme Mayotte adoptée août 2025. Jeux des Îles 2036.
-
-🗓️ **Élections Municipales :** Mars 2026 — Résultats disponibles
-
-🔗 Sources : mayotte.fr | assemblee-nationale.fr
-
-Boudoum ! 🇫🇷🌊`
-}
-
-function getPolitiquesNouvelleCaledonie() {
-  return `🏛️ **Élus Officiels de Nouvelle-Calédonie (2025-2026)**
-
-🌏 **GOUVERNEMENT DE LA NOUVELLE-CALÉDONIE**
-👤 **Alcide Ponga** — Président du 18e Gouvernement depuis le 8 janvier 2025
-🏢 Hôtel du Gouvernement, Nouméa
-🔗 gouv.nc
-🗓️ Né le 23 mai 1975 à Kouaoua. Kanak non-indépendantiste. Diplômé Sciences Politiques + Droit Public. Cadre dirigeant dans le secteur du nickel (SLN puis KNS). Maire de Kouaoua depuis 2014. 1er Kanak à présider Le Rassemblement-LR (depuis avril 2024).
-ℹ️ Élu avec 6 voix sur 11 membres du gouvernement. Contexte : crises politiques et économiques post-émeutes de mai 2024 (14 morts, 2 milliards € de dégâts). Négocie avec Paris pour l'avenir institutionnel de la Nouvelle-Calédonie.
-⚠️ Fin 2025 : "2026 sera aussi compliquée que 2025, voire plus" — problèmes nickel, finances, avenir institutionnel.
-
-🗳️ **DEPUTÉS ASSEMBLÉE NATIONALE**
-• **1ère circ.** : **Nicolas Metzdorf** (Renaissance)
-• **2ème circ.** : **Emmanuel Tjibaou** (FLNKS/indépendantiste)
-
-🏛️ **SÉNATEURS**
-• **Robert Xowie** — FLNKS/indépendantiste
-• **Georges Naturel** — LR
-
-🗓️ **Prochaines élections :** Provinciales 2025 (date à confirmer)
-
-🔗 Sources : gouv.nc | congres.nc | assemblee-nationale.fr
-
-Boudoum ! 🇫🇷🌏`
-}
-
-async function getActusPolitiquesGuadeloupe() {
-  try {
-    // RSS France-Antilles Guadeloupe
-    const r = await fetch('https://www.guadeloupe.franceantilles.fr/rss.xml', { headers: { 'User-Agent': 'Mozilla/5.0' } })
-    const xml = await r.text()
-    const items = xml.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0,5) || []
-    let result = "🗳️ **Actualités Politiques Guadeloupe — France-Antilles**\n\n"
-    for (const item of items) {
-      const title = item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || item.match(/<title>(.*?)<\/title>/)?.[1] || ''
-      const link = item.match(/<link>(.*?)<\/link>/)?.[1] || ''
-      if (title) result += `• ${title}\n${link ? '🔗 '+link : ''}\n\n`
-    }
-    if (items.length > 0) return result
-    throw new Error('no items')
-  } catch(e) {
-    try {
-      // Fallback La 1ère Guadeloupe
-      const r2 = await fetch('https://la1ere.francetvinfo.fr/guadeloupe/feed', { headers: { 'User-Agent': 'Mozilla/5.0' } })
-      const xml2 = await r2.text()
-      const items2 = xml2.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0,5) || []
-      let result2 = "🗳️ **Actualités Guadeloupe — La 1ère**\n\n"
-      for (const item of items2) {
-        const title = item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || item.match(/<title>(.*?)<\/title>/)?.[1] || ''
-        const link = item.match(/<link>(.*?)<\/link>/)?.[1] || ''
-        if (title) result2 += `• ${title}\n${link ? '🔗 '+link : ''}\n\n`
-      }
-      if (items2.length > 0) return result2
-    } catch(e2) {}
-    return getPolitiquesGuadeloupe()
-  }
-}
-
-async function getElusOfficielGuadeloupe() {
-  try {
-    // Scrape assemblee-nationale.fr pour les députés 971
-    const r = await fetch('https://www.assemblee-nationale.fr/dyn/recherche/fonctions?departement=971', { headers: { 'User-Agent': 'Mozilla/5.0' } })
-    const html = await r.text()
-    const noms = html.match(/class="h6">([^<]+)<\/a>/g)?.slice(0,4).map(n => n.replace(/<[^>]+>/g,'')) || []
-    if (noms.length > 0) {
-      return `🇫🇷 **Députés Guadeloupe (Assemblée Nationale — Temps Réel)**\n\n${noms.map((n,i) => `• ${i+1}ère circ. : **${n.trim()}**`).join('\n')}\n\n🔗 https://www.assemblee-nationale.fr`
-    }
-    throw new Error('no data')
-  } catch(e) {
-    return getPolitiquesGuadeloupe()
-  }
-}
-
-// ===== IMMOBILIER TEMPS REEL =====
-async function getImmobilierTempsReel() {
-  try {
-    const r = await fetch('https://api.dvf.etalab.gouv.fr/dvf/mutations/?code_departement=971&fields=valeur_fonciere,surface_reelle_bati,type_local&per_page=5', { headers: { 'Accept': 'application/json' } })
-    const d = await r.json()
-    if (d.results?.length > 0) {
-      let result = "🏠 **Immobilier Guadeloupe — Transactions Récentes (DVF Officiel)**\n\n"
-      for (const item of d.results.slice(0,4)) {
-        if (item.valeur_fonciere && item.surface_reelle_bati) {
-          const prixm2 = Math.round(item.valeur_fonciere / item.surface_reelle_bati)
-          result += `• ${item.type_local || 'Bien'} — ${item.surface_reelle_bati}m² — ${item.valeur_fonciere.toLocaleString('fr-FR')}€ (${prixm2}€/m²)\n`
-        }
-      }
-      result += "\n📊 Source : DVF Etalab (données officielles)\n🔗 https://app.dvf.etalab.gouv.fr 📱*(navigateur)*\n\nBoudoum ! 🇬🇵"
-      return result
-    }
-    throw new Error('no data')
-  } catch(e) {
-    return getImmobilierDOMTOM()
-  }
-}
-
-// ===== HORAIRES BUS GUADELOUPE =====
-function getHorairesBusGuadeloupe() {
-  return `🚌 **Transports en Commun Guadeloupe**
-
-🚌 **Guadeloupe Transport (GTI)**
-• Réseau bus inter-urbain Guadeloupe
-• 🔗 https://www.ilevia.fr (app mobile)
-• 📞 0590 83 32 00
-
-🚌 **Lignes principales :**
-• Ligne 1 : Pointe-à-Pitre ↔ Les Abymes
-• Ligne 2 : Pointe-à-Pitre ↔ Gosier
-• Ligne 3 : Pointe-à-Pitre ↔ Baie-Mahault
-• Ligne 4 : Pointe-à-Pitre ↔ Sainte-Anne
-• Ligne 5 : Pointe-à-Pitre ↔ Saint-François
-• Ligne 10 : Pointe-à-Pitre ↔ Basse-Terre
-
-🚗 **Taxis collectifs (TC) :**
-• Départ : Gare routière de Bergevin (Pointe-à-Pitre)
-• Horaires : 5h30 — 19h00
-• Prix : 1.50€ — 8€ selon destination
-
-⛴️ **Ferry inter-îles :**
-• L'Express des Îles : Guadeloupe ↔ Martinique ↔ Dominique
-• 🔗 https://www.express-des-iles.com
-• CTM Deher : Pointe-à-Pitre ↔ Marie-Galante ↔ Les Saintes
-
-📱 **App recommandée :** Google Maps (lignes GTI intégrées)
-
-Boudoum ! 🇬🇵`
-}
-
-// ===== COUPURES EDF DOM-TOM =====
-async function getCoupuresEDF() {
-  try {
-    const r = await fetch('https://www.edf-dom.fr/wp-json/wp/v2/posts?per_page=5&categories=coupures', { headers: { 'User-Agent': 'Mozilla/5.0' } })
-    const d = await r.json()
-    if (d?.length > 0) {
-      let result = "⚡ **Coupures EDF DOM-TOM — Alertes Récentes**\n\n"
-      for (const post of d.slice(0,3)) {
-        result += `• ${post.title?.rendered || 'Alerte'}\n`
-      }
-      result += "\n🔗 https://www.edf-dom.fr\n📞 EDF Guadeloupe : 0590 82 40 00\nBoudoum ! 🇬🇵"
-      return result
-    }
-    throw new Error('no data')
-  } catch(e) {
-    return `⚡ **Coupures EDF DOM-TOM**
-
-🔦 **En cas de coupure :**
-• EDF Guadeloupe : **0590 82 40 00**
-• EDF Martinique : **0596 59 20 00**
-• EDF Guyane : **0594 39 64 00**
-• EDF Réunion : **0262 90 90 90**
-• EDF Mayotte : **0269 64 90 00**
-
-📱 **Signaler une coupure :**
-🔗 https://www.edf-dom.fr
-🔗 Application EDF & MOI
-
-⏰ **Interventions urgentes 24h/24**
-
-Boudoum ! 🇬🇵`
-  }
-}
-
-// ===== CLASSEMENT ZOUK/SOCA =====
-async function getClassementZoukSoca() {
-  try {
-    const r = await fetch('https://la1ere.francetvinfo.fr/guadeloupe/feed', { headers: { 'User-Agent': 'Mozilla/5.0' } })
-    const xml = await r.text()
-    const items = xml.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0,3) || []
-    let musique = items.map(item => item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || '').filter(t => t && (t.toLowerCase().includes('musik') || t.toLowerCase().includes('musique') || t.toLowerCase().includes('artiste') || t.toLowerCase().includes('zouk') || t.toLowerCase().includes('soca')))
-    if (musique.length > 0) {
-      return `🎵 **Musique Caribéenne — Actualités**\n\n${musique.map(t => '• '+t).join('\n')}\n\n🔗 https://la1ere.francetvinfo.fr/guadeloupe\nBoudoum ! 🇬🇵`
-    }
-    throw new Error('no music news')
-  } catch(e) {
-    return `🎵 **Classement Zouk & Soca Caraïbes**
-
-🏆 **Artistes incontournables :**
-• **Jacob Desvarieux** — Légende Kassav / Zouk
-• **Kalash** — Rappeur Martiniquais international
-• **Fanny J** — R&B Guadeloupéen
-• **Admiral T** — Gwo Ka moderne
-• **Dj Lewis** — Zouk électronique
-• **Kevin Lyttle** — Soca international
-• **Machel Montano** — Roi du Soca Trinidad
-• **Bunji Garlin** — Soca Trinidad
-
-📻 **Radios locales :**
-• RCI Guadeloupe — 104.3 FM
-• Outremer 1ère — 89.3 FM
-• NRJ Guadeloupe — 92.7 FM
-• Radyo Tanbou — Gwoka & traditions
-
-🔗 Actualités musique : https://la1ere.francetvinfo.fr/guadeloupe
-
-Boudoum ! 🇬🇵`
-  }
-}
-
-// ===== OFFRES EMPLOI DOM-TOM =====
-async function getOffresEmploiDOMTOM(query = "emploi", zone = "971") {
-  try {
-    const clientId = process.env.FRANCE_TRAVAIL_CLIENT_ID
-    const secret = process.env.FRANCE_TRAVAIL_SECRET
-    const tokenRes = await fetch('https://entreprise.francetravail.fr/connexion/oauth2/access_token?realm=%2Fpartenaire', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${secret}&scope=api_offresdemploiv2%20o2dsoffre`
-    })
-    const tokenData = await tokenRes.json()
-    const token = tokenData.access_token
-    if (!token) throw new Error('token failed')
-
-    const q = encodeURIComponent(query.replace(/liste|emploi|offre|guadeloupe|martinique|guyane|reunion|prevention|travail/gi,'').trim())
-    const contrat = query.toLowerCase().includes('cdi') ? '&typeContrat=CDI' :
-                    query.toLowerCase().includes('cdd') ? '&typeContrat=CDD' :
-                    query.toLowerCase().includes('interim') || query.toLowerCase().includes('intérim') ? '&typeContrat=MIS' : ''
-    const url = `https://api.francetravail.io/partenaire/offresdemploi/v2/offres/search?departement=${zone}&range=0-9${q ? '&motsCles='+q : ''}${contrat}`
-    const r = await fetch(url, { headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/json' } })
-    const d = await r.json()
-
-    const zoneName = zone === '972' ? 'Martinique' : zone === '973' ? 'Guyane' : zone === '974' ? 'Réunion' : 'Guadeloupe'
-    const total = d.Content_Range?.split('/')?.[1] || d.resultats?.length || 0
-
-    let result = `💼 **Offres Emploi — ${zoneName}** (${total} offres)
-
-`
-    result += `🏛️ **France Travail — Temps Réel**
-
-`
-
-    if (d.resultats?.length) {
-      for (const o of d.resultats.slice(0,5)) {
-        const contratIcon = o.typeContrat === 'CDI' ? '♾️' : o.typeContrat === 'CDD' ? '📅' : o.typeContrat === 'MIS' ? '⏱️' : '📄'
-        const salaire = o.salaire?.libelle || 'Salaire selon profil'
-        const duree = o.dureeTravailLibelleConverti || o.dureeTravailLibelle || 'Temps plein'
-        result += `• **${o.intitule}**
-`
-        result += `  🏢 ${o.entreprise?.nom || 'Entreprise confidentielle'}
-`
-        result += `  📍 ${o.lieuTravail?.libelle || zoneName} | ${contratIcon} ${o.typeContrat || 'CDI'} | ⏰ ${duree}
-`
-        result += `  💰 ${salaire}
-`
-        result += `  🔗 https://candidat.francetravail.fr/offres/recherche/detail/${o.id}
-
-`
-      }
-    } else {
-      result += `• Aucune offre trouvée — essayez sur francetravail.fr
-
-`
-    }
-
-    result += `━━━━━━━━━━━━━━━━
-`
-    result += `🌴 **Autres Plateformes DOM-TOM**
-`
-    result += `• 🌐 CaribbeaJobs : https://caribbeanjobs.com
-`
-    result += `• 🔍 Indeed : https://fr.indeed.com/jobs?l=${encodeURIComponent(zoneName)}
-`
-    result += `• 💼 LinkedIn : https://www.linkedin.com/jobs/search/?location=${encodeURIComponent(zoneName)}
-`
-    result += `• 🌴 Caraibe Emploi : https://www.caraibe-emploi.com
-`
-    result += `• 🌍 Jobartis : https://www.jobartis.com
-
-`
-    result += `📞 France Travail : **3949**
-Boudoum ! 🇬🇵`
-    return result
-  } catch(e) {
-    return `💼 **Offres Emploi DOM-TOM**
-
-🇬🇵 https://www.francetravail.fr
-🌴 https://caribbeanjobs.com
-💼 https://fr.indeed.com/jobs?l=Guadeloupe
-
-Boudoum ! 🇬🇵`
-  }
-}
-
-// ===== RESULTATS BAC/BTS GUADELOUPE =====
-function getResultatsBAC() {
-  const annee = new Date().getFullYear()
-  return `🎓 **Résultats BAC & BTS Guadeloupe ${annee}**
-
-📅 **Calendrier officiel :**
-• Épreuves BAC : Juin ${annee}
-• Résultats BAC : Début juillet ${annee}
-• Résultats BTS : Juillet ${annee}
-
-🔗 **Consulter ses résultats :**
-• 🎓 https://www.education.gouv.fr 📱*(navigateur)*/bac
-• 📱 Application Cyclades
-• 🔗 https://cyclades.education.fr
-
-📊 **Taux de réussite historique Guadeloupe :**
-• BAC Général : ~88%
-• BAC Technologique : ~82%
-• BAC Professionnel : ~78%
-• BTS : ~72%
-
-🏫 **Rectorat de Guadeloupe :**
-• 📞 0590 21 13 00
-• 🔗 https://www.ac-guadeloupe.fr
-
-💡 En cas de doute sur tes résultats, contacte ton lycée directement.
-
-Boudoum ! 🇬🇵`
-}
-
-// ===== KARUDATA OPEN DATA REGION GUADELOUPE =====
-async function getKaruData() {
-  try {
-    const r = await fetch('https://regionguadeloupe.opendatasoft.com/api/explore/v2.1/catalog/datasets?limit=5', { headers: { 'Accept': 'application/json' } })
-    const d = await r.json()
-    let result = "📊 **KaruData — Open Data Région Guadeloupe**\n\n"
-    if (d.results?.length > 0) {
-      for (const ds of d.results.slice(0,4)) {
-        result += `• **${ds.dataset_id}** — ${ds.metas?.default?.title || ds.dataset_id}\n`
-      }
-    }
-    result += "\n🔗 https://regionguadeloupe.opendatasoft.com\n\nBoudoum ! 🇬🇵"
-    return result
-  } catch(e) {
-    return `📊 **KaruData — Open Data Guadeloupe**\n\n🔗 https://regionguadeloupe.opendatasoft.com\n\nDonnées officielles Région Guadeloupe :\n• Transports\n• Équipements publics\n• Environnement\n• Économie\n\nBoudoum ! 🇬🇵`
-  }
-}
-
-// ===== KARUGEO CARTES GUADELOUPE =====
-function getKaruGeo() {
-  return `🗺️ **KaruGéo — Cartographie Guadeloupe**
-
-🌋 **Risques Naturels :**
-• Séismes : Zone sismique 5 (très forte)
-• Volcans : La Soufrière (Saint-Claude)
-• Tsunamis : Côtes exposées Est/Sud
-• Cyclones : Saison juin-novembre
-
-🛣️ **Routes principales :**
-• N1 : Pointe-à-Pitre → Basse-Terre (Grande-Terre)
-• N2 : Pointe-à-Pitre → Le Moule
-• N4 : Basse-Terre → Pointe-à-Pitre (Basse-Terre)
-• Route de la Traversée : N2 → Côte Sous-le-Vent
-
-🏝️ **Îles de Guadeloupe :**
-• Grande-Terre, Basse-Terre, Marie-Galante
-• Les Saintes (Terre-de-Haut, Terre-de-Bas)
-• La Désirade, Saint-Martin, Saint-Barthélemy
-
-🔗 https://www.karugeo.fr
-🔗 https://www.ign.fr/cartes-guadeloupe
-
-Boudoum ! 🇬🇵`
-}
-
-// ===== COVOITURAGE GUADELOUPE =====
-function getCovoiturageGuadeloupe() {
-  return `🚗 **Covoiturage Guadeloupe**
-
-🤝 **Plateformes actives :**
-• **KAROS** — Covoiturage officiel (DEAL Guadeloupe)
-  🔗 https://www.karos.fr
-  💰 Gratuit ou remboursé par employeur
-
-• **BlaBlaCar** — Trajets inter-îles
-  🔗 https://www.blablacar.fr
-  
-• **Covoiturage-libre.fr** — Gratuit entre particuliers
-  🔗 https://www.covoiturage-libre.fr
-
-🏙️ **Zones de covoiturage :**
-• Parking Jabrun (Les Abymes) → Pointe-à-Pitre
-• Parking Carrefour Milenis → Centre-ville
-• Rond-point de Perrin → Grand-Camp
-
-💡 **Bon à savoir :**
-• Remboursement employeur jusqu'à 600€/an
-• Application Mobility+ pour Guadeloupe
-• Forfait mobilités durables entreprises
-
-📞 DEAL Guadeloupe : 0590 99 09 00
-
-Boudoum ! 🇬🇵`
-}
-
-// ===== BONS PLANS GUADELOUPE =====
-async function getBonsPlansGuadeloupe() {
-  try {
-    const r = await fetch('https://la1ere.francetvinfo.fr/guadeloupe/feed', { headers: { 'User-Agent': 'Mozilla/5.0' } })
-    const xml = await r.text()
-    const items = xml.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0,4) || []
-    let bonsplans = items.map(item => ({
-      title: item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || '',
-      link: item.match(/<link>(.*?)<\/link>/)?.[1] || ''
-    })).filter(i => i.title)
-    
-    let result = `💡 **Bons Plans Guadeloupe**\n\n`
-    result += `🛒 **Marchés locaux :**\n`
-    result += `• Marché de Pointe-à-Pitre — Tous les jours 6h-13h\n`
-    result += `• Marché de Basse-Terre — Mercredi & Samedi\n`
-    result += `• Marché de Saint-François — Dimanche matin\n`
-    result += `• Marché de Sainte-Anne — Vendredi & Samedi\n\n`
-    result += `🎟️ **Sorties gratuites :**\n`
-    result += `• Musée Edgar Clerc (Le Moule) — gratuit le dimanche\n`
-    result += `• Chutes du Carbet — accès libre\n`
-    result += `• Plages publiques — toutes gratuites\n`
-    result += `• Jardin botanique de Deshaies\n\n`
-    result += `🌐 **Sites bon plans :**\n`
-    result += `• 🔗 https://www.guadeloupe-islands.com\n`
-    result += `• 🔗 https://www.tourisme-guadeloupe.com\n`
-    result += `• Groupe Facebook : "Bons Plans Guadeloupe"\n\n`
-    result += `Boudoum ! 🇬🇵`
-    return result
-  } catch(e) {
-    return `💡 **Bons Plans Guadeloupe**\n\n🛒 Marchés locaux : Pointe-à-Pitre, Basse-Terre, Saint-François\n🎟️ Sorties gratuites : Chutes du Carbet, plages, Musée Clerc\n🔗 https://www.tourisme-guadeloupe.com\n\nBoudoum ! 🇬🇵`
-  }
-}
-
-// ===== MIX ELECTRIQUE EDF GUADELOUPE =====
-async function getMixElectriqueGuadeloupe() {
-  try {
-    const r = await fetch('https://opendata.edf-dom.fr/api/explore/v2.1/catalog/datasets/mix-electrique-guadeloupe/records?limit=1&order_by=timestamp%20desc', { headers: { 'Accept': 'application/json' } })
-    const d = await r.json()
-    if (d.results?.[0]) {
-      const rec = d.results[0]
-      return `⚡ **Mix Électrique Guadeloupe — Temps Réel**\n\n🔋 Thermique : ${rec.thermique || 'N/A'} MW\n☀️ Solaire : ${rec.solaire || 'N/A'} MW\n💨 Éolien : ${rec.eolien || 'N/A'} MW\n🌿 Biomasse : ${rec.biomasse || 'N/A'} MW\n💧 Hydraulique : ${rec.hydraulique || 'N/A'} MW\n\n📊 Source : EDF DOM Open Data\n🔗 https://opendata.edf-dom.fr\n\nBoudoum ! 🇬🇵`
-    }
-    throw new Error('no data')
-  } catch(e) {
-    return `⚡ **Mix Électrique Guadeloupe**\n\n🔗 https://opendata.edf-dom.fr\n\n📊 Production électrique Guadeloupe :\n☀️ Solaire en développement fort\n🌿 Bagasse (canne à sucre) — source locale\n💨 Éolien — côtes exposées\n🔋 Thermique — base production\n\n📞 EDF Guadeloupe : 0590 82 40 00\n\nBoudoum ! 🇬🇵`
-  }
-}
-
-// ===== RCI GUADELOUPE NEWS =====
-async function getRCIGuadeloupe() {
-  try {
-    // RCI n'a pas de RSS public — on retourne infos statiques enrichies
-    return `📻 **RCI Guadeloupe 104.3 FM**
-
-🎙️ La radio d'info n°1 des Antilles-Guyane
-
-📡 **Écouter en direct :**
-🔗 https://www.rci.fm/guadeloupe
-📱 App RCI (iOS & Android)
-
-📰 **Rubriques :**
-• Actualités Guadeloupe & Caraïbes
-• Sport (Gwada Boys, rugby, athlétisme)
-• Météo & alertes cycloniques
-• Émissions culturelles & créoles
-• Musique caribéenne (Zouk, Soca, Reggae)
-
-⏰ **Infos toutes les heures**
-📞 Standard : +590 590 83 96 96
-
-🔗 https://www.rci.fm/guadeloupe
-
-Boudoum ! 🇬🇵\``
-  } catch(e) {
-    return `📻 **RCI Guadeloupe**\n\n📻 Fréquence : 104.3 FM\n🔗 https://www.rci.fm/guadeloupe\n📱 App RCI disponible\n\nActualités, météo, sport et musique caribéenne 24h/24 !\n\nBoudoum ! 🇬🇵`
-  }
-}
-
-// ===== ROUTES GUADELOUPE TRAFIC =====
-function getRoutesGuadeloupe() {
-  return `🛣️ **Routes & Trafic Guadeloupe**
-
-🚦 **Axes principaux :**
-• **RN1** : Pointe-à-Pitre ↔ Gosier ↔ Sainte-Anne (Grande-Terre)
-• **RN2** : Pointe-à-Pitre ↔ Le Moule ↔ Saint-François
-• **RN4** : Pointe-à-Pitre ↔ Basse-Terre (via côte sous-le-vent)
-• **RN5** : Route de la Traversée (forêt tropicale)
-
-⚠️ **Points de congestion habituels :**
-• 7h-9h & 16h-19h : Entrée Pointe-à-Pitre
-• Rond-point de Perrin (Les Abymes)
-• RN1 vers Gosier le matin
-• Pont de la Gabarre (Basse-Terre/Grande-Terre)
-
-🌧️ **Alertes météo-route :**
-• Pluies fortes → glissements RN4 (Basse-Terre)
-• Cyclone → fermeture préfectorale routes
-
-🔗 Infos trafic : https://www.vitimap.com/guadeloupe
-🔗 Waze Guadeloupe (communauté active)
-📞 DIR Antilles-Guyane : 0590 38 08 00
-
-Boudoum ! 🇬🇵`
-}
-
-// ===== 1. MODE JSON =====
-async function groqFetchJSON(prompt) {
-  const key = getNextKey()
-  try {
-    const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
-      body: JSON.stringify({
-        model: "llama-3.3-70b-versatile",
-        messages: [{ role: "system", content: "Tu réponds UNIQUEMENT en JSON valide, sans markdown, sans backticks." }, { role: "user", content: prompt }],
-        response_format: { type: "json_object" },
-        max_tokens: 1024
-      })
-    })
-    if (!res.ok) return null
-    const d = await res.json()
-    return JSON.parse(d.choices?.[0]?.message?.content || '{}')
-  } catch(e) { return null }
-}
-
-// ===== 2. MULTIMODAL — Analyse Image =====
-async function groqAnalyseImage(imageBase64, question) {
-  const key = getNextKey()
-  try {
-    const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + key },
-      body: JSON.stringify({
-        model: "meta-llama/llama-4-scout-17b-16e-instruct",
-        messages: [{
-          role: "user",
-          content: [
-            { type: "image_url", image_url: { url: `data:image/jpeg;base64,${imageBase64}` } },
-            { type: "text", text: question || "Décris cette image en français. Donne des informations utiles sur ce que tu vois." }
-          ]
-        }],
-        max_tokens: 1024
-      })
-    })
-    if (!res.ok) return null
-    const d = await res.json()
-    return d.choices?.[0]?.message?.content || null
-  } catch(e) { return null }
-}
-
-// ===== 3. RAG — Base de Connaissances REUSSITESS =====
-const REUSSITESS_KB = {
-  token_reuss: "Token REUSS sur Polygon: 0xB37531727fC07c6EED4f97F852A115B428046EB2. Supply: 999,999,999. QuickSwap Polygon.",
-  fondateur: "Rony Porinus, auto-entrepreneur Guadeloupe 971, SIRET: 444699979700031. Fondateur REUSSITESS®971.",
-  boutiques: "26 boutiques Amazon dans 14 pays. Influencer ID: fb942837. Tag: onamzporinus-21.",
-  neuro_x: "60 agents Neuro-X spécialisés sur reussitess.fr/neuro-x. Finance, Business, Cuisine, Santé, Droit, Voyage, Sport, Histoire, Musique...",
-  champions: "Passeport de Réussite sur reussitess.fr/champions. Certificat champion PDF. 14 pays partenaires.",
-  politique: "Région Guadeloupe: Ary Chalus (Président). Département: Guy Losbar (Président). Maire Pointe-à-Pitre: Harry Durimel (EELV).",
-  devise: "Positivité à l'infini. Boudoum. Terres de Champions. Excellence Innovation Succès.",
-  quiz: "99 quiz éducatifs sur reussitess.fr/quiz. Tous thèmes: histoire, culture, crypto, science...",
-  bibliotheque: "Bibliothèque mondiale 50+ pays sur reussitess.fr/bibliotheque. Auteurs caribéens: Césaire, Fanon, Condé, Glissant.",
-  securite: "HTTPS + headers A+ SecurityHeaders.com. REUSSSHIELD. Anti-injection. 3 clés Groq rotation.",
-  contact: "reussitess.fr | shop.reussitess.fr | kick.com/Reussitess | github.com/Reussitess30",
-  coach: "reussitess.fr/coach — Coach de Vie quotidien, defis personnalises, streak journalier, recompenses REUSS tokens, profils entrepreneur/etudiant/sportif/general",
-  crises: "ReliefWeb OCHA — crises humanitaires mondiales temps reel",
-  migrations: "UNHCR — refugies et deplacements mondiaux temps reel",
-  finances_publiques: "OCDE — chomage, budget, dette publique par pays",
-  elections: "Wikipedia — elections mondiales 2025-2026",
-  meteo_mondiale: "Open-Meteo — meteo 18 pays dont tous les 14 pays REUSSITESS",
-  worldbank: "World Bank — PIB et inflation par pays",
-  air: "OpenAQ — qualite air DOM-TOM temps reel",
-  catastrophes: "GDACS — catastrophes naturelles mondiales 24h",
-  sante_mondiale: "WHO/OMS — alertes sanitaires mondiales",
-  climat: "NOAA — CO2 atmospherique temps reel",
-  communaute: "reussitess.fr/communaute — Live Kick integre, chat en direct, discussions afro-caribeennes, entrepreneuriat, culture, IA"
-}
-
-function getRAGContext(message) {
-  const msgL = message.toLowerCase()
-  let context = []
-  if (msgL.includes('reuss') || msgL.includes('token') || msgL.includes('polygon')) context.push(REUSSITESS_KB.token_reuss)
-  if (msgL.includes('porinus') || msgL.includes('fondateur') || msgL.includes('rony')) context.push(REUSSITESS_KB.fondateur)
-  if (msgL.includes('boutique') || msgL.includes('amazon') || msgL.includes('affili')) context.push(REUSSITESS_KB.boutiques)
-  if (msgL.includes('neuro')) context.push(REUSSITESS_KB.neuro_x)
-  if (msgL.includes('champion') || msgL.includes('certificat')) context.push(REUSSITESS_KB.champions)
-  if (msgL.includes('ary') || msgL.includes('losbar') || msgL.includes('durimel') || msgL.includes('politique')) context.push(REUSSITESS_KB.politique)
-  if (msgL.includes('quiz')) context.push(REUSSITESS_KB.quiz)
-  if (msgL.includes('bibliotheque') || msgL.includes('cesaire') || msgL.includes('fanon')) context.push(REUSSITESS_KB.bibliotheque)
-  if (msgL.includes('securite') || msgL.includes('sécurité') || msgL.includes('shield')) context.push(REUSSITESS_KB.securite)
-  if (msgL.includes('contact') || msgL.includes('kick') || msgL.includes('github')) context.push(REUSSITESS_KB.contact)
-  if (msgL.includes('crise') || msgL.includes('conflit') || msgL.includes('guerre')) context.push(REUSSITESS_KB.crises)
-  if (msgL.includes('migration') || msgL.includes('refugie')) context.push(REUSSITESS_KB.migrations)
-  if (msgL.includes('chomage') || msgL.includes('budget') || msgL.includes('dette')) context.push(REUSSITESS_KB.finances_publiques)
-  if (msgL.includes('election') || msgL.includes('vote') || msgL.includes('politique')) context.push(REUSSITESS_KB.elections)
-  if (msgL.includes('meteo') || msgL.includes('temps')) context.push(REUSSITESS_KB.meteo_mondiale)
-  if (msgL.includes('co2') || msgL.includes('climat')) context.push(REUSSITESS_KB.climat)
-  if (msgL.includes('coach') || msgL.includes('defi') || msgL.includes('streak') || msgL.includes('motivation quotidienne')) context.push(REUSSITESS_KB.coach)
-  if (msgL.includes('communaute') || msgL.includes('live') || msgL.includes('stream') || msgL.includes('forum')) context.push(REUSSITESS_KB.communaute)
-  return context.join(' | ')
-}
-
-// ===== 4. MULTI-AGENTS Orchestration =====
-async function orchestrateAgents(message, context) {
-  const domain = detectNeurox(message)
-  if (domain && NEUROX_AGENTS[domain]) {
-    const agent = NEUROX_AGENTS[domain]
-    const ragCtx = getRAGContext(message)
-    const systemPrompt = agent.prompt + (ragCtx ? `\n\nCONTEXTE REUSSITESS OFFICIEL: ${ragCtx}` : '')
-    const history = Array.isArray(context) ? context.slice(-4).map(m => ({
-      role: m.role === 'assistant' ? 'assistant' : 'user',
-      content: m.content?.substring(0,400) || ''
-    })).filter(m => m.content) : []
-    return await groqFetch([...history, { role: "user", content: message }].map((m,i) => i === 0 && !history.length ? { role: "system", content: systemPrompt } : m).concat(history.length ? [{ role: "user", content: message }] : []), 1024)
-  }
-  return null
-}// ===== MEMOIRE REDIS — Préférences utilisateur =====
-async function getUserMemory(userId) {
-  try {
-    const { Redis } = await import('@upstash/redis')
-    const redis = Redis.fromEnv()
-    const data = await redis.get('user:' + userId)
-    return data ? JSON.parse(data) : {}
-  } catch(e) { return {} }
-}
-
-async function saveUserMemory(userId, data) {
-  try {
-    const { Redis } = await import('@upstash/redis')
-    const redis = Redis.fromEnv()
-    await redis.set('user:' + userId, JSON.stringify(data), { ex: 30 * 24 * 60 * 60 }) // 30 jours
-    return true
-  } catch(e) { return false }
-}
-
-async function updateUserMemory(userId, key, value) {
-  const mem = await getUserMemory(userId)
-  mem[key] = value
-  mem.lastSeen = new Date().toISOString()
-  await saveUserMemory(userId, mem)
-  return mem
-}
-
-
-
-// ===== ACTUALITÉS OUTREMER ENRICHIES =====
-async function getActualitesOutremerComplet() {
-  const sources = [
-    { nom: '🇬🇵 La 1ère Guadeloupe', url: 'https://la1ere.francetvinfo.fr/guadeloupe/feed' },
-    { nom: '🇲🇶 La 1ère Martinique', url: 'https://la1ere.francetvinfo.fr/martinique/feed' },
-    { nom: '🇬🇫 La 1ère Guyane', url: 'https://la1ere.francetvinfo.fr/guyane/feed' },
-    { nom: '🇷🇪 La 1ère Réunion', url: 'https://la1ere.francetvinfo.fr/reunion/feed' },
-    { nom: '🇾🇹 La 1ère Mayotte', url: 'https://la1ere.francetvinfo.fr/mayotte/feed' },
-    { nom: '🌴 Outremers360', url: 'https://outremers360.com/feed' },
-    { nom: '🇬🇵 Bondamanjak', url: 'https://www.bondamanjak.com/feed/' },
-    { nom: '🇷🇪 Zinfos974', url: 'https://www.zinfos974.com/feed' },
-  ]
-
-  let result = "📰 **Actualités Outremer — Temps Réel**\n\n"
-  let found = 0
-
-  for (const source of sources) {
-    try {
-      const r = await fetch(source.url, { 
-        headers: { 'User-Agent': 'Mozilla/5.0' },
-        signal: AbortSignal.timeout(4000)
-      })
-      const xml = await r.text()
-      const items = xml.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0, 2) || []
-      if (items.length > 0) {
-        result += `**${source.nom}**\n`
-        for (const item of items) {
-          const title = item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/)?.[1] || item.match(/<title>(.*?)<\/title>/)?.[1] || ''
-          if (title) result += `• ${title}\n`
-        }
-        result += '\n'
-        found++
-      }
-    } catch(e) {}
-  }
-
-  if (found === 0) {
-    return "📰 Actualités Outremer :\n🔗 la1ere.francetvinfo.fr\n🔗 outremers360.com\n🔗 bondamanjak.com\n\nBoudoum ! 🇬🇵"
-  }
-
-  return result + "Boudoum ! 🇬🇵"
-}
-
-// ===== MÉTÉO MARINE =====
-async function getMeteoMarine(lieu = 'Guadeloupe') {
-  try {
-    // Coordonnées Guadeloupe mer
-    const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=16.2411&longitude=-61.5331&hourly=wave_height,wave_direction,wave_period,wind_wave_height,swell_wave_height&forecast_days=1&timezone=America/Guadeloupe')
-    const d = await r.json()
-    const h = d.hourly
-    const now = new Date().getHours()
-    return `🌊 **Météo Marine Guadeloupe — Temps Réel**
-
-🌊 Hauteur des vagues : ${h.wave_height?.[now] || 'N/A'} m
-🧭 Direction vagues : ${h.wave_direction?.[now] || 'N/A'}°
-⏱️ Période vagues : ${h.wave_period?.[now] || 'N/A'} s
-🌬️ Vagues de vent : ${h.wind_wave_height?.[now] || 'N/A'} m
-🌊 Houle : ${h.swell_wave_height?.[now] || 'N/A'} m
-
-⚠️ Toujours vérifier les alertes METEO FRANCE avant de prendre la mer
-📞 CROSS Antilles-Guyane : 196
-🔗 meteofrance.gp
-
-Boudoum ! 🇬🇵`
-  } catch(e) {
-    return `🌊 **Météo Marine Guadeloupe**\n\n📞 CROSS Antilles-Guyane : 196\n🔗 meteofrance.gp\n🔗 windy.com\n\nBoudoum ! 🇬🇵`
-  }
-}
-
-// ===== SÉISMES HISTORIQUES CARAÏBES =====
-async function getSeismesHistoriques() {
-  try {
-    const r = await fetch('https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&minmagnitude=5&minlatitude=10&maxlatitude=20&minlongitude=-70&maxlongitude=-58&limit=10&orderby=magnitude', { signal: AbortSignal.timeout(5000) })
-    const d = await r.json()
-    const quakes = d.features?.slice(0, 5).map(f => {
-      const date = new Date(f.properties.time).toLocaleDateString('fr-FR')
-      return `• M${f.properties.mag} — ${f.properties.place} (${date})`
-    }).join('\n')
-    return `🌋 **Séismes Majeurs Caraïbes — Historique**\n\n${quakes || 'Aucune donnée'}\n\n📊 Source: USGS\n🔗 earthquake.usgs.gov\n\nBoudoum ! 🇬🇵`
-  } catch(e) {
-    return `🌋 **Séismes Historiques Caraïbes**\n\n🔗 earthquake.usgs.gov\n🔗 brgm.fr\n\nBoudoum ! 🇬🇵`
-  }
-}
-
-// ===== LIEUX CULTURELS ET HISTORIQUES DOM-TOM =====
-function getLieuxCulturels(territoire = 'guadeloupe') {
-  const lieux = {
-    guadeloupe: `🏛️ **Lieux Culturels & Historiques Guadeloupe**
-
-🏰 **Sites Historiques :**
-• Fort Fleur d'Épée — Gosier (fort colonial XVIIIe)
-• Mémorial ACTe — Pointe-à-Pitre (mémorial esclavage)
-• Maison du Bois — Pointe-Noire (patrimoine)
-• Fort Delgrès — Basse-Terre (résistance 1802)
-
-🌿 **Nature & Patrimoine :**
-• Parc National de Guadeloupe — Basse-Terre
-• Chutes du Carbet — 3 cascades tropicales
-• La Soufrière — Volcan actif 1467m
-• Réserve Cousteau — Pigeon, plongée
-
-🎭 **Culture :**
-• Musée Saint-John Perse — Pointe-à-Pitre
-• Musée Edgar Clerc — Le Moule (amérindien)
-• Centre des Arts — Pointe-à-Pitre
-• Distilleries : Damoiseau, Bologne, Montebello
-
-Boudoum ! 🇬🇵`,
-    martinique: `🏛️ **Lieux Culturels & Historiques Martinique**
-
-🏰 **Sites Historiques :**
-• Saint-Pierre — Ville détruite par la Pelée 1902
-• Fort-de-France — Capitale historique
-• Habitation Clément — Rhum et art contemporain
-• Bibliothèque Schoelcher — Architecture coloniale
-
-🌿 **Nature :**
-• Montagne Pelée — Volcan 1397m
-• Jardin de Balata — Jardin tropical
-• Les Salines — Plage paradisiaque
-• Presqu'île de Caravelle — Réserve naturelle
-
-Boudoum ! 🇬🇵`,
-    reunion: `🏛️ **Lieux Culturels & Historiques Réunion**
-
-🌋 **Nature UNESCO :**
-• Piton de la Fournaise — Volcan actif
-• Cirque de Mafate — Patrimoine UNESCO
-• Cirque de Cilaos — Randonnées
-• Grand Raid — Course mythique
-
-🏛️ **Culture :**
-• Musée Léon Dierx — Art contemporain
-• Villa du Département — Architecture
-• Le Téat — Théâtre National
-
-Boudoum ! 🇬🇵`
-  }
-  return lieux[territoire] || lieux.guadeloupe
-}
-
-// ===== SANTÉ MENTALE DOM-TOM =====
-function getSanteMentaleDOMTOM() {
-  return `🧠 **Santé Mentale — Ressources DOM-TOM**
-
-📞 **Numéros d'urgence :**
-• 🆘 Suicide Écoute : **3114** (24h/24, gratuit)
-• 🚨 SAMU : **15**
-• 👮 Police/Gendarmerie : **17**
-
-🏥 **Structures spécialisées :**
-🇬🇵 **Guadeloupe :**
-• CHS de Guadeloupe — Basse-Terre : 0590 80 36 00
-• CLSM Pointe-à-Pitre : 0590 89 10 10
-• UNAFAM Guadeloupe : unafam.org
-
-🇲🇶 **Martinique :**
-• CHUM — Pôle psychiatrie : 0596 55 20 00
-• Croix-Rouge Martinique : 0596 71 02 33
-
-🇷🇪 **Réunion :**
-• CHU Réunion — Psychiatrie : 0262 90 50 50
-• SOS Amitié Réunion : 0262 93 01 01
-
-🇬🇫 **Guyane :**
-• CH de Cayenne : 0594 39 50 50
-
-💬 **En ligne gratuit :**
-• psy-education.fr
-• filsantejeunes.com (12-25 ans)
-• France Dépression : france-depression.org
-
-Boudoum ! 🇬🇵`
-}
-
-// ===== ÉDUCATION DOM-TOM =====
-function getEducationDOMTOM(territoire = 'guadeloupe') {
-  const edu = {
-    guadeloupe: `🎓 **Éducation Guadeloupe**
-
-🏫 **Système scolaire :**
-• Académie de Guadeloupe : ac-guadeloupe.fr
-• 📞 Rectorat : 0590 21 13 00
-• Calendrier scolaire : identique métropole Zone B
-
-🎓 **Enseignement supérieur :**
-• Université des Antilles (UA) — Campus de Fouillole
-• IUT de Kourou (Guyane)
-• INSPE Guadeloupe — Formation enseignants
-• BTS disponibles : Commerce, Tourisme, Informatique
-
-💰 **Bourses & Aides :**
-• CROUS Antilles-Guyane : crous-antillesguyane.fr
-• Bourse sur critères sociaux
-• Aide à la mobilité (PassMob)
-• LADOM — Aide formation mobilité
-
-📞 **Contacts :**
-• CROUS : 0590 21 93 00
-• Campus France Antilles : campusfrance.org
-
-Boudoum ! 🇬🇵`,
-    martinique: `🎓 **Éducation Martinique**
-
-🏫 **Système scolaire :**
-• Académie de Martinique : ac-martinique.fr
-• 📞 Rectorat : 0596 52 26 26
-
-🎓 **Enseignement supérieur :**
-• Université des Antilles — Campus Schœlcher
-• IUT de Martinique
-• INSPE Martinique
-
-💰 **Aides :**
-• CROUS Antilles-Guyane
-• LADOM mobilité
-
-Boudoum ! 🇬🇵`
-  }
-  return edu[territoire] || edu.guadeloupe
-}
-
-// ===== CARNETS DE ROUTE DOM-TOM =====
-function getCarnetsDeRoute(destination = 'guadeloupe') {
-  const routes = {
-    guadeloupe: `🗺️ **Carnet de Route Guadeloupe**
-
-✈️ **Arriver :**
-• Aéroport Pôle Caraïbes — Les Abymes
-• Vol Paris : ~8h | Vol Miami : ~3h30
-• Visa : Non requis (DOM français)
-
-🚗 **Se déplacer :**
-• Location voiture recommandée
-• Bus Lilas (réseau urbain PAP)
-• Taxis : tarifs réglementés
-• Ferry inter-îles : L'Express des Îles
-
-🏨 **Hébergement :**
-• Gosier, Sainte-Anne, Saint-François (tourisme)
-• Gîtes ruraux : gites-guadeloupe.com
-• Villages vacances : VVF, Maeva
-
-📅 **Itinéraires recommandés :**
-• J1-2 : Grande-Terre (plages, Gosier)
-• J3-4 : Basse-Terre (Soufrière, Carbet)
-• J5 : Marie-Galante (rhum, plages)
-• J6 : Les Saintes (snorkeling)
-
-🌡️ **Météo idéale :** Décembre-Avril (saison sèche)
-🚫 **Éviter :** Juillet-Novembre (cyclones)
-
-💰 **Budget moyen/jour :** 80-150€
-📞 **Office de Tourisme :** 0590 82 09 30
-🔗 lesilesdeguadeloupe.com
-
-Boudoum ! 🇬🇵`,
-    martinique: `🗺️ **Carnet de Route Martinique**
-
-✈️ **Arriver :**
-• Aéroport Aimé Césaire — Lamentin
-• Vol Paris : ~8h30
-
-🚗 **Se déplacer :**
-• Location voiture indispensable
-• Taxis collectifs (TC) économiques
-• Ferry Saint-Pierre / Les Trois-Îlets
-
-📅 **Itinéraires :**
-• J1-2 : Fort-de-France + Les Salines
-• J3 : Saint-Pierre (ville engloutie)
-• J4 : Montagne Pelée (randonnée)
-• J5 : Les Salines + Grande Anse
-
-🔗 martinique.org
-Boudoum ! 🇬🇵`,
-    guyane: `🗺️ **Carnet de Route Guyane**
-
-✈️ **Arriver :**
-• Aéroport Félix Eboué — Cayenne
-• Vol Paris : ~9h
-
-🌿 **Incontournables :**
-• Kourou — Base spatiale ESA
-• Îles du Salut — Île du Diable
-• Amazonie guyanaise — Forêt tropicale
-• Marché de Cayenne
-
-⚠️ **Vaccins recommandés :** Fièvre jaune obligatoire
-🦟 **Paludisme :** Prévention nécessaire intérieur
-
-🔗 guyane-amazonie.fr
-Boudoum ! 🇬🇵`
-  }
-  return routes[destination] || routes.guadeloupe
-}
-
-// ===== MÉTIERS & EMPLOI DOM-TOM ENRICHI =====
-async function getMetiersDOMTOM(secteur = '') {
-  const metiers = {
-    sante: `👨‍⚕️ **Métiers de la Santé DOM-TOM**
-
-🏥 **Métiers en tension (recrutements urgents) :**
-• Médecin généraliste — pénurie critique
-• Infirmier(e) — forte demande
-• Aide-soignant(e) — recrutements constants
-• Sage-femme — besoin urgent
-• Pharmacien(ne)
-
-💰 **Avantages DOM-TOM :**
-• Surrémunération 40% (Guadeloupe/Martinique)
-• Congés bonification +1 mois/3 ans
-• Logement parfois fourni
-
-📞 **Contacts :**
-• ARS Guadeloupe : 0590 99 19 00
-• CHU Guadeloupe : 0590 89 10 10
-• Pôle Emploi : 3949
-
-🔗 sante.fr | cnracl.fr
-Boudoum ! 🇬🇵`,
-
-    tech: `💻 **Métiers Tech & Numérique DOM-TOM**
-
-🚀 **Métiers recherchés :**
-• Développeur web/mobile
-• Data analyst
-• Cybersécurité
-• Chef de projet digital
-• UX/UI Designer
-
-🎓 **Formations disponibles :**
-• IUT Informatique — Université des Antilles
-• BTS SIO — lycées professionnels
-• OpenClassrooms (en ligne gratuit)
-• Google Career Certificates
-
-💡 **Opportunités locales :**
-• Startups caribéennes en croissance
-• Télétravail pour entreprises métropole
-• REUSSITESS®971 — écosystème IA
-
-🔗 reussitess.fr/hub-central
-Boudoum ! 🇬🇵`,
-
-    tourisme: `🌴 **Métiers du Tourisme DOM-TOM**
-
-🏨 **Métiers disponibles :**
-• Guide touristique
-• Agent d'accueil / réceptionniste
-• Animateur Club Med / Maeva
-• Chef cuisinier créole
-• Plongeur / moniteur nautique
-
-📊 **Statistiques :**
-• Tourisme = 7% PIB Guadeloupe
-• 700 000 touristes/an Guadeloupe
-• Saison haute : Décembre-Avril
-
-🎓 **Formations :**
-• BTS Tourisme — Guadeloupe
-• CAP Restauration
-• BPJEPS Activités nautiques
-
-🔗 reussitess.fr/hub-central
-Boudoum ! 🇬🇵`,
-
-    agriculture: `🌿 **Métiers Agriculture & Environnement**
-
-🌱 **Secteurs porteurs :**
-• Agriculture biologique
-• Maraîchage tropical
-• Pêche artisanale
-• Aquaculture
-• Énergies renouvelables (solaire)
-
-📊 **Aides disponibles :**
-• FEADER — Fonds européen agricole
-• DAAF Guadeloupe : 0590 99 09 00
-• Chambre d'Agriculture : 0590 25 17 17
-
-🔗 agriculture.gouv.fr/outre-mer
-Boudoum ! 🇬🇵`
-  }
-
-  if (secteur && metiers[secteur]) return metiers[secteur]
-
-  return `💼 **Métiers & Emploi DOM-TOM — Guide Complet**
-
-📊 **Secteurs qui recrutent :**
-• 🏥 Santé — pénurie critique médecins/infirmiers
-• 💻 Tech/Numérique — développeurs recherchés
-• 🌴 Tourisme — 700 000 touristes/an Guadeloupe
-• 🏗️ BTP — construction boom DOM-TOM
-• 🌿 Agriculture bio — filière en croissance
-• 🎓 Éducation — enseignants manquants
-
-📈 **Statistiques emploi 2024 :**
-• Chômage Guadeloupe : 17,2%
-• Chômage jeunes : 42%
-• Surrémunération DOM : +40%
-
-🔗 **Chercher un emploi :**
-• reussitess.fr/hub-central
-• francetravail.fr
-• caribbeanjobs.com
-• jobartis.com
-
-Boudoum ! 🇬🇵`
-}
-
-// ===== ANALYSE FINANCIÈRE SIMPLE =====
-async function getAnalyseFinanciere(sujet = '') {
-  try {
-    // Données crypto temps réel
-    const cryptoRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=eur,usd&include_24hr_change=true&include_market_cap=true')
-    const crypto = await cryptoRes.json()
-
-    // Taux de change
-    const fxRes = await fetch('https://api.exchangerate-api.com/v4/latest/EUR')
-    const fx = await fxRes.json()
-
-    return `📊 **Analyse Financière — Tableau de Bord**
-
-💎 **Crypto — Temps Réel :**
-₿ Bitcoin : ${crypto.bitcoin?.eur?.toLocaleString()}€ | ${crypto.bitcoin?.usd?.toLocaleString()}$
-  📈 Variation 24h : ${crypto.bitcoin?.eur_24h_change?.toFixed(2)}%
-Ξ Ethereum : ${crypto.ethereum?.eur?.toLocaleString()}€
-  📈 Variation 24h : ${crypto.ethereum?.eur_24h_change?.toFixed(2)}%
-⬡ Polygon : ${crypto['matic-network']?.eur?.toFixed(4)}€
-  📈 Variation 24h : ${crypto['matic-network']?.eur_24h_change?.toFixed(2)}%
-
-💱 **Taux de Change EUR :**
-• EUR/USD : ${fx.rates?.USD}
-• EUR/GBP : ${fx.rates?.GBP}
-• EUR/XCD : ${fx.rates?.XCD} (Dollar Caraïbes)
-• EUR/HTG : ${fx.rates?.HTG?.toFixed(2)} (Gourde Haïtienne)
-• EUR/BRL : ${fx.rates?.BRL} (Real Brésil)
-
-📈 **Indicateurs :**
-• Signal BTC : ${crypto.bitcoin?.usd_24h_change > 0 ? '🟢 HAUSSIER' : '🔴 BAISSIER'}
-• Signal ETH : ${crypto.ethereum?.usd_24h_change > 0 ? '🟢 HAUSSIER' : '🔴 BAISSIER'}
-
-⚠️ Ces données sont informatives. Consultez un conseiller financier.
-🔗 reussitess.fr/investir-reuss
-
-Boudoum ! 🇬🇵`
-  } catch(e) {
-    return `📊 **Analyse Financière**\n\n🔗 Coinmarketcap.com\n🔗 Trading Economics\n🔗 Banque de France\n\nBoudoum ! 🇬🇵`
-  }
-}
-
-// ===== JURIDIQUE ENRICHI =====
-function getJuridiqueEntreprise(sujet = '') {
-  return `⚖️ **Juridique Entreprise DOM-TOM**
-
-🏢 **Créer son entreprise :**
-• Auto-entrepreneur : urssaf.fr (gratuit)
-• SARL/SAS : infogreffe.fr
-• Coût création SARL : ~250€
-• SIRET : gratuit via INSEE
-
-📋 **Obligations légales :**
-• Déclaration URSSAF/CGSS (DOM)
-• TVA : 8,5% en Guadeloupe (au lieu de 20%)
-• Cotisations sociales : 45% du salaire brut
-• Bilan comptable annuel obligatoire
-
-💰 **Aides à la création :**
-• ACRE — Exonération charges 1ère année
-• ADIE — Microcrédit jusqu'à 10 000€
-• BPI France — Prêts entreprises
-• Région Guadeloupe — Subventions PME
-
-📞 **Contacts :**
-• CCI Guadeloupe : 0590 93 76 00
-• CMA Guadeloupe : 0590 82 22 22
-• BPI France Antilles : 0590 68 27 70
-• ADIE Guadeloupe : 0590 83 28 28
-
-🔗 cci-guadeloupe.fr | bpifrance.fr
-Boudoum ! 🇬🇵`
-}
-
-// ===== MULTILINGUISME ENRICHI =====
-function getTraductionCreole(mot = '') {
-  const dico = {
-    'bonjour': { creole: 'Bonjou', phonetique: 'bon-jou' },
-    'merci': { creole: 'Mèsi', phonetique: 'mè-si' },
-    'comment vas-tu': { creole: 'Koman ou yé ?', phonetique: 'ko-man ou yé' },
-    'je taime': { creole: 'Mwen enmen-w', phonetique: 'mwen en-men-w' },
-    'bienvenue': { creole: 'Byenvini', phonetique: 'byen-vi-ni' },
-    'au revoir': { creole: 'Awo', phonetique: 'a-wo' },
-    'sil vous plait': { creole: 'Souplé', phonetique: 'sou-plé' },
-    'oui': { creole: 'Wi', phonetique: 'wi' },
-    'non': { creole: 'Non', phonetique: 'non' },
-    'eau': { creole: 'Dlo', phonetique: 'dlo' },
-    'manger': { creole: 'Manjé', phonetique: 'man-jé' },
-    'maison': { creole: 'Kay', phonetique: 'kaï' },
-    'enfant': { creole: 'Timanmay', phonetique: 'ti-man-may' },
-    'ami': { creole: 'Zanmi', phonetique: 'zan-mi' },
-    'beau': { creole: 'Bèl', phonetique: 'bèl' },
-  }
-
-  const motLow = mot.toLowerCase().trim()
-  if (motLow && dico[motLow]) {
-    const t = dico[motLow]
-    return `🗣️ **Traduction Créole Guadeloupéen**\n\n🇫🇷 "${mot}" → 🇬🇵 "${t.creole}"\n📢 Prononciation : [${t.phonetique}]\n\nBoudoum ! 🇬🇵`
-  }
-
-  // Liste aléatoire
-  const liste = Object.entries(dico).slice(0, 5).map(([fr, cr]) => `• ${fr} → **${cr.creole}** [${cr.phonetique}]`).join('\n')
-  return `🗣️ **Dictionnaire Créole Guadeloupéen**\n\n${liste}\n\n💡 Demande "traduction créole [mot]" pour traduire!\n\nBoudoum ! 🇬🇵`
-}
-
-// ===== MÉDECINE NATURELLE CARIBÉENNE =====
-function getMedecineNaturelle(plante = '') {
-  const plantes = {
-    'citronnelle': {
-      nom: 'Citronnelle (Lemongrass)',
-      usage: 'Fièvre, maux de tête, stress, insomnie',
-      preparation: 'Infusion 10 min, 3 feuilles dans eau bouillante',
-      precautions: 'Éviter pendant grossesse'
-    },
-    'verveine': {
-      nom: 'Verveine citronnée',
-      usage: 'Digestion, anxiété, insomnie',
-      preparation: 'Infusion 5 min, 5 feuilles fraîches',
-      precautions: 'Pas plus de 2 tasses/jour'
-    },
-    'gingembre': {
-      nom: 'Gingembre (Jenjanm)',
-      usage: 'Nausées, digestion, douleurs, anti-inflammatoire',
-      preparation: 'Infusion racine râpée + citron + miel',
-      precautions: 'Éviter si anticoagulants'
-    },
-    'moringa': {
-      nom: 'Moringa (Benzolive)',
-      usage: 'Malnutrition, énergie, anti-oxydant, diabète',
-      preparation: 'Poudre feuilles séchées dans smoothie ou soupe',
-      precautions: 'Dose max 2g/jour poudre'
-    },
-    'aloe vera': {
-      nom: 'Aloe Vera (Lalwa)',
-      usage: 'Brûlures, peau, constipation, cicatrisation',
-      preparation: 'Gel feuille fraîche application directe',
-      precautions: 'Ne pas ingérer latex jaune'
-    },
-    'corossol': {
-      nom: 'Corossol (Graviola)',
-      usage: 'Insomnie, hypertension, anti-parasitaire',
-      preparation: 'Infusion feuilles 15 min',
-      precautions: 'Ne pas consommer en excès - études en cours'
-    },
-    'basilic': {
-      nom: 'Basilic tropical',
-      usage: 'Digestion, stress, antiseptique, maux de gorge',
-      preparation: 'Infusion ou mâcher feuilles fraîches',
-      precautions: 'Aucune connue en usage normal'
-    },
-    'curcuma': {
-      nom: 'Curcuma (Safran péyi)',
-      usage: 'Anti-inflammatoire, articulations, digestion, immunité',
-      preparation: 'Lait doré : curcuma + poivre noir + lait coco',
-      precautions: 'Éviter si calculs biliaires'
-    }
-  }
-
-  const planteLow = plante.toLowerCase().trim()
-  if (planteLow && plantes[planteLow]) {
-    const p = plantes[planteLow]
-    return `🌿 **${p.nom} — Médecine Naturelle Caribéenne**
-
-✅ **Usages :** ${p.usage}
-🍵 **Préparation :** ${p.preparation}
-⚠️ **Précautions :** ${p.precautions}
-
-💡 Consultez un médecin avant tout traitement.
-Boudoum ! 🇬🇵`
-  }
-
-  const liste = Object.entries(plantes).map(([k, v]) => `• **${v.nom}** — ${v.usage.split(',')[0]}`).join('\n')
-  return `🌿 **Médecine Naturelle Caribéenne — Pharmacopée**
-
-${liste}
-
-💡 Demandez "médecine naturelle [plante]" pour plus de détails !
-⚠️ Ces informations ne remplacent pas un avis médical.
-
-🔗 pharmacopee-caribbeenne.fr
-Boudoum ! 🇬🇵`
-}
-
-// ===== TRADUCTION MULTILINGUE =====
-async function getTraductionMultilingue(texte, langCible = 'en') {
-  try {
-    // Utiliser MyMemory API gratuite
-    const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(texte)}&langpair=fr|${langCible}`, {
-      signal: AbortSignal.timeout(5000)
-    })
-    const data = await res.json()
-    const traduction = data.responseData?.translatedText
-
-    const langues = {
-      'en': '🇬🇧 Anglais',
-      'es': '🇪🇸 Espagnol', 
-      'pt': '🇧🇷 Portugais',
-      'de': '🇩🇪 Allemand',
-      'it': '🇮🇹 Italien',
-      'zh': '🇨🇳 Chinois',
-      'ar': '🇸🇦 Arabe',
-      'ht': '🇭🇹 Créole Haïtien',
-    }
-
-    if (traduction) {
-      return `🌍 **Traduction — ${langues[langCible] || langCible}**
-
-🇫🇷 Original : "${texte}"
-${langues[langCible] || langCible} : **"${traduction}"**
-
-🔗 Source : MyMemory Translation API
-Boudoum ! 🇬🇵`
-    }
-    return null
-  } catch(e) { return null }
-}
-
-// ===== DOM-TOM ENRICHI =====
-function getDOMTOMEnrichi(territoire = '') {
-  const data = {
-    guadeloupe: `🇬🇵 **Guadeloupe — Guide Complet**
-
-📊 **Chiffres clés :**
-• Population : 380 000 habitants
-• Superficie : 1 628 km²
-• Chef-lieu : Basse-Terre
-• Plus grande ville : Les Abymes
-• PIB/hab : ~22 000€
-
-🏛️ **Organisation :**
-• Région + Département (fusion impossible)
-• 32 communes
-• 3 arrondissements
-
-🌴 **Économie :**
-• Tourisme : 700 000 visiteurs/an
-• Banane, canne à sucre, rhum
-• Pêche artisanale
-• Économie bleue en développement
-
-🎭 **Traditions :**
-• Gwoka (UNESCO 2014)
-• Carnaval (Février-Mars)
-• Fête des cuisinières (Août)
-• Toussaint lumineuse
-
-🌋 **Géographie :**
-• Grande-Terre (calcaire, plages)
-• Basse-Terre (volcan, forêt)
-• Marie-Galante, Les Saintes, La Désirade
-
-Boudoum ! 🇬🇵`,
-
-    martinique: `🇲🇶 **Martinique — Guide Complet**
-
-📊 **Chiffres clés :**
-• Population : 350 000 habitants
-• Superficie : 1 128 km²
-• Chef-lieu : Fort-de-France
-• PIB/hab : ~21 000€
-
-🎭 **Traditions :**
-• Biguine, Zouk, Mazurka
-• Carnaval (Février)
-• Fête du rhum agricole
-
-🌋 **Géographie :**
-• Montagne Pelée (1 397m)
-• Presqu'île de Caravelle
-• Les Salines (plage paradisiaque)
-
-Boudoum ! 🇬🇵`,
-
-    guyane: `🇬🇫 **Guyane — Guide Complet**
-
-📊 **Chiffres clés :**
-• Population : 300 000 habitants
-• Superficie : 83 534 km² (plus grand DOM)
-• Chef-lieu : Cayenne
-• 90% de forêt amazonienne
-
-🚀 **Spécificités :**
-• Base spatiale de Kourou (ESA/Ariane)
-• Biodiversité exceptionnelle
-• Or artisanal (orpaillage)
-• Frontières : Brésil + Suriname
-
-🌿 **Nature :**
-• Parc Amazonien de Guyane
-• Îles du Salut
-• Marais de Kaw
-
-Boudoum ! 🇬🇵`,
-
-    reunion: `🇷🇪 **Réunion — Guide Complet**
-
-📊 **Chiffres clés :**
-• Population : 900 000 habitants
-• Superficie : 2 512 km²
-• Chef-lieu : Saint-Denis
-• PIB/hab : ~23 000€
-
-🌋 **Géographie :**
-• Piton de la Fournaise (volcan actif)
-• 3 cirques (Mafate, Cilaos, Salazie) — UNESCO
-• Point culminant : Piton des Neiges (3 070m)
-
-🎭 **Culture :**
-• Maloya (UNESCO)
-• Séga
-• Cuisine créole réunionnaise
-
-Boudoum ! 🇬🇵`
-  }
-
-  if (territoire && data[territoire]) return data[territoire]
-  
-  return `🌍 **DOM-TOM France — Vue d'ensemble**
-
-🇬🇵 Guadeloupe — 380 000 hab | Antilles
-🇲🇶 Martinique — 350 000 hab | Antilles  
-🇬🇫 Guyane — 300 000 hab | Amazonie
-🇷🇪 Réunion — 900 000 hab | Océan Indien
-🇾🇹 Mayotte — 320 000 hab | Océan Indien
-🇳🇨 Nouvelle-Calédonie — 270 000 hab | Pacifique
-🇵🇫 Polynésie française — 280 000 hab | Pacifique
-
-💡 Demandez "dom-tom [territoire]" pour plus d'infos !
-Boudoum ! 🇬🇵`
-}
-
-// ===== BLOCKCHAIN ENRICHI =====
-async function getBlockchainInfo(sujet = '') {
-  try {
-    // Prix REUSS sur DexScreener
-    const reussRes = await fetch('https://api.dexscreener.com/latest/dex/tokens/0xB37531727fC07c6EED4f97F852A115B428046EB2', {
-      signal: AbortSignal.timeout(5000)
-    })
-    const reussData = await reussRes.json()
-    const pair = reussData.pairs?.[0]
-
-    // Prix crypto
-    const cryptoRes = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=usd&include_24hr_change=true')
-    const crypto = await cryptoRes.json()
-
-    return `⛓️ **Blockchain & Crypto — Dashboard**
-
-💎 **Token REUSS (Polygon) :**
-• Contrat : 0xB375...EB2
-• Prix : $${pair?.priceUsd || 'N/A'}
-• Volume 24h : $${pair?.volume?.h24?.toLocaleString() || 'N/A'}
-• 🔗 QuickSwap | DexScreener | PolygonScan
-
-₿ **Bitcoin :** $${crypto.bitcoin?.usd?.toLocaleString()} (${crypto.bitcoin?.usd_24h_change?.toFixed(2)}%)
-Ξ **Ethereum :** $${crypto.ethereum?.usd?.toLocaleString()} (${crypto.ethereum?.usd_24h_change?.toFixed(2)}%)
-⬡ **Polygon :** $${crypto['matic-network']?.usd?.toFixed(4)} (${crypto['matic-network']?.usd_24h_change?.toFixed(2)}%)
-
-🏦 **Outils blockchain :**
-• Scanner : polygonscan.com
-• DEX : quickswap.exchange
-• Sécurité : revoke.cash
-• Honeypot : honeypot.is
-• NFT : opensea.io
-
-📚 **Lexique rapide :**
-• Wallet : Portefeuille crypto
-• DEX : Exchange décentralisé
-• Staking : Mettre crypto en dépôt pour gains
-• DAO : Organisation autonome décentralisée
-• NFT : Token non fongible unique
-
-Boudoum ! 🇬🇵`
-  } catch(e) {
-    return `⛓️ **Blockchain REUSSITESS**\n\n💎 Token REUSS sur Polygon\n🔗 reussitess.fr/investir-reuss\n\nBoudoum ! 🇬🇵`
-  }
-}
-
-// ===== MUSIQUE CARIBÉENNE ENRICHIE =====
-function getMusiqueCaribéenne(genre = '') {
-  const musiques = {
-    gwoka: `🥁 **Gwoka — Patrimoine UNESCO Guadeloupe**
-
-🎵 **Histoire :**
-Le Gwoka est né de la résistance des esclaves africains en Guadeloupe. Classé au patrimoine immatériel UNESCO en 2014.
-
-🎶 **Les 7 rythmes :**
-• Lewoz — célébration, liberté
-• Kaladja — travail des champs
-• Toumblak — combat, résistance
-• Graj — séduction
-• Mendé — deuil, spiritualité
-• Padjanbèl — joie, fête
-• Woulé — danse collective
-
-🎤 **Artistes emblématiques :**
-• Jacob Desvarieux (Kassav)
-• Gwo Ka Masters
-• Vélo, Carnot, Hector Pibo
-
-🔗 gwoka.org
-Boudoum ! 🇬🇵`,
-
-    zouk: `🎵 **Zouk — La Musique des Antilles**
-
-🎶 **Histoire :**
-Né en 1979 avec le groupe Kassav fondé par Jacob Desvarieux et Georges Décimus. Le mot "zouk" signifie "fête" en créole.
-
-🎤 **Artistes légendaires :**
-• Kassav — créateurs du zouk
-• Francky Vincent — zouk love
-• Edith Lefel — voix d'or
-• Jocelyne Béroard — diva du zouk
-• Admiral T — zouk moderne
-
-💿 **Albums incontournables :**
-• Kassav — Zouk la sé sèl médikaman (1984)
-• Francky Vincent — Zouk is the only medicine
-• Jacob Desvarieux — Ambassadeur du zouk
-
-🌍 Présent dans 50+ pays !
-Boudoum ! 🇬🇵`,
-
-    kompa: `🎺 **Kompa — Rythme National Haïtien**
-
-🎶 **Histoire :**
-Créé par Nemours Jean-Baptiste en 1955 en Haïti. Le kompa est le rythme national haïtien influencé par le merengue et la biguine.
-
-🎤 **Artistes :**
-• Nemours Jean-Baptiste — fondateur
-• Tabou Combo — légende mondiale
-• Sweet Micky (Michel Martelly) — ex-président Haïti
-• Nu Look — kompa moderne
-• BélO — kompa fusion
-
-🌍 Influencé : Guadeloupe, Martinique, diaspora mondiale
-Boudoum ! 🇬🇵`,
-
-    reggae: `🌿 **Reggae — Voix de la Résistance**
-
-🎶 **Histoire :**
-Né en Jamaïque dans les années 1960. Bob Marley en est l'ambassadeur mondial. Classé UNESCO en 2018.
-
-🎤 **Artistes caribéens :**
-• Bob Marley — légende mondiale
-• Peter Tosh — militant
-• Jimmy Cliff — The Harder They Come
-• Burning Spear — roots reggae
-• Sizzla — dancehall roots
-
-🌍 **Influence caribéenne :**
-• Guadeloupe : Admiral T, Yaniss Odua
-• Martinique : Dub Incorporation
-• Réunion : Ti-Coconut
-
-Boudoum ! 🇬🇵`,
-
-    biguine: `🎷 **Biguine — Jazz Antillais**
-
-🎶 **Histoire :**
-Née en Martinique au XIXe siècle, la biguine est arrivée à Paris dans les années 1920 avec Alexandre Stellio.
-
-🎤 **Artistes :**
-• Alexandre Stellio — père de la biguine
-• Léona Gabriel-Soïme — voix légendaire
-• Robert Mavounzy — clarinettiste
-• Malavoi — biguine moderne
-
-📍 **Lieux cultes :**
-• Tropiques Atrium — Fort-de-France
-• Festival Biguine Jazz Martinique (Mai)
-
-Boudoum ! 🇬🇵`
-  }
-
-  const genreLow = genre.toLowerCase().trim()
-  for (const [key, content] of Object.entries(musiques)) {
-    if (genreLow.includes(key)) return content
-  }
-
-  return `🎵 **Musique Caribéenne — Guide Complet**
-
-🥁 **Genres emblématiques :**
-• Gwoka — Guadeloupe (UNESCO 2014)
-• Zouk — Antilles françaises (Kassav 1979)
-• Biguine — Martinique (XIXe siècle)
-• Kompa — Haïti (Nemours Jean-Baptiste)
-• Soca — Trinidad & Tobago
-• Reggae — Jamaïque (UNESCO 2018)
-• Calypso — Trinidad
-• Gwo Ka — Guadeloupe
-
-🎤 **Légendes :**
-• Kassav, Bob Marley, Mighty Sparrow
-• Edith Lefel, Jocelyne Béroard
-• Jacob Desvarieux, Tabou Combo
-
-💡 Demandez "musique [genre]" pour plus d'infos !
-Boudoum ! 🇬🇵`
-}
-
-// ===== BIBLIOTHÈQUE CARIBÉENNE ENRICHIE =====
-async function getBibliothèqueCaribéenne(auteur = '') {
-  const auteurs = {
-    'césaire': {
-      nom: 'Aimé Césaire (1913-2008)',
-      origine: 'Martinique 🇲🇶',
-      oeuvres: ['Cahier d\'un retour au pays natal (1939)', 'Discours sur le colonialisme (1950)', 'La Tragédie du roi Christophe (1963)'],
-      concept: 'Négritude — revalorisation de la culture et identité noire',
-      citation: '"Ma bouche sera la bouche des malheurs qui n\'ont point de bouche"'
-    },
-    'fanon': {
-      nom: 'Frantz Fanon (1925-1961)',
-      origine: 'Martinique 🇲🇶',
-      oeuvres: ['Peau noire, masques blancs (1952)', 'Les Damnés de la Terre (1961)', 'L\'An V de la révolution algérienne (1959)'],
-      concept: 'Décolonisation, psychologie du colonisé',
-      citation: '"Chaque génération doit, dans une relative opacité, découvrir sa mission"'
-    },
-    'glissant': {
-      nom: 'Édouard Glissant (1928-2011)',
-      origine: 'Martinique 🇲🇶',
-      oeuvres: ['Le Discours Antillais (1981)', 'Poétique de la Relation (1990)', 'Tout-Monde (1993)'],
-      concept: 'Créolisation, Tout-Monde, identité rhizome',
-      citation: '"Le droit à l\'opacité, c\'est le droit à ne pas être compris"'
-    },
-    'mckay': {
-      nom: 'Claude McKay (1889-1948)',
-      origine: 'Jamaïque 🇯🇲',
-      oeuvres: ['Banjo (1929)', 'Home to Harlem (1928)', 'Harlem Shadows (1922)'],
-      concept: 'Harlem Renaissance, identité noire américaine',
-      citation: '"If we must die, let it not be like hogs"'
-    },
-    'condé': {
-      nom: 'Maryse Condé (1934-2024)',
-      origine: 'Guadeloupe 🇬🇵',
-      oeuvres: ['Ségou (1984)', 'Moi, Tituba sorcière (1986)', 'La Vie scélérate (1987)'],
-      concept: 'Identité caribéenne, diaspora africaine',
-      citation: '"Je suis une nomade. Je n\'appartiens à aucun pays"'
-    }
-  }
-
-  const auteurLow = auteur.toLowerCase().trim()
-  for (const [key, data] of Object.entries(auteurs)) {
-    if (auteurLow.includes(key)) {
-      return `📚 **${data.nom}**
-🌍 Origine : ${data.origine}
-
-📖 **Œuvres majeures :**
-${data.oeuvres.map(o => `• ${o}`).join('\n')}
-
-💡 **Concept clé :** ${data.concept}
-
-✍️ **Citation :** ${data.citation}
-
-🔗 OpenLibrary : openlibrary.org
-Boudoum ! 🇬🇵`
-    }
-  }
-
-  return `📚 **Bibliothèque Caribéenne & Africaine REUSSITESS**
-
-✊ **Penseurs de la Négritude :**
-• Aimé Césaire (Martinique) — Cahier d\'un retour au pays natal
-• Léon-Gontran Damas (Guyane) — Pigments
-• Léopold Sédar Senghor (Sénégal) — fondateur Négritude
-
-🌍 **Décolonisation :**
-• Frantz Fanon (Martinique) — Les Damnés de la Terre
-• Cheikh Anta Diop (Sénégal) — Nations nègres et Culture
-• Patrice Lumumba (Congo) — discours indépendance
-
-🌺 **Créolité & Tout-Monde :**
-• Édouard Glissant (Martinique) — Tout-Monde
-• Patrick Chamoiseau (Martinique) — Texaco
-• Raphaël Confiant (Martinique) — Éloge de la créolité
-
-🇬🇵 **Auteurs Guadeloupéens :**
-• Maryse Condé — Ségou
-• Ernest Pépin — L\'Homme-au-Bâton
-• Simone Schwarz-Bart — Pluie et Vent sur Télumée Miracle
-
-💡 Demandez "bibliothèque [auteur]" pour plus d\'infos !
-🔗 reussitess.fr/bibliotheque
-Boudoum ! 🇬🇵`
-}
-
-// ===== ÉVÉNEMENTS CULTURELS CARIBÉENS =====
-function getEvenementsCaribéens() {
-  const mois = new Date().getMonth() + 1
-  const evenements = {
-    1: ['🎉 Jour de l\'An créole — Guadeloupe, Martinique', '🎭 Début saison carnaval'],
-    2: ['🎭 Carnaval Guadeloupe & Martinique (Mardi Gras)', '🎵 Festival Biguine Jazz Martinique'],
-    3: ['🎭 Mercredi des Cendres — fin carnaval', '🌿 Semaine de l\'environnement DOM-TOM'],
-    4: ['🌺 Fête des jardins créoles', '⛵ Saison voile Caraïbes'],
-    5: ['✊ Commémoration abolition esclavage Martinique (22 mai)', '🎵 Festival Jazz Martinique'],
-    6: ['✊ Commémoration abolition esclavage Guadeloupe (27 mai)', '🌊 Début saison cyclones'],
-    7: ['🥁 Festival Gwoka Guadeloupe', '🚴 Tour Cycliste Guadeloupe', '🎵 Festival Kreol Réunion'],
-    8: ['👩‍🍳 Fête des Cuisinières Guadeloupe', '🎵 Sakifo Musik Festival Réunion'],
-    9: ['🌊 Pic saison cyclones Caraïbes', '📚 Rentrée scolaire DOM-TOM'],
-    10: ['🎭 Festival Creole Seychelles', '🌺 Fête du rhum Martinique'],
-    11: ['🕯️ Toussaint lumineuse Guadeloupe', '🎵 Congrès Mondial Créole'],
-    12: ['🎄 Noël créole — traditions antillaises', '🍹 Fêtes de fin d\'année DOM-TOM']
-  }
-
-  const evMois = evenements[mois] || []
-  return `📅 **Événements Culturels Caribéens**
-
-🗓️ **Ce mois-ci :**
-${evMois.map(e => `• ${e}`).join('\n') || '• Consultez l\'agenda local'}
-
-📆 **Événements annuels incontournables :**
-• 🎭 Carnaval — Février/Mars (Guadeloupe, Martinique)
-• ✊ Abolition esclavage — 22 mai (MQ), 27 mai (GP)
-• 🥁 Festival Gwoka — Juillet (Guadeloupe, UNESCO)
-• 👩‍🍳 Fête des Cuisinières — Août (Guadeloupe)
-• 🕯️ Toussaint lumineuse — Novembre (Guadeloupe)
-• 🎵 Sakifo Musik — Juin (Réunion)
-• 🚴 Tour Cycliste Guadeloupe — Juillet
-• 🎺 Festival Biguine Jazz — Mai (Martinique)
-
-🔗 reussitess.fr/evenements
-Boudoum ! 🇬🇵`
-}
-
-// ===== REDIS DASHBOARD REUSSITESS =====
-async function getRedisDashboard() {
-  try {
-    const { Redis } = await import('@upstash/redis')
-    const redis = Redis.fromEnv()
-
-    // Lire toutes les données clés
-    const [visitors, quizCount, cryptoPrice, meteo, lastNews] = await Promise.all([
-      redis.get('visiteurs_compteur'),
-      redis.get('compteur_quiz'),
-      redis.get('crypto:last_price'),
-      redis.get('meteo:last_forecast'),
-      redis.get('actualites:last_news'),
-    ])
-
-    return `📊 **Dashboard Redis REUSSITESS®971**
-
-👥 **Visiteurs :** ${visitors || 0}
-🎯 **Quiz réalisés :** ${quizCount || 0}
-💎 **Dernier prix REUSS :** ${cryptoPrice || 'N/A'}
-🌤️ **Météo cache :** ${meteo || 'N/A'}
-📰 **Dernières actus :** ${lastNews || 'N/A'}
-
-✅ Redis Upstash connecté et opérationnel
-🔗 reussitess.fr
-
-Boudoum ! 🇬🇵`
-  } catch(e) {
-    return `📊 **Dashboard Redis**\n\n⚠️ Connexion Redis: ${e.message}\n\nBoudoum ! 🇬🇵`
-  }
-}
-
-// ===== REDIS VISITEURS =====
-async function incrementVisiteurs() {
-  try {
-    const { Redis } = await import('@upstash/redis')
-    const redis = Redis.fromEnv()
-    const count = await redis.incr('visiteurs_compteur')
-    await redis.set('visiteurs_last_update', new Date().toISOString())
-    return count
-  } catch(e) { return null }
-}
-
-// ===== REDIS MÉMOIRE UTILISATEUR =====
-async function saveUserMemoryRedis(userId, data) {
-  try {
-    const { Redis } = await import('@upstash/redis')
-    const redis = Redis.fromEnv()
-    await redis.set(`users:${userId}:memory`, JSON.stringify(data), { ex: 30 * 24 * 60 * 60 })
-    return true
-  } catch(e) { return false }
-}
-
-async function getUserMemoryRedis(userId) {
-  try {
-    const { Redis } = await import('@upstash/redis')
-    const redis = Redis.fromEnv()
-    const data = await redis.get(`users:${userId}:memory`)
-    return data ? JSON.parse(data) : {}
-  } catch(e) { return {} }
-}
-
-
-// ===== PERSONNALISATION UTILISATEUR =====
-async function getUserProfile(userId) {
-try {
-const redis = await getRedisClient()
-const profile = await redis.get(`profile:${userId}`)
-return profile ? JSON.parse(profile) : { langue: 'fr', interets: [], visites: 0 }
-} catch(e) { return { langue: 'fr', interets: [], visites: 0 } }
-}
-
-async function updateUserProfile(userId, update) {
-try {
-const redis = await getRedisClient()
-const profile = await getUserProfile(userId)
-const newProfile = { ...profile, ...update, lastSeen: new Date().toISOString() }
-newProfile.visites = (profile.visites || 0) + 1
-await redis.set(`profile:${userId}`, JSON.stringify(newProfile), { ex: 90 * 24 * 60 * 60 })
-return newProfile
-} catch(e) { return null }
-}
-
-// ===== GÉNÉRATION CONTENU RÉSEAUX SOCIAUX =====
-async function genererContenuSocial(sujet, type = 'post') {
-const prompts = {
-post: `Génère un post Instagram/Facebook en français pour REUSSITESS®971 sur le sujet: "${sujet}". Style: engageant, caribéen, positif. Max 150 mots. Inclure emojis et hashtags. Finir par Boudoum ! 🇬🇵`,
-tweet: `Génère un tweet en français pour REUSSITESS®971 sur: "${sujet}". Max 280 caractères. Style percutant avec emojis. Finir par #BOUDOUM #Guadeloupe`,
-caption: `Génère une légende Instagram courte pour REUSSITESS®971 sur: "${sujet}". Max 50 mots. Avec emojis et hashtags caribéens.`,
-email: `Génère un email professionnel en français pour REUSSITESS®971 sur: "${sujet}". Style chaleureux et professionnel. Finir par Boudoum ! 🇬🇵`
-}
-const prompt = prompts[type] || prompts.post
-const result = await groqFetch([
-{ role: 'system', content: 'Tu es le community manager de REUSSITESS®971, expert en contenu caribéen et afro-antillais.' },
-{ role: 'user', content: prompt }
-], 512)
-return result
-}
-
-// ===== MÉMOIRE CONVERSATION ENRICHIE =====
-async function saveConversationMemory(userId, message, response) {
-try {
-let redis
-try {
-const { Redis } = await import('@upstash/redis')
-redis = Redis.fromEnv()
-} catch(e) {
-const { createClient } = await import('redis')
-redis = createClient({ url: process.env.REDIS_URL })
-await redis.connect()
-}
-const key = `conv:${userId}`
-const existing = await redis.get(key)
-const history = existing ? JSON.parse(existing) : []
-history.push({
-user: message.substring(0, 200),
-bot: response.substring(0, 300),
-ts: new Date().toISOString()
-})
-const recent = history.slice(-20)
-await redis.set(key, JSON.stringify(recent), { ex: 30 * 24 * 60 * 60 })
-return recent
-} catch(e) { return [] }
-}
-
-async function getConversationHistory(userId) {
-try {
-const redis = await getRedisClient()
-const data = await redis.get(`conv:${userId}`)
-return data ? JSON.parse(data) : []
-} catch(e) { return [] }
-}
-
-// ===== CONNAISSANCES APPROFONDIES CARAÏBES =====
-function getConnaissanceApprofondie(sujet) {
-const connaissances = {
-'négritude': `📚 La Négritude — Mouvement Culturel Mondial\n\n🌍 Origines (1930s Paris) :\nMouvement littéraire et politique fondé par Aimé Césaire (Martinique), Léopold Sédar Senghor (Sénégal) et Léon-Gontran Damas (Guyane).\n\n💡 Principes :\n• Revalorisation de l'identité et culture africaine\n• Rejet de l'assimilation coloniale\n• Fierté de la couleur noire\n• Retour aux sources africaines\n\n✍️ Œuvres fondatrices :\n• Césaire — Cahier d'un retour au pays natal (1939)\n• Senghor — Chants d'ombre (1945)\n• Damas — Pigments (1937)\n\nBoudoum ! 🇬🇵`,
-'créolité': `🌺 La Créolité — Identité Caribéenne\n\n📖 Manifeste (1989) :\nPublié par Patrick Chamoiseau, Raphaël Confiant et Jean Bernabé dans "Éloge de la Créolité".\n\n💡 Concept :\nLa créolité célèbre le mélange des cultures — africaine, européenne, indienne, amérindienne — qui forme l'identité caribéenne unique.\n\n✍️ Auteurs :\n• Patrick Chamoiseau — Texaco (Prix Goncourt 1992)\n• Raphaël Confiant — Le Nègre et l'Amiral\n• Édouard Glissant — Tout-Monde\n\nBoudoum ! 🇬🇵`,
-'esclavage': `⛓️ Histoire de l'Esclavage aux Antilles\n\n📅 Chronologie :\n• 1635 — Colonisation française\n• 1685 — Code Noir\n• 1794 — Première abolition\n• 1802 — Rétablissement par Napoléon\n• 27 mai 1848 — Abolition définitive (Schœlcher)\n\n🏛️ Mémorial ACTe — Pointe-à-Pitre (2015)\n✊ Loi Taubira (2001) : crime contre l'humanité\n\nBoudoum ! 🇬🇵`,
-'biodiversité': `🌿 Biodiversité Caribéenne\n\n🦜 Faune endémique :\n• Colibri Madère\n• Iguane des Petites Antilles\n\n🌺 Flore médicinale :\n• Herbe à Pic — anti-viral\n• Bois d'Inde — douleurs musculaires\n\n🏞️ Espaces protégés :\n• Parc National Guadeloupe — 21 850 ha\n• Réserve Cousteau — Malendure\n\n⚠️ Menaces : Chlordécone, Sargasses\n\nBoudoum ! 🇬🇵`
-}
-const sujetLow = sujet.toLowerCase()
-for (const [key, content] of Object.entries(connaissances)) {
-if (sujetLow.includes(key)) return content
-}
-return null
-}
-
-// ===== PROVERBES CRÉOLES ALÉATOIRES =====
-function getProverbeAleatoire() {
-  const proverbes = [
-    "🌴 *Apré lapli, solèy ka briyé* — Après la pluie, le soleil brille.",
-    "🌊 *Dlo ka kouvè wòch* — L'eau finit par couvrir les roches. (La persévérance paye)",
-    "🥁 *Chak chyen ni jou-y* — Chaque chien a son jour. (Tout vient à point)",
-    "🌺 *Bèl figi pa di bon kè* — Un beau visage ne dit pas un bon cœur.",
-    "🦜 *Zwazo ki chanté bonmatin ka jwenn manje* — L'oiseau qui chante tôt trouve à manger.",
-    "🌿 *Doubout vaut mieux que assis* — Mieux vaut être debout que assis.",
-    "💪 *Sa ki pa twé-w ka fè-w pi fò* — Ce qui ne te tue pas te rend plus fort.",
-    "🎯 *Piti piti, zwazo fè nich-li* — Petit à petit, l'oiseau fait son nid."
-  ]
-  return proverbes[Math.floor(Math.random() * proverbes.length)]
-}
-
-// ===== ALCHEMY — POLYGON REUSS TOKEN =====
-async function getAlchemyTokenData() {
-try {
-const alchemyKey = process.env.ALCHEMY_API_KEY
-const contractAddress = '0xB37531727fC07c6EED4f97F852A115B428046EB2'
-const r = await fetch(`https://polygon-mainnet.g.alchemy.com/v2/${alchemyKey}`, {
-method: 'POST',
-headers: { 'Content-Type': 'application/json' },
-body: JSON.stringify({
-jsonrpc: '2.0', id: 1, method: 'alchemy_getTokenMetadata',
-params: [contractAddress]
-}), signal: AbortSignal.timeout(5000)
-})
-const d = await r.json()
-const meta = d.result
-return `💎 **${meta.name || 'REUSSITESS Token'} ($${meta.symbol || 'REUSS'}) — Blockchain Temps Réel**\n\n📊 Décimales : ${meta.decimals}\n🖼️ Logo : ${meta.logo || 'reussitess.fr'}\n🔗 Contrat : ${contractAddress}\n⛓️ Réseau : Polygon Mainnet\n\n🔍 Explorer : https://polygonscan.com/token/${contractAddress}\n\nBoudoum ! 🇬🇵`
-} catch(e) { return null }
-}
-
-
-// ===== ALCHEMY — WALLET BALANCE REUSS =====
-async function getWalletBalance(address) {
-try {
-const alchemyKey = process.env.ALCHEMY_API_KEY
-const CONTRACT = '0xB37531727fC07c6EED4f97F852A115B428046EB2'
-const r = await fetch(`https://polygon-mainnet.g.alchemy.com/v2/${alchemyKey}`, {
-method: 'POST', headers: { 'Content-Type': 'application/json' },
-body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'alchemy_getTokenBalances', params: [address, [CONTRACT]] }),
-signal: AbortSignal.timeout(5000)
-})
-const d = await r.json()
-const raw = d.result?.tokenBalances?.[0]?.tokenBalance || '0x0'
-const balance = parseInt(raw, 16) / 1e18
-return `👛 **Wallet REUSS — Solde**\n\n📍 Adresse : ${address.substring(0,8)}...${address.slice(-6)}\n💎 Solde : ${balance.toFixed(2)} REUSS\n⛓️ Réseau : Polygon\n\n🔍 https://polygonscan.com/address/${address}\n\nBoudoum ! 🇬🇵`
-} catch(e) { console.error('Alchemy wallet:', e.message); return null }
-}
-
-// ===== ALCHEMY — TRANSFERTS RÉCENTS REUSS =====
-async function getRecentTransfers() {
-try {
-const alchemyKey = process.env.ALCHEMY_API_KEY
-const CONTRACT = '0xB37531727fC07c6EED4f97F852A115B428046EB2'
-const r = await fetch(`https://polygon-mainnet.g.alchemy.com/v2/${alchemyKey}`, {
-method: 'POST', headers: { 'Content-Type': 'application/json' },
-body: JSON.stringify({
-jsonrpc: '2.0', id: 1, method: 'alchemy_getAssetTransfers',
-params: [{ contractAddresses: [CONTRACT], category: ['erc20'], maxCount: '0x5', order: 'desc', withMetadata: true }]
-}), signal: AbortSignal.timeout(5000)
-})
-const d = await r.json()
-const transfers = d.result?.transfers || []
-if (!transfers.length) return null
-const lines = transfers.map(t => `• ${t.from.substring(0,6)}...→ ${t.to.substring(0,6)}... : ${parseFloat(t.value||0).toFixed(2)} REUSS`).join('\n')
-return `📊 **REUSS Token — 5 Derniers Transferts**\n\n${lines}\n\n🔍 https://polygonscan.com/token/${CONTRACT}\n\nBoudoum ! 🇬🇵`
-} catch(e) { console.error('Alchemy transfers:', e.message); return null }
-}
-
-// ===== ALCHEMY — DASHBOARD COMPLET =====
-async function getAlchemyDashboard() {
-try {
-const alchemyKey = process.env.ALCHEMY_API_KEY
-const CONTRACT = '0xB37531727fC07c6EED4f97F852A115B428046EB2'
-const [metaRes, transfersRes] = await Promise.all([
-fetch(`https://polygon-mainnet.g.alchemy.com/v2/${alchemyKey}`, {
-method: 'POST', headers: { 'Content-Type': 'application/json' },
-body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'alchemy_getTokenMetadata', params: [CONTRACT] }),
-signal: AbortSignal.timeout(5000)
-}),
-fetch(`https://polygon-mainnet.g.alchemy.com/v2/${alchemyKey}`, {
-method: 'POST', headers: { 'Content-Type': 'application/json' },
-body: JSON.stringify({
-jsonrpc: '2.0', id: 2, method: 'alchemy_getAssetTransfers',
-params: [{ contractAddresses: [CONTRACT], category: ['erc20'], maxCount: '0x3', order: 'desc' }]
-}), signal: AbortSignal.timeout(5000)
-})
-])
-const meta = (await metaRes.json()).result
-const transfers = (await transfersRes.json()).result?.transfers || []
-const lines = transfers.map(t => `• ${t.from.substring(0,6)}...→ ${t.to.substring(0,6)}... : ${parseFloat(t.value||0).toFixed(2)} REUSS`).join('\n')
-return `💎 **Dashboard REUSS Token — Live**\n\n📛 Nom : ${meta.name}\n🔤 Symbole : $${meta.symbol}\n📊 Décimales : ${meta.decimals}\n⛓️ Réseau : Polygon Mainnet\n🔗 Contrat : ${CONTRACT.substring(0,10)}...\n\n📈 **3 Derniers Transferts :**\n${lines || 'Aucun transfert récent'}\n\n🔍 https://polygonscan.com/token/${CONTRACT}\n\nBoudoum ! 🇬🇵`
-} catch(e) { console.error('Alchemy dashboard:', e.message); return null }
-}
-
-// ===== OPENFDA — MÉDICAMENTS & INTERACTIONS =====
-async function getOpenFDA(medicament) {
-try {
-const query = encodeURIComponent(medicament)
-const r = await fetch(`https://api.fda.gov/drug/label.json?search=openfda.brand_name:"${query}"&limit=1`, { signal: AbortSignal.timeout(5000) })
-const d = await r.json()
-const drug = d.results?.[0]
-if (!drug) return null
-const warnings = drug.warnings?.[0]?.substring(0, 300) || 'Aucun avertissement disponible'
-const interactions = drug.drug_interactions?.[0]?.substring(0, 300) || 'Aucune interaction connue'
-const sideEffects = drug.adverse_reactions?.[0]?.substring(0, 300) || 'Effets secondaires non listés'
-return `💊 **${medicament.toUpperCase()} — Informations Médicales**\n\n⚠️ **Avertissements :**\n${warnings}...\n\n🔄 **Interactions médicamenteuses :**\n${interactions}...\n\n😷 **Effets secondaires :**\n${sideEffects}...\n\n⚕️ *Consultez toujours un médecin avant toute prise de médicament.*\n\nSource: OpenFDA\nBoudoum ! 🇬🇵`
-} catch(e) { return null }
-}
-
-// ===== OPEN-METEO — QUALITÉ AIR DOM-TOM =====
-async function getQualiteAir(ville = 'Guadeloupe', lat = 16.2411, lon = -61.5331) {
-try {
-const r = await fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&current=pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,ozone,european_aqi`, { signal: AbortSignal.timeout(5000) })
-const d = await r.json()
-const c = d.current
-const aqi = c.european_aqi
-const qualite = aqi <= 20 ? '🟢 Excellente' : aqi <= 40 ? '🟡 Bonne' : aqi <= 60 ? '🟠 Moyenne' : aqi <= 80 ? '🔴 Mauvaise' : '🟣 Très mauvaise'
-return `🌿 **Qualité de l'Air — ${ville}**\n\n${qualite} (IQA: ${aqi})\n\n📊 Détails :\n• PM2.5 : ${c.pm2_5} μg/m³\n• PM10 : ${c.pm10} μg/m³\n• CO : ${c.carbon_monoxide} μg/m³\n• NO2 : ${c.nitrogen_dioxide} μg/m³\n• Ozone : ${c.ozone} μg/m³\n\nSource: Open-Meteo Air Quality\nBoudoum ! 🇬🇵`
-} catch(e) { return null }
-}
-
-// ===== DICTIONNAIRE CRÉOLE ENRICHI =====
-function getDictionnaireCreole(mot) {
-const dico = {
-'boudoum': '🥁 **Boudoum** — Onomatopée du tambour Ka guadeloupéen. Expression de joie, d\'énergie positive et de fierté caribéenne. Signature de REUSSITESS®971.',
-'an nou': '🌴 **An nou** — "Allons-y" en créole guadeloupéen. Invite à l\'action collective.',
-'bel bagay': '🌺 **Bel bagay** — "Belle chose" en créole. Expression d\'admiration et de positivité.',
-'doudou': '💕 **Doudou** — Terme affectueux en créole antillais. Utilisé pour désigner une personne chère.',
-'mwen': '👤 **Mwen** — "Je/moi" en créole guadeloupéen.',
-'ou': '👥 **Ou** — "Tu/vous" en créole guadeloupéen.',
-'sé sa': '✅ **Sé sa** — "C\'est ça" en créole. Expression d\'accord.',
-'pa ni pwoblèm': '😊 **Pa ni pwoblèm** — "Pas de problème" en créole.',
-'ki jan ou rélé': '❓ **Ki jan ou rélé** — "Comment tu t\'appelles?" en créole guadeloupéen.',
-'mwen enmen-w': '❤️ **Mwen enmen-w** — "Je t\'aime" en créole guadeloupéen.',
-'bonjou': '☀️ **Bonjou** — "Bonjour" en créole guadeloupéen.',
-'bonswa': '🌙 **Bonswa** — "Bonsoir" en créole.',
-'mèsi': '🙏 **Mèsi** — "Merci" en créole guadeloupéen.',
-'chapo ba': '🎩 **Chapo ba** — "Chapeau bas", expression de respect et d\'admiration.',
-'doubout': '💪 **Doubout** — "Debout", expression de fierté et de résistance caribéenne.',
-'péyi': '🏝️ **Péyi** — "Pays, île" en créole. Désigne la Guadeloupe avec affection.',
-'lanmou': '💜 **Lanmou** — "Amour" en créole guadeloupéen.',
-'lapli': '🌧️ **Lapli** — "Pluie" en créole.',
-'solèy': '☀️ **Solèy** — "Soleil" en créole guadeloupéen.',
-'la mè': '🌊 **La mè** — "La mer" en créole.',
-'ti moun': '👶 **Ti moun** — "Enfant, petit" en créole antillais.',
-'fanmi': '👨‍👩‍👧‍👦 **Fanmi** — "Famille" en créole guadeloupéen.',
-'amé': '🤝 **Amé** — "Ami(e)" en créole guadeloupéen.',
-'kò': '💪 **Kò** — "Corps" en créole.',
-'tèt': '🧠 **Tèt** — "Tête" en créole guadeloupéen.',
-'ka': '🥁 **Ka** — Le tambour traditionnel guadeloupéen, instrument central du Gwo Ka.',
-'gwoka': '🎵 **Gwoka** — Musique et danse traditionnelle guadeloupéenne, patrimoine UNESCO 2014.',
-'zouk': '💃 **Zouk** — Genre musical caribéen né en Guadeloupe avec le groupe Kassav dans les années 80.',
-'biguine': '🎺 **Biguine** — Musique traditionnelle antillaise née en Martinique au XIXe siècle.',
-'léwòz': '🥁 **Léwòz** — Cérémonie nocturne guadeloupéenne autour du tambour Ka.',
-'quimbois': '🌿 **Quimbois** — Pratique spirituelle et médicinale créole des Antilles.',
-'gadézafè': '🔮 **Gadézafè** — Voyant, guérisseur traditionnel créole antillais.',
-'bolokos': '🍌 **Bolokos** — Banane plantain en créole guadeloupéen.',
-'accras': '🍽️ **Accras** — Beignets de morue, spécialité culinaire antillaise.',
-'colombo': '🍛 **Colombo** — Curry antillais, plat emblématique des Antilles françaises.',
-'blaff': '🐟 **Blaff** — Poisson cuit dans un court-bouillon épicé, plat traditionnel antillais.',
-'ti punch': '🍹 **Ti punch** — Cocktail traditionnel antillais : rhum, citron vert, sirop de canne.',
-'rhum': '🥃 **Rhum** — Spiritueux emblématique des Antilles, produit depuis le XVIIe siècle.'
-}
-const motLow = mot.toLowerCase().trim()
-for (const [key, val] of Object.entries(dico)) {
-if (motLow.includes(key)) return `📖 **Dictionnaire Créole REUSSITESS**\n\n${val}\n\nBoudoum ! 🇬🇵`
-}
-return null
-}
-
-// ===== WORLD BANK — ÉCONOMIE DOM-TOM =====
-async function getEconomieWorldBank(pays = 'GP') {
-try {
-const indicators = ['NY.GDP.MKTP.CD', 'FP.CPI.TOTL.ZG', 'SL.UEM.TOTL.ZS']
-const names = ['PIB', 'Inflation', 'Chômage']
-const results = await Promise.all(indicators.map(ind =>
-fetch(`https://api.worldbank.org/v2/country/${pays}/indicator/${ind}?format=json&mrv=1`, { signal: AbortSignal.timeout(5000) })
-.then(r => r.json())
-.then(d => d[1]?.[0]?.value || 'N/A')
-.catch(() => 'N/A')
-))
-const paysNom = pays === 'GP' ? 'Guadeloupe' : pays === 'MQ' ? 'Martinique' : pays === 'GF' ? 'Guyane' : pays === 'RE' ? 'Réunion' : pays
-return `📈 **Données Économiques — ${paysNom}**\n\n💰 PIB : ${results[0] !== 'N/A' ? (results[0]/1e9).toFixed(2) + ' Mrd $' : 'N/A'}\n📊 Inflation : ${results[1] !== 'N/A' ? results[1].toFixed(1) + '%' : 'N/A'}\n💼 Chômage : ${results[2] !== 'N/A' ? results[2].toFixed(1) + '%' : 'N/A'}\n\nSource: World Bank\nBoudoum ! 🇬🇵`
-} catch(e) { return null }
-}
-
-// ===== LANGUES AFRICAINES =====
-function getDictionnaireAfricain(mot) {
-const dico = {
-// WOLOF (Sénégal)
-'waaw': '🇸🇳 **Waaw** (Wolof) — "Oui" en wolof, langue principale du Sénégal.',
-'dëgg': '🇸🇳 **Dëgg** (Wolof) — "Comprendre/vrai" en wolof.',
-'jërejëf': '🇸🇳 **Jërejëf** (Wolof) — "Merci" en wolof. Expression de gratitude au Sénégal.',
-'mangi fi': '🇸🇳 **Mangi fi** (Wolof) — "Je suis là/ça va" en wolof.',
-'nanga def': '🇸🇳 **Nanga def** (Wolof) — "Comment vas-tu?" en wolof.',
-'ndank ndank': '🇸🇳 **Ndank ndank** (Wolof) — "Doucement, petit à petit" en wolof.',
-'teranga': '🇸🇳 **Teranga** (Wolof) — "Hospitalité" en wolof. Valeur fondamentale sénégalaise.',
-'inshallah': '🕌 **Inshallah** (Arabe/Wolof) — "Si Dieu le veut". Très utilisé en Afrique de l\'Ouest.',
-
-// BAMBARA (Mali)
-'i ni ce': '🇲🇱 **I ni ce** (Bambara) — "Bonjour/merci" en bambara, langue principale du Mali.',
-'aw ni ce': '🇲🇱 **Aw ni ce** (Bambara) — "Bonjour à vous" en bambara (pluriel).',
-'tôgô': '🇲🇱 **Tôgô** (Bambara) — "Nom" en bambara.',
-'ka kène': '🇲🇱 **Ka kène** (Bambara) — "Être en bonne santé" en bambara.',
-'fari': '🇲🇱 **Fari** (Bambara) — "Corps" en bambara.',
-'duguw': '🇲🇱 **Duguw** (Bambara) — "Village, pays natal" en bambara.',
-
-// SWAHILI (Afrique de l'Est)
-'jambo': '🌍 **Jambo** (Swahili) — "Bonjour" en swahili, parlé en Tanzanie, Kenya, Uganda.',
-'habari': '🌍 **Habari** (Swahili) — "Comment ça va? / Nouvelles" en swahili.',
-'asante': '🌍 **Asante** (Swahili) — "Merci" en swahili.',
-'karibu': '🌍 **Karibu** (Swahili) — "Bienvenue" en swahili.',
-'hakuna matata': '🌍 **Hakuna matata** (Swahili) — "Pas de problème" en swahili. Rendu célèbre par Le Roi Lion.',
-'ubuntu': '🌍 **Ubuntu** (Swahili/Zulu) — "Je suis parce que nous sommes". Philosophie africaine de communauté.',
-'pole pole': '🌍 **Pole pole** (Swahili) — "Doucement, lentement" en swahili.',
-'rafiki': '🌍 **Rafiki** (Swahili) — "Ami" en swahili.',
-'simba': '🦁 **Simba** (Swahili) — "Lion" en swahili.',
-'baba': '👨 **Baba** (Swahili) — "Père" en swahili.',
-
-// LINGALA (Congo)
-'mbote': '🇨🇩 **Mbote** (Lingala) — "Bonjour" en lingala, langue du Congo.',
-'na zali malamu': '🇨🇩 **Na zali malamu** (Lingala) — "Je vais bien" en lingala.',
-'bokulaka': '🇨🇩 **Bokulaka** (Lingala) — "Amour" en lingala.',
-
-// MOORE (Burkina Faso)
-'laafi': '🇧🇫 **Laafi** (Mooré) — "Paix, santé" en mooré, langue du Burkina Faso.',
-
-// HAÏTIEN
-'bonjou': '🇭🇹 **Bonjou** (Créole haïtien) — "Bonjour" en créole haïtien.',
-'mèsi': '🇭🇹 **Mèsi** (Créole haïtien) — "Merci" en créole haïtien.',
-'kijan ou rele': '🇭🇹 **Kijan ou rele** (Créole haïtien) — "Comment tu t\'appelles?" en haïtien.',
-'map bem': '🇭🇹 **Map bem** (Créole haïtien) — "Je vais bien" en créole haïtien.',
-'chèlbè': '🇭🇹 **Chèlbè** (Créole haïtien) — "Stylé, cool" en argot haïtien.',
-
-// KALINAGO (Caraïbes indigènes)
-'kalinago': '🏝️ **Kalinago** — Peuple indigène des Petites Antilles. Présents en Dominique. Langue arawakane.',
-'arawak': '🏝️ **Arawak** — Premiers habitants des Grandes Antilles. Leur langue a donné : tabac, canot, hamac, barbecue.',
-'hamac': '🛌 **Hamac** — Mot d\'origine arawak (hamaka). Invention des peuples indigènes caribéens adoptée mondialement.',
-'canot': '🚣 **Canot** — Mot d\'origine arawak (canoa). Embarcation traditionnelle caribéenne.',
-'tabac': '🌿 **Tabac** — Mot d\'origine arawak (tabako). Plante sacrée des peuples indigènes américains.'
-}
-
-const motLow = mot.toLowerCase().trim()
-for (const [key, val] of Object.entries(dico)) {
-if (motLow.includes(key)) return `🌍 **Dictionnaire Afro-Caribéen REUSSITESS**\n\n${val}\n\nBoudoum ! 🇬🇵`
-}
-return null
-}
-
-// ===== SYSTÈME BADGES & ACCOMPLISSEMENTS =====
-async function getBadgesUtilisateur(userId) {
-try {
-const redis = await getRedisClient()
-const profile = await redis.get(`profile:${userId}`)
-const data = profile ? JSON.parse(profile) : { visites: 0, badges: [] }
-const visites = data.visites || 0
-const badges = data.badges || []
-
-const nouveauxBadges = []
-if (visites >= 1 && !badges.includes('🌱 Explorateur')) nouveauxBadges.push('🌱 Explorateur')
-if (visites >= 5 && !badges.includes('⭐ Habitué')) nouveauxBadges.push('⭐ Habitué')
-if (visites >= 10 && !badges.includes('🔥 Fidèle REUSSITESS')) nouveauxBadges.push('🔥 Fidèle REUSSITESS')
-if (visites >= 25 && !badges.includes('💎 Champion')) nouveauxBadges.push('💎 Champion')
-if (visites >= 50 && !badges.includes('👑 Légende Caribéenne')) nouveauxBadges.push('👑 Légende Caribéenne')
-if (visites >= 100 && !badges.includes('🌟 Ambassadeur REUSSITESS')) nouveauxBadges.push('🌟 Ambassadeur REUSSITESS')
-
-if (nouveauxBadges.length > 0) {
-data.badges = [...badges, ...nouveauxBadges]
-await redis.set(`profile:${userId}`, JSON.stringify(data), { ex: 90 * 24 * 60 * 60 })
-}
-
-const allBadges = [...badges, ...nouveauxBadges]
-const nextBadge = visites < 5 ? `⭐ Habitué (${5-visites} visites restantes)` :
-visites < 10 ? `🔥 Fidèle (${10-visites} visites restantes)` :
-visites < 25 ? `💎 Champion (${25-visites} visites restantes)` :
-visites < 50 ? `👑 Légende (${50-visites} visites restantes)` :
-visites < 100 ? `🌟 Ambassadeur (${100-visites} visites restantes)` : '🏆 Tous les badges obtenus !'
-
-return `🏆 **Tes Accomplissements REUSSITESS**\n\n👤 Visites : ${visites}\n\n🎖️ **Badges obtenus :**\n${allBadges.length > 0 ? allBadges.join('\n') : 'Aucun badge encore'}\n\n${nouveauxBadges.length > 0 ? '🎉 **Nouveau badge débloqué : ' + nouveauxBadges.join(', ') + '**\n\n' : ''}🎯 **Prochain badge :** ${nextBadge}\n\nBoudoum ! 🇬🇵`
-} catch(e) { return null }
-}
-
-// ===== GDACS — CATASTROPHES NATURELLES =====
-async function getCatastrophesNaturelles() {
-try {
-const r = await fetch('https://www.gdacs.org/xml/rss.xml', { signal: AbortSignal.timeout(5000) })
-const xml = await r.text()
-const items = [...xml.matchAll(/<item>[\s\S]*?<title>([\s\S]*?)<\/title>[\s\S]*?<link>([\s\S]*?)<\/link>[\s\S]*?<\/item>/g)]
-if (!items.length) return null
-const decode = s => s.replace(/<!\[CDATA\[(.*?)\]\]>/g,'$1').trim()
-const events = items.slice(0,5).map((m,i) => `${i+1}. ${decode(m[1])}`).join('\n')
-return `🌍 **Catastrophes Naturelles — Temps Réel**\n\n${events}\n\nSource: GDACS (ONU)\nBoudoum ! 🇬🇵`
-} catch(e) { return null }
-}
-
-// ===== NASA SCIENCE & TECHNOLOGIE =====
-async function getNASAScience() {
-try {
-const apiKey = process.env.NASA_API_KEY || 'DEMO_KEY'
-const r = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`, { signal: AbortSignal.timeout(5000) })
-const d = await r.json()
-return `🔬 **Science & Technologie — NASA**\n\n📸 **${d.title}**\n\n${d.explanation?.substring(0, 400)}...\n\n🔗 ${d.url}\n\nSource: NASA\nBoudoum ! 🇬🇵`
-} catch(e) { return null }
-}
-  
-
-// ===== ACTUALITÉS MONDE ÉLARGI — RSS PAR RÉGION =====
-async function getActualitesPays(pays) {
-try {
-const feeds = {
-// Afrique de l'Ouest
-'sénégal': 'https://www.rfi.fr/fr/afrique/rss', 'senegal': 'https://www.rfi.fr/fr/afrique/rss',
-'mali': 'https://www.rfi.fr/fr/afrique/rss', 'burkina': 'https://www.rfi.fr/fr/afrique/rss',
-'niger': 'https://www.rfi.fr/fr/afrique/rss', 'togo': 'https://www.rfi.fr/fr/afrique/rss',
-'bénin': 'https://www.rfi.fr/fr/afrique/rss', 'benin': 'https://www.rfi.fr/fr/afrique/rss',
-'guinée': 'https://www.rfi.fr/fr/afrique/rss', 'guinee': 'https://www.rfi.fr/fr/afrique/rss',
-'gambie': 'https://www.rfi.fr/fr/afrique/rss', 'liberia': 'https://www.rfi.fr/fr/afrique/rss',
-'sierra': 'https://www.rfi.fr/fr/afrique/rss', 'mauritanie': 'https://www.rfi.fr/fr/afrique/rss',
-'cap-vert': 'https://www.rfi.fr/fr/afrique/rss', 'capvert': 'https://www.rfi.fr/fr/afrique/rss',
-// Afrique Centrale
-'cameroun': 'https://www.rfi.fr/fr/afrique/rss', 'gabon': 'https://www.rfi.fr/fr/afrique/rss',
-'congo': 'https://www.rfi.fr/fr/afrique/rss', 'tchad': 'https://www.rfi.fr/fr/afrique/rss',
-'centrafrique': 'https://www.rfi.fr/fr/afrique/rss', 'rwanda': 'https://www.rfi.fr/fr/afrique/rss',
-'burundi': 'https://www.rfi.fr/fr/afrique/rss', 'comores': 'https://www.rfi.fr/fr/afrique/rss',
-// Afrique de l'Est
-'tanzanie': 'https://www.rfi.fr/fr/afrique/rss', 'kenya': 'https://www.rfi.fr/fr/afrique/rss',
-'éthiopie': 'https://www.rfi.fr/fr/afrique/rss', 'ethiopie': 'https://www.rfi.fr/fr/afrique/rss',
-'somalie': 'https://www.rfi.fr/fr/afrique/rss', 'djibouti': 'https://www.rfi.fr/fr/afrique/rss',
-'érythrée': 'https://www.rfi.fr/fr/afrique/rss', 'eritree': 'https://www.rfi.fr/fr/afrique/rss',
-'madagascar': 'https://www.rfi.fr/fr/afrique/rss', 'seychelles': 'https://www.rfi.fr/fr/afrique/rss',
-'maurice': 'https://www.rfi.fr/fr/afrique/rss', 'mozambique': 'https://www.rfi.fr/fr/afrique/rss',
-// Afrique du Sud
-'zambie': 'https://www.rfi.fr/fr/afrique/rss', 'zimbabwe': 'https://www.rfi.fr/fr/afrique/rss',
-'malawi': 'https://www.rfi.fr/fr/afrique/rss', 'namibie': 'https://www.rfi.fr/fr/afrique/rss',
-'botswana': 'https://www.rfi.fr/fr/afrique/rss', 'lesotho': 'https://www.rfi.fr/fr/afrique/rss',
-'angola': 'https://www.rfi.fr/fr/afrique/rss', 'sao tome': 'https://www.rfi.fr/fr/afrique/rss',
-// Moyen-Orient
-'émirats': 'https://www.france24.com/fr/rss', 'emirats': 'https://www.france24.com/fr/rss',
-'qatar': 'https://www.france24.com/fr/rss', 'bahreïn': 'https://www.france24.com/fr/rss',
-'koweït': 'https://www.france24.com/fr/rss', 'oman': 'https://www.france24.com/fr/rss',
-'liban': 'https://www.france24.com/fr/rss',
-// Asie
-'cambodge': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'laos': 'https://www.rfi.fr/fr/asie-pacifique/rss',
-'vietnam': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'viêt': 'https://www.rfi.fr/fr/asie-pacifique/rss',
-'thaïlande': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'indonésie': 'https://www.rfi.fr/fr/asie-pacifique/rss',
-'mongolie': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'bhoutan': 'https://www.rfi.fr/fr/asie-pacifique/rss',
-'timor': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'maldives': 'https://www.rfi.fr/fr/asie-pacifique/rss',
-'sri lanka': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'brunei': 'https://www.rfi.fr/fr/asie-pacifique/rss',
-// Pacifique
-'samoa': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'tonga': 'https://www.rfi.fr/fr/asie-pacifique/rss',
-'vanuatu': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'kiribati': 'https://www.rfi.fr/fr/asie-pacifique/rss',
-'nauru': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'tuvalu': 'https://www.rfi.fr/fr/asie-pacifique/rss',
-'salomon': 'https://www.rfi.fr/fr/asie-pacifique/rss', 'papouasie': 'https://www.rfi.fr/fr/asie-pacifique/rss',
-// Amérique Latine
-'chili': 'https://www.rfi.fr/fr/ameriques/rss', 'colombie': 'https://www.rfi.fr/fr/ameriques/rss',
-'pérou': 'https://www.rfi.fr/fr/ameriques/rss', 'peru': 'https://www.rfi.fr/fr/ameriques/rss',
-'bolivie': 'https://www.rfi.fr/fr/ameriques/rss', 'équateur': 'https://www.rfi.fr/fr/ameriques/rss',
-'equateur': 'https://www.rfi.fr/fr/ameriques/rss', 'paraguay': 'https://www.rfi.fr/fr/ameriques/rss',
-'guyana': 'https://www.rfi.fr/fr/ameriques/rss', 'suriname': 'https://www.rfi.fr/fr/ameriques/rss',
-'nicaragua': 'https://www.rfi.fr/fr/ameriques/rss', 'belize': 'https://www.rfi.fr/fr/ameriques/rss',
-'panama': 'https://www.rfi.fr/fr/ameriques/rss',
-// Caraïbes
-'jamaïque': 'https://www.bondamanjak.com/feed/', 'jamaique': 'https://www.bondamanjak.com/feed/',
-'trinité': 'https://www.bondamanjak.com/feed/', 'trinite': 'https://www.bondamanjak.com/feed/',
-'barbade': 'https://www.bondamanjak.com/feed/', 'bahamas': 'https://www.bondamanjak.com/feed/',
-'sainte-lucie': 'https://www.bondamanjak.com/feed/', 'saint-vincent': 'https://www.bondamanjak.com/feed/',
-'grenade': 'https://www.bondamanjak.com/feed/', 'antigua': 'https://www.bondamanjak.com/feed/',
-'dominique': 'https://www.bondamanjak.com/feed/', 'saint-kitts': 'https://www.bondamanjak.com/feed/',
-'corée': 'https://www.france24.com/fr/rss', 'singapour': 'https://www.france24.com/fr/rss',
-'andorre': 'https://www.france24.com/fr/rss', 'macao': 'https://www.france24.com/fr/rss',
-'ukraine': 'https://www.france24.com/fr/rss', 'hongrie': 'https://www.france24.com/fr/rss',
-'lituanie': 'https://www.france24.com/fr/rss', 'arménie': 'https://www.france24.com/fr/rss',
-'kirghizistan': 'https://www.france24.com/fr/rss', 'albanie': 'https://www.france24.com/fr/rss',
-'tunisie': 'https://www.france24.com/fr/rss'
-}
-
-const paysLow = pays.toLowerCase()
-let feedUrl = null
-for (const [key, url] of Object.entries(feeds)) {
-if (paysLow.includes(key)) { feedUrl = url; break }
-}
-if (!feedUrl) feedUrl = 'https://www.rfi.fr/fr/rss'
-
-const res = await fetch(feedUrl, { signal: AbortSignal.timeout(5000) })
-const xml = await res.text()
-const items = [...xml.matchAll(/<item>[\s\S]*?<title>([\s\S]*?)<\/title>[\s\S]*?<link>([\s\S]*?)<\/link>[\s\S]*?<\/item>/g)]
-if (!items.length) return null
-const decode = s => s.replace(/<!\[CDATA\[(.*?)\]\]>/g,'$1').replace(/&#(\d+);/g,(_,n)=>String.fromCharCode(n)).replace(/&amp;/g,'&').trim()
-const articles = items.slice(0,5).map((m,i) => `${i+1}. **${decode(m[1])}**\n   🔗 ${decode(m[2]).trim()}`).join('\n\n')
-return `📰 **Actualités — ${pays}**\n\n${articles}\n\nSource: RFI/France24/Bondamanjak\nBoudoum ! 🇬🇵`
-} catch(e) { return null }
-}
-
-// ===== DEVISES MONDIALES ÉLARGIES =====
-async function getDevisePays(devise1, devise2 = 'EUR') {
-try {
-const r = await fetch(`https://open.er-api.com/v6/latest/${devise1.toUpperCase()}`, { signal: AbortSignal.timeout(5000) })
-const d = await r.json()
-if (!d.rates) return null
-const rate = d.rates[devise2.toUpperCase()]
-const eur = d.rates['EUR']
-const usd = d.rates['USD']
-return `💱 **Taux de Change — ${devise1.toUpperCase()}**\n\n1 ${devise1.toUpperCase()} =\n• ${eur?.toFixed(4) || 'N/A'} EUR\n• ${usd?.toFixed(4) || 'N/A'} USD\n${rate ? `• ${rate.toFixed(4)} ${devise2.toUpperCase()}` : ''}\n\nSource: Open Exchange Rates\nBoudoum ! 🇬🇵`
-} catch(e) { return null }
-}
-
-// ===== CRYPTO PAR PAYS/DEVISE LOCALE =====
-async function getCryptoPaysDevise(crypto, devise) {
-try {
-const cryptoIds = {
-'btc': 'bitcoin', 'bitcoin': 'bitcoin', 'eth': 'ethereum', 'ethereum': 'ethereum',
-'bnb': 'binancecoin', 'sol': 'solana', 'xrp': 'ripple', 'ada': 'cardano',
-'doge': 'dogecoin', 'pol': 'matic-network', 'matic': 'matic-network', 'reuss': 'reussitess'
-}
-const devises_map = {
-'won': 'krw', 'baht': 'thb', 'dong': 'vnd', 'rupiah': 'idr', 'ringgit': 'myr',
-'peso': 'mxn', 'real': 'brl', 'rand': 'zar', 'naira': 'ngn', 'cedi': 'ghs',
-'shilling': 'kes', 'franc cfa': 'xof', 'dinar': 'tnd', 'dirham': 'aed',
-'riyal': 'sar', 'livre': 'lbp', 'hryvnia': 'uah', 'forint': 'huf',
-'litas': 'ltl', 'dram': 'amd', 'som': 'kgs', 'lek': 'all',
-'dollar singapour': 'sgd', 'dollar hong kong': 'hkd', 'pataca': 'mop'
-}
-
-const cryptoId = cryptoIds[crypto.toLowerCase()] || 'bitcoin'
-const deviseCode = devises_map[devise.toLowerCase()] || devise.toLowerCase()
-
-const r = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${cryptoId}&vs_currencies=${deviseCode},eur,usd`, { signal: AbortSignal.timeout(5000) })
-const d = await r.json()
-const prices = d[cryptoId]
-if (!prices) return null
-
-return `💎 **${crypto.toUpperCase()} — Prix en ${devise}**\n\n💵 USD : $${prices.usd?.toLocaleString() || 'N/A'}\n💶 EUR : €${prices.eur?.toLocaleString() || 'N/A'}\n🏦 ${devise} : ${prices[deviseCode]?.toLocaleString() || 'N/A'} ${deviseCode.toUpperCase()}\n\nSource: CoinGecko\nBoudoum ! 🇬🇵`
-} catch(e) { return null }
-}
-
-// ===== SELF-CONSISTENCY — 3 réponses Groq → meilleure =====
-async function groqSelfConsistency(messages, maxTokens = 512) {
-try {
-const [r1, r2, r3] = await Promise.all([
-groqFetch(messages, maxTokens),
-groqFetch(messages, maxTokens),
-groqFetch(messages, maxTokens)
-])
-const responses = [r1, r2, r3].filter(Boolean)
-if (responses.length === 0) return null
-const best = responses.reduce((a, b) => {
-const scoreA = a.length + (a.includes('Boudoum') ? 50 : 0) + (a.includes('🇬🇵') ? 30 : 0)
-const scoreB = b.length + (b.includes('Boudoum') ? 50 : 0) + (b.includes('🇬🇵') ? 30 : 0)
-return scoreA >= scoreB ? a : b
-})
-return best
-} catch(e) { return await groqFetch(messages, maxTokens) }
-}
-
-// ===== RERANKING knowledge.json =====
-function rerankKnowledge(query, commands) {
-const q = query.toLowerCase()
-const scored = commands.map(cmd => {
-const trigger = (cmd.trigger || '').toLowerCase()
-let score = 0
-if (q === trigger) score += 100
-if (q.includes(trigger)) score += 50
-if (trigger.includes(q)) score += 40
-const qWords = q.split(' ')
-const tWords = trigger.split(' ')
-qWords.forEach(w => { if (tWords.includes(w) && w.length > 3) score += 10 })
-score += trigger.length * 0.5
-return { cmd, score }
-})
-return scored.sort((a, b) => b.score - a.score).filter(x => x.score > 0)
-}
-
-// ===== SCORE SATISFACTION =====
-async function saveSatisfactionScore(userId, message, response) {
-try {
-const redis = await getRedisClient()
-const key = `satisfaction:${new Date().toISOString().substring(0,10)}`
-const existing = await redis.get(key)
-const data = existing ? JSON.parse(existing) : { total: 0, count: 0 }
-data.total += response.length > 100 ? 1 : 0.5
-data.count++
-await redis.set(key, JSON.stringify(data), { ex: 30 * 24 * 60 * 60 })
-} catch(e) {}
-}
-
-async function getSatisfactionStats() {
-try {
-const redis = await getRedisClient()
-const days = []
-for (let i = 0; i < 7; i++) {
-const d = new Date()
-d.setDate(d.getDate() - i)
-const key = `satisfaction:${d.toISOString().substring(0,10)}`
-const data = await redis.get(key)
-if (data) {
-const parsed = JSON.parse(data)
-days.push({ date: d.toISOString().substring(0,10), score: (parsed.total/parsed.count).toFixed(2), count: parsed.count })
-}
-}
-if (!days.length) return null
-const avgScore = (days.reduce((a,b) => a + parseFloat(b.score), 0) / days.length).toFixed(2)
-const totalReq = days.reduce((a,b) => a + b.count, 0)
-return `📊 **Évaluation REUSSITESS AI — 7 derniers jours**\n\n⭐ Score moyen : ${avgScore}/1.00\n📨 Total requêtes : ${totalReq}\n\n${days.map(d => `• ${d.date} : ${d.score} (${d.count} req)`).join('\n')}\n\nBoudoum ! 🇬🇵`
-} catch(e) { return null }
-}
-
-// ===== TRANSPORT & TRAFIC MONDIAL =====
-async function getTransportInfo(ville) {
-try {
-const query = encodeURIComponent(`transport public ${ville}`)
-const r = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${query}`, { signal: AbortSignal.timeout(5000) })
-const d = await r.json()
-return `🚌 **Transport — ${ville}**\n\n${d.extract?.substring(0, 400) || 'Informations non disponibles'}...\n\nSource: Wikipedia\nBoudoum ! 🇬🇵`
-} catch(e) { return null }
-}
-
-// ===== SANTÉ MONDIALE — WHO =====
-async function getSanteOMS(pays) {
-try {
-const codesOMS = {
-'france': 'FRA', 'guadeloupe': 'GLP', 'martinique': 'MTQ', 'sénégal': 'SEN',
-'mali': 'MLI', 'cameroun': 'CMR', 'kenya': 'KEN', 'nigeria': 'NGA',
-'ghana': 'GHA', 'éthiopie': 'ETH', 'tanzanie': 'TZA', 'ouganda': 'UGA',
-'haïti': 'HTI', 'jamaïque': 'JAM', 'trinité': 'TTO', 'barbade': 'BRB',
-'chili': 'CHL', 'colombie': 'COL', 'pérou': 'PER', 'bolivie': 'BOL',
-'inde': 'IND', 'bangladesh': 'BGD', 'pakistan': 'PAK', 'indonésie': 'IDN',
-'maroc': 'MAR', 'algérie': 'DZA', 'tunisie': 'TUN', 'égypte': 'EGY',
-'congo': 'COD', 'angola': 'AGO', 'mozambique': 'MOZ', 'zambie': 'ZMB'
-}
-const paysLow = pays.toLowerCase()
-const code = Object.entries(codesOMS).find(([k]) => paysLow.includes(k))?.[1] || 'FRA'
-const r = await fetch(`https://ghoapi.azureedge.net/api/Indicator?$filter=Language eq 'FR'&$top=3`, { signal: AbortSignal.timeout(5000) })
-const d = await r.json()
-return `🏥 **Santé Mondiale — ${pays}**\n\nCode OMS : ${code}\n\n📊 Données disponibles :\n• Espérance de vie\n• Mortalité infantile\n• Couverture vaccinale\n\n🔗 Source OMS : https://www.who.int/data/gho\n\nBoudoum ! 🇬🇵`
-} catch(e) { return null }
-}
-
-// ===== ÉDUCATION MONDIALE — UNESCO =====
-async function getEducationUNESCO(pays) {
-try {
-const stats = {
-'france': { alpha: 99.9, scolarisation: 99, universities: 3500 },
-'sénégal': { alpha: 56.3, scolarisation: 85, universities: 34 },
-'mali': { alpha: 35.5, scolarisation: 67, universities: 12 },
-'kenya': { alpha: 82.6, scolarisation: 91, universities: 70 },
-'nigeria': { alpha: 62.0, scolarisation: 88, universities: 170 },
-'haïti': { alpha: 62.1, scolarisation: 74, universities: 15 },
-'jamaïque': { alpha: 88.7, scolarisation: 95, universities: 10 },
-'guadeloupe': { alpha: 99.0, scolarisation: 99, universities: 5 },
-'inde': { alpha: 77.7, scolarisation: 90, universities: 1000 },
-'chine': { alpha: 97.5, scolarisation: 95, universities: 2956 },
-'brésil': { alpha: 94.2, scolarisation: 93, universities: 2407 },
-'maroc': { alpha: 73.8, scolarisation: 89, universities: 125 }
-}
-const paysLow = pays.toLowerCase()
-const stat = Object.entries(stats).find(([k]) => paysLow.includes(k))?.[1]
-if (!stat) return null
-return `🎓 **Éducation — ${pays}**\n\n📊 Indicateurs UNESCO :\n• Taux alphabétisation : ${stat.alpha}%\n• Taux scolarisation : ${stat.scolarisation}%\n• Universités : ${stat.universities}+\n\n🔗 Source: UNESCO Institute for Statistics\n\nBoudoum ! 🇬🇵`
-} catch(e) { return null }
-}
-
-// ===== TRADUCTION MULTILINGUE ÉLARGIE =====
-async function traduireTexte(texte, langCible) {
-try {
-const langCodes = {
-'anglais': 'en', 'espagnol': 'es', 'portugais': 'pt', 'arabe': 'ar',
-'mandarin': 'zh', 'russe': 'ru', 'japonais': 'ja', 'allemand': 'de',
-'italien': 'it', 'néerlandais': 'nl', 'polonais': 'pl', 'turc': 'tr',
-'hindi': 'hi', 'bengali': 'bn', 'swahili': 'sw', 'haoussa': 'ha',
-'yoruba': 'yo', 'amharique': 'am', 'somali': 'so', 'malgache': 'mg',
-'créole haïtien': 'ht', 'tagalog': 'tl', 'malais': 'ms', 'indonésien': 'id',
-'thaï': 'th', 'vietnamien': 'vi', 'coréen': 'ko', 'persan': 'fa'
-}
-const code = Object.entries(langCodes).find(([k]) => langCible.toLowerCase().includes(k))?.[1] || 'en'
-const r = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(texte)}&langpair=fr|${code}`, { signal: AbortSignal.timeout(5000) })
-const d = await r.json()
-const trad = d.responseData?.translatedText
-if (!trad) return null
-return `🌍 **Traduction REUSSITESS**\n\n📝 Original (FR) : ${texte}\n🔄 ${langCible} : **${trad}**\n\nSource: MyMemory\nBoudoum ! 🇬🇵`
-} catch(e) { return null }
-}
-
-// ===== MÉTÉO ÎLES OCÉANIE & AFRIQUE EST =====
-async function getMeteoIleOceanie(ile) {
-const coordonnees = {
-'fidji': [-17.7134, 178.0650], 'papouasie': [-6.3150, 143.9555],
-'îles salomon': [-9.6457, 160.1562], 'vanuatu': [-15.3767, 166.9592],
-'tonga': [-21.1790, -175.1982], 'samoa': [-13.7590, -172.1046],
-'kiribati': [1.8709, -157.3626], 'tuvalu': [-7.1095, 177.6493],
-'nauru': [-0.5228, 166.9315], 'marshall': [7.1315, 171.1845],
-'micronésie': [7.4256, 150.5508], 'palaos': [7.5150, 134.5825],
-'cook': [-21.2367, -159.7777], 'niue': [-19.0544, -169.8672],
-'comores': [-11.6455, 43.3333], 'seychelles': [-4.6796, 55.4920],
-'cap-vert': [16.5388, -23.0418], 'sao tomé': [0.1864, 6.6131],
-'maldives': [3.2028, 73.2207], 'sri lanka': [7.8731, 80.7718]
-}
-const ileLow = ile.toLowerCase()
-const coords = Object.entries(coordonnees).find(([k]) => ileLow.includes(k))?.[1]
-if (!coords) return null
-return await getMeteoMonde(ile)
-}
-
-// ===== CACHE INTELLIGENT =====
-async function getCacheIntelligent(key) {
-  try {
-    const { Redis } = await import('@upstash/redis')
-    const redis = Redis.fromEnv()
-    const cached = await redis.get(`cache:${key}`)
-    return cached ? JSON.parse(cached) : null
-  } catch(e) { return null }
-}
-
-async function setCacheIntelligent(key, value, ttlSeconds = 300) {
-  try {
-    const { Redis } = await import('@upstash/redis')
-    const redis = Redis.fromEnv()
-    await redis.set(`cache:${key}`, JSON.stringify(value), { ex: ttlSeconds })
-  } catch(e) {}
-}
-
-// ===== MÉMOIRE LONGUE DURÉE =====
-async function saveMemoreLongueDuree(userId, data) {
-  try {
-    const { Redis } = await import('@upstash/redis')
-    const redis = Redis.fromEnv()
-    const existing = await redis.get(`memory:long:${userId}`) 
-    const current = existing ? JSON.parse(existing) : {}
-    const updated = { ...current, ...data, updatedAt: new Date().toISOString() }
-    await redis.set(`memory:long:${userId}`, JSON.stringify(updated), { ex: 90 * 24 * 60 * 60 })
-    return updated
-  } catch(e) { return null }
-}
-
-async function getMemoreLongueDuree(userId) {
-  try {
-    const { Redis } = await import('@upstash/redis')
-    const redis = Redis.fromEnv()
-    const data = await redis.get(`memory:long:${userId}`)
-    return data ? JSON.parse(data) : {}
-  } catch(e) { return {} }
-}
-
-// ===== REDIS OPTIMISÉ =====
-const REDIS_TTL = {
-  conversation: 7 * 24 * 60 * 60,
-  profile: 90 * 24 * 60 * 60,
-  cache_meteo: 10 * 60,
-  cache_crypto: 5 * 60,
-  satisfaction: 30 * 24 * 60 * 60
-}
-
-async function redisOptimise(operations) {
-  try {
-    const { Redis } = await import('@upstash/redis')
-    const redis = Redis.fromEnv()
-    const pipeline = redis.pipeline()
-    operations.forEach(op => {
-      if (op.type === 'set') pipeline.set(op.key, JSON.stringify(op.value), { ex: op.ttl || 3600 })
-      if (op.type === 'get') pipeline.get(op.key)
-    })
-    return await pipeline.exec()
-  } catch(e) { return null }
-}
-
-// ===== PREMIUM DETECTION =====
-function detecterPremium(msg) {
-  const m = msg.toLowerCase()
-  return (
-    m.includes("premium") ||
-    m.includes("abonnement") ||
-    m.includes("pro") ||
-    m.includes("payer") ||
-    m.includes("upgrade") ||
-    m.includes("vip")
-  )
-}
-
-function reponsePremium() {
-  return `💎 **REUSSITESS PREMIUM**
-
-Débloquez toutes les fonctionnalités exclusives :
-- IA avancée
-- réponses illimitées
-- modules DOM-TOM enrichis
-- crypto + news temps réel
-
-👉 Accéder ici :
-https://reussitess.fr/premium
-
-Boudoum ! 🇬🇵`
-}
-
