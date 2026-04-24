@@ -653,7 +653,7 @@ async function getWikipedia(term) {
   }
 
   // IDENTITE EXACTE 200 AGENTS — anti-erreur calcul
-  if (msgLow.includes("combien") && (msgLow.includes("agent") || msgLow.includes("ia") || msgLow.includes("module")) || msgLow.includes("augmenter memoire") || msgLow.includes("augmenter la memoire") || msgLow.includes("augmenter mémoire") || (msgLow.includes("total") && msgLow.includes("agent"))) {
+  if (msgLow.includes("combien") && (msgLow.includes("agent") || msgLow.includes(" ia ") || msgLow.includes("module")) || msgLow.includes("augmenter memoire") || msgLow.includes("augmenter la memoire") || msgLow.includes("augmenter mémoire") || (msgLow.includes("total") && msgLow.includes("agent"))) {
     return res.status(200).json({ response: "🤖 *REUSSITESS®971 — Architecture exacte*\n\n🧠 60 Neuro-X spécialisés\n🛡️ 40 Sentinelles surveillance\n🎯 99 Quiz éducatifs\n👑 1 IA Suprême\n\n**Total : 60 + 40 + 99 + 1 = 200 agents IA actifs**\n\nDéveloppé depuis la Guadeloupe 🇬🇵\nBOUDOUM ! 🥁" })
   }
 
@@ -2344,7 +2344,7 @@ Boudoum ! 🇬🇵` })
   if (msgLow.includes("président usa") || msgLow.includes("président etats-unis") || msgLow.includes("president usa")) {
     return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Donald Trump** réélu Nov 2024, investi 20/01/2025. Actuel président USA. Boudoum ! 📱" });
   }
-  if (((msgLow.includes("crypto") && (msgLow.includes("prix") || msgLow.includes("acheter") || msgLow.includes("vendre") || msgLow.length <= 6)) || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme") && !msgLow.startsWith("qui ") && !msgLow.startsWith("que ") && !msgLow.startsWith("quels ") && !msgLow.startsWith("quelle ") && !msgLow.startsWith("comment ") && !msgLow.startsWith("pourquoi ") && !msgLow.startsWith("quand ") && !msgLow.startsWith("ou ") && !msgLow.startsWith("où ")) {
+  if (((msgLow.includes("crypto") && (msgLow.includes("prix") || msgLow.includes("acheter") || msgLow.includes("vendre") || msgLow === "crypto")) || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme") && !msgLow.startsWith("qui ") && !msgLow.startsWith("que ") && !msgLow.startsWith("quels ") && !msgLow.startsWith("quelle ") && !msgLow.startsWith("comment ") && !msgLow.startsWith("pourquoi ") && !msgLow.startsWith("quand ") && !msgLow.startsWith("ou ") && !msgLow.startsWith("où ")) {
     const country = msgLow.includes("haiti") ? "haiti" : msgLow.includes("rwanda") ? "rwanda" : "global"
     const data = await fetch(`https://reussitess.fr/api/world-data?type=crypto&country=${country}`).then(r=>r.json())
     return res.status(200).json(data)
@@ -2866,7 +2866,7 @@ Boudoum ! 🇬🇵` })
     if (alchemyData) return res.status(200).json({ pdfAction: null, response: alchemyData })
   }
 
-  if (msgLow.includes('bitcoin') || msgLow.includes('btc') || msgLow.includes('ethereum') || msgLow.includes('eth') || msgLow.includes('crypto') || msgLow.includes('prix') && msgLow.includes('coin')) {
+  if (msgLow.includes('bitcoin') || msgLow.includes('btc') || msgLow.includes('ethereum') || msgLow.includes('eth') || (msgLow.includes('crypto') && (msgLow.includes('prix') || msgLow.includes('token') || msgLow.includes('reuss') || msgLow.includes('acheter') || msgLow.includes('vendre'))) || (msgLow.includes('prix') && msgLow.includes('coin'))) {
     try {
       const cr = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,matic-network&vs_currencies=usd,eur")
       const cd = await cr.json()
@@ -5085,7 +5085,7 @@ export default async function handler(req, res) {
     if (!isPremium) {
       return res.status(200).json({ 
         pdfAction: null, 
-        response: `👑 *Fonctionnalité Premium*\n\nCe module fait partie de REUSSITESS Premium.\n\n✅ Traducteur Créole IA\n💰 Comparateur Transfert Argent\n📋 Générateur CV + Admin\n🛂 Assistant Visa\n🧠 Coach IA Mémoire Longue\n\n**4,99€/mois** — Sans engagement\n\n👉 [Souscrire sur reussitess.fr/premium](https://reussitess.fr/premium)\n\nBoudoum ! 🇬🇵` 
+        response: `👑 *Fonctionnalité Premium — 20 Modules Exclusifs*\n\nCe module fait partie de REUSSITESS Premium.\n\n✅ Traducteur Créole IA\n💰 Comparateur Transfert Argent\n📋 Générateur CV + Admin\n🛂 Assistant Visa\n🧠 Coach IA Mémoire Longue\n🧬 ADN de Réussite — Analyse psychologique caribéenne\n💼 Architecte de Fortune — Plan financier 5 ans DOM-TOM\n🎯 Négociateur Caribéen — Scripts afro-caribéens\n🌐 Traducteur de Succès — Pitch caribéen FR/CA/USA\n🏗️ Bâtisseur d'Empire — De l'idée à l'entreprise 90 jours\n🛡️ Bouclier Juridique — Droit français + DOM-TOM\n🧠 Mindset Champions — Césaire, Fanon, Glissant\n🌱 Entrepreneur Social — Impact + revenus + subventions\n📡 Intelligence Stratégique — Veille 14 pays\n👑 Passeport Excellence — Certification réseau REUSSITESS\n🎓 Académie Caribéenne — Formations exclusives\n📊 Observatoire Antilles — Données INSEE/IEDOM\n🌍 Réseau Diaspora — Connexions 14 pays\n💎 REUSS Token — Avantages blockchain\n🏆 Hall of Champions — Reconnaissance communautaire\n\n**4,99€/mois** — Sans engagement\n\n👉 [Souscrire sur reussitess.fr/premium](https://reussitess.fr/premium)\n\nBoudoum ! 🇬🇵` 
       })
     }
 
@@ -8078,7 +8078,7 @@ Boudoum ! 🇬🇵`})
   if (msgLow.includes("président usa") || msgLow.includes("président etats-unis") || msgLow.includes("president usa")) {
     return res.status(200).json({ pdfAction: null, response: "🇺🇸 **Donald Trump** réélu Nov 2024, investi 20/01/2025. Actuel président USA. Boudoum ! 📱" });
   }
-  if (((msgLow.includes("crypto") && (msgLow.includes("prix") || msgLow.includes("acheter") || msgLow.includes("vendre") || msgLow.length <= 6)) || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme") && !msgLow.startsWith("qui ") && !msgLow.startsWith("que ") && !msgLow.startsWith("quels ") && !msgLow.startsWith("quelle ") && !msgLow.startsWith("comment ") && !msgLow.startsWith("pourquoi ") && !msgLow.startsWith("quand ") && !msgLow.startsWith("ou ") && !msgLow.startsWith("où ")) {
+  if (((msgLow.includes("crypto") && (msgLow.includes("prix") || msgLow.includes("acheter") || msgLow.includes("vendre") || msgLow === "crypto")) || msgLow.includes("bitcoin")) && !msgLow.includes("quiz") && !msgLow.includes("plage") && !msgLow.includes("événement") && !msgLow.includes("evenement") && !msgLow.includes("thème") && !msgLow.includes("theme") && !msgLow.startsWith("qui ") && !msgLow.startsWith("que ") && !msgLow.startsWith("quels ") && !msgLow.startsWith("quelle ") && !msgLow.startsWith("comment ") && !msgLow.startsWith("pourquoi ") && !msgLow.startsWith("quand ") && !msgLow.startsWith("ou ") && !msgLow.startsWith("où ")) {
     const country = msgLow.includes("haiti") ? "haiti" : msgLow.includes("rwanda") ? "rwanda" : "global"
     const data = await fetch(`https://reussitess.fr/api/world-data?type=crypto&country=${country}`).then(r=>r.json())
     return res.status(200).json(data)
@@ -8720,29 +8720,32 @@ Boudoum ! 🇬🇵`})
     const lowerMessage = message.toLowerCase()
     
     // Détection contextuelle intelligente
-    if (( lowerMessage === 'ia' || lowerMessage.includes(' ia ') || lowerMessage.includes('ia ') || lowerMessage.startsWith('ia')) || lowerMessage.includes('intelligence') || lowerMessage.includes('chatgpt') || lowerMessage.includes('claude')) {
-      return `🤖 **Excellence IA Mondiale**
+    if (( lowerMessage === 'ia' || lowerMessage.includes(' ia ') || (lowerMessage.includes(' ia ') || lowerMessage === 'ia') || lowerMessage.startsWith('ia')) || lowerMessage.includes('intelligence') || lowerMessage.includes('chatgpt') || lowerMessage.includes('claude')) {
+      return `🤖 **REUSSITESS®971 AI — Intelligence Artificielle**
 
-Excellent question sur l'intelligence artificielle ! Laissez-moi vous éclairer avec des **données réelles et vérifiées** :
+**Les grandes IAs en 2026 :**
+• **ChatGPT (OpenAI)** — GPT-4o, leader mondial, 200M+ utilisateurs
+• **Claude (Anthropic)** — Modèle de référence sécurité et éthique IA
+• **Gemini (Google)** — Intégré à l'écosystème Google, multimodal
+• **LLaMA (Meta)** — Open-source, base de REUSSITESS AI via Groq
+• **Groq** — Infrastructure ultra-rapide, 500+ tokens/seconde
 
-**IA PASSPORT - Notre Révolution :**
-• **IA propulsée par Groq** (LLaMA 3.3 70B) — open-source, rapide, 3 clés rotation anti-429
-• **Inspiré des leaders** : TypingMind (50,000 users), Magai (80,000 users), Alle-AI
-• **Économie massive** : Au lieu de $110/mois pour 5 abonnements séparés → accès unifié 75% moins cher
+**REUSSITESS®971 AI — Notre écosystème :**
+🧠 200 agents IA actifs (60 Sentinelles + 40 Neuro-X + 99 Quiz + 1 Suprême)
+⚡ Propulsé par Groq LLaMA 3.3 70B — 3 clés rotation anti-429
+🌍 14 pays partenaires — né en Guadeloupe 🇬🇵
+💎 Token REUSS sur Polygon blockchain
+🛡️ Conforme EU AI Act 2024 + RGPD
 
-**Pourquoi c'est révolutionnaire ?**
-✨ Bascule instantanée entre IA sans perdre contexte
-✨ Comparaison côte-à-côte des réponses
-✨ Workflows automatisés : GPT écrit → DALL-E illustre → Synthesia présente
+**Tendances IA 2026 :**
+• Agents IA autonomes (Agentic AI) — IA qui agit sans supervision
+• IA multimodale — texte, image, audio, vidéo combinés
+• Edge AI — IA embarquée sur appareils locaux
+• IA souveraine — données hébergées localement (RGPD)
 
-**Données benchmark réelles (2026) :**
-• Groq LLaMA 3.3 70B : ultra-rapide, open-source
-• 3 clés API rotation automatique anti-429
-• 60 Sentinelles + 40 Neuro-X + 99 Quiz + 1 Suprême = 200 agents IA
+🔗 Explore : reussitess.fr/ia-passport
 
-**Made in Guadeloupe** 🇬🇵 avec standards UE !
-
-**Boudoum** 🎯 - Vous voulez en savoir plus sur un aspect particulier ?`
+Boudoum ! 🇬🇵`
     }
     
     if (lowerMessage.includes('traduction') || lowerMessage.includes('langue') || lowerMessage.includes('translation')) {
