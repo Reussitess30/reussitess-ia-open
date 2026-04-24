@@ -4976,6 +4976,9 @@ export const config = { api: { responseLimit: false } }
 
 // ===== MODULES PREMIUM =====
 async function checkPremium(userId) {
+  // ADMIN BYPASS — Rony Porinus créateur REUSSITESS®971
+  const ADMIN_IDS = ["telegram:7629308832"]
+  if (ADMIN_IDS.includes(userId)) return true
   try {
     const { Redis } = await import('@upstash/redis')
     const redis = Redis.fromEnv()
